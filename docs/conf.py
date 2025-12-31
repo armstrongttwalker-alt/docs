@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'test-sphinx'
+project = 'flagos-docs-portal'
 copyright = '2025, FlagOS Community'
 author = 'FlagOS Community'
 release = '1.0'
