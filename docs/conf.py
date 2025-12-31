@@ -112,8 +112,8 @@ html_favicon = "_static/logo.svg"
 html_title = ""
 html_theme_options = {
     "logo": {
-      "image_light": "_static/kernelgen-logo.svg",
-      "image_dark": "_static/kernelgen-logo.svg",
+      "image_light": "_static/logo.svg",
+      "image_dark": "_static/logo.svg",
    },
     "home_page_in_toc": True,
     "use_download_button": False,
