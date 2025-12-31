@@ -157,11 +157,11 @@ rediraffe_redirects = {
     "explain/index.md": "develop/background.md",
 }
 
-tippy_skip_anchor_classes = ("headerlink", "sd-stretched-link", "sd-rounded-pill")
-tippy_anchor_parent_selector = "article.bd-article"
-tippy_rtd_urls = [
-    "https://www.sphinx-doc.org/en/master",
-    "https://markdown-it-py.readthedocs.io/en/latest",
-]
-# TODO failing
-tippy_enable_wikitips = False
+# tippy_skip_anchor_classes = ("headerlink", "sd-stretched-link", "sd-rounded-pill")
+# tippy_anchor_parent_selector = "article.bd-article"
+# tippy_rtd_urls = [
+#     "https://www.sphinx-doc.org/en/master",
+#     "https://markdown-it-py.readthedocs.io/en/latest",
+# ]
+# # TODO failing
+# tippy_enable_wikitips = False
