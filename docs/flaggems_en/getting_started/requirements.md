@@ -18,16 +18,6 @@ The following table lists the supported hardware platforms:
 | mthreads     | ✅                     |    ✅    |    ✅    |     ✅    |
 | nvidia       | ✅                     |    ✅    |    ✅    |     ✅    |
 
-## Supported models
-
-The following table lists the supported models:
-
-| Organization                              | Model             |
-|------------------------------------------|-------------------|
-| Google                                   | BERT-base-uncased |
-| Meta AI                                  | Llama-2-7b        |
-| UW / NYU / Microsoft Research            | LLaVA-1.5-7b      |
-
 ## Python, PyTorch and Triton compatible versions
 
 Before running FlagGems, you need to install stable and compatible versions of Python, PyTorch, and Triton.
