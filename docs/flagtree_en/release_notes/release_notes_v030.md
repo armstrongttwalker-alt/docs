@@ -1,12 +1,10 @@
-<div align="right"><a href="./release_notes_v0.3.0_cn.md">中文版</a></div>
+# FlagTree 0.3.0 release
 
-## FlagTree 0.3.0 Release
-
-### Highlights
+## Highlights
 
 FlagTree inherits capabilities from the previous version, continuously integrates new backends, and strengthens the ecosystem matrix. The project is currently in its early stage, aiming to be compatible with existing adaptation solutions for various chip backends, unify code repositories, create a collaborative code-building platform, and quickly achieve single-repository multi-backend support. Meanwhile, it continues to develop unified programming interface extensions, build intermediate layer representation and conversion extensions (FLIR), and enhance hardware awareness and compilation guidance support capabilities and scope (flagtree_hints).
 
-### New features
+## New features
 
 * Added multi-backend Support
 
@@ -29,7 +27,7 @@ flagtree_hints provides guidance for hardware unit mapping and compilation trans
 
 Collaborating with [FlagGems](https://github.com/FlagOpen/FlagGems) operator library on version compatibility, backend interfaces, registration mechanisms, and test modifications to support related features.
 
-### Looking ahead
+## Looking ahead
 
 Improving GPGPU backend integration, decoupling backend specialization from main code implementation to establish an engineering foundation for FlagTree's general extensions and optimizations. <br>
 Aiming to comprehensively cover various implementation styles in the operator library, enhancing FLIR compilation completeness to match multiple backend requirements and enable compilation for more backends. <br>

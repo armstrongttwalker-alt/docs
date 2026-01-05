@@ -1,12 +1,10 @@
-<div align="right"><a href="./release_notes_v0.2.0_cn.md">中文版</a></div>
+# FlagTree 0.2.0 release
 
-## FlagTree 0.2.0 Release
-
-### Highlights
+## Highlights
 
 FlagTree inherits capabilities from the previous version, continuously integrates new backends, expands support for Triton versions, and provides hardware-aware optimization capabilities. The project is currently in its early stages, aiming to be compatible with existing adaptation solutions for various AI chip backends, unify the code repository, build a code co-construction platform, and quickly implement multi-backend support in a single repository.
 
-### New features
+## New features
 
 * Added multi-backend Support
 
@@ -30,7 +28,7 @@ Supports providing guided programming interfaces for backend-common or specific 
 
 Collaborating with the [FlagGems](https://github.com/FlagOpen/FlagGems) operator library to support related features in version adaptation, backend interfaces, registration mechanisms, and test modifications.
 
-### Looking ahead
+## Looking ahead
 
 GPGPU backend code will be integrated, decoupling backend differentiation changes from TritonGPU; non-GPGPU backends will be horizontally integrated on the FLIR foundation, with unified design for common passes. <br>
 Providing Triton adaptation version upgrade guides for backend vendors: 3.0 -> 3.1 -> 3.2 -> 3.3. <br>

@@ -1,12 +1,10 @@
-[中文版](./release_notes_v0.1.0_cn.md)
+# FlagTree 0.1.0 release
 
-## FlagTree 0.1.0 Release
-
-### Highlights
+## Highlights
 
 FlagTree's initial release is built on Triton 3.1, introducing support for diverse AI chip backends. In its early stage, the project aims to maintain compatibility with existing backend adaptation solutions while unifying the codebase to enable rapid single-version multi-backend support.
 
-### New features
+## New features
 
 * Multi-Backend Support
 
@@ -32,10 +30,10 @@ The project implements comprehensive CI/CD pipelines for iluvatar, xpu, mthreads
 
 Beyond CI/CD coverage for multiple backend chips, FlagTree implements quality and compliance assurance mechanisms including Contributor License Agreement (CLA) signing and security compliance scanning.
 
-### Known issues
+## Known issues
 
 * Current lack of support for triton-opt, proton, and related tools.
 
-### Looking ahead
+## Looking ahead
 
 FlagTree will continue investing in the Triton ecosystem, focusing on tracking Triton version updates, integrating AI chip backends, improving compilation efficiency, and enhancing cross-platform compatibility. Additionally, FlagTree will explore balancing general usability with chip-specific optimization requirements, providing compatible language-level unified abstractions and explicit specifications for hardware storage hierarchies, parallelism levels, and acceleration units.
