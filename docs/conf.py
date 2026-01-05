@@ -303,10 +303,10 @@ if html_theme == "pydata_sphinx_theme":
 else:
     # Sphinx Book Theme configuration for all other projects
     html_theme_options = {
-        "logo": {
-        "image_light": "logo.png",
-        "image_dark": "logo.png",
-    },
+    #     "logo": {
+    #     "image_light": "img/logo.png",
+    #     "image_dark": "img/logo.png",
+    # },
         "home_page_in_toc": True,
         "use_download_button": False,
         "repository_url": "https://github.com/flagos-ai/KernelGen",
@@ -324,7 +324,6 @@ else:
 #     "github_repo": "https://github.com/flagos-ai/KernelGen",
 # #     "github_version": "main",
 # #     "plausible_domain": f"{os.environ.get('READTHEDOCS_PROJECT')}.readthedocs.io",
-}
 
 rst_epilog = """
 .. |org_brand| replace:: KernelGen Community
