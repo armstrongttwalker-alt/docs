@@ -297,39 +297,27 @@ if html_theme == "pydata_sphinx_theme":
         html_theme_options["secondary_sidebar_items"][f"{project}/index"] = []
 
     html_context = {
-    "default_mode": "light"
+    "default_mode": "dark"
     }
 
 else:
     # Sphinx Book Theme configuration for all other projects
     html_theme_options = {
+        "logo": {
+        "image_light": "logo.png",
+        "image_dark": "logo.png",
+    },
         "home_page_in_toc": True,
+        "use_download_button": False,
         "repository_url": "https://github.com/flagos-ai/KernelGen",
-        "repository_branch": "main",
-        "path_to_docs": f"docs/{docset}",
-        "use_repository_button": True,
         "use_edit_page_button": True,
-        "use_issues_button": True,
-        "show_navbar_depth": 2,
-        "show_toc_level": 3,
-        "navbar_align": "left",
-        # Optional: Add extra navigation elements
-        "extra_navbar": "",
-        "extra_footer": "",
-        "pygment_light_style": "default",
-        "pygment_dark_style": "monokai",
-        # Show "Previous" and "Next" buttons at the bottom
-        "show_prev_next": True,
-        # Show breadcrumbs navigation
-        "show_breadcrumbs": True,
-        # Expand all sidebar sections by default
-        "expand_sections": [],
-        # Single page mode (optional)
-        "single_page": False,
+        # "github_url": "https://github.com/flagos-ai/KernelGen",
+        # "repository_branch": "master",
+        # "path_to_docs": "docs",
+        "use_repository_button": True,
+        # "announcement": "<b>v3.0.0</b> is now out! See the Changelog for details",
     }
 
-html_context = {
-    "default_mode": "dark"
 # #     "conf_py_path": f"/docs/{docset}/",
 #     # "display_github": True,
 #     "github_user": "armstrongttwalker-alt",
