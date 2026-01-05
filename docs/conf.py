@@ -250,29 +250,23 @@ gettext_compact = False
 
 html_short_title = ""
 
-# html_theme = "pydata_sphinx_theme"
-# # html_theme = "sphinx_book_theme"
+# ============================================================================
+# HTML THEME CONFIGURATION - DIFFERENT THEMES FOR DIFFERENT PROJECTS
+# ============================================================================
+
+# Only flagos_en and flagos_zh use pydata_sphinx_theme, all others use sphinx_book_theme
 if docset in ["flagos_en", "flagos_zh"]:
     html_theme = "pydata_sphinx_theme"
 else:
     html_theme = "sphinx_book_theme"
 
-
+# Common static paths
 html_static_path = ["_static", f"{docset}/_static"]
 html_css_files = ["custom.css", "homepage.css"]
-# Do not add sphinx_prompt_css.css for now, it might not exist
 html_js_files = []
 
 html_logo = "img/logo.png"
 html_favicon = "img/logo.png"
-# html_theme_options = {
-#     "logo_only": True,
-# }
-
-# Update sidebar configurations for all projects
-html_sidebars = {}
-for project in all_projects:
-    html_sidebars[f"{project}/index"] = []
 
 # Theme-specific configurations
 if html_theme == "pydata_sphinx_theme":
@@ -295,35 +289,33 @@ if html_theme == "pydata_sphinx_theme":
     # Update secondary sidebar items for flagos projects
     for project in ["flagos_en", "flagos_zh"]:
         html_theme_options["secondary_sidebar_items"][f"{project}/index"] = []
-
+    
+    # html_sidebars is only for PyData Sphinx Theme
+    html_sidebars = {}
+    for project in all_projects:
+        html_sidebars[f"{project}/index"] = []
+    
+    # html_context is only applied to PyData Sphinx Theme
     html_context = {
-    "default_mode": "dark"
+        "default_mode": "dark"
     }
 
 else:
     # Sphinx Book Theme configuration for all other projects
     html_theme_options = {
-    #     "logo": {
-    #     "image_light": "img/logo.png",
-    #     "image_dark": "img/logo.png",
-    # },
+        "logo": {
+            "image_light": "img/logo.png",
+            "image_dark": "img/logo.png",
+        },
         "home_page_in_toc": True,
         "use_download_button": False,
         "repository_url": "https://github.com/flagos-ai/KernelGen",
         "use_edit_page_button": True,
-        # "github_url": "https://github.com/flagos-ai/KernelGen",
-        # "repository_branch": "master",
-        # "path_to_docs": "docs",
         "use_repository_button": True,
-        # "announcement": "<b>v3.0.0</b> is now out! See the Changelog for details",
     }
-
-# #     "conf_py_path": f"/docs/{docset}/",
-#     # "display_github": True,
-#     "github_user": "armstrongttwalker-alt",
-#     "github_repo": "https://github.com/flagos-ai/KernelGen",
-# #     "github_version": "main",
-# #     "plausible_domain": f"{os.environ.get('READTHEDOCS_PROJECT')}.readthedocs.io",
+    # No html_sidebars for Sphinx Book Theme
+    html_sidebars = {}
+    # No html_context for Sphinx Book Theme
 
 rst_epilog = """
 .. |org_brand| replace:: KernelGen Community
