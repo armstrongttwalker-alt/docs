@@ -1,5 +1,12 @@
 # FlagTree Documentation
 
+```{toctree}
+:caption: 📑 Release Notes
+:maxdepth: 5
+:hidden:
+
+release_notes/release-notes.md
+```
 
 ```{toctree}
 :caption: 📚 Guides

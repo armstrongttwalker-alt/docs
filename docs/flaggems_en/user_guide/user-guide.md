@@ -9,7 +9,7 @@ build-and-use-source-and-wheel.md
 how-to-use-flaggems.md
 pointwise-dynamic.md
 prepare-for-testing-operator.md
-test-operator-and-model.md
+test-operator-and-model/test-operator-and-model.md
 add-a-cpp-wrapper.md
 
 ```
