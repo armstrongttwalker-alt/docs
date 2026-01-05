@@ -35,7 +35,7 @@ Guides you how to use FlagCX.
 :link: addle/README
 :link-type: doc
 
-Guides you how to training models using Paddle + FlagCX.
+Guides you how to train models using Paddle + FlagCX.
 
 +++
 [Learn more »](paddle/README.md)
