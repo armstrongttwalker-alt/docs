@@ -1,4 +1,4 @@
-# Environment variables
+# Environment Variables
 
 | Environment Variable Name | Description                                                  | Values                                                       |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
