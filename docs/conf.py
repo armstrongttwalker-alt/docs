@@ -337,7 +337,7 @@ else:
         },
         "home_page_in_toc": True,
         "use_download_button": False,
-        "repository_url": "https://github.com/flagos-ai/website",
+        "repository_url": "https://github.com/flagos-ai/docs",
         "use_edit_page_button": True,
         "use_repository_button": True,
         "navbar_center": ["back_to_main.html"],
