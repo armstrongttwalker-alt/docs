@@ -13,9 +13,3 @@ General workflow
 3. Deployment and execution
    - Combine the downloaded model weights with the FlagOS image to run the model directly on the target hardware.
    - FlagOS automatically manages hardware resources and supports multi-chip parallel execution, eliminating the need for manual environment configuration.
-
-The following table lists document links
-
-| FlagRelease model package | doc links |
-| :--- | :--- |
-| DeepSeek-R1-Distill-Qwen-32B-FlagOS-NVIDIA | [README.md] (https://modelscope.cn/models/FlagRelease/DeepSeek-R1-Distill-Qwen-32B-FlagOS-NVIDIA/file/view/master/README.md?status=1) |
