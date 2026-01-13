@@ -4,13 +4,30 @@
 
 You can simply add hints by placing a trailing comment with the format `# @hint: <hint_name>` on the same line as operations like `tl.load`.
 
+Example 1
+
 ```{code-block} python
 # Hints are embedded as trailing comments using the '@hint:' prefix.
 mat_a_block = tl.load(mat_a + mat_a_offset, mask=mat_a_mask, other=0.0)  # @hint: dot_pad_only_k
-x = tl.load(x_ptr + offsets, mask=mask)  # @hint: mask_opt
+x = tl.load(x_ptr + offsets, mask=mask) 
 for s in range(0, 2):  # @hint: bind_sub_block
     # ... code ...
 ```
+
+Example 2
+
+```{code-block} python
+import triton
+import triton.language as tl
+
+@triton.jit
+def kernel(x_ptr, y_ptr, N):
+    pid = tl.program_id(0)
+    x = tl.load(x_ptr + pid)  #@hint: shared_memory
+    y = x + 1
+    tl.store(y_ptr + pid, y)
+```
+
 
 ## Supported hints
 
