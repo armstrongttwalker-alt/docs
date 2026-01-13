@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-针对你的目录结构：从docs/flagrelease_en目录读取模型列表，
-并将文件下载到docs/flagrelease_en/model_readmes/
+For your directory structure: Read model list from docs/flagrelease_en directory,
+and download files to docs/flagrelease_en/model_readmes/
 """
 
 import os
@@ -10,49 +10,49 @@ import shutil
 from modelscope.hub.snapshot_download import snapshot_download
 
 def download_models():
-    """下载所有模型的readme文件到指定目录"""
-    # 1. 获取脚本所在目录的绝对路径
+    """Download all model readme files to the specified directory"""
+    # 1. Get absolute path of script directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    print(f"脚本目录: {script_dir}")
+    print(f"Script directory: {script_dir}")
     
-    # 2. 构建项目根目录路径（假设脚本在 docs/scripts/）
+    # 2. Construct project root path (assuming script is in docs/scripts/)
     project_root = os.path.abspath(os.path.join(script_dir, '..', '..'))
-    print(f"项目根目录: {project_root}")
+    print(f"Project root directory: {project_root}")
     
-    # 3. 模型列表文件路径
+    # 3. Model list file path
     list_file = os.path.join(project_root, 'docs', 'flagrelease_en', 'model_list.txt')
-    print(f"模型列表文件路径: {list_file}")
+    print(f"Model list file path: {list_file}")
     
     if not os.path.exists(list_file):
-        print(f"❌ 错误：找不到模型列表文件 '{list_file}'")
-        print(f"当前工作目录: {os.getcwd()}")
+        print(f"❌ Error: Cannot find model list file '{list_file}'")
+        print(f"Current working directory: {os.getcwd()}")
         sys.exit(1)
     
-    # 4. 读取模型列表
+    # 4. Read model list
     with open(list_file, 'r', encoding='utf-8') as f:
         model_ids = [line.strip() for line in f 
                     if line.strip() and not line.startswith('#')]
     
-    print(f"📋 找到 {len(model_ids)} 个模型需要处理")
+    print(f"📋 Found {len(model_ids)} models to process")
     
-    # 5. 输出目录
+    # 5. Output directory
     output_dir = os.path.join(project_root, 'docs', 'flagrelease_en', 'model_readmes')
     os.makedirs(output_dir, exist_ok=True)
-    print(f"📁 输出目录: {output_dir}")
+    print(f"📁 Output directory: {output_dir}")
     
     success_count = 0
     failed_models = []
     
     for idx, model_id in enumerate(model_ids, 1):
-        print(f"\n[{idx}/{len(model_ids)}] 🔍 处理: {model_id}")
+        print(f"\n[{idx}/{len(model_ids)}] 🔍 Processing: {model_id}")
         
         try:
-            # 创建临时目录
+            # Create temporary directory
             safe_name = model_id.replace('/', '_')
             temp_dir = os.path.join('/tmp', f"modelscope_{safe_name}")
             os.makedirs(temp_dir, exist_ok=True)
             
-            # 下载readme文件
+            # Download readme files
             snapshot_download(
                 model_id=model_id,
                 allow_patterns=['*README.md', '*readme.md'],
@@ -60,7 +60,7 @@ def download_models():
                 local_files_only=False
             )
             
-            # 查找并复制readme文件
+            # Find and copy readme file
             found = False
             for possible_name in ['README.md', 'readme.md']:
                 source_path = os.path.join(temp_dir, possible_name)
@@ -68,36 +68,36 @@ def download_models():
                     target_filename = f"{safe_name}.md"
                     target_path = os.path.join(output_dir, target_filename)
                     shutil.copy2(source_path, target_path)
-                    print(f"   ✅ 已保存: {target_filename}")
+                    print(f"   ✅ Saved: {target_filename}")
                     success_count += 1
                     found = True
                     break
             
             if not found:
-                print(f"   ⚠️  未找到readme文件")
-                failed_models.append(f"{model_id} (未找到文件)")
+                print(f"   ⚠️  No readme file found")
+                failed_models.append(f"{model_id} (file not found)")
             
-            # 清理临时目录
+            # Clean up temporary directory
             shutil.rmtree(temp_dir, ignore_errors=True)
             
         except Exception as e:
-            print(f"   ❌ 下载失败: {str(e)}")
-            failed_models.append(f"{model_id} (错误: {str(e)[:50]})")
+            print(f"   ❌ Download failed: {str(e)}")
+            failed_models.append(f"{model_id} (error: {str(e)[:50]})")
     
-    # 生成总结报告
+    # Generate summary report
     print("\n" + "="*50)
-    print("📊 下载总结")
+    print("📊 Download Summary")
     print("="*50)
-    print(f"成功: {success_count}/{len(model_ids)}")
+    print(f"Success: {success_count}/{len(model_ids)}")
     if failed_models:
-        print(f"失败: {len(failed_models)}")
+        print(f"Failed: {len(failed_models)}")
         for failed in failed_models:
             print(f"  - {failed}")
     
-    # 6. 列出下载的文件
+    # 6. List downloaded files
     if os.path.exists(output_dir):
         downloaded_files = os.listdir(output_dir)
-        print(f"\n📄 已下载的文件 ({len(downloaded_files)}个):")
+        print(f"\n📄 Downloaded files ({len(downloaded_files)} items):")
         for f in sorted(downloaded_files):
             if f.endswith('.md'):
                 print(f"  - {f}")
@@ -107,19 +107,19 @@ def download_models():
 if __name__ == "__main__":
     try:
         print("="*50)
-        print("🚀 开始下载ModelScope模型文档")
+        print("🚀 Starting ModelScope model documentation download")
         print("="*50)
         
         success = download_models()
         
         if success:
-            print("\n🎉 下载任务完成！")
+            print("\n🎉 Download task completed successfully!")
             sys.exit(0)
         else:
-            print("\n⚠️ 下载任务完成，但有部分失败")
+            print("\n⚠️ Download task completed with some failures")
             sys.exit(1)
     except Exception as e:
-        print(f"\n💥 脚本执行失败: {e}")
+        print(f"\n💥 Script execution failed: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)
