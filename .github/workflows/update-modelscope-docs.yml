@@ -1,14 +1,9 @@
 name: Update ModelScope Documentation
 
 on:
-  # Scheduled trigger (daily at 2:00 UTC, which is 10:00 Beijing Time)
   schedule:
     - cron: '0 2 * * *'
-  
-  # Manual trigger (run via GitHub web interface)
   workflow_dispatch:
-  
-  # Trigger when model_list.txt or workflow files change
   push:
     paths:
       - 'docs/flagrelease_en/model_list.txt'
@@ -19,25 +14,21 @@ jobs:
   update-docs:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout code and disable default credential storage
       - name: Checkout repository code
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          persist-credentials: false # Critical! Prevents subsequent authentication conflicts
+          persist-credentials: false
 
-      # 2. Configure Git user information
       - name: Setup Git user
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      # 3. (Optional but recommended) Reconfigure the remote repository URL with authentication token as per the article
       - name: Authenticate Git remote
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
-      # --- Your original business logic steps (Python setup, file download, etc.) ---
       - name: Set up Python environment
         uses: actions/setup-python@v5
         with:
@@ -53,23 +44,56 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           python docs/scripts/download_readmes.py
         continue-on-error: true
-      # --- End of business logic steps ---
 
-      # 4. Use peter-evans/create-pull-request to create the PR
-      # This Action will automatically detect workspace changes, commit, create a branch, and push
+      # --- 新增：生成报告步骤 ---
+      - name: Generate download report
+        id: generate-report
+        run: |
+          REPORT_FILE="docs/flagrelease_en/model_readmes/download_report_$(date +'%Y%m%d_%H%M%S').txt"
+          echo "# ModelScope Documentation Update Report" > $REPORT_FILE
+          echo "## Generated on: $(date)" >> $REPORT_FILE
+          echo "## Workflow Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $REPORT_FILE
+          echo "" >> $REPORT_FILE
+
+          if [ -d "docs/flagrelease_en/model_readmes/" ]; then
+            CHANGED_COUNT=$(git diff --name-only docs/flagrelease_en/model_readmes/ 2>/dev/null | wc -l || echo "0")
+            echo "## Summary" >> $REPORT_FILE
+            echo "- **Total changes detected:** $CHANGED_COUNT files" >> $REPORT_FILE
+            echo "" >> $REPORT_FILE
+
+            if [ "$CHANGED_COUNT" -gt 0 ]; then
+              echo "## Changed Files" >> $REPORT_FILE
+              git diff --name-only docs/flagrelease_en/model_readmes/ | while read file; do
+                echo "- $file" >> $REPORT_FILE
+              done
+              echo "" >> $REPORT_FILE
+            fi
+          fi
+
+          echo "## Model Download Statistics" >> $REPORT_FILE
+          echo "- **Last run status:** ${{ job.status }}" >> $REPORT_FILE
+          echo "- **Trigger type:** ${{ github.event_name }}" >> $REPORT_FILE
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "- **Schedule:** Daily at 02:00 UTC (10:00 Beijing Time)" >> $REPORT_FILE
+          fi
+          echo "" >> $REPORT_FILE
+
+          echo "## Next Steps" >> $REPORT_FILE
+          echo "Please review the changes in the model documentation files above." >> $REPORT_FILE
+          echo "After merging this PR, the documentation will be updated on the main branch." >> $REPORT_FILE
+
+          echo "report_file=$REPORT_FILE" >> $GITHUB_OUTPUT
+      # --- 报告步骤结束 ---
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Commit message
           commit-message: 'Auto-update ModelScope documentation [$(date +''%Y-%m-%d %H:%M'')]'
-          # Branch settings
           branch: 'update/modelscope-docs-$(date +''%Y%m%d-%H%M%S'')'
           delete-branch: true
-          # PR settings
           title: '📚 ModelScope Documentation Update - $(date +''%Y-%m-%d'')'
-          body-path: 'docs/flagrelease_en/model_readmes/download_report_*.txt' # Note: This needs to match your report filename pattern
-          # Base branch and labels
+          body-path: ${{ steps.generate-report.outputs.report_file }}  # 关键修改：使用具体文件路径变量
           base: 'main'
           labels: 'documentation, auto-update, modelscope'
           draft: false
