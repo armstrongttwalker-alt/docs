@@ -122,16 +122,3 @@ jobs:
         reviewers: ${{ github.event.pull_request.user.login }}
         assignees: ${{ github.event.pull_request.user.login }}
         draft: false
-    
-    - name: Generate execution summary
-      if: always()  # Run even if previous steps fail
-      run: |
-        echo "## Workflow Execution Summary"
-        echo "- **Status:** ${{ job.status }}"
-        echo "- **Changes detected:** ${{ steps.check-changes.outputs.has_changes }}"
-        if [ "${{ steps.check-changes.outputs.has_changes }}" = "true" ]; then
-          echo "- **Added files:** ${{ steps.check-changes.outputs.added_files }}"
-          echo "- **Modified files:** ${{ steps.check-changes.outputs.modified_files }}"
-        fi
-        echo "- **Completion time:** $(date)"
-        echo "- **Workflow run:** [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
