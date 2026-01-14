@@ -101,8 +101,11 @@ jobs:
           # Calculate change statistics
           ADDED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ | grep -c '^A' || echo "0")
           MODIFIED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ | grep -c '^M' || echo "0")
-          echo "added_files=$ADDED_FILES" >> $GITHUB_OUTPUT
-          echo "modified_files=$MODIFIED_FILES" >> $GITHUB_OUTPUT
+          {
+            echo "has_changes=true"
+            echo "added_files=$ADDED_FILES"
+            echo "modified_files=$MODIFIED_FILES"
+          } >> $GITHUB_OUTPUT
         fi
     
     - name: Create Pull Request
