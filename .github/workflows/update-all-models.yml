@@ -12,7 +12,7 @@ on:
         required: false
         default: 'Manual update all model lists'
 
-  # Trigger when model_list.txt or workflow files change
+  # Trigger when workflow files change
   push:
     paths:
       - '.github/workflows/update-all-models.yml'
