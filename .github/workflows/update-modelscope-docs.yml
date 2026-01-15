@@ -1,9 +1,9 @@
 name: Update ModelScope Documentation
 
 on:
-  # Scheduled trigger (daily at 2:00 UTC, which is 10:00 Beijing Time)
+  # Scheduled trigger (daily at 18:00 UTC, which is 02:00 Beijing Time next day)
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 3 * * *'
   
   # Manual trigger (run via GitHub web interface)
   workflow_dispatch:
@@ -53,9 +53,10 @@ jobs:
       id: generate-report
       run: |
         # Create a detailed download report file with success and failure information
-        REPORT_FILE="docs/flagrelease_en/model_readmes/download_report_$(date +'%Y%m%d_%H%M%S').txt"
+        # Store the report file in a tem directory to prevent it from pusing to the repo
+        REPORT_FILE="/tmp/download_report_$(TZ='Asia/Shanghai' date +'%Y%m%d_%H%M%S').txt"
         echo "# ModelScope Documentation Update Report" > $REPORT_FILE
-        echo "## Generated on: $(date)" >> $REPORT_FILE
+        echo "## Generated on: $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S %Z')" >> $REPORT_FILE
         echo "## Workflow Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $REPORT_FILE
         echo "" >> $REPORT_FILE
         
@@ -80,7 +81,7 @@ jobs:
         echo "- **Last run status:** ${{ job.status }}" >> $REPORT_FILE
         echo "- **Trigger type:** ${{ github.event_name }}" >> $REPORT_FILE
         if [ "${{ github.event_name }}" = "schedule" ]; then
-          echo "- **Schedule:** Daily at 02:00 UTC (10:00 Beijing Time)" >> $REPORT_FILE
+          echo "- **Schedule:** Daily at 03:00 UTC (11:00 Beijing Time)" >> $REPORT_FILE
         fi
         echo "" >> $REPORT_FILE
         
@@ -95,6 +96,7 @@ jobs:
       run: |
         # Check if any files have been modified or added
         git add -N .
+        # Exclude the report file
         if git diff --quiet docs/flagrelease_en/model_readmes/ 2>/dev/null; then
           echo "No file changes detected"
           echo "has_changes=false" >> $GITHUB_OUTPUT
@@ -114,7 +116,7 @@ jobs:
       id: branch-name
       if: steps.check-changes.outputs.has_changes == 'true'
       run: |
-        BRANCH_NAME="update/modelscope-docs-$(date +'%Y%m%d-%H%M%S')"
+        BRANCH_NAME="update/modelscope-docs-$(TZ='Asia/Shanghai' date +'%Y%m%d-%H%M%S')"
         echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
         echo "Generated branch name: $BRANCH_NAME"
 
@@ -123,11 +125,15 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: 'Auto-update ModelScope documentation [$(date +''%Y-%m-%d %H:%M'')]'
+        commit-message: 'Auto-update ModelScope documentation [$(TZ=''Asia/Shanghai'' date +''%Y-%m-%d %H:%M'')]'
         branch: ${{ steps.branch-name.outputs.branch_name }}
         delete-branch: true
-        title: '📚 ModelScope Documentation Update - $(date +''%Y-%m-%d'')'
+        title: 'ModelScope Documentation Update - $(TZ=''Asia/Shanghai'' date +''%Y-%m-%d %H:%M'')'
         body-path: ${{ steps.generate-report.outputs.report_file }}
         base: 'main'
         labels: 'documentation, auto-update, modelscope'
         draft: false
+        # Exclude the report file
+        paths: |
+          docs/flagrelease_en/model_readmes/*.md
+          docs/flagrelease_en/model_list.txt
