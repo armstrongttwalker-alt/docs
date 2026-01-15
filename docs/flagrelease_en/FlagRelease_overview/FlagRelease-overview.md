@@ -13,6 +13,7 @@ The artifacts released through the FlagRelease platform are published on the fol
 
 - [ModelScope](https://modelscope.cn/organization/FlagRelease?tab=model)
 - [Hugging Face](https://huggingface.co/FlagRelease)
+- [AI Huanxin](https://aihuanxin.cn/#/model?path=/model)
 
 Users can obtain different hardware-specific versions of open-source large models. These models can be downloaded and used directly on the corresponding hardware environments without requiring users to perform model migration themselves.
 

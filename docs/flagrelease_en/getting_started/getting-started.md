@@ -11,7 +11,8 @@ The general workflow is as follows:
 1. Download Open-Source Model Weights
 
    {style=lower-alpha}
-    Visit the FlagRelease pages on [ModelScope](https://modelscope.cn/organization/FlagRelease?tab=model) or [Hugging Face](https://huggingface.co/FlagRelease), select the required large model and the corresponding hardware-specific version, and download the model weight files directly.
+    1. Visit the FlagRelease pages on [ModelScope](https://modelscope.cn/organization/FlagRelease?tab=model), [Hugging Face](https://huggingface.co/FlagRelease), or [AI Huanxin](https://aihuanxin.cn/#/model?path=/model).
+    2. Select the required large model and the corresponding hardware-specific version, and download the model weight files directly.
 
 2. Download the FlagOS Image
 
@@ -23,6 +24,6 @@ The general workflow is as follows:
 
 ## Operation Steps
 
-1. Visit the FlagRelease pages on [ModelScope](https://modelscope.cn/organization/FlagRelease?tab=model) or [Hugging Face](https://huggingface.co/FlagRelease).
+1. Visit the FlagRelease pages on [ModelScope](https://modelscope.cn/organization/FlagRelease?tab=model), [Hugging Face](https://huggingface.co/FlagRelease), or [AI Huanxin](https://aihuanxin.cn/#/model?path=/model).
 2. Select the required large model and the corresponding hardware-specific version.
 3. Follow the steps descrbied in the model introduction pages.
