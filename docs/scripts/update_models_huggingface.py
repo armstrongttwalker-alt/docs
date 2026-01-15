@@ -18,7 +18,7 @@ def fetch_all_models() -> List[str]:
     """
     base_url = "https://huggingface.co/api/models"
     all_models = []
-    limit = 100  # HuggingFace API每页最大限制
+    limit = 100  # Maximum limit per page for HuggingFace API
     offset = 0
     
     headers = {
@@ -35,9 +35,9 @@ def fetch_all_models() -> List[str]:
             'author': 'FlagRelease',
             'limit': limit,
             'offset': offset,
-            'full': 'true',  # 获取完整信息
-            'sort': 'downloads',  # 按下载量排序
-            'direction': '-1',  # 降序
+            'full': 'true',  # Get complete information
+            'sort': 'downloads',  # Sort by downloads
+            'direction': '-1',  # Descending order
         }
         
         try:
@@ -61,20 +61,20 @@ def fetch_all_models() -> List[str]:
                     all_models.append(model_id)
                     current_batch_count += 1
                     
-                    if current_batch_count <= 3:  # 只打印前3个，避免输出太长
+                    if current_batch_count <= 3:  # Only print first 3 to avoid too long output
                         downloads = model.get('downloads', 0)
                         likes = model.get('likes', 0)
                         print(f"      Found: {model_id} (Downloads: {downloads}, Likes: {likes})")
             
             print(f"    Batch {offset//limit + 1} extracted {current_batch_count} models")
             
-            # 检查是否还有更多数据
+            # Check if there is more data
             if len(models) < limit:
                 print(f"    Reached end of list")
                 break
             
             offset += limit
-            time.sleep(1)  # 避免请求过于频繁
+            time.sleep(1)  # Avoid too frequent requests
             
         except requests.exceptions.Timeout:
             print(f"    Timeout on batch {offset//limit + 1}")
@@ -83,7 +83,7 @@ def fetch_all_models() -> List[str]:
             print(f"    Error: {type(e).__name__}: {e}")
             break
     
-    # 去重（虽然API返回的应该不会重复，但为了安全）
+    # Remove duplicates (though API shouldn't return duplicates, but for safety)
     unique_models = []
     seen = set()
     for model in all_models:
@@ -96,8 +96,8 @@ def fetch_all_models() -> List[str]:
 
 def fetch_all_models_alternative() -> List[str]:
     """
-    备用方法：使用HuggingFace的搜索API获取模型
-    这个方法可能更稳定，但需要处理分页
+    Alternative method: Use HuggingFace search API to get models
+    This method might be more stable, but needs pagination handling
     """
     all_models = []
     page = 1
@@ -144,7 +144,7 @@ def fetch_all_models_alternative() -> List[str]:
                 break
             
             page += 1
-            time.sleep(0.5)  # 礼貌延迟
+            time.sleep(0.5)  # Polite delay
             
         except Exception as e:
             print(f"      Error: {e}")
@@ -208,9 +208,7 @@ def create_markdown_table(models: List[str]) -> str:
     model_data.sort(key=lambda x: x[0].lower())
     
     # Create Markdown table
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    markdown = f"# Model on HuggingFace\n\n"
-    markdown += f"*Last updated: {current_time}*\n\n"
+    markdown = f"# Models on Hugging Face\n\n"
     markdown += "| Model Name | Website |\n"
     markdown += "|------------|---------|\n"
     
@@ -229,7 +227,7 @@ def get_file_hash(filename: str) -> str:
 
 def get_model_details(model_id: str):
     """
-    获取模型的详细信息（可选，用于调试）
+    Get detailed information of a model (optional, for debugging)
     """
     url = f"https://huggingface.co/api/models/{model_id}"
     try:
@@ -261,26 +259,26 @@ def main():
     print("\n2. Fetching current models from HuggingFace...")
     models = fetch_all_models()
     
-    # 如果主方法没有获取到数据，尝试备用方法
+    # If primary method fails to get data, try alternative method
     if not models:
         print("\n  Primary method failed, trying alternative method...")
         models = fetch_all_models_alternative()
     
     if not models:
         print("\n❌ No models retrieved from HuggingFace API")
-        # 如果API失败但已有现有文件，我们可以使用它
+        # If API fails but we have an existing file, we can use it
         if os.path.exists(output_filename):
             print("  Using existing file as fallback")
-            exit(1)  # 退出码1表示无变化（API失败但文件存在）
+            exit(1)  # Exit code 1 means no changes (API failed but file exists)
         else:
-            exit(2)  # 退出码2表示API失败且无现有文件
+            exit(2)  # Exit code 2 means API failure and no existing file
     
     # Create new markdown table
     print("\n3. Creating new markdown table...")
     new_markdown = create_markdown_table(models)
     
-    # 从新markdown中提取模型名称（为了与现有文件比较）
-    # 这里我们直接使用models列表来获取模型名称（去掉前缀）
+    # Get model names from new markdown (for comparison with existing file)
+    # Here we directly use the models list to get model names (remove prefix)
     new_names = set()
     for model_id in models:
         if model_id.startswith('FlagRelease/'):
@@ -309,9 +307,9 @@ def main():
         for i, model in enumerate(sorted(removed), 1):
             print(f"     {i:2d}. {model}")
     
-    # 获取一些统计信息（可选）
+    # Get some statistics (optional)
     print("\n5. Fetching some model statistics...")
-    sample_models = models[:5]  # 只获取前5个模型的详细信息作为示例
+    sample_models = models[:5]  # Only get detailed information for first 5 models as example
     for model_id in sample_models:
         details = get_model_details(model_id)
         if details:
