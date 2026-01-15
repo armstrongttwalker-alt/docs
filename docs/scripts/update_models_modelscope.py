@@ -177,9 +177,7 @@ def create_markdown_table(models: List[str]) -> str:
     model_data.sort(key=lambda x: x[0].lower())
     
     # Create Markdown table
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    markdown = f"# Model on ModelScope\n\n"
-    markdown += f"*Last updated: {current_time}*\n\n"
+    markdown = f"# Models on ModelScope\n\n"
     markdown += "| Model Name | Website |\n"
     markdown += "|------------|---------|\n"
     
