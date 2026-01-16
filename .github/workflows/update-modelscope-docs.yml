@@ -35,7 +35,6 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install -r requirements.txt
-
     - name: Generate model list
       run: |
         cd "$GITHUB_WORKSPACE"
@@ -60,19 +59,50 @@ jobs:
         echo "## Workflow Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $REPORT_FILE
         echo "" >> $REPORT_FILE
         
-        # Count the number of updated files
+        # Add all changes to the staging area to detect new files
+        git add -N .
+        
+        # Count the number of updated files and get detailed information
         if [ -d "docs/flagrelease_en/model_readmes/" ]; then
-          CHANGED_COUNT=$(git diff --name-only docs/flagrelease_en/model_readmes/ 2>/dev/null | wc -l || echo "0")
+          # Get the list of all changed files (both modified and added)
+          CHANGED_FILES=$(git diff --name-status docs/flagrelease_en/model_readmes/ 2>/dev/null || echo "")
+          if [ -z "$CHANGED_FILES" ]; then
+            CHANGED_COUNT=0
+          else
+            CHANGED_COUNT=$(echo "$CHANGED_FILES" | wc -l)
+          fi
+          
           echo "## Summary" >> $REPORT_FILE
           echo "- **Total changes detected:** $CHANGED_COUNT files" >> $REPORT_FILE
           echo "" >> $REPORT_FILE
           
           if [ "$CHANGED_COUNT" -gt 0 ]; then
-            echo "## Changed Files" >> $REPORT_FILE
-            git diff --name-only docs/flagrelease_en/model_readmes/ | while read file; do
-              echo "- $file" >> $REPORT_FILE
-            done
+            echo "## Detailed Changes" >> $REPORT_FILE
+            
+            # Count added and modified files separately
+            ADDED_FILES=$(echo "$CHANGED_FILES" | grep -c '^A' || echo "0")
+            MODIFIED_FILES=$(echo "$CHANGED_FILES" | grep -c '^M' || echo "0")
+            echo "- **Added files:** $ADDED_FILES" >> $REPORT_FILE
+            echo "- **Modified files:** $MODIFIED_FILES" >> $REPORT_FILE
             echo "" >> $REPORT_FILE
+            
+            # List added files
+            if [ "$ADDED_FILES" -gt 0 ]; then
+              echo "### Added Files" >> $REPORT_FILE
+              echo "$CHANGED_FILES" | grep '^A' | cut -f2 | while read file; do
+                echo "- \`$file\`" >> $REPORT_FILE
+              done
+              echo "" >> $REPORT_FILE
+            fi
+            
+            # List modified files
+            if [ "$MODIFIED_FILES" -gt 0 ]; then
+              echo "### Modified Files" >> $REPORT_FILE
+              echo "$CHANGED_FILES" | grep '^M' | cut -f2 | while read file; do
+                echo "- \`$file\`" >> $REPORT_FILE
+              done
+              echo "" >> $REPORT_FILE
+            fi
           fi
         fi
         
@@ -112,14 +142,17 @@ jobs:
         git config --local --unset-all http.https://github.com/.extraheader 2>/dev/null || true
         git config --global --unset-all http.https://github.com/.extraheader 2>/dev/null || true
       
-    - name: Generate branch name
+    - name: Generate branch name and title
       id: branch-name
       if: steps.check-changes.outputs.has_changes == 'true'
       run: |
         BRANCH_NAME="update/modelscope-docs-$(TZ='Asia/Shanghai' date +'%Y%m%d-%H%M%S')"
+        PR_TITLE="ModelScope Documentation Update - $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M')"
         echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+        echo "pr_title=$PR_TITLE" >> $GITHUB_OUTPUT
         echo "Generated branch name: $BRANCH_NAME"
-
+        echo "Generated PR title: $PR_TITLE"
+    
     - name: Create Pull Request
       if: steps.check-changes.outputs.has_changes == 'true'
       uses: peter-evans/create-pull-request@v5
@@ -128,12 +161,12 @@ jobs:
         commit-message: 'Auto-update ModelScope documentation [$(TZ=''Asia/Shanghai'' date +''%Y-%m-%d %H:%M'')]'
         branch: ${{ steps.branch-name.outputs.branch_name }}
         delete-branch: true
-        title: 'ModelScope Documentation Update - $(TZ=''Asia/Shanghai'' date +''%Y-%m-%d %H:%M'')'
+        title: ${{ steps.branch-name.outputs.pr_title }}
         body-path: ${{ steps.generate-report.outputs.report_file }}
         base: 'main'
         labels: 'documentation, auto-update, modelscope'
         draft: false
-        # Exclude the report file
-        paths: |
-          docs/flagrelease_en/model_readmes/*.md
+        # Remove the invalid 'paths' parameter and use 'add-paths' instead to specify which files to include
+        add-paths: |
+          docs/flagrelease_en/model_readmes/
           docs/flagrelease_en/model_list.txt
