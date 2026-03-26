@@ -1,96 +1,74 @@
----
-base_model:
-- ""
----
 # Introduction
-On February 16, 2026, Alibaba Cloud officially launched and open-sourced the new multimodal large model **Qwen3.5 (Qwen3.5-397B-A17B)**.Qwen3.5 features the following enhancement:  
-**Unified Vision-Language Foundation**: Early fusion training on multimodal tokens achieves cross-generational parity with Qwen3 and outperforms Qwen3-VL models across reasoning, coding, agents, and visual understanding benchmarks.  
-**Efficient Hybrid Architecture**: Gated Delta Networks combined with sparse Mixture-of-Experts deliver high-throughput inference with minimal latency and cost overhead.  
-**Scalable RL Generalization**: Reinforcement learning scaled across million-agent environments with progressively complex task distributions for robust real-world adaptability.  
-**Global Linguistic Coverage**: Expanded support to 201 languages and dialects, enabling inclusive, worldwide deployment with nuanced cultural and regional understanding.  
-**Next-Generation Training Infrastructure**: Near-100% multimodal training efficiency compared to text-only training and asynchronous RL frameworks supporting massive-scale agent scaffolds and environment orchestration.  
+Leveraging the cross-chip capabilities of FlagOS, a unified open-source system software stack purpose-built for diverse AI chips, the FlagOS community completed full adaptation, accuracy alignment, enabling the simultaneous adaptation and launch of GLM-5-FP8 on Nvidia chips:
 
-Leveraging the cross-chip capabilities of FlagOS, a unified open-source system software stack purpose-built for diverse AI chips, [the FlagOS community](https://flagos.io "Visit the official FlagOS website") completed full adaptation, accuracy alignment, and multi-chip migration of the largest 397B MoE model immediately after the release of Qwen3.5, enabling the simultaneous adaptation and launch of Qwen3.5 on ZHENWU chips:	 
- 
 ### Integrated Deployment
- 
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-zhenwu** container image supporting deployment within minutes
-    
+- Released **FlagOS-Nvidia** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
- 
 # Evaluation Results
 ## Benchmark Result
-|Metrics|Alibaba Tongyi's Report|Qwen3.5-397B-A17B-Nvidia-Origin| Qwen3.5-397B-A17B-zhenwu-FlagOS|
-|-------|--------------|---------------|---------------|
-|ERQA(vision)|67.5 |65.28| 67.33|
-|AIME(Text) |91.3(2026) | 90(2024)| 93.33(2024) |
-
+|Metrics|GLM-5 Technical Report|GLM-5-FP8-Origin| GLM-5-FP8-FlagOS|
+|-------|---------------|---------------|----------|
+|GPQA-Diamond|86|78.79 | 84.34 | 
+|AIME | 92.7(2026) |96.67(2024) | 93.33(2024) |
 
 # User Guide
- 	 
 Environment Setup
-|  Item | Version  |
-|---|---|	
-|Docker Version| Docker version 28.1.0, build 4d8c241|
-|Operating System| Ubuntu 24.04.2 LTS |	
+
+| Item             | Version              |
+|------------------|----------------------|
+| Docker Version   | Docker version 24.0.0, build 98fdcd7 |
+| Operating System | Ubuntu 22.04.4 LTS (jammy) |
 
 ## Operation Steps
 
-This model requires 2 machines. Please follow this link to apply for 2 machine resources. The platform will configure a 2-machine environment by default, and you only need to execute the subsequent service-related commands.
-
-link：https://help.aliyun.com/zh/pai/user-guide
-
 ### Download FlagOS Image
-
-The image for this task is exported from Alibaba Cloud PAI and can be used on Alibaba Cloud EAS and DSW, both of which are container‑based resource services. 
-For detailed instructions on how to use this image, please contact the PAI platform support team. The task released by BAAI is developed based on the container environment launched via the PAI platform.
-
-
 ```bash
-docker pull baai-cp-registry-vpc.cn-wulanchabu.cr.aliyuncs.com/flagos/flagos:vllm-qwen3-next260219
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-nvidia-release-model_glm-5-fp8-tree_0.4.1_3.5-gems_4.2.1rc0-scale_none-cx_none-python_3.12.3-torch_2.9.0-pcp_cuda13.1-gpu_nvidia003-arc_amd64-driver_570.158.01:202603191055
 ```
 
 ### Download Open-source Model Weights
-
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3.5-397B-A17B-zhenwu-FlagOS --local_dir /mnt/model
-
+modelscope download --model FlagRelease/GLM-5-FP8-FlagOS --local_dir /data/GLM-5-FP8
 ```
 
-### Serve and use Qwen3.5-397B-A17B with vllm
-
+### Start the Container
 ```bash
-VLLM_USE_DEEP_GEMM=0 VLLM_FL_FLAGOS_WHITELIST="cos,sin,lt,le,ones,zeros,zeros_like,rand_like,sigmoid,full,pow,exponential_,clamp,arange,gelu,reciprocal,add,sub,mul_,normal_,layer_norm,cumsum_out,softmax,softmax,cumsum,gather,pad" vllm serve /mnt/model/ \
-    --host 0.0.0.0 \
-    --port 8129 \
-    --served-model-name qwen35 \
-    --tensor-parallel-size 8 \
-    --pipeline-parallel-size 2 \
-    --gpu-memory-utilization 0.8 \
-    --max-num-seqs 32 \
-    --max-num-batched-tokens 32000 \
-    --reasoning-parser qwen3 \
-    --trust-remote-code
-
+docker run --rm --init --detach --net=host --uts=host --ipc=host --security-opt=seccomp=unconfined --privileged=true --ulimit stack=67108864 --ulimit memlock=-1 --ulimit nofile=1048576:1048576 --shm-size=32G -v /data:/data --gpus all --name flagos harbor.baai.ac.cn/flagrelease-public/flagrelease-nvidia-release-model_glm-5-fp8-tree_0.4.1_3.5-gems_4.2.1rc0-scale_none-cx_none-python_3.12.3-torch_2.9.0-pcp_cuda13.1-gpu_nvidia003-arc_amd64-driver_570.158.01:202603191055  sleep infinity
+docker exec -it flagos /bin/bash
+```
+### Start the Server
+```bash
+export VLLM_USE_DEEP_GEMM=0 
+vllm serve /data/GLM-5-FP8 -tp=8 --port 9010
 ```
 
 ## Service Invocation
-
-### CURL-based Invocation Script
-
-```bash
-curl http://<server_ip>:8129/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "qwen35",
-    "messages": [{"role": "user", "content": "你好"}]
-  }'
+### Invocation Script
+```python
+import openai
+openai.api_key = "EMPTY"
+openai.base_url = "http://<server_ip>:9010/v1/"
+model = "/data/GLM-5-FP8"
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What's the weather like today?"}
+]
+response = openai.chat.completions.create(
+    model=model,
+    messages=messages,
+    temperature=0.7,
+    top_p=0.95,
+    stream=False,
+)
+for item in response:
+    print(item)
 
 ```
+
 
 ### AnythingLLM Integration Guide
 
@@ -110,13 +88,11 @@ curl http://<server_ip>:8129/v1/chat/completions \
 #### 3. Model Interaction
 
 - After model loading is complete:
-  - Click **"New Conversation"**
-  - Enter your question (e.g., “Explain the basics of quantum computing”)
-  - Click the send button to get a response
-
-# Technical Overview	    
+- Click **"New Conversation"**
+- Enter your question (e.g., “Explain the basics of quantum computing”)
+- Click the send button to get a response
+# Technical Overview
 **FlagOS** is a fully open-source system software stack designed to unify the "model–system–chip" layers and foster an open, collaborative ecosystem. It enables a “develop once, run anywhere” workflow across diverse AI accelerators, unlocking hardware performance, eliminating fragmentation among vendor-specific software stacks, and substantially lowering the cost of porting and maintaining AI workloads. With core technologies such as the **FlagScale**, together with vllm-plugin-fl, distributed training/inference framework, **FlagGems** universal operator library, **FlagCX** communication library, and **FlagTree** unified compiler, the **FlagRelease** platform leverages the **FlagOS** stack to automatically produce and release various combinations of \<chip + open-source model\>. This enables efficient and automated model migration across diverse chips, opening a new chapter for large model deployment and application.
-
 ## FlagGems
 FlagGems is a high-performance, generic operator libraryimplemented in [Triton](https://github.com/openai/triton) language. It is built on a collection of backend-neutralkernels that aims to accelerate LLM (Large-Language Models) training and inference across diverse hardware platforms.
 ## FlagTree
@@ -131,7 +107,6 @@ FlagCX is a scalable and adaptive cross-chip communication library. It serves as
  FlagEval is a comprehensive evaluation system and open platform for large models launched in 2023. It aims to establish scientific, fair, and open benchmarks, methodologies, and tools to help researchers assess model and training algorithm performance. It features:
  - **Multi-dimensional Evaluation**: Supports 800+ modelevaluations across NLP, CV, Audio, and Multimodal fields,covering 20+ downstream tasks including language understanding and image-text generation.
  - **Industry-Grade Use Cases**: Has completed horizonta1 evaluations of mainstream large models, providing authoritative benchmarks for chip-model performance validation.
-  
 # Contributing
 
 We warmly welcome global developers to join us:
@@ -140,7 +115,5 @@ We warmly welcome global developers to join us:
 2. Create Pull Requests to contribute code
 3. Improve technical documentation
 4. Expand hardware adaptation support
-
 # License
-The model weights are sourced from Qwen/Qwen3.5-35B-A3B and open-sourced under the Apache 2.0 license: https://www.apache.org/licenses/LICENSE-2.0.txt
-
+本模型的权重来源于ZhipuAI/GLM-5-FP8，以apache2.0协议开源: https://www.apache.org/licenses/LICENSE-2.0.txt。

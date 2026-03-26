@@ -1,94 +1,82 @@
----
-base_model:
-- ""
----
 # Introduction
-On February 16, 2026, Alibaba Cloud officially launched and open-sourced the new multimodal large model **Qwen3.5 (Qwen3.5-397B-A17B)**.Qwen3.5 features the following enhancement:  
-**Unified Vision-Language Foundation**: Early fusion training on multimodal tokens achieves cross-generational parity with Qwen3 and outperforms Qwen3-VL models across reasoning, coding, agents, and visual understanding benchmarks.  
-**Efficient Hybrid Architecture**: Gated Delta Networks combined with sparse Mixture-of-Experts deliver high-throughput inference with minimal latency and cost overhead.  
-**Scalable RL Generalization**: Reinforcement learning scaled across million-agent environments with progressively complex task distributions for robust real-world adaptability.  
-**Global Linguistic Coverage**: Expanded support to 201 languages and dialects, enabling inclusive, worldwide deployment with nuanced cultural and regional understanding.  
-**Next-Generation Training Infrastructure**: Near-100% multimodal training efficiency compared to text-only training and asynchronous RL frameworks supporting massive-scale agent scaffolds and environment orchestration.  
-
-Leveraging the cross-chip capabilities of FlagOS, a unified open-source system software stack purpose-built for diverse AI chips, [the FlagOS community](https://flagos.io "Visit the official FlagOS website") completed full adaptation, accuracy alignment, and multi-chip migration of the largest 397B MoE model immediately after the release of Qwen3.5, enabling the simultaneous adaptation and launch of Qwen3.5 on ZHENWU chips:	 
- 
+The Zhongzhi FlagOS community officially releases the Hygon image for Qwen3.5-35B-A3B, adapted based on FlagOS. Qwen3.5-35B-A3B is a new multimodal MoE model subsequently open-sourced by Alibaba Cloud Qwen team following the release of Qwen3.5 397B MoE, featuring 35 billion total parameters and 3 billion activated parameters, with native support for ultra-long contexts of 262,144 tokens. The model adopts an efficient hybrid architecture combining Gated Delta Networks with sparse Mixture-of-Experts (MoE), trained with early fusion on multimodal tokens, enabling unified vision-language understanding covering image, video, and other multimodal inputs, achieving comprehensive breakthroughs in reasoning, coding, Agent tasks, and visual understanding.
 ### Integrated Deployment
- 
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-zhenwu** container image supporting deployment within minutes
-    
+- Released **FlagOS-Hygon** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
- 
 # Evaluation Results
 ## Benchmark Result
-|Metrics|Alibaba Tongyi's Report|Qwen3.5-397B-A17B-Nvidia-Origin| Qwen3.5-397B-A17B-zhenwu-FlagOS|
-|-------|--------------|---------------|---------------|
-|ERQA(vision)|67.5 |65.28| 67.33|
-|AIME(Text) |91.3(2026) | 90(2024)| 93.33(2024) |
-
+|Metrics|Qwen3.5-35B-A3B-Nvidia-Origin|Qwen3.5-35B-A3B-Nvidia-FlagOS|Qwen3.5-35B-A3B-Hygon-FlagOS|
+|-------|---------------|---------------|---------------|
+|ERQA(vision)|60| 56.5 |55.96 |
+|GPQA_Diamond | 78.28 | 78.28 |75.76 |
 
 # User Guide
- 	 
 Environment Setup
-|  Item | Version  |
-|---|---|	
-|Docker Version| Docker version 28.1.0, build 4d8c241|
-|Operating System| Ubuntu 24.04.2 LTS |	
+
+| Item             | Version              |
+|------------------|----------------------|
+| Docker Version   | Docker version 20.10.24, build 297e128 |
+| Operating System | Sugon OS 8.9 (RHEL/CentOS 8 compatible) |
 
 ## Operation Steps
 
-This model requires 2 machines. Please follow this link to apply for 2 machine resources. The platform will configure a 2-machine environment by default, and you only need to execute the subsequent service-related commands.
-
-link：https://help.aliyun.com/zh/pai/user-guide
-
 ### Download FlagOS Image
-
-The image for this task is exported from Alibaba Cloud PAI and can be used on Alibaba Cloud EAS and DSW, both of which are container‑based resource services. 
-For detailed instructions on how to use this image, please contact the PAI platform support team. The task released by BAAI is developed based on the container environment launched via the PAI platform.
-
-
 ```bash
-docker pull baai-cp-registry-vpc.cn-wulanchabu.cr.aliyuncs.com/flagos/flagos:vllm-qwen3-next260219
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-hygon-release-model_qwen3.5-35b-a3b-tree_none-gems_4.2.1rc0-scale_none-cx_none-python_3.10.12-torch_2.9.0_das.opt1.dtk2604.20260206.g275d08c2-gpu_hygon001-arc_amd64-driver_6.3.22-v1.2.0:202603211832
 ```
 
 ### Download Open-source Model Weights
-
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3.5-397B-A17B-zhenwu-FlagOS --local_dir /mnt/model
-
+modelscope download --model FlagRelease/Qwen3.5-35B-A3B-hygon-FlagOS --local_dir /data/Qwen3.5-35B-A3B
 ```
 
-### Serve and use Qwen3.5-397B-A17B with vllm
-
+### Start the Container
 ```bash
-VLLM_USE_DEEP_GEMM=0 VLLM_FL_FLAGOS_WHITELIST="cos,sin,lt,le,ones,zeros,zeros_like,rand_like,sigmoid,full,pow,exponential_,clamp,arange,gelu,reciprocal,add,sub,mul_,normal_,layer_norm,cumsum_out,softmax,softmax,cumsum,gather,pad" vllm serve /mnt/model/ \
-    --host 0.0.0.0 \
-    --port 8129 \
-    --served-model-name qwen35 \
-    --tensor-parallel-size 8 \
-    --pipeline-parallel-size 2 \
-    --gpu-memory-utilization 0.8 \
-    --max-num-seqs 32 \
-    --max-num-batched-tokens 32000 \
-    --reasoning-parser qwen3 \
-    --trust-remote-code
-
+docker run \
+    --name flagos \
+    --network=host \
+    --ipc=host \
+    --device=/dev/kfd \
+    --device=/dev/mkfd \
+    --device=/dev/dri \
+    -v /opt/hyhal:/opt/hyhal \
+    -v /root/perfxlab:/workspace \
+    -v /data:/data \
+    --group-add video \
+    --cap-add=SYS_PTRACE \
+    --security-opt seccomp=unconfined \
+    -itd \
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-hygon-release-model_qwen3.5-35b-a3b-tree_none-gems_4.2.1rc0-scale_none-cx_none-python_3.10.12-torch_2.9.0_das.opt1.dtk2604.20260206.g275d08c2-gpu_hygon001-arc_amd64-driver_6.3.22-v1.2.0:202603211832
+docker exec -it flagos /bin/bash
+```
+### Start the Server
+```bash
+VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=3600 GEMS_VENDOR="hygon" vllm serve /data/Qwen3.5-35B-A3B -tp 4 --enforce-eager --served-model-name Qwen3.5-35B-A3B-Flagos
 ```
 
 ## Service Invocation
+### Invocation Script
+```python
+from openai import OpenAI
 
-### CURL-based Invocation Script
+client = OpenAI(
+    api_key="EMPTY", 
+    base_url="http://localhost:8000/v1"
+)
 
-```bash
-curl http://<server_ip>:8129/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "qwen35",
-    "messages": [{"role": "user", "content": "你好"}]
-  }'
+response = client.chat.completions.create(
+    model="Qwen3.5-35B-A3B-Flagos",
+    messages=[
+        {"role": "user", "content": "你是谁？"}
+    ],
+    temperature=0.7,
+    max_tokens=512
+)
+print(response.choices[0].message.content)
 
 ```
 
@@ -110,13 +98,11 @@ curl http://<server_ip>:8129/v1/chat/completions \
 #### 3. Model Interaction
 
 - After model loading is complete:
-  - Click **"New Conversation"**
-  - Enter your question (e.g., “Explain the basics of quantum computing”)
-  - Click the send button to get a response
-
-# Technical Overview	    
+- Click **"New Conversation"**
+- Enter your question (e.g., “Explain the basics of quantum computing”)
+- Click the send button to get a response
+# Technical Overview
 **FlagOS** is a fully open-source system software stack designed to unify the "model–system–chip" layers and foster an open, collaborative ecosystem. It enables a “develop once, run anywhere” workflow across diverse AI accelerators, unlocking hardware performance, eliminating fragmentation among vendor-specific software stacks, and substantially lowering the cost of porting and maintaining AI workloads. With core technologies such as the **FlagScale**, together with vllm-plugin-fl, distributed training/inference framework, **FlagGems** universal operator library, **FlagCX** communication library, and **FlagTree** unified compiler, the **FlagRelease** platform leverages the **FlagOS** stack to automatically produce and release various combinations of \<chip + open-source model\>. This enables efficient and automated model migration across diverse chips, opening a new chapter for large model deployment and application.
-
 ## FlagGems
 FlagGems is a high-performance, generic operator libraryimplemented in [Triton](https://github.com/openai/triton) language. It is built on a collection of backend-neutralkernels that aims to accelerate LLM (Large-Language Models) training and inference across diverse hardware platforms.
 ## FlagTree
@@ -131,7 +117,6 @@ FlagCX is a scalable and adaptive cross-chip communication library. It serves as
  FlagEval is a comprehensive evaluation system and open platform for large models launched in 2023. It aims to establish scientific, fair, and open benchmarks, methodologies, and tools to help researchers assess model and training algorithm performance. It features:
  - **Multi-dimensional Evaluation**: Supports 800+ modelevaluations across NLP, CV, Audio, and Multimodal fields,covering 20+ downstream tasks including language understanding and image-text generation.
  - **Industry-Grade Use Cases**: Has completed horizonta1 evaluations of mainstream large models, providing authoritative benchmarks for chip-model performance validation.
-  
 # Contributing
 
 We warmly welcome global developers to join us:
@@ -140,7 +125,5 @@ We warmly welcome global developers to join us:
 2. Create Pull Requests to contribute code
 3. Improve technical documentation
 4. Expand hardware adaptation support
-
 # License
-The model weights are sourced from Qwen/Qwen3.5-35B-A3B and open-sourced under the Apache 2.0 license: https://www.apache.org/licenses/LICENSE-2.0.txt
-
+The model weights are sourced from Qwen/Qwen3.5-35B-A3B and open-sourced under the Apache 2.0 license: https://www.apache.org/licenses/LICENSE-2.0.txt。
