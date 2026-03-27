@@ -5,7 +5,7 @@ Read [Requirements](requirements.md) before proceeding.
 ## Steps
 
 1. Install FlagScale:
-
+   {style=lower-alpha}
    1. From source
 
       ```{code-block} python
