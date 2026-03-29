@@ -1,5 +1,9 @@
 
-/* Customize theme font colors */
+/* ============================================
+   FLAGOS DOCUMENTATION - CUSTOM CSS
+   ============================================ */
+
+/* ---------- Theme Variables ---------- */
 html[data-theme=light] {
   --pst-color-borders: rgb(206, 212, 218);
   --pst-color-primary: var(--pst-color-text-base);
@@ -14,9 +18,9 @@ html[data-theme=light] {
 /* activate the search box on the start page if the search button on the top banner is clicked */
 .bd-search {}
 
-/* make sure the article container uses all available space */
+/* Article container - landing page specific adjustments are in homepage.css */
 .bd-article-container {
-  max-width: 100% !important;
+  max-width: 100%;
 }
 
 /* disable this container to avoid unnecessary overflow */
@@ -154,6 +158,81 @@ div.bk-gallery-tabs > label {
 img.gallery {
   width: 200px;
   height:200px
+}
+
+/* ========== Right Sidebar Width Adjustments ========== */
+/* Reduce secondary sidebar (right TOC) width to give more space to main content */
+
+/* PyData Sphinx Theme - Secondary sidebar adjustment */
+/* Using theme default 17rem for right sidebar */
+:root {
+  --pst-sidebar-secondary: 17rem;
+}
+
+/* Adjust the secondary sidebar container */
+.bd-sidebar-secondary {
+  width: var(--pst-sidebar-secondary) !important;
+  min-width: var(--pst-sidebar-secondary) !important;
+  max-width: var(--pst-sidebar-secondary) !important;
+}
+
+/* Ensure TOC items fit well in narrower sidebar */
+.bd-toc-nav li a {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  padding: 0.25rem 0.5rem;
+}
+
+.bd-toc-item {
+  padding: 0.25rem 0;
+}
+
+/* Adjust page width for better content distribution */
+.bd-page-width {
+  max-width: 1600px;
+}
+
+/* Ensure main content expands to use available space */
+.bd-main .bd-content {
+  flex: 1 1 auto;
+  max-width: calc(100% - var(--pst-sidebar-secondary) - 1rem);
+}
+
+/* When no secondary sidebar, content takes full width */
+.bd-main .bd-content:only-child,
+.bd-main .bd-content:last-child {
+  max-width: 100%;
+}
+
+/* Sphinx Book Theme adjustments (for sub-projects) */
+@media (min-width: 992px) {
+  /* Reduce right sidebar width in book theme */
+  .col-md-3 {
+    flex: 0 0 13rem !important;
+    max-width: 13rem !important;
+  }
+
+  /* Increase main content column */
+  .col-md-9 {
+    flex: 0 0 calc(100% - 13rem) !important;
+    max-width: calc(100% - 13rem) !important;
+  }
+
+  /* Adjust for pages with both sidebars */
+  .col-md-6 {
+    flex: 0 0 calc(100% - 26rem) !important;
+    max-width: calc(100% - 26rem) !important;
+  }
+}
+
+/* Ensure content doesn't overflow */
+.bd-content {
+  overflow-x: auto;
+}
+
+/* Adjust TOC nav on the right */
+.toc-h2, .toc-h3, .toc-h4 {
+  font-size: 0.85rem;
 }
 
 /* Pandas dataframe css */

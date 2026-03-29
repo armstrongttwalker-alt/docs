@@ -67,14 +67,30 @@ body {
   font-weight: 500;
 }
 
-/* Grid layout */
+/* Grid layout - 4 columns */
 .flagos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1400px;
   padding: 0 1rem;
+}
+
+/* Responsive: 2 columns on medium screens */
+@media (max-width: 1200px) {
+  .flagos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Responsive: 1 column on small screens */
+@media (max-width: 768px) {
+  .flagos-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 /* Card styles - Light mode */
@@ -263,7 +279,9 @@ html[data-theme="dark"] .card-footer {
 .flagos-section .flagos-grid {
   max-width: none;
   padding: 0;
+  width: 100%;
 }
+
 
 /* Override Sphinx theme styles */
 .sd-card {
@@ -469,22 +487,159 @@ html[data-theme="dark"] .footer-item .copyright {
   }
 }
 
-/* Constrain single-card grids so they don't stretch full width */
-.flagos-grid:has(> .flagos-card:only-child) {
-  max-width: 480px;
+/* ========== Layout fixes for landing page ========== */
+/* Hide right sidebar on landing page and remove its space */
+.bd-page-width:has(#documentation) .bd-sidebar-secondary {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  flex: 0 0 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Ensure main content uses full width when right sidebar is hidden */
+.bd-page-width:has(#documentation) .bd-main .bd-content {
+  max-width: 100%;
+  flex: 1 1 100%;
+}
+
+/* Remove scrollbar from main content area on landing page */
+.bd-page-width:has(#documentation) .bd-content {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+/* Ensure main content area uses full available width on landing page */
+.bd-page-width:has(#documentation) .bd-article-container {
+  max-width: 100%;
+}
+
+/* Remove extra padding on article for landing page */
+.bd-page-width:has(#documentation) article.bd-article {
+  padding: 0;
+}
+
+/* Fix container width for homepage content */
+#documentation {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Better responsive breakpoints for cards */
+@media (max-width: 1200px) {
+  .flagos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .flagos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .flagos-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .flagos-header p {
+    font-size: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.375rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .flagos-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .flagos-card {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
+  .flagos-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .flagos-header h1 {
+    font-size: 2rem;
+  }
+
+  .flagos-header p {
+    font-size: 1.125rem;
+  }
+
+  .flagos-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .call-to-action {
+    margin-top: 2.5rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .call-to-action h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Fix for Firefox and browsers that don't support :has() yet */
+@supports not selector(:has(*)) {
+  .flagos-grid {
+    max-width: 1200px;
+  }
+
+  /* Fallback: all grids limited to reasonable width */
+  .flagos-grid {
+    justify-content: flex-start;
+  }
+}
+
+/* Note: Right sidebar width adjustments are in custom.css */
+
+/* ========== Back to top button fix ========== */
+/* Hide back-to-top on landing page since it's a single scrollable page */
+.bd-page-width:has(#documentation) #pst-back-to-top {
+  display: none !important;
+}
+
+/* For non-landing pages, position it properly */
+#pst-back-to-top {
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
 }
 
 /* ========== Section visual differentiation ========== */
-.flagos-section:nth-child(even of .flagos-section) {
+/* Use subtle background for even sections without negative margins */
+.flagos-section:nth-of-type(even) {
   background: var(--flagos-gray-50);
   border-radius: 12px;
   padding: 2rem 1rem;
-  margin-left: -1rem;
-  margin-right: -1rem;
 }
 
-html[data-theme="dark"] .flagos-section:nth-child(even of .flagos-section) {
+html[data-theme="dark"] .flagos-section:nth-of-type(even) {
   background: rgba(255, 255, 255, 0.02);
+}
+
+/* Remove bottom margin from last section to avoid extra space before CTA */
+.flagos-section:last-of-type {
+  margin-bottom: 1rem;
 }
 
 /* ========== Scroll animations ========== */
@@ -499,21 +654,20 @@ html[data-theme="dark"] .flagos-section:nth-child(even of .flagos-section) {
   transform: translateY(0);
 }
 
-/* Stagger cards within a revealed section */
+/* Stagger cards within a revealed section - only animate if parent is visible */
 .scroll-visible .flagos-card {
-  opacity: 0;
   animation: cardFadeIn 0.5s ease-out forwards;
 }
 
-.scroll-visible .flagos-card:nth-child(1) { animation-delay: 0.1s; }
-.scroll-visible .flagos-card:nth-child(2) { animation-delay: 0.2s; }
-.scroll-visible .flagos-card:nth-child(3) { animation-delay: 0.3s; }
-.scroll-visible .flagos-card:nth-child(4) { animation-delay: 0.4s; }
+.scroll-visible .flagos-card:nth-child(1) { animation-delay: 0.05s; }
+.scroll-visible .flagos-card:nth-child(2) { animation-delay: 0.1s; }
+.scroll-visible .flagos-card:nth-child(3) { animation-delay: 0.15s; }
+.scroll-visible .flagos-card:nth-child(4) { animation-delay: 0.2s; }
 
 @keyframes cardFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
