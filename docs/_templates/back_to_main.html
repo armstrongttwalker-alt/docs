@@ -35,18 +35,16 @@
   }
   
   /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    .return-to-main-link {
-      color: #cbd5e0;
-    }
-    
-    .return-to-main-link:hover {
-      color: #90cdf4;
-    }
-    
-    .return-to-main-link::after {
-      background-color: #90cdf4;
-    }
+  html[data-theme="dark"] .return-to-main-link {
+    color: #cbd5e0;
+  }
+
+  html[data-theme="dark"] .return-to-main-link:hover {
+    color: #90cdf4;
+  }
+
+  html[data-theme="dark"] .return-to-main-link::after {
+    background-color: #90cdf4;
   }
   
   /* Responsive adjustments */

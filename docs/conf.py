@@ -414,6 +414,9 @@ if html_theme == "pydata_sphinx_theme":
         "default_mode": "dark"
     }
 
+    # Load scroll animations JS for the portal homepage
+    html_js_files = ["scroll-animations.js"]
+
 else:
     # Sphinx Book Theme configuration for all other projects
 

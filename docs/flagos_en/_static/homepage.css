@@ -1,7 +1,8 @@
 /* _static/css/flagos-home.css */
 
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
 
 :root {
   /* Light mode variables */
@@ -21,8 +22,19 @@
   --flagos-shadow-hover: 0 12px 24px rgba(30, 107, 255, 0.12);
 }
 
-* {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+/* Scoped font families for homepage content */
+.flagos-header,
+.flagos-section,
+.flagos-card,
+.call-to-action {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.flagos-header h1,
+.section-title,
+.card-title,
+.call-to-action h2 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Basic reset for consistency */
@@ -190,45 +202,43 @@ body {
 }
 
 /* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --flagos-blue: #4dabff;
-    --flagos-blue-dark: #1e90ff;
-    --flagos-blue-light: rgba(30, 107, 255, 0.15);
-    --flagos-gray-50: #0d1117;
-    --flagos-gray-100: #161b22;
-    --flagos-gray-200: #21262d;
-    --flagos-gray-300: #30363d;
-    --flagos-gray-800: #f0f6fc;
-    --flagos-text: #f0f6fc;
-    --flagos-text-light: #8b949e;
-    --flagos-card-bg: #161b22;
-    --flagos-border: #30363d;
-    --flagos-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --flagos-shadow-hover: 0 12px 24px rgba(30, 107, 255, 0.2);
-  }
-  
-  body {
-    background-color: #0d1117;
-  }
-  
-  .flagos-card {
-    background: var(--flagos-card-bg);
-    border-color: var(--flagos-border);
-  }
-  
-  .card-icon-wrapper {
-    background: rgba(30, 107, 255, 0.1);
-    border-color: rgba(30, 107, 255, 0.2);
-  }
-  
-  .card-icon {
-    color: var(--flagos-blue);
-  }
-  
-  .card-footer {
-    border-top-color: var(--flagos-gray-300);
-  }
+html[data-theme="dark"] {
+  --flagos-blue: #4dabff;
+  --flagos-blue-dark: #1e90ff;
+  --flagos-blue-light: rgba(30, 107, 255, 0.15);
+  --flagos-gray-50: #0d1117;
+  --flagos-gray-100: #161b22;
+  --flagos-gray-200: #21262d;
+  --flagos-gray-300: #30363d;
+  --flagos-gray-800: #f0f6fc;
+  --flagos-text: #f0f6fc;
+  --flagos-text-light: #8b949e;
+  --flagos-card-bg: #161b22;
+  --flagos-border: #30363d;
+  --flagos-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --flagos-shadow-hover: 0 12px 24px rgba(30, 107, 255, 0.2);
+}
+
+html[data-theme="dark"] body {
+  background-color: #0d1117;
+}
+
+html[data-theme="dark"] .flagos-card {
+  background: var(--flagos-card-bg);
+  border-color: var(--flagos-border);
+}
+
+html[data-theme="dark"] .card-icon-wrapper {
+  background: rgba(30, 107, 255, 0.1);
+  border-color: rgba(30, 107, 255, 0.2);
+}
+
+html[data-theme="dark"] .card-icon {
+  color: var(--flagos-blue);
+}
+
+html[data-theme="dark"] .card-footer {
+  border-top-color: var(--flagos-gray-300);
 }
 
 /* ========== Section layout ========== */
@@ -313,11 +323,9 @@ body {
 }
 
 /* Call to action area in dark mode */
-@media (prefers-color-scheme: dark) {
-  .call-to-action {
-    background: linear-gradient(135deg, rgba(30, 107, 255, 0.1), rgba(30, 107, 255, 0.05));
-    border-color: rgba(30, 107, 255, 0.2);
-  }
+html[data-theme="dark"] .call-to-action {
+  background: linear-gradient(135deg, rgba(30, 107, 255, 0.1), rgba(30, 107, 255, 0.05));
+  border-color: rgba(30, 107, 255, 0.2);
 }
 
 /* FlagOS outline button styles */
@@ -345,55 +353,52 @@ body {
 }
 
 /* dark mode for nav bar */
-@media (prefers-color-scheme: dark) {
-  /* 导航栏容器 */
-  .bd-header,
-  .navbar {
-    background-color: var(--flagos-gray-100);
-    border-bottom: 1px solid var(--flagos-border);
-  }
-  
-  /* nav brand */
-  .navbar-brand .title {
-    color: var(--flagos-text) !important;
-  }
-  
-  /* nav icon */
-  .pst-navbar-icon svg,
-  .search-button-field svg {
-    color: var(--flagos-text);
-  }
-  
-  /* search */
-  .search-button-field {
-    color: var(--flagos-text);
-    background-color: var(--flagos-gray-200);
-    border: 1px solid var(--flagos-border);
-  }
-  
-  .search-button-field:hover {
-    background-color: var(--flagos-gray-300);
-  }
-  
-  /* kbd shortcut */
-  .search-button__kbd-shortcut {
-    color: var(--flagos-text-light);
-  }
-  
-  .kbd-shortcut__modifier {
-    background-color: var(--flagos-gray-300);
-    color: var(--flagos-text);
-    border: 1px solid var(--flagos-border);
-  }
+html[data-theme="dark"] .bd-header,
+html[data-theme="dark"] .navbar {
+  background-color: var(--flagos-gray-100);
+  border-bottom: 1px solid var(--flagos-border);
+}
+
+html[data-theme="dark"] .navbar-brand .title {
+  color: var(--flagos-text) !important;
+}
+
+html[data-theme="dark"] .pst-navbar-icon svg,
+html[data-theme="dark"] .search-button-field svg {
+  color: var(--flagos-text);
+}
+
+html[data-theme="dark"] .search-button-field {
+  color: var(--flagos-text);
+  background-color: var(--flagos-gray-200);
+  border: 1px solid var(--flagos-border);
+}
+
+html[data-theme="dark"] .search-button-field:hover {
+  background-color: var(--flagos-gray-300);
+}
+
+html[data-theme="dark"] .search-button__kbd-shortcut {
+  color: var(--flagos-text-light);
+}
+
+html[data-theme="dark"] .kbd-shortcut__modifier {
+  background-color: var(--flagos-gray-300);
+  color: var(--flagos-text);
+  border: 1px solid var(--flagos-border);
 }
 
 /* copyright color */
 .footer-item .copyright {
-  color: #f0f6fc; /* 浅色模式下深色 */
+  color: #343a40;
   font-size: 0.875rem;
   line-height: 1.6;
   margin: 0;
   opacity: 0.9;
+}
+
+html[data-theme="dark"] .footer-item .copyright {
+  color: #f0f6fc;
 }
 
 /* Card layout optimization after removing icons */
@@ -461,5 +466,57 @@ body {
   .card-description {
     font-size: 0.9rem;
     margin-bottom: 1.25rem;
+  }
+}
+
+/* Constrain single-card grids so they don't stretch full width */
+.flagos-grid:has(> .flagos-card:only-child) {
+  max-width: 480px;
+}
+
+/* ========== Section visual differentiation ========== */
+.flagos-section:nth-child(even of .flagos-section) {
+  background: var(--flagos-gray-50);
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+html[data-theme="dark"] .flagos-section:nth-child(even of .flagos-section) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ========== Scroll animations ========== */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger cards within a revealed section */
+.scroll-visible .flagos-card {
+  opacity: 0;
+  animation: cardFadeIn 0.5s ease-out forwards;
+}
+
+.scroll-visible .flagos-card:nth-child(1) { animation-delay: 0.1s; }
+.scroll-visible .flagos-card:nth-child(2) { animation-delay: 0.2s; }
+.scroll-visible .flagos-card:nth-child(3) { animation-delay: 0.3s; }
+.scroll-visible .flagos-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
