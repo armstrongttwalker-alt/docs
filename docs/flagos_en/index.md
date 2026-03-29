@@ -58,41 +58,7 @@ sd_hide_title: true
   </div>
 </div>
 
-<!-- Section 2: Open-Source Tools -->
-<div class="flagos-section">
-  <h2 class="section-title">FlagOS Open-Source Tools</h2>
-  <div class="flagos-grid">
-    <div class="flagos-card">
-      <h3 class="card-title">KernelGen</h3>
-      <div class="card-description">
-        An operator auto-generation tool.
-      </div>
-      <div class="card-footer">
-        <a href="https://docs.flagos.io/projects/kernelgen/en/latest/" class="card-link">MORE</a>
-      </div>
-    </div>
-    <div class="flagos-card">
-      <h3 class="card-title">FlagRelease</h3>
-      <div class="card-description">
-        A platform dedicated to the automatic migration, adaptation and release of large models for multi-architecture AI chips.
-      </div>
-      <div class="card-footer">
-        <a href="https://docs.flagos.io/projects/FlagRelease/en/latest/" class="card-link">MORE</a>
-      </div>
-    </div>
-    <div class="flagos-card">
-      <h3 class="card-title">FlagPerf</h3>
-      <div class="card-description">
-        An integrated AI hardware evaluation engine.
-      </div>
-      <div class="card-footer">
-        <a href="https://docs.flagos.io/projects/FlagPerf/en/latest/" class="card-link">MORE</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Section 3: Plugin Systems -->
+<!-- Section 2: Plugin Systems -->
 <div class="flagos-section">
   <h2 class="section-title">Plugin Systems</h2>
   <div class="flagos-grid">
@@ -135,26 +101,54 @@ sd_hide_title: true
   </div>
 </div>
 
-<!-- Section 4: Embodied Intelligence -->
+
+<!-- Section 3: Open-Source Tools -->
 <div class="flagos-section">
-  <h2 class="section-title">Embodied Intelligence</h2>
+  <h2 class="section-title">FlagOS Open-Source Tools</h2>
   <div class="flagos-grid">
     <div class="flagos-card">
-      <h3 class="card-title">FlagOS-Robo</h3>
+      <h3 class="card-title">KernelGen</h3>
       <div class="card-description">
-        An integrated training and inference framework for AI models used in robots, so-called Embodied Intelligence. It is built upon the unified and open-source AI system software stack, FlagOS, which supports various AI chips.
+        An operator auto-generation tool.
       </div>
       <div class="card-footer">
-        <a href="https://docs.flagos.io/projects/FlagOS-Robo/en/latest/" class="card-link">MORE</a>
+        <a href="https://docs.flagos.io/projects/kernelgen/en/latest/" class="card-link">MORE</a>
+      </div>
+    </div>
+    <div class="flagos-card">
+      <h3 class="card-title">FlagRelease</h3>
+      <div class="card-description">
+        A platform dedicated to the automatic migration, adaptation and release of large models for multi-architecture AI chips.
+      </div>
+      <div class="card-footer">
+        <a href="https://docs.flagos.io/projects/FlagRelease/en/latest/" class="card-link">MORE</a>
+      </div>
+    </div>
+    <div class="flagos-card">
+      <h3 class="card-title">FlagPerf</h3>
+      <div class="card-description">
+        An integrated AI hardware evaluation engine.
+      </div>
+      <div class="card-footer">
+        <a href="https://docs.flagos.io/projects/FlagPerf/en/latest/" class="card-link">MORE</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Section 5: Skills -->
+<!-- Section 4: Additional Resources -->
 <div class="flagos-section">
-  <h2 class="section-title">Skills</h2>
+  <h2 class="section-title">Additional Resources</h2>
   <div class="flagos-grid">
+    <div class="flagos-card">
+      <h3 class="card-title">FlagOS-Robo</h3>
+      <div class="card-description">
+        An integrated training and inference framework for AI models used in robots, so-called Embodied Intelligence.
+      </div>
+      <div class="card-footer">
+        <a href="https://docs.flagos.io/projects/FlagOS-Robo/en/latest/" class="card-link">MORE</a>
+      </div>
+    </div>
     <div class="flagos-card">
       <h3 class="card-title">FlagOS Skills</h3>
       <div class="card-description">
@@ -164,13 +158,6 @@ sd_hide_title: true
         <a href="https://github.com/flagos-ai/skills" class="card-link">MORE</a>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Section 6: Online Laboratory -->
-<div class="flagos-section">
-  <h2 class="section-title">Online Laboratory</h2>
-  <div class="flagos-grid">
     <div class="flagos-card">
       <h3 class="card-title">Online Laboratory</h3>
       <div class="card-description">
