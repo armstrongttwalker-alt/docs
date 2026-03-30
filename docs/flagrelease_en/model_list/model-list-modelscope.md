@@ -59,6 +59,7 @@
 | Qwen3-8B-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-8B-iluvatar-FlagOS> |
 | Qwen3-8B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-8B-metax-FlagOS> |
 | Qwen3-8B-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-8B-mthreads-FlagOS> |
+| Qwen3-Next-80B-A3B-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-Next-80B-A3B-FlagOS> |
 | Qwen3-Next-80B-A3B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-Next-80B-A3B-Instruct-FlagOS> |
 | Qwen3-Next-80B-A3B-Instruct-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-Next-80B-A3B-Instruct-metax-FlagOS> |
 | Qwen3-Omni-30B-A3B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-Omni-30B-A3B-Instruct-FlagOS> |
