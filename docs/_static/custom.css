@@ -16,24 +16,24 @@
   .col-md-2,
   .bd-sidebar-secondary,
   .toc-chapters {
-    flex: 0 0 13rem !important;
-    max-width: 13rem !important;
-    width: 13rem !important;
+    flex: 0 0 17rem !important;
+    max-width: 17rem !important;
+    width: 17rem !important;
   }
 
-  /* Increase main content column */
+  /* Increase main content column
   .col-md-8,
   .col-md-9,
   .bd-content {
-    flex: 0 0 calc(100% - 13rem) !important;
-    max-width: calc(100% - 13rem) !important;
-  }
+    flex: 0 0 calc(100% - 17rem) !important;
+    max-width: calc(100% - 17rem) !important;
+  } */
 
-  /* When both sidebars present */
+  /* When both sidebars present
   .col-md-7 {
     flex: 0 0 calc(100% - 26rem) !important;
     max-width: calc(100% - 26rem) !important;
-  }
+  } */
 }
 
 /* Ensure content uses full available width */
@@ -49,11 +49,6 @@ article[role="main"] {
 .bd-toc-nav li a {
   font-size: 0.85rem;
   line-height: 1.4;
-}
-
-/* Ensure content doesn't overflow */
-.bd-content {
-  overflow-x: auto;
 }
 
 /* Back to main link styling */
