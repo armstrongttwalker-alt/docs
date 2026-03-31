@@ -58,6 +58,7 @@
 | Qwen3-8B-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-8B-FlagOS> |
 | Qwen3-8B-metax-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-8B-metax-FlagOS> |
 | Qwen3-8B-mthreads-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-8B-mthreads-FlagOS> |
+| Qwen3-Next-80B-A3B-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-Next-80B-A3B-FlagOS> |
 | Qwen3-Next-80B-A3B-Instruct-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-Next-80B-A3B-Instruct-FlagOS> |
 | Qwen3-Next-80B-A3B-Instruct-metax-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-Next-80B-A3B-Instruct-metax-FlagOS> |
 | Qwen3-Omni-30B-A3B-Instruct-FlagOS | <https://huggingface.co/FlagRelease/Qwen3-Omni-30B-A3B-Instruct-FlagOS> |
