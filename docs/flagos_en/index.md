@@ -92,7 +92,7 @@ sd_hide_title: true
     <div class="flagos-card">
       <h3 class="card-title">verl-FL</h3>
       <div class="card-description">
-        A fork of veRL (Volcano Engine Reinforcement Learning for LLMs) that extends the upstream library with multi-chip/multi-hardware support via the FlagOS ecosystem.
+        A fork of verl (Volcano Engine Reinforcement Learning for LLMs) that extends the upstream library with multi-chip/multi-hardware support via the FlagOS ecosystem.
       </div>
       <div class="card-footer">
         <a href="https://docs.flagos.io/projects/verl-FL/en/latest/" class="card-link">MORE</a>
