@@ -50,7 +50,7 @@ Guides you how to run training, inference, serving, and reinforcement learning t
 :maxdepth: 5
 :hidden:
 
-release_notes/release-notes.md
+release_notes/release-notes_v010.md
 ```
 
 ```{toctree}
