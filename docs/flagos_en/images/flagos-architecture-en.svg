@@ -1,0 +1,264 @@
+
+<svg width="1202px" height="636px" viewBox="0 0 1202 636" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 2@1x</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F1F1F8" offset="0%"></stop>
+            <stop stop-color="#F0F3F8" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-8">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-9">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-10">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-12">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-13">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-14">
+            <stop stop-color="#615EEA" offset="0%"></stop>
+            <stop stop-color="#4882F0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="架构图0326" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-2" transform="translate(1, 1)">
+            <rect id="矩形备份-75" stroke="#25262C" fill="url(#linearGradient-1)" fill-rule="nonzero" x="0" y="0" width="1200" height="634" rx="20"></rect>
+            <rect id="矩形" fill="url(#linearGradient-2)" fill-rule="nonzero" opacity="0.100000001" x="14" y="150" width="340" height="128" rx="7.76999998"></rect>
+            <rect id="矩形备份-62" fill="url(#linearGradient-3)" fill-rule="nonzero" opacity="0.100000001" x="14" y="287.8921" width="1171" height="197" rx="7.76999998"></rect>
+            <rect id="矩形" fill="#FFFFFF" opacity="0.400000006" x="30" y="50.8921002" width="366.432124" height="79" rx="8"></rect>
+            <rect id="矩形备份-51" fill="#FFFFFF" opacity="0.400000006" x="415" y="50.8921002" width="366.432124" height="79" rx="8"></rect>
+            <rect id="矩形备份-52" fill="#FFFFFF" opacity="0.400000006" x="801" y="50.8921002" width="366.432124" height="79" rx="8"></rect>
+            <path d="M22,12.8921002 L1177,12.8921002 C1181.41828,12.8921002 1185,16.4738222 1185,20.8921002 L1185,131.8921 C1185,136.310378 1181.41828,139.8921 1177,139.8921 L22,139.8921 C17.581722,139.8921 14,136.310378 14,131.8921 L14,20.8921002 C14,16.4738222 17.581722,12.8921002 22,12.8921002 Z" id="矩形" stroke="#25262C" stroke-dasharray="2"></path>
+            <path d="M22,498.8921 L1177,498.8921 C1181.41828,498.8921 1185,502.473822 1185,506.8921 L1185,617.8921 C1185,622.310378 1181.41828,625.8921 1177,625.8921 L22,625.8921 C17.581722,625.8921 14,622.310378 14,617.8921 L14,506.8921 C14,502.473822 17.581722,498.8921 22,498.8921 Z" id="矩形备份-70" stroke="#25262C" stroke-dasharray="2"></path>
+            <g id="编组-19" transform="translate(731, 536.8921)">
+                <path d="M5.5092437,0.121382959 L134.72605,0.121382959 C137.731092,0.121382959 140.235294,2.90357879 140.235294,6.34040892 L140.235294,70.780974 C140.235294,74.2178042 137.77116,77 134.72605,77 L5.5092437,77 C2.50420168,77 0,74.2178042 0,70.780974 L0,6.34040892 C0,2.90357879 2.46413445,0.121382959 5.5092437,0.121382959 Z" id="路径备份-8" fill="#FFFFFF" opacity="0.400000006"></path>
+                <path d="M191.020062,0 L296.06292,0 C298.505777,0 300.541491,2.78219583 300.541491,6.21902597 L300.541491,70.6595911 C300.541491,74.0964212 298.538348,76.878617 296.06292,76.878617 L191.020062,76.878617 C188.577205,76.878617 186.541491,74.0964212 186.541491,70.6595911 L186.541491,6.21902597 C186.541491,2.78219583 188.544634,0 191.020062,0 Z" id="路径备份-9" fill="#FFFFFF" opacity="0.400000006"></path>
+                <text id="DataCenter" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                    <tspan x="25.1478429" y="25.1483622">DataCenter</tspan>
+                </text>
+                <text id="Robots" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                    <tspan x="215.731958" y="25.1483622">Robots</tspan>
+                </text>
+                <text id="(train-&amp;-Inference)备份-2" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                    <tspan x="8.54541251" y="53.8863198">(train &amp; Inference)</tspan>
+                </text>
+                <text id="(cloud-edge-cooperat" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                    <tspan x="203.372413" y="43.8863198">(cloud-edge </tspan>
+                    <tspan x="202.434413" y="63.8863198">cooperation)</tspan>
+                </text>
+                <path d="M351.673501,0.121382959 L433.510812,0.121382959 C435.414006,0.121382959 437,2.90357879 437,6.34040892 L437,70.780974 C437,74.2178042 435.439382,77 433.510812,77 L351.673501,77 C349.770308,77 348.184314,74.2178042 348.184314,70.780974 L348.184314,6.34040892 C348.184314,2.90357879 349.744932,0.121382959 351.673501,0.121382959 Z" id="路径备份-10" fill="#FFFFFF" opacity="0.400000006"></path>
+                <text id="Edge" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                    <tspan x="373.266995" y="25.1483622">Edge</tspan>
+                </text>
+                <text id="(inference)备份-2" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                    <tspan x="356.545413" y="53.8863198">(inference)</tspan>
+                </text>
+                <path d="M166.483216,43.8787143 L166.483216,31.8113783 C166.483216,31.2916826 165.848554,30.8863198 165.070582,30.8863198 L162.316968,30.8863198 C161.549232,30.8863198 160.91457,31.2916826 160.904333,31.8009844 L160.904333,43.8683204 L158.130247,43.8683204 C156.594774,43.8683204 156.08295,44.533531 157.004233,45.3546503 L162.02011,49.8136401 C162.989039,50.6356556 164.39851,50.6356556 165.36744,49.8136401 L170.383316,45.3546503 C171.304599,44.5231371 170.792775,43.8683204 169.257303,43.8683204 L166.483216,43.8787143 Z" id="路径备份-11" fill="#A3A2A2" fill-rule="nonzero" transform="translate(163.6938, 40.6582) scale(-1, 1) rotate(-270) translate(-163.6938, -40.6582)"></path>
+                <path d="M326.483216,43.8787143 L326.483216,31.8113783 C326.483216,31.2916826 325.848554,30.8863198 325.070582,30.8863198 L322.316968,30.8863198 C321.549232,30.8863198 320.91457,31.2916826 320.904333,31.8009844 L320.904333,31.8009844 L320.904333,43.8683204 L318.130247,43.8683204 C316.594774,43.8683204 316.08295,44.533531 317.004233,45.3546503 L322.02011,49.8136401 C322.989039,50.6356556 324.39851,50.6356556 325.36744,49.8136401 L330.383316,45.3546503 C331.304599,44.5231371 330.792775,43.8683204 329.257303,43.8683204 L326.483216,43.8787143 Z" id="路径备份-12" fill="#A3A2A2" fill-rule="nonzero" transform="translate(323.6938, 40.6582) rotate(-270) translate(-323.6938, -40.6582)"></path>
+            </g>
+            <text id="Language-Models" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="144.768" y="74.8921002">Language Models</tspan>
+            </text>
+            <text id="Multimodal-Models" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="524.944" y="74.8921002">Multimodal Models</tspan>
+            </text>
+            <text id="GLM,-DeepSeek,-Qwen," fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="50.645" y="96.8921002">GLM, DeepSeek, Qwen, Kimi, MiniMax, Seed-oss, </tspan>
+                <tspan x="58.576" y="116.8921">GPT-oss, Step, Grok, Llama, Hunyuan, Phi, etc.</tspan>
+            </text>
+            <path d="M378,150 L694,150 C698.418278,150 702,153.581722 702,158 L702,269.058824 C702,273.477102 698.418278,277.058824 694,277.058824 L378,277.058824 C373.581722,277.058824 370,273.477102 370,269.058824 L370,158 C370,153.581722 373.581722,150 378,150 Z" id="矩形备份-61" stroke="#25262C" stroke-dasharray="2"></path>
+            <path d="M727,150 L1177,150 C1181.41828,150 1185,153.581722 1185,158 L1185,270 C1185,274.418278 1181.41828,278 1177,278 L727,278 C722.581722,278 719,274.418278 719,270 L719,158 C719,153.581722 722.581722,150 727,150 Z" id="矩形备份-77" stroke="#25262C" stroke-dasharray="2"></path>
+            <text id="FlagOS-Domain-Specia" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="422.14" y="178">FlagOS Domain Specialization</tspan>
+            </text>
+            <text id="FlagOS-Skills" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="899" y="178">FlagOS-Skills</tspan>
+            </text>
+            <path d="M399,193 L674,193 C678.418278,193 682,196.581722 682,201 L682,219 C682,223.418278 678.418278,227 674,227 L399,227 C394.581722,227 391,223.418278 391,219 L391,201 C391,196.581722 394.581722,193 399,193 Z" id="矩形备份-79" stroke="#25262C" stroke-dasharray="2"></path>
+            <path d="M743,193 L923,193 C927.418278,193 931,196.581722 931,201 L931,219 C931,223.418278 927.418278,227 923,227 L743,227 C738.581722,227 735,223.418278 735,219 L735,201 C735,196.581722 738.581722,193 743,193 Z" id="矩形备份-80" stroke="#25262C" stroke-dasharray="2"></path>
+            <path d="M955,235 L1159,235 C1163.41828,235 1167,238.581722 1167,243 L1167,261 C1167,265.418278 1163.41828,269 1159,269 L955,269 C950.581722,269 947,265.418278 947,261 L947,243 C947,238.581722 950.581722,235 955,235 Z" id="矩形备份-83" stroke="#25262C" stroke-dasharray="2"></path>
+            <path d="M743,235 L923,235 C927.418278,235 931,238.581722 931,243 L931,261 C931,265.418278 927.418278,269 923,269 L743,269 C738.581722,269 735,265.418278 735,261 L735,243 C735,238.581722 738.581722,235 743,235 Z" id="矩形备份-82" stroke="#25262C" stroke-dasharray="2"></path>
+            <text id="Evaluation" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="1022.484" y="257">Evaluation</tspan>
+            </text>
+            <text id="Migration-&amp;-Adaptati" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="756" y="257">Migration &amp; Adaptation</tspan>
+            </text>
+            <path d="M955,193 L1159,193 C1163.41828,193 1167,196.581722 1167,201 L1167,219 C1167,223.418278 1163.41828,227 1159,227 L955,227 C950.581722,227 947,223.418278 947,219 L947,201 C947,196.581722 950.581722,193 955,193 Z" id="矩形备份-81" stroke="#25262C" stroke-dasharray="2"></path>
+            <text id="FlagOS-Robo:-Embodie" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="446.403" y="215">FlagOS-Robo: Embodied AI</tspan>
+            </text>
+            <text id="Deployment" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="794.084" y="215">Deployment</tspan>
+            </text>
+            <text id="Kernel-Development" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="991.253" y="215">Kernel Development</tspan>
+            </text>
+            <text id="Qwen3.5,-Qwen2.5/3-V" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="453.016" y="96.8921002">Qwen3.5, Qwen2.5/3-VL,</tspan>
+                <tspan x="620.918" y="96.8921002" font-family="PingFang-SC-Semibold, PingFang SC" font-weight="500"> </tspan>
+                <tspan x="625.58" y="96.8921002">EMU, MiniCPM-v, </tspan>
+                <tspan x="462.116" y="116.8921">EMiniCPM-o, ERNIE4.5, Llava series, etc.</tspan>
+            </text>
+            <text id="Embodied-AI-Models" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="903.896" y="74.8921002">Embodied AI Models</tspan>
+            </text>
+            <text id="QwenGROOT,-GROOT,-Ro" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#262642">
+                <tspan x="861.066" y="96.8921002">QwenGROOT, GROOT, RoboBrain2.5, </tspan>
+                <tspan x="883.669" y="116.8921">RoboBrainX0.5, Pai-0, Pai-0.5</tspan>
+            </text>
+            <text id="AI-Large-Models" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="537.788" y="37.8921002">AI Large Models</tspan>
+            </text>
+            <text id="Multi-Application-Sc" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="814.184" y="523.8921">Multi-Application Scenario Support</tspan>
+            </text>
+            <text id="Multi-System-Hardwar" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="347.672" y="523.8921">Multi-System Hardware Form Factor Support</tspan>
+            </text>
+            <text id="Multi-Chip-Architect" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#262642">
+                <tspan x="48.2" y="523.8921">Multi-Chip Architecture Support</tspan>
+            </text>
+            <text id="32-AI-Chips-from-18" fill-rule="nonzero" font-family="PingFang-SC-Semibold, PingFang SC" font-size="14" font-weight="500" fill="#262642">
+                <tspan x="42.83" y="556.8921">32 </tspan>
+                <tspan x="64.292" y="556.8921" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">AI Chips from</tspan>
+                <tspan x="155.472" y="556.8921"> 18 </tspan>
+                <tspan x="179.596" y="556.8921" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">Vendors, including </tspan>
+                <tspan x="43.915" y="576.8921" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">NVIDIA, NPU, GPGPU, DSA, RISC-V AI, </tspan>
+                <tspan x="139.269" y="596.8921" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">ARM, etc.</tspan>
+            </text>
+            <text id="FlagOS-Ecosystem-Ena" fill="url(#linearGradient-4)" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400">
+                <tspan x="28.968" y="178">FlagOS Ecosystem  Enablement Projects</tspan>
+            </text>
+            <text id="FlagOS-Open-Source-C" fill="url(#linearGradient-5)" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400">
+                <tspan x="210.572" y="313.8921">FlagOS Open-Source Core Libraries</tspan>
+            </text>
+            <text id="FlagOS-Open-Source-T" fill="url(#linearGradient-6)" fill-rule="nonzero" font-family="PingFang-SC-Medium, PingFang SC" font-size="16" font-weight="400">
+                <tspan x="827.732" y="313.8921">FlagOS Open-Source Tools</tspan>
+            </text>
+            <rect id="矩形备份-63" fill="url(#linearGradient-7)" fill-rule="nonzero" x="30" y="329.8921" width="253" height="80" rx="8"></rect>
+            <rect id="矩形备份-84" fill="url(#linearGradient-8)" fill-rule="nonzero" x="291" y="330" width="380" height="80" rx="8"></rect>
+            <g id="编组-6" transform="translate(316, 417.8921)" fill-rule="nonzero">
+                <rect id="矩形备份-65" fill="url(#linearGradient-9)" x="0" y="0" width="127" height="60" rx="8"></rect>
+                <text id="FlagTree-Unified-Com" fill="#FFFFFF" font-family="PingFangSC-Semibold, PingFang SC" font-size="14" font-weight="500" line-spacing="21">
+                    <tspan x="33.671873" y="24">FlagTree</tspan>
+                    <tspan x="91.533873" y="24" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal"></tspan>
+                    <tspan x="8.01687303" y="45" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">Unified Compiler</tspan>
+                </text>
+            </g>
+            <g id="编组-7" transform="translate(30, 418)" fill-rule="nonzero">
+                <rect id="矩形备份-64" fill="url(#linearGradient-10)" x="0" y="0" width="278" height="60" rx="8"></rect>
+                <text id="FlagScale-Training-&amp;" fill="#FFFFFF" font-family="PingFangSC-Semibold, PingFang SC" font-size="14" font-weight="500" line-spacing="21">
+                    <tspan x="106.695" y="24">FlagScale</tspan>
+                    <tspan x="171.305" y="24" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal"></tspan>
+                    <tspan x="8.394" y="45" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">Training &amp; Inference Parallel Framework</tspan>
+                </text>
+            </g>
+            <rect id="矩形备份-66" fill="url(#linearGradient-11)" fill-rule="nonzero" x="450.833822" y="418" width="220" height="60" rx="8"></rect>
+            <rect id="矩形备份-67" fill="url(#linearGradient-12)" fill-rule="nonzero" x="714" y="328" width="437" height="41.0289855" rx="8"></rect>
+            <rect id="矩形备份-68" fill="url(#linearGradient-12)" fill-rule="nonzero" x="714" y="382" width="437" height="41.0289855" rx="8"></rect>
+            <rect id="矩形备份-69" fill="url(#linearGradient-12)" fill-rule="nonzero" x="714" y="436" width="437" height="41.0289855" rx="8"></rect>
+            <rect id="矩形备份-4" fill="url(#linearGradient-13)" fill-rule="nonzero" x="30" y="193" width="172" height="34" rx="8"></rect>
+            <rect id="矩形备份-59" fill="url(#linearGradient-14)" fill-rule="nonzero" x="211" y="193" width="127" height="34" rx="8"></rect>
+            <rect id="矩形备份-60" fill="url(#linearGradient-13)" fill-rule="nonzero" x="30" y="235" width="172" height="34" rx="8"></rect>
+            <rect id="矩形备份-76" fill="url(#linearGradient-14)" fill-rule="nonzero" x="211" y="235" width="127" height="34" rx="8"></rect>
+            <text id="Megatron-FL" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                <tspan x="72.446" y="216">Megatron-FL</tspan>
+            </text>
+            <text id="vLLM-plugin-FL" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                <tspan x="221.086" y="216">vLLM-plugin-FL</tspan>
+            </text>
+            <text id="VeRL—plugin-FL" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21" fill="#FFFFFF">
+                <tspan x="218.395" y="258">VeRL—plugin-FL</tspan>
+            </text>
+            <text id="TransformerEngine-FL" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                <tspan x="42.069" y="258">TransformerEngine-FL</tspan>
+            </text>
+            <text id="KernelGen-AI-powered" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                <tspan x="754.494" y="353">KernelGen AI-powered Automatic Kernel Development</tspan>
+            </text>
+            <text id="FlagRelease-Automate" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                <tspan x="770.048" y="407">FlagRelease Automated Migration &amp; Release Tool</tspan>
+            </text>
+            <text id="FlagGems-General-Pur" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Semibold, PingFang SC" font-size="14" font-weight="500" line-spacing="21">
+                <tspan x="123.806" y="355">FlagGems</tspan>
+                <tspan x="190.194" y="355" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal"></tspan>
+                <tspan x="57.964" y="376" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">General-Purpose Large Model </tspan>
+                <tspan x="103.198" y="397" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">Operator Library</tspan>
+            </text>
+            <text id="FlagGEMs,-FlagBLAS," fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Semibold, PingFang SC" font-size="14" font-weight="500" line-spacing="21">
+                <tspan x="367.25" y="355">FlagGEMs, FlagBLAS, FlagSparse, </tspan>
+                <tspan x="375.825" y="376">FlagFFT, FlagTensor, FlagAudio</tspan>
+                <tspan x="325.831" y="397" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">General-Purpose Large Model Operator Library</tspan>
+            </text>
+            <text id="FlagPerf-Multi-Chip" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                <tspan x="815.397" y="461">FlagPerf Multi-Chip Evaluation Tool</tspan>
+            </text>
+            <g id="编组-20" transform="translate(341, 536.8921)">
+                <text id="Edge-side-Computing" fill="#25262C" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                    <tspan x="5.846" y="22">Edge-side Computing Module</tspan>
+                </text>
+                <text id="AI-Server" fill="#25262C" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                    <tspan x="74.733" y="66">AI Server</tspan>
+                </text>
+                <text id="AI-PC" fill="#25262C" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                    <tspan x="268.821" y="22">AI PC</tspan>
+                </text>
+                <text id="Super-Node-Systems" fill="#25262C" fill-rule="nonzero" font-family="PingFang-SC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="21">
+                    <tspan x="217.105" y="66">Super-Node Systems</tspan>
+                </text>
+                <path d="M8,0 L198,0 C202.418278,-8.11624501e-16 206,3.581722 206,8 L206,26 C206,30.418278 202.418278,34 198,34 L8,34 C3.581722,34 5.41083001e-16,30.418278 0,26 L-8.8817842e-16,8 C-1.42926142e-15,3.581722 3.581722,8.11624501e-16 8,0 Z" id="矩形备份-71" stroke="#25262C" stroke-dasharray="2"></path>
+                <path d="M8,44 L198,44 C202.418278,44 206,47.581722 206,52 L206,70 C206,74.418278 202.418278,78 198,78 L8,78 C3.581722,78 5.41083001e-16,74.418278 0,70 L-8.8817842e-16,52 C-1.42926142e-15,47.581722 3.581722,44 8,44 Z" id="矩形备份-73" stroke="#25262C" stroke-dasharray="2"></path>
+                <path d="M222,2.27373675e-13 L353,2.27373675e-13 C357.418278,2.26562051e-13 361,3.581722 361,8 L361,26 C361,30.418278 357.418278,34 353,34 L222,34 C217.581722,34 214,30.418278 214,26 L214,8 C214,3.581722 217.581722,2.281853e-13 222,2.27373675e-13 Z" id="矩形备份-72" stroke="#25262C" stroke-dasharray="2"></path>
+                <path d="M222,44 L353,44 C357.418278,44 361,47.581722 361,52 L361,70 C361,74.418278 357.418278,78 353,78 L222,78 C217.581722,78 214,74.418278 214,70 L214,52 C214,47.581722 217.581722,44 222,44 Z" id="矩形备份-74" stroke="#25262C" stroke-dasharray="2"></path>
+            </g>
+            <text id="FlagCX-Unified-Commu" fill="#FFFFFF" fill-rule="nonzero" font-family="PingFangSC-Semibold, PingFang SC" font-size="14" font-weight="500" line-spacing="21">
+                <tspan x="537.158" y="442">FlagCX</tspan>
+                <tspan x="584.842" y="442" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal"></tspan>
+                <tspan x="459.913" y="463" font-family="PingFang-SC-Regular, PingFang SC" font-weight="normal">Unified Communication Library</tspan>
+            </text>
+            <line x1="322.5" y1="538.3921" x2="322.5" y2="605.3921" id="直线-4" stroke-opacity="0.0773319698" stroke="#000000" stroke-linecap="square"></line>
+            <line x1="689.5" y1="365.3921" x2="689.5" y2="432.3921" id="直线-4备份-2" stroke-opacity="0.08" stroke="#000000" stroke-linecap="square"></line>
+            <line x1="716.5" y1="538.3921" x2="716.5" y2="605.3921" id="直线-4备份" stroke-opacity="0.0773319698" stroke="#000000" stroke-linecap="square"></line>
+        </g>
+    </g>
+</svg>

@@ -6,7 +6,7 @@ FlagOS is a fully open-source AI system software stack for heterogeneous AI chip
 
 The figure below shows the position of FlagOS in the AI ecosystem and its composition modules.
 
-![alt text](images/architecture.PNG)
+![alt text](images/flagos-architecture-en.svg)
 
 FlagOS 2.0 comprises four core libraries: the operator library FlagGems 5.0.0, the compiler FlagTree 0.5.0, the communication library FlagCX 0.11.0, and the parallel framework FlagScale 1.0.0; three open-source tools: FlagPerf, FlagRelease, and KernelGen 2.0; and four ecosystem enablement models: TransformerEngine-FL v0.1.0+te2.9.0, Megatron-LM-FL v0.1.0+megatron0.15.0rc7, vllm-plugin-FL v0.1.0+vllm0.13.0, and verl-FL v0.1.0+verl0.7.0; embodied intelligence module: FlagOS Robo ; and agent skills module: FlagOS Skills 1.0.
 
