@@ -12,7 +12,7 @@ To get started with Online Laboratory, perform the following steps:
 3. In the **DevEnvironment Access** column, check the image information:
    1. Navigate under **Secret Key**, and click **Management**.
    2. In the pop-up window, click **Image**.
-      ![alt text](asset/check-image.png)
+      ![alt text](asset/check-image.jpg)
 
 4. In the **DevEnvironment Access** column, use one of the following methods to access the cloud-based online development environment:
     - **Option 1: Direct Access to the Development Environment**
@@ -25,7 +25,7 @@ To get started with Online Laboratory, perform the following steps:
       1. You can map the service for the development environment to port 30000.
       2. Navigate under **Secret Key**, and click **Management**.
       3. In the pop-up window, click **Action**. In the **More Access** section, click the **Service URL** link to open the development environment.
-      ![alt text](asset/public-access.png)
+      ![alt text](asset/public-access.jpg)
 
 5. Query the computing power configuration through terminal commands according to the card type.
     - For Iluvatar cards, use the command:
