@@ -55,9 +55,9 @@ The experimental environment is a containerized environment. All data will be pe
 
 For detailed usage instructions of Visual Studio Code, please refer to:<https://code.visualstudio.com/docs>.
 
-## Rest Environment
+## Reset Environment
 
-To rest development environment to its initial state, perform the following steps:
+To reset development environment to its initial state, perform the following steps:
 
    1. In the **DevEnvironment Access** column, navigate under **Secret Key**, and click **Management**.
    2. In the pop-up window, click **Action**. In the **Reset Environment** section, click **Reset Environment**. In the **Reset Environment** pop-up window, click **Confirm**.
