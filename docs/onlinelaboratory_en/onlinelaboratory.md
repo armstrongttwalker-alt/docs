@@ -60,8 +60,8 @@ For detailed usage instructions of Visual Studio Code, please refer to:<https://
 To rest development environment to its initial state, perform the following steps:
 
    1. In the **DevEnvironment Access** column, navigate under **Secret Key**, and click **Management**.
-   2. In the pop-up window, click **Action**. In the **Reset Environment** section, click **Reset Environment**.
-      ![alt text](asset/public-access.png)
+   2. In the pop-up window, click **Action**. In the **Reset Environment** section, click **Reset Environment**. In the **Reset Environment** pop-up window, click **Confirm**.
+      ![alt text](asset/public-access.jpg)
 
 ```{warning}
 This action is irreversible. Please proceed with caution.
