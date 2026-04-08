@@ -62,3 +62,8 @@ To rest development environment to its initial state, perform the following step
    1. In the **DevEnvironment Access** column, navigate under **Secret Key**, and click **Management**.
    2. In the pop-up window, click **Action**. In the **Reset Environment** section, click **Reset Environment**.
       ![alt text](asset/public-access.png)
+
+```{warning}
+This action is irreversible. Please proceed with caution.
+After the environment is reset, all data will be permanently deleted and cannot be recovered. Please make sure to back up your data locally in advance.
+```
