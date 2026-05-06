@@ -11,6 +11,7 @@ The program provides educational resources covering AI computing systems, from h
 ```
 educational-resources-for-china-africa-ai-compute-faculty-development-program/
 ├── syllabus/                          # Course syllabus
+├── general-education-course/          # AI Large Language Model General Course
 ├── textbooks/                         # Lecture slides (EN & FR versions)
 │   ├── en/                           # English version
 │   │   ├── module-1-ai-systems-software-foundations-and-heterogeneous-computing/
@@ -24,7 +25,6 @@ educational-resources-for-china-africa-ai-compute-faculty-development-program/
 │       ├── module-3-principes-des-compilateurs-ia-et-optimisation/
 │       ├── module-4-entrainement-parallele-distribue-et-communication/
 │       └── module-5-methodologie-d-analyse-des-performances/
-├── general-education-course/          # AI Large Language Model General Course
 └── labs/                              # Hands-on labs
     ├── lab_day1/                      # Day 1: Ascend NPU & Triton basics
     ├── lab_day2/                      # Day 2: Performance tuning
@@ -32,6 +32,19 @@ educational-resources-for-china-africa-ai-compute-faculty-development-program/
 ```
 
 ## Course Modules
+
+### General Education Course: AI Large Language Model
+
+**Not part of the formal curriculum**, but serves as an engaging introduction to spark interest and guide learners into the subsequent modules.
+
+| File | Description |
+|------|-------------|
+| `general-education-course/ai-large-language-model-general-course.pptx` | An accessible overview of large language models — what they are, how they work, and why they matter. Designed to motivate learners before diving into technical depth. |
+
+**Purpose:**
+- Bridge the gap for newcomers with limited AI background
+- Introduce key concepts in an intuitive, non-technical manner
+- Inspire curiosity and motivation to explore the full curriculum
 
 ### Module 1: AI Systems Software Foundations and Heterogeneous Computing
 - Introduction to AI computing architecture
