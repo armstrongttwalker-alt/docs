@@ -1,0 +1,7 @@
+.claude/
+CLAUDE.md
+Makefile
+docs/.claude/
+docs/_build/
+docs/dockerfile
+make.bat
