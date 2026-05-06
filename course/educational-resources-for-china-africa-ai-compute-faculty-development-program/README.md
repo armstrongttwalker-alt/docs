@@ -26,9 +26,9 @@ educational-resources-for-china-africa-ai-compute-faculty-development-program/
 │       ├── module-4-entrainement-parallele-distribue-et-communication/
 │       └── module-5-methodologie-d-analyse-des-performances/
 └── labs/                              # Hands-on labs
-    ├── lab_day1/                      # Day 1: Ascend NPU & Triton basics
-    ├── lab_day2/                      # Day 2: Performance tuning
-    └── lab_day3/                      # Day 3: LLM deployment
+    ├── lab-day1/                      # Day 1: Ascend NPU & Triton basics
+    ├── lab-day2/                      # Day 2: Performance tuning
+    └── lab-day3/                      # Day 3: LLM deployment
 ```
 
 ## Course Modules
