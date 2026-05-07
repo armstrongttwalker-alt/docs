@@ -28,8 +28,6 @@
 | DeepSeek-V4-Pro-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/DeepSeek-V4-Pro-nvidia-FlagOS> |
 | Emu3.5-FlagOS | <https://modelscope.cn/models/FlagRelease/Emu3.5-FlagOS> |
 | ERNIE-4.5-300B-A47B-PT-FlagOS | <https://modelscope.cn/models/FlagRelease/ERNIE-4.5-300B-A47B-PT-FlagOS> |
-| gemma-3-1b-it-FlagOS | <https://modelscope.cn/models/FlagRelease/gemma-3-1b-it-FlagOS> |
-| gemma-3-1b-it-plugin-FlagOS | <https://modelscope.cn/models/FlagRelease/gemma-3-1b-it-plugin-FlagOS> |
 | GLM-4.5-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-4.5-FlagOS> |
 | GLM-5-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5-ascend-FlagOS> |
 | GLM-5-FP8-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5-FP8-FlagOS> |
