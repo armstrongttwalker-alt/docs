@@ -6,6 +6,7 @@ Read [Requirements](requirements.md) before proceeding.
 
 1. Install FlagScale:
    {style=lower-alpha}
+
    1. From source
 
       ```{code-block} python
@@ -39,7 +40,6 @@ Read [Requirements](requirements.md) before proceeding.
 
      ```{code-block} shell
      pip install megatron_core==0.1.0+megatron0.15.0rc7 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
-     pip install transformer_engine==0.1.0+te2.9.0 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
      ```
 
      For more information, see [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL).
