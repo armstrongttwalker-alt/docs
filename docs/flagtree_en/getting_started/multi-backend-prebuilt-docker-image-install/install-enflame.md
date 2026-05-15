@@ -1,4 +1,4 @@
-# Install on Enflame
+# 💫 Enflame
 
 ## 💫 Enflame（燧原）[enflame](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/enflame/) (Triton 3.6)
 

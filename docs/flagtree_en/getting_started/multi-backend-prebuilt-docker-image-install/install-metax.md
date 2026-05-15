@@ -1,13 +1,11 @@
-# Install on MetaX
-
-## 💫 MetaX [metax](/third_party/metax/)
+# 💫 MetaX [metax](/third_party/metax/)
 
 - Based on Triton 3.0, x64
 - Available for C550
 
-### 1. Build and run environment
+## 1. Build and run environment
 
-#### 1.1 Use the preinstalled image (C550)
+### 1.1 Use the preinstalled image (C550)
 
 If you use this preinstalled image, you do not need to perform the later step 1.x.
 If your network connection is available, you also do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.
@@ -36,7 +34,7 @@ docker run -dit \
 docker exec -it ${CONTAINER} /bin/bash
 ```
 
-#### 1.2 Manually download the FlagTree dependencies
+### 1.2 Manually download the FlagTree dependencies
 
 ```shell
 mkdir -p ~/.flagtree/metax; cd ~/.flagtree/metax
@@ -48,7 +46,7 @@ tar zxvf ext_maca_mathlib_bc_v0.5.0.tar.gz
 tar xvf maca-llvm-metax20250708.521-x86_64.tar.xz
 ```
 
-#### 1.3 Manually download the Triton dependencies
+### 1.3 Manually download the Triton dependencies
 
 The Triton dependencies are already downloaded and installed in the preinstalled image.
 If you do not need to build FlagTree or Triton from source, you do not need to download the Triton dependencies.
@@ -63,9 +61,9 @@ sh python/scripts/unpack_triton_build_deps.sh ./build-deps-triton_3.1.x-linux-x6
 After executing the above script, the original ~/.triton directory will be renamed, and a new ~/.triton directory will be created to store the pre-downloaded packages.
 Note that the script will prompt for manual confirmation during execution.
 
-### 2. Installation Commands
+## 2. Installation Commands
 
-#### 2.1 Source-free Installation
+### 2.1 Source-free Installation
 
 ```shell
 # Note: First install PyTorch, then execute the following commands
@@ -80,7 +78,7 @@ python3.12 -m pip install flagtree===0.5.1+metax3.0 $RES
 python3 -m pip show flagtree
 ```
 
-#### 2.2 Build from Source
+### 2.2 Build from Source
 
 ```shell
 apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev

@@ -1,4 +1,4 @@
-# Install on HYGON
+# 💫 HYGON
 
 ## 💫 HYGON [hcu](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/hcu/) (Triton 3.6)
 

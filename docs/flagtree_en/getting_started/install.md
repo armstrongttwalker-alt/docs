@@ -2,6 +2,19 @@
 
 ## Option 1: Install from prebuilt Docker image
 
+For installing FlagTree on different backends from prebuilt Docker image, see the following list:
+
+- [ARM China](/getting_started/multi-backend-prebuilt-docker-image-install/install-aipu.md)
+- [Huawei Ascend](/getting_started/multi-backend-prebuilt-docker-image-install/install-ascend.md)
+- [Enflame](/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.md)
+- [HYGON](/getting_started/multi-backend-prebuilt-docker-image-install/install-hcu.md)
+- [ILUVATAR](/getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar.md)
+- [MetaX](/getting_started/multi-backend-prebuilt-docker-image-install/install-metax.md)
+- [Moore Threads](/getting_started/multi-backend-prebuilt-docker-image-install/install-mthreads.md)
+- [NVIDIA & AMD](/getting_started/multi-backend-prebuilt-docker-image-install/install-nv.md)
+- [Sunrise](/getting_started/multi-backend-prebuilt-docker-image-install/install-sunrise.md)
+- [Tsingmicro](/getting_started/multi-backend-prebuilt-docker-image-install/install-tsingmicro.md)
+- [KLX](/getting_started/multi-backend-prebuilt-docker-image-install/install-xpu.md)
 
 
 ## Option 2: Install from source
