@@ -1,4 +1,4 @@
-# 💫 KLX [xpu](/third_party/xpu/)
+# KLX [xpu](/third_party/xpu/)
 
 - Based on Triton 3.0, x64
 - Available for P800

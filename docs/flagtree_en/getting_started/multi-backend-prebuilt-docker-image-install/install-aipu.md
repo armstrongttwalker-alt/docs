@@ -1,5 +1,5 @@
 
-# 💫 ARM China [aipu](https://github.com/flagos-ai/FlagTree/tree/triton_v3.3.x/third_party/aipu/)
+# ARM China [aipu](https://github.com/flagos-ai/FlagTree/tree/triton_v3.3.x/third_party/aipu/)
 
 - Based on Triton 3.3, x64/arm64
 

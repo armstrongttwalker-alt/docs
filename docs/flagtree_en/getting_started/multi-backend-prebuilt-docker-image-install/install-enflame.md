@@ -1,6 +1,6 @@
-# 💫 Enflame
+# Enflame
 
-## 💫 Enflame（燧原）[enflame](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/enflame/) (Triton 3.6)
+## 💫 Enflame [enflame](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/enflame/) (Triton 3.6)
 
 - Based on Triton 3.6, x64
 - Available for GCU300/GCU400

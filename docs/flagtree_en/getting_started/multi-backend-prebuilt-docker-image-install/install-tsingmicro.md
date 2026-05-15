@@ -1,4 +1,4 @@
-# 💫 Tsingmicro [tsingmicro](https://github.com/flagos-ai/FlagTree/tree/triton_v3.3.x/third_party/tsingmicro/)
+# Tsingmicro [tsingmicro](https://github.com/flagos-ai/FlagTree/tree/triton_v3.3.x/third_party/tsingmicro/)
 
 - Based on Triton 3.3, x64
 - Available for TX81
