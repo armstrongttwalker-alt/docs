@@ -26,16 +26,22 @@
     Below are the common commands used to build and install FlagTree. However, different backends have different requirements. For more information, see the "Install FlagTree for different backends" section.
 
     ```{code-block} bash
-    # for branch main、triton_v3.2.x、triton_v3.3.x
+    # Set FLAGTREE_BACKEND using the backend name from the table above
+    export FLAGTREE_BACKEND=${backend_name}  # Do not set it on nvidia/amd/triton-shared
+
+    # For Triton 3.1/3.2/3.3 (branch: main, triton_v3.2.x, triton_v3.3.x)
     cd python
-    # Set the environment variable to specify the computational backend
-    export FLAGTREE_BACKEND=backendxxx
-    # Install the package in development mode with verbose output and system dependencies
-    python3 -m pip install . --no-build-isolation -v
-    # Print the metadata and location of the installed flagtree package
+    python3 -m pip install . --no-build-isolation -v  # Install flagtree and uninstall triton
+
+    # For Triton 3.4/3.5/3.6 (branch: triton_v3.4.x, triton_v3.5.x, triton_v3.6.x)
+    python3 -m pip install . --no-build-isolation -v  # Install flagtree and uninstall triton
+    ```
+
+4. Verify FlagTree installation
+
+    ```{code-block} python
     python3 -m pip show flagtree
-    # Return to the home directory and print the file path of the installed Triton library
-    cd; python3 -c 'import triton; print(triton.__path__)'
+    cd ${ANY_DIR_OTHER_THAN_FLAGTREE_PYTHON}; python3 -c 'import triton; print(triton.__path__)'
     ```
 
 ### Install FlagTree for different backends
@@ -427,7 +433,11 @@ Based on Triton 3.1/3.2/3.3/3.4/3.5, x64/arm64
     wget https://oaitriton.blob.core.windows.net/public/llvm-builds/llvm-7d5de303-ubuntu-x64.tar.gz
     tar zxvf llvm-7d5de303-ubuntu-x64.tar.gz
     export LLVM_SYSPATH=${YOUR_LLVM_DOWNLOAD_DIR}/llvm-7d5de303-ubuntu-x64
-    #
+    # For Triton 3.6 (Plan A)
+    wget https://oaitriton.blob.core.windows.net/public/llvm-builds/llvm-f6ded0be-ubuntu-x64.tar.gz
+    tar zxvf llvm-f6ded0be-ubuntu-x64.tar.gz
+    export LLVM_SYSPATH=${YOUR_LLVM_DOWNLOAD_DIR}/llvm-f6ded0be-ubuntu-x64
+    # For all versions
     export LLVM_INCLUDE_DIRS=$LLVM_SYSPATH/include
     export LLVM_LIBRARY_DIR=$LLVM_SYSPATH/lib
     ```
@@ -440,14 +450,21 @@ Based on Triton 3.1/3.2/3.3/3.4/3.5, x64/arm64
 
     ```{code} shell
     cd ${YOUR_CODE_DIR}/FlagTree
-    cd python  # For Triton 3.1, 3.2, 3.3, you need to enter the python directory to build
+    # For Triton 3.1/3.2/3.3 (branch: main, triton_v3.2.x, triton_v3.3.x)
+    cd python
     git checkout main                                   # For Triton 3.1
     git checkout -b triton_v3.2.x origin/triton_v3.2.x  # For Triton 3.2
     git checkout -b triton_v3.3.x origin/triton_v3.3.x  # For Triton 3.3
-    git checkout -b triton_v3.4.x origin/triton_v3.4.x  # For Triton 3.4
-    git checkout -b triton_v3.5.x origin/triton_v3.5.x  # For Triton 3.5
     unset FLAGTREE_BACKEND
     python3 -m pip install . --no-build-isolation -v
+
+    # For Triton 3.4/3.5/3.6 (branch: triton_v3.4.x, triton_v3.5.x, triton_v3.6.x)
+    git checkout -b triton_v3.4.x origin/triton_v3.4.x  # For Triton 3.4
+    git checkout -b triton_v3.5.x origin/triton_v3.5.x  # For Triton 3.5
+    git checkout -b triton_v3.6.x origin/triton_v3.6.x  # For Triton 3.6
+    unset FLAGTREE_BACKEND
+    python3 -m pip install . --no-build-isolation -v
+
     # If you need to build other backends afterward, you should clear LLVM-related environment variables
     unset LLVM_SYSPATH LLVM_INCLUDE_DIRS LLVM_LIBRARY_DIR
     ```
@@ -476,6 +493,9 @@ sh python/scripts/unpack_triton_build_deps.sh ./build-deps-triton_3.4.x-linux-x6
 # For Triton 3.5 (x64)
 wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.5.x-linux-x64.tar.gz
 sh python/scripts/unpack_triton_build_deps.sh ./build-deps-triton_3.5.x-linux-x64.tar.gz
+# For Triton 3.6 (x64)
+wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/build-deps-triton_3.6.x-linux-x64.tar.gz
+sh python/scripts/unpack_triton_build_deps.sh ./build-deps-triton_3.6.x-linux-x64.tar.gz
 ```
 
 After executing the above script, the original ~/.triton directory will be renamed, and a new ~/.triton directory will be created to store the pre-downloaded packages.
@@ -489,27 +509,36 @@ The best practice to avoid environment compatibility issues is to use the image 
 2. Uninstall Triton
 
     ```{code} python
-    python3 -m pip uninstall -y triton  # TODO: automatically uninstall triton
-    RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple \
-        --trusted-host=https://resource.flagos.net"
+    python3 -m pip uninstall -y triton  # Repeat the cmd until fully uninstalled
+    RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"
     ```
 
 3. Install FlagTree and Triton
 
-    |Backend   |Install command<br>(The version corresponds to the git tag)|Triton<br>version|Python<br>version|libc.so &<br>libstdc++.so<br>version|
-    |:---------|:---------|:---------|:---------|:---------|
-    |nvidia    |python3 -m pip install flagtree==0.4.0 $RES              |3.1|3.10<br>3.11<br>3.12|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
-    |nvidia    |python3 -m pip install flagtree==0.4.0+3.2 $RES          |3.2|3.10<br>3.11<br>3.12|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
-    |nvidia    |python3 -m pip install flagtree==0.4.0+3.3 $RES          |3.3|3.10<br>3.11<br>3.12|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
-    |nvidia    |python3 -m pip install flagtree==0.4.1+3.5 $RES          |3.5|3.12|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
-    |iluvatar  |python3 -m pip install flagtree==0.4.0+iluvatar3.1 $RES  |3.1|3.10|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
-    |mthreads  |python3 -m pip install flagtree==0.4.0+mthreads3.1 $RES  |3.1|3.10|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
-    |metax     |python3 -m pip install flagtree==0.4.0rc1+metax3.1 $RES  |3.1|3.10|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
-    |ascend    |python3 -m pip install flagtree==0.4.1+ascend3.2 $RES    |3.2|3.11|GLIBC_2.34<br>GLIBCXX_3.4.24<br>CXXABI_1.3.11|
-    |tsingmicro|python3 -m pip install flagtree==0.4.0+tsingmicro3.3 $RES|3.3|3.10|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
-    |hcu       |python3 -m pip install flagtree==0.4.0+hcu3.0 $RES       |3.0|3.10|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
-    |enflame   |python3 -m pip install flagtree==0.4.0+enflame3.3 $RES   |3.3|3.10|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
-    |sunrise   |python3 -m pip install flagtree==0.4.0+sunrise3.4 $RES   |3.4|3.10|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |Backend   |Install command<br>(The version corresponds to the git tag)|Triton<br>ver.|libc.so &<br>libstdc++.so|
+    |:---------|:---------|:---------|:---------|
+    |nvidia    |python3.12 -m pip install flagtree===0.5.0 $RES                |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |nvidia    |python3.12 -m pip install flagtree==0.5.0+3.5 $RES             |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |nvidia    |python3.12 -m pip install flagtree==0.4.0+3.3 $RES             |3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
+    |nvidia    |python3.12 -m pip install flagtree==0.5.0+3.1 $RES             |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |iluvatar  |python3.12 -m pip install flagtree==0.5.1+iluvatar3.1 $RES     |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |iluvatar  |python3.10 -m pip install flagtree==0.5.1+iluvatar3.1 $RES     |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |mthreads  |python3.10 -m pip install flagtree==0.5.1+mthreads3.1 $RES     |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |mthreads  |python3.10 -m pip install flagtree==0.5.1+mthreads3.2 $RES     |3.2|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |mthreads  |python3.10 -m pip install flagtree==0.5.1+mthreads3.6 $RES     |3.6|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |xpu       |python3.10 -m pip install flagtree==0.5.1+xpu3.0 $RES          |3.0|GLIBC_2.31<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
+    |metax     |python3.12 -m pip install flagtree==0.5.1+metax3.0 $RES        |3.0|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |hcu       |python3.10 -m pip install flagtree==0.5.1+hcu3.1 $RES          |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |hcu       |python3.10 -m pip install flagtree==0.5.1+hcu3.6 $RES          |3.6|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |ascend    |python3.11 -m pip install flagtree==0.5.0+ascend3.2 $RES       |3.2|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |tsingmicro|python3.10 -m pip install flagtree==0.5.0+tsingmicro3.3 $RES   |3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
+    |aipu      |python3.10 -m pip install flagtree==0.5.0+aipu3.3 $RES         |3.3|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |sunrise   |python3.10 -m pip install flagtree==0.4.0+sunrise3.4 $RES      |3.4|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |enflame   |python3.10 -m pip install flagtree==0.4.0+enflame3.3 $RES      |3.3|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |enflame   |python3.12 -m pip install flagtree==0.5.0+enflame3.5 $RES      |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |enflame   |python3.12 -m pip install flagtree==0.5.0+enflame3.6 $RES      |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+
+Historical versions of flagtree can be found at https://resource.flagos.net/#browse/search/pypi/=assets.attributes.pypi.description%3Dflagtree
 
 ## Running tests
 
