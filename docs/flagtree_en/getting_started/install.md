@@ -64,7 +64,6 @@ For installing FlagTree on different backends from prebuilt Docker image, see th
 ## Option 3: Install wheel package
 
 If you do not wish to build from source, you can directly pull and install whl (partial backend support).
-The best practice to avoid environment compatibility issues is to use the image recommended in [Tips for building](/documents/build.md#tips-for-building).
 
 1. Install PyTorch
 2. Uninstall Triton
@@ -132,20 +131,4 @@ export LD_PRELOAD="/lib/x86_64-linux-gnu/libc.so.6"  # If GLIBC cannot be found
 export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30"  # If GLIBCXX cannot be found
 export LD_PRELOAD="/lib/x86_64-linux-gnu/libc.so.6 \
     /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30"  # If neither GLIBC nor GLIBCXX can be found
-```
-
-```{toctree}
-:maxdepth: 2
-  
-multi-backend-prebuilt-docker-image-install/install-aipu.md
-multi-backend-prebuilt-docker-image-install/install-ascend.md
-multi-backend-prebuilt-docker-image-install/install-enflame.md
-multi-backend-prebuilt-docker-image-install/install-hcu.md
-multi-backend-prebuilt-docker-image-install/install-iluvatar.md
-multi-backend-prebuilt-docker-image-install/install-metax.md
-multi-backend-prebuilt-docker-image-install/install-mthreads.md
-multi-backend-prebuilt-docker-image-install/install-nv.md
-multi-backend-prebuilt-docker-image-install/install-sunrise.md
-multi-backend-prebuilt-docker-image-install/install-tsingmicro.md
-multi-backend-prebuilt-docker-image-install/install-xpu.md
 ```

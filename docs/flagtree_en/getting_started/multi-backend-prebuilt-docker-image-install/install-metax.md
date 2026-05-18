@@ -1,4 +1,4 @@
-# 💫 MetaX [metax](/third_party/metax/)
+# MetaX [metax](/third_party/metax/)
 
 - Based on Triton 3.0, x64
 - Available for C550

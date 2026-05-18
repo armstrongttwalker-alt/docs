@@ -1,5 +1,5 @@
 
-# 💫 Sunrise [sunrise](https://github.com/flagos-ai/FlagTree/tree/triton_v3.4.x/third_party/sunrise/)
+# Sunrise [sunrise](https://github.com/flagos-ai/FlagTree/tree/triton_v3.4.x/third_party/sunrise/)
 
 - Based on Triton 3.4, x64
 - Available for S2

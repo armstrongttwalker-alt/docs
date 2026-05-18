@@ -1,4 +1,4 @@
-# 💫 Moore Threads
+# Moore Threads
 
 ## 💫 Moore Threads [mthreads](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/mthreads/) (Triton 3.6)
 

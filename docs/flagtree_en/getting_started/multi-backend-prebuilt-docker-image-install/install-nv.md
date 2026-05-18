@@ -1,4 +1,4 @@
-# 💫 NVIDIA & AMD [nvidia](/third_party/nvidia/) & [amd](/third_party/amd/)
+# NVIDIA & AMD [nvidia](/third_party/nvidia/) & [amd](/third_party/amd/)
 
 - Based on Triton 3.1/3.2/3.3/3.4/3.5/3.6, x64
 

@@ -1,5 +1,5 @@
 
-# 💫 ILUVATAR [iluvatar](https://github.com/flagos-ai/FlagTree/tree/main/third_party/iluvatar/)
+# ILUVATAR [iluvatar](https://github.com/flagos-ai/FlagTree/tree/main/third_party/iluvatar/)
 
 - Based on Triton 3.1, x64
 - Available for MR-V100/BI-V150
