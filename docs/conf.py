@@ -9,6 +9,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagos_en make html  # build the flagos English project
    $ PROJECT=flagcx_en make html  # build the flagcx English project
    $ PROJECT=flaggems_en make html  # build the flaggems English project
+   $ PROJECT=flaggems_vllm_en make html  # build the flaggems-vllm English project
    $ PROJECT=flagtree_en make html  # build the flagtree English project
    $ PROJECT=flagscale_en make html  # build the flagscale English project
    $ PROJECT=flagrelease_en make html  # build the flagrelease English project
@@ -23,6 +24,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
    $ PROJECT=flaggems_zh make html  # build the flaggems Chinese project
+   $ PROJECT=flaggems_vllm_zh make html  # build the flaggems-vllm Chinese project
    $ PROJECT=flagtree_zh make html  # build the flagtree Chinese project
    $ PROJECT=flagscale_zh make html  # build the flagscale Chinese project
    $ PROJECT=flagrelease_zh make html  # build the flagrelease Chinese project
@@ -116,6 +118,13 @@ multiproject_projects = {
             "html_title": "FlagGems Documentation",
         },
     },
+    "flaggems_vllm_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagGems-vLLM Documentation",
+            "html_title": "FlagGems-vLLM Documentation",
+        },
+    },
     "flagtree_en": {
         "use_config_file": False,
         "config": {
@@ -205,6 +214,13 @@ multiproject_projects = {
         "config": {
             "project": "FlagGems 文档中心",
             "html_title": "FlagGems 文档中心",
+        },
+    },
+    "flaggems_vllm_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagGems-vLLM 文档中心",
+            "html_title": "FlagGems-vLLM 文档中心",
         },
     },
     "flagtree_zh": {
