@@ -1,10 +1,8 @@
-# Usage
+# Use operators
 
 After installing FlagGems-vLLM, you can use its optimized operators directly in your Python code.
 
-## Basic usage
-
-Import the library and call the operators on CUDA tensors:
+For example, import the library and call the operators on CUDA tensors:
 
 ```python
 import torch
@@ -17,4 +15,4 @@ x = torch.randn(1024, device='cuda')
 y = flaggems_vllm.ops.relu(x)
 ```
 
-For more operators, see the [Operator List](../reference/operator_list.md) for a complete reference.
+For a full operator list, see [Operator List](../reference/operator_list.md).

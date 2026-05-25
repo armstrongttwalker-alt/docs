@@ -1,6 +1,6 @@
 # Run tests and benchmark
 
-This section covers how to run tests and benchmarks for FlagGems-vLLM to validate correctness and measure operator performance. 
+This section covers how to run tests and benchmarks for FlagGems-vLLM to validate correctness and measure operator performance.
 
 The following commands are verified in the FlagGems-vLLM repository and can be used for quick validation after installation.
 
