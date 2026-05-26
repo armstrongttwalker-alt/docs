@@ -1,13 +1,13 @@
 # Vendor integration
 
-Chip vendors integrate by adding a backend directory under dispatch/backends/vendor/:
+Chip vendors integrate by adding a backend directory under `dispatch/backends/vendor/`:
 
 ```{code-block} python
 cp -r sglang_fl/dispatch/backends/vendor/template/ \
       sglang_fl/dispatch/backends/vendor/my_chip/
 ```
 
-## Existing Backends
+The following table lists the existing vendors:
 
 | Vendor | Directory | Hardware Detection |
 | :--- | :--- | :--- |
@@ -15,7 +15,7 @@ cp -r sglang_fl/dispatch/backends/vendor/template/ \
 | Huawei Ascend | `vendor/ascend/` | `torch_npu` importable |
 | Template | `vendor/template/` | Always False (reference only) |
 
-You need to implement two files:
+To integrate with a new vendor, you need to implement two files:
 
 ## 1. Backend class (my_chip.py)
 

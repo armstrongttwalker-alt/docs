@@ -45,7 +45,7 @@ flagos_blacklist:
 
 ## Common Recipes
 
-Each recipe shows a YAML config and expected dispatch result. Use Dispatch Log to verify.
+Each recipe shows a YAML config and expected dispatch result. Use [Dispatch Log](/dispatch_user_guide/debugg-and-diagonostics.md) to verify.
 
 ### 1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native CUDA)
 

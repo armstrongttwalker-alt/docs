@@ -16,7 +16,7 @@ sglang_fl = "sglang_fl:activate_platform"
 
 ## Dispatch hook
 
-The core mechanism uses an AROUND hook on MultiPlatformOp.dispatch_forward() combined with a standardized dispatch system:
+The core mechanism uses an AROUND hook on `MultiPlatformOp.dispatch_forward()` combined with a standardized dispatch system:
 
 ```{code-block} python
 dispatch_forward() called for an op (e.g. RMSNorm)
