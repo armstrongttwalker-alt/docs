@@ -1,4 +1,4 @@
-# YAML Config File
+# Dispatch through YAML config file
 
 The plugin ships with a sample config file `config/sample.yaml` with all available options. Copy it and customize:
 

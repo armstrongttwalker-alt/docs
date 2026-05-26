@@ -1,11 +1,7 @@
 # Dispatch through environment variables
 
-All plugin behavior is controlled via environment variables. They take precedence over YAML config.
+All plugin behavior is controlled by environment variables with the  `SGLANG_FL_*` prefix.
 
-**Priority chain:**
-```
-SGLANG_FL_* env vars > YAML config (SGLANG_FL_CONFIG) > Platform auto-detect YAML > Code defaults
-```
 
 ## Layer 2 — Fused Op Dispatch
 

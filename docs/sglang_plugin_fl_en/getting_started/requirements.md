@@ -1,5 +1,7 @@
 # Requirements
 
+## Software requirements
+
 The following software versions are required for sglang-plugin-FL.
 
 | Package | Version |
@@ -13,13 +15,13 @@ The following software versions are required for sglang-plugin-FL.
 | Python | 3.12 |
 | CUDA | 13.0 |
 
-## Hardware Requirements
+## Hardware requirements
 
 - NVIDIA GPU with CUDA 13.0 support, or
 - Huawei Ascend NPU with CANN toolkit, or
 - Other supported hardware with appropriate vendor SDK
 
-## Verified Models
+## Verified models
 
 | Model | TP | Status |
 |-------|-----|--------|

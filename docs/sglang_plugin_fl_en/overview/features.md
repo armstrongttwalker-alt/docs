@@ -40,4 +40,4 @@ Replaces NCCL-based collectives with CommunicatorFL (backed by FlagCX or torch.d
 └──────────────────────────────────────────────────────────────┘
 ```
 
-Chip vendors only need to implement a backend class + register_ops.py. The dispatch system's auto-discovery mechanism handles the rest. The same vendor implementations work across both sglang-plugin-FL and vllm-plugin-FL.
+Chip vendors only need to implement a backend class + `register_ops.py`. The dispatch system's auto-discovery mechanism handles the rest. The same vendor implementations work across both sglang-plugin-FL and vllm-plugin-FL.

@@ -6,7 +6,6 @@ This section covers the requirements for installing sglang-plugin-FL and guides 
 :maxdepth: 2
 
 requirements.md
-install.md
 run-inference-task.md
 
 ```
