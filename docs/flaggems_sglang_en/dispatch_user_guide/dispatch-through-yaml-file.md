@@ -1,4 +1,8 @@
-# YAML Config File
+# Configure dispatch policy
+
+The dispatch system supports both YAML configuration and environment variables for fine-grained control.
+
+## YAML Config File
 
 The plugin ships with a sample config file `config/sample.yaml` with all available options. Copy it and customize:
 
@@ -14,7 +18,7 @@ SGLANG_FL_CONFIG=./my_config.yaml python -m sglang.launch_server \
 
 If `SGLANG_FL_CONFIG` is not set, the plugin uses sensible defaults (equivalent to `prefer: flagos` on CUDA). You only need a YAML file when you want to customize behavior.
 
-## Config Fields
+### Config Fields
 
 ```yaml
 # Global backend preference: flagos | vendor | reference
