@@ -1,6 +1,6 @@
 # Release Notes
 
-## v1.0.0
+## <version to be confirmed>
 
 **Initial release** of sglang-plugin-FL.
 
@@ -19,7 +19,3 @@
 - Verified models: Qwen3.6-27B, Qwen3.6-35B-A3B, Qwen2.5-14B-Instruct
 - Dispatch logging and ATen replacement logging for debugging
 - Precision bisection workflow for numerical debugging
-
-### Known Issues
-
-- **Piecewise CUDA Graph not supported**: FlagGems Triton kernels contain `logging.Logger` calls that are incompatible with `torch.compile`. Use `--disable-piecewise-cuda-graph` when launching the server. Regular CUDA graph capture works normally.

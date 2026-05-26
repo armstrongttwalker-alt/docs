@@ -19,9 +19,10 @@ The following software versions are required for sglang-plugin-FL.
 - Huawei Ascend NPU with CANN toolkit, or
 - Other supported hardware with appropriate vendor SDK
 
-## Dependencies
+## Verified Models
 
-sglang-plugin-FL depends on the following FlagOS components:
-
-- **[FlagGems](https://github.com/flagos-ai/FlagGems)** — Unified operator library providing Triton-based GPU kernels
-- **[FlagCX](https://github.com/flagos-ai/FlagCX)** (optional) — Unified communication library for multi-chip distributed inference
+| Model | TP | Status |
+|-------|-----|--------|
+| Qwen3.6-27B (Hybrid Attention + FLA + MoE) | tp=1 | Verified |
+| Qwen3.6-35B-A3B (MoE, 256 experts) | tp=1 | Verified |
+| Qwen2.5-14B-Instruct | tp=8 | Verified |

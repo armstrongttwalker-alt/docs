@@ -2,7 +2,7 @@
 
 SGLang's inference engine relies on NVIDIA-specific components: flashinfer for attention, sgl_kernel for fused CUDA kernels, and NCCL for distributed communication. Running on alternative hardware (Huawei Ascend, Cambricon MLU, Iluvatar, etc.) would otherwise require invasive source modifications.
 
-sglang-plugin-FL provides a non-intrusive adaptation layer through three levels of replacement:
+This plugin provides a non-intrusive adaptation layer through three levels of replacement:
 
 ## Layer 1 — ATen Operators
 
@@ -10,7 +10,7 @@ Replaces PyTorch's low-level ops (matmul, softmax, embedding, etc.) with FlagGem
 
 ## Layer 2 — SGLang Fused Kernels
 
-Intercepts SGLang's custom fused ops (SiluAndMul, RMSNorm, RotaryEmbedding) via HookRegistry AROUND hooks, routing through a standardized dispatch system to select the best available backend:
+Intercepts SGLang's custom fused ops (SiluAndMul, RMSNorm, RotaryEmbedding) via HookRegistry AROUND hooks, routing through a standardized dispatch system (aligned with vllm-plugin-FL) to select the best available backend:
 
 - **FlagGems** — Triton-based implementations (default, highest priority)
 - **Vendor** — Chip-native implementations (e.g., CUDA sgl_kernel, Ascend CANN)
@@ -40,18 +40,4 @@ Replaces NCCL-based collectives with CommunicatorFL (backed by FlagCX or torch.d
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## Verified Models
-
-| Model | TP | Status |
-|-------|-----|--------|
-| Qwen3.6-27B (Hybrid Attention + FLA + MoE) | tp=1 | Verified |
-| Qwen3.6-35B-A3B (MoE, 256 experts) | tp=1 | Verified |
-| Qwen2.5-14B-Instruct | tp=8 | Verified |
-
-## Key Benefits
-
-- **Zero code changes** — Run SGLang on any supported hardware using the same commands
-- **Non-intrusive** — Plugin-based architecture that doesn't modify SGLang source code
-- **Flexible dispatch** — Per-operator backend selection with automatic fallback
-- **Vendor extensible** — Chip vendors can integrate by implementing a standard backend interface
-- **Shared implementations** — Vendor backends work across both sglang-plugin-FL and vllm-plugin-FL
+Chip vendors only need to implement a backend class + register_ops.py. The dispatch system's auto-discovery mechanism handles the rest. The same vendor implementations work across both sglang-plugin-FL and vllm-plugin-FL.

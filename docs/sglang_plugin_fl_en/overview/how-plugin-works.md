@@ -1,10 +1,24 @@
-# Operator Dispatch Mechanism
+# How plugin works ?
 
-The core dispatch mechanism uses an AROUND hook on `MultiPlatformOp.dispatch_forward()` combined with a standardized dispatch system shared with vllm-plugin-FL.
+## Load plugin
 
-## Dispatch Flow
+SGLang discovers and loads the plugin automatically at startup via setuptools entry_points.
 
+The plugin registers two entry_points in `pyproject.toml`:
+
+```{code-block} python
+[project.entry-points."sglang.srt.plugins"]
+sglang_fl = "sglang_fl:load_plugin"
+
+[project.entry-points."sglang.srt.platforms"]
+sglang_fl = "sglang_fl:activate_platform"
 ```
+
+## Dispatch hook
+
+The core mechanism uses an AROUND hook on MultiPlatformOp.dispatch_forward() combined with a standardized dispatch system:
+
+```{code-block} python
 dispatch_forward() called for an op (e.g. RMSNorm)
   → AROUND hook intercepts
     → Check OOT_WHITELIST/OOT_BLACKLIST
@@ -17,20 +31,11 @@ dispatch_forward() called for an op (e.g. RMSNorm)
       → OpManager resolves best impl via policy (flagos > vendor > reference)
       → Calls the selected backend: rms_norm_flaggems(obj, x, residual)
 ```
+The bridge layer decouples framework-specific parameters from the standardized op signatures. Vendor backends only need to implement the standard signatures — the same impl works for both sglang-plugin-FL and vllm-plugin-FL.
 
-## Bridge Layer
+## Dispatch Architecture (shared with vllm-plugin-FL)
 
-The bridge layer decouples framework-specific parameters from the standardized op signatures. Vendor backends only need to implement the standard signatures — the same implementation works for both sglang-plugin-FL and vllm-plugin-FL.
-
-| Op | Standard Signature |
-|----|-------------------|
-| `silu_and_mul` | `fn(obj, x: Tensor) -> Tensor` |
-| `rms_norm` | `fn(obj, x: Tensor, residual: Optional[Tensor] = None) -> Tensor \| tuple[Tensor, Tensor]` |
-| `rotary_embedding` | `fn(obj, query, key, cos, sin, position_ids, rotary_interleaved=False, inplace=True) -> tuple[Tensor, Tensor]` |
-
-## Dispatch Architecture
-
-```
+```{code-block} python
 ┌─────────────────────────────────────────────────────────────┐
 │  SGLang AROUND Hook        │  vLLM forward_oot override     │
 │  (bridge/rms_norm.py)      │  (vllm_fl/ops/layernorm.py)    │
@@ -52,10 +57,11 @@ The bridge layer decouples framework-specific parameters from the standardized o
    │             │  │   100     │  │              │
    └─────────────┘  └───────────┘  └──────────────┘
 ```
+Chip vendors implement the **same backend interface** for both frameworks. The only framework-specific code is the bridge layer, which is maintained by the plugin.
 
-## ATen Replacement
+## ATen replacement
 
-```
+```{code-block} python
 Plugin loads → flag_gems.enable(record=True)
   → PyTorch dispatch table registers Triton kernels for ATen ops
   → On first inference call, each replaced op is logged

@@ -20,6 +20,8 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=verl_fl_en make html  # build the verl_fl English project
    $ PROJECT=flagos_robo_en make html  # build the flagos_robo English project
    $ PROJECT=onlinelaboratory_en make html  # build the onlinelaboratory English project
+   $ PROJECT=sglang_plugin_fl_en make html  # build the sglang-plugin-FL English project
+   $ PROJECT=pytorch_plugin_fl_en make html  # build the pytorch-plugin-FL English project
    
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
@@ -193,6 +195,20 @@ multiproject_projects = {
         "config": {
             "project": "Online Laboratory Documentation",
             "html_title": "Online Laboratory Documentation",
+        },
+    },
+    "sglang_plugin_fl_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "SGLang-Plugin-FL Documentation",
+            "html_title": "SGLang-Plugin-FL Documentation",
+        },
+    },
+    "pytorch_plugin_fl_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "PyTorch-Plugin-FL Documentation",
+            "html_title": "PyTorch-Plugin-FL Documentation",
         },
     },
     "flagos_zh": {

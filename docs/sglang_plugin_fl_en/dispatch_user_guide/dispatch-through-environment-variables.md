@@ -1,4 +1,4 @@
-# Configure Backend Selection
+# Dispatch through environment variables
 
 All plugin behavior is controlled via environment variables. They take precedence over YAML config.
 

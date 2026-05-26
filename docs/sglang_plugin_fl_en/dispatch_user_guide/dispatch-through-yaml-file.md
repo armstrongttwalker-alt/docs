@@ -1,10 +1,10 @@
-# Configure Dispatch Policy
+# Configure dispatch policy
 
 The dispatch system supports both YAML configuration and environment variables for fine-grained control.
 
 ## YAML Config File
 
-The plugin ships with a sample config file with all available options. Copy it and customize:
+The plugin ships with a sample config file `config/sample.yaml` with all available options. Copy it and customize:
 
 ```{code-block} shell
 # Copy the sample config
@@ -49,7 +49,9 @@ flagos_blacklist:
 
 ## Common Recipes
 
-### 1. Skip RotaryEmbedding from OOT Dispatch
+Each recipe shows a YAML config and expected dispatch result. Use Dispatch Log to verify.
+
+### 1. Skip RotaryEmbedding from OOT dispatch (fall through to SGLang native CUDA)
 
 ```yaml
 # my_config.yaml
@@ -60,7 +62,7 @@ oot_blacklist:
 
 Expected dispatch log: only SiluAndMul and RMSNorm appear, no RotaryEmbedding.
 
-### 2. Force RMSNorm to Use Vendor Backend
+### 2. Force RMSNorm to use vendor backend, others use flagos
 
 ```yaml
 # my_config.yaml
@@ -71,7 +73,7 @@ op_backends:
 
 Expected dispatch log: `RMSNorm → vendor(vendor.nvidia)`, `SiluAndMul → flagos(flagos)`.
 
-### 3. Use Pure PyTorch Reference for All Ops
+### 3. Use pure PyTorch reference for all Ops (useful for precision debugging)
 
 ```yaml
 # my_config.yaml
