@@ -12,22 +12,29 @@ Select FlagGems or native vendor backend (CUDA/MACA/Ascend) at per-operator gran
 
 ## Multi-Platform Support
 
-Currently supports:
+Supports three hardware platforms:
 
-- **NVIDIA CUDA** — Standard CUDA platform with full FlagGems support
-- **MACA (MetaX)** — MetaX GPU platform via MACA cu-bridge library
-- **Huawei Ascend** — Ascend NPU platform via CANN toolkit
+| Platform | Backend | Notes |
+|----------|---------|-------|
+| **NVIDIA CUDA** | CUDA 12.8 + FlagGems Triton | Full FlagGems support |
+| **MACA (MetaX)** | MACA cu-bridge + shim | Import `torch_fl` before `torch` |
+| **Huawei Ascend** | ACL NN API | FlagGems disabled; native kernels only |
 
 ## Complete Device Management API
 
-Provides full PyTorch device interface:
+Provides a full PyTorch-compatible device interface:
 
 - Stream management
 - Event synchronization
 - RNG state
 - AMP (Automatic Mixed Precision)
 - Device context management
+- Memory allocator (device and pinned)
 
 ## C++ Dispatch Stub
 
-A C++ unified wrapper provides low-overhead operator dispatch. The Python-layer FlagGems registration can be disabled entirely, leaving only the C++ stub active for minimal overhead.
+A C++ unified wrapper provides low-overhead operator dispatch, replacing PyTorch's heavier DispatchStub. The Python-layer FlagGems registration can be disabled entirely, leaving only the C++ stub active for minimal overhead.
+
+## Distributed Training Support
+
+Includes `torch_fl.distributed` for patching DDP/FSDP to work across heterogeneous backends.

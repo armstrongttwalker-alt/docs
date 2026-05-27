@@ -23,6 +23,35 @@ torch.mm(x, y)  # x, y on flagos device
   → If flagos: FlagGems Triton kernel
   → If cuda: native CUDA kernel
   → If flaggems: FlagGems Python-layer impl
+  → If ascend: ACL NN API kernel
+```
+
+## Layered Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  Python: import torch_fl                                     │
+│  ┌────────────────┐  ┌────────────────────────────┐          │
+│  │ torch_fl.flagos│  │ torch_fl.distributed       │          │
+│  │ (device API)   │  │ (DDP/FSDP patch)           │          │
+│  └────────────────┘  └────────────────────────────┘          │
+├──────────────────────────────────────────────────────────────┤
+│  PrivateUse1 Dispatch                                        │
+│  ┌─────────────┐  ┌──────────┐  ┌───────────┐  ┌────────┐    │
+│  │ FlagGems    │  │ CUDA     │  │ Ascend    │  │ CPU    │    │
+│  │ (Triton)    │  │ (native) │  │ (ACL NN)  │  │fallback│    │
+│  └─────────────┘  └──────────┘  └───────────┘  └────────┘    │
+├──────────────────────────────────────────────────────────────┤
+│  C++ Runtime (csrc/)                                         │
+│  ┌──────────┐ ┌────────┐ ┌───────┐ ┌───────────┐             │
+│  │Allocator │ │ Guard  │ │ RNG   │ │ Hooks     │             │
+│  └──────────┘ └────────┘ └───────┘ └───────────┘             │
+├──────────────────────────────────────────────────────────────┤
+│  Hardware Abstraction (accelerator/)                         │
+│  ┌──────────────┐  ┌─────────────────────┐  ┌────────────┐   │
+│  │ CUDA Runtime │  │ MACA cu-bridge+shim │  │ Ascend ACL │   │
+│  └──────────────┘  └─────────────────────┘  └────────────┘   │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ## Backend Configuration
@@ -32,7 +61,7 @@ The dispatch system uses a configuration file (`backends.conf`) with environment
 ```ini
 # backends.conf
 # Format: op_name = backend
-# backend: "flagos" | "flaggems" | "cuda"
+# backend: "flagos" | "flaggems" | "cuda" | "ascend"
 mm = cuda
 bmm = flagos
 cat = cuda
@@ -57,4 +86,4 @@ This restriction does not apply to CUDA platforms.
 
 ### Ascend Platform
 
-On Ascend, FlagGems and CUDA kernels are disabled by default. Only the Ascend kernel backend (ACL NN API) is compiled and used.
+On Ascend, FlagGems and CUDA kernels are disabled by default. Only the Ascend kernel backend (ACL NN API) is compiled and used. Set `FLAGOS_DISABLE_FLAGGEMS_PY=1` and use `torch_fl/backends_ascend.conf` for the correct routing.

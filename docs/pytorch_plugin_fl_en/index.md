@@ -35,20 +35,20 @@ Outlines the installation requirements for PyTorch-Plugin-FL and provides step-b
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through usage, device management, and backend configuration.
+Guides you through usage, device management, backend configuration, and debugging.
 
 +++
 [Learn more »](user_guide/user-guide.md)
 :::
 
-:::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` API Reference
-:link: reference/api-reference
+:::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` Testing
+:link: user_guide/testing
 :link-type: doc
 
-API reference for device management and backend configuration.
+Run integration tests to validate operator correctness and dispatch routing.
 
 +++
-[Learn more »](reference/api-reference.md)
+[Learn more »](user_guide/testing.md)
 :::
 
 ::::
@@ -71,6 +71,7 @@ release_notes/release-notes.md
 overview/overview.md
 getting_started/getting-started.md
 user_guide/user-guide.md
+user_guide/testing.md
 ```
 
 ```{toctree}

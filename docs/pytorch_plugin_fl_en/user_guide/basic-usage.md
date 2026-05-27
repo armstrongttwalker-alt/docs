@@ -33,11 +33,19 @@ flagos_tensor = cpu_tensor.to("flagos")
 back_to_cpu = flagos_tensor.cpu()
 ```
 
+## Device Context Management
+
+```python
+with torch_fl.flagos.device(0):
+    a = torch.randn(10, 10, device="flagos")
+    b = torch.mm(a, a)
+```
+
 ## C++ Stub-Only Mode
 
 You can disable the FlagGems Python-layer registration entirely, leaving only the C++ unified wrapper active. This is useful for verifying that all required operators are covered by C++ stubs.
 
-```{code-block} shell
+```{code-block} bash
 # Required: tell FlagGems C++ native API where to find Triton kernel sources
 export FLAGGEMS_SOURCE_DIR=$(python -c "import os;import flag_gems;print(os.path.dirname(flag_gems.__file__))")
 

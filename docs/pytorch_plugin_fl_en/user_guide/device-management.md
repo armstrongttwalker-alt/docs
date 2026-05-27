@@ -1,16 +1,5 @@
 # Device Management
 
-## Device Context Management
-
-```python
-import torch_fl
-
-# Use device context manager
-with torch_fl.flagos.device(0):
-    a = torch.randn(10, 10, device="flagos")
-    b = torch.mm(a, a)
-```
-
 ## Device Query APIs
 
 ```python

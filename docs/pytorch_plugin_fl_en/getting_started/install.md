@@ -4,7 +4,7 @@
 
 ### CUDA Platform
 
-```{code-block} shell
+```{code-block} bash
 git clone https://github.com/flagos-ai/PyTorch-Plugin-FL.git && cd PyTorch-Plugin-FL
 
 pip install -e . --no-build-isolation
@@ -12,7 +12,7 @@ pip install -e . --no-build-isolation
 
 ### MACA Platform
 
-```{code-block} shell
+```{code-block} bash
 # Set MACA cu-bridge library path (adjust based on your environment)
 export LD_LIBRARY_PATH=/opt/maca/tools/cu-bridge/lib:$LD_LIBRARY_PATH
 
@@ -21,7 +21,7 @@ ACCELERATOR=maca pip install -e . --no-build-isolation
 
 ### Ascend Platform
 
-```{code-block} shell
+```{code-block} bash
 # Ensure CANN toolkit is installed and environment is sourced
 # (typically: source /usr/local/Ascend/ascend-toolkit/set_env.sh)
 

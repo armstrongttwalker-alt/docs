@@ -4,7 +4,7 @@ You can configure whether to use FlagGems or native vendor backend at per-operat
 
 ## Configuration File
 
-Default path is `torch_fl/backends.conf`, can be overridden via `FLAGOS_BACKEND_CONFIG` environment variable.
+Default path is `torch_fl/backends.conf`. Can be overridden via the `FLAGOS_BACKEND_CONFIG` environment variable.
 
 ```ini
 # Format: op_name = backend
@@ -19,7 +19,7 @@ cat = cuda
 
 Individual operators can be overridden via environment variables (higher priority than config file):
 
-```{code-block} shell
+```{code-block} bash
 # Format: FLAGOS_OP_<op_name>=cuda|flaggems
 # Replace "." in operator names with "__"
 export FLAGOS_OP_mm=cuda

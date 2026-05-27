@@ -7,5 +7,4 @@ This section covers the requirements for installing PyTorch-Plugin-FL and guides
 
 requirements.md
 install.md
-
 ```

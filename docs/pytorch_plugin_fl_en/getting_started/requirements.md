@@ -2,6 +2,8 @@
 
 The following software versions are required for PyTorch-Plugin-FL.
 
+## Software Dependencies
+
 | Dependency | Version |
 |------------|---------|
 | Python | 3.12 |
@@ -23,7 +25,7 @@ CUDA 12.2 has known numerical precision issues (NaN). Please use CUDA version 12
 
 ## FlagGems
 
-FlagGems (version 5.0.2 or higher) is required with `FLAGGEMS_BUILD_C_EXTENSIONS` enabled. For source installation, refer to the [FlagGems Installation Guide](https://flagos-ai.github.io/FlagGems/getting-started/install/).
+FlagGems (version 5.0.2 or higher) is required with `DFLAGGEMS_BUILD_C_EXTENSIONS` enabled. For source installation, refer to the [FlagGems Installation Guide](https://flagos-ai.github.io/FlagGems/getting-started/install/).
 
 ```{note}
 FlagGems is optional on Ascend platform.

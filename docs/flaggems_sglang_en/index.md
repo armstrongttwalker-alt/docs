@@ -1,4 +1,4 @@
-# sglang-plugin-FL Documentation
+# FlagGems-sglang Documentation
 
 ```{button-ref} getting_started/getting-started
 :ref-type: myst
@@ -15,7 +15,7 @@ Getting Started
 :link: overview/overview
 :link-type: doc
 
-Have a quick view of sglang-plugin-FL, and also some basic concepts.
+Have a quick view of FlagGems-sglang, and also some basic concepts.
 
 +++
 [Learn more »](overview/overview.md)
@@ -25,30 +25,30 @@ Have a quick view of sglang-plugin-FL, and also some basic concepts.
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for sglang-plugin-FL and provides step-by-step instructions from running an inference.
+Outlines the installation requirements for FlagGems-sglang and provides step-by-step instructions from installation to usage.
 
 +++
 [Learn more »](getting_started/getting-started.md)
 :::
 
 :::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
-:link: dispatch_user_guide/dispatch-user-guide
+:link: user_guide/user-guide
 :link-type: doc
 
-Guides you how to dispatch operators between FlagGems, vendor-specific, and PyTorch.
+Guides you how to use FlagGems-sglang operators in your SGLang inference workflows.
 
 +++
-[Learn more »](dispatch_user_guide/dispatch-user-guide.md)
+[Learn more »](user_guide/user-guide.md)
 :::
 
-:::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` API Reference
-:link: reference/dispatch-api-reference
+:::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` Testing and Benchmark
+:link: user_guide/run-tests-and-benchmark
 :link-type: doc
 
-API reference for the operator dispatch system.
+Run tests and benchmarks to validate and measure operator performance.
 
 +++
-[Learn more »](reference/dispatch-api-reference.md)
+[Learn more »](user_guide/run-tests-and-benchmark.md)
 :::
 
 ::::
@@ -70,7 +70,8 @@ release_notes/release-notes.md
 
 overview/overview.md
 getting_started/getting-started.md
-dispatch_user_guide/dispatch-user-guide.md
+user_guide/user-guide.md
+user_guide/run-tests-and-benchmark.md
 ```
 
 ```{toctree}
@@ -78,5 +79,5 @@ dispatch_user_guide/dispatch-user-guide.md
 :maxdepth: 5
 :hidden:
 
-reference/dispatch-api-reference.md
+reference/operator_list.md
 ```

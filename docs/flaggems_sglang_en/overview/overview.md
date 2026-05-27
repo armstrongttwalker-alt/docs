@@ -1,13 +1,14 @@
-# sglang-plugin-FL Overview
+# FlagGems-sglang Overview
 
-sglang-plugin-FL is an out-of-tree (OOT) plugin for [SGLang](https://github.com/sgl-project/sglang), built on FlagOS's unified multi-chip backend — including the unified operator library [FlagGems](https://github.com/flagos-ai/FlagGems) and the unified communication library [FlagCX](https://github.com/flagos-ai/FlagCX). It extends SGLang's inference capabilities across diverse hardware platforms. Without changing SGLang's original interfaces or usage patterns, the same command can run model inference on different chips.
+FlagGems-sglang is part of [FlagOS](https://flagos.io/). FlagGems-sglang is a high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common SGLang operators and supports high-performance inference and deployment for a variety of widely used models.
 
+FlagGems-sglang is a high-performance deep learning operator library implemented using the [Triton programming language](https://github.com/openai/triton) launched by OpenAI.
+
+By integrating with SGLang, FlagGems-sglang accelerates inference workloads through optimized Triton kernels that replace default operator implementations, delivering significant performance gains across diverse hardware platforms.
 
 ```{toctree}
 :maxdepth: 2
 
 features.md
-how-plugin-works.md
-project-structure.md
 
 ```

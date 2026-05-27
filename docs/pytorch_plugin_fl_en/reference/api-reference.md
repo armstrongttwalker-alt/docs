@@ -47,10 +47,10 @@ Return a list of registered operators.
 
 | Variable | Description |
 |----------|-------------|
-| `ACCELERATOR` | Hardware platform: `cuda`, `maca`, `ascend` |
+| `ACCELERATOR` | Hardware platform: `cuda` (default), `maca`, `ascend` |
 | `CUDA_HOME` | CUDA toolkit path |
-| `MACA_PATH` | MACA SDK path |
-| `ASCEND_HOME` | CANN toolkit path |
+| `MACA_PATH` | MACA SDK path (default `/opt/maca`) |
+| `ASCEND_HOME` | CANN toolkit path (default `/usr/local/Ascend/ascend-toolkit/latest`) |
 | `FLAGGEMS_DIR` | FlagGems C++ library path |
 | `FLAGGEMS_KERNEL` | Enable FlagGems kernel build |
 | `CUDA_KERNEL` | Enable CUDA kernel build |
@@ -64,4 +64,4 @@ Return a list of registered operators.
 | `FLAGGEMS_SOURCE_DIR` | FlagGems source directory |
 | `FLAGOS_BACKEND_CONFIG` | Override `backends.conf` path |
 | `FLAGOS_LOG_DISPATCH` | Enable dispatch logging |
-| `FLAGOS_OP_<name>` | Per-operator backend override |
+| `FLAGOS_OP_<name>` | Per-operator backend override (replace `.` with `__` in op names) |

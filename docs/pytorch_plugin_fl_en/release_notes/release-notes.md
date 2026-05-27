@@ -1,29 +1,19 @@
 # Release Notes
 
-## v1.0.0
+This section includes the release information for PyTorch-Plugin-FL.
 
-**Initial release** of PyTorch-Plugin-FL.
+## Initial release
 
-### Added
-
-- PrivateUse1-based `flagos` device registration for PyTorch
-- Automatic FlagGems Triton operator registration as flagos device backend
-- Per-operator backend routing via `backends.conf` configuration file
-- Environment variable overrides for individual operator backend selection
-- Complete device management API (stream, event, RNG, AMP)
-- Support for NVIDIA CUDA, MACA (MetaX), and Huawei Ascend platforms
-- C++ dispatch stub for low-overhead operator routing
-- C++ Stub-Only mode for verifying operator coverage
-- MACA cu-bridge compatibility shim for ABI compatibility
-- Dispatch logging for debugging backend selection
-
-### Platform Support
-
-- **CUDA**: Full support with FlagGems Triton kernels (CUDA 12.9+ recommended)
-- **MACA (MetaX)**: Supported via MACA cu-bridge library
-- **Ascend**: Supported via CANN toolkit, ACL NN API backend
-
-### Known Issues
-
-- **CUDA 12.2 precision**: Known NaN issues with CUDA 12.2. Use CUDA 12.9 or higher.
-- **MACA import order**: `torch_fl` must be imported before `torch` on MACA platforms.
+- **Added features**:
+  - Initial release of PyTorch-Plugin-FL as part of FlagOS.
+  - PrivateUse1-based custom device plugin registering `flagos` as a first-class PyTorch device.
+  - Automatic FlagGems Triton operator registration for the `flagos` backend.
+  - Per-operator configurable backend routing via `backends.conf` with environment variable overrides.
+  - Multi-platform support: NVIDIA CUDA, MetaX MACA, Huawei Ascend.
+  - Complete device management API: stream, event, RNG, AMP, memory allocator, DeviceGuard.
+  - Lightweight C++ dispatch stub replacing PyTorch's heavier DispatchStub.
+  - C++ stub-only mode (`FLAGOS_DISABLE_FLAGGEMS_PY=1`) for minimal overhead.
+  - Distributed training support via `torch_fl.distributed` (DDP/FSDP patch).
+  - MACA cu-bridge ABI shim for symbol version compatibility.
+  - Ascend NPU support with ACL NN API kernels.
+  - Integration test suite with factory ops, dispatch routing, CPU fallback tracing, and Qwen3 inference/training tests.
