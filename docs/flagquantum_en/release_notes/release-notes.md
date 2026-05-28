@@ -1,4 +1,6 @@
-# FlagQuantum <To be confirmed> release
+# Release Notes
+
+## v0.1.0
 
 - **Added features**
 
@@ -17,3 +19,7 @@
   - Post-selection and noise models including depolarizing noise.
 
   - Flexible data encoding with angle, amplitude, and basis encoding schemes.
+  
+  - Professional quantum circuit visualization capabilities.
+
+  - OpenQASM 2.0/3.0 exporter for real quantum hardware and cross-framework execution.
