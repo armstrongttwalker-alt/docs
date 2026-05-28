@@ -126,6 +126,13 @@ multiproject_projects = {
             "project": "FlagGems-vLLM Documentation",
             "html_title": "FlagGems-vLLM Documentation",
         },
+    "flaggems_sglang_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagGems-sglang Documentation",
+            "html_title": "FlagGems-sglang Documentation",
+        },
+    },
     },
     "flagtree_en": {
         "use_config_file": False,

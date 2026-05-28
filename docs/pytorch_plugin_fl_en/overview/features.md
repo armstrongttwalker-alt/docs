@@ -2,15 +2,15 @@
 
 PyTorch-Plugin-FL provides the following capabilities:
 
-## Automatic Device Registration
+## Automatic device registration
 
 Automatically registers FlagGems Triton operators as dispatch implementations for the `flagos` device. Once imported, all tensor operations on `device="flagos"` automatically use FlagGems Triton kernels without code changes.
 
-## Configurable Backend Routing
+## Configurable backend routing
 
 Select FlagGems or native vendor backend (CUDA/MACA/Ascend) at per-operator granularity. The `backends.conf` configuration file controls which operators use which backend, with environment variable overrides for individual operators.
 
-## Multi-Platform Support
+## Multi-platform support
 
 Supports three hardware platforms:
 
@@ -20,7 +20,7 @@ Supports three hardware platforms:
 | **MACA (MetaX)** | MACA cu-bridge + shim | Import `torch_fl` before `torch` |
 | **Huawei Ascend** | ACL NN API | FlagGems disabled; native kernels only |
 
-## Complete Device Management API
+## Complete device management API
 
 Provides a full PyTorch-compatible device interface:
 
