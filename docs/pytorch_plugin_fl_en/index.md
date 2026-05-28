@@ -71,7 +71,6 @@ release_notes/release-notes.md
 overview/overview.md
 getting_started/getting-started.md
 user_guide/user-guide.md
-user_guide/testing.md
 ```
 
 ```{toctree}

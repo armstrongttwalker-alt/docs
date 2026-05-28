@@ -2,7 +2,7 @@
 
 ## Build from Source
 
-### CUDA Platform
+### CUDA platform
 
 ```{code-block} bash
 git clone https://github.com/flagos-ai/PyTorch-Plugin-FL.git && cd PyTorch-Plugin-FL
@@ -10,16 +10,16 @@ git clone https://github.com/flagos-ai/PyTorch-Plugin-FL.git && cd PyTorch-Plugi
 pip install -e . --no-build-isolation
 ```
 
-### MACA Platform
+### MACA platform
 
 ```{code-block} bash
-# Set MACA cu-bridge library path (adjust based on your environment)
+# Set MACA cu-bridge library path, depending on the actual cu-bridge path in your environment
 export LD_LIBRARY_PATH=/opt/maca/tools/cu-bridge/lib:$LD_LIBRARY_PATH
 
 ACCELERATOR=maca pip install -e . --no-build-isolation
 ```
 
-### Ascend Platform
+### Huawei Ascend platform
 
 ```{code-block} bash
 # Ensure CANN toolkit is installed and environment is sourced
@@ -43,3 +43,13 @@ On Ascend, FlagGems and CUDA kernels are disabled. Only the Ascend kernel backen
 | `FLAGGEMS_KERNEL` | Enable FlagGems kernel build (`ON`/`OFF`, default `ON`; set `0` for Ascend) |
 | `CUDA_KERNEL` | Enable CUDA kernel build (`ON`/`OFF`, default `ON`; set `0` for Ascend) |
 | `ASCEND_KERNEL` | Enable Ascend kernel build (`ON`/`OFF`, default `OFF`; set `1` for Ascend) |
+
+### Runtime Environment Variables
+
+| Variable | Description |
+| :--- | :--- |
+| `FLAGOS_DISABLE_FLAGGEMS_PY` | Set to `1` to disable FlagGems Python-layer registration (required on Ascend) |
+| `FLAGGEMS_SOURCE_DIR` | FlagGems source directory (required when C++ native API ops route to `flaggems` backend) |
+| `FLAGOS_BACKEND_CONFIG` | Override path for `backends.conf` (use torch_fl/backends_ascend.conf on Ascend) |
+| `FLAGOS_LOG_DISPATCH` | Set to `1` to print backend selection for each operator dispatch |
+| `FLAGOS_OP_<name>` | Per-operator backend override (replace `.` with `__` in op names) |

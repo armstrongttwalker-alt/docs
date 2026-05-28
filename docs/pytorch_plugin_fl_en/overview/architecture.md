@@ -9,23 +9,6 @@ PyTorch-Plugin-FL is built on PyTorch's PrivateUse1 extension mechanism, which a
 - Stream and event management
 - Device-to-device data transfer
 
-## Dispatch Architecture
-
-```
-import torch_fl
-  → Registers 'flagos' as PrivateUse1 device
-  → Registers FlagGems operators via torch.library
-  → Loads backends.conf for per-operator routing
-
-torch.mm(x, y)  # x, y on flagos device
-  → PyTorch dispatch
-  → Check backends.conf: mm = ?
-  → If flagos: FlagGems Triton kernel
-  → If cuda: native CUDA kernel
-  → If flaggems: FlagGems Python-layer impl
-  → If ascend: ACL NN API kernel
-```
-
 ## Layered Architecture
 
 ```

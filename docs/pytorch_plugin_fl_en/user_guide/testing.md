@@ -1,6 +1,6 @@
-# Testing
+# Test operators, model inference, and hardware compatibility
 
-This section covers how to run integration tests for PyTorch-Plugin-FL to validate operator correctness and dispatch routing.
+This section covers how to test operators, model inference, and hardware compatibility.
 
 ## Basic Operator Tests
 

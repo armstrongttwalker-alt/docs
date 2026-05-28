@@ -7,6 +7,6 @@ This guide covers the usage of PyTorch-Plugin-FL, including basic operations, de
 
 basic-usage.md
 device-management.md
-backend-configuration.md
-debugging.md
+operator-dispatch-guide.md
+testing.md
 ```
