@@ -6,7 +6,7 @@ This guide covers the usage of PyTorch-Plugin-FL, including basic operations, de
 :maxdepth: 2
 
 basic-usage.md
-device-management.md
 operator-dispatch-guide.md
+query-device-and-ops.md
 testing.md
 ```
