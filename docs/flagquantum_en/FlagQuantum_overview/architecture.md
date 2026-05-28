@@ -67,3 +67,4 @@ The `utils` module contains helper functions for:
 - DTensor operations and sharding
 - State interchange between devices
 - Device management and configuration
+- OpenQASM 2.0/3.0 exporter
