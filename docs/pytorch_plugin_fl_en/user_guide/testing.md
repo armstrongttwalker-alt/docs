@@ -1,50 +1,69 @@
-# Test operators, model inference, and hardware compatibility
+# Run tests
 
-This section covers how to test operators, model inference, and hardware compatibility.
+Tests in `tests/integration/ops/` are marked with `@pytest.mark` to indicate platform scope.
 
-## Basic operator tests
+## Pytest marks
+
+| Mark | Description | When to run |
+|------|---------|-------------|
+| `@pytest.mark.anyplatform` | Platform-agnostic correctness tests (shape, dtype, broadcast) | Any platform |
+| `@pytest.mark.cuda` | CUDA/FlagGems dispatch routing tests. | CUDA platform only |
+| `@pytest.mark.ascend` | Ascend backend dispatch tests. | Ascend platform only |
+| `@pytest.mark.flaggems` | Requires FlagGems (Triton) backend. | FlagGems platform |
+| `@pytest.mark.flaggems_python` | Requires FlagGems Python wrapper (pybind11 path). | FlagGems platform |
+
+Use `-m <mark>` to run specific test categories. Example: `pytest tests/integration/ops/ -m cuda` runs only CUDA tests.
+
+## CUDA platform
 
 ```{code-block} bash
-export TORCH_DEVICE_BACKEND_AUTOLOAD=0
+# Operator tests (requires FlagGems source for C++ native API)
+FLAGOS_DISABLE_FLAGGEMS_PY=1 FLAGGEMS_SOURCE_DIR=/path_to_repos/FlagGems/src/flag_gems \
+  pytest tests/integration/ops/ -v -m "anyplatform or cuda"
 
-# Factory ops: create tensors on cuda and flagos devices
-pytest tests/integration/test_factory_ops.py -v --device cuda
-pytest tests/integration/test_factory_ops.py -v --device flagos
+# Qwen3 inference test
+FLAGOS_DISABLE_FLAGGEMS_PY=1 FLAGGEMS_SOURCE_DIR=/path_to_repos/FlagGems/src/flag_gems \
+  pytest tests/integration/test_qwen3_infer.py -v -s
+
+# Qwen3 training test (single GPU)
+FLAGOS_DISABLE_FLAGGEMS_PY=1 FLAGGEMS_SOURCE_DIR=/path_to_repos/FlagGems/src/flag_gems \
+  pytest tests/integration/test_qwen3_train.py -v -s --steps 10
+
+# Run only CUDA-specific tests
+pytest tests/integration/ops/ -v -m cuda
+
+# Run only FlagGems (Triton) backend tests
+pytest tests/integration/ops/ -v -m flaggems
+
+# Run only FlagGems Python wrapper tests
+pytest tests/integration/ops/ -v -m flaggems_python
+
+# Run platform-agnostic correctness tests
+pytest tests/integration/ops/ -v -m anyplatform
+
+# FlagGems Python wrapper (flagos_python) end-to-end tests
+FLAGOS_BACKEND_CONFIG=torch_fl/backends_flagos_py.conf \
+  pytest tests/integration/ops/ -v
 ```
 
-## Dispatch routing tests
+## Ascend platform
 
 ```{code-block} bash
-pytest tests/integration/ops/ -v
-```
-
-## CPU fallback tracing tests
-
-```{code-block} bash
-pytest tests/integration/test_fallback_trace.py -v
-```
-
-## Qwen3 inference tests
-
-```{code-block} bash
-pytest tests/integration/test_qwen3_infer.py -v -s --device cuda
-pytest tests/integration/test_qwen3_infer.py -v -s --device flagos
-```
-
-## Qwen3 training tests
-
-```{code-block} bash
-pytest tests/integration/test_qwen3_train.py -v -s --device cuda --steps 10
-pytest tests/integration/test_qwen3_train.py -v -s --device flagos --steps 10
-```
-
-## Ascend operator tests
-
-```{code-block} bash
+# Operator tests
 FLAGOS_DISABLE_FLAGGEMS_PY=1 FLAGOS_BACKEND_CONFIG=torch_fl/backends_ascend.conf \
-  pytest tests/integration/test_factory_ops.py -v --device flagos
+  pytest tests/integration/ops/ -v -m "anyplatform or ascend"
+
+# Qwen3 inference test
+FLAGOS_DISABLE_FLAGGEMS_PY=1 FLAGOS_BACKEND_CONFIG=torch_fl/backends_ascend.conf \
+  pytest tests/integration/test_qwen3_infer.py -v -s
+
+# Qwen3 training test (single GPU)
+FLAGOS_DISABLE_FLAGGEMS_PY=1 FLAGOS_BACKEND_CONFIG=torch_fl/backends_ascend.conf \
+  pytest tests/integration/test_qwen3_train.py -v -s --steps 10
 ```
 
 ```{note}
-Most tests require a CUDA-capable GPU or appropriate hardware SDK (MACA cu-bridge, CANN toolkit) depending on the target platform.
+- `FLAGOS_DISABLE_FLAGGEMS_PY=1` is required on Ascend to skip FlagGems Python-layer registration, which crashes due to NPU device detection issues. FlagGems is optional on Ascend platform.
+
+- The `test_qwen3_infer.py` and `test_qwen3_train.py` tests use the same code on all platforms — only the installation method (`ACCELERATOR=ascend pip install -e .`) and runtime environment variables differ.
 ```

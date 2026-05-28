@@ -43,6 +43,12 @@ python your_script.py
 In this mode, all operator dispatch is handled by the C++ dispatch stub (`backends.conf` routing), with no Python-layer `torch.library` registrations from FlagGems.
 
 
+## Debug Dispatch
+
+```{code-block} bash
+export FLAGOS_LOG_DISPATCH=1  # Print backend selection for each operator dispatch
+```
+
 ## Runtime environment variables
 
 | Variable | Description |
