@@ -1,6 +1,6 @@
-# Educational Resources for China-Africa AI Compute Faculty Development Program
+# Educational Resources for Platform
 
-This repository contains comprehensive educational materials for the China-Africa AI Compute Faculty Development Program.
+This repository contains comprehensive educational materials for platform.
 
 ## Overview
 
@@ -9,26 +9,20 @@ The program provides educational resources covering AI computing systems, from h
 ## Directory Structure
 
 ```
-educational-resources-for-china-africa-ai-compute-faculty-development-program/
+educational-resources-for-platform/
 ├── syllabus/                          # Course syllabus
 ├── general-education-course/          # AI Large Language Model General Course
-├── textbooks/                         # Lecture slides (EN & FR versions)
+├── textbooks/                         # Lecture slides (EN versions)
 │   ├── en/                           # English version
 │   │   ├── module-1-ai-systems-software-foundations-and-heterogeneous-computing/
 │   │   ├── module-2-high-performance-ai-operators-and-operator-engineering/
 │   │   ├── module-3-ai-compiler-principles-and-optimization/
 │   │   ├── module-4-distributed-parallel-training-and-communication/
 │   │   └── module-5-performance-analysis-methodology/
-│   └── fr/                           # French version
-│       ├── module-1-fondements-logiciels-des-systemes-d-ia-et-calcul-heterogene/
-│       ├── module-2-operateurs-ia-haute-performance-et-ingenierie-des-operateurs/
-│       ├── module-3-principes-des-compilateurs-ia-et-optimisation/
-│       ├── module-4-entrainement-parallele-distribue-et-communication/
-│       └── module-5-methodologie-d-analyse-des-performances/
 └── labs/                              # Hands-on labs
-    ├── lab-day1/                      # Day 1: Ascend NPU & Triton basics
-    ├── lab-day2/                      # Day 2: Performance tuning
-    └── lab-day3/                      # Day 3: LLM deployment
+    # Day 1: NPU & Triton basics
+    # Day 2: Performance tuning
+    # Day 3: LLM deployment
 ```
 
 ## Course Modules
@@ -42,31 +36,37 @@ educational-resources-for-china-africa-ai-compute-faculty-development-program/
 | `general-education-course/ai-large-language-model-general-course.pptx` | An accessible overview of large language models — what they are, how they work, and why they matter. Designed to motivate learners before diving into technical depth. |
 
 **Purpose:**
+
 - Bridge the gap for newcomers with limited AI background
 - Introduce key concepts in an intuitive, non-technical manner
 - Inspire curiosity and motivation to explore the full curriculum
 
 ### Module 1: AI Systems Software Foundations and Heterogeneous Computing
+
 - Introduction to AI computing architecture
 - Heterogeneous computing concepts
-- Ascend NPU software stack
+- NPU software stack
 
 ### Module 2: High-Performance AI Operators and Operator Engineering
+
 - Triton kernel development
 - Operator optimization techniques
 - Vendor library comparison
 
 ### Module 3: AI Compiler Principles and Optimization
+
 - Compiler fundamentals for AI
 - Graph optimization
 - Memory optimization
 
 ### Module 4: Distributed Parallel Training and Communication
+
 - Data parallelism
 - Model parallelism
 - Communication optimization
 
 ### Module 5: Performance Analysis Methodology
+
 - Profiling tools
 - Roofline analysis
 - Performance tuning workflow
@@ -75,7 +75,7 @@ educational-resources-for-china-africa-ai-compute-faculty-development-program/
 
 | Day | Topic | Description |
 |-----|-------|-------------|
-| Day 1 | Ascend NPU & Triton | Introduction to Ascend software stack and Triton kernel development |
+| Day 1 | NPU & Triton | Introduction to software stack and Triton kernel development |
 | Day 2 | Performance Tuning | Empirical modeling and autotuning techniques for optimal performance |
 | Day 3 | LLM Deployment | Deploying and serving large language models locally |
 
@@ -84,8 +84,8 @@ Each lab directory contains its own README with detailed instructions.
 ## Languages
 
 **Textbooks** are provided in two languages:
+
 - **English (en):** `textbooks/en/` — Complete lecture materials in English
-- **French (fr):** `textbooks/fr/` — Complete lecture materials in French
 
 Other resources (syllabus, general education course, labs) are in their original language.
 
