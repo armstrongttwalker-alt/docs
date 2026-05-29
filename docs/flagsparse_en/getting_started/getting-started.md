@@ -1,0 +1,19 @@
+# Getting Started with FlagSparse
+
+## Requirements
+
+### Hardware
+
+- NVIDIA GPU with CUDA support (for GPU-specific tests and benchmarks).
+
+### Software
+
+- Python 3.8 or later
+- PyTorch (with CUDA support)
+- Triton
+- CuPy (`cupy-cuda12x`)
+
+### Optional Dependencies
+
+- `openpyxl` -- For Excel summary output from accuracy suites.
+- `pytest` -- For running test suites.
