@@ -135,6 +135,87 @@ The following example demonstrates how to load a tile of data from the low-speed
 tle.gpu.copy(a_ptrs + ystride_a * yoffs[None, :], a_smem, [XBLOCK, YBLOCK])
 ```
 
+## Execution Orchestration
+
+### 3.3.1.2.1 tle.gpu.warp_specialize
+
+`tle.gpu.warp_specialize` is used to explicitly create a warp-specialized region within the same CTA, placing different JIT functions into different warp partitions. A typical use case is to separate tasks such as TMA/cp.async producers, WGMMA consumers, and epilogue/reduction, and pass shared-memory data between them via `tle.pipe` or other explicit synchronization primitives.
+
+- **Signature**: `tle.gpu.warp_specialize(functions_and_args, worker_num_warps, worker_num_regs)`
+- **Parameters**:
+  - `functions_and_args`: `[(fn0, args0), (fn1, args1), ...]`. The 0th item goes into the default partition; subsequent items go into worker partitions.
+  - `worker_num_warps`: List of warp counts for worker partitions; length must equal `len(functions_and_args) - 1`.
+  - `worker_num_regs`: List of requested register counts for worker partitions; length must equal `len(functions_and_args) - 1`.
+- **Semantics**:
+  - Each `args` must be a tuple; plain Python `int`/`float`/`bool`/`tl.dtype` are passed as constexpr.
+  - The default partition can return values; the return value of `tle.gpu.warp_specialize(...)` comes from the default partition; worker partitions only perform side effects and end with warp return.
+  - The callee of a worker partition will carry the corresponding `"ttg.num-warps"` attribute, and the region will record `requestedRegisters`.
+  - Captured worker arguments are deduplicated in IR; multiple workers can share the same pipe endpoint or buffer handle.
+  - `warp_specialize` itself does not provide data visibility guarantees; producer/consumer ordering should be expressed via `tle.pipe`'s commit/wait/release, barriers, or other synchronization primitives.
+
+Example: A producer partition loads shared memory, and a consumer worker computes.
+
+```{code-block} python
+@triton.jit
+def producer(writer, x_ptr, n_tiles: tl.constexpr, BLOCK: tl.constexpr):
+    offs = tl.arange(0, BLOCK)
+    for i in tl.range(0, n_tiles):
+        slot = writer.acquire(i)
+        vals = tl.load(x_ptr + i * BLOCK + offs)
+        tl.store(tle.gpu.local_ptr(slot.tile), vals)
+        writer.commit(i)
+
+
+@triton.jit
+def consumer(reader, out_ptr, n_tiles: tl.constexpr, BLOCK: tl.constexpr):
+    offs = tl.arange(0, BLOCK)
+    acc = tl.zeros([BLOCK], dtype=tl.float32)
+    for i in tl.range(0, n_tiles):
+        ready = reader.wait(i)
+        tile = tl.load(tle.gpu.local_ptr(ready.slot.tile))
+        acc += tile
+        reader.release(i)
+    tl.store(out_ptr + offs, acc)
+
+
+@triton.jit
+def kernel(x_ptr, out_ptr, n_tiles: tl.constexpr, BLOCK: tl.constexpr):
+    smem = tle.gpu.alloc([2, BLOCK], dtype=tl.float32, scope=tle.gpu.smem)
+    pipe = tle.pipe(capacity=2, scope="cta", name="x_pipe", tile=smem)
+
+    tle.gpu.warp_specialize(
+        [
+            (producer, (pipe.writer(), x_ptr, n_tiles, BLOCK)),
+            (consumer, (pipe.reader(), out_ptr, n_tiles, BLOCK)),
+        ],
+        [4],      # consumer worker uses 4 warps
+        [168],    # consumer worker requested registers
+    )
+```
+
+Example: Multiple workers paired with an SPMC pipe.
+
+```{code-block} python
+tile = tle.gpu.alloc([2, BM, BK], dtype=tl.float16, scope=tle.gpu.smem)
+pipe = tle.pipe(
+    capacity=2,
+    scope="cta",
+    name="spmc_tile",
+    readers=("qk", "value"),
+    tile=tile,
+)
+
+tle.gpu.warp_specialize(
+    [
+        (load_tile_producer, (pipe.writer(), a_desc, b_desc)),
+        (qk_consumer, (pipe.reader("qk"), acc_qk)),
+        (value_consumer, (pipe.reader("value", fields=("tile",)), acc_v)),
+    ],
+    [4, 4],
+    [240, 168],
+)
+```
+
 ## DSA memory management and data movement
 
 ### tle.dsa.alloc

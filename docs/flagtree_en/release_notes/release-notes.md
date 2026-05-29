@@ -1,10 +1,11 @@
 # Release Notes
 
-This section includes the FlagGems release information.
+This section includes the FlagTree release information.
 
 ```{toctree}
 :maxdepth: 1
   
+release_notes_v051.md
 release_notes_v050.md
 release_notes_v040.md
 release_notes_v030.md
