@@ -1,6 +1,6 @@
 # Requirements
 
-This section includes requirements of using FlagTree, including supported platforms and dependencies. FlagTree can be successfully installed and run only when all requirements are met.
+This section includes requirements about using FlagTree, including supported platforms and dependencies. FlagTree can be successfully installed and run only when all requirements are met.
 
 ## Supported hardware platforms
 
