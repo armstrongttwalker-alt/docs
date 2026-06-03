@@ -13,6 +13,7 @@ For installing FlagTree on different backends from prebuilt Docker image, see th
 - [Moore Threads](/getting_started/multi-backend-prebuilt-docker-image-install/install-mthreads.md)
 - [NVIDIA & AMD](/getting_started/multi-backend-prebuilt-docker-image-install/install-nv.md)
 - [Sunrise](/getting_started/multi-backend-prebuilt-docker-image-install/install-sunrise.md)
+- [Thrive](/getting_started/multi-backend-prebuilt-docker-image-install/install-thrive.md)
 - [Tsingmicro](/getting_started/multi-backend-prebuilt-docker-image-install/install-tsingmicro.md)
 - [KLX](/getting_started/multi-backend-prebuilt-docker-image-install/install-xpu.md)
 
@@ -60,6 +61,8 @@ For installing FlagTree on different backends from prebuilt Docker image, see th
     python3 -m pip show flagtree
     cd ${ANY_DIR_OTHER_THAN_FLAGTREE_PYTHON}; python3 -c 'import triton; print(triton.__path__)'
     ```
+
+For installing FlagTree on ARM64 CPU, see [Installation on ARM64 CPU](/getting_started/install-arm64-cpu.md)
 
 ## Option 3: Install wheel package
 

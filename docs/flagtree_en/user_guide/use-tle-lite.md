@@ -44,13 +44,12 @@ Supports updates from registers and shared memory.
 z = x.insert_tile(y, index=[0, 0])
 ```
 
-## Scan/Sort Ops
+## Scan and sort Ops
+Scan and sort Ops provide partial tensor primitives such as prefix, rank, and selection, suitable for histogram-based top-k, stream compaction, and block-level sorting and bucketing scenarios.
 
-Scan/Sort Ops provide partial tensor primitives such as prefix, rank, and selection, suitable for histogram-based top-k, stream compaction, and block-level sorting/bucketing scenarios.
+TLE-Lite keeps these operations as high-level semantics rather than binding them to a specific hardware implementation: users describe the scan and sort intent, and the backend selects register or shared memory lowering strategies based on the hardware.
 
-TLE-Lite keeps these operations as high-level semantics rather than binding them to a specific hardware implementation: users describe the scan/sort intent, and the backend selects register or shared memory lowering strategies based on the hardware.
-
-### 3.2.3.1 tle.cumsum
+### tle.cumsum
 
 `tle.cumsum(input, axis=0, reverse=False, dtype=None)` computes exclusive cumulative sum and total sum along the `axis` dimension in one operation.
 
@@ -74,7 +73,7 @@ inclusive = exclusive + x
 
 ## Pipeline
 
-### 3.2.4.1 Pipe and stage
+### Pipe and stage
 
 `tle.pipe` describes an explicit dataflow edge between a producer and one or more consumers. It simultaneously records the shared-memory stage holding the logical chunk and the synchronization required to make that chunk visible to consumers, enabling CTA-level load/compute overlap and warp-specialized producer/consumer code to use a typed descriptor instead of manually writing multiple barriers.
 
@@ -94,7 +93,7 @@ inclusive = exclusive + x
 - `tle.pipe(...)` returns a pipe descriptor. It owns staged payload fields and creates producer/consumer endpoints via `writer()` and `reader(...)`.
 - `capacity` stages form a ring buffer. `iter` maps to `stage = iter % capacity`, using a phase bit to distinguish reuse rounds.
 
-### 3.2.4.2 Producer
+### Producer
 
 The producer holds `pipe.writer()`. It acquires a writable stage, fills all necessary fields for the logical chunk, and then commits the chunk, making the data observable to consumers.
 
@@ -106,7 +105,7 @@ The producer holds `pipe.writer()`. It acquires a writable stage, fills all nece
 - `writer.close(iter)` → `None`: Publishes a closed stage for close-aware consumer loops to exit or switch state. Pipes with `one_shot=True` do not support `close`.
 - Commit is the producer-side visibility boundary.
 
-### 3.2.4.3 Consumer
+### Consumer
 
 The consumer holds `pipe.reader(...)`. It waits for published chunks, reads the returned slot, and releases the stage after all reads are complete.
 
@@ -120,7 +119,7 @@ The consumer holds `pipe.reader(...)`. It waits for published chunks, reads the 
 - `reader.release(iter)` → `None`: Releases the stage after consumption, allowing the producer to reuse it. Should be called after all `wait(iter).slot` reads are complete.
 - Wait is the consumer-side visibility boundary; release is the consumer-side release signal.
 
-### 3.2.4.4 Payload fields
+### Payload fields
 
 - `**fields` defines the data carried by each stage. Each field is exposed on the `pipe_slot` by name, e.g., `slot.q` or `slot.scale`.
 - `pipe_slot` also exposes `fields: dict[str, tle.gpu.buffered_tensor]`.
@@ -132,7 +131,7 @@ The consumer holds `pipe.reader(...)`. It waits for published chunks, reads the 
 - Keep pipe-field provenance visible. Opaque shared-memory pointer escapes, untracked shared stores, or overlapping writes that cannot be proven safe will error directly, without silent fallback.
 - NVIDIA lowering maps CTA-scoped SMEM pipes to NVWS/mbarrier synchronization. Multi-field payloads require proof of payload window, field ownership, participant count, and source-order safety at the pipe-field root granularity.
 
-### 3.2.4.5 Lifecycle
+### Lifecycle
 
 - SPSC pipe represents one producer publishing to one default consumer.
 - SPMC pipe represents one producer publishing the same logical chunk to multiple named consumers, e.g., `("mma", "epilogue")`.
@@ -140,7 +139,7 @@ The consumer holds `pipe.reader(...)`. It waits for published chunks, reads the 
 - The standard loop lifecycle is `writer.acquire(iter)` → produce fields → `writer.commit(iter)` → `reader.wait(iter)` → consume fields → `reader.release(iter)`.
 - `one_shot=True` indicates a single ready/full edge, typically used with `capacity=1`; do not rely on ring reuse or `close` in this mode.
 
-### 3.2.4.6 Simple example
+### Simple example
 
 Automatic software pipelining can still be triggered by `tl.range(..., num_stages=...)`. Explicit pipes are suited for scenarios where producer/consumer splitting needs to be visible in the program.
 

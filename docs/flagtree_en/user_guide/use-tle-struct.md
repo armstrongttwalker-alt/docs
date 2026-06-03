@@ -135,9 +135,9 @@ The following example demonstrates how to load a tile of data from the low-speed
 tle.gpu.copy(a_ptrs + ystride_a * yoffs[None, :], a_smem, [XBLOCK, YBLOCK])
 ```
 
-## Execution Orchestration
+## Execution orchestration
 
-### 3.3.1.2.1 tle.gpu.warp_specialize
+### tle.gpu.warp_specialize
 
 `tle.gpu.warp_specialize` is used to explicitly create a warp-specialized region within the same CTA, placing different JIT functions into different warp partitions. A typical use case is to separate tasks such as TMA/cp.async producers, WGMMA consumers, and epilogue/reduction, and pass shared-memory data between them via `tle.pipe` or other explicit synchronization primitives.
 
