@@ -80,10 +80,10 @@ If you do not wish to build from source, you can directly pull and install whl (
 
     |Backend   |Install command<br>(The version corresponds to the git tag)|Triton<br>ver.|libc.so &<br>libstdc++.so|
     |:---------|:---------|:---------|:---------|
-    |nvidia    |python3.12 -m pip install flagtree===0.5.1 $RES              |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
-    |nvidia    |python3.12 -m pip install flagtree===0.5.0+3.5 $RES          |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
-    |nvidia    |python3.12 -m pip install flagtree===0.4.0+3.3 $RES          |3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
-    |nvidia    |python3.12 -m pip install flagtree===0.5.0+3.1 $RES          |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+|nvidia    |python3.12 -m pip install flagtree===0.5.1 $RES              |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+|nvidia    |python3.12 -m pip install flagtree===0.5.0+3.5 $RES          |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+|nvidia    |python3.12 -m pip install flagtree===0.4.0+3.3 $RES          |3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
+|nvidia    |python3.12 -m pip install flagtree===0.5.1+3.1 $RES          |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
     |iluvatar  |python3.12 -m pip install flagtree===0.5.1+iluvatar3.1 $RES  |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
     |iluvatar  |python3.10 -m pip install flagtree===0.5.1+iluvatar3.1 $RES  |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |mthreads  |python3.10 -m pip install flagtree===0.5.1+mthreads3.1 $RES  |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
