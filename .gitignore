@@ -7,3 +7,4 @@ docs/dockerfile
 make.bat
 *lectures*.py
 background/
+*-backup/
