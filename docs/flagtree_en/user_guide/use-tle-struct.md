@@ -6,6 +6,15 @@ This section introduces how to use TLE-Struct. TLE-Struct is available on tritio
 
 You can use the following operations to manage the GPU's memory.
 
+### tle.gpu.memory_space
+
+Specify the memory_space for a given Tensor:
+
+```{code-block} python
+x = ...
+x = tle.gpu.memory_space(x, "shared_memory")
+```
+
 ### tle.gpu.alloc
 
 The following example demonstrates how to reserve a block of memory in the GPU's high-speed on-chip  SMEM (Shared Memory) with dimensions `XBLOCK * YBLOCK` and data type `float32`.
