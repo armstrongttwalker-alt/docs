@@ -61,7 +61,21 @@ For installing FlagTree on different backends from prebuilt Docker image, see th
     cd ${ANY_DIR_OTHER_THAN_FLAGTREE_PYTHON}; python3 -c 'import triton; print(triton.__path__)'
     ```
 
-For installing FlagTree on ARM64 CPU, see [Installation on ARM64 CPU](/getting_started/install-arm64-cpu.md)
+For installing FlagTree on different backends from source, see the following list:
+
+- [ARM China](/getting_started/multi-backend-prebuilt-docker-image-install/install-aipu.md)
+- [ARM64 CPU](/getting_started/install-arm64-cpu.md)
+- [Huawei Ascend](/getting_started/multi-backend-prebuilt-docker-image-install/install-ascend.md)
+- [Enflame](/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.md)
+- [HYGON](/getting_started/multi-backend-prebuilt-docker-image-install/install-hcu.md)
+- [ILUVATAR](/getting_started/multi-backend-prebuilt-docker-image-install/install-iluvatar.md)
+- [MetaX](/getting_started/multi-backend-prebuilt-docker-image-install/install-metax.md)
+- [Moore Threads](/getting_started/multi-backend-prebuilt-docker-image-install/install-mthreads.md)
+- [NVIDIA & AMD](/getting_started/multi-backend-prebuilt-docker-image-install/install-nv.md)
+- [Sunrise](/getting_started/multi-backend-prebuilt-docker-image-install/install-sunrise.md)
+- [Tsingmicro](/getting_started/multi-backend-prebuilt-docker-image-install/install-tsingmicro.md)
+- [KLX](/getting_started/multi-backend-prebuilt-docker-image-install/install-xpu.md)
+- [ARM64 CPU](/getting_started/install-arm64-cpu.md)
 
 ## Option 3: Install wheel package
 
