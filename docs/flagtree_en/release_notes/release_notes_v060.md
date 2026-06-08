@@ -23,7 +23,7 @@ This is a preview release. The version number shown is a pre-release identifier 
         - Added the following ops: `tle.gpu.alloc`, `tle.gpu.local_ptr`, `tle.gpu.copy`, and `tle.gpu.memory_space`. Supported on Moore Threads.
 
   - 3.3.x branch:
-    - Added ARM64 CPU as a new backend that supports TLE-ARM64.
+    - Added ARM64 CPU as a new backend that supports TLE-CPU.
 
 - **Enhanced Features**
   - Enhanced FLIR.
