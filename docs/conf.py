@@ -19,12 +19,6 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=verl_fl_en make html  # build the verl_fl English project
    $ PROJECT=flagos_robo_en make html  # build the flagos_robo English project
    $ PROJECT=onlinelaboratory_en make html  # build the onlinelaboratory English project
-   $ PROJECT=flagdnn_en make html  # build the flagdnn English project
-   $ PROJECT=flagblas_en make html  # build the flagblas English project
-   $ PROJECT=flagfft_en make html  # build the flagfft English project
-   $ PROJECT=flagsparse_en make html  # build the flagsparse English project
-   $ PROJECT=flagtensor_en make html  # build the flagtensor English project
-   $ PROJECT=flagaudio_en make html  # build the flagaudio English project
    
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
@@ -190,48 +184,6 @@ multiproject_projects = {
         "config": {
             "project": "Online Laboratory Documentation",
             "html_title": "Online Laboratory Documentation",
-        },
-    },
-    "flagdnn_en": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagDNN Documentation",
-            "html_title": "FlagDNN Documentation",
-        },
-    },
-    "flagblas_en": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagBLAS Documentation",
-            "html_title": "FlagBLAS Documentation",
-        },
-    },
-    "flagfft_en": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagFFT Documentation",
-            "html_title": "FlagFFT Documentation",
-        },
-    },
-    "flagsparse_en": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagSparse Documentation",
-            "html_title": "FlagSparse Documentation",
-        },
-    },
-    "flagtensor_en": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagTensor Documentation",
-            "html_title": "FlagTensor Documentation",
-        },
-    },
-    "flagaudio_en": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagAudio Documentation",
-            "html_title": "FlagAudio Documentation",
         },
     },
     "flagos_zh": {
