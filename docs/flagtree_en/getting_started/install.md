@@ -5,6 +5,7 @@
 For installing FlagTree on different backends from prebuilt Docker image, see the following list:
 
 - [ARM China](/getting_started/multi-backend-prebuilt-docker-image-install/install-aipu.md)
+- [ARM64 CPU](/getting_started/install-arm64-cpu.md)
 - [Huawei Ascend](/getting_started/multi-backend-prebuilt-docker-image-install/install-ascend.md)
 - [Enflame](/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.md)
 - [HYGON](/getting_started/multi-backend-prebuilt-docker-image-install/install-hcu.md)
@@ -16,7 +17,6 @@ For installing FlagTree on different backends from prebuilt Docker image, see th
 - [Thrive](/getting_started/multi-backend-prebuilt-docker-image-install/install-thrive.md)
 - [Tsingmicro](/getting_started/multi-backend-prebuilt-docker-image-install/install-tsingmicro.md)
 - [KLX](/getting_started/multi-backend-prebuilt-docker-image-install/install-xpu.md)
-
 
 ## Option 2: Install from source
 
@@ -80,19 +80,22 @@ If you do not wish to build from source, you can directly pull and install whl (
 
     |Backend   |Install command<br>(The version corresponds to the git tag)|Triton<br>ver.|libc.so &<br>libstdc++.so|
     |:---------|:---------|:---------|:---------|
-|nvidia    |python3.12 -m pip install flagtree===0.5.1 $RES              |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
-|nvidia    |python3.12 -m pip install flagtree===0.5.0+3.5 $RES          |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
-|nvidia    |python3.12 -m pip install flagtree===0.4.0+3.3 $RES          |3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
-|nvidia    |python3.12 -m pip install flagtree===0.5.1+3.1 $RES          |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |nvidia    |python3.12 -m pip install flagtree===0.6.0rc1 $RES          |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |nvidia    |python3.12 -m pip install flagtree===0.5.1 $RES              |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |nvidia    |python3.12 -m pip install flagtree===0.5.0+3.5 $RES          |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
+    |nvidia    |python3.12 -m pip install flagtree===0.4.0+3.3 $RES          |3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
+    |nvidia    |python3.12 -m pip install flagtree===0.5.1+3.1 $RES          |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
     |iluvatar  |python3.12 -m pip install flagtree===0.5.1+iluvatar3.1 $RES  |3.1|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
     |iluvatar  |python3.10 -m pip install flagtree===0.5.1+iluvatar3.1 $RES  |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |mthreads  |python3.10 -m pip install flagtree===0.6.0rc1+mthreads3.6 $RES|3.6|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |mthreads  |python3.10 -m pip install flagtree===0.5.1+mthreads3.1 $RES  |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |mthreads  |python3.10 -m pip install flagtree===0.5.1+mthreads3.2 $RES  |3.2|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
-    |mthreads  |python3.10 -m pip install flagtree===0.5.2rc1+mthreads3.6 $RES  |3.6|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |xpu       |python3.10 -m pip install flagtree===0.5.1+xpu3.0 $RES       |3.0|GLIBC_2.31<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
     |metax     |python3.12 -m pip install flagtree===0.5.1+metax3.0 $RES     |3.0|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |hcu       |python3.10 -m pip install flagtree===0.6.0rc1+hcu3.6 $RES    |3.6|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |hcu       |python3.10 -m pip install flagtree===0.5.1+hcu3.1 $RES       |3.1|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |hcu       |python3.10 -m pip install flagtree===0.5.1+hcu3.6 $RES       |3.6|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
+    |ascend    |python3.11 -m pip install flagtree===0.6.0rc1+ascend3.2 $RES |3.2|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |ascend    |python3.11 -m pip install flagtree===0.5.0+ascend3.2 $RES    |3.2|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
     |tsingmicro|python3.10 -m pip install flagtree===0.5.0+tsingmicro3.3 $RES|3.3|GLIBC_2.30<br>GLIBCXX_3.4.28<br>CXXABI_1.3.12|
     |aipu      |python3.10 -m pip install flagtree===0.5.0+aipu3.3 $RES      |3.3|GLIBC_2.35<br>GLIBCXX_3.4.30<br>CXXABI_1.3.13|
@@ -101,7 +104,7 @@ If you do not wish to build from source, you can directly pull and install whl (
     |enflame   |python3.12 -m pip install flagtree===0.5.0+enflame3.5 $RES   |3.5|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
     |enflame   |python3.12 -m pip install flagtree===0.5.0+enflame3.6 $RES   |3.6|GLIBC_2.39<br>GLIBCXX_3.4.33<br>CXXABI_1.3.15|
 
-Historical versions of flagtree can be found at https://resource.flagos.net/#browse/search/pypi/=assets.attributes.pypi.description%3Dflagtree
+Historical versions of flagtree can be found at <https://resource.flagos.net/#browse/search/pypi/=assets.attributes.pypi.description%3Dflagtree>
 
 ## Running tests
 
