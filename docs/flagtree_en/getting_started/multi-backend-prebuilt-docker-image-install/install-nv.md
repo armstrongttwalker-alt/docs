@@ -1,10 +1,12 @@
-# NVIDIA & AMD [nvidia](/third_party/nvidia/) & [amd](/third_party/amd/)
+[[中文版](./install_cn.md)|English]
+
+## 💫 NVIDIA & AMD [nvidia](/third_party/nvidia/) & [amd](/third_party/amd/)
 
 - Based on Triton 3.1/3.2/3.3/3.4/3.5/3.6, x64
 
-## 1. Environment for build and run
+### 1. Environment for build and run
 
-### 1.1 Use the image (for Triton 3.6)
+#### 1.1 Use the image (for Triton 3.6)
 
 If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.
 
@@ -31,7 +33,7 @@ docker run -dit \
 docker exec -it ${CONTAINER} /bin/bash
 ```
 
-### 1.2 Manually download the LLVM
+#### 1.2 Manually download the LLVM
 
 ```shell
 cd ${YOUR_LLVM_DOWNLOAD_DIR}
@@ -70,7 +72,7 @@ RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simpl
 python3.12 -m pip install mlir $RES
 ```
 
-### 1.3 Manually download the Triton dependencies
+#### 1.3 Manually download the Triton dependencies
 
 The Triton dependencies are already downloaded and installed in the image.
 If you do not need to build FlagTree or Triton from source, you do not need to download the Triton dependencies.
@@ -103,15 +105,15 @@ sh python/scripts/unpack_triton_build_deps.sh ./build-deps-triton_3.6.x-linux-x6
 After executing the above script, the original ~/.triton directory will be renamed, and a new ~/.triton directory will be created to store the pre-downloaded packages.
 Note that the script will prompt for manual confirmation during execution.
 
-## 2. Installation Commands
+### 2. Installation Commands
 
-### 2.1 Source-free Installation
+#### 2.1 Source-free Installation
 
 ```shell
 # Note: First install PyTorch, then execute the following commands
 python3 -m pip uninstall -y triton  # Repeat the cmd until fully uninstalled
 RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"
-python3.12 -m pip install flagtree===0.5.1 $RES
+python3.12 -m pip install flagtree===0.6.0rc1 $RES
 ```
 
 After installing `flagtree`, you can check it with:
@@ -120,7 +122,7 @@ After installing `flagtree`, you can check it with:
 python3 -m pip show flagtree
 ```
 
-### 2.2 Build from Source
+#### 2.2 Build from Source
 
 ```shell
 apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev nlohmann-json3-dev
@@ -139,7 +141,7 @@ MAX_JOBS=32 python3 -m pip install . --no-build-isolation -v
 unset LLVM_SYSPATH LLVM_INCLUDE_DIRS LLVM_LIBRARY_DIR
 ```
 
-## 3. Testing and validation
+### 3. Testing and validation
 
 Refer to [Tests of nvidia backend](https://github.com/flagos-ai/FlagTree/blob/triton_v3.6.x/.github/workflows/hopper-build-and-test.yml)
 
