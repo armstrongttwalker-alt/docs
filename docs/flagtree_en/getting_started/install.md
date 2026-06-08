@@ -5,7 +5,6 @@
 For installing FlagTree on different backends from prebuilt Docker image, see the following list:
 
 - [ARM China](/getting_started/multi-backend-prebuilt-docker-image-install/install-aipu.md)
-- [ARM64 CPU](/getting_started/install-arm64-cpu.md)
 - [Huawei Ascend](/getting_started/multi-backend-prebuilt-docker-image-install/install-ascend.md)
 - [Enflame](/getting_started/multi-backend-prebuilt-docker-image-install/install-enflame.md)
 - [HYGON](/getting_started/multi-backend-prebuilt-docker-image-install/install-hcu.md)
@@ -75,7 +74,6 @@ For installing FlagTree on different backends from source, see the following lis
 - [Sunrise](/getting_started/multi-backend-prebuilt-docker-image-install/install-sunrise.md)
 - [Tsingmicro](/getting_started/multi-backend-prebuilt-docker-image-install/install-tsingmicro.md)
 - [KLX](/getting_started/multi-backend-prebuilt-docker-image-install/install-xpu.md)
-- [ARM64 CPU](/getting_started/install-arm64-cpu.md)
 
 ## Option 3: Install wheel package
 
