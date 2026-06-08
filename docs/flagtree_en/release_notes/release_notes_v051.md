@@ -15,7 +15,7 @@ This is a preview release. The version number shown is a pre-release identifier 
     - TLE-Raw:
       - Added a new method of integrating CUDA kernel into LLVM inline path for maximum fine-grained control. Supported on NVIDIA.
     - Upgraded the following backends to Triton 3.6: enflame, hcu, and mthreads.
-    - Added Thrive as a new backend.
+    - Added  DAMO Academy thrive as a new backend.
   - 3.3.x branch:
     - Added ARM64 CPU as a new backend that supports TLE-ARM64.
 

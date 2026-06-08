@@ -14,7 +14,6 @@ For installing FlagTree on different backends from prebuilt Docker image, see th
 - [Moore Threads](/getting_started/multi-backend-prebuilt-docker-image-install/install-mthreads.md)
 - [NVIDIA & AMD](/getting_started/multi-backend-prebuilt-docker-image-install/install-nv.md)
 - [Sunrise](/getting_started/multi-backend-prebuilt-docker-image-install/install-sunrise.md)
-- [Thrive](/getting_started/multi-backend-prebuilt-docker-image-install/install-thrive.md)
 - [Tsingmicro](/getting_started/multi-backend-prebuilt-docker-image-install/install-tsingmicro.md)
 - [KLX](/getting_started/multi-backend-prebuilt-docker-image-install/install-xpu.md)
 
