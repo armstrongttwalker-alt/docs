@@ -31,7 +31,7 @@ TLE-CPU allows a unified programming paradigm covering diverse edge-side CPU com
 
 - Extension operations are injected into the Triton IR builder as builder methods (`create_cpu_*`), lowered at compile time to the TritonCPU dialect, then mapped to the corresponding implementation per ISA (LLVM codegen or C runtime library calls). See corresponding [sub-page](/user_guide/arm64.md) for per-ISA lowering paths.
 
-- The operator library layer is handled by **FlagGems**, which selects the CPU backend operator set by vendor (e.g., `arm`).
+- The operator library layer is handled by FlagGems, which selects the CPU backend operator set by vendor (e.g., `arm`).
 
 - Adding a new ISA = incremental contribution of C runtime + registering extension operations.
 
