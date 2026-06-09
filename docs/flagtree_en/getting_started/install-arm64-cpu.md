@@ -4,7 +4,7 @@ Before installing the FlagTree on Arm64 CPU, please read the following notes:
 
 - Triton version 3.3, based on LLVM **a66376b0**, aarch64 platform
 - Target: AArch64 Linux with NEON / SVE2 + i8mm (e.g. Armv9-A Cortex-A720)
-- ⚠️ The cpu backend's C++ extension layer (TritonCPU dialect + NEON/SVE2 C runtime) lives in the separate [triton-cpu](https://github.com/flagos-ai/triton-cpu) repo. The helper script `python/scripts/link_triton_cpu.sh` (run from the FlagTree root) clones it into `third_party/triton-cpu/` and creates the symlinks the build expects. TLE ops are injected by the `third_party/tle_arm64` plugin as `create_cpu_*` builder methods.
+- ⚠️ The cpu backend's C++ extension layer (TritonCPU dialect + NEON/SVE2 C runtime) lives in the separate [flagtree-cpu](https://github.com/flagos-ai/flagtree-cpu) repo. The helper script `python/scripts/link_flagtree_cpu.sh` (run from the FlagTree root) clones it into `third_party/triton-cpu/` and creates the symlinks the build expects. TLE ops are injected by the `third_party/tle_arm64` plugin as `create_cpu_*` builder methods.
 - No docker image is provided yet; install from source as below.
 
 ## 1. Environment for build and run
@@ -24,6 +24,9 @@ sudo apt-get update && sudo apt-get install -y \
 python3 -m venv ~/venv-flagtree
 source ~/venv-flagtree/bin/activate
 pip install --upgrade pip setuptools wheel
+# Build dependencies — with --no-build-isolation (step 2.2 Step 3), pyproject
+# build requirements are NOT installed automatically and must be present:
+pip install pybind11
 # Install PyTorch first (aarch64 CPU build)
 pip install torch==2.10.0+cpu --index-url https://download.pytorch.org/whl/cpu
 ```
@@ -51,9 +54,9 @@ export LLVM_LIBRARY_DIR=$LLVM_SYSPATH/lib
 
 ### 2.2 Build from source
 
-Three steps: **clone FlagTree → wire up triton-cpu via the helper script → build FlagTree**.
+Three steps: **clone FlagTree → wire up flagtree-cpu via the helper script → build FlagTree**.
 
-> Note: the commands below use the **post-merge** repos/branches (flagos-ai). To self-test before merge, substitute your unmerged PR repo/branch for `flagos-ai/triton-cpu` (main) and `flagos-ai/FlagTree` (`triton_v3.3.x`). The helper script accepts `--triton-cpu-url` and `--triton-cpu-ref` to override its defaults.
+> Note: the commands below use the **post-merge** repos/branches (flagos-ai). To self-test before merge, substitute your unmerged PR repo/branch for `flagos-ai/flagtree-cpu` (main) and `flagos-ai/FlagTree` (`triton_v3.3.x`). The helper script accepts `--flagtree-cpu-url` and `--flagtree-cpu-ref` to override its defaults.
 
 **Step 1 — Clone FlagTree and check out the cpu-backend branch**
 
@@ -64,18 +67,18 @@ cd FlagTree
 git checkout -b triton_v3.3.x origin/triton_v3.3.x   # FlagTree's 3.3.x branch (carries the cpu backend)
 ```
 
-**Step 2 — Wire up triton-cpu (clone + symlinks)**
+**Step 2 — Wire up flagtree-cpu (clone + symlinks)**
 
-The C++ extension layer (TritonCPU MLIR dialect + NEON/SVE2 C runtime + Python TLE builtins) lives in `flagos-ai/triton-cpu`. One helper script clones it into `third_party/triton-cpu/` and creates the 12 symlinks the cpu backend build expects (TritonCPU dialect headers, `third_party/cpu/*`, sleef, the Python TLE builtins under `third_party/cpu/language/cpu/`, and `python/triton/language/extra/cpu` so `triton.language.extra.cpu` imports work):
+The C++ extension layer (TritonCPU MLIR dialect + NEON/SVE2 C runtime + Python TLE builtins) lives in `flagos-ai/flagtree-cpu`. One helper script clones it into `third_party/triton-cpu/` and creates the 12 symlinks the cpu backend build expects (TritonCPU dialect headers, `third_party/cpu/*`, sleef, the Python TLE builtins under `third_party/cpu/language/cpu/`, and `python/triton/language/extra/cpu` so `triton.language.extra.cpu` imports work):
 
 ```shell
-bash python/scripts/link_triton_cpu.sh
+bash python/scripts/link_flagtree_cpu.sh
 ```
 
-If you already have a local triton-cpu clone, reuse it instead of re-cloning:
+If you already have a local flagtree-cpu clone, reuse it instead of re-cloning:
 
 ```shell
-bash python/scripts/link_triton_cpu.sh --triton-cpu-path /path/to/triton-cpu
+bash python/scripts/link_flagtree_cpu.sh --flagtree-cpu-path /path/to/flagtree-cpu
 ```
 
 All resulting symlinks are relative — the worktree can be moved without breaking links. Re-running the script is safe (existing/correct symlinks are skipped; the script exits non-zero with a clear message if any expected symlink path is occupied by a regular file).
@@ -84,14 +87,23 @@ All resulting symlinks are relative — the worktree can be moved without breaki
 
 ```shell
 FLAGTREE_BACKEND=cpu TRITON_BUILD_PROTON=OFF MAX_JOBS=$(nproc) \
+TRITON_APPEND_CMAKE_ARGS="-DCMAKE_INSTALL_PREFIX=/tmp/flagtree_install" \
     pip install -e python/ --no-build-isolation -v
 ```
+
+`TRITON_APPEND_CMAKE_ARGS` redirects the `cmake --install` step: without it, the sleef subproject tries to copy `libsleef.so` into `/usr/local/lib` and the build fails with *Permission denied* for non-root users. The kernel-visible copy under `python/triton/_C/` is installed either way.
 
 If you did §1.3's manual LLVM download, the `LLVM_SYSPATH` you exported is picked up automatically; you can additionally pass `TRITON_OFFLINE_BUILD=1` if you want to assert no network access is used.
 
 > If you build another backend in the same shell afterward, clear the LLVM-related environment variables first: `unset LLVM_SYSPATH LLVM_INCLUDE_DIRS LLVM_LIBRARY_DIR FLAGTREE_BACKEND`
 
 ## 3. Testing and validation
+
+⚠️ Before running anything that JIT-compiles kernels (the validation scripts below, and model inference in general), export `FLAGTREE_BACKEND=cpu` — at runtime it enables the ARM `-march` flags, OpenMP linkage and GCC-assembler compatibility handling for the emitted `kernel.s`:
+
+```shell
+export FLAGTREE_BACKEND=cpu
+```
 
 Confirm the cpu backend is registered and the `create_cpu_*` TLE builder methods injected by the tle_arm64 plugin are visible:
 
@@ -161,7 +173,10 @@ export LD_PRELOAD=/lib/aarch64-linux-gnu/libc.so.6           # if GLIBC not foun
 export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libstdc++.so.6  # if GLIBCXX not found
 ```
 
+### Q: kernel compilation fails with `kernel.s: Error: junk at end of line, first unrecognized character is \`"\``?
+
+A: `FLAGTREE_BACKEND=cpu` is not exported in the current shell. It is not only a build-time switch — runtime JIT compilation of `kernel.s` also depends on it (it enables stripping of LLVM `.file`/`.loc` debug directives that the GNU assembler rejects, plus the ARM `-march` flags). Export it and re-run.
+
 ### Q: `import triton.language.extra.cpu.tle_ops` fails with "No module named ..."?
 
-A: The Step 2 symlinks are incomplete. Re-run `bash python/scripts/link_triton_cpu.sh` — it is idempotent and exits non-zero if any expected symlink fails to resolve.
-
+A: The Step 2 symlinks are incomplete. Re-run `bash python/scripts/link_flagtree_cpu.sh` — it is idempotent and exits non-zero if any expected symlink fails to resolve.
