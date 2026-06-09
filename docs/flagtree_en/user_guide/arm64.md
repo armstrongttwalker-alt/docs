@@ -8,7 +8,7 @@ Software baseline: Triton 3.3 / LLVM a66376b0 / PyTorch 2.10 (CPU) / Python 3.11
 
 - **Compiler layer**: Arm instruction selection and thread management optimizations upstreamable to Triton-CPU, making plain `tl.dot` correct and efficient on Arm.
 
-- **Operator layer**: Encapsulating decode hotspots into 6 TLE extension operations `create_cpu_*`.
+- **Operator layer**: Encapsulating decode hotspots into 10 TLE extension operations `create_cpu_*`.
 
 ### Arm64 lowering path
 
@@ -22,7 +22,7 @@ flagtree-cpu  (TritonCPU MLIR dialect, splits into two lowering paths ↓)
       (precompiled NEON/SVE2 C kernels)           → LLVM codegen → ISA instructions
 ```
 
-- Fused / GEMV type (8): Lowered to calls into the precompiled `libTritonCPURuntime.so` (NEON/SVE2 C kernels)
+- Fused / GEMV type (10): Lowered to calls into the precompiled `libTritonCPURuntime.so` (NEON/SVE2 C kernels)
 
 - General Triton ops (`tl.load / tl.dot / …`): Generate ISA instructions via LLVM codegen; instruction selection for i8mm / SVE2 etc. is handled by compiler layer optimizations.
 
@@ -30,7 +30,7 @@ flagtree-cpu  (TritonCPU MLIR dialect, splits into two lowering paths ↓)
 
 ## TLE extension operations
 
-The Arm64 backend registers 6 extension operations covering decode hotspots such as GEMV / normalization / activation / attention, each corresponding to a named tensor operation. Called within `@triton.jit` via `triton.language.extra.cpu.tle_ops`.
+The Arm64 backend registers 10 extension operations covering decode hotspots such as GEMV / normalization / activation / attention, each corresponding to a named tensor operation. Called within `@triton.jit` via `triton.language.extra.cpu.tle_ops`.
 
 ### Extension Operations Summary
 
