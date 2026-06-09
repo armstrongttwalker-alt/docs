@@ -9,3 +9,4 @@ make.bat
 background/
 *-backup/
 to-do/
+.playwright-mcp/

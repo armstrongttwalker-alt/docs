@@ -19,7 +19,8 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=verl_fl_en make html  # build the verl_fl English project
    $ PROJECT=flagos_robo_en make html  # build the flagos_robo English project
    $ PROJECT=onlinelaboratory_en make html  # build the onlinelaboratory English project
-   
+   $ PROJECT=flagcicd_en make html  # build the flagcicd English project
+
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
    $ PROJECT=flaggems_zh make html  # build the flaggems Chinese project
@@ -33,6 +34,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=verl_fl_zh make html  # build the transformer_engine_fl Chinese project
    $ PROJECT=flagos_robo_zh make html  # build the flagos_robo Chinese project
    $ PROJECT=onlinelaboratory_zh make html  # build the onlinelaboratory Chinese project
+   $ PROJECT=flagcicd_zh make html  # build the flagcicd Chinese project
 
 For more information read https://sphinx-multiproject.readthedocs.io/.
 """
@@ -186,6 +188,13 @@ multiproject_projects = {
             "html_title": "Online Laboratory Documentation",
         },
     },
+    "flagcicd_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagCICD Documentation",
+            "html_title": "FlagCICD Documentation",
+        },
+    },
     "flagos_zh": {
         "use_config_file": False,
         "config": {
@@ -275,6 +284,13 @@ multiproject_projects = {
         "config": {
             "project": "线上实验室文档中心",
             "html_title": "线上实验室文档中心",
+        },
+    },
+    "flagcicd_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagCICD 文档中心",
+            "html_title": "FlagCICD 文档中心",
         },
     },
 }

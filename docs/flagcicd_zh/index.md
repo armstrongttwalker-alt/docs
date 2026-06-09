@@ -1,48 +1,96 @@
-# FlagCICD 用户手册
+# FlagCICD 文档中心
 
-FlagCICD 是一个面向多芯片开源项目的统一 CI/CD 平台，实现大模型软件栈从 CUDA 向国产芯片的高效迁移与适配。
+```{button-ref} getting-started/index
+:ref-type: doc
+:color: primary
+:class: sd-btn-lg sd-px-4 sd-py-2 sd-fw-bold
 
-## 平台简介
+快速入门
+```
 
-FlagCICD 解决 AI 基础设施"碎片化"挑战，构建"基础层-智能层-平台层"三层架构：
+::::{grid} 1 2 2 3
+:gutter: 1 1 1 2
 
-- **基础层**：标准化 CICD 流程，环境构建、依赖管理、验证自动化
-- **智能层**：AI Agent 驱动自动迁移技术，"分析-迁移-验证-优化"闭环
-- **平台层**：云服务封装，在线迁移、测试、发布的开箱即用体验
+:::{grid-item-card} {octicon}`info;1.5em;sd-mr-1` 平台概述
+:link: overview/index
+:link-type: doc
 
-## 核心能力
+了解 FlagCICD 平台的架构、核心能力和支持的芯片。
 
-- 多异构算力 {term}`Runner` 支持
-- 流水线报告展示
-- 制品上传和托管
-- 测试用例管理
++++
+[了解更多 »](overview/index)
+:::
 
-## 支持的芯片
+:::{grid-item-card} {octicon}`rocket;1.5em;sd-mr-1` 快速入门
+:link: getting-started/index
+:link-type: doc
 
-华为昇腾、海光 DCU、沐曦 MXC550、摩尔线程 S5000、NVIDIA A100、天数智卡、昆仑芯、燧原、寒武纪、清微等。
+快速开始使用 FlagCICD 平台，完成仓库注册和 Runner 配置。
 
-## 平台地址
++++
+[了解更多 »](getting-started/index)
+:::
 
-- **生产环境**：https://flagcicd.flagos.net
+:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` 功能说明
+:link: function-description/index
+:link-type: doc
 
-## 文档目录
+了解平台各功能模块的详细说明。
+
++++
+[了解更多 »](function-description/index)
+:::
+
+:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 操作指南
+:link: operation-guide/index
+:link-type: doc
+
+详细的功能操作指南，包含字段说明和操作步骤。
+
++++
+[了解更多 »](operation-guide/index)
+:::
+
+:::{grid-item-card} {octicon}`question;1.5em;sd-mr-1` 常见问题
+:link: faq/index
+:link-type: doc
+
+解答使用过程中的常见问题。
+
++++
+[了解更多 »](faq/index)
+:::
+
+:::{grid-item-card} {octicon}`list-unordered;1.5em;sd-mr-1` 术语表
+:link: glossary/index
+:link-type: doc
+
+平台相关术语的定义和解释。
+
++++
+[了解更多 »](glossary/index)
+:::
+
+::::
+
+---
 
 ```{toctree}
+:caption: 📚 用户指南
 :maxdepth: 2
+:hidden:
 
 overview/index
 getting-started/index
 function-description/index
 operation-guide/index
+```
+
+```{toctree}
+:caption: 📖 参考信息
+:maxdepth: 2
+:hidden:
+
 faq/index
 glossary/index
 ```
-
-## 相关链接
-
-- [FlagOps Actions](https://github.com/flagos-ai/FlagOps/tree/main/actions/)
-- [示例 Workflow](https://github.com/flagos-ai/FlagScale/blob/main/.github/workflows/)
-
-## 联系我们
-
-如有问题，请联系平台管理员：flagcicd@baai.ac.cn
