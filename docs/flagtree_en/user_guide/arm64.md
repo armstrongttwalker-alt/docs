@@ -57,7 +57,7 @@ The Arm64 backend registers 6 extension operations covering decode hotspots such
 
 `sm_scale` typically `head_dim^-0.5`.
 
-- **Precision**: GEMV extension ops implement **W8A8-dynamic** (per-channel int8 weights + fp32 scale + activation dynamic quantization), quantization logic inlined in `sdot_gemv_fused_bf16`, using i8mm SDOT throughout.
+- **Precision**: GEMV extension ops implement W8A8-dynamic (per-channel int8 weights + fp32 scale + activation dynamic quantization), quantization logic inlined in `sdot_gemv_fused_bf16`, using i8mm SDOT throughout.
 
 ## Usage examples
 
