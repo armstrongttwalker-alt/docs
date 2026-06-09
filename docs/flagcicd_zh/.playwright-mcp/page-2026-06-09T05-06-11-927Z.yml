@@ -1,0 +1,207 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [active] [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [expanded] [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e3345]
+        - menu [ref=e3348]:
+          - menuitem "容器镜像" [ref=e3349] [cursor=pointer]:
+            - generic [ref=e3350]: 容器镜像
+          - menuitem "Python包" [ref=e3351] [cursor=pointer]:
+            - generic [ref=e3352]: Python包
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "资源规格"
+        - main [ref=e77]:
+          - generic [ref=e3907]:
+            - generic [ref=e3909]:
+              - table [ref=e3911]:
+                - rowgroup [ref=e3918]:
+                  - row "地域 按 地域 过滤 可用区 按 可用区 过滤 名称 卡型 按 卡型 过滤 规格详情" [ref=e3919]:
+                    - columnheader "地域 按 地域 过滤" [ref=e3920]:
+                      - generic [ref=e3921]:
+                        - text: 地域
+                        - button "按 地域 过滤" [ref=e3922] [cursor=pointer]:
+                          - img [ref=e3925]
+                    - columnheader "可用区 按 可用区 过滤" [ref=e3927]:
+                      - generic [ref=e3928]:
+                        - text: 可用区
+                        - button "按 可用区 过滤" [ref=e3929] [cursor=pointer]:
+                          - img [ref=e3932]
+                    - columnheader "名称" [ref=e3934]:
+                      - generic [ref=e3935]: 名称
+                    - columnheader "卡型 按 卡型 过滤" [ref=e3936]:
+                      - generic [ref=e3937]:
+                        - text: 卡型
+                        - button "按 卡型 过滤" [ref=e3938] [cursor=pointer]:
+                          - img [ref=e3941]
+                    - columnheader "规格详情" [ref=e3943]:
+                      - generic [ref=e3944]: 规格详情
+              - table [ref=e3949]:
+                - rowgroup [ref=e3956]:
+                  - row "智源-北京大兴三 可用区A 海光-DCU-1卡-12核-48G Hygon_DCU-64GB Hygon_DCU-64GB, 1 Card, 12 CPU, 48 GiB" [ref=e3957]:
+                    - cell "智源-北京大兴三" [ref=e3958]:
+                      - generic [ref=e3959]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e3960]:
+                      - generic [ref=e3961]: 可用区A
+                    - cell "海光-DCU-1卡-12核-48G" [ref=e3962]:
+                      - generic [ref=e3963]: 海光-DCU-1卡-12核-48G
+                    - cell "Hygon_DCU-64GB" [ref=e3964]:
+                      - generic [ref=e3965]: Hygon_DCU-64GB
+                    - cell "Hygon_DCU-64GB, 1 Card, 12 CPU, 48 GiB" [ref=e3966]:
+                      - generic [ref=e3967]: Hygon_DCU-64GB, 1 Card, 12 CPU, 48 GiB
+                  - row "智源-北京大兴三 可用区A 海光-DCU-8卡-96核-384G Hygon_DCU-64GB Hygon_DCU-64GB, 8 Card, 96 CPU, 384 GiB" [ref=e3968]:
+                    - cell "智源-北京大兴三" [ref=e3969]:
+                      - generic [ref=e3970]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e3971]:
+                      - generic [ref=e3972]: 可用区A
+                    - cell "海光-DCU-8卡-96核-384G" [ref=e3973]:
+                      - generic [ref=e3974]: 海光-DCU-8卡-96核-384G
+                    - cell "Hygon_DCU-64GB" [ref=e3975]:
+                      - generic [ref=e3976]: Hygon_DCU-64GB
+                    - cell "Hygon_DCU-64GB, 8 Card, 96 CPU, 384 GiB" [ref=e3977]:
+                      - generic [ref=e3978]: Hygon_DCU-64GB, 8 Card, 96 CPU, 384 GiB
+                  - row "智源-北京大兴三 可用区A 海光-DCU-4卡-48核-192G Hygon_DCU-64GB Hygon_DCU-64GB, 4 Card, 48 CPU, 192 GiB" [ref=e3979]:
+                    - cell "智源-北京大兴三" [ref=e3980]:
+                      - generic [ref=e3981]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e3982]:
+                      - generic [ref=e3983]: 可用区A
+                    - cell "海光-DCU-4卡-48核-192G" [ref=e3984]:
+                      - generic [ref=e3985]: 海光-DCU-4卡-48核-192G
+                    - cell "Hygon_DCU-64GB" [ref=e3986]:
+                      - generic [ref=e3987]: Hygon_DCU-64GB
+                    - cell "Hygon_DCU-64GB, 4 Card, 48 CPU, 192 GiB" [ref=e3988]:
+                      - generic [ref=e3989]: Hygon_DCU-64GB, 4 Card, 48 CPU, 192 GiB
+                  - row "智源-北京大兴三 可用区A 海光-DCU-2卡-24核-96G Hygon_DCU-64GB Hygon_DCU-64GB, 2 Card, 24 CPU, 96 GiB" [ref=e3990]:
+                    - cell "智源-北京大兴三" [ref=e3991]:
+                      - generic [ref=e3992]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e3993]:
+                      - generic [ref=e3994]: 可用区A
+                    - cell "海光-DCU-2卡-24核-96G" [ref=e3995]:
+                      - generic [ref=e3996]: 海光-DCU-2卡-24核-96G
+                    - cell "Hygon_DCU-64GB" [ref=e3997]:
+                      - generic [ref=e3998]: Hygon_DCU-64GB
+                    - cell "Hygon_DCU-64GB, 2 Card, 24 CPU, 96 GiB" [ref=e3999]:
+                      - generic [ref=e4000]: Hygon_DCU-64GB, 2 Card, 24 CPU, 96 GiB
+                  - row "智源-北京大兴三 可用区A 沐曦(ECC)-MXC550-2卡-8核-256G MetaX_MXC550-64GB MetaX_MXC550-64GB, 2 Card, 8 CPU, 256 GiB" [ref=e4001]:
+                    - cell "智源-北京大兴三" [ref=e4002]:
+                      - generic [ref=e4003]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e4004]:
+                      - generic [ref=e4005]: 可用区A
+                    - cell "沐曦(ECC)-MXC550-2卡-8核-256G" [ref=e4006]:
+                      - generic [ref=e4007]: 沐曦(ECC)-MXC550-2卡-8核-256G
+                    - cell "MetaX_MXC550-64GB" [ref=e4008]:
+                      - generic [ref=e4009]: MetaX_MXC550-64GB
+                    - cell "MetaX_MXC550-64GB, 2 Card, 8 CPU, 256 GiB" [ref=e4010]:
+                      - generic [ref=e4011]: MetaX_MXC550-64GB, 2 Card, 8 CPU, 256 GiB
+                  - row "智源-北京大兴三 可用区A 沐曦(ECC)-MXC550-1卡-4核-128G MetaX_MXC550-64GB MetaX_MXC550-64GB, 1 Card, 4 CPU, 128 GiB" [ref=e4012]:
+                    - cell "智源-北京大兴三" [ref=e4013]:
+                      - generic [ref=e4014]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e4015]:
+                      - generic [ref=e4016]: 可用区A
+                    - cell "沐曦(ECC)-MXC550-1卡-4核-128G" [ref=e4017]:
+                      - generic [ref=e4018]: 沐曦(ECC)-MXC550-1卡-4核-128G
+                    - cell "MetaX_MXC550-64GB" [ref=e4019]:
+                      - generic [ref=e4020]: MetaX_MXC550-64GB
+                    - cell "MetaX_MXC550-64GB, 1 Card, 4 CPU, 128 GiB" [ref=e4021]:
+                      - generic [ref=e4022]: MetaX_MXC550-64GB, 1 Card, 4 CPU, 128 GiB
+                  - row "智源-北京大兴三 可用区A 沐曦(ECC)-MXC550-4卡-16核-512G MetaX_MXC550-64GB MetaX_MXC550-64GB, 4 Card, 16 CPU, 512 GiB" [ref=e4023]:
+                    - cell "智源-北京大兴三" [ref=e4024]:
+                      - generic [ref=e4025]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e4026]:
+                      - generic [ref=e4027]: 可用区A
+                    - cell "沐曦(ECC)-MXC550-4卡-16核-512G" [ref=e4028]:
+                      - generic [ref=e4029]: 沐曦(ECC)-MXC550-4卡-16核-512G
+                    - cell "MetaX_MXC550-64GB" [ref=e4030]:
+                      - generic [ref=e4031]: MetaX_MXC550-64GB
+                    - cell "MetaX_MXC550-64GB, 4 Card, 16 CPU, 512 GiB" [ref=e4032]:
+                      - generic [ref=e4033]: MetaX_MXC550-64GB, 4 Card, 16 CPU, 512 GiB
+                  - row "智源-北京大兴三 可用区A 沐曦(ECC)-MXC550-8卡-32核-1024G MetaX_MXC550-64GB MetaX_MXC550-64GB, 8 Card, 32 CPU, 1024 GiB" [ref=e4034]:
+                    - cell "智源-北京大兴三" [ref=e4035]:
+                      - generic [ref=e4036]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e4037]:
+                      - generic [ref=e4038]: 可用区A
+                    - cell "沐曦(ECC)-MXC550-8卡-32核-1024G" [ref=e4039]:
+                      - generic [ref=e4040]: 沐曦(ECC)-MXC550-8卡-32核-1024G
+                    - cell "MetaX_MXC550-64GB" [ref=e4041]:
+                      - generic [ref=e4042]: MetaX_MXC550-64GB
+                    - cell "MetaX_MXC550-64GB, 8 Card, 32 CPU, 1024 GiB" [ref=e4043]:
+                      - generic [ref=e4044]: MetaX_MXC550-64GB, 8 Card, 32 CPU, 1024 GiB
+                  - row "智源-北京大兴三 可用区A 昇腾-Ascend910B-4卡-64核-256G Huawei_910B-64GB Huawei_910B-64GB, 4 Card, 64 CPU, 256 GiB" [ref=e4045]:
+                    - cell "智源-北京大兴三" [ref=e4046]:
+                      - generic [ref=e4047]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e4048]:
+                      - generic [ref=e4049]: 可用区A
+                    - cell "昇腾-Ascend910B-4卡-64核-256G" [ref=e4050]:
+                      - generic [ref=e4051]: 昇腾-Ascend910B-4卡-64核-256G
+                    - cell "Huawei_910B-64GB" [ref=e4052]:
+                      - generic [ref=e4053]: Huawei_910B-64GB
+                    - cell "Huawei_910B-64GB, 4 Card, 64 CPU, 256 GiB" [ref=e4054]:
+                      - generic [ref=e4055]: Huawei_910B-64GB, 4 Card, 64 CPU, 256 GiB
+                  - row "智源-北京大兴三 可用区A 昇腾-Ascend910B-8卡-128核-512G Huawei_910B-64GB Huawei_910B-64GB, 8 Card, 128 CPU, 512 GiB" [ref=e4056]:
+                    - cell "智源-北京大兴三" [ref=e4057]:
+                      - generic [ref=e4058]: 智源-北京大兴三
+                    - cell "可用区A" [ref=e4059]:
+                      - generic [ref=e4060]: 可用区A
+                    - cell "昇腾-Ascend910B-8卡-128核-512G" [ref=e4061]:
+                      - generic [ref=e4062]: 昇腾-Ascend910B-8卡-128核-512G
+                    - cell "Huawei_910B-64GB" [ref=e4063]:
+                      - generic [ref=e4064]: Huawei_910B-64GB
+                    - cell "Huawei_910B-64GB, 8 Card, 128 CPU, 512 GiB" [ref=e4065]:
+                      - generic [ref=e4066]: Huawei_910B-64GB, 8 Card, 128 CPU, 512 GiB
+            - generic [ref=e4067]:
+              - generic [ref=e4068]: 共 24 条
+              - generic [ref=e4071] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e4073]
+                  - generic [ref=e4074]: 10条/页
+                - img [ref=e4077]
+              - button "上一页" [disabled] [ref=e4079]:
+                - generic:
+                  - img
+              - list [ref=e4080]:
+                - listitem "第 1 页" [ref=e4081]: "1"
+                - listitem "第 2 页" [ref=e4082] [cursor=pointer]: "2"
+                - listitem "第 3 页" [ref=e4083] [cursor=pointer]: "3"
+              - button "下一页" [ref=e4084] [cursor=pointer]:
+                - generic:
+                  - img
+              - generic [ref=e4085]:
+                - generic [ref=e4086]: 前往
+                - spinbutton "页" [ref=e4089]: "1"
+                - generic [ref=e4090]: 页
+  - img

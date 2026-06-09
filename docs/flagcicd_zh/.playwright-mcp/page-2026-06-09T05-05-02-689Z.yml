@@ -1,0 +1,111 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - generic [ref=e1535]:
+            - link "vllm-plugin-FL" [ref=e1536] [cursor=pointer]
+            - img [ref=e2986]
+          - link "创建 Runner Scale Sets" [ref=e2989] [cursor=pointer]
+        - main [ref=e77]:
+          - heading "创建 Runner Scale Sets" [level=3] [ref=e2990]
+          - generic [ref=e2992]:
+            - generic [ref=e2993]:
+              - generic [ref=e2995]:
+                - generic [ref=e2996]: "* Name"
+                - textbox "* Name" [ref=e3000]:
+                  - /placeholder: 请输入Name
+              - generic [ref=e3002]:
+                - generic [ref=e3003]: "* Docker 访问模式"
+                - generic [ref=e3004]:
+                  - radiogroup "* Docker 访问模式" [ref=e3005]:
+                    - generic [ref=e3006] [cursor=pointer]:
+                      - radio "DinD（Docker in Docker）" [ref=e3008]
+                      - generic [ref=e3010]: DinD（Docker in Docker）
+                    - generic [ref=e3011] [cursor=pointer]:
+                      - radio "DooD（Docker outside of Docker ）" [checked] [ref=e3013]
+                      - generic [ref=e3015]: DooD（Docker outside of Docker ）
+                  - generic [ref=e3017]: DooD 模式将共享宿主机的 Docker Socket，请确保您了解相关安全风险。
+              - generic [ref=e3019]:
+                - generic [ref=e3020]: "* 镜像"
+                - generic [ref=e3023]:
+                  - generic [ref=e3024]:
+                    - combobox "* 镜像" [ref=e3026]
+                    - generic [ref=e3027]: default
+                  - img [ref=e3030] [cursor=pointer]
+              - generic [ref=e3033]:
+                - generic [ref=e3034]: 挂载模型
+                - generic [ref=e3036]:
+                  - generic [ref=e3037]:
+                    - switch "挂载模型"
+                  - generic [ref=e3040]: 模型挂载路径请前往 模型中心 查看
+              - generic [ref=e3042]:
+                - generic [ref=e3043]: "* 资源规格"
+                - generic [ref=e3046]:
+                  - generic [ref=e3047]:
+                    - combobox "* 资源规格" [ref=e3049]
+                    - generic [ref=e3050]: 请选择资源规格
+                  - img [ref=e3053] [cursor=pointer]
+              - generic [ref=e3056]:
+                - generic [ref=e3057]: "* Min Runners"
+                - generic [ref=e3059]:
+                  - button "减少数值" [ref=e3060]:
+                    - img [ref=e3062]
+                  - button "增加数值" [ref=e3064]:
+                    - img [ref=e3066]
+                  - spinbutton "* Min Runners" [disabled] [ref=e3070]: "0"
+              - generic [ref=e3072]:
+                - generic [ref=e3073]: "* Max Runners"
+                - generic [ref=e3075]:
+                  - button "减少数值" [ref=e3076]:
+                    - img [ref=e3078]
+                  - button "增加数值" [ref=e3080] [cursor=pointer]:
+                    - img [ref=e3082]
+                  - spinbutton "* Max Runners" [ref=e3086]: "1"
+            - group [ref=e3087]:
+              - generic [ref=e3090]:
+                - button "取消" [ref=e3091] [cursor=pointer]:
+                  - generic [ref=e3092]: 取消
+                - button "创建" [ref=e3093] [cursor=pointer]:
+                  - generic [ref=e3094]: 创建
+  - img
