@@ -1,6 +1,6 @@
-# ARM64 CPU cpu and tle_arm64
+# Install on Arm64 CPU
 
-Before installing the FlagTree on ARM64 CPU, please read the following notes:
+Before installing the FlagTree on Arm64 CPU, please read the following notes:
 
 - Triton version 3.3, based on LLVM **a66376b0**, aarch64 platform
 - Target: AArch64 Linux with NEON / SVE2 + i8mm (e.g. Armv9-A Cortex-A720)
