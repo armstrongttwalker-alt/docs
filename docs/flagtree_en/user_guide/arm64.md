@@ -22,9 +22,9 @@ flagtree-cpu  (TritonCPU MLIR dialect, splits into two lowering paths ↓)
       (precompiled NEON/SVE2 C kernels)           → LLVM codegen → ISA instructions
 ```
 
-- **Fused / GEMV type (8)**: Lowered to calls into the precompiled `libTritonCPURuntime.so` (NEON/SVE2 C kernels)
+- Fused / GEMV type (8): Lowered to calls into the precompiled `libTritonCPURuntime.so` (NEON/SVE2 C kernels)
 
-- **General Triton ops** (`tl.load / tl.dot / …`): Generate ISA instructions via LLVM codegen; instruction selection for i8mm / SVE2 etc. is handled by compiler layer optimizations.
+- General Triton ops (`tl.load / tl.dot / …`): Generate ISA instructions via LLVM codegen; instruction selection for i8mm / SVE2 etc. is handled by compiler layer optimizations.
 
 - The Arm64 CPU backend also includes backend work to enable TLE: upstreamable Triton-CPU i8mm/BF16 instruction selection, OMP thread tuning, codegen fixes. These are orthogonal to TLE extension ops (the latter go through the runtime library, not compiler codegen).
 
@@ -38,7 +38,7 @@ The Arm64 backend registers 6 extension operations covering decode hotspots such
 |---|---|---|
 | Packing | `sdot_pack_weights(b_ptr, b_packed_ptr, K, N)` | INT8 weights `[K,N]` row-major → SDOT format `[K//4,N//4,4,4]`; done once offline/at load time, reused by GEMV |
 | GEMV | `sdot_gemv(a_ptr, b_packed_ptr, c_ptr, K, N)` | M=1 INT8 GEMV (K-outer + NEON SDOT, N-dim OMP); `C[N]=A[K]@B_packed` (int32 accumulation); calls runtime `sdot_gemv_m1_prepacked()` |
-| GEMV | `sdot_gemv_fused_bf16(x_ptr, b_packed_ptr, w_scale_ptr, out_ptr, K, N)` | BF16 dynamic quantization → SDOT GEMV → dequantize back to BF16 in one pass; **W8A8-dynamic decode main path** |
+| GEMV | `sdot_gemv_fused_bf16(x_ptr, b_packed_ptr, w_scale_ptr, out_ptr, K, N)` | BF16 dynamic quantization → SDOT GEMV → dequantize back to BF16 in one pass; W8A8-dynamic decode main path |
 | Normalization | `rms_norm(x_ptr, weight_ptr, out_ptr, D, eps)` | `out = x/√(mean(x²)+eps)·weight`; single NEON kernel replaces 5 decomposed ATen ops |
 | Activation | `swiglu(gate_ptr, up_ptr, out_ptr, N)` | `out = silu(gate)·up`; replaces 2 ATen calls |
 | Fusion | `flash_attn_decode(q_ptr, k_ptr, v_ptr, out_ptr, seq_len, head_dim, sm_scale, num_heads, num_kv_heads, stride_kn, stride_vn)` | M=1 Flash Attention, online softmax, head-dim OMP, GQA; replaces ATen SDPA fallback |
@@ -91,24 +91,24 @@ def mlp_down_kernel(x_ptr, w_packed_ptr, w_scale_ptr, out_ptr,
 
 ## Design essentials: Dispatch is performance
 
-The decode bottleneck is often not compute power but **operator dispatch count** (pure ATen baseline ~thousands of dispatches per token). Acceleration has two orthogonal axes:
+The decode bottleneck is often not compute power but operator dispatch count (pure ATen baseline ~ thousands of dispatches per token). Acceleration has two orthogonal axes:
 
 | Axis | Approach | Benefit | Status |
 |---|---|---|---|
 | Faster per call | Op-level extension ops (`rms_norm` / `swiglu` / `sdot_gemv*` / `flash_attn_decode`) | NEON/i8mm accelerates each call, each replaces several ATen ops | ✅ Implemented (6 in this page) |
-| Fewer calls | Fuse entire layers/steps into one, dispatch → ≈layers → 1 | Eliminates dispatch overhead | Should be done by CPU **fusion pass**, not monolithic C ops |
+| Fewer calls | Fuse entire layers/steps into one, dispatch → ≈layers → 1 | Eliminates dispatch overhead | Should be done by CPU fusion pass, not monolithic C ops |
 
 ### Thread model and tuning
 
-**Thread Model: Parallelism is self-managed by the TLE runtime.** In scenarios where inference is executed through torch (e.g., HF Transformers),
+**Thread Model**: Parallelism is self-managed by the TLE runtime. In scenarios where inference is executed through torch (e.g., HF Transformers),
 
-multi-threaded parallelism for compute-intensive parts is **initiated inside the TLE runtime kernel** — `#pragma omp parallel` in `runtime_*.cpp`, partitioned along the N dimension / head dimension — not through torch's `at::parallel_for` or its intra-op thread pool. Two configurations ensure TLE's OMP does not contend for cores with torch:
+multi-threaded parallelism for compute-intensive parts is initiated inside the TLE runtime kernel — `#pragma omp parallel` in `runtime_*.cpp`, partitioned along the N dimension / head dimension — not through torch's `at::parallel_for` or its intra-op thread pool. Two configurations ensure TLE's OMP does not contend for cores with torch:
 
 - **`TORCH_NUM_THREADS=1`**: Disables torch's own intra-op parallelism, giving all physical cores to the TLE runtime's OMP.
 
 - **Single OMP runtime**: `build.py` explicitly links torch's bundled `libgomp`, ensuring only one OMP runtime exists within the process, avoiding the oversubscription scenario where "torch and runtime each spawn N OMP threads, totaling 2N contending for cores."
 
-- Thus, the **initiation and control of thread-level parallelism rests entirely with TLE** (the OMP regions in runtime kernels); torch only handles model orchestration (Python forward pass, operator scheduling) and tensor management, not thread-level parallelism.
+- **initiation and control of thread-level parallelism rests entirely with TLE**：Because above, the initiation and control of thread-level parallelism rests entirely with TLE (the OMP regions in runtime kernels); torch only handles model orchestration (Python forward pass, operator scheduling) and tensor management, not thread-level parallelism.
 
 **Tuning (env / core binding):**
 
@@ -118,4 +118,4 @@ multi-threaded parallelism for compute-intensive parts is **initiated inside the
 
 - **Memory allocator and thread affinity** (pure performance items that do not change computation results): `LD_PRELOAD` jemalloc reduces lock contention and fragmentation in multi-threaded memory allocation; `OMP_PLACES=cores` + `OMP_PROC_BIND=close` binds OMP threads to physical cores, preventing thread migration and maintaining cache affinity.
 
-- **Concurrency ceiling (CIX P1 platform)**: Decode has non-parallelizable serial segments (measured at ~30%). By Amdahl's Law, as thread count N→∞ the speedup ceiling ≈ 1/0.3 ≈ 3.3×, so marginal benefit of adding threads diminishes rapidly; compounded by big.LITTLE little-core barrier penalty (see above), **optimal concurrency ≈ big core count (8), exceeding it degrades performance**.
+- **Concurrency ceiling (CIX P1 platform)**: Decode has non-parallelizable serial segments (measured at ~30%). By Amdahl's Law, as thread count N→∞ the speedup ceiling ≈ 1/0.3 ≈ 3.3×, so marginal benefit of adding threads diminishes rapidly; compounded by big.LITTLE little-core barrier penalty (see above), optimal concurrency ≈ big core count (8), exceeding it degrades performance.

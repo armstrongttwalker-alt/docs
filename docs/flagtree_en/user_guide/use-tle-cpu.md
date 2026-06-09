@@ -1,8 +1,8 @@
 # Use TLE-CPU
 
-This section introduces how to use TLE-CPU. TLE-Raw is available on trition_3.3.x branch.
+This section introduces how to use TLE-CPU. TLE-CPU is available on trition_3.3.x branch.
 
-TLE-CPU allows a unified programming paradigm covering diverse edge-side CPU compute power. Extends TLE's philosophy of "layering hardware deep optimizations on top of `@triton.jit`" to CPUs. Targeting the fragmented CPU ecosystem for edge AI (Arm64 / RISC-V / x86 with multiple coexisting ISAs), it uses the same Triton programming model and integration framework to support diverse ISAs: **programming model and correctness are shared across ISAs** (plain Triton lands on any ISA via LLVM), while each ISA's **high-performance implementation (intrinsic / C runtime) is contributed separately**. Model code is routed to the corresponding ISA implementation through the operator library (FlagGems) vendor dispatch, eliminating the need to be aware of the specific ISA. The differences between CPU and GPU dictate that it requires an independent extension surface:
+TLE-CPU allows a unified programming paradigm covering diverse edge-side CPU compute power. Extends TLE's philosophy of "layering hardware deep optimizations on top of `@triton.jit`" to CPUs. Targeting the fragmented CPU ecosystem for edge AI (Arm64 / RISC-V / x86 with multiple coexisting ISAs), it uses the same Triton programming model and integration framework to support diverse ISAs: programming model and correctness are shared across ISAs (plain Triton lands on any ISA via LLVM), while each ISA's high-performance implementation (intrinsic / C runtime) is contributed separately. Model code is routed to the corresponding ISA implementation through the operator library (FlagGems) vendor dispatch, eliminating the need to be aware of the specific ISA. The differences between CPU and GPU dictate that it requires an independent extension surface:
 
 | Dimension | GPU (Reference) | CPU |
 |---|---|---|
@@ -29,7 +29,7 @@ TLE-CPU allows a unified programming paradigm covering diverse edge-side CPU com
               (See corresponding sub-pages for per-ISA lowering paths, e.g., Arm64)
 ```
 
-- Extension operations are injected into the Triton IR builder as builder methods (`create_cpu_*`), lowered at compile time to the TritonCPU dialect, then mapped to the corresponding implementation per ISA (LLVM codegen or C runtime library calls). See corresponding sub-pages for per-ISA lowering paths.
+- Extension operations are injected into the Triton IR builder as builder methods (`create_cpu_*`), lowered at compile time to the TritonCPU dialect, then mapped to the corresponding implementation per ISA (LLVM codegen or C runtime library calls). See corresponding [sub-page](/user_guide/arm64.md) for per-ISA lowering paths.
 
 - The operator library layer is handled by **FlagGems**, which selects the CPU backend operator set by vendor (e.g., `arm`).
 
@@ -41,19 +41,23 @@ TLE-CPU allows a unified programming paradigm covering diverse edge-side CPU com
 
 - RISC-V (RVV) / x86 (AVX-512) is still in planning, and will use the same MLIR and TLE path.
 
+## Arm64 CPU related links
 
-## Arm64 CPU reference links:
+Below are the relevant links for TLE-CPU and Arm64:
 
-- [FlagTree](https://github.com/flagos-ai/FlagTree) (`triton_v3.3.x` branch includes `cpu` backend)
+- [Install FlagTree on ARM64 CPU](../getting_started/install-arm64-cpu.md)
 
-- [FlagTree-CPU] (https://github.com/flagos-ai/flagtree-cpu)
+- Github sites:
+  - [FlagTree](https://github.com/flagos-ai/FlagTree) (`triton_v3.3.x` branch includes `cpu` backend)
 
-- [FlagGems] (https://github.com/flagos-ai/FlagGems) (`5.3.0-rc2` version includes the `_arm` backend)
+  - [FlagTree-CPU](https://github.com/flagos-ai/flagtree-cpu)
 
-- [Install on ARM64 CPU](../getting_started/install-arm64-cpu.md)
+  - [FlagGems](https://github.com/flagos-ai/FlagGems) (`5.3.0-rc2` version includes the `_arm` backend)
+
+For more information on how to use TLE-CPU on Arm64, see the following sub-page:
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 1
 
 arm64.md
 ```
