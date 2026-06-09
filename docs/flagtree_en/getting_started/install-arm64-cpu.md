@@ -148,6 +148,8 @@ ref = (x.float() / torch.sqrt((x.float()**2).mean() + 1e-6)) * w.float()
 print("max err:", (out.float() - ref).abs().max().item(), "-> OK")
 ```
 
+For how to use TLE-CPU, see [TLE-CPU](/user_guide/use-tle-cpu.md)
+
 ## Q&A
 
 ### Q: Performance is only half on a big.LITTLE SoC?
