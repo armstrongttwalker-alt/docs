@@ -10,3 +10,10 @@ background/
 *-backup/
 to-do/
 .playwright-mcp/
+
+# Playwright related files
+docs/flagcicd_zh/.playwright-mcp/
+docs/flagcicd_zh/static/node_modules/
+docs/flagcicd_zh/static/package.json
+docs/flagcicd_zh/static/package-lock.json
+docs/flagcicd_zh/static/*.js
