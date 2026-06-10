@@ -74,7 +74,7 @@ vllm serve /data/MiniCPM5-1B \
 --trust-remote-code \
 --dtype bfloat16 \
 --enforce-eager \
---port 8080 \
+--port 8000 \
 --host 0.0.0.0 \
 --served-model-name MiniCPM5-1B \
 --gpu-memory-utilization 0.85
