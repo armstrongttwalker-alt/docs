@@ -1,6 +1,10 @@
-# Run an offline batched inference
+# Run an inference task
 
-With vLLM and vllm-plugin-FL installed, you can start generating texts for list of input prompts (i.e. offline batch inferencing). See the example script: [offline_inference](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/offline_inference.py). Or use blow python script directly.
+With vLLM and vllm-plugin-FL installed, you can run inference in two ways: offline batched inference (load the model directly in a Python script) or serving inference (start an API server and send requests). Choose the approach that fits your use case.
+
+## Offline batched inference
+
+Offline batched inference loads the model directly in a Python script and generates outputs for a batch of prompts in a single run — no server setup required.
 
 ```python
 from vllm import LLM, SamplingParams
@@ -32,3 +36,69 @@ The following table lists the descriptions of the key parameters.
 | `max_num_seqs` | Limits how many concurrent prompts/sequences are batched together. |
 | `temperature=0.0` | Makes generation deterministic (greedy decoding). |
 | `max_tokens=10` | Hard limit on output length per prompt. |
+
+## Serving inference task
+
+Serving inference starts a long-running vLLM API server that keeps the model loaded in memory, accepting requests via OpenAI-compatible HTTP endpoints — ideal for online services and concurrent clients.
+
+Since this is a local deployment, no API key is required. Set `api_key` to any value (e.g. `"EMPTY"`) — no tokens are consumed.
+
+For multimodal models (e.g. Qwen3.6 series) or when testing the full serving stack, use the serve-and-request workflow.
+
+1. Start the vLLM service:
+
+```{code-block} shell
+export VLLM_PLUGINS='fl'
+vllm serve /models/Qwen3.6-35B-A3B \
+    --served-model-name "qwen" \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --tensor-parallel-size 2 \
+    --max-model-len 32768 \
+    --trust-remote-code \
+    --limit-mm-per-prompt '{"image": 1}'
+```
+
+2. Send a text request:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(api_key="EMPTY", base_url="http://localhost:8000/v1")
+chat_response = client.chat.completions.create(
+    model="qwen",
+    messages=[{"role": "user", "content": "Introduce LLM"}],
+    max_tokens=512,
+    temperature=1.0,
+    top_p=0.95,
+    presence_penalty=1.5,
+    extra_body={"top_k": 20},
+)
+print("Chat response:", chat_response)
+```
+
+3. Send an image request (multimodal):
+
+```python
+from openai import OpenAI
+
+client = OpenAI(api_key="EMPTY", base_url="http://localhost:8000/v1")
+chat_response = client.chat.completions.create(
+    model="qwen",
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "image_url", "image_url": {"url": "https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen3.5/demo/CI_Demo/mathv-1327.jpg"}},
+            {"type": "text", "text": "Describe this image."}
+        ]
+    }],
+    max_tokens=512,
+    temperature=1.0,
+    top_p=0.95,
+    presence_penalty=1.5,
+    extra_body={"top_k": 20},
+)
+print("Chat response:", chat_response)
+```
+
+For examples with other models, see the [examples directory](https://github.com/flagos-ai/vllm-plugin-FL/tree/main/examples).
