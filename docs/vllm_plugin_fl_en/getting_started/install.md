@@ -382,7 +382,7 @@ Available for vllm-plugin-FL v0.1.0 (vLLM 0.13.0).
     The first startup takes approximately 15 minutes. Subsequent startups take less than 2 minutes.
     ```
 
-For a complete example with FlagTree and FlagGems on BI-V150, see [Qwen2.5-1.5B on Iluvatar BI-V150](example-qwen2.5-bv150.md).
+The steps above provide a minimal setup for running Qwen3-4B on BV150. If you need the full FlagOS stack with FlagTree, FlagGems usage patterns, environment verification, and troubleshooting — or if you are setting up BV150 for the first time — see the complete end-to-end guide: [Qwen2.5-1.5B on Iluvatar BI-V150](example-qwen2.5-bv150.md).
 
 ## (Optional) Dispatch operators
 
