@@ -2,7 +2,7 @@
 
 With vLLM and vllm-plugin-FL installed, you can run inference in two ways: offline batched inference (load the model directly in a Python script) or serving inference (start an API server and send requests). Choose the approach that fits your use case.
 
-## Offline batched inference
+## Run an offline batched inference
 
 Offline batched inference loads the model directly in a Python script and generates outputs for a batch of prompts in a single run — no server setup required.
 
@@ -37,7 +37,7 @@ The following table lists the descriptions of the key parameters.
 | `temperature=0.0` | Makes generation deterministic (greedy decoding). |
 | `max_tokens=10` | Hard limit on output length per prompt. |
 
-## Serving inference task
+## Run a serving inference task
 
 Serving inference starts a long-running vLLM API server that keeps the model loaded in memory, accepting requests via OpenAI-compatible HTTP endpoints — ideal for online services and concurrent clients.
 
@@ -80,23 +80,58 @@ print("Chat response:", chat_response)
 3. Send an image request (multimodal):
 
 ```python
+from PIL import Image, ImageDraw
+import base64
 from openai import OpenAI
 
-client = OpenAI(api_key="EMPTY", base_url="http://localhost:8000/v1")
-chat_response = client.chat.completions.create(
-    model="qwen",
-    messages=[{
+# create local image
+img = Image.new("RGB", (300, 200), color="white")
+
+draw = ImageDraw.Draw(img)
+draw.rectangle((50, 50, 250, 150), fill="blue")
+draw.text((90, 80), "Hello VLM", fill="yellow")
+
+image_path = "/tmp/test.jpg"
+img.save(image_path)
+
+# read local image
+with open(image_path, "rb") as f:
+    base64_image = base64.b64encode(f.read()).decode("utf-8")
+
+# openai client
+client = OpenAI(
+    api_key="EMPTY",
+    base_url="http://localhost:8000/v1",
+)
+
+messages = [
+    {
         "role": "user",
         "content": [
-            {"type": "image_url", "image_url": {"url": "https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen3.5/demo/CI_Demo/mathv-1327.jpg"}},
-            {"type": "text", "text": "Describe this image."}
+            {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/jpeg;base64,{base64_image}"
+                }
+            },
+            {
+                "type": "text",
+                "text": "Describe this image in detail."
+            }
         ]
-    }],
+    }
+]
+
+chat_response = client.chat.completions.create(
+    model="qwen",
+    messages=messages,
     max_tokens=512,
     temperature=1.0,
     top_p=0.95,
     presence_penalty=1.5,
-    extra_body={"top_k": 20},
+    extra_body={
+        "top_k": 20,
+    },
 )
 print("Chat response:", chat_response)
 ```

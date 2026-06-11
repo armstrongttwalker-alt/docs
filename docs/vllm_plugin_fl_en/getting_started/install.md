@@ -104,7 +104,7 @@ If there are multiple plugins in the current environment, you can specify use vl
 
     Ascend requires eager execution. Add `enforce_eager=True` to the `LLM` constructor or pass `--enforce-eager` on the command line.
 
-### Additional setup for CUDA
+### （Optional）Additional setup for CUDA
 
 This section illustrates how to run an inference task with CUDA through setting environment variables.
 
