@@ -2,7 +2,7 @@
 
 vllm-plugin-FL can be installed from source code or via Docker images.
 
-## Source code installation
+## Install from source
 
 This section covers installing vllm-plugin-FL and its dependencies from source code.
 
@@ -126,7 +126,7 @@ If you want to use the original CUDA operators, you can set the following enviro
 export USE_FLAGGEMS=0
 ```
 
-## Docker image installation
+## Install from docker image
 
 This section covers running vllm-plugin-FL using pre-built Docker images.
 
