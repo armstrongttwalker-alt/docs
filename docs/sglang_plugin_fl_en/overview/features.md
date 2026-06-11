@@ -20,24 +20,6 @@ Intercepts SGLang's custom fused ops (SiluAndMul, RMSNorm, RotaryEmbedding) via 
 
 Replaces NCCL-based collectives with CommunicatorFL (backed by FlagCX or torch.distributed), enabling multi-card inference on any hardware. Supports all_reduce, all_gather, reduce_scatter, send, and recv operations.
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                       SGLang Runtime                         │
-├──────────────────────────────────────────────────────────────┤
-│  Layer 1: ATen Ops (flag_gems.enable → PyTorch dispatch)     │
-│    torch.mm / torch.add / torch.softmax / ...                │
-│      → FlagGems Triton kernels                               │
-├──────────────────────────────────────────────────────────────┤
-│  Layer 2: SGLang Fused Ops (AROUND hook on dispatch_forward) │
-│    SiluAndMul / RMSNorm / RotaryEmbedding                    │
-│      → flagos (FlagGems Triton) | vendor (chip-native) | ref │
-├──────────────────────────────────────────────────────────────┤
-│  Layer 3: Communication (AROUND hooks on GroupCoordinator)   │
-│    all_reduce / all_gather / reduce_scatter / send / recv    │
-│      → CommunicatorFL (FlagCX / torch.distributed)           │
-├──────────────────────────────────────────────────────────────┤
-│  Triton JIT / Vendor Native → GPU / NPU Kernels              │
-└──────────────────────────────────────────────────────────────┘
-```
+![alt text](../assets/sglang-plugin-fl-arch.png)
 
 Chip vendors only need to implement a backend class + `register_ops.py`. The dispatch system's auto-discovery mechanism handles the rest. The same vendor implementations work across both sglang-plugin-FL and vllm-plugin-FL.
