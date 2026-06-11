@@ -2,7 +2,6 @@
 
 > Hardware: Iluvatar BI-V150 (CoreX)
 > Framework: vLLM + vllm-plugin-FL + FlagGems
-> Last updated: 2026-05-28
 
 ---
 
@@ -902,12 +901,3 @@ docker pull harbor.baai.ac.cn/flagtree/flagtree-iluvatar-py312-torch2.7.1-4.4.0r
 # FlagGems Iluvatar test image
 docker pull harbor.baai.ac.cn/flaggems/iluvatar-flaggems-test-bi-v150:latest
 ```
-
----
-
-> Related documents:
-> - [vllm-plugin-FL documentation](https://github.com/flagos-ai/vllm-plugin-FL)
-> - [FlagGems documentation](https://github.com/flagos-ai/FlagGems)
-> - [FlagTree documentation](https://resource.flagos.net)
-> - [FlagCX documentation](https://github.com/flagos-ai/FlagCX)
-> - Qwen2.5 official: https://huggingface.co/Qwen/Qwen2.5-1.5B

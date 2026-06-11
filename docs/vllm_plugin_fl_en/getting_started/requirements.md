@@ -27,7 +27,7 @@ The following table summarizes supported hardware and their verification status:
 | Hygon DCU | Supported | Supported | v0.2.0 requires DTK container (see install guide) |
 | Sunrise | Supported | — | |
 
-## Model Compatibility
+## Supported models
 
 In theory, vllm-plugin-FL can support all models available in vLLM if no unsupported operators are involved. The following models have been end-to-end verified:
 
@@ -42,5 +42,5 @@ In theory, vllm-plugin-FL can support all models available in vLLM if no unsuppo
 | BAAI/bge-m3 | Supported | [bge_m3.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/vllm_fl/models/bge_m3.py) |
 | MiniMax-M2.7 | Supported | [minimax_m27_offline_inference.py](https://github.com/flagos-ai/vllm-plugin-FL/blob/main/examples/minimax_m27_offline_inference.py) |
 | Qwen3.6-35B-A3B | Supported | [Text + image inference/serving (v0.2.0)](/getting_started/run-inference-task.md#run-a-serving-inference-task) |
-| Qwen3.6-27B | Supported | [Text + image inference/serving (v0.2.0)] (/getting_started/run-inference-task.md#run-a-serving-inference-task) |
+| Qwen3.6-27B | Supported | [Text + image inference/serving (v0.2.0)](/getting_started/run-inference-task.md#run-a-serving-inference-task) |
 | Qwen2.5-1.5B | Supported | [Iluvatar BI-V150 example](example-qwen2.5-bv150.md) |
