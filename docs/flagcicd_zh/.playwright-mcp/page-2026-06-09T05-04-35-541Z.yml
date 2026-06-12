@@ -1,0 +1,305 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - link "vllm-plugin-FL" [ref=e1536] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e1537]:
+            - heading "flagos-ai/vllm-plugin-FL" [level=3] [ref=e1538]
+            - paragraph [ref=e1539]: A vLLM plugin built on the FlagOS unified multi-chip backend.
+            - generic [ref=e1540]:
+              - generic [ref=e1541]:
+                - img "icon1" [ref=e1542]
+                - generic [ref=e1549]: "55"
+              - generic [ref=e1550]:
+                - img "icon2" [ref=e1551]
+                - generic [ref=e1558]: "65"
+              - generic [ref=e1559]:
+                - img "icon3" [ref=e1560]
+                - generic [ref=e1569]: "24"
+              - generic [ref=e1570]:
+                - img "rili" [ref=e1571]
+                - generic [ref=e1579]: 最近更新：2026-06-08 10:37:03
+            - button "在 GitHub 上查看" [ref=e1580] [cursor=pointer]:
+              - generic [ref=e1581]: 在 GitHub 上查看
+          - generic [ref=e1582]:
+            - tablist [ref=e1586]:
+              - tab "工作流运行实例" [ref=e1587]
+              - tab "仓库质量" [ref=e1588]
+              - tab "流水线效率" [ref=e1589]
+              - tab "Benchmark对比" [ref=e1590]
+              - tab "制品" [active] [selected] [ref=e1591] [cursor=pointer]
+              - tab "设置" [ref=e1592]
+            - tabpanel "制品" [ref=e2482]:
+              - generic [ref=e2483]:
+                - tablist [ref=e2487]:
+                  - tab "容器镜像" [selected] [ref=e2488]
+                  - tab "python包" [ref=e2489]
+                - tabpanel "容器镜像" [ref=e2491]:
+                  - generic [ref=e2492]:
+                    - generic [ref=e2493]:
+                      - textbox "请输入镜像名称搜索" [ref=e2496]
+                      - paragraph [ref=e2497]:
+                        - img [ref=e2498]
+                    - generic [ref=e2502]:
+                      - generic [ref=e2504]:
+                        - table [ref=e2506]:
+                          - rowgroup [ref=e2515]:
+                            - row "镜像名称 Tag 类别 按 类别 过滤 大小 按 大小 排序 架构 推送时间 按 推送时间 排序 下载数 按 下载数 排序" [ref=e2516]:
+                              - columnheader "镜像名称" [ref=e2517]:
+                                - generic [ref=e2518]: 镜像名称
+                              - columnheader "Tag" [ref=e2519]:
+                                - generic [ref=e2520]: Tag
+                              - columnheader "类别 按 类别 过滤" [ref=e2521]:
+                                - generic [ref=e2522]:
+                                  - text: 类别
+                                  - button "按 类别 过滤" [ref=e2523] [cursor=pointer]:
+                                    - img [ref=e2526]
+                              - columnheader "大小 按 大小 排序" [ref=e2528] [cursor=pointer]:
+                                - generic [ref=e2529]:
+                                  - text: 大小
+                                  - button "按 大小 排序" [ref=e2530]
+                              - columnheader "架构" [ref=e2533]:
+                                - generic [ref=e2534]: 架构
+                              - columnheader "推送时间 按 推送时间 排序" [ref=e2535] [cursor=pointer]:
+                                - generic [ref=e2536]:
+                                  - text: 推送时间
+                                  - button "按 推送时间 排序" [ref=e2537]
+                              - columnheader "下载数 按 下载数 排序" [ref=e2540] [cursor=pointer]:
+                                - generic [ref=e2541]:
+                                  - text: 下载数
+                                  - button "按 下载数 排序" [ref=e2542]
+                        - table [ref=e2549]:
+                          - rowgroup [ref=e2558]:
+                            - row "vllm-plugin-fl v0.1.0-maca-ci flagos-dev 6.9 GB amd64 2026-05-13 11:02:46 8" [ref=e2559]:
+                              - cell "vllm-plugin-fl" [ref=e2560]:
+                                - generic [ref=e2562]:
+                                  - generic [ref=e2563]: vllm-plugin-fl
+                                  - img [ref=e2566] [cursor=pointer]
+                              - cell "v0.1.0-maca-ci" [ref=e2568]:
+                                - generic [ref=e2569]: v0.1.0-maca-ci
+                              - cell "flagos-dev" [ref=e2570]:
+                                - generic [ref=e2571]: flagos-dev
+                              - cell "6.9 GB" [ref=e2572]:
+                                - generic [ref=e2573]: 6.9 GB
+                              - cell "amd64" [ref=e2574]:
+                                - generic [ref=e2575]: amd64
+                              - cell "2026-05-13 11:02:46" [ref=e2576]:
+                                - generic [ref=e2577]: 2026-05-13 11:02:46
+                              - cell "8" [ref=e2578]:
+                                - generic [ref=e2579]: "8"
+                            - row "vllm-plugin-fl v0.3.0-cuda-ci flagos-dev 10.3 GB amd64 2026-05-14 15:18:41 8" [ref=e2580]:
+                              - cell "vllm-plugin-fl" [ref=e2581]:
+                                - generic [ref=e2583]:
+                                  - generic [ref=e2584]: vllm-plugin-fl
+                                  - img [ref=e2587] [cursor=pointer]
+                              - cell "v0.3.0-cuda-ci" [ref=e2589]:
+                                - generic [ref=e2590]: v0.3.0-cuda-ci
+                              - cell "flagos-dev" [ref=e2591]:
+                                - generic [ref=e2592]: flagos-dev
+                              - cell "10.3 GB" [ref=e2593]:
+                                - generic [ref=e2594]: 10.3 GB
+                              - cell "amd64" [ref=e2595]:
+                                - generic [ref=e2596]: amd64
+                              - cell "2026-05-14 15:18:41" [ref=e2597]:
+                                - generic [ref=e2598]: 2026-05-14 15:18:41
+                              - cell "8" [ref=e2599]:
+                                - generic [ref=e2600]: "8"
+                            - row "vllm-plugin-fl v0.1.0-musa-ci flagos-dev 12.3 GB amd64 2026-05-14 18:47:54 8" [ref=e2601]:
+                              - cell "vllm-plugin-fl" [ref=e2602]:
+                                - generic [ref=e2604]:
+                                  - generic [ref=e2605]: vllm-plugin-fl
+                                  - img [ref=e2608] [cursor=pointer]
+                              - cell "v0.1.0-musa-ci" [ref=e2610]:
+                                - generic [ref=e2611]: v0.1.0-musa-ci
+                              - cell "flagos-dev" [ref=e2612]:
+                                - generic [ref=e2613]: flagos-dev
+                              - cell "12.3 GB" [ref=e2614]:
+                                - generic [ref=e2615]: 12.3 GB
+                              - cell "amd64" [ref=e2616]:
+                                - generic [ref=e2617]: amd64
+                              - cell "2026-05-14 18:47:54" [ref=e2618]:
+                                - generic [ref=e2619]: 2026-05-14 18:47:54
+                              - cell "8" [ref=e2620]:
+                                - generic [ref=e2621]: "8"
+                            - row "vllm-plugin-fl v0.1.0-musa-ci-20260511 flagos-dev 12.3 GB amd64 2026-05-14 18:54:47 8" [ref=e2622]:
+                              - cell "vllm-plugin-fl" [ref=e2623]:
+                                - generic [ref=e2625]:
+                                  - generic [ref=e2626]: vllm-plugin-fl
+                                  - img [ref=e2629] [cursor=pointer]
+                              - cell "v0.1.0-musa-ci-20260511" [ref=e2631]:
+                                - generic [ref=e2632]: v0.1.0-musa-ci-20260511
+                              - cell "flagos-dev" [ref=e2633]:
+                                - generic [ref=e2634]: flagos-dev
+                              - cell "12.3 GB" [ref=e2635]:
+                                - generic [ref=e2636]: 12.3 GB
+                              - cell "amd64" [ref=e2637]:
+                                - generic [ref=e2638]: amd64
+                              - cell "2026-05-14 18:54:47" [ref=e2639]:
+                                - generic [ref=e2640]: 2026-05-14 18:54:47
+                              - cell "8" [ref=e2641]:
+                                - generic [ref=e2642]: "8"
+                            - row "vllm-plugin-fl v0.1.0-musa-ci-20260430 flagos-dev 12.3 GB amd64 2026-05-14 18:54:54 8" [ref=e2643]:
+                              - cell "vllm-plugin-fl" [ref=e2644]:
+                                - generic [ref=e2646]:
+                                  - generic [ref=e2647]: vllm-plugin-fl
+                                  - img [ref=e2650] [cursor=pointer]
+                              - cell "v0.1.0-musa-ci-20260430" [ref=e2652]:
+                                - generic [ref=e2653]: v0.1.0-musa-ci-20260430
+                              - cell "flagos-dev" [ref=e2654]:
+                                - generic [ref=e2655]: flagos-dev
+                              - cell "12.3 GB" [ref=e2656]:
+                                - generic [ref=e2657]: 12.3 GB
+                              - cell "amd64" [ref=e2658]:
+                                - generic [ref=e2659]: amd64
+                              - cell "2026-05-14 18:54:54" [ref=e2660]:
+                                - generic [ref=e2661]: 2026-05-14 18:54:54
+                              - cell "8" [ref=e2662]:
+                                - generic [ref=e2663]: "8"
+                            - row "vllm-plugin-fl v0.1.0-musa-ci-20260429 flagos-dev 12.3 GB amd64 2026-05-14 18:54:59 8" [ref=e2664]:
+                              - cell "vllm-plugin-fl" [ref=e2665]:
+                                - generic [ref=e2667]:
+                                  - generic [ref=e2668]: vllm-plugin-fl
+                                  - img [ref=e2671] [cursor=pointer]
+                              - cell "v0.1.0-musa-ci-20260429" [ref=e2673]:
+                                - generic [ref=e2674]: v0.1.0-musa-ci-20260429
+                              - cell "flagos-dev" [ref=e2675]:
+                                - generic [ref=e2676]: flagos-dev
+                              - cell "12.3 GB" [ref=e2677]:
+                                - generic [ref=e2678]: 12.3 GB
+                              - cell "amd64" [ref=e2679]:
+                                - generic [ref=e2680]: amd64
+                              - cell "2026-05-14 18:54:59" [ref=e2681]:
+                                - generic [ref=e2682]: 2026-05-14 18:54:59
+                              - cell "8" [ref=e2683]:
+                                - generic [ref=e2684]: "8"
+                            - row "vllm-plugin-fl v0.2.0-cuda-ci flagos-dev 10.0 GB amd64 2026-05-14 18:57:19 8" [ref=e2685]:
+                              - cell "vllm-plugin-fl" [ref=e2686]:
+                                - generic [ref=e2688]:
+                                  - generic [ref=e2689]: vllm-plugin-fl
+                                  - img [ref=e2692] [cursor=pointer]
+                              - cell "v0.2.0-cuda-ci" [ref=e2694]:
+                                - generic [ref=e2695]: v0.2.0-cuda-ci
+                              - cell "flagos-dev" [ref=e2696]:
+                                - generic [ref=e2697]: flagos-dev
+                              - cell "10.0 GB" [ref=e2698]:
+                                - generic [ref=e2699]: 10.0 GB
+                              - cell "amd64" [ref=e2700]:
+                                - generic [ref=e2701]: amd64
+                              - cell "2026-05-14 18:57:19" [ref=e2702]:
+                                - generic [ref=e2703]: 2026-05-14 18:57:19
+                              - cell "8" [ref=e2704]:
+                                - generic [ref=e2705]: "8"
+                            - row "vllm-plugin-fl v0.1.0-ascend-ci flagos-dev 6.3 GB arm64 2026-05-14 18:59:00 8" [ref=e2706]:
+                              - cell "vllm-plugin-fl" [ref=e2707]:
+                                - generic [ref=e2709]:
+                                  - generic [ref=e2710]: vllm-plugin-fl
+                                  - img [ref=e2713] [cursor=pointer]
+                              - cell "v0.1.0-ascend-ci" [ref=e2715]:
+                                - generic [ref=e2716]: v0.1.0-ascend-ci
+                              - cell "flagos-dev" [ref=e2717]:
+                                - generic [ref=e2718]: flagos-dev
+                              - cell "6.3 GB" [ref=e2719]:
+                                - generic [ref=e2720]: 6.3 GB
+                              - cell "arm64" [ref=e2721]:
+                                - generic [ref=e2722]: arm64
+                              - cell "2026-05-14 18:59:00" [ref=e2723]:
+                                - generic [ref=e2724]: 2026-05-14 18:59:00
+                              - cell "8" [ref=e2725]:
+                                - generic [ref=e2726]: "8"
+                            - row "vllm-plugin-fl v0.2.0-ascend-ci flagos-dev 6.0 GB arm64 2026-05-14 19:06:19 8" [ref=e2727]:
+                              - cell "vllm-plugin-fl" [ref=e2728]:
+                                - generic [ref=e2730]:
+                                  - generic [ref=e2731]: vllm-plugin-fl
+                                  - img [ref=e2734] [cursor=pointer]
+                              - cell "v0.2.0-ascend-ci" [ref=e2736]:
+                                - generic [ref=e2737]: v0.2.0-ascend-ci
+                              - cell "flagos-dev" [ref=e2738]:
+                                - generic [ref=e2739]: flagos-dev
+                              - cell "6.0 GB" [ref=e2740]:
+                                - generic [ref=e2741]: 6.0 GB
+                              - cell "arm64" [ref=e2742]:
+                                - generic [ref=e2743]: arm64
+                              - cell "2026-05-14 19:06:19" [ref=e2744]:
+                                - generic [ref=e2745]: 2026-05-14 19:06:19
+                              - cell "8" [ref=e2746]:
+                                - generic [ref=e2747]: "8"
+                            - row "vllm-plugin-fl v0.3.0-ascend-ci flagos-dev 5.5 GB arm64 2026-05-14 19:08:01 8" [ref=e2748]:
+                              - cell "vllm-plugin-fl" [ref=e2749]:
+                                - generic [ref=e2751]:
+                                  - generic [ref=e2752]: vllm-plugin-fl
+                                  - img [ref=e2755] [cursor=pointer]
+                              - cell "v0.3.0-ascend-ci" [ref=e2757]:
+                                - generic [ref=e2758]: v0.3.0-ascend-ci
+                              - cell "flagos-dev" [ref=e2759]:
+                                - generic [ref=e2760]: flagos-dev
+                              - cell "5.5 GB" [ref=e2761]:
+                                - generic [ref=e2762]: 5.5 GB
+                              - cell "arm64" [ref=e2763]:
+                                - generic [ref=e2764]: arm64
+                              - cell "2026-05-14 19:08:01" [ref=e2765]:
+                                - generic [ref=e2766]: 2026-05-14 19:08:01
+                              - cell "8" [ref=e2767]:
+                                - generic [ref=e2768]: "8"
+                      - generic [ref=e2769]:
+                        - generic [ref=e2770]: 共 15 条
+                        - generic [ref=e2773] [cursor=pointer]:
+                          - generic:
+                            - combobox [ref=e2775]
+                            - generic [ref=e2776]: 10条/页
+                          - img [ref=e2779]
+                        - button "上一页" [disabled] [ref=e2781]:
+                          - generic:
+                            - img
+                        - list [ref=e2782]:
+                          - listitem "第 1 页" [ref=e2783]: "1"
+                          - listitem "第 2 页" [ref=e2784] [cursor=pointer]: "2"
+                        - button "下一页" [ref=e2785] [cursor=pointer]:
+                          - generic:
+                            - img
+                        - generic [ref=e2786]:
+                          - generic [ref=e2787]: 前往
+                          - spinbutton "页" [ref=e2790]: "1"
+                          - generic [ref=e2791]: 页
+  - img

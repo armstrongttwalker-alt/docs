@@ -1,0 +1,7 @@
+[     260ms] [LOG] 🔒 启用生产环境 Tolgee 禁用 CSS 和 API 请求拦截 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:48
+[     261ms] [LOG] Tolgee环境检查: {MODE: pro, PROD: true, DEV: false, isProduction: true} @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[     261ms] [LOG] 🔒 初始化生产环境 Tolgee（禁用编辑功能） @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[     262ms] [LOG] ✅ 生产环境 Tolgee 初始化成功（已禁用所有 API 请求） @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[     262ms] [LOG] 🔒 启用生产环境 Tolgee 禁用 CSS 和 API 请求拦截 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:48
+[   10468ms] [LOG] Proxy(Object) github.com flagos-ai vllm-plugin-FL 13 @ https://flagcicd.flagos.net/js/views-C8pMetm0.js:0
+[   10494ms] [LOG] Proxy(Array) 11 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1

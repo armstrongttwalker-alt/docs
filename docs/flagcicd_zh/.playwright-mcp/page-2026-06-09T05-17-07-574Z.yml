@@ -1,0 +1,26 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - button [ref=e6] [cursor=pointer]
+    - img [ref=e14] [cursor=pointer]
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - tablist [ref=e22]:
+          - tab "手机号登录" [selected] [ref=e24]
+          - tab "邮箱登录" [ref=e25]
+        - tabpanel "手机号登录" [ref=e27]:
+          - text: 未注册手机号将自动创建账号
+          - generic [ref=e29]:
+            - textbox "请输入手机号码" [ref=e34]
+            - generic [ref=e37]:
+              - textbox "请输入验证码" [ref=e40]
+              - generic [ref=e41] [cursor=pointer]: 获取验证码
+      - button "立即登录/注册" [disabled] [ref=e42]:
+        - generic [ref=e43]: 立即登录/注册
+      - generic [ref=e45]:
+        - generic [ref=e47] [cursor=pointer]:
+          - checkbox
+        - generic [ref=e49]: 我已阅读并同意
+        - generic [ref=e50] [cursor=pointer]: 社区使用协议
+        - generic [ref=e51]: 及
+        - generic [ref=e52] [cursor=pointer]: 隐私协议
+  - img
