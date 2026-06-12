@@ -1,8 +1,78 @@
 # FlagFFT User Guide
 
-## C API Usage
+## Use the C API
 
-### Basic Complex Transform
+FlagFFT exposes a cuFFT-compatible C API in `include/flagfft.h`.
+
+### Create Plans
+
+```c
+flagfftPlan1d(plan, nx, type, batch)
+flagfftPlan2d(plan, nx, ny, type)
+flagfftPlan3d(plan, nx, ny, nz, type)        // NOT_SUPPORTED
+flagfftPlanMany(plan, rank, n, inembed, istride, idist,
+                onembed, ostride, odist, type, batch)
+```
+
+### Execute Transforms
+
+```c
+// Complex-to-Complex (single & double precision)
+flagfftExecC2C(plan, idata, odata, direction)
+flagfftExecZ2Z(plan, idata, odata, direction)
+
+// Real-to-Complex (forward)
+flagfftExecR2C(plan, idata, odata)
+flagfftExecD2Z(plan, idata, odata)
+
+// Complex-to-Real (inverse)
+flagfftExecC2R(plan, idata, odata)
+flagfftExecZ2D(plan, idata, odata)
+```
+
+### Manage Plans
+
+```c
+flagfftSetStream(plan, stream)    // Attach a CUDA stream
+flagfftDestroy(plan)              // Free plan resources
+flagfftGetPlanDescription(plan)   // Human-readable plan summary
+```
+
+### Data Types
+
+| FlagFFT Type | C Type | Description |
+|---|---|---|
+| `flagfftComplex` | `float2` | Single-precision complex |
+| `flagfftDoubleComplex` | `double2` | Double-precision complex |
+| `flagfftReal` | `float` | Single-precision real |
+| `flagfftDoubleReal` | `double` | Double-precision real |
+
+### Transform Types
+
+| Type Constant | Transform |
+|---|---|
+| `FLAGFFT_C2C` | Complex → Complex |
+| `FLAGFFT_Z2Z` | Double Complex → Double Complex |
+| `FLAGFFT_R2C` | Real → Complex |
+| `FLAGFFT_D2Z` | Double Real → Double Complex |
+| `FLAGFFT_C2R` | Complex → Real |
+| `FLAGFFT_Z2D` | Double Complex → Double Real |
+
+### Supported Features
+
+| Feature | Status |
+|---|---|
+| Rank-1 arbitrary-length C2C, Z2Z | Cooley-Tukey + Bluestein/Rader |
+| Rank-1 arbitrary-length R2C, D2Z (forward) | Supported |
+| Rank-1 arbitrary-length C2R, Z2D (inverse) | Supported |
+| Rank-1 roundtrip (R2C→C2R, D2Z→Z2D) | Supported |
+| Rank-2 contiguous row-major C2C, Z2Z | RTRT decomposition |
+| Rank-2 contiguous row-major R2C, D2Z, C2R, Z2D | Supported |
+| Batched transforms | Supported |
+| In-place and out-of-place | Supported |
+| CUDA stream attachment | Supported |
+
+### Run a Basic Complex Transform
 
 ```cpp
 #include <cuda_runtime_api.h>
@@ -39,7 +109,7 @@ int main() {
 }
 ```
 
-### In-Place Real Transform
+### Run an In-Place Real Transform
 
 For in-place rank-1 real forward transforms, allocate `2 * (n / 2 + 1)` real scalars per batch:
 
@@ -54,58 +124,174 @@ flagfftExecR2C(plan, d_real_in_place,
                reinterpret_cast<flagfftComplex*>(d_real_in_place));
 ```
 
-## Native CLI
+## Use the Native CLI
 
-The `flagfft-cli` executable provides benchmark measurement:
+`flagfft-cli` is a native benchmark and verification tool. Build it with `-DFLAGFFT_BUILD_CLI=ON`.
 
-```sh
-./build/flagfft-cli bench --rank 1 --api r2c --shape 4096 --batch 64 \
-  --warmup 10 --iters 100 --json
-./build/flagfft-cli tune
-```
-
-### CLI Options
-
-| Option | Values | Description |
-|--------|--------|-------------|
-| `--api` | c2c, z2z, r2c, d2z, c2r, z2d | Transform type |
-| `--rank` | 1, 2, 3 | Transform rank |
-| `--shape` | N, NxM, NxMxK | Transform dimensions |
-| `--batch` | integer | Number of batched transforms |
-| `--direction` | forward, inverse | Transform direction |
-| `--placement` | out-of-place, in-place | Memory placement |
-| `--print-path` | flag | Print plan description |
-
-### Capability Matrix
-
-| Command | Supported | Unsupported |
-|---------|-----------|-------------|
-| `test correctness`, `bench` | Six 1D APIs with plan1d, both complex directions, valid real direction, in/out-of-place; padded real in-place planmany | Rank 2/3 and other planmany layouts |
-| `tune` | 1D c2c complex64, out-of-place plan1d, either direction | Other APIs, ranks, or layouts |
-
-## Validation
-
-### C++ Tests
+### Benchmark FFT Performance
 
 ```sh
-cmake -S . -B build -GNinja -DBACKEND=CUDA -DFLAGFFT_BUILD_TESTS=ON
-cmake --build build
-ctest --test-dir build --verbose                              # full suite
-FLAGFFT_TEST_PROFILE=smoke ctest --test-dir build --verbose  # quick validation
+flagfft-cli bench [OPTIONS]
 ```
 
-### Python Benchmarks
+| Option | Default | Description |
+|---|---|---|
+| `--rank` | `1` | Transform rank: `1` or `2` |
+| `--api` | `c2c` | Transform type: `c2c`, `z2z`, `r2c`, `d2z`, `c2r`, `z2d` |
+| `--shape` | required | Transform size(s), comma-separated: `1024`, `256x256`, `1024,2048,4096` |
+| `--batch` | `1` | Batch size |
+| `--direction` | `forward` | `forward` or `inverse` |
+| `--placement` | `out-of-place` | `out-of-place` or `in-place` |
+| `--warmup` | `10` | Warmup iterations |
+| `--iters` | `100` | Measurement iterations |
+| `--json` | — | Output results as JSON |
+| `--print-path` | — | Print the execution plan decomposition path (use with `--json`) |
+
+Examples:
 
 ```sh
-pytest benchmark/test_bench.py -v --bench-suite=smoke \
-  --flagfft-cli ./build/flagfft-cli
+# Benchmark 1D C2C FFT of size 4096, batch 256
+flagfft-cli bench --api c2c --shape 4096 --batch 256
+
+# Benchmark 2D Z2Z FFT
+flagfft-cli bench --rank 2 --api z2z --shape 256x256
+
+# Compare multiple sizes with JSON output
+flagfft-cli bench --api r2c --shape 1024,2048,4096,8192 --json
+
+# Print the kernel execution plan
+flagfft-cli bench --api c2c --shape 997 --print-path --json
 ```
 
-## Plan Description
+### Auto-Tune
+
+```sh
+flagfft-cli tune [OPTIONS]
+```
+
+Currently a placeholder; exits with `FLAGFFT_NOT_SUPPORTED`.
+
+### Exit Codes
+
+| Code | Meaning |
+|---|---|
+| `0` | Passed |
+| `1` | Failed / invalid arguments |
+| `2` | Runtime error |
+| `77` | Skipped / unsupported |
+
+## Run Tests
+
+FlagFFT has three layers of testing: a unified Python test runner, C++ unit tests (Google Test), and Python codegen tests (pytest).
+
+### Use the Unified Test Runner
+
+`tools/run_tests.py` is the primary entry point for running the full test suite.
+
+```sh
+python tools/run_tests.py [OPTIONS]
+```
+
+| Flag | Default | Description |
+|---|---|---|
+| `--ops` | — | Comma-separated operator IDs to test |
+| `--op-list-file` | — | Path to file with one operator ID per line |
+| `--start` | — | Skip operators lexicographically before this value |
+| `--stages` | `stable` | Comma-separated stages to include (`stable`, `alpha`, `beta`) |
+| `--combination` | `ct` | Test combination: `ct`, `bs`, `full`, `2d`, `2d_full` |
+| `--gpus` | `0` | Comma-separated GPU IDs or `all` |
+| `--output-dir` | `results` | Directory for summary and per-operator result files |
+| `--build-dir` | `build` | Path to CMake build directory |
+| `--accuracy-only` | — | Run only accuracy tests |
+| `--performance-only` | — | Run only performance (benchmark) tests |
+| `--timeout` | `600` | Per-test subprocess timeout in seconds |
+| `--warmup` | `10` | Benchmark warmup iterations |
+| `--iters` | `100` | Benchmark measurement iterations |
+| `--dump-output` | — | Save stdout/stderr of each test to log files |
+| `--color` | `auto` | Color mode: `auto`, `always`, `never` |
+| `-v, --verbose` | — | Verbose output |
+
+#### Combination Presets
+
+| Preset | Description |
+|---|---|
+| `ct` | Quick smoke test — Cooley-Tukey sizes, batch 1, scale 1.0 |
+| `bs` | Quick smoke test — Bluestein/Rader sizes, batch 1, scale 1.0 |
+| `full` | Full 1D — all CT sizes × all batches × all scales |
+| `2d` | Quick 2D — selected 2D sizes, batch {1,4}, scale 1.0 |
+| `2d_full` | Full 2D — selected 2D sizes × all batches × all scales |
+
+Examples:
+
+```sh
+# Quick smoke test (default)
+python tools/run_tests.py
+
+# Full test suite on GPU 0
+python tools/run_tests.py --combination full --gpus 0
+
+# Full suite across 4 GPUs
+python tools/run_tests.py --combination full --gpus 0,1,2,3
+
+# Accuracy only, specific operators
+python tools/run_tests.py --combination full --ops c2c_1d,r2c_1d --accuracy-only
+
+# Performance benchmarks only
+python tools/run_tests.py --combination full --performance-only
+```
+
+#### Output
+
+- Console: Real-time progress with per-GPU status
+- `results/summary.json` — Top-level summary with `timestamp`, `env`, `config`, `result`, and `summary` sections
+- `results/{op_id}/accuracy_result.json` — Per-operator accuracy details
+- `results/{op_id}/performance_result.json` — Per-operator benchmark details
+
+Exit code is `0` if all accuracy tests passed, `1` if any failed.
+
+### Run C++ Tests
+
+Built with `-DFLAGFFT_BUILD_TESTS=ON`. Each test binary compares FlagFFT output against cuFFT using normwise relative error metrics (`rel_l2`, `rel_linf`).
+
+```sh
+# Run a specific test
+./build/ctest/test_exec_c2c_fwd_ct_s
+
+# With custom parameters
+./build/ctest/test_exec_c2c_fwd_ct_s --nx 4096 --batch 64 --direction forward
+
+# Run all ctest tests
+cd build && ctest --output-on-failure
+```
+
+Each test binary accepts: `--nx`, `--batch`, `--direction`, `--scale`, `--json-file`.
+
+### Run Python Tests
+
+Tests for the `flagfft_codegen` Python package. Requires the package installed (`pip install .`).
+
+```sh
+# Run all Python tests
+pytest tests/python/ -v
+
+# Run only codegen-marked tests
+pytest tests/python/ -v -m codegen
+```
+
+Tests cover codelet structure, kernel source generation, JIT CSV parsing, and Bluestein/reshape/R2C metadata. Tests that require Triton/TLE are automatically skipped when dependencies are unavailable.
+
+### Configure Tests
+
+The test parameter space is defined in `conf/`:
+
+- `conf/operators.yaml` — 14 operator definitions (1D/2D × C2C/Z2Z/R2C/D2Z/C2R/Z2D, plus roundtrip)
+- `conf/test_matrix.yaml` — Parameter space: 11 smooth sizes (CT), 4 prime/composite sizes (Bluestein), 3 batch sizes, 3 scale factors, 6 combination rules
+
+## Inspect Plans
 
 Use `flagfftGetPlanDescription(plan)` or `--print-path` with the CLI to inspect the plan node tree, factorization, kernel names, and module paths for performance debugging.
 
-## Kernel Backend
+## Understand the Kernel Backend
 
 FlagFFT is JIT-only. It requires the `deps/libtriton_jit` submodule and targets CUDA through `BACKEND=CUDA`. Plan creation emits Triton source and calls libtriton_jit compile APIs so the first exec call does not pay Python compilation latency.
 

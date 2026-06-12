@@ -5,7 +5,7 @@
 :color: primary
 :class: sd-btn-lg sd-px-4 sd-py-2 sd-fw-bold
 
-Getting Started
+Get Started
 ```
 
 ::::{grid} 1 2 2 3
@@ -15,27 +15,37 @@ Getting Started
 :link: overview/overview
 :link-type: doc
 
-Have a quick view of FlagFFT, and also some basic concepts.
+Have a quick view of FlagFFT, architecture, and basic concepts.
 
 +++
 [Learn more »](overview/overview.md)
 :::
 
-:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
+:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Get Started
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for FlagFFT and provides step-by-step instructions.
+Check requirements and initialize the submodule.
 
 +++
 [Learn more »](getting_started/getting-started.md)
+:::
+
+:::{grid-item-card} {octicon}`download;1.5em;sd-mr-1` Install
+:link: getting_started/install
+:link-type: doc
+
+Clone, build, and install FlagFFT step by step.
+
++++
+[Learn more »](getting_started/install.md)
 :::
 
 :::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through API usage, planning, and benchmarking.
+Use the C API, CLI, and test runner.
 
 +++
 [Learn more »](user_guide/user-guide.md)
@@ -49,6 +59,16 @@ C API reference for FlagFFT functions and types.
 
 +++
 [Learn more »](reference/api-reference.md)
+:::
+
+:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` TLE Reference
+:link: reference/tle-reference
+:link-type: doc
+
+FlagTree/TLE API reference for authoring Triton kernels.
+
++++
+[Learn more »](reference/tle-reference.md)
 :::
 
 ::::
@@ -70,6 +90,7 @@ release_notes/release-notes.md
 
 overview/overview.md
 getting_started/getting-started.md
+getting_started/install.md
 user_guide/user-guide.md
 ```
 
@@ -79,4 +100,5 @@ user_guide/user-guide.md
 :hidden:
 
 reference/api-reference.md
+reference/tle-reference.md
 ```
