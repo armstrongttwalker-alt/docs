@@ -12,8 +12,3 @@
 - PyTorch (with CUDA support)
 - Triton
 - CuPy (`cupy-cuda12x`)
-
-### Optional Dependencies
-
-- `openpyxl` -- For Excel summary output from accuracy suites.
-- `pytest` -- For running test suites.

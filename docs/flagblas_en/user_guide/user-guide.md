@@ -1,20 +1,36 @@
 # FlagBLAS User Guide
 
-## BLAS Interface
+## Basic Usage
 
-FlagBLAS follows the standard BLAS interface, providing three levels of operations:
+FlagBLAS integrates directly with PyTorch. Import the package and call operators on CUDA tensors:
 
-### Level 1 -- Vector Operations
+```python
+import torch
+import flag_blas
 
-Operations on vectors including dot products, scaling, and norms.
+# Create tensors on CUDA
+a = torch.randn(1024, 1024, device='cuda')
+b = torch.randn(1024, 1024, device='cuda')
 
-### Level 2 -- Matrix-Vector Operations
+# Matrix multiplication (GEMM)
+c = flag_blas.ops.sgemm(a, b)
+```
 
-Operations between matrices and vectors, including matrix-vector multiplication and rank-1 updates.
+## Operator List
 
-### Level 3 -- Matrix-Matrix Operations
+The complete operator registry is maintained at [FlagBLAS conf/operators.yaml](https://github.com/flagos-ai/FlagBLAS/blob/master/conf/operators.yaml).
 
-Operations between matrices, including general matrix multiply (GEMM) and triangular solve.
+### Level 3 — Matrix-Matrix Operations
+
+sgemm, hgemm, bfgemm, fp8gemm
+
+### Level 2 — Matrix-Vector Operations
+
+sgemv, dgemv, cgemv, zgemv, hgemv, bfgemv, fp8_gemv, sgbmv, dgbmv, cgbmv, zgbmv, ssymv, dsymv, csymv, zsymv, chemv, zhemv, strmv, dtrmv, ctrmv, ztrmv, stbmv, dtbmv, ctbmv, ztbmv, stpmv, dtpmv, ctpmv, ztpmv, stbsv
+
+### Level 1 — Vector Operations
+
+sabs, dabs, cabs, zabs, samax, damax, camax, zamax, samin, damin, camin, zamin, sasum, dasum, scasum, dzasum, saxpy, daxpy, caxpy, zaxpy, scopy, dcopy, ccopy, zcopy, snrm2, dnrm2, scnrm2, dznrm2, srot, drot, crot, zrot, sscal, dscal, cscal, zscal, csscal, zdscal
 
 ## Multi-Backend Support
 
