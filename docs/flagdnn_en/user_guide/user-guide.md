@@ -1,6 +1,6 @@
 # FlagDNN User Guide
 
-## Basic Usage
+## Use FlagDNN
 
 FlagDNN integrates directly with PyTorch. Import the package and call operators on CUDA tensors:
 
@@ -86,7 +86,3 @@ kl_div, mse_loss, l1_loss
 ### Fused
 
 add_square, rmsnorm_rht_amax
-
-## Multi-Backend Support
-
-FlagDNN's flexible backend mechanism allows it to target different chip vendors. The active backend is determined by the Triton configuration on your system. Consult the Triton documentation for backend-specific setup instructions.

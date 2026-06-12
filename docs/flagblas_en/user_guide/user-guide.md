@@ -1,6 +1,6 @@
 # FlagBLAS User Guide
 
-## Basic Usage
+## Use FlagBLAS
 
 FlagBLAS integrates directly with PyTorch. Import the package and call operators on CUDA tensors:
 
@@ -31,3 +31,4 @@ sgemv, dgemv, cgemv, zgemv, hgemv, bfgemv, fp8_gemv, sgbmv, dgbmv, cgbmv, zgbmv,
 ### Level 1 — Vector Operations
 
 sabs, dabs, cabs, zabs, samax, damax, camax, zamax, samin, damin, camin, zamin, sasum, dasum, scasum, dzasum, saxpy, daxpy, caxpy, zaxpy, scopy, dcopy, ccopy, zcopy, snrm2, dnrm2, scnrm2, dznrm2, srot, drot, crot, zrot, sscal, dscal, cscal, zscal, csscal, zdscal
+

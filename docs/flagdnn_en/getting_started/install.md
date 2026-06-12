@@ -1,12 +1,12 @@
-# Installing FlagDNN
+# Install FlagDNN
 
-## Step 1: Install Build Dependencies
+## Install Build Dependencies
 
 ```shell
 pip install -U scikit-build-core>=0.11 pybind11 ninja cmake
 ```
 
-## Step 2: Clone and Install FlagDNN
+## Clone and Install FlagDNN
 
 ```shell
 git clone https://github.com/flagos-ai/FlagDNN.git
@@ -14,7 +14,7 @@ cd FlagDNN
 pip install .
 ```
 
-## Verification
+## Verify Installation
 
 After installation, verify that FlagDNN is importable:
 
