@@ -5,7 +5,7 @@
 - **Added Features**
 
   - **Graph Execution Engine** — New graph-mode execution path with IR capture, kernel fusion, auto-tuning, and multi-node planning. Supports graph-level operator dispatch and memory optimization.
-  - **Neural Network Operators** — conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgrad, causal_conv1d, max_pool2d, max_pool3d, avg_pool2d, avg_pool3d, adaptive_avg_pool2d, adaptive_avg_pool3d, adaptive_max_pool2d, adaptive_max_pool3d, gelu_approx_tanh, silu, swish, leaky_relu, leaky_relu_, prelu, elu, elu_, rrelu, rrelu_, mish, softplus, softsign, softshrink, softmin, log_softmax, hardswish, relu6, selu, glu, celu, tanh, sigmoid, sigmoid_backward, logsigmoid, hardtanh, hardtanh_, threshold, threshold_.
+  - **Neural Network Operators** — conv1d, conv2d, conv3d, conv_fprop, conv_dgrad, conv_wgrad, causal_conv1d, max_pool2d, max_pool3d, avg_pool1d, avg_pool2d, avg_pool3d, adaptive_avg_pool2d, adaptive_avg_pool3d, adaptive_max_pool2d, adaptive_max_pool3d, gelu_approx_tanh, silu, swish, leaky_relu, leaky_relu_, prelu, elu, elu_, rrelu, rrelu_, mish, softplus, softsign, softshrink, softmin, log_softmax, hardswish, relu6, selu, glu, celu, tanh, sigmoid, sigmoid_backward, logsigmoid, hardtanh, hardtanh_, threshold, threshold_.
   - **Normalization Operators** — batchnorm, batchnorm_inference, layernorm, rmsnorm, group_norm.
   - **Linear Algebra Operators** — mm, mv, dot, matmul.
   - **Math Operators** — exp, log, rsqrt, square, positive, isinf, isnan, max, min, scale, ge, gt, le, lt, maximum, minimum, fmax, fmin, bitwise_and, bitwise_or, bitwise_xor, bitwise_not, logical_and, logical_or, logical_not, unary.
