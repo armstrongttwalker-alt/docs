@@ -1,8 +1,8 @@
 # FlagAudio Overview
 
-FlagAudio is a multi-backend computing library that adheres to Audio standard interfaces. It is part of the [FlagOS](https://flagos.io/) ecosystem and delivers a high-performance computing solution designed for audio signal processing and speech AI applications, offering a complete processing chain from raw audio to model input.
+FlagAudio is part of [FlagOS](https://flagos.io/Home). FlagAudio is a multi-backend computing library that adheres to Audio standard interfaces. It delivers a high-performance computing solution designed for audio signal processing and speech AI applications, offering a complete processing chain from raw audio to model input.
 
-FlagAudio is implemented using the [Triton programming language](https://github.com/openai/triton) launched by OpenAI, enabling portable kernel code across diverse hardware.
+FlagAudio is a high-performance general-purpose operator library implemented using the [Triton programming language](https://github.com/triton-lang/triton) launched by OpenAI.
 
 ## Features
 

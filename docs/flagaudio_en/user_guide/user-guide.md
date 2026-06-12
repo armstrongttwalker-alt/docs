@@ -12,13 +12,13 @@ import flag_audio
 x = torch.randn(1024, device='cuda')
 
 # Apply audio operator
-y = flag_audio.ops.some_operator(x)
+y = flag_audio.ops.add_noise(x)
 ```
 
-## Use Multi-Backend
+## Operator List
 
-FlagAudio's flexible backend mechanism allows it to target different chip vendors. The active backend is determined by the Triton configuration on your system.
+| Category | Operators |
+|---|---|
+| **Audio Effects** | add_noise, dcshift, mu_law_encoding |
+| **Spectral Analysis** | amplitude_to_DB, spectral_centroid |
 
-## Integrate with PyTorch
-
-FlagAudio operators can be called directly on PyTorch CUDA tensors, providing seamless integration with existing PyTorch workflows.
