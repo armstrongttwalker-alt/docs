@@ -25,20 +25,10 @@ Have a quick view of FlagFFT, architecture, and basic concepts.
 :link: getting_started/getting-started
 :link-type: doc
 
-Check requirements and initialize the submodule.
+Check requirements and install FlagFFT step by step.
 
 +++
 [Learn more »](getting_started/getting-started.md)
-:::
-
-:::{grid-item-card} {octicon}`download;1.5em;sd-mr-1` Install
-:link: getting_started/install
-:link-type: doc
-
-Clone, build, and install FlagFFT step by step.
-
-+++
-[Learn more »](getting_started/install.md)
 :::
 
 :::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
@@ -90,6 +80,7 @@ release_notes/release-notes.md
 
 overview/overview.md
 getting_started/getting-started.md
+getting_started/requirements.md
 getting_started/install.md
 user_guide/user-guide.md
 ```

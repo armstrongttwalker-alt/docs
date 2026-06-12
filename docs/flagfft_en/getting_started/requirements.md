@@ -1,10 +1,14 @@
 # Requirements
 
-### Hardware
+## Hardware
 
 - NVIDIA GPU with CUDA support.
 
-### Required Software
+## Dependencies
+
+You can prepare a docker environment with the following dependencies. For more information, see [Quick Start](/getting_started/install.md).
+
+### Required dependencies
 
 | Dependency | Minimum Version | Notes |
 |---|---|---|
@@ -17,7 +21,7 @@
 | libtriton_jit | submodule | Triton JIT compiler (`deps/libtriton_jit`) |
 | PyYAML | — | Test runner (`pip install pyyaml`) |
 
-### Optional Software
+### Optional dependencies
 
 | Dependency | Purpose |
 |---|---|
@@ -25,10 +29,10 @@
 | Ninja | Faster build backend (`cmake -G Ninja`) |
 | pytest | Python codegen tests |
 
-## Initialize Submodule
+## Submodule
 
 ```bash
 git submodule update --init --recursive
 ```
 
-This pulls in `deps/libtriton_jit`, which provides the Triton JIT compiler and `nlohmann_json`.
+This pulls in `deps/libtriton_jit`, which provides the Triton JIT compiler and `nlohmann_json`. For more information, see [Quick Start](/getting_started/install.md).

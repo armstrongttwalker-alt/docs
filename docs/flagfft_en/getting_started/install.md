@@ -1,11 +1,13 @@
-# Quick Start
+# Install FlagFFT
 
-Build the library, install the Python codegen package, and run the full test suite:
+## Quick Start
 
-```{code-block} python
+Clone, build, and verify in one go:
+
+```sh
 # 1. Clone
-git clone https://github.com/Artlesbol/FlagFFT-dev.git
-cd FlagFFT-dev
+git clone https://github.com/flagos-ai/FlagFFT.git
+cd FlagFFT
 
 # 2. Initialize submodule
 git submodule update --init --recursive
@@ -23,19 +25,16 @@ pip install .
 python tools/run_tests.py --combination full --gpus 0
 ```
 
-The runner prints a live progress table and writes summary.json with per-operator accuracy (pass/fail) and performance (geometric mean speedup vs cuFFT) results.
+The runner prints a live progress table and writes `summary.json` with per-operator accuracy (pass/fail) and performance (geometric mean speedup vs cuFFT) results.
 
-## Docker
+## Build Options
 
-A pre-built environment with all dependencies is available:
-
-```{code} python
-docker build -t flagfft-dev -f docker/Dockerfile .
-docker run --gpus all -v $(pwd):/workspace/FlagFFT-dev -it flagfft-dev
-# Inside the container, run steps 3-5 from above.
-```
-
-## Build the Native Library
+| Option | Default | Description |
+|---|---|---|
+| `FLAGFFT_BUILD_CLI` | `OFF` | Build the `flagfft-cli` benchmark/verification tool |
+| `FLAGFFT_BUILD_TESTS` | `OFF` | Build the C++ test suite (requires Google Test + CUDA) |
+| `BACKEND` | `CUDA` | GPU backend selector (only `CUDA` is currently supported) |
+| `CMAKE_BUILD_TYPE` | — | `Release`, `Debug`, `RelWithDebInfo` |
 
 ### Build Library Only
 
@@ -55,31 +54,24 @@ cmake -B build -DCMAKE_BUILD_TYPE=Release \
 cmake --build build -j$(nproc)
 ```
 
-### Build Options
+## Install to System (Optional)
 
-| Option | Default | Description |
-|---|---|---|
-| `FLAGFFT_BUILD_CLI` | `OFF` | Build the `flagfft-cli` benchmark/verification tool |
-| `FLAGFFT_BUILD_TESTS` | `OFF` | Build the C++ test suite (requires Google Test + CUDA) |
-| `BACKEND` | `CUDA` | GPU backend selector (only `CUDA` is currently supported) |
-| `CMAKE_BUILD_TYPE` | — | `Release`, `Debug`, `RelWithDebInfo` |
-
-## Install to System
+After building, install the library and tools system-wide:
 
 ```sh
 cmake --install build --prefix /usr/local
 ```
 
-Installs `libflagfft.so`, the public header (`flagfft.h`), and `flagfft-cli` (if built).
+Installs `libflagfft.so` to `lib/`, the public header `flagfft.h` to `include/`, and `flagfft-cli` to `bin/` (if built with `-DFLAGFFT_BUILD_CLI=ON`).
 
 ## Use Docker
 
-A pre-built environment with all dependencies is available:
+A pre-built environment with all dependencies is available as an alternative to manual setup:
 
 ```sh
 docker build -t flagfft-dev -f docker/Dockerfile .
 docker run --gpus all -v $(pwd):/workspace/FlagFFT -it flagfft-dev
-# Inside the container, run the build and install steps above.
+# Inside the container, run the build and test steps from Quick Start.
 ```
 
 ## Set Environment Variables

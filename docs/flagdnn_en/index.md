@@ -60,5 +60,7 @@ release_notes/release-notes.md
 
 overview/overview.md
 getting_started/getting-started.md
+getting_started/requirements.md
+getting_started/install.md
 user_guide/user-guide.md
 ```
