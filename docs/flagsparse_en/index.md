@@ -25,7 +25,7 @@ Have a quick view of FlagSparse, and also some basic concepts.
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for FlagSparse and provides step-by-step instructions.
+Check requirements and install FlagSparse step by step.
 
 +++
 [Learn more »](getting_started/getting-started.md)
@@ -35,20 +35,20 @@ Outlines the installation requirements for FlagSparse and provides step-by-step 
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through operators, testing, and benchmarking.
+Use sparse operators and understand the operator registry.
 
 +++
 [Learn more »](user_guide/user-guide.md)
 :::
 
-:::{grid-item-card} {octicon}`terminal;1.5em;sd-mr-1` Testing & Benchmark
-:link: testing/run-tests
+:::{grid-item-card} {octicon}`terminal;1.5em;sd-mr-1` Run Tests
+:link: user_guide/run-tests
 :link-type: doc
 
 Run accuracy tests and performance benchmarks.
 
 +++
-[Learn more »](testing/run-tests.md)
+[Learn more »](user_guide/run-tests.md)
 :::
 
 ::::
@@ -70,6 +70,8 @@ release_notes/release-notes.md
 
 overview/overview.md
 getting_started/getting-started.md
+getting_started/requirements.md
+getting_started/install.md
 user_guide/user-guide.md
-testing/run-tests.md
+user_guide/run-tests.md
 ```

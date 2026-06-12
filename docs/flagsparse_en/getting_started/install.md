@@ -1,6 +1,6 @@
-# Installing FlagSparse
+# Install FlagSparse
 
-## Step 1: Clone and Install
+## Clone and Install
 
 ```bash
 git clone https://github.com/flagos-ai/FlagSparse.git
@@ -10,13 +10,13 @@ pip install . --no-deps --no-build-isolation
 
 Use `--no-build-isolation` to avoid downloading build deps when offline.
 
-## Step 2: Install Runtime Dependencies
+## Install Runtime Dependencies
 
 ```bash
 pip install torch triton cupy-cuda12x
 ```
 
-## Verification
+## Verify Installation
 
 ```python
 import flagsparse
