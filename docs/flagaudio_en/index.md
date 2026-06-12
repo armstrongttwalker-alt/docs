@@ -25,7 +25,7 @@ Have a quick view of FlagAudio, and also some basic concepts.
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for FlagAudio and provides step-by-step instructions.
+Check requirements and install FlagAudio step by step.
 
 +++
 [Learn more »](getting_started/getting-started.md)
@@ -35,7 +35,7 @@ Outlines the installation requirements for FlagAudio and provides step-by-step i
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through basic usage and API reference.
+Use audio operators and integrate with PyTorch.
 
 +++
 [Learn more »](user_guide/user-guide.md)
@@ -60,5 +60,7 @@ release_notes/release-notes.md
 
 overview/overview.md
 getting_started/getting-started.md
+getting_started/requirements.md
+getting_started/install.md
 user_guide/user-guide.md
 ```

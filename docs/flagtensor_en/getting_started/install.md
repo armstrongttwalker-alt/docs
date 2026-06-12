@@ -1,13 +1,13 @@
-# Installing FlagTensor
+# Install FlagTensor
 
-## Step 1: Install Dependencies
+## Install Dependencies
 
 ```shell
 pip install -U pip setuptools wheel
 pip install torch triton pytest pyyaml matplotlib openpyxl
 ```
 
-## Step 2: Clone and Install FlagTensor
+## Clone and Install FlagTensor
 
 ```shell
 git clone https://github.com/flagos-ai/FlagTensor.git
@@ -15,7 +15,7 @@ cd FlagTensor
 pip install -e .
 ```
 
-## Verification
+## Verify Installation
 
 ```python
 import torch
