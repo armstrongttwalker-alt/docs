@@ -72,6 +72,13 @@ flagfftGetPlanDescription(plan)   // Human-readable plan summary
 | In-place and out-of-place | Supported |
 | CUDA stream attachment | Supported |
 
+### Planned / Not Yet Supported
+
+| Feature | Status |
+|---|---|
+| Rank-3 transforms (`flagfftPlan3d`) | Returns `FLAGFFT_NOT_SUPPORTED` |
+| Rank-2 more exec algos | RTRT only currently |
+
 ### Run a Basic Complex Transform
 
 ```cpp
@@ -163,7 +170,7 @@ flagfft-cli bench --api r2c --shape 1024,2048,4096,8192 --json
 flagfft-cli bench --api c2c --shape 997 --print-path --json
 ```
 
-### Auto-Tune
+### Auto-Tune (planned)
 
 ```sh
 flagfft-cli tune [OPTIONS]
@@ -186,7 +193,7 @@ FlagFFT has three layers of testing: a unified Python test runner, C++ unit test
 
 ### Use the Unified Test Runner
 
-`tools/run_tests.py` is the primary entry point for running the full test suite.
+`tools/run_tests.py` is the primary entry point for running the full test suite. It orchestrates both accuracy tests (C++ ctest binaries comparing FlagFFT output against cuFFT) and performance benchmarks (flagfft-cli bench).
 
 ```sh
 python tools/run_tests.py [OPTIONS]
@@ -253,6 +260,25 @@ Exit code is `0` if all accuracy tests passed, `1` if any failed.
 
 Built with `-DFLAGFFT_BUILD_TESTS=ON`. Each test binary compares FlagFFT output against cuFFT using normwise relative error metrics (`rel_l2`, `rel_linf`).
 
+#### Test Structure
+
+| Test Pattern | Coverage |
+|---|---|
+| `test_plan` | Plan lifecycle, error codes, unsupported API contracts |
+| `test_2d_correctness` | Rank-2 C2C/Z2Z correctness |
+| `test_exec_c2c_{fwd,inv}_{ct,bs}_{s,b}` | C2C forward/inverse, Cooley-Tukey/Bluestein, single/multi-batch |
+| `test_exec_z2z_{fwd,inv}_{ct,bs}_{s,b}` | Double-precision complex |
+| `test_exec_r2c_{ct,bs}_{s,b}` | Float real → complex |
+| `test_exec_d2z_{ct,bs}_{s,b}` | Double real → complex |
+| `test_exec_c2r_{ct,bs}_{s,b}` | Complex → float real |
+| `test_exec_z2d_{ct,bs}_{s,b}` | Double complex → double real |
+| `test_exec_r2c_c2r_{ct,bs}_{s,b}` | Real roundtrip validation |
+| `test_exec_d2z_z2d_{ct,bs}_{s,b}` | Double real roundtrip |
+
+Suffix key: `s` = single-batch, `b` = multi-batch; `ct` = Cooley-Tukey, `bs` = Bluestein/Rader.
+
+#### Run Individual Tests
+
 ```sh
 # Run a specific test
 ./build/ctest/test_exec_c2c_fwd_ct_s
@@ -286,17 +312,3 @@ The test parameter space is defined in `conf/`:
 
 - `conf/operators.yaml` — 14 operator definitions (1D/2D × C2C/Z2Z/R2C/D2Z/C2R/Z2D, plus roundtrip)
 - `conf/test_matrix.yaml` — Parameter space: 11 smooth sizes (CT), 4 prime/composite sizes (Bluestein), 3 batch sizes, 3 scale factors, 6 combination rules
-
-## Inspect Plans
-
-Use `flagfftGetPlanDescription(plan)` or `--print-path` with the CLI to inspect the plan node tree, factorization, kernel names, and module paths for performance debugging.
-
-## Understand the Kernel Backend
-
-FlagFFT is JIT-only. It requires the `deps/libtriton_jit` submodule and targets CUDA through `BACKEND=CUDA`. Plan creation emits Triton source and calls libtriton_jit compile APIs so the first exec call does not pay Python compilation latency.
-
-Supported execution routes:
-- Leaf plan
-- Fused leaf/leaf four-step
-- Generic nested four-step
-- Bluestein fallback for arbitrary 1D complex lengths
