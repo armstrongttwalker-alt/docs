@@ -79,58 +79,6 @@ flagfftGetPlanDescription(plan)   // Human-readable plan summary
 | Rank-3 transforms (`flagfftPlan3d`) | Returns `FLAGFFT_NOT_SUPPORTED` |
 | Rank-2 more exec algos | RTRT only currently |
 
-### Run a Basic Complex Transform
-
-```cpp
-#include <cuda_runtime_api.h>
-#include <flagfft.h>
-
-int main() {
-  constexpr int n = 256;
-  constexpr int batch = 4;
-  flagfftComplex* d_input = nullptr;
-  flagfftComplex* d_output = nullptr;
-  cudaMalloc(reinterpret_cast<void**>(&d_input), n * batch * sizeof(flagfftComplex));
-  cudaMalloc(reinterpret_cast<void**>(&d_output), n * batch * sizeof(flagfftComplex));
-
-  flagfftHandle plan = nullptr;
-  cudaStream_t stream = nullptr;
-  cudaStreamCreate(&stream);
-
-  flagfftResult status = flagfftPlan1d(&plan, n, FLAGFFT_C2C, batch);
-  if (status == FLAGFFT_SUCCESS) {
-    status = flagfftSetStream(plan, stream);
-  }
-  if (status == FLAGFFT_SUCCESS) {
-    status = flagfftExecC2C(plan, d_input, d_output, FLAGFFT_FORWARD);
-    cudaStreamSynchronize(stream);
-  }
-  if (plan != nullptr) {
-    flagfftDestroy(plan);
-  }
-
-  cudaStreamDestroy(stream);
-  cudaFree(d_output);
-  cudaFree(d_input);
-  return status == FLAGFFT_SUCCESS ? 0 : 1;
-}
-```
-
-### Run an In-Place Real Transform
-
-For in-place rank-1 real forward transforms, allocate `2 * (n / 2 + 1)` real scalars per batch:
-
-```cpp
-int dims[1] = {n};
-int padded[1] = {2 * (n / 2 + 1)};
-int compact[1] = {n / 2 + 1};
-flagfftHandle plan = nullptr;
-flagfftPlanMany(&plan, 1, dims, padded, 1, padded[0], compact, 1,
-                compact[0], FLAGFFT_R2C, batch);
-flagfftExecR2C(plan, d_real_in_place,
-               reinterpret_cast<flagfftComplex*>(d_real_in_place));
-```
-
 ## Use the Native CLI
 
 `flagfft-cli` is a native benchmark and verification tool. Build it with `-DFLAGFFT_BUILD_CLI=ON`.
@@ -195,6 +143,8 @@ FlagFFT has three layers of testing: a unified Python test runner, C++ unit test
 
 `tools/run_tests.py` is the primary entry point for running the full test suite. It orchestrates both accuracy tests (C++ ctest binaries comparing FlagFFT output against cuFFT) and performance benchmarks (flagfft-cli bench).
 
+#### Usage
+
 ```sh
 python tools/run_tests.py [OPTIONS]
 ```
@@ -228,7 +178,7 @@ python tools/run_tests.py [OPTIONS]
 | `2d` | Quick 2D — selected 2D sizes, batch {1,4}, scale 1.0 |
 | `2d_full` | Full 2D — selected 2D sizes × all batches × all scales |
 
-Examples:
+#### Examples
 
 ```sh
 # Quick smoke test (default)
