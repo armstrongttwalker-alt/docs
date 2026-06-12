@@ -30,8 +30,3 @@ Initial release of FlagTensor.
   - Binary operations for element-wise tensor arithmetic.
   - Contraction operations for multi-dimensional reductions.
   - Correctness and performance comparison against cuTensor baselines.
-
-- **Improved Features**
-
-  - Tensor primitives underwent performance tuning.
-  - Triton kernel call optimization for reduced launch overhead.
