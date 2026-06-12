@@ -16,7 +16,7 @@ b = torch.randn(1024, 1024, device='cuda')
 c = flag_blas.ops.sgemm(a, b)
 ```
 
-## Operator List
+## Operator list
 
 The complete operator registry is maintained at [FlagBLAS conf/operators.yaml](https://github.com/flagos-ai/FlagBLAS/blob/master/conf/operators.yaml).
 
@@ -31,11 +31,3 @@ sgemv, dgemv, cgemv, zgemv, hgemv, bfgemv, fp8_gemv, sgbmv, dgbmv, cgbmv, zgbmv,
 ### Level 1 — Vector Operations
 
 sabs, dabs, cabs, zabs, samax, damax, camax, zamax, samin, damin, camin, zamin, sasum, dasum, scasum, dzasum, saxpy, daxpy, caxpy, zaxpy, scopy, dcopy, ccopy, zcopy, snrm2, dnrm2, scnrm2, dznrm2, srot, drot, crot, zrot, sscal, dscal, cscal, zscal, csscal, zdscal
-
-## Multi-Backend Support
-
-FlagBLAS's flexible backend mechanism allows it to target different chip vendors. The active backend is determined by the Triton configuration on your system.
-
-## Integration with PyTorch
-
-FlagBLAS operators can be called directly on PyTorch CUDA tensors, providing seamless integration with existing PyTorch workflows.
