@@ -1,8 +1,8 @@
 # FlagDNN Overview
 
-FlagDNN is a high-performance deep neural network computing library oriented towards multiple chip backends. It is part of the [FlagOS](https://flagos.io/) ecosystem and provides efficient implementations of common deep learning operators for fields such as deep learning, computer vision, natural language processing, and artificial intelligence.
+FlagDNN is part of [FlagOS](https://flagos.io/). FlagDNN is a deep neural network computing library oriented towards multiple chip backends. It provides high-performance implementations of common deep learning operators, supporting efficient computation in fields such as deep learning, computer vision, natural language processing, and artificial intelligence.
 
-FlagDNN is implemented using the [Triton programming language](https://github.com/openai/triton) launched by OpenAI, enabling chip-agnostic kernel code that can target diverse hardware backends without modification.
+FlagDNN is a high-performance deep learning operator library implemented using the [Triton programming language](https://github.com/openai/triton) launched by OpenAI.
 
 ## Features
 
