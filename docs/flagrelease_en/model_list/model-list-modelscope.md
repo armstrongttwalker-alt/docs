@@ -80,6 +80,8 @@
 | MiniMax-M2.7-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M2.7-metax-FlagOS> |
 | MiniMax-M2.7-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M2.7-nvidia-FlagOS> |
 | MiniMax-M2.7-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M2.7-zhenwu-FlagOS> |
+| MiniMax-M3-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-mthreads-FlagOS> |
+| MiniMax-M3-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-nvidia-FlagOS> |
 | phi-4-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-FlagOS> |
 | phi-4-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-hygon-FlagOS> |
 | phi-4-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-metax-FlagOS> |
@@ -116,6 +118,8 @@
 | Qwen3.5-397B-A17B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.5-397B-A17B-metax-FlagOS> |
 | Qwen3.5-397B-A17B-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.5-397B-A17B-nvidia-FlagOS> |
 | Qwen3.5-397B-A17B-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.5-397B-A17B-zhenwu-FlagOS> |
+| Qwen3.6-27B-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.6-27B-hygon-FlagOS> |
+| Qwen3.6-27B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.6-27B-metax-FlagOS> |
 | Qwen3.6-35B-A3B-nomtp-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.6-35B-A3B-nomtp-ascend-FlagOS> |
 | Qwen3.6-35B-A3B-nomtp-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.6-35B-A3B-nomtp-hygon-FlagOS> |
 | Qwen3.6-35B-A3B-nomtp-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3.6-35B-A3B-nomtp-iluvatar-FlagOS> |
