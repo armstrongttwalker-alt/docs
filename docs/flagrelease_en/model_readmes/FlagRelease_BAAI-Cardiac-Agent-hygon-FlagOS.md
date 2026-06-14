@@ -1,102 +1,73 @@
 ---
-license: apache-2.0
+base_model:
+- ""
 language:
 - zh
 - en
+license: apache-2.0
 ---
 
 # Introduction
-
-**Qwen3.6-35B-A3B** is a fully open-source sparse MoE model (35B total parameters / 3B active parameters) that excels at agentic coding, significantly outperforming its predecessor Qwen3.5-35B-A3B and holding its own against dense models such as Qwen3.5-27B and Gemma4-31B. Key features include:
-
-- Outstanding agentic coding capabilities, comparable to much larger models
-- Strong multimodal perception and reasoning abilities
+BAAI-Cardiac-Agent is an intelligent cardiac MRI analysis system developed by the Beijing Academy of Artificial Intelligence (BAAI). It adopts an Agent-Expert architecture: a multimodal Agent built on a fine-tuned LLaVA model serves as the core for task understanding and scheduling, while multiple specialized deep learning models act as Expert Workers to carry out specific analyses. The system supports DICOM/NIfTI image input and automates the full pipeline including cardiac sequence identification, structural segmentation, disease screening (three categories), cardiomyopathy subtype classification (five subtypes), cardiac quantitative metric calculation, and PDF report generation.
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Metax** container image supporting deployment within minutes
+- Released **FlagOS-Hygon** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 # Evaluation Results
+
 ## Benchmark Result
-|Metrics|Qwen3.6-35B-A3B-nomtp-Nvidia-Origin|Qwen3.6-35B-A3B-nomtp-Metax-FlagOS|
-|-------|---------------|---------------|
-|GPQA_Diamond |0.8283 |0.8081|
-|ERQA  | 0.5875  | 0.555|
+Overall Functions: Passed  
+
+Sub-functions: All consistency metrics passed  
+
+Diagnosis: The two are consistent  
+
+
+| Metrics      | BAAI-Cardiac-Agent-Nvidia-Origin | BAAI-Cardiac-Agent-Hygon-FlagOS |
+|--------------|--------------------------------------|--------------------------------------|
+| LVEF | 31.7 | 31.7 |
+| LVEDV |155.5  | 155.5 |
+| LVESV | 106.1 | 106.1 |
+| SV | 49.4  | 49.4 |
+|  LVM  | 157.2   | 157.2   |
+| LVEDD  | 49.2  |  49.2 | 
+
+ 
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 27.5.1, build 27.5.1-0ubuntu3~22.04.2 |
-| Operating System |  Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 28.2.2, build 28.2.2-0ubuntu1~22.04.1 |
+| Operating System | Ubuntu 22.04.4 LTS (Jammy Jellyfish) |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608
+docker pull harbor.baai.ac.cn/flagrelease-public/cardiac-agent-hygon:2026052515
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3.6-35B-A3B-nomtp-metax-FlagOS --local_dir /data/Qwen3.6-35B-A3B-nomtp
+modelscope download --model FlagRelease/BAAI-Cardiac-Agent-hygon-FlagOS --local_dir /data/BAAI-Cardiac-Agent
 ```
 
 ### Start the Container
 ```bash
-#Container Startup
-docker run -itd
-    --name flagos
-    --privileged
-    --network=host
-    --security-opt seccomp=unconfined
-    --security-opt apparmor=unconfined
-    --shm-size '100gb'
-    --ulimit memlock=-1
-    --group-add video
-    --device=/dev/dri
-    --device=/dev/mxcd
-    --p 8000:8000
-    --env CUDA_VISIBLE_DEVICES=0,1
-    --device=/dev/mem
-    --device=/dev/infiniband
-    -v /usr/local/:/usr/local/
-    -v /data/:/data/
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608 bin/bash
-
+docker run -itd --name flagos --network host --ipc host --privileged --shm-size=32g -v /data:/data harbor.baai.ac.cn/flagrelease-public/cardiac-agent-hygon:2026052515 /bin/bash
 docker exec -it flagos /bin/bash
-  
-```
-### Start the Server
-```bash
-export USE_FLAGGEMS=1
-export VLLM_PLUGINS=fl
-export VLLM_FL_PLATFORM=maca
-export CUDA_VISIBLE_DEVICES=0,1
-export VLLM_FL_PREFER=flagos
-export VLLM_FL_SKIP_ATEN_OVERRIDE=1
-export VLLM_FL_NO_MCOP_MOESUM=1
-export VLLM_FL_MCOP_MOEALIGN=1
-export VLLM_FL_MOE_TUNED_CFG=1
-export MACA_PATH=/opt/maca
-export LD_LIBRARY_PATH=/opt/maca/lib:/opt/maca/mxgpu_llvm/lib:/opt/maca/ompi/lib
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-vllm serve /data/Qwen3.6-35B-A3B-nomtp --served-model-name qwen36 --host 0.0.0.0 --port 8000 --trust-remote-code --max-model-len 73728 --gpu-memory-utilization 0.90 --tensor-parallel-size 2 --no-enable-prefix-caching --compilation-config '{"cudagraph_mode":"FULL"}' --max-num-batched-tokens 16384 --block-size 32 
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:8000/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "qwen36",
-    "messages": [{"role": "user", "content": "你好"}]
-  }'
+cd /workspace/Cardiac-Agent && bash app/start_hygon.sh full
 ```
 
 
@@ -137,6 +108,7 @@ FlagCX is a scalable and adaptive cross-chip communication library. It serves as
  FlagEval is a comprehensive evaluation system and open platform for large models launched in 2023. It aims to establish scientific, fair, and open benchmarks, methodologies, and tools to help researchers assess model and training algorithm performance. It features:
  - **Multi-dimensional Evaluation**: Supports 800+ modelevaluations across NLP, CV, Audio, and Multimodal fields,covering 20+ downstream tasks including language understanding and image-text generation.
  - **Industry-Grade Use Cases**: Has completed horizonta1 evaluations of mainstream large models, providing authoritative benchmarks for chip-model performance validation.
+
 # Contributing
 
 We warmly welcome global developers to join us:
@@ -146,4 +118,5 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from Qwen/Qwen3.6-35B-A3B-nomtp and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+The model weights are derived from TaipingQu/BAAI-Cardiac-Agent and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+
