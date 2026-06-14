@@ -42,13 +42,13 @@ Guides you how to use FlagGems-vLLM operators in your vLLM inference workflows.
 :::
 
 :::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` Testing & Benchmark
-:link: testing/testing
+:link: user_guide/run-tests-and-benchmark
 :link-type: doc
 
 Run tests and benchmarks to validate and measure operator performance.
 
 +++
-[Learn more »](testing/testing.md)
+[Learn more »](user_guide/run-tests-and-benchmark.md)
 :::
 
 ::::
@@ -71,7 +71,7 @@ release_notes/release-notes.md
 overview/overview.md
 getting_started/getting-started.md
 user_guide/user-guide.md
-testing/testing.md
+user_guide/run-tests-and-benchmark.md
 ```
 
 ```{toctree}

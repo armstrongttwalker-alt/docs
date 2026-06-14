@@ -15,3 +15,15 @@ For a fresh installation of FlagGems-vLLM, follow the steps below.
    cd FlagGems-vllm
    pip install .
    ```
+
+   For development, use editable installation:
+
+   ```{code-block} bash
+   pip install --no-build-isolation -e .
+   ```
+
+   To run tests, install the test dependencies as well:
+
+   ```{code-block} bash
+   pip install -e '.[test]'
+   ```
