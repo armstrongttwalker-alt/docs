@@ -58,11 +58,3 @@ pytest benchmark/test_unary_perf.py -m abs \
 # Parse benchmark summary
 python tools/summary_for_plot.py result-*.log
 ```
-
-## Use Multi-Backend
-
-FlagTensor's flexible backend mechanism allows it to target different chip vendors. The active backend is determined by the Triton configuration on your system.
-
-## Validate Against cuTensor
-
-FlagTensor supports correctness and performance comparisons against cuTensor baselines. Use the provided test utilities to validate numerical accuracy and benchmark performance.

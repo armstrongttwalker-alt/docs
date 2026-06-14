@@ -35,40 +35,20 @@ Check requirements and install FlagTensor step by step.
 :link: user_guide/user-guide
 :link-type: doc
 
-Use tensor primitives and validate against cuTensor.
+Use tensor primitives and run tests.
 
 +++
 [Learn more »](user_guide/user-guide.md)
 :::
 
-:::{grid-item-card} {octicon}`checklist;1.5em;sd-mr-1` Acceptance
-:link: reference/acceptance_checklist
+:::{grid-item-card} {octicon}`bookmark;1.5em;sd-mr-1` Reference
+:link: reference/reference
 :link-type: doc
 
-Acceptance checklist, policies, CI matrix, and standard commands.
+Acceptance policies, CI matrix, operator coverage, and standard commands.
 
 +++
-[Learn more »](reference/acceptance_checklist.md)
-:::
-
-:::{grid-item-card} {octicon}`graph;1.5em;sd-mr-1` Operator Coverage
-:link: reference/operator_coverage
-:link-type: doc
-
-Per-operator implementation, correctness, and benchmark coverage matrix.
-
-+++
-[Learn more »](reference/operator_coverage.md)
-:::
-
-:::{grid-item-card} {octicon}`bug;1.5em;sd-mr-1` Known Issues
-:link: reference/known_issues
-:link-type: doc
-
-Known issues, limitations, and future work.
-
-+++
-[Learn more »](reference/known_issues.md)
+[Learn more »](reference/reference.md)
 :::
 
 ::::
@@ -100,12 +80,5 @@ user_guide/user-guide.md
 :maxdepth: 5
 :hidden:
 
-reference/api-reference.md
-reference/acceptance_checklist.md
-reference/accuracy_policy.md
-reference/benchmark_policy.md
-reference/ci_matrix.md
-reference/known_issues.md
-reference/operator_coverage.md
-reference/standard_commands.md
+reference/reference.md
 ```
