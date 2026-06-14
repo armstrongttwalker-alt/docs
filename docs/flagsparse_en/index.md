@@ -31,16 +31,6 @@ Check requirements and install FlagSparse step by step.
 [Learn more »](getting_started/getting-started.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
-:link: user_guide/user-guide
-:link-type: doc
-
-Use sparse operators and understand the operator registry.
-
-+++
-[Learn more »](user_guide/user-guide.md)
-:::
-
 :::{grid-item-card} {octicon}`terminal;1.5em;sd-mr-1` Run Tests
 :link: user_guide/run-tests
 :link-type: doc
@@ -49,6 +39,16 @@ Run accuracy tests and performance benchmarks.
 
 +++
 [Learn more »](user_guide/run-tests.md)
+:::
+
+:::{grid-item-card} {octicon}`bookmark;1.5em;sd-mr-1` Operator Registry
+:link: reference/operator-registry
+:link-type: doc
+
+Complete operator registry with descriptions and metadata.
+
++++
+[Learn more »](reference/operator-registry.md)
 :::
 
 ::::
@@ -72,6 +72,13 @@ overview/overview.md
 getting_started/getting-started.md
 getting_started/requirements.md
 getting_started/install.md
-user_guide/user-guide.md
 user_guide/run-tests.md
+```
+
+```{toctree}
+:caption: 📖 Reference
+:maxdepth: 5
+:hidden:
+
+reference/operator-registry.md
 ```
