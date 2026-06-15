@@ -7,8 +7,8 @@ Create a distributed quantum device and apply gates using the functional API:
 import flagquantum as fq
 import torch
 
-# Create a distributed quantum device
-device = fq.DistributedQuantumDevice(n_wires=4, bsz=2, world_sz=1)
+# Create a distributed quantum device (default: device='cuda' if GPU available)
+qdev= fq.DistributedQuantumDevice(n_wires=4, bsz=2, world_sz=1, device='cpu')
 
 # Apply gates (functional style)
 fq.h(device, wires=[0])

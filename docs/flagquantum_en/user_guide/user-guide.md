@@ -32,6 +32,15 @@ Encoding schemes for embedding classical data into quantum states.
 +++\n[Learn more »](quantum-encoding.md)
 :::
 
+:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` Export to Real Quantum Hardware
+:link: export-to-real-quantum-hardware
+:link-type: doc
+
+Encoding schemes for embedding classical data into quantum states.
+
++++\n[Learn more »](export-to-real-quantum-hardware.md)
+:::
+
 :::{grid-item-card} {octicon}`pencil;1.5em;sd-mr-1` Custom Gates
 :link: custom-gates
 :link-type: doc

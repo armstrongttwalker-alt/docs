@@ -22,9 +22,8 @@ The `devices` module provides quantum device implementations, including the `Dis
 
 The drawer module enables circuit visualization with two modes:
 
-- **Text Mode**:  Unicode-based diagrams supporting multi-qubit gate symbols (╭╰├│), auto line-wrapping (max_length), and configurable parameter precision.
-
-- **MPL Mode**: Publication-quality Matplotlib figures with layer-based layout (same-column gates share x-coordinate), initial states (|0⟩), measurement symbols, and a professional color scheme:
+- Text Mode:  Unicode-based diagrams supporting multi-qubit gate symbols (╭╰├│), auto line-wrapping (max_length), and configurable parameter precision.
+- MPL Mode: Publication-quality Matplotlib figures with layer-based layout (same-column gates share x-coordinate), initial states (|0⟩), measurement symbols, and a professional color scheme:
   - Fixed gates (H, X, Y, Z): soft blue #7B9EC2
   - Rotation gates (RX, RY, RZ): red #E15759
   - Phase gates (P): plum purple #DDA0DD
