@@ -2,6 +2,10 @@
 
 ## v0.2.0
 
+```{note}
+This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
+```
+
 - **Added Features**
 
   - **Unary Operators** — abs, acos, acosh, asin, asinh, atan, atanh, ceil, conj, cos, cosh, exp, floor, identity, log, mish, neg, rcp, relu, sigmoid, sin, sinh, soft_plus, soft_sign, sqrt, swish, tan, tanh (28 operators).
