@@ -1,0 +1,73 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [expanded] [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e3345]
+        - menu [ref=e3348]:
+          - menuitem "容器镜像" [ref=e3349] [cursor=pointer]:
+            - generic [ref=e3350]: 容器镜像
+          - menuitem "Python包" [ref=e3351] [cursor=pointer]:
+            - generic [ref=e3352]: Python包
+      - menuitem "测试用例" [active] [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "测试用例"
+        - main [ref=e77]:
+          - generic [ref=e4093]:
+            - table [ref=e4095]:
+              - rowgroup [ref=e4101]:
+                - row "用例ID 用例名称 所属子仓库 更新时间" [ref=e4102]:
+                  - columnheader "用例ID" [ref=e4103]:
+                    - generic [ref=e4104]: 用例ID
+                  - columnheader "用例名称" [ref=e4105]:
+                    - generic [ref=e4106]: 用例名称
+                  - columnheader "所属子仓库" [ref=e4107]:
+                    - generic [ref=e4108]: 所属子仓库
+                  - columnheader "更新时间" [ref=e4109]:
+                    - generic [ref=e4110]: 更新时间
+            - table [ref=e4115]:
+              - rowgroup [ref=e4121]:
+                - row "tests/flagscale/inference/qwen3/demo_0_6b/demo_0_6b.yaml flagscale-inference-qwen3-demo_0_6b flagscale 2026-03-19 19:39:21" [ref=e4122]:
+                  - cell "tests/flagscale/inference/qwen3/demo_0_6b/demo_0_6b.yaml" [ref=e4123]:
+                    - generic [ref=e4124]: tests/flagscale/inference/qwen3/demo_0_6b/demo_0_6b.yaml
+                  - cell "flagscale-inference-qwen3-demo_0_6b" [ref=e4125]:
+                    - generic [ref=e4126]: flagscale-inference-qwen3-demo_0_6b
+                  - cell "flagscale" [ref=e4127]:
+                    - generic [ref=e4128]: flagscale
+                  - cell "2026-03-19 19:39:21" [ref=e4129]:
+                    - generic [ref=e4130]: 2026-03-19 19:39:21
+  - img

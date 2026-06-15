@@ -1,0 +1,142 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - link "vllm-plugin-FL" [ref=e1536] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e1537]:
+            - heading "flagos-ai/vllm-plugin-FL" [level=3] [ref=e1538]
+            - paragraph [ref=e1539]: A vLLM plugin built on the FlagOS unified multi-chip backend.
+            - generic [ref=e1540]:
+              - generic [ref=e1541]:
+                - img "icon1" [ref=e1542]
+                - generic [ref=e1549]: "55"
+              - generic [ref=e1550]:
+                - img "icon2" [ref=e1551]
+                - generic [ref=e1558]: "65"
+              - generic [ref=e1559]:
+                - img "icon3" [ref=e1560]
+                - generic [ref=e1569]: "24"
+              - generic [ref=e1570]:
+                - img "rili" [ref=e1571]
+                - generic [ref=e1579]: 最近更新：2026-06-08 10:37:03
+            - button "在 GitHub 上查看" [ref=e1580] [cursor=pointer]:
+              - generic [ref=e1581]: 在 GitHub 上查看
+          - generic [ref=e1582]:
+            - tablist [ref=e1586]:
+              - tab "工作流运行实例" [ref=e1587]
+              - tab "仓库质量" [active] [selected] [ref=e1588] [cursor=pointer]
+              - tab "流水线效率" [ref=e1589]
+              - tab "Benchmark对比" [ref=e1590]
+              - tab "制品" [ref=e1591]
+              - tab "设置" [ref=e1592]
+            - tabpanel "仓库质量" [ref=e2036]:
+              - generic [ref=e2037]:
+                - list [ref=e2038]:
+                  - listitem [ref=e2039]:
+                    - generic [ref=e2040]:
+                      - paragraph [ref=e2041]: 安全漏洞扫描
+                      - generic [ref=e2042]: 扫描时间：2026-04-07 11:01:16
+                    - generic [ref=e2043]:
+                      - generic [ref=e2044]:
+                        - text: 高危漏洞
+                        - strong [ref=e2046]: "0"
+                      - generic [ref=e2047]:
+                        - text: 中危漏洞
+                        - strong [ref=e2049]: "14"
+                      - generic [ref=e2050]:
+                        - text: 低危漏洞
+                        - strong [ref=e2052]: "94"
+                  - listitem [ref=e2053]:
+                    - paragraph [ref=e2055]: 代码覆盖率
+                    - generic [ref=e2056]:
+                      - generic [ref=e2057]:
+                        - generic [ref=e2058]: 24.29%
+                        - generic [ref=e2059]: MetaX MXC550
+                      - generic [ref=e2060]:
+                        - generic [ref=e2061]: 23.26%
+                        - generic [ref=e2062]: Mthreads MTT-S5000
+                      - generic [ref=e2063]:
+                        - generic [ref=e2064]: 23.19%
+                        - generic [ref=e2065]: NVIDIA A100-SXM4
+                - generic [ref=e2066]:
+                  - generic [ref=e2067]:
+                    - paragraph [ref=e2068]: 工作流通过率
+                    - generic [ref=e2070] [cursor=pointer]:
+                      - generic:
+                        - combobox [ref=e2072]
+                        - generic [ref=e2073]: 最近一周
+                      - img [ref=e2076]
+                  - generic [ref=e2079]:
+                    - generic [ref=e2080]:
+                      - paragraph [ref=e2081]: 通过率
+                      - generic [ref=e2082]: 84.46%
+                    - generic [ref=e2083]:
+                      - paragraph [ref=e2084]: 通过次数
+                      - generic [ref=e2085]: "127"
+                    - generic [ref=e2086]:
+                      - paragraph [ref=e2087]: 失败次数
+                      - generic [ref=e2088]: "21"
+                    - list [ref=e2089]:
+                      - listitem [ref=e2090]:
+                        - paragraph [ref=e2091]:
+                          - img [ref=e2092]
+                          - text: 启动失败
+                        - generic [ref=e2094]: "0"
+                      - listitem [ref=e2095]:
+                        - paragraph [ref=e2096]:
+                          - img [ref=e2097]
+                          - text: 执行失败
+                        - generic [ref=e2099]: "4"
+                      - listitem [ref=e2100]:
+                        - paragraph [ref=e2101]:
+                          - img [ref=e2102]
+                          - text: 超时
+                        - generic [ref=e2104]: "0"
+                      - listitem [ref=e2105]:
+                        - paragraph [ref=e2106]:
+                          - img [ref=e2107]
+                          - text: 其他
+                        - generic [ref=e2109]: "17"
+  - img

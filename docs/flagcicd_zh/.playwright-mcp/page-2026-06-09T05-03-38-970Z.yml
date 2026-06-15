@@ -1,0 +1,365 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - link "vllm-plugin-FL" [ref=e1536] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e1537]:
+            - heading "flagos-ai/vllm-plugin-FL" [level=3] [ref=e1538]
+            - paragraph [ref=e1539]: A vLLM plugin built on the FlagOS unified multi-chip backend.
+            - generic [ref=e1540]:
+              - generic [ref=e1541]:
+                - img "icon1" [ref=e1542]
+                - generic [ref=e1549]: "55"
+              - generic [ref=e1550]:
+                - img "icon2" [ref=e1551]
+                - generic [ref=e1558]: "65"
+              - generic [ref=e1559]:
+                - img "icon3" [ref=e1560]
+                - generic [ref=e1569]: "24"
+              - generic [ref=e1570]:
+                - img "rili" [ref=e1571]
+                - generic [ref=e1579]: 最近更新：2026-06-08 10:37:03
+            - button "在 GitHub 上查看" [ref=e1580] [cursor=pointer]:
+              - generic [ref=e1581]: 在 GitHub 上查看
+          - generic [ref=e1582]:
+            - tablist [ref=e1586]:
+              - tab "工作流运行实例" [selected] [ref=e1587]
+              - tab "仓库质量" [ref=e1588]
+              - tab "流水线效率" [ref=e1589]
+              - tab "Benchmark对比" [ref=e1590]
+              - tab "制品" [ref=e1591]
+              - tab "设置" [ref=e1592]
+            - tabpanel "工作流运行实例" [ref=e1594]:
+              - generic [ref=e1595]:
+                - generic [ref=e1598]:
+                  - generic [ref=e1600]:
+                    - generic [ref=e1601]: 状态
+                    - generic [ref=e1604]:
+                      - generic [ref=e1605]:
+                        - combobox "状态" [ref=e1607]
+                        - generic [ref=e1608]: 请选择状态
+                      - img [ref=e1611] [cursor=pointer]
+                  - generic [ref=e1614]:
+                    - generic [ref=e1615]: 分支
+                    - generic [ref=e1618]:
+                      - generic [ref=e1619]:
+                        - combobox "分支" [ref=e1621]
+                        - generic [ref=e1622]: 请选择分支
+                      - img [ref=e1625] [cursor=pointer]
+                  - generic [ref=e1628]:
+                    - generic [ref=e1629]: Commit
+                    - textbox "Commit" [ref=e1633]:
+                      - /placeholder: 请输入Commit
+                  - generic [ref=e1635]:
+                    - generic [ref=e1636]: Event
+                    - generic [ref=e1639]:
+                      - generic [ref=e1640]:
+                        - combobox "Event" [ref=e1642]
+                        - generic [ref=e1643]: 请选择Event
+                      - img [ref=e1646] [cursor=pointer]
+                  - generic [ref=e1649]:
+                    - generic [ref=e1650]: 工作流
+                    - generic [ref=e1653]:
+                      - generic [ref=e1654]:
+                        - combobox "工作流" [ref=e1656]
+                        - generic [ref=e1657]: 请选择工作流
+                      - img [ref=e1660] [cursor=pointer]
+                - paragraph [ref=e1662]: 1951 workflow runs
+                - generic [ref=e1663]:
+                  - generic [ref=e1665]:
+                    - table [ref=e1667]:
+                      - rowgroup [ref=e1675]:
+                        - row "名称 分支 持续时间 创建时间 操作" [ref=e1676]:
+                          - columnheader [ref=e1677]
+                          - columnheader "名称" [ref=e1678]:
+                            - generic [ref=e1679]: 名称
+                          - columnheader "分支" [ref=e1680]:
+                            - generic [ref=e1681]: 分支
+                          - columnheader "持续时间" [ref=e1682]:
+                            - generic [ref=e1683]: 持续时间
+                          - columnheader "创建时间" [ref=e1684]:
+                            - generic [ref=e1685]: 创建时间
+                          - columnheader "操作" [ref=e1686]:
+                            - generic [ref=e1687]: 操作
+                    - table [ref=e1692]:
+                      - rowgroup [ref=e1700]:
+                        - 'row "duigou Feishu Notification (post-CI) Feishu Notification (post-CI) #278: Scheduled main 10s 2026-06-09 13:01:16 Report Detail" [ref=e1701]':
+                          - cell "duigou" [ref=e1702]:
+                            - img "duigou" [ref=e1705]
+                          - 'cell "Feishu Notification (post-CI) Feishu Notification (post-CI) #278: Scheduled" [ref=e1712]':
+                            - generic [ref=e1714]:
+                              - paragraph [ref=e1715]: Feishu Notification (post-CI)
+                              - generic [ref=e1716]:
+                                - generic [ref=e1717]: "Feishu Notification (post-CI) #278:"
+                                - paragraph [ref=e1718]: Scheduled
+                          - cell "main" [ref=e1719]:
+                            - generic [ref=e1720]: main
+                          - cell "10s" [ref=e1721]:
+                            - generic [ref=e1722]: 10s
+                          - cell "2026-06-09 13:01:16" [ref=e1723]:
+                            - generic [ref=e1724]: 2026-06-09 13:01:16
+                          - cell "Report Detail" [ref=e1725]:
+                            - generic [ref=e1726]:
+                              - button "Report" [ref=e1727] [cursor=pointer]:
+                                - generic [ref=e1728]: Report
+                              - button "Detail" [ref=e1729] [cursor=pointer]:
+                                - generic [ref=e1730]: Detail
+                        - 'row "duigou Feishu Notification (post-CI) Feishu Notification (post-CI) #277: Scheduled main 10s 2026-06-09 11:49:58 Report Detail" [ref=e1731]':
+                          - cell "duigou" [ref=e1732]:
+                            - img "duigou" [ref=e1735]
+                          - 'cell "Feishu Notification (post-CI) Feishu Notification (post-CI) #277: Scheduled" [ref=e1742]':
+                            - generic [ref=e1744]:
+                              - paragraph [ref=e1745]: Feishu Notification (post-CI)
+                              - generic [ref=e1746]:
+                                - generic [ref=e1747]: "Feishu Notification (post-CI) #277:"
+                                - paragraph [ref=e1748]: Scheduled
+                          - cell "main" [ref=e1749]:
+                            - generic [ref=e1750]: main
+                          - cell "10s" [ref=e1751]:
+                            - generic [ref=e1752]: 10s
+                          - cell "2026-06-09 11:49:58" [ref=e1753]:
+                            - generic [ref=e1754]: 2026-06-09 11:49:58
+                          - cell "Report Detail" [ref=e1755]:
+                            - generic [ref=e1756]:
+                              - button "Report" [ref=e1757] [cursor=pointer]:
+                                - generic [ref=e1758]: Report
+                              - button "Detail" [ref=e1759] [cursor=pointer]:
+                                - generic [ref=e1760]: Detail
+                        - 'row "duigou Feishu Notification (post-CI) Feishu Notification (post-CI) #276: Scheduled main 9s 2026-06-09 11:37:19 Report Detail" [ref=e1761]':
+                          - cell "duigou" [ref=e1762]:
+                            - img "duigou" [ref=e1765]
+                          - 'cell "Feishu Notification (post-CI) Feishu Notification (post-CI) #276: Scheduled" [ref=e1772]':
+                            - generic [ref=e1774]:
+                              - paragraph [ref=e1775]: Feishu Notification (post-CI)
+                              - generic [ref=e1776]:
+                                - generic [ref=e1777]: "Feishu Notification (post-CI) #276:"
+                                - paragraph [ref=e1778]: Scheduled
+                          - cell "main" [ref=e1779]:
+                            - generic [ref=e1780]: main
+                          - cell "9s" [ref=e1781]:
+                            - generic [ref=e1782]: 9s
+                          - cell "2026-06-09 11:37:19" [ref=e1783]:
+                            - generic [ref=e1784]: 2026-06-09 11:37:19
+                          - cell "Report Detail" [ref=e1785]:
+                            - generic [ref=e1786]:
+                              - button "Report" [ref=e1787] [cursor=pointer]:
+                                - generic [ref=e1788]: Report
+                              - button "Detail" [ref=e1789] [cursor=pointer]:
+                                - generic [ref=e1790]: Detail
+                        - 'row "duigou Feishu Notification (post-CI) Feishu Notification (post-CI) #275: Scheduled main 11s 2026-06-09 11:09:16 Report Detail" [ref=e1791]':
+                          - cell "duigou" [ref=e1792]:
+                            - img "duigou" [ref=e1795]
+                          - 'cell "Feishu Notification (post-CI) Feishu Notification (post-CI) #275: Scheduled" [ref=e1802]':
+                            - generic [ref=e1804]:
+                              - paragraph [ref=e1805]: Feishu Notification (post-CI)
+                              - generic [ref=e1806]:
+                                - generic [ref=e1807]: "Feishu Notification (post-CI) #275:"
+                                - paragraph [ref=e1808]: Scheduled
+                          - cell "main" [ref=e1809]:
+                            - generic [ref=e1810]: main
+                          - cell "11s" [ref=e1811]:
+                            - generic [ref=e1812]: 11s
+                          - cell "2026-06-09 11:09:16" [ref=e1813]:
+                            - generic [ref=e1814]: 2026-06-09 11:09:16
+                          - cell "Report Detail" [ref=e1815]:
+                            - generic [ref=e1816]:
+                              - button "Report" [ref=e1817] [cursor=pointer]:
+                                - generic [ref=e1818]: Report
+                              - button "Detail" [ref=e1819] [cursor=pointer]:
+                                - generic [ref=e1820]: Detail
+                        - 'row "cha CI CI #508: Scheduled main 7h 38m 29s 2026-06-09 04:11:27 Report Detail" [ref=e1821]':
+                          - cell "cha" [ref=e1822]:
+                            - img "cha" [ref=e1825]
+                          - 'cell "CI CI #508: Scheduled" [ref=e1832]':
+                            - generic [ref=e1834]:
+                              - paragraph [ref=e1835]: CI
+                              - generic [ref=e1836]:
+                                - generic [ref=e1837]: "CI #508:"
+                                - paragraph [ref=e1838]: Scheduled
+                          - cell "main" [ref=e1839]:
+                            - generic [ref=e1840]: main
+                          - cell "7h 38m 29s" [ref=e1841]:
+                            - generic [ref=e1842]: 7h 38m 29s
+                          - cell "2026-06-09 04:11:27" [ref=e1843]:
+                            - generic [ref=e1844]: 2026-06-09 04:11:27
+                          - cell "Report Detail" [ref=e1845]:
+                            - generic [ref=e1846]:
+                              - button "Report" [ref=e1847] [cursor=pointer]:
+                                - generic [ref=e1848]: Report
+                              - button "Detail" [ref=e1849] [cursor=pointer]:
+                                - generic [ref=e1850]: Detail
+                        - 'row "duigou Feishu Notification (post-CI) Feishu Notification (post-CI) #274: Scheduled main 11s 2026-06-09 03:21:19 Report Detail" [ref=e1851]':
+                          - cell "duigou" [ref=e1852]:
+                            - img "duigou" [ref=e1855]
+                          - 'cell "Feishu Notification (post-CI) Feishu Notification (post-CI) #274: Scheduled" [ref=e1862]':
+                            - generic [ref=e1864]:
+                              - paragraph [ref=e1865]: Feishu Notification (post-CI)
+                              - generic [ref=e1866]:
+                                - generic [ref=e1867]: "Feishu Notification (post-CI) #274:"
+                                - paragraph [ref=e1868]: Scheduled
+                          - cell "main" [ref=e1869]:
+                            - generic [ref=e1870]: main
+                          - cell "11s" [ref=e1871]:
+                            - generic [ref=e1872]: 11s
+                          - cell "2026-06-09 03:21:19" [ref=e1873]:
+                            - generic [ref=e1874]: 2026-06-09 03:21:19
+                          - cell "Report Detail" [ref=e1875]:
+                            - generic [ref=e1876]:
+                              - button "Report" [ref=e1877] [cursor=pointer]:
+                                - generic [ref=e1878]: Report
+                              - button "Detail" [ref=e1879] [cursor=pointer]:
+                                - generic [ref=e1880]: Detail
+                        - 'row "duigou备份 Support GCU(Enflame) CI #507: Pull request opened by EF-TY EF-TY:main 0s 2026-06-08 21:09:00 Report Detail" [ref=e1881]':
+                          - cell "duigou备份" [ref=e1882]:
+                            - img "duigou备份" [ref=e1885]
+                          - 'cell "Support GCU(Enflame) CI #507: Pull request opened by EF-TY" [ref=e1894]':
+                            - generic [ref=e1896]:
+                              - paragraph [ref=e1897]: Support GCU(Enflame)
+                              - generic [ref=e1898]:
+                                - generic [ref=e1899]: "CI #507:"
+                                - paragraph [ref=e1900]: Pull request opened by EF-TY
+                          - cell "EF-TY:main" [ref=e1901]:
+                            - generic [ref=e1902]: EF-TY:main
+                          - cell "0s" [ref=e1903]:
+                            - generic [ref=e1904]: 0s
+                          - cell "2026-06-08 21:09:00" [ref=e1905]:
+                            - generic [ref=e1906]: 2026-06-08 21:09:00
+                          - cell "Report Detail" [ref=e1907]:
+                            - generic [ref=e1908]:
+                              - button "Report" [ref=e1909] [cursor=pointer]:
+                                - generic [ref=e1910]: Report
+                              - button "Detail" [ref=e1911] [cursor=pointer]:
+                                - generic [ref=e1912]: Detail
+                        - 'row "duigou备份 Support GCU(Enflame) Code Scan #470: Pull request opened by EF-TY EF-TY:main 0s 2026-06-08 21:09:00 Report Detail" [ref=e1913]':
+                          - cell "duigou备份" [ref=e1914]:
+                            - img "duigou备份" [ref=e1917]
+                          - 'cell "Support GCU(Enflame) Code Scan #470: Pull request opened by EF-TY" [ref=e1926]':
+                            - generic [ref=e1928]:
+                              - paragraph [ref=e1929]: Support GCU(Enflame)
+                              - generic [ref=e1930]:
+                                - generic [ref=e1931]: "Code Scan #470:"
+                                - paragraph [ref=e1932]: Pull request opened by EF-TY
+                          - cell "EF-TY:main" [ref=e1933]:
+                            - generic [ref=e1934]: EF-TY:main
+                          - cell "0s" [ref=e1935]:
+                            - generic [ref=e1936]: 0s
+                          - cell "2026-06-08 21:09:00" [ref=e1937]:
+                            - generic [ref=e1938]: 2026-06-08 21:09:00
+                          - cell "Report Detail" [ref=e1939]:
+                            - generic [ref=e1940]:
+                              - button "Report" [ref=e1941] [cursor=pointer]:
+                                - generic [ref=e1942]: Report
+                              - button "Detail" [ref=e1943] [cursor=pointer]:
+                                - generic [ref=e1944]: Detail
+                        - 'row "duigou Support GCU(Enflame) Pull Request Labeler #554: Scheduled main 12s 2026-06-08 21:08:58 Report Detail" [ref=e1945]':
+                          - cell "duigou" [ref=e1946]:
+                            - img "duigou" [ref=e1949]
+                          - 'cell "Support GCU(Enflame) Pull Request Labeler #554: Scheduled" [ref=e1956]':
+                            - generic [ref=e1958]:
+                              - paragraph [ref=e1959]: Support GCU(Enflame)
+                              - generic [ref=e1960]:
+                                - generic [ref=e1961]: "Pull Request Labeler #554:"
+                                - paragraph [ref=e1962]: Scheduled
+                          - cell "main" [ref=e1963]:
+                            - generic [ref=e1964]: main
+                          - cell "12s" [ref=e1965]:
+                            - generic [ref=e1966]: 12s
+                          - cell "2026-06-08 21:08:58" [ref=e1967]:
+                            - generic [ref=e1968]: 2026-06-08 21:08:58
+                          - cell "Report Detail" [ref=e1969]:
+                            - generic [ref=e1970]:
+                              - button "Report" [ref=e1971] [cursor=pointer]:
+                                - generic [ref=e1972]: Report
+                              - button "Detail" [ref=e1973] [cursor=pointer]:
+                                - generic [ref=e1974]: Detail
+                        - 'row "duigou备份 Support GCU(Enflame) CI #506: Pull request opened by EF-TY EF-TY:main 0s 2026-06-08 21:06:01 Report Detail" [ref=e1975]':
+                          - cell "duigou备份" [ref=e1976]:
+                            - img "duigou备份" [ref=e1979]
+                          - 'cell "Support GCU(Enflame) CI #506: Pull request opened by EF-TY" [ref=e1988]':
+                            - generic [ref=e1990]:
+                              - paragraph [ref=e1991]: Support GCU(Enflame)
+                              - generic [ref=e1992]:
+                                - generic [ref=e1993]: "CI #506:"
+                                - paragraph [ref=e1994]: Pull request opened by EF-TY
+                          - cell "EF-TY:main" [ref=e1995]:
+                            - generic [ref=e1996]: EF-TY:main
+                          - cell "0s" [ref=e1997]:
+                            - generic [ref=e1998]: 0s
+                          - cell "2026-06-08 21:06:01" [ref=e1999]:
+                            - generic [ref=e2000]: 2026-06-08 21:06:01
+                          - cell "Report Detail" [ref=e2001]:
+                            - generic [ref=e2002]:
+                              - button "Report" [ref=e2003] [cursor=pointer]:
+                                - generic [ref=e2004]: Report
+                              - button "Detail" [ref=e2005] [cursor=pointer]:
+                                - generic [ref=e2006]: Detail
+                  - generic [ref=e2007]:
+                    - generic [ref=e2008]: 共 1951 条
+                    - generic [ref=e2011] [cursor=pointer]:
+                      - generic:
+                        - combobox [ref=e2013]
+                        - generic [ref=e2014]: 10条/页
+                      - img [ref=e2017]
+                    - button "上一页" [disabled] [ref=e2019]:
+                      - generic:
+                        - img
+                    - list [ref=e2020]:
+                      - listitem "第 1 页" [ref=e2021]: "1"
+                      - listitem "第 2 页" [ref=e2022] [cursor=pointer]: "2"
+                      - listitem "第 3 页" [ref=e2023] [cursor=pointer]: "3"
+                      - listitem "第 4 页" [ref=e2024] [cursor=pointer]: "4"
+                      - listitem "第 5 页" [ref=e2025] [cursor=pointer]: "5"
+                      - listitem "第 6 页" [ref=e2026] [cursor=pointer]: "6"
+                      - listitem "向后 5 页" [ref=e2027] [cursor=pointer]:
+                        - img
+                      - listitem "第 196 页" [ref=e2028] [cursor=pointer]: "196"
+                    - button "下一页" [ref=e2029] [cursor=pointer]:
+                      - generic:
+                        - img
+                    - generic [ref=e2030]:
+                      - generic [ref=e2031]: 前往
+                      - spinbutton "页" [ref=e2034]: "1"
+                      - generic [ref=e2035]: 页
+  - img

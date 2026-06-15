@@ -1,0 +1,123 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - link "vllm-plugin-FL" [ref=e744] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e745]:
+            - heading "flagos-ai/vllm-plugin-FL" [level=3] [ref=e746]
+            - paragraph [ref=e747]: A vLLM plugin built on the FlagOS unified multi-chip backend.
+            - generic [ref=e748]:
+              - generic [ref=e749]:
+                - img "icon1" [ref=e750]
+                - generic [ref=e757]: "55"
+              - generic [ref=e758]:
+                - img "icon2" [ref=e759]
+                - generic [ref=e766]: "65"
+              - generic [ref=e767]:
+                - img "icon3" [ref=e768]
+                - generic [ref=e777]: "24"
+              - generic [ref=e778]:
+                - img "rili" [ref=e779]
+                - generic [ref=e787]: 最近更新：2026-06-08 10:37:03
+            - button "在 GitHub 上查看" [ref=e788] [cursor=pointer]:
+              - generic [ref=e789]: 在 GitHub 上查看
+          - generic [ref=e790]:
+            - tablist [ref=e794]:
+              - tab "工作流运行实例" [ref=e795]
+              - tab "仓库质量" [ref=e796]
+              - tab "流水线效率" [ref=e797]
+              - tab "Benchmark对比" [ref=e798]
+              - tab "制品" [ref=e799]
+              - tab "设置" [selected] [ref=e800]
+            - tabpanel "设置" [ref=e1242]:
+              - generic [ref=e1243]:
+                - tablist [ref=e1247]:
+                  - tab "Runner" [ref=e1248]
+                  - tab "Connection" [ref=e1249]
+                  - tab "成员管理" [active] [selected] [ref=e1250]
+                - tabpanel "成员管理" [ref=e1460]:
+                  - generic [ref=e1461]:
+                    - generic [ref=e1462]:
+                      - paragraph [ref=e1463]: 成员
+                      - button "添加" [ref=e1464] [cursor=pointer]:
+                        - generic [ref=e1465]: 添加
+                    - generic [ref=e1468]:
+                      - table [ref=e1470]:
+                        - rowgroup [ref=e1477]:
+                          - row "用户名 手机号 邮箱 角色 操作" [ref=e1478]:
+                            - columnheader "用户名" [ref=e1479]:
+                              - generic [ref=e1480]: 用户名
+                            - columnheader "手机号" [ref=e1481]:
+                              - generic [ref=e1482]: 手机号
+                            - columnheader "邮箱" [ref=e1483]:
+                              - generic [ref=e1484]: 邮箱
+                            - columnheader "角色" [ref=e1485]:
+                              - generic [ref=e1486]: 角色
+                            - columnheader "操作" [ref=e1487]:
+                              - generic [ref=e1488]: 操作
+                      - table [ref=e1493]:
+                        - rowgroup [ref=e1500]:
+                          - row "迟连义 18722487607 仓库管理员 删除" [ref=e1501]:
+                            - cell "迟连义" [ref=e1502]:
+                              - generic [ref=e1503]: 迟连义
+                            - cell "18722487607" [ref=e1504]:
+                              - generic [ref=e1505]: "18722487607"
+                            - cell [ref=e1506]
+                            - cell "仓库管理员" [ref=e1507]:
+                              - generic [ref=e1508]: 仓库管理员
+                            - cell "删除" [ref=e1509]:
+                              - button "删除" [ref=e1511] [cursor=pointer]:
+                                - generic [ref=e1512]: 删除
+                          - row "2886_apivcys 仓库管理员 删除" [ref=e1513]:
+                            - cell "2886_apivcys" [ref=e1514]:
+                              - generic [ref=e1515]: 2886_apivcys
+                            - cell [ref=e1516]
+                            - cell [ref=e1517]
+                            - cell "仓库管理员" [ref=e1518]:
+                              - generic [ref=e1519]: 仓库管理员
+                            - cell "删除" [ref=e1520]:
+                              - button "删除" [ref=e1522] [cursor=pointer]:
+                                - generic [ref=e1523]: 删除
+  - img

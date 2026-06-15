@@ -1,0 +1,111 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "我的仓库"
+        - main [ref=e77]:
+          - list [ref=e746]:
+            - listitem [ref=e747] [cursor=pointer]:
+              - img "zhucecangku" [ref=e748]
+              - strong [ref=e757]: 注册仓库
+              - paragraph [ref=e758]: 点击注册新的代码仓库
+            - listitem [ref=e759] [cursor=pointer]:
+              - generic [ref=e760]:
+                - generic [ref=e761]:
+                  - paragraph [ref=e762]: hbqhzx/test_001
+                  - paragraph [ref=e763]:
+                    - img "shanchu备份" [ref=e764]
+                    - img [ref=e771]
+                - paragraph [ref=e773]:
+                  - generic [ref=e775]: 已连接
+              - generic [ref=e776]:
+                - generic [ref=e777]:
+                  - paragraph [ref=e778]: this is a test project for gitlink
+                  - paragraph [ref=e779]:
+                    - generic [ref=e780]:
+                      - img "icon1" [ref=e781]
+                      - generic [ref=e788]: "1"
+                    - generic [ref=e789]:
+                      - img "icon2" [ref=e790]
+                      - generic [ref=e797]: "0"
+                    - generic [ref=e798]:
+                      - img "icon3" [ref=e799]
+                      - generic [ref=e808]: "2"
+                - generic [ref=e809]:
+                  - paragraph [ref=e810]: 最近更新：2026-05-27 17:54:59
+                  - button "shezhi 设置" [ref=e811]:
+                    - generic [ref=e812]:
+                      - img "shezhi" [ref=e813]
+                      - text: 设置
+          - dialog "注册仓库" [ref=e822]:
+            - generic [active] [ref=e823]:
+              - generic [ref=e824]:
+                - heading "注册仓库" [level=2] [ref=e825]
+                - button "关闭此对话框" [ref=e826] [cursor=pointer]:
+                  - img [ref=e829]
+              - generic [ref=e831]:
+                - paragraph [ref=e832]: 仓库注册后，将同步至仓库广场。
+                - list [ref=e833]:
+                  - listitem [ref=e834] [cursor=pointer]:
+                    - img [ref=e835]
+                    - generic [ref=e837]: GitLink
+                  - listitem [ref=e838] [cursor=pointer]:
+                    - img [ref=e839]
+                    - generic [ref=e841]: GitHub
+                - generic [ref=e843]:
+                  - generic [ref=e844]:
+                    - generic [ref=e846]:
+                      - generic [ref=e847]: "* GitHub 链接"
+                      - textbox "* GitHub 链接" [ref=e869]:
+                        - /placeholder: https://github.com/username/repository
+                    - generic [ref=e853]:
+                      - generic [ref=e854]: "* 访问令牌"
+                      - textbox "* 访问令牌" [ref=e858]:
+                        - /placeholder: 请输入访问令牌
+                  - group [ref=e859]:
+                    - generic [ref=e862]:
+                      - button "测试连接" [ref=e863] [cursor=pointer]:
+                        - generic [ref=e864]: 测试连接
+                      - button "取消" [ref=e865] [cursor=pointer]:
+                        - generic [ref=e866]: 取消
+                      - button "提交" [ref=e867] [cursor=pointer]:
+                        - generic [ref=e868]: 提交
+  - img

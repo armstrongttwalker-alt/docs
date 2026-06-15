@@ -1,0 +1,20 @@
+[     588ms] [LOG] 🔒 启用生产环境 Tolgee 禁用 CSS 和 API 请求拦截 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:48
+[     589ms] [LOG] Tolgee环境检查: {MODE: pro, PROD: true, DEV: false, isProduction: true} @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[     589ms] [LOG] 🔒 初始化生产环境 Tolgee（禁用编辑功能） @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[     590ms] [LOG] ✅ 生产环境 Tolgee 初始化成功（已禁用所有 API 请求） @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[     590ms] [LOG] 🔒 启用生产环境 Tolgee 禁用 CSS 和 API 请求拦截 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:48
+[     774ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://flagcicd.flagos.net/flagcicd/api/v1/cicd/repositories/all?page=1&page_size=20:0
+[     796ms] Error: 缺少 x-user-id Header
+    at D (https://flagcicd.flagos.net/js/src-common-CnnluSge.js:49:5499)
+    at async rs (https://flagcicd.flagos.net/js/src-common-CnnluSge.js:111:15443)
+    at async k (https://flagcicd.flagos.net/js/views-C8pMetm0.js:1:30619)
+[    1215ms] [WARNING] [SSE] 未找到 token，跳过连接 @ https://flagos.net/static/js/index-ubs9HFOF.js:33415
+[   50160ms] [LOG] 🔒 启用生产环境 Tolgee 禁用 CSS 和 API 请求拦截 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:48
+[   50161ms] [LOG] Tolgee环境检查: {MODE: pro, PROD: true, DEV: false, isProduction: true} @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[   50161ms] [LOG] 🔒 初始化生产环境 Tolgee（禁用编辑功能） @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[   50161ms] [LOG] ✅ 生产环境 Tolgee 初始化成功（已禁用所有 API 请求） @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[   50161ms] [LOG] 🔒 启用生产环境 Tolgee 禁用 CSS 和 API 请求拦截 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:48
+[  214027ms] [LOG] Proxy(Object) github.com flagos-ai vllm-plugin-FL 13 @ https://flagcicd.flagos.net/js/views-C8pMetm0.js:0
+[  214068ms] [LOG] Proxy(Array) 11 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[  298475ms] [LOG] Proxy(Array) 11 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
+[  326377ms] [LOG] Proxy(Array) 11 @ https://flagcicd.flagos.net/js/src-common-CnnluSge.js:1
