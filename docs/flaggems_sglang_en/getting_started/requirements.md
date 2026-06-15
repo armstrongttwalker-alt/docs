@@ -20,4 +20,4 @@ The following packages are required to build FlagGems-sglang from source:
 
 ## Hardware requirements
 
-- A CUDA-capable GPU is required for running most operators.
+- A CUDA-capable GPU is required for running most operators. 

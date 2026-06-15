@@ -5,7 +5,7 @@ For a fresh installation of FlagGems-vLLM, follow the steps below.
 1. Install dependencies.
 
    ```{code-block} bash
-   pip install -U scikit-build-core>=0.11 pybind11 ninja cmake
+   pip install -U 'scikit-build-core>=0.11' pybind11 ninja cmake
    ```
 
 2. Clone and install FlagGems-vLLM.
