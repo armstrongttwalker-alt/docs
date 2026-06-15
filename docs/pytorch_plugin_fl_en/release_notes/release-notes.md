@@ -2,7 +2,11 @@
 
 This section includes the release information for PyTorch-Plugin-FL.
 
-## Initial release
+## v0.1.0
+
+```{note}
+This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
+```
 
 - **Added features**:
   - Initial release of PyTorch-Plugin-FL as part of FlagOS.
