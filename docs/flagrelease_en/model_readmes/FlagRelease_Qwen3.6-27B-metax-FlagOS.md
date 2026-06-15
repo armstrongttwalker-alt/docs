@@ -22,8 +22,8 @@ The first open-weight release of Qwen3.6 is now available. Building on the Qwen3
 ## Benchmark Result
 | Metrics      | Qwen3.6-27B-Nvidia-Origin | Qwen3.6-27B-Metax-FlagOS |
 |--------------|---------------------------|--------------------------|
-| GPQA_Diamond | 85.86                     | 84.34                    |
-| ERQA         | 59.25                        | 57.5                     |
+| GPQA_Diamond | 85.86                     | 84.26                   |
+| ERQA         | 59.25                        | 60                     |
 
 # User Guide
 Environment Setup
