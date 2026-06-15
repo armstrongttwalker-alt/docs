@@ -22,6 +22,7 @@
 | GLM-5-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/11696> |
 | gpt-oss-120b-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8933> |
 | grok-2-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8864> |
+| Hunyuan-A13B-Instruct-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8883> |
 | HY-MT2-1.8B-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20697> |
 | HY-MT2-1.8B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20694> |
 | HY-MT2-1.8B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20700> |
@@ -58,6 +59,8 @@
 | MiniMax-M2.7-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/12490> |
 | MiniMax-M2.7-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/12494> |
 | MiniMax-M2.7-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/12493> |
+| MiniMax-M3-mthreads-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/25196> |
+| MiniMax-M3-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/25195> |
 | phi-4-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8858> |
 | phi-4-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8859> |
 | phi-4-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8860> |
