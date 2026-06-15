@@ -52,7 +52,7 @@ PYTHONPATH=/workspace/FlagGems-vllm/src pytest -q benchmark/test_fused_inv_rope_
 ```
 
 ```{note}
-- Most tests/benchmarks require a CUDA-capable GPU runtime.
+- Most tests/benchmarks require a CUDA-capable GPU runtime, with ongoing support for additional backend chips planned.
 - `--collect-only` is recommended first to quickly check import and test discovery.
 - Use `--quick` for fast functional validation when supported by the test.
 - Use `--level core --iter 1 --warmup 1` for fast benchmark smoke tests.
