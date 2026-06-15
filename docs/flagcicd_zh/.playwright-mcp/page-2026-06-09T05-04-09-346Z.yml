@@ -1,0 +1,114 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - link "vllm-plugin-FL" [ref=e1536] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e1537]:
+            - heading "flagos-ai/vllm-plugin-FL" [level=3] [ref=e1538]
+            - paragraph [ref=e1539]: A vLLM plugin built on the FlagOS unified multi-chip backend.
+            - generic [ref=e1540]:
+              - generic [ref=e1541]:
+                - img "icon1" [ref=e1542]
+                - generic [ref=e1549]: "55"
+              - generic [ref=e1550]:
+                - img "icon2" [ref=e1551]
+                - generic [ref=e1558]: "65"
+              - generic [ref=e1559]:
+                - img "icon3" [ref=e1560]
+                - generic [ref=e1569]: "24"
+              - generic [ref=e1570]:
+                - img "rili" [ref=e1571]
+                - generic [ref=e1579]: 最近更新：2026-06-08 10:37:03
+            - button "在 GitHub 上查看" [ref=e1580] [cursor=pointer]:
+              - generic [ref=e1581]: 在 GitHub 上查看
+          - generic [ref=e1582]:
+            - tablist [ref=e1586]:
+              - tab "工作流运行实例" [ref=e1587]
+              - tab "仓库质量" [ref=e1588]
+              - tab "流水线效率" [active] [selected] [ref=e1589] [cursor=pointer]
+              - tab "Benchmark对比" [ref=e1590]
+              - tab "制品" [ref=e1591]
+              - tab "设置" [ref=e1592]
+            - tabpanel "流水线效率" [ref=e2119]:
+              - generic [ref=e2120]:
+                - generic [ref=e2121]:
+                  - generic [ref=e2122]: 时间范围
+                  - generic [ref=e2124] [cursor=pointer]:
+                    - generic:
+                      - combobox [ref=e2126]
+                      - generic [ref=e2127]: 最近一周
+                    - img [ref=e2130]
+                - generic [ref=e2132]:
+                  - generic [ref=e2133]:
+                    - generic [ref=e2134]:
+                      - generic [ref=e2135]: 平均构建时间
+                      - paragraph [ref=e2136]:
+                        - strong [ref=e2137]: "321.61"
+                        - text: 秒
+                    - img [ref=e2140]
+                  - generic [ref=e2142]:
+                    - generic [ref=e2143]:
+                      - generic [ref=e2144]: 构建成功率
+                      - paragraph [ref=e2145]:
+                        - strong [ref=e2146]: "84.46"
+                        - text: "%"
+                    - img [ref=e2149]
+                  - generic [ref=e2151]:
+                    - generic [ref=e2152]:
+                      - generic [ref=e2153]: 构建并发数
+                      - paragraph [ref=e2154]:
+                        - strong [ref=e2155]: "7"
+                    - img [ref=e2158]
+                  - generic [ref=e2160]:
+                    - generic [ref=e2161]:
+                      - generic [ref=e2162]: 队列等待时间
+                      - paragraph [ref=e2163]:
+                        - strong [ref=e2164]: "2343.11"
+                        - text: 秒
+                    - img [ref=e2167]
+                - generic [ref=e2169]:
+                  - strong [ref=e2171]: 平均构建时间趋势
+                  - strong [ref=e2176]: 构建成功率趋势
+  - img

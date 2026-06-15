@@ -1,13 +1,13 @@
-# 💫 HYGON
+[[中文版](./install_hcu_cn.md)|English]
 
-## 💫 HYGON [hcu](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/hcu/) (Triton 3.6)
+## 💫 HYGON（海光信息）[hcu](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/hcu/) (Triton 3.6)
 
 - Based on Triton 3.6, x64
 - Available for K100/BW1000
 
 ### 1. Build and run environment
 
-#### 1.1 Use the preinstalled image (BW1000)
+#### 1.1 Use the image (BW1000)
 
 If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.
 
@@ -66,7 +66,7 @@ Note that the script will prompt for manual confirmation during execution.
 # Note: First install PyTorch, then execute the following commands
 python3 -m pip uninstall -y triton  # Repeat the cmd until fully uninstalled
 RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"
-python3.10 -m pip install flagtree===0.5.1+hcu3.6 $RES
+python3.10 -m pip install flagtree===0.6.0rc1+hcu3.6 $RES
 ```
 
 After installing `flagtree`, you can check it with:
@@ -78,10 +78,8 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree
 git checkout -b triton_v3.6.x origin/triton_v3.6.x
-python3 -m pip install -r python/requirements.txt
 export FLAGTREE_BACKEND=hcu
 MAX_JOBS=32 python3 -m pip install . --no-build-isolation -v
 ```
@@ -169,9 +167,7 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree/python
-python3 -m pip install -r requirements.txt
 export FLAGTREE_BACKEND=hcu
 MAX_JOBS=32 python3 -m pip install . --no-build-isolation -v
 ```

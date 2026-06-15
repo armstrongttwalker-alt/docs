@@ -1,9 +1,9 @@
-# 💫 Enflame
+[[中文版](./install_enflame_cn.md)|English]
 
 ## 💫 Enflame（燧原）[enflame](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/enflame/) (Triton 3.6)
 
 - Based on Triton 3.6, x64
-- Available for GCU300/GCU400
+- Available for GCU300, GCU400 (L300/L600)
 
 ### 1. Build and run environment
 
@@ -12,27 +12,27 @@
 If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.
 
 ```shell
-# Plan A: docker pull (16.1GB)
-IMAGE=harbor.baai.ac.cn/flagtree/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202604-base
+# Plan A: docker pull (18.9GB)
+IMAGE=harbor.baai.ac.cn/flagtree/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202605-1.9.7-base
 docker pull ${IMAGE}
-# Plan B: docker load (3.5GB)
-IMAGE=flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202604-base
-wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202604-base.tar.gz
-docker load -i flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202604-base.tar.gz
+# Plan B: docker load (4.0GB)
+IMAGE=flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04:202605-1.9.7-base
+wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202605-1.9.7-base.tar.gz
+docker load -i flagtree-enflame3.6-py312-torch2.10.0-ubuntu24.04.202605-1.9.7-base.tar.gz
 ```
 
 ```shell
+cat /sys/module/enflame/version
+    # if version < 1.9.10, terminate the processes using GCU, and execute the following commands on the host:
+    # wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/TopsRider_Triton_gcu-3.6.0_1.0.20260521.cc.1.9.10_deb_amd64.run  # 3.7GB
+    # bash TopsRider_Triton_gcu-3.6.0_1.0.20260521.cc.1.9.10_deb_amd64.run --driver -y
+efsmi
 CONTAINER=flagtree-dev-xxx
 docker run -dit \
     --privileged \
     -v /etc/localtime:/etc/localtime:ro \
     -v /home:/home \
     -w /root --name ${CONTAINER} ${IMAGE} bash
-docker cp ${CONTAINER}:/enflame enflame    # Will create ./enflame dir
-bash enflame/driver/enflame-x86_64-gcc-1.7.2.14-20260302150833.run
-efsmi
-docker stop ${CONTAINER}
-docker start ${CONTAINER}
 docker exec -it ${CONTAINER} /bin/bash
 ```
 
@@ -67,7 +67,7 @@ Note that the script will prompt for manual confirmation during execution.
 # Note: First install PyTorch, then execute the following commands
 python3 -m pip uninstall -y triton --break-system-packages  # Repeat the cmd until fully uninstalled
 RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"
-python3.12 -m pip install flagtree===0.5.0+enflame3.6 --break-system-packages $RES
+python3.12 -m pip install flagtree===0.6.0rc1+enflame3.6 --break-system-packages $RES
 ```
 
 After installing `flagtree`, you can check it with:
@@ -79,10 +79,8 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree
 git checkout -b triton_v3.6.x origin/triton_v3.6.x
-python3 -m pip install -r python/requirements.txt --break-system-packages
 export FLAGTREE_BACKEND=enflame
 MAX_JOBS=8 python3 -m pip install . --no-build-isolation -v --break-system-packages
 ```
@@ -96,7 +94,7 @@ Refer to [Tests of enflame3.6 backend](https://github.com/flagos-ai/FlagTree/blo
 ## 💫 Enflame（燧原）[enflame](https://github.com/flagos-ai/FlagTree/tree/triton_v3.5.x/third_party/enflame/) (Triton 3.5)
 
 - Based on Triton 3.5, x64
-- Available for GCU300/GCU400
+- Available for GCU300, GCU400 (L300/L600)
 
 ### 1. Build and run environment
 
@@ -172,10 +170,8 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree
 git checkout -b triton_v3.5.x origin/triton_v3.5.x
-python3 -m pip install -r python/requirements.txt --break-system-packages
 export FLAGTREE_BACKEND=enflame
 MAX_JOBS=8 python3 -m pip install . --no-build-isolation -v --break-system-packages
 ```
@@ -265,10 +261,8 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree/python
 git checkout -b triton_v3.3.x origin/triton_v3.3.x
-python3 -m pip install -r requirements.txt
 export FLAGTREE_BACKEND=enflame
 MAX_JOBS=8 python3 -m pip install . --no-build-isolation -v
 ```

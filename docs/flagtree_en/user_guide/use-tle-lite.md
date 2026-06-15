@@ -44,6 +44,121 @@ Supports updates from registers and shared memory.
 z = x.insert_tile(y, index=[0, 0])
 ```
 
+## Scan and sort Ops
+Scan and sort Ops provide partial tensor primitives such as prefix, rank, and selection, suitable for histogram-based top-k, stream compaction, and block-level sorting and bucketing scenarios.
+
+TLE-Lite keeps these operations as high-level semantics rather than binding them to a specific hardware implementation: users describe the scan and sort intent, and the backend selects register or shared memory lowering strategies based on the hardware.
+
+### tle.cumsum
+
+`tle.cumsum(input, axis=0, reverse=False, dtype=None)` computes exclusive cumulative sum and total sum along the `axis` dimension in one operation.
+
+- **Signature**: `tle.cumsum(input, axis=0, reverse=False, dtype=None)`
+- **Purpose**: Uses a single semantic scan op to compute both the exclusive prefix/suffix sum and total sum of a block tensor.
+- **Returns**: `(exclusive_sum, total_sum)`.
+- **Typical scenarios**: top-k, histogram prefix, stream compaction, and block-level partition logic requiring partial rank/offset.
+- `exclusive` has the same shape as `input`; `total` is the scalar sum of the scanned block.
+- `reverse=True` indicates a reversed exclusive sum, suitable for suffix count in descending radix/top-k selection.
+- `dtype` can explicitly control the accumulation/result type. By default, narrow integers are promoted to 32-bit integers, and bfloat16 is promoted to float32.
+- For inclusive cumulative sum, use `exclusive_sum + input`.
+- Use explicit mask loads for invalid lanes and set inactive lanes to 0, ensuring `total_sum` only counts valid elements.
+- Supported scope is static rank-1 block tensors with `axis=0`; this covers the histogram and radix-selection workloads already used by TLE top-k kernels.
+
+Simple example:
+
+```{code-block} python
+exclusive, total = tle.cumsum(x, axis=0)
+inclusive = exclusive + x
+```
+
+## Pipeline
+
+### Pipe and stage
+
+`tle.pipe` describes an explicit dataflow edge between a producer and one or more consumers. It simultaneously records the shared-memory stage holding the logical chunk and the synchronization required to make that chunk visible to consumers, enabling CTA-level load/compute overlap and warp-specialized producer/consumer code to use a typed descriptor instead of manually writing multiple barriers.
+
+- **Signature**: `tle.pipe(*, capacity, scope="cta", name=None, readers=None, one_shot=False, **fields)`
+- **Purpose**: Creates a typed pipe for explicitly describing CTA-level producer/consumer dataflow, ring-buffer stage reuse, and synchronization edges.
+- **Parameters**:
+  - `capacity`: Compile-time positive integer indicating the number of pipe stages; each payload field's first dimension must equal `capacity`.
+  - `scope`: Supported value is `"cta"`.
+  - `name`: Optional pipe name for IR/diagnostics; must be a string if provided.
+  - `readers`: Optional list of reader names; omitted means default SPSC reader; passed as `("left", "right")` for SPMC.
+  - `one_shot`: Whether this is a single ready/full edge; suitable for startup data broadcast. `one_shot=True` does not support `close`.
+  - `**fields`: One or more payload buffers, which must be shared-memory buffered tensors returned by `tle.gpu.alloc(..., scope=tle.gpu.smem)`, with rank >= 2.
+- **Naming rules**:
+  - Pipe field names and reader names must be valid Python identifiers.
+  - Names must not start with `_`.
+  - `fields` and `readers` are reserved names.
+- `tle.pipe(...)` returns a pipe descriptor. It owns staged payload fields and creates producer/consumer endpoints via `writer()` and `reader(...)`.
+- `capacity` stages form a ring buffer. `iter` maps to `stage = iter % capacity`, using a phase bit to distinguish reuse rounds.
+
+### Producer
+
+The producer holds `pipe.writer()`. It acquires a writable stage, fills all necessary fields for the logical chunk, and then commits the chunk, making the data observable to consumers.
+
+- `pipe_value.writer()` → `pipe_writer`: Creates the single writer endpoint for the current pipe.
+- The writer always sees all payload fields.
+- `writer.acquire(iter)` → `pipe_slot`: Acquires a stage writable by the producer, returning a slot with the leading `capacity` dimension removed.
+- Users should produce field data between `writer.acquire(iter)` and `writer.commit(iter)`.
+- `writer.commit(iter)` → `None`: Marks the stage as ready, visible to subscribing consumers. All field writes for the same logical chunk must complete before commit.
+- `writer.close(iter)` → `None`: Publishes a closed stage for close-aware consumer loops to exit or switch state. Pipes with `one_shot=True` do not support `close`.
+- Commit is the producer-side visibility boundary.
+
+### Consumer
+
+The consumer holds `pipe.reader(...)`. It waits for published chunks, reads the returned slot, and releases the stage after all reads are complete.
+
+- `pipe_value.reader(name=None, fields=None)` → `pipe_reader`: Creates a consumer endpoint.
+- For SPSC pipes (`readers=None`), `name` must be omitted.
+- For SPMC pipes (e.g., `readers=("mma", "epilogue")`), `name` must be passed and match a declared reader.
+- `fields` can be a non-empty, compile-time tuple/list of unique payload field names; omitted means subscribing to all fields.
+- Field-subset consumers only narrow the endpoint view and `wait().slot`; they do not create a new pipe.
+- `reader.wait(iter)` → `pipe_wait_result`: Waits for a stage to be ready or closed, returning the slot and closed flag.
+- Standard consumption paths read `wait_result.slot`; check `wait_result.is_closed` only when handling closure.
+- `reader.release(iter)` → `None`: Releases the stage after consumption, allowing the producer to reuse it. Should be called after all `wait(iter).slot` reads are complete.
+- Wait is the consumer-side visibility boundary; release is the consumer-side release signal.
+
+### Payload fields
+
+- `**fields` defines the data carried by each stage. Each field is exposed on the `pipe_slot` by name, e.g., `slot.q` or `slot.scale`.
+- `pipe_slot` also exposes `fields: dict[str, tle.gpu.buffered_tensor]`.
+- `pipe_wait_result` contains `slot: pipe_slot` and `is_closed: tl.tensor`.
+- A pipe can carry one or multiple fields. When splitting pipes, split by logical lifecycle and reader protocol, not by underlying transport.
+- Different fields in the same slot can be produced by different mechanisms, such as TMA copy, cp.async-style copy, or `tle.gpu.local_ptr` + `tl.store`. Users still call `writer.commit(iter)` once after producing all fields for that logical chunk.
+- Each field's transport is inferred by the compiler from the producer-side IR; it is not a pipe attribute the user fills in, nor should it be encoded into pipe names, field names, or extra user attributes.
+- When a reader only consumes a subset of fields, use `pipe.reader(name, fields=(...))` to narrow the reader view; this does not create a new token.
+- Keep pipe-field provenance visible. Opaque shared-memory pointer escapes, untracked shared stores, or overlapping writes that cannot be proven safe will error directly, without silent fallback.
+- NVIDIA lowering maps CTA-scoped SMEM pipes to NVWS/mbarrier synchronization. Multi-field payloads require proof of payload window, field ownership, participant count, and source-order safety at the pipe-field root granularity.
+
+### Lifecycle
+
+- SPSC pipe represents one producer publishing to one default consumer.
+- SPMC pipe represents one producer publishing the same logical chunk to multiple named consumers, e.g., `("mma", "epilogue")`.
+- `iter` is the logical chunk ID. Within the same chunk, the producer and all participating consumers should use the same `iter`.
+- The standard loop lifecycle is `writer.acquire(iter)` → produce fields → `writer.commit(iter)` → `reader.wait(iter)` → consume fields → `reader.release(iter)`.
+- `one_shot=True` indicates a single ready/full edge, typically used with `capacity=1`; do not rely on ring reuse or `close` in this mode.
+
+### Simple example
+
+Automatic software pipelining can still be triggered by `tl.range(..., num_stages=...)`. Explicit pipes are suited for scenarios where producer/consumer splitting needs to be visible in the program.
+
+```{code-block} python
+stage_buf = tle.gpu.alloc([2, BLOCK], dtype=tl.float32, scope=tle.gpu.smem)
+pipe = tle.pipe(capacity=2, scope="cta", name="x_pipe", x=stage_buf)
+writer = pipe.writer()
+reader = pipe.reader()
+offs = tl.arange(0, BLOCK)
+
+slot = writer.acquire(k)
+tl.store(tle.gpu.local_ptr(slot.x), tl.load(x_ptr + k * BLOCK + offs))
+writer.commit(k)
+
+ready = reader.wait(k)
+x = tl.load(tle.gpu.local_ptr(ready.slot.x))
+reader.release(k)
+```
+
 ## Distribution
 
 The Triton distributed API consists of four core parts: device mesh definition, sharding specification description, synchronization, and remote access (point-to-point communication).

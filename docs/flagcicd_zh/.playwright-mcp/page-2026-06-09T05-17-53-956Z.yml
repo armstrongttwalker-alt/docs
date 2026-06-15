@@ -1,0 +1,201 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e31]
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "仓库广场"
+            - generic:
+              - img
+          - link "vllm-plugin-FL" [ref=e744] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e745]:
+            - heading "flagos-ai/vllm-plugin-FL" [level=3] [ref=e746]
+            - paragraph [ref=e747]: A vLLM plugin built on the FlagOS unified multi-chip backend.
+            - generic [ref=e748]:
+              - generic [ref=e749]:
+                - img "icon1" [ref=e750]
+                - generic [ref=e757]: "55"
+              - generic [ref=e758]:
+                - img "icon2" [ref=e759]
+                - generic [ref=e766]: "65"
+              - generic [ref=e767]:
+                - img "icon3" [ref=e768]
+                - generic [ref=e777]: "24"
+              - generic [ref=e778]:
+                - img "rili" [ref=e779]
+                - generic [ref=e787]: 最近更新：2026-06-08 10:37:03
+            - button "在 GitHub 上查看" [ref=e788] [cursor=pointer]:
+              - generic [ref=e789]: 在 GitHub 上查看
+          - generic [ref=e790]:
+            - tablist [ref=e794]:
+              - tab "工作流运行实例" [ref=e795]
+              - tab "仓库质量" [ref=e796]
+              - tab "流水线效率" [ref=e797]
+              - tab "Benchmark对比" [ref=e798]
+              - tab "制品" [ref=e799]
+              - tab "设置" [active] [selected] [ref=e800] [cursor=pointer]
+            - tabpanel "设置" [ref=e1242]:
+              - generic [ref=e1243]:
+                - tablist [ref=e1247]:
+                  - tab "Runner" [selected] [ref=e1248]
+                  - tab "Connection" [ref=e1249]
+                  - tab "成员管理" [ref=e1250]
+                - tabpanel "Runner" [ref=e1252]:
+                  - generic [ref=e1253]:
+                    - generic [ref=e1254]: Runners
+                    - generic [ref=e1257]:
+                      - table [ref=e1259]:
+                        - rowgroup [ref=e1263]:
+                          - row "Name Status" [ref=e1264]:
+                            - columnheader "Name" [ref=e1265]:
+                              - generic [ref=e1266]: Name
+                            - columnheader "Status" [ref=e1267]:
+                              - generic [ref=e1268]: Status
+                      - table [ref=e1273]:
+                        - rowgroup [ref=e1277]:
+                          - row "p-phy-dgx-a100-node-prod-038 online" [ref=e1278]:
+                            - cell "p-phy-dgx-a100-node-prod-038" [ref=e1279]:
+                              - generic [ref=e1280]: p-phy-dgx-a100-node-prod-038
+                            - cell "online" [ref=e1281]:
+                              - generic [ref=e1284]: online
+                          - row "p-phy-dgx-a100-node-prod-172 online" [ref=e1285]:
+                            - cell "p-phy-dgx-a100-node-prod-172" [ref=e1286]:
+                              - generic [ref=e1287]: p-phy-dgx-a100-node-prod-172
+                            - cell "online" [ref=e1288]:
+                              - generic [ref=e1291]: online
+                    - generic [ref=e1292]:
+                      - paragraph [ref=e1293]: Runner Scale Sets
+                      - button "创建" [ref=e1294] [cursor=pointer]:
+                        - generic [ref=e1295]: 创建
+                    - generic [ref=e1298]:
+                      - table [ref=e1300]:
+                        - rowgroup [ref=e1310]:
+                          - row "Name Status Min Runners Max Runners Image 资源规格 创建时间 Actions" [ref=e1311]:
+                            - columnheader "Name" [ref=e1312]:
+                              - generic [ref=e1313]: Name
+                            - columnheader "Status" [ref=e1314]:
+                              - generic [ref=e1315]: Status
+                            - columnheader "Min Runners" [ref=e1316]:
+                              - generic [ref=e1317]: Min Runners
+                            - columnheader "Max Runners" [ref=e1318]:
+                              - generic [ref=e1319]: Max Runners
+                            - columnheader "Image" [ref=e1320]:
+                              - generic [ref=e1321]: Image
+                            - columnheader "资源规格" [ref=e1322]:
+                              - generic [ref=e1323]: 资源规格
+                            - columnheader "创建时间" [ref=e1324]:
+                              - generic [ref=e1325]: 创建时间
+                            - columnheader "Actions" [ref=e1326]:
+                              - generic [ref=e1327]: Actions
+                      - table [ref=e1332]:
+                        - rowgroup [ref=e1342]:
+                          - row "ci-vllm-plugin-fl-ascend online 0 1 harbor.baai.ac.cn/baai-infra/actions-runner:latest 昇腾-Ascend910B-8卡-128核-512G 2026-06-04 16:38:13 删除" [ref=e1343]:
+                            - cell "ci-vllm-plugin-fl-ascend" [ref=e1344]:
+                              - generic [ref=e1345]: ci-vllm-plugin-fl-ascend
+                            - cell "online" [ref=e1346]:
+                              - generic [ref=e1349]: online
+                            - cell "0" [ref=e1350]:
+                              - generic [ref=e1351]: "0"
+                            - cell "1" [ref=e1352]:
+                              - generic [ref=e1353]: "1"
+                            - cell "harbor.baai.ac.cn/baai-infra/actions-runner:latest" [ref=e1354]:
+                              - generic [ref=e1355]: harbor.baai.ac.cn/baai-infra/actions-runner:latest
+                            - cell "昇腾-Ascend910B-8卡-128核-512G" [ref=e1356]:
+                              - generic [ref=e1357]: 昇腾-Ascend910B-8卡-128核-512G
+                            - cell "2026-06-04 16:38:13" [ref=e1358]:
+                              - generic [ref=e1359]: 2026-06-04 16:38:13
+                            - cell "删除" [ref=e1360]:
+                              - button "删除" [ref=e1364] [cursor=pointer]:
+                                - generic [ref=e1365]: 删除
+                          - row "ci-vllm-plugin-fl-maca online 0 1 harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3 沐曦(ECC)-MXC550-8卡-32核-1024G 2026-05-12 20:00:02 删除" [ref=e1366]:
+                            - cell "ci-vllm-plugin-fl-maca" [ref=e1367]:
+                              - generic [ref=e1368]: ci-vllm-plugin-fl-maca
+                            - cell "online" [ref=e1369]:
+                              - generic [ref=e1372]: online
+                            - cell "0" [ref=e1373]:
+                              - generic [ref=e1374]: "0"
+                            - cell "1" [ref=e1375]:
+                              - generic [ref=e1376]: "1"
+                            - cell "harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3" [ref=e1377]:
+                              - generic [ref=e1378]: harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3
+                            - cell "沐曦(ECC)-MXC550-8卡-32核-1024G" [ref=e1379]:
+                              - generic [ref=e1380]: 沐曦(ECC)-MXC550-8卡-32核-1024G
+                            - cell "2026-05-12 20:00:02" [ref=e1381]:
+                              - generic [ref=e1382]: 2026-05-12 20:00:02
+                            - cell "删除" [ref=e1383]:
+                              - button "删除" [ref=e1387] [cursor=pointer]:
+                                - generic [ref=e1388]: 删除
+                          - row "ci-vllm-plugin-fl-musa online 0 1 harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3 Mthreads-S5000-8卡-128核-512G 2026-05-09 11:54:05 删除" [ref=e1389]:
+                            - cell "ci-vllm-plugin-fl-musa" [ref=e1390]:
+                              - generic [ref=e1391]: ci-vllm-plugin-fl-musa
+                            - cell "online" [ref=e1392]:
+                              - generic [ref=e1395]: online
+                            - cell "0" [ref=e1396]:
+                              - generic [ref=e1397]: "0"
+                            - cell "1" [ref=e1398]:
+                              - generic [ref=e1399]: "1"
+                            - cell "harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3" [ref=e1400]:
+                              - generic [ref=e1401]: harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3
+                            - cell "Mthreads-S5000-8卡-128核-512G" [ref=e1402]:
+                              - generic [ref=e1403]: Mthreads-S5000-8卡-128核-512G
+                            - cell "2026-05-09 11:54:05" [ref=e1404]:
+                              - generic [ref=e1405]: 2026-05-09 11:54:05
+                            - cell "删除" [ref=e1406]:
+                              - button "删除" [ref=e1410] [cursor=pointer]:
+                                - generic [ref=e1411]: 删除
+                          - row "ci-vllm-plugin-fl online 0 1 harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3 Nvidia-A100-8卡-128核-512G 2026-04-17 09:08:58 删除" [ref=e1412]:
+                            - cell "ci-vllm-plugin-fl" [ref=e1413]:
+                              - generic [ref=e1414]: ci-vllm-plugin-fl
+                            - cell "online" [ref=e1415]:
+                              - generic [ref=e1418]: online
+                            - cell "0" [ref=e1419]:
+                              - generic [ref=e1420]: "0"
+                            - cell "1" [ref=e1421]:
+                              - generic [ref=e1422]: "1"
+                            - cell "harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3" [ref=e1423]:
+                              - generic [ref=e1424]: harbor.baai.ac.cn/baai-infra/actions-runner:v2.0.3
+                            - cell "Nvidia-A100-8卡-128核-512G" [ref=e1425]:
+                              - generic [ref=e1426]: Nvidia-A100-8卡-128核-512G
+                            - cell "2026-04-17 09:08:58" [ref=e1427]:
+                              - generic [ref=e1428]: 2026-04-17 09:08:58
+                            - cell "删除" [ref=e1429]:
+                              - button "删除" [ref=e1433] [cursor=pointer]:
+                                - generic [ref=e1434]: 删除
+  - img

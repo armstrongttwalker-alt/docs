@@ -6,7 +6,7 @@
 |-------------|---------|-------|
 | Python | 3.10 - 3.13 | Required |
 | PyTorch | >= 2.7.1 | Required |
-| vLLM | 0.18.1 | Required, from official release or fork |
+| vLLM | 0.13.0 | Required, from official release or fork |
 | FlagGems | 5.0.0 | Required for operator dispatch |
 | FlagCX | 0.9.0 | Optional, for multi-chip communication |
 | FlagTree | 0.4.0 | Ascend NPU only |

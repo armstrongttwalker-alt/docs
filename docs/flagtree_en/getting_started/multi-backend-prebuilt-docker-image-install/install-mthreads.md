@@ -1,13 +1,13 @@
-# 💫 Moore Threads
+[[中文版](./install_mthreads_cn.md)|English]
 
-## 💫 Moore Threads [mthreads](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/mthreads/) (Triton 3.6)
+## 💫 Moore Threads（摩尔线程）[mthreads](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/third_party/mthreads/) (Triton 3.6)
 
 - Based on Triton 3.6, x64
 - Available for S4000/S5000
 
 ### 1. Build and run environment
 
-#### 1.1 Use the preinstalled image (Triton 3.6, MTT-S5000)
+#### 1.1 Use the image (Triton 3.6, MTT-S5000)
 
 If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.
 
@@ -43,8 +43,8 @@ docker exec -it ${CONTAINER} /bin/bash
 
 ```shell
 mkdir -p ~/.flagtree/mthreads; cd ~/.flagtree/mthreads
-wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/mthreads-llvm22-x64_v0.5.0.tar.gz
-tar zxvf mthreads-llvm22-x64_v0.5.0.tar.gz
+wget https://baai-cp-web.ks3-cn-beijing.ksyuncs.com/trans/mthreads-llvm22-x64_v0.5.1.tar.gz
+tar zxvf mthreads-llvm22-x64_v0.5.1.tar.gz
 ```
 
 #### 1.3 Manually download the Triton dependencies
@@ -70,7 +70,7 @@ Note that the script will prompt for manual confirmation during execution.
 # Note: First install PyTorch, then execute the following commands
 python3 -m pip uninstall -y triton  # Repeat the cmd until fully uninstalled
 RES="--index-url=https://resource.flagos.net/repository/flagos-pypi-hosted/simple"
-python3.10 -m pip install flagtree===0.5.1+mthreads3.6 $RES
+python3.10 -m pip install flagtree===0.6.0rc1+mthreads3.6 $RES
 ```
 
 After installing `flagtree`, you can check it with:
@@ -82,17 +82,15 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree
 git checkout -b triton_v3.6.x origin/triton_v3.6.x
-python3 -m pip install -r requirements.txt
 export FLAGTREE_BACKEND=mthreads
 MAX_JOBS=32 python3 -m pip install . --no-build-isolation -v
 ```
 
 ### 3. Testing and validation
 
-Refer to [Tests of mthreads3.2 backend](https://github.com/flagos-ai/FlagTree/tree/triton_v3.2.x/.github/workflows/mthreads-build-and-test.yml)
+Refer to [Tests of mthreads3.6 backend](https://github.com/flagos-ai/FlagTree/tree/triton_v3.6.x/.github/workflows/mthreads-build-and-test.yml)
 
 ## 💫 Moore Threads（摩尔线程）[mthreads](https://github.com/flagos-ai/FlagTree/tree/triton_v3.2.x/third_party/mthreads/) (Triton 3.2)
 
@@ -101,7 +99,7 @@ Refer to [Tests of mthreads3.2 backend](https://github.com/flagos-ai/FlagTree/tr
 
 ### 1. Build and run environment
 
-#### 1.1 Use the preinstalled image (Triton 3.2, MTT-S5000)
+#### 1.1 Use the image (Triton 3.2, MTT-S5000)
 
 If your network connection is available, you do not need to perform the later step 1.x, because dependencies will be fetched automatically during the build.
 
@@ -178,10 +176,8 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree/python
 git checkout -b triton_v3.2.x origin/triton_v3.2.x
-python3 -m pip install -r requirements.txt
 export FLAGTREE_BACKEND=mthreads
 MAX_JOBS=32 python3 -m pip install . --no-build-isolation -v
 ```
@@ -282,9 +278,7 @@ python3 -m pip show flagtree
 #### 2.2 Build from Source
 
 ```shell
-apt update; apt install zlib1g zlib1g-dev libxml2 libxml2-dev
 cd ${YOUR_CODE_DIR}/FlagTree/python
-python3 -m pip install -r requirements.txt
 export FLAGTREE_BACKEND=mthreads
 MAX_JOBS=32 python3 -m pip install . --no-build-isolation -v
 ```

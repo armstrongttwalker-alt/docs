@@ -9,6 +9,7 @@ use-hints.md
 use-tle-lite.md
 use-tle-struct.md
 use-tle-raw.md
+use-tle-cpu.md
 examples.md
 
 ```

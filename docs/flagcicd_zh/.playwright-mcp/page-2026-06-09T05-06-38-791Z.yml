@@ -1,0 +1,295 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [expanded] [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e3345]
+        - menu [ref=e3348]:
+          - menuitem "容器镜像" [ref=e3349] [cursor=pointer]:
+            - generic [ref=e3350]: 容器镜像
+          - menuitem "Python包" [ref=e3351] [cursor=pointer]:
+            - generic [ref=e3352]: Python包
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [active] [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "用户管理"
+        - main [ref=e77]:
+          - generic [ref=e4131]:
+            - textbox "搜索手机号/用户名" [ref=e4134]
+            - paragraph [ref=e4135]:
+              - img [ref=e4136]
+          - generic [ref=e4140]:
+            - generic [ref=e4142]:
+              - table [ref=e4144]:
+                - rowgroup [ref=e4153]:
+                  - row "手机号 用户名 邮箱 角色 状态 创建时间 按 创建时间 排序 操作" [ref=e4154]:
+                    - columnheader "手机号" [ref=e4155]:
+                      - generic [ref=e4156]: 手机号
+                    - columnheader "用户名" [ref=e4157]:
+                      - generic [ref=e4158]: 用户名
+                    - columnheader "邮箱" [ref=e4159]:
+                      - generic [ref=e4160]: 邮箱
+                    - columnheader "角色" [ref=e4161]:
+                      - generic [ref=e4162]: 角色
+                    - columnheader "状态" [ref=e4163]:
+                      - generic [ref=e4164]: 状态
+                    - columnheader "创建时间 按 创建时间 排序" [ref=e4165] [cursor=pointer]:
+                      - generic [ref=e4166]:
+                        - text: 创建时间
+                        - button "按 创建时间 排序" [ref=e4167]
+                    - columnheader "操作" [ref=e4170]:
+                      - generic [ref=e4171]: 操作
+              - table [ref=e4176]:
+                - rowgroup [ref=e4185]:
+                  - row "188****7608 7608_apihl2p 未设置 正常 2026-06-09 03:00:10 编辑 | 禁用" [ref=e4186]:
+                    - cell "188****7608" [ref=e4187]:
+                      - generic [ref=e4188]: 188****7608
+                    - cell "7608_apihl2p" [ref=e4189]:
+                      - generic [ref=e4190]: 7608_apihl2p
+                    - cell [ref=e4191]
+                    - cell "未设置" [ref=e4192]:
+                      - generic [ref=e4193]: 未设置
+                    - cell "正常" [ref=e4194]:
+                      - generic [ref=e4197]: 正常
+                    - cell "2026-06-09 03:00:10" [ref=e4198]:
+                      - generic [ref=e4199]: 2026-06-09 03:00:10
+                    - cell "编辑 | 禁用" [ref=e4200]:
+                      - generic [ref=e4202]:
+                        - button "编辑" [ref=e4204] [cursor=pointer]:
+                          - generic [ref=e4205]: 编辑
+                        - generic [ref=e4206]: "|"
+                        - button "禁用" [ref=e4208] [cursor=pointer]:
+                          - generic [ref=e4209]: 禁用
+                  - row "181****0587 张文婧 未设置 正常 2026-06-09 01:36:11 编辑 | 禁用" [ref=e4210]:
+                    - cell "181****0587" [ref=e4211]:
+                      - generic [ref=e4212]: 181****0587
+                    - cell "张文婧" [ref=e4213]:
+                      - generic [ref=e4214]: 张文婧
+                    - cell [ref=e4215]
+                    - cell "未设置" [ref=e4216]:
+                      - generic [ref=e4217]: 未设置
+                    - cell "正常" [ref=e4218]:
+                      - generic [ref=e4221]: 正常
+                    - cell "2026-06-09 01:36:11" [ref=e4222]:
+                      - generic [ref=e4223]: 2026-06-09 01:36:11
+                    - cell "编辑 | 禁用" [ref=e4224]:
+                      - generic [ref=e4226]:
+                        - button "编辑" [ref=e4228] [cursor=pointer]:
+                          - generic [ref=e4229]: 编辑
+                        - generic [ref=e4230]: "|"
+                        - button "禁用" [ref=e4232] [cursor=pointer]:
+                          - generic [ref=e4233]: 禁用
+                  - row "loi****.com loic_api0bna loicfoumegnikengni@gmail.com 未设置 正常 2026-06-09 00:37:48 编辑 | 禁用" [ref=e4234]:
+                    - cell "loi****.com" [ref=e4235]:
+                      - generic [ref=e4236]: loi****.com
+                    - cell "loic_api0bna" [ref=e4237]:
+                      - generic [ref=e4238]: loic_api0bna
+                    - cell "loicfoumegnikengni@gmail.com" [ref=e4239]:
+                      - generic [ref=e4240]: loicfoumegnikengni@gmail.com
+                    - cell "未设置" [ref=e4241]:
+                      - generic [ref=e4242]: 未设置
+                    - cell "正常" [ref=e4243]:
+                      - generic [ref=e4246]: 正常
+                    - cell "2026-06-09 00:37:48" [ref=e4247]:
+                      - generic [ref=e4248]: 2026-06-09 00:37:48
+                    - cell "编辑 | 禁用" [ref=e4249]:
+                      - generic [ref=e4251]:
+                        - button "编辑" [ref=e4253] [cursor=pointer]:
+                          - generic [ref=e4254]: 编辑
+                        - generic [ref=e4255]: "|"
+                        - button "禁用" [ref=e4257] [cursor=pointer]:
+                          - generic [ref=e4258]: 禁用
+                  - row "175****8214 8214_api4ufn 未设置 正常 2026-06-08 11:47:33 编辑 | 禁用" [ref=e4259]:
+                    - cell "175****8214" [ref=e4260]:
+                      - generic [ref=e4261]: 175****8214
+                    - cell "8214_api4ufn" [ref=e4262]:
+                      - generic [ref=e4263]: 8214_api4ufn
+                    - cell [ref=e4264]
+                    - cell "未设置" [ref=e4265]:
+                      - generic [ref=e4266]: 未设置
+                    - cell "正常" [ref=e4267]:
+                      - generic [ref=e4270]: 正常
+                    - cell "2026-06-08 11:47:33" [ref=e4271]:
+                      - generic [ref=e4272]: 2026-06-08 11:47:33
+                    - cell "编辑 | 禁用" [ref=e4273]:
+                      - generic [ref=e4275]:
+                        - button "编辑" [ref=e4277] [cursor=pointer]:
+                          - generic [ref=e4278]: 编辑
+                        - generic [ref=e4279]: "|"
+                        - button "禁用" [ref=e4281] [cursor=pointer]:
+                          - generic [ref=e4282]: 禁用
+                  - row "183****7703 7703_apips2v 未设置 正常 2026-06-08 07:27:02 编辑 | 禁用" [ref=e4283]:
+                    - cell "183****7703" [ref=e4284]:
+                      - generic [ref=e4285]: 183****7703
+                    - cell "7703_apips2v" [ref=e4286]:
+                      - generic [ref=e4287]: 7703_apips2v
+                    - cell [ref=e4288]
+                    - cell "未设置" [ref=e4289]:
+                      - generic [ref=e4290]: 未设置
+                    - cell "正常" [ref=e4291]:
+                      - generic [ref=e4294]: 正常
+                    - cell "2026-06-08 07:27:02" [ref=e4295]:
+                      - generic [ref=e4296]: 2026-06-08 07:27:02
+                    - cell "编辑 | 禁用" [ref=e4297]:
+                      - generic [ref=e4299]:
+                        - button "编辑" [ref=e4301] [cursor=pointer]:
+                          - generic [ref=e4302]: 编辑
+                        - generic [ref=e4303]: "|"
+                        - button "禁用" [ref=e4305] [cursor=pointer]:
+                          - generic [ref=e4306]: 禁用
+                  - row "134****0738 0738_apiehlo 未设置 正常 2026-06-08 06:52:32 编辑 | 禁用" [ref=e4307]:
+                    - cell "134****0738" [ref=e4308]:
+                      - generic [ref=e4309]: 134****0738
+                    - cell "0738_apiehlo" [ref=e4310]:
+                      - generic [ref=e4311]: 0738_apiehlo
+                    - cell [ref=e4312]
+                    - cell "未设置" [ref=e4313]:
+                      - generic [ref=e4314]: 未设置
+                    - cell "正常" [ref=e4315]:
+                      - generic [ref=e4318]: 正常
+                    - cell "2026-06-08 06:52:32" [ref=e4319]:
+                      - generic [ref=e4320]: 2026-06-08 06:52:32
+                    - cell "编辑 | 禁用" [ref=e4321]:
+                      - generic [ref=e4323]:
+                        - button "编辑" [ref=e4325] [cursor=pointer]:
+                          - generic [ref=e4326]: 编辑
+                        - generic [ref=e4327]: "|"
+                        - button "禁用" [ref=e4329] [cursor=pointer]:
+                          - generic [ref=e4330]: 禁用
+                  - row "153****8305 8305_apiuyr9 未设置 正常 2026-06-08 05:24:01 编辑 | 禁用" [ref=e4331]:
+                    - cell "153****8305" [ref=e4332]:
+                      - generic [ref=e4333]: 153****8305
+                    - cell "8305_apiuyr9" [ref=e4334]:
+                      - generic [ref=e4335]: 8305_apiuyr9
+                    - cell [ref=e4336]
+                    - cell "未设置" [ref=e4337]:
+                      - generic [ref=e4338]: 未设置
+                    - cell "正常" [ref=e4339]:
+                      - generic [ref=e4342]: 正常
+                    - cell "2026-06-08 05:24:01" [ref=e4343]:
+                      - generic [ref=e4344]: 2026-06-08 05:24:01
+                    - cell "编辑 | 禁用" [ref=e4345]:
+                      - generic [ref=e4347]:
+                        - button "编辑" [ref=e4349] [cursor=pointer]:
+                          - generic [ref=e4350]: 编辑
+                        - generic [ref=e4351]: "|"
+                        - button "禁用" [ref=e4353] [cursor=pointer]:
+                          - generic [ref=e4354]: 禁用
+                  - row "186****0345 0345_api3fg1 未设置 正常 2026-06-08 03:49:45 编辑 | 禁用" [ref=e4355]:
+                    - cell "186****0345" [ref=e4356]:
+                      - generic [ref=e4357]: 186****0345
+                    - cell "0345_api3fg1" [ref=e4358]:
+                      - generic [ref=e4359]: 0345_api3fg1
+                    - cell [ref=e4360]
+                    - cell "未设置" [ref=e4361]:
+                      - generic [ref=e4362]: 未设置
+                    - cell "正常" [ref=e4363]:
+                      - generic [ref=e4366]: 正常
+                    - cell "2026-06-08 03:49:45" [ref=e4367]:
+                      - generic [ref=e4368]: 2026-06-08 03:49:45
+                    - cell "编辑 | 禁用" [ref=e4369]:
+                      - generic [ref=e4371]:
+                        - button "编辑" [ref=e4373] [cursor=pointer]:
+                          - generic [ref=e4374]: 编辑
+                        - generic [ref=e4375]: "|"
+                        - button "禁用" [ref=e4377] [cursor=pointer]:
+                          - generic [ref=e4378]: 禁用
+                  - row "157****7623 7623_apiwhho 未设置 正常 2026-06-08 03:40:28 编辑 | 禁用" [ref=e4379]:
+                    - cell "157****7623" [ref=e4380]:
+                      - generic [ref=e4381]: 157****7623
+                    - cell "7623_apiwhho" [ref=e4382]:
+                      - generic [ref=e4383]: 7623_apiwhho
+                    - cell [ref=e4384]
+                    - cell "未设置" [ref=e4385]:
+                      - generic [ref=e4386]: 未设置
+                    - cell "正常" [ref=e4387]:
+                      - generic [ref=e4390]: 正常
+                    - cell "2026-06-08 03:40:28" [ref=e4391]:
+                      - generic [ref=e4392]: 2026-06-08 03:40:28
+                    - cell "编辑 | 禁用" [ref=e4393]:
+                      - generic [ref=e4395]:
+                        - button "编辑" [ref=e4397] [cursor=pointer]:
+                          - generic [ref=e4398]: 编辑
+                        - generic [ref=e4399]: "|"
+                        - button "禁用" [ref=e4401] [cursor=pointer]:
+                          - generic [ref=e4402]: 禁用
+                  - row "135****1823 1823_apillhz 未设置 正常 2026-06-08 03:31:51 编辑 | 禁用" [ref=e4403]:
+                    - cell "135****1823" [ref=e4404]:
+                      - generic [ref=e4405]: 135****1823
+                    - cell "1823_apillhz" [ref=e4406]:
+                      - generic [ref=e4407]: 1823_apillhz
+                    - cell [ref=e4408]
+                    - cell "未设置" [ref=e4409]:
+                      - generic [ref=e4410]: 未设置
+                    - cell "正常" [ref=e4411]:
+                      - generic [ref=e4414]: 正常
+                    - cell "2026-06-08 03:31:51" [ref=e4415]:
+                      - generic [ref=e4416]: 2026-06-08 03:31:51
+                    - cell "编辑 | 禁用" [ref=e4417]:
+                      - generic [ref=e4419]:
+                        - button "编辑" [ref=e4421] [cursor=pointer]:
+                          - generic [ref=e4422]: 编辑
+                        - generic [ref=e4423]: "|"
+                        - button "禁用" [ref=e4425] [cursor=pointer]:
+                          - generic [ref=e4426]: 禁用
+            - generic [ref=e4427]:
+              - generic [ref=e4428]: 共 2102 条
+              - generic [ref=e4431] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e4433]
+                  - generic [ref=e4434]: 10条/页
+                - img [ref=e4437]
+              - button "上一页" [disabled] [ref=e4439]:
+                - generic:
+                  - img
+              - list [ref=e4440]:
+                - listitem "第 1 页" [ref=e4441]: "1"
+                - listitem "第 2 页" [ref=e4442] [cursor=pointer]: "2"
+                - listitem "第 3 页" [ref=e4443] [cursor=pointer]: "3"
+                - listitem "第 4 页" [ref=e4444] [cursor=pointer]: "4"
+                - listitem "第 5 页" [ref=e4445] [cursor=pointer]: "5"
+                - listitem "第 6 页" [ref=e4446] [cursor=pointer]: "6"
+                - listitem "向后 5 页" [ref=e4447] [cursor=pointer]:
+                  - img
+                - listitem "第 211 页" [ref=e4448] [cursor=pointer]: "211"
+              - button "下一页" [ref=e4449] [cursor=pointer]:
+                - generic:
+                  - img
+              - generic [ref=e4450]:
+                - generic [ref=e4451]: 前往
+                - spinbutton "页" [ref=e4454]: "1"
+                - generic [ref=e4455]: 页
+  - img

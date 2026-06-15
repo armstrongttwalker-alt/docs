@@ -1,0 +1,237 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - menubar [ref=e8]:
+      - menuitem "仓库广场" [ref=e9] [cursor=pointer]:
+        - img [ref=e11]
+        - generic [ref=e13]: 仓库广场
+      - menuitem "我的仓库" [ref=e14] [cursor=pointer]:
+        - img [ref=e16]
+        - generic [ref=e18]: 我的仓库
+      - menuitem "资源规格" [ref=e19] [cursor=pointer]:
+        - img [ref=e21]
+        - generic [ref=e23]: 资源规格
+      - menuitem "制品管理" [expanded] [ref=e24]:
+        - generic [ref=e25] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: 制品管理
+          - img [ref=e3345]
+        - menu [ref=e3348]:
+          - menuitem "容器镜像" [ref=e3349] [cursor=pointer]:
+            - generic [ref=e3350]: 容器镜像
+          - menuitem "Python包" [active] [ref=e3351] [cursor=pointer]:
+            - generic [ref=e3352]: Python包
+      - menuitem "测试用例" [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - generic [ref=e38]: 测试用例
+      - menuitem "模型中心" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: 模型中心
+      - paragraph [ref=e44]: 管理端
+      - menuitem "用户管理" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: 用户管理
+      - menuitem "模型管理" [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e54]: 模型管理
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - img [ref=e59] [cursor=pointer]
+        - generic [ref=e62]:
+          - button [ref=e64] [cursor=pointer]
+          - button "1 1682_apij11w" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: "1"
+            - generic [ref=e69]: 1682_apij11w
+            - img [ref=e71]
+      - generic [ref=e73]:
+        - navigation "面包屑" [ref=e76]:
+          - generic:
+            - link "制品管理"
+            - generic:
+              - img
+          - link "Python包" [ref=e3353] [cursor=pointer]
+        - main [ref=e77]:
+          - generic [ref=e3354]:
+            - textbox "请输入包名搜索" [ref=e3357]
+            - paragraph [ref=e3358]:
+              - img [ref=e3359]
+          - generic [ref=e3363]:
+            - generic [ref=e3365]:
+              - table [ref=e3367]:
+                - rowgroup [ref=e3374]:
+                  - row "包名 版本 Python版本 按 Python版本 排序 大小 按 大小 排序 上传时间 按 上传时间 排序" [ref=e3375]:
+                    - columnheader "包名" [ref=e3376]:
+                      - generic [ref=e3377]: 包名
+                    - columnheader "版本" [ref=e3378]:
+                      - generic [ref=e3379]: 版本
+                    - columnheader "Python版本 按 Python版本 排序" [ref=e3380] [cursor=pointer]:
+                      - generic [ref=e3381]:
+                        - text: Python版本
+                        - button "按 Python版本 排序" [ref=e3382]
+                    - columnheader "大小 按 大小 排序" [ref=e3385] [cursor=pointer]:
+                      - generic [ref=e3386]:
+                        - text: 大小
+                        - button "按 大小 排序" [ref=e3387]
+                    - columnheader "上传时间 按 上传时间 排序" [ref=e3390] [cursor=pointer]:
+                      - generic [ref=e3391]:
+                        - text: 上传时间
+                        - button "按 上传时间 排序" [ref=e3392]
+              - table [ref=e3399]:
+                - rowgroup [ref=e3406]:
+                  - row "flagtree 0.6.0rc1+ascend3.5 3.11 207.3 MB 2026-06-09 00:05:24" [ref=e3407]:
+                    - cell "flagtree" [ref=e3408]:
+                      - generic [ref=e3410]:
+                        - generic [ref=e3411]: flagtree
+                        - img [ref=e3414] [cursor=pointer]
+                    - cell "0.6.0rc1+ascend3.5" [ref=e3416]:
+                      - generic [ref=e3417]: 0.6.0rc1+ascend3.5
+                    - cell "3.11" [ref=e3418]:
+                      - generic [ref=e3419]: "3.11"
+                    - cell "207.3 MB" [ref=e3420]:
+                      - generic [ref=e3421]: 207.3 MB
+                    - cell "2026-06-09 00:05:24" [ref=e3422]:
+                      - generic [ref=e3423]: 2026-06-09 00:05:24
+                  - row "flagtree 0.6.0rc1+enflame3.6 3.12 443.0 MB 2026-06-08 01:12:02" [ref=e3424]:
+                    - cell "flagtree" [ref=e3425]:
+                      - generic [ref=e3427]:
+                        - generic [ref=e3428]: flagtree
+                        - img [ref=e3431] [cursor=pointer]
+                    - cell "0.6.0rc1+enflame3.6" [ref=e3433]:
+                      - generic [ref=e3434]: 0.6.0rc1+enflame3.6
+                    - cell "3.12" [ref=e3435]:
+                      - generic [ref=e3436]: "3.12"
+                    - cell "443.0 MB" [ref=e3437]:
+                      - generic [ref=e3438]: 443.0 MB
+                    - cell "2026-06-08 01:12:02" [ref=e3439]:
+                      - generic [ref=e3440]: 2026-06-08 01:12:02
+                  - row "flagtree 0.6.0rc1+hcu3.6 3.10 68.7 MB 2026-06-08 00:32:33" [ref=e3441]:
+                    - cell "flagtree" [ref=e3442]:
+                      - generic [ref=e3444]:
+                        - generic [ref=e3445]: flagtree
+                        - img [ref=e3448] [cursor=pointer]
+                    - cell "0.6.0rc1+hcu3.6" [ref=e3450]:
+                      - generic [ref=e3451]: 0.6.0rc1+hcu3.6
+                    - cell "3.10" [ref=e3452]:
+                      - generic [ref=e3453]: "3.10"
+                    - cell "68.7 MB" [ref=e3454]:
+                      - generic [ref=e3455]: 68.7 MB
+                    - cell "2026-06-08 00:32:33" [ref=e3456]:
+                      - generic [ref=e3457]: 2026-06-08 00:32:33
+                  - row "flagtree 0.6.0rc1+mthreads3.6 3.10 53.2 MB 2026-06-08 00:30:15" [ref=e3458]:
+                    - cell "flagtree" [ref=e3459]:
+                      - generic [ref=e3461]:
+                        - generic [ref=e3462]: flagtree
+                        - img [ref=e3465] [cursor=pointer]
+                    - cell "0.6.0rc1+mthreads3.6" [ref=e3467]:
+                      - generic [ref=e3468]: 0.6.0rc1+mthreads3.6
+                    - cell "3.10" [ref=e3469]:
+                      - generic [ref=e3470]: "3.10"
+                    - cell "53.2 MB" [ref=e3471]:
+                      - generic [ref=e3472]: 53.2 MB
+                    - cell "2026-06-08 00:30:15" [ref=e3473]:
+                      - generic [ref=e3474]: 2026-06-08 00:30:15
+                  - row "flagtree 0.6.0rc1 3.12 105.8 MB 2026-06-08 00:25:48" [ref=e3475]:
+                    - cell "flagtree" [ref=e3476]:
+                      - generic [ref=e3478]:
+                        - generic [ref=e3479]: flagtree
+                        - img [ref=e3482] [cursor=pointer]
+                    - cell "0.6.0rc1" [ref=e3484]:
+                      - generic [ref=e3485]: 0.6.0rc1
+                    - cell "3.12" [ref=e3486]:
+                      - generic [ref=e3487]: "3.12"
+                    - cell "105.8 MB" [ref=e3488]:
+                      - generic [ref=e3489]: 105.8 MB
+                    - cell "2026-06-08 00:25:48" [ref=e3490]:
+                      - generic [ref=e3491]: 2026-06-08 00:25:48
+                  - row "flagtree 0.6.0rc1+ascend3.2 3.11 57.2 MB 2026-06-08 00:25:31" [ref=e3492]:
+                    - cell "flagtree" [ref=e3493]:
+                      - generic [ref=e3495]:
+                        - generic [ref=e3496]: flagtree
+                        - img [ref=e3499] [cursor=pointer]
+                    - cell "0.6.0rc1+ascend3.2" [ref=e3501]:
+                      - generic [ref=e3502]: 0.6.0rc1+ascend3.2
+                    - cell "3.11" [ref=e3503]:
+                      - generic [ref=e3504]: "3.11"
+                    - cell "57.2 MB" [ref=e3505]:
+                      - generic [ref=e3506]: 57.2 MB
+                    - cell "2026-06-08 00:25:31" [ref=e3507]:
+                      - generic [ref=e3508]: 2026-06-08 00:25:31
+                  - row "flagtree 0.5.2rc1+mthreads3.6 3.10 106.0 MB 2026-05-23 14:57:00" [ref=e3509]:
+                    - cell "flagtree" [ref=e3510]:
+                      - generic [ref=e3512]:
+                        - generic [ref=e3513]: flagtree
+                        - img [ref=e3516] [cursor=pointer]
+                    - cell "0.5.2rc1+mthreads3.6" [ref=e3518]:
+                      - generic [ref=e3519]: 0.5.2rc1+mthreads3.6
+                    - cell "3.10" [ref=e3520]:
+                      - generic [ref=e3521]: "3.10"
+                    - cell "106.0 MB" [ref=e3522]:
+                      - generic [ref=e3523]: 106.0 MB
+                    - cell "2026-05-23 14:57:00" [ref=e3524]:
+                      - generic [ref=e3525]: 2026-05-23 14:57:00
+                  - row "flagtree 0.5.1 3.12 354.0 MB 2026-05-20 19:04:03" [ref=e3526]:
+                    - cell "flagtree" [ref=e3527]:
+                      - generic [ref=e3529]:
+                        - generic [ref=e3530]: flagtree
+                        - img [ref=e3533] [cursor=pointer]
+                    - cell "0.5.1" [ref=e3535]:
+                      - generic [ref=e3536]: 0.5.1
+                    - cell "3.12" [ref=e3537]:
+                      - generic [ref=e3538]: "3.12"
+                    - cell "354.0 MB" [ref=e3539]:
+                      - generic [ref=e3540]: 354.0 MB
+                    - cell "2026-05-20 19:04:03" [ref=e3541]:
+                      - generic [ref=e3542]: 2026-05-20 19:04:03
+                  - row "triton 3.2.0 3.10 241.4 MB 2026-05-12 23:26:24" [ref=e3543]:
+                    - cell "triton" [ref=e3544]:
+                      - generic [ref=e3546]:
+                        - generic [ref=e3547]: triton
+                        - img [ref=e3550] [cursor=pointer]
+                    - cell "3.2.0" [ref=e3552]:
+                      - generic [ref=e3553]: 3.2.0
+                    - cell "3.10" [ref=e3554]:
+                      - generic [ref=e3555]: "3.10"
+                    - cell "241.4 MB" [ref=e3556]:
+                      - generic [ref=e3557]: 241.4 MB
+                    - cell "2026-05-12 23:26:24" [ref=e3558]:
+                      - generic [ref=e3559]: 2026-05-12 23:26:24
+                  - row "flagtree 0.5.1+mthreads3.6 3.10 105.7 MB 2026-05-12 20:53:48" [ref=e3560]:
+                    - cell "flagtree" [ref=e3561]:
+                      - generic [ref=e3563]:
+                        - generic [ref=e3564]: flagtree
+                        - img [ref=e3567] [cursor=pointer]
+                    - cell "0.5.1+mthreads3.6" [ref=e3569]:
+                      - generic [ref=e3570]: 0.5.1+mthreads3.6
+                    - cell "3.10" [ref=e3571]:
+                      - generic [ref=e3572]: "3.10"
+                    - cell "105.7 MB" [ref=e3573]:
+                      - generic [ref=e3574]: 105.7 MB
+                    - cell "2026-05-12 20:53:48" [ref=e3575]:
+                      - generic [ref=e3576]: 2026-05-12 20:53:48
+            - generic [ref=e3577]:
+              - generic [ref=e3578]: 共 92 条
+              - generic [ref=e3581] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e3583]
+                  - generic [ref=e3584]: 10条/页
+                - img [ref=e3587]
+              - button "上一页" [disabled] [ref=e3589]:
+                - generic:
+                  - img
+              - list [ref=e3590]:
+                - listitem "第 1 页" [ref=e3591]: "1"
+                - listitem "第 2 页" [ref=e3592] [cursor=pointer]: "2"
+                - listitem "第 3 页" [ref=e3593] [cursor=pointer]: "3"
+                - listitem "第 4 页" [ref=e3594] [cursor=pointer]: "4"
+                - listitem "第 5 页" [ref=e3595] [cursor=pointer]: "5"
+                - listitem "第 6 页" [ref=e3596] [cursor=pointer]: "6"
+                - listitem "向后 5 页" [ref=e3597] [cursor=pointer]:
+                  - img
+                - listitem "第 10 页" [ref=e3598] [cursor=pointer]: "10"
+              - button "下一页" [ref=e3599] [cursor=pointer]:
+                - generic:
+                  - img
+              - generic [ref=e3600]:
+                - generic [ref=e3601]: 前往
+                - spinbutton "页" [ref=e3604]: "1"
+                - generic [ref=e3605]: 页
+  - img
