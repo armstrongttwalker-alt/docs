@@ -1,91 +1,62 @@
----
-license: apache-2.0
-language:
-- zh
-- en
----
-
 # Introduction
-
-**Qwen3.6-35B-A3B** is a fully open-source sparse MoE model (35B total parameters / 3B active parameters) that excels at agentic coding, significantly outperforming its predecessor Qwen3.5-35B-A3B and holding its own against dense models such as Qwen3.5-27B and Gemma4-31B. Key features include:
-
-- Outstanding agentic coding capabilities, comparable to much larger models
-- Strong multimodal perception and reasoning abilities
+C2S-Scale-Gemma-27B was jointly developed by the van Dijk Lab at Yale University, Google Research, and Google DeepMind. Built on the Gemma-2 27B architecture, it was trained using the Cell2Sentence (C2S) framework, which converts single-cell RNA sequencing data into "cell sentences" for model training. Trained on over 57 million cells, the model supports tasks such as cell type prediction, tissue classification, and gene expression profile generation, demonstrating the tremendous potential of applying large language models to single-cell biology.
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Metax** container image supporting deployment within minutes
+- Released **FlagOS-Hygon** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
+
 # Evaluation Results
 ## Benchmark Result
-|Metrics|Qwen3.6-35B-A3B-nomtp-Nvidia-Origin|Qwen3.6-35B-A3B-nomtp-Metax-FlagOS|
-|-------|---------------|---------------|
-|GPQA_Diamond |0.8283 |0.8081|
-|ERQA  | 0.5875  | 0.555|
+| Metrics      | C2S-Scale-Gemma-2-27B-Nvidia-Origin | C2S-Scale-Gemma-2-27B-Hygon-FlagOS |
+|--------------|--------------------------------|--------------------------------------|
+| medqa_4options | 0.5169                            | 0.5208                                    |
+| pubmedqa          | 0.542                            | 0.542                                   |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 27.5.1, build 27.5.1-0ubuntu3~22.04.2 |
-| Operating System |  Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 20.10.24, build 297e128 |
+| Operating System | Sugon OS 8.9 |
 
 ## Operation Steps
 
 ### Download FlagOS Image
-```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608
+```
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-c2s-scale-gemma-2-27b-hygon-tree_0.5.0_hcu3.0-gems_5.0.0-vllm_0.15.1_das.opt1.alpha.dtk2604.20260220.g2799735a-plugin_none-cx_none-python_3.10.12-torch_2.9.0_das.opt1.dt:202605211626
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3.6-35B-A3B-nomtp-metax-FlagOS --local_dir /data/Qwen3.6-35B-A3B-nomtp
+modelscope download --model FlagRelease/C2S-Scale-Gemma-2-27B-hygon-FlagOS --local_dir /data/C2S-Scale-Gemma-2-27B
 ```
 
 ### Start the Container
 ```bash
-#Container Startup
-docker run -itd
-    --name flagos
-    --privileged
-    --network=host
-    --security-opt seccomp=unconfined
-    --security-opt apparmor=unconfined
-    --shm-size '100gb'
-    --ulimit memlock=-1
-    --group-add video
-    --device=/dev/dri
-    --device=/dev/mxcd
-    --p 8000:8000
-    --env CUDA_VISIBLE_DEVICES=0,1
-    --device=/dev/mem
-    --device=/dev/infiniband
-    -v /usr/local/:/usr/local/
-    -v /data/:/data/
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608 bin/bash
-
-docker exec -it flagos /bin/bash
-  
+docker run \
+    --name flagos \
+    --network=host \
+    --ipc=host \
+    --device=/dev/kfd \
+    --device=/dev/mkfd \
+    --device=/dev/dri \
+    -v /opt/hyhal:/opt/hyhal \
+    -v /root/perfxlab:/workspace \
+    -v /data:/data \
+    --group-add video \
+    --cap-add=SYS_PTRACE \
+    --security-opt seccomp=unconfined \
+    -itd \
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-c2s-scale-gemma-2-27b-hygon-tree_0.5.0_hcu3.0-gems_5.0.0-vllm_0.15.1_das.opt1.alpha.dtk2604.20260220.g2799735a-plugin_none-cx_none-python_3.10.12-torch_2.9.0_das.opt1.dt:202605211626
 ```
 ### Start the Server
 ```bash
-export USE_FLAGGEMS=1
-export VLLM_PLUGINS=fl
-export VLLM_FL_PLATFORM=maca
-export CUDA_VISIBLE_DEVICES=0,1
-export VLLM_FL_PREFER=flagos
-export VLLM_FL_SKIP_ATEN_OVERRIDE=1
-export VLLM_FL_NO_MCOP_MOESUM=1
-export VLLM_FL_MCOP_MOEALIGN=1
-export VLLM_FL_MOE_TUNED_CFG=1
-export MACA_PATH=/opt/maca
-export LD_LIBRARY_PATH=/opt/maca/lib:/opt/maca/mxgpu_llvm/lib:/opt/maca/ompi/lib
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-vllm serve /data/Qwen3.6-35B-A3B-nomtp --served-model-name qwen36 --host 0.0.0.0 --port 8000 --trust-remote-code --max-model-len 73728 --gpu-memory-utilization 0.90 --tensor-parallel-size 2 --no-enable-prefix-caching --compilation-config '{"cudagraph_mode":"FULL"}' --max-num-batched-tokens 16384 --block-size 32 
+vllm serve /data/C2S-Scale-Gemma-2-27B --enforce-eager -tp 2 --served-model-name flagos
 ```
 
 ## Service Invocation
@@ -94,7 +65,7 @@ vllm serve /data/Qwen3.6-35B-A3B-nomtp --served-model-name qwen36 --host 0.0.0.0
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "qwen36",
+    "model": "flagos",
     "messages": [{"role": "user", "content": "你好"}]
   }'
 ```
@@ -137,6 +108,7 @@ FlagCX is a scalable and adaptive cross-chip communication library. It serves as
  FlagEval is a comprehensive evaluation system and open platform for large models launched in 2023. It aims to establish scientific, fair, and open benchmarks, methodologies, and tools to help researchers assess model and training algorithm performance. It features:
  - **Multi-dimensional Evaluation**: Supports 800+ modelevaluations across NLP, CV, Audio, and Multimodal fields,covering 20+ downstream tasks including language understanding and image-text generation.
  - **Industry-Grade Use Cases**: Has completed horizonta1 evaluations of mainstream large models, providing authoritative benchmarks for chip-model performance validation.
+
 # Contributing
 
 We warmly welcome global developers to join us:
@@ -146,4 +118,4 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from Qwen/Qwen3.6-35B-A3B-nomtp and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+The model weights are derived from vandijklab/C2S-Scale-Gemma-2-27B and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt

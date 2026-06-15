@@ -1,16 +1,19 @@
 ---
-license: apache-2.0
+base_model:
+- ""
 language:
 - zh
 - en
+license: apache-2.0
 ---
 
 # Introduction
+Hy-MT2 is a multilingual translation model series open-sourced by Tencent Hunyuan. It includes three sizes — Hy-MT2-1.8B, Hy-MT2-7B, and Hy-MT2-30B-A3B — all supporting translation across 33 languages and 5 Chinese ethnic minority / dialect translation pairs. The 30B-A3B uses a MoE architecture (30B total parameters / 3B activated), while the 1.8B and 7B are dense models. Compared to the previous generation Hy-MT1.5, MT2 brings improvements in domain-specific translation, instruction following, and on-device deployment:
 
-**Qwen3.6-35B-A3B** is a fully open-source sparse MoE model (35B total parameters / 3B active parameters) that excels at agentic coding, significantly outperforming its predecessor Qwen3.5-35B-A3B and holding its own against dense models such as Qwen3.5-27B and Gemma4-31B. Key features include:
-
-- Outstanding agentic coding capabilities, comparable to much larger models
-- Strong multimodal perception and reasoning abilities
+The 7B and 30B-A3B achieve 96.9% and 98.1% of Gemini 2.5 Pro's performance respectively on the FLORES-200 general translation benchmark, surpassing open-source models such as DeepSeek-V4-Pro and Kimi K2.6; the 1.8B outperforms leading commercial translation APIs overall.
+The 30B-A3B achieves a GEMBA score of 99.0% of Gemini 2.5 Pro's on the DomainMTBench benchmark across vertical domains including finance, politics, and education.
+Supports translation instructions such as glossary/terminology control, style transformation, and structured output (HTML/JSON), with instruction-following capability exceeding open-source models of the same size.
+The 1.8B offers a 1.25-bit quantized version based on the Sherry framework, requiring only ~440 MB of storage, enabling local inference on mobile chips from Apple, Qualcomm, MediaTek, and others.
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
@@ -18,12 +21,13 @@ language:
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
+
 # Evaluation Results
 ## Benchmark Result
-|Metrics|Qwen3.6-35B-A3B-nomtp-Nvidia-Origin|Qwen3.6-35B-A3B-nomtp-Metax-FlagOS|
-|-------|---------------|---------------|
-|GPQA_Diamond |0.8283 |0.8081|
-|ERQA  | 0.5875  | 0.555|
+| Metrics(chrf) | HY-MT2-1.8B-Nvidia-Origin | HY-MT2-1.8B-Metax-FlagOS |
+|---------------|--------------------------------|--------------------------|
+| flores_ca     | 45.32                     | 45.3363                  |
+| wmt16         | 57.2                      | 57.171                   |
 
 # User Guide
 Environment Setup
@@ -31,61 +35,49 @@ Environment Setup
 | Item             | Version              |
 |------------------|----------------------|
 | Docker Version   | Docker version 27.5.1, build 27.5.1-0ubuntu3~22.04.2 |
-| Operating System |  Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
+| Operating System | Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-hy-mt2-1.8b-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_3.8.1:202605280644
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3.6-35B-A3B-nomtp-metax-FlagOS --local_dir /data/Qwen3.6-35B-A3B-nomtp
+modelscope download --model FlagRelease/HY-MT2-1.8B-metax-FlagOS --local_dir /data/HY-MT2-1.8B
 ```
 
 ### Start the Container
 ```bash
-#Container Startup
-docker run -itd
-    --name flagos
-    --privileged
-    --network=host
-    --security-opt seccomp=unconfined
-    --security-opt apparmor=unconfined
-    --shm-size '100gb'
-    --ulimit memlock=-1
-    --group-add video
-    --device=/dev/dri
-    --device=/dev/mxcd
-    --p 8000:8000
-    --env CUDA_VISIBLE_DEVICES=0,1
-    --device=/dev/mem
-    --device=/dev/infiniband
-    -v /usr/local/:/usr/local/
-    -v /data/:/data/
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608 bin/bash
-
+docker run -itd \
+    --name flagos \
+    --privileged \
+     --network=host \
+     --security-opt seccomp=unconfined \
+     --security-opt apparmor=unconfined \
+     --shm-size '100gb' \
+     --ulimit memlock=-1 \
+     --group-add video \
+     --device=/dev/dri \
+     --device=/dev/mxcd \
+     --device=/dev/mem \
+     --device=/dev/infiniband \
+     -v /usr/local/:/usr/local/ \
+     -v /data/:/data/ \
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-hy-mt2-1.8b-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_3.8.1:202605280644     /bin/bash
 docker exec -it flagos /bin/bash
-  
 ```
 ### Start the Server
 ```bash
-export USE_FLAGGEMS=1
-export VLLM_PLUGINS=fl
-export VLLM_FL_PLATFORM=maca
-export CUDA_VISIBLE_DEVICES=0,1
-export VLLM_FL_PREFER=flagos
-export VLLM_FL_SKIP_ATEN_OVERRIDE=1
-export VLLM_FL_NO_MCOP_MOESUM=1
-export VLLM_FL_MCOP_MOEALIGN=1
-export VLLM_FL_MOE_TUNED_CFG=1
-export MACA_PATH=/opt/maca
-export LD_LIBRARY_PATH=/opt/maca/lib:/opt/maca/mxgpu_llvm/lib:/opt/maca/ompi/lib
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-vllm serve /data/Qwen3.6-35B-A3B-nomtp --served-model-name qwen36 --host 0.0.0.0 --port 8000 --trust-remote-code --max-model-len 73728 --gpu-memory-utilization 0.90 --tensor-parallel-size 2 --no-enable-prefix-caching --compilation-config '{"cudagraph_mode":"FULL"}' --max-num-batched-tokens 16384 --block-size 32 
+vllm serve /data/HY-MT2-1.8B \
+--trust-remote-code \
+--dtype bfloat16 \
+--port 8000 \
+--host 0.0.0.0 \
+--served-model-name hy_mt2_1.8B
 ```
 
 ## Service Invocation
@@ -94,7 +86,7 @@ vllm serve /data/Qwen3.6-35B-A3B-nomtp --served-model-name qwen36 --host 0.0.0.0
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "qwen36",
+    "model": "hy_mt2_1.8B",
     "messages": [{"role": "user", "content": "你好"}]
   }'
 ```
@@ -137,6 +129,7 @@ FlagCX is a scalable and adaptive cross-chip communication library. It serves as
  FlagEval is a comprehensive evaluation system and open platform for large models launched in 2023. It aims to establish scientific, fair, and open benchmarks, methodologies, and tools to help researchers assess model and training algorithm performance. It features:
  - **Multi-dimensional Evaluation**: Supports 800+ modelevaluations across NLP, CV, Audio, and Multimodal fields,covering 20+ downstream tasks including language understanding and image-text generation.
  - **Industry-Grade Use Cases**: Has completed horizonta1 evaluations of mainstream large models, providing authoritative benchmarks for chip-model performance validation.
+
 # Contributing
 
 We warmly welcome global developers to join us:
@@ -146,4 +139,5 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from Qwen/Qwen3.6-35B-A3B-nomtp and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+The model weights are derived from Tencent-Hunyuan/HY-MT2-1.8B and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+
