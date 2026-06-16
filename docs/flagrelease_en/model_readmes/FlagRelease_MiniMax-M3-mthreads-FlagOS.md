@@ -1,12 +1,9 @@
 ---
-base_model:
-- ""
+license: apache-2.0
 language:
 - zh
 - en
-license: apache-2.0
 ---
-
 # Introduction
 MiniMax M3, released on June 1st, is the first Chinese model to simultaneously deliver frontier coding/agentic capabilities, 1M ultra-long context, and native multimodality — and the only open-source model in the world with all three. The core innovation is a proprietary MSA sparse attention architecture: at 1M context, compute per token is just 1/20th of the previous generation, with 9× prefilling speedup and 15× decoding speedup. On SWE-Bench Pro, M3 scores 59.0%, surpassing GPT-5.5 and Gemini 3.1 Pro, and approaching Opus 4.7; on the multimodal benchmark OmniDocBench, it also outperforms Gemini 3.1 Pro. In real-world tests, M3 autonomously ran for nearly 12 hours to successfully reproduce an ICLR award-winning paper, and within ~24 hours pushed FP8 GEMM kernel utilization from 7.6% to 71.3% — a 9.4× speedup.
 
@@ -20,9 +17,9 @@ MiniMax M3, released on June 1st, is the first Chinese model to simultaneously d
 # Evaluation Results
 ## Benchmark Result
 | Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Mthreads-FlagOS |
-|--------------|-------------------------------|--------------------------------------|
-| GPQA_Diamond | 0.8636                              | 0.8182                                    |
-
+|--------------|-------------------------------|----------------------------|
+| GPQA_Diamond | 86.36                             | 83.68                      |
+| ERQA         | 52.25                            | 53.75                      |
 # User Guide
 Environment Setup
 
@@ -47,15 +44,16 @@ modelscope download --model FlagRelease/MiniMax-M3-mthreads-FlagOS --local_dir /
 ### Start the Container
 ```bash
 docker run -dit \
-  --name flagos \
-  --privileged \
-  --ipc host \
-  --network host \
-  --shm-size 64g \
-  --env MTHREADS_VISIBLE_DEVICES=all \
-  -v /data:/data \
-  harbor.baai.ac.cn/flagrelease-public/flagrelease-minimaxm3-mthreads-tree_0.5.2-gems_5.0.2-sglang_0.5.11-plugin_01.0-cx_none-python_3.10.12-torch_2.9.0-pcp_musa4.3.5-gpu_mthreads001-arc_amd64-driver_3.3.6-server:202606121704 \
-  sleep infinity
+    --name flagos \
+    --privileged \
+    --ipc host \
+    --network host \
+    --shm-size 64g \
+    --env MTHREADS_VISIBLE_DEVICES=all \
+    -v /data:/data \
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimaxm3-mthreads-tree_0.5.2-gems_5.0.2-sglang_0.5.11-plugin_01.0-cx_none-python_3.10.12-torch_2.9.0-pcp_musa4.3.5-gpu_mthreads001-arc_amd64-driver_3.3.6-server:202606121704 \
+    sleep infinity
+docker exec -it flagos bash
 ```
 ### Start the Server
 ```bash
@@ -69,7 +67,7 @@ SGLANG_FL_DISPATCH_LOG=/tmp/flaggems_dispatch.log nohup python -m sglang.launch_
 --model-path /data/MiniMax-M3 \
 --tp-size 8 --pp-size 2 \
 --nnodes 2 --node-rank 0 \
---dist-init-addr 10.1.15.176:29500 \
+--dist-init-addr <node1_ip>:29500 \
 --host 0.0.0.0 --port 30000 \
 --page-size 1 --disable-cuda-graph --disable-piecewise-cuda-graph \
 --trust-remote-code --watchdog-timeout 3600 --mem-fraction-static 0.75 --max-running-requests 1 \
@@ -80,7 +78,7 @@ SGLANG_FL_DISPATCH_LOG=/tmp/flaggems_dispatch.log nohup python -m sglang.launch_
 --model-path /data/MiniMax-M3 \
 --tp-size 8 --pp-size 2 \
 --nnodes 2 --node-rank 1 \
---dist-init-addr 10.1.15.176:29500 \
+--dist-init-addr <node1_ip>:29500 \
 --host 0.0.0.0 --port 30000 \
 --page-size 1 --disable-cuda-graph --disable-piecewise-cuda-graph \
 --trust-remote-code --watchdog-timeout 3600 --mem-fraction-static 0.75 --max-running-requests 1 \

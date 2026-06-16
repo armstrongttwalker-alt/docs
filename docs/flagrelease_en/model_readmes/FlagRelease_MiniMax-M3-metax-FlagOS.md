@@ -1,8 +1,10 @@
 ---
-license: apache-2.0
+base_model:
+- ""
 language:
 - zh
 - en
+license: apache-2.0
 ---
 
 # Introduction
@@ -10,83 +12,66 @@ MiniMax M3, released on June 1st, is the first Chinese model to simultaneously d
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Nvidia** container image supporting deployment within minutes
+- Released **FlagOS-Metax** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Nvidia-FlagOS |
-|--------------|-------------------------------|--------------------------|
-| GPQA_Diamond | 86.36                             | 84.77                    |
-| ERQA         | 52.25                            | 52.75                    |
+| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Metax-FlagOS |
+|--------------|--------------------------|-----------------------|
+| GPQA_Diamond | 86.36                  | 78.24                 |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 24.0.0, build 98fdcd7 |
-| Operating System | 22.04.4 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 27.5.1, build 27.5.1-0ubuntu3~22.04.2 |
+| Operating System | Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-metax-tree_0.5.1_metax3.0-gems_5.0.2-vllm_0.13.0-plugin_none-cx_none-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_3.3.12:202606051553
+
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/MiniMax-M3-nvidia-FlagOS --local_dir /data/MiniMax-M3
+modelscope download --model FlagRelease/MiniMax-M3-metax-FlagOS --local_dir /data/MiniMax-M3
 ```
 
 ### Start the Container
 ```bash
-docker run -d --name flagos-m3 \
-    --gpus all \
-    --network host \
-    --ipc host \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
-    -v /dev/shm:/dev/shm \
-    -v /root/.cache:/root/.cache \
-    -v /data:/data \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536 \
-    sleep infinity
-```
-### Start the Server
-```bash
-export FLASHINFER_DISABLE_VERSION_CHECK=1
-export USE_FLAGGEMS=1
-export SGLANG_FL_OOT_ENABLED=1
-export SGLANG_FL_PREFER=flagos
-
-python3 -m sglang.launch_server \
-  --model-path /data/MiniMax-M3 \
-  --tp 8 --trust-remote-code --port 30000 --host 0.0.0.0 \
-  --dtype bfloat16 --quantization mxfp8 \
-  --attention-backend flashinfer \
-  --mem-fraction-static 0.80 \
-  --max-total-tokens 414018 \
-  --chunked-prefill-size 4096 \
-  --max-prefill-tokens 16384 \
-  --disable-custom-all-reduce
+docker run -itd \
+    --name flagos \
+    --privileged \
+     --network=host \
+     --security-opt seccomp=unconfined \
+     --security-opt apparmor=unconfined \
+     --shm-size '100gb' \
+     --ulimit memlock=-1 \
+     --group-add video \
+     --device=/dev/dri \
+     --device=/dev/mxcd \
+     --device=/dev/mem \
+     --device=/dev/infiniband \
+     -v /usr/local/:/usr/local/ \
+     -v /data/:/data/ \
+     harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-metax-tree_0.5.1_metax3.0-gems_5.0.2-vllm_0.13.0-plugin_none-cx_none-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_3.3.12:202606051553  \
+     /bin/bash
+docker exec -it flagos /bin/bash
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:30000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "Minimax",
-    "prompt": "中国的首都是？",
-    "max_tokens": 32,
-    "temperature": 0
-  }'
+cd /root/M3pytorch_code
+bash run_inference.sh
 ```
 
 
@@ -138,4 +123,5 @@ We warmly welcome global developers to join us:
 4. Expand hardware adaptation support
 # License
 The model weights are derived from MiniMaxAI/MiniMax-M3 and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+
 
