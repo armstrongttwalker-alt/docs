@@ -75,3 +75,9 @@ pre {
   max-width: 100%;
   overflow-x: auto;
 }
+
+/* Adjust sphinx-book-theme navbar logo size */ 
+#site-logo {
+   max-height: 32px;
+   width: auto;
+}
