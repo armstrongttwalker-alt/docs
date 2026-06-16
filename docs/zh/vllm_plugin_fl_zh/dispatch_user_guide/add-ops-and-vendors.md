@@ -1,8 +1,8 @@
-# 添加新算子和供应商后端
+# 添加新算子和厂商后端
 
 ## 添加新算子
 
-添加新算子时，修改以下文件：
+添加新算子时，需要修改以下文件：
 
 - `backends/flaggems/impl/*.py` - 添加 FlagGems 实现
 - `backends/flaggems/flaggems.py` - 向后端类添加方法
@@ -10,22 +10,22 @@
 - `backends/reference/impl/*.py` - 添加 PyTorch 实现（如适用）
 - `backends/reference/reference.py` - 向后端类添加方法
 - `backends/reference/register_ops.py` - 注册 OpImpl
-- `backends/vendor/<vendor>/impl/*.py` - 添加供应商特定实现（可选）
-- `backends/vendor/<vendor>/<vendor>.py` - 向供应商后端类添加方法
-- `backends/vendor/<vendor>/register_ops.py` - 注册供应商 OpImpl
+- `backends/vendor/<vendor>/impl/*.py` - 添加厂商特定实现（可选）
+- `backends/vendor/<vendor>/<vendor>.py` - 向厂商后端类添加方法
+- `backends/vendor/<vendor>/register_ops.py` - 注册厂商 OpImpl
 - `ops.py` - 添加抽象方法声明
 
-**注意：** 并非所有算子都需要参考实现。例如，`attention_backend` 只有 FlagGems 和供应商实现，因为它返回的是后端类路径而不是执行计算。
+**注意：**并非所有算子都需要参考实现。例如，`attention_backend` 只有 FlagGems 和厂商实现，因为它返回的是后端类路径而非执行计算。
 
-### 添加供应商后端
+### 添加厂商后端
 
-调度系统支持三种集成供应商后端的方式：
+调度系统支持三种方式集成厂商后端：
 
-1. **内置供应商后端** - 位于 `backends/vendor/`（推荐用于核心供应商）
+1. **内置厂商后端** - 位于 `backends/vendor/`（推荐用于核心厂商）
 2. **外部插件包** - 作为独立的 Python 包分发
-3. **基于环境变量的插件** - 通过 `VLLM_FL_PLUGIN_MODULES` 加载
+3. **基于环境的插件** - 通过 `VLLM_FL_PLUGIN_MODULES` 加载
 
-#### 选项 1：内置供应商后端
+#### 选项 1：内置厂商后端
 
 目录结构：
 
@@ -39,7 +39,7 @@ backends/vendor/<vendor_name>/
     ├── activation.py
     ├── normalization.py
     ├── rotary.py
-    └── attention.py        # （可选）供应商特定的注意力后端
+    └── attention.py        # （可选）厂商特定注意力后端
 ```
 
 **步骤 1：创建后端类**（`<vendor_name>.py`）：
@@ -56,7 +56,7 @@ class <VendorName>Backend(Backend):
 
     @property
     def vendor(self) -> str:
-        return "<vendor_name>"  # 供应商后端必需
+        return "<vendor_name>"  # 厂商后端必需
 
     def is_available(self) -> bool:
         if <VendorName>Backend._available is None:
@@ -101,12 +101,12 @@ try:
     from .backends.vendor.<vendor_name>.register_ops import register_builtins as register_<vendor>
     register_<vendor>(registry)
 except Exception as e:
-    logger.debug(f"<Vendor> 算子不可用: {e}")
+    logger.debug(f"<Vendor> operators not available: {e}")
 ```
 
 #### 选项 2：外部插件包
 
-创建一个带有入口点的独立包：
+创建带有入口点的独立包：
 
 ```python
 # setup.py
@@ -127,23 +127,23 @@ pip install vllm-plugin-<vendor>
 # 插件通过入口点自动发现
 ```
 
-#### 选项 3：基于环境变量的插件
+#### 选项 3：基于环境的插件
 
 ```bash
 export VLLM_FL_PLUGIN_MODULES=my_custom_backend.register_ops
 ```
 
-该模块应提供一个 `register_builtins(registry)` 函数。
+模块应提供 `register_builtins(registry)` 函数。
 
 #### 优先级级别
 
 使用 `types.py` 中的常量：
 
-- `BackendPriority.DEFAULT` (150) - FlagGems
-- `BackendPriority.VENDOR` (100) - 供应商后端
-- `BackendPriority.REFERENCE` (50) - PyTorch
+- `BackendPriority.DEFAULT`（150）- FlagGems
+- `BackendPriority.VENDOR`（100）- 厂商后端
+- `BackendPriority.REFERENCE`（50）- PyTorch
 
-#### 测试您的后端
+#### 测试后端
 
 ```python
 from vllm_fl.dispatch import get_default_manager
@@ -165,25 +165,25 @@ for op_name, impls in snap.impls_by_op.items():
 export VLLM_FL_LOG_LEVEL=DEBUG
 ```
 
-#### 供应商后端检查清单
+#### 厂商后端检查清单
 
 - [ ] 后端类继承自 `Backend`
-- [ ] `vendor` 属性返回供应商名称（不是 None）
-- [ ] `is_available()` 检查硬件/库的可用性
+- [ ] `vendor` 属性返回厂商名称（不为 None）
+- [ ] `is_available()` 检查硬件/库可用性
 - [ ] `register_ops.py` 使用 `BackendImplKind.VENDOR`
 - [ ] `impl_id` 遵循格式：`vendor.<vendor_name>`
-- [ ] 优先级设置为 `BackendPriority.VENDOR` (100)
-- [ ] 对缺失依赖的错误处理
-- [ ] （可选）`attention_backend()` 返回供应商特定的注意力后端类路径
+- [ ] 优先级设置为 `BackendPriority.VENDOR`（100）
+- [ ] 缺失依赖的错误处理
+- [ ] （可选）`attention_backend()` 返回厂商特定注意力后端类路径
 
-#### 当前供应商后端
+#### 当前厂商后端
 
-| 供应商 | 设备 | 库 | 注意力后端 |
+| 厂商 | 设备 | 库 | 注意力后端 |
 |--------|--------|---------|-------------------|
 | `cuda` | NVIDIA GPU | `vllm._custom_ops` | -（使用 vLLM 原生） |
 | `ascend` | 华为 NPU | `torch_npu` | `AscendAttentionBackend` |
 
-请参阅 `backends/vendor/template/` 获取创建新供应商后端的模板。
+参见 `backends/vendor/template/` 获取创建新厂商后端的模板。
 
 ## 多进程安全
 

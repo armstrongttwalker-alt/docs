@@ -18,7 +18,7 @@ with with_strict_mode():
 with with_preference("reference"):
     result = call_op("rms_norm", x, residual, weight, epsilon)
 
-# 临时限制允许的供应商
+# 临时限制允许的厂商
 with with_allowed_vendors("vendor_a"):
     result = call_op("rotary_embedding", query, key, cos, sin, position_ids)
 ```

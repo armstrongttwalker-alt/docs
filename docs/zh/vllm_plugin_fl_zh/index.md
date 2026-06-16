@@ -25,7 +25,7 @@
 :link: getting_started/getting-started
 :link-type: doc
 
-概述 vllm-plugin-FL 的安装要求，并提供从运行推理任务的分步说明。
+概述 vllm-plugin-FL 的安装要求，并提供从运行推理任务的逐步说明。
 
 +++
 [了解更多 »](getting_started/getting-started.md)
@@ -35,17 +35,17 @@
 :link: dispatch_user_guide/dispatch-user-guide
 :link-type: doc
 
-指导您如何在 FlagGems、供应商特定实现和 PyTorch 之间调度算子。
+指导如何在 FlagGems、厂商特定实现和 PyTorch 之间调度算子。
 
 +++
 [了解更多 »](dispatch_user_guide/dispatch-user-guide.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` 用户指南
+:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` 参考文档
 :link: reference/dispatch-api-reference
 :link-type: doc
 
-指导您如何在 FlagGems、供应商特定实现和 PyTorch 之间调度算子。
+调度 API 参考文档。
 
 +++
 [了解更多 »](reference/dispatch-api-reference.md)
@@ -74,7 +74,7 @@ dispatch_user_guide/dispatch-user-guide.md
 ```
 
 ```{toctree}
-:caption: 📖 参考
+:caption: 📖 参考文档
 :maxdepth: 5
 :hidden:
 

@@ -2,7 +2,7 @@
 
 ## 便捷函数
 
-- `call_op(op_name, *args, **kwargs)`：调用一个算子
+- `call_op(op_name, *args, **kwargs)`：调用算子
 - `resolve_op(op_name)`：解析算子实现
 
 ## 策略管理
