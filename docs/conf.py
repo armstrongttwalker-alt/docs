@@ -21,6 +21,16 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagos_robo_en make html  # build the flagos_robo English project
    $ PROJECT=onlinelaboratory_en make html  # build the onlinelaboratory English project
    $ PROJECT=flagcicd_en make html  # build the flagcicd English project
+   $ PROJECT=flagdnn_en make html  # build the flagdnn English project
+   $ PROJECT=flagblas_en make html  # build the flagblas English project
+   $ PROJECT=flagfft_en make html  # build the flagfft English project
+   $ PROJECT=flagsparse_en make html  # build the flagsparse English project
+   $ PROJECT=flagtensor_en make html  # build the flagtensor English project
+   $ PROJECT=flagaudio_en make html  # build the flagaudio English project
+   $ PROJECT=pytorch_plugin_fl_en make html  # build the pytorch_plugin_fl English project
+   $ PROJECT=sglang_plugin_fl_en make html  # build the sglang_plugin_fl English project
+   $ PROJECT=flagquantum_en make html  # build the flagquantum English project
+   $ PROJECT=kernelgenbench_en make html  # build the kernelgenbench English project
 
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
@@ -37,6 +47,16 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagos_robo_zh make html  # build the flagos_robo Chinese project
    $ PROJECT=onlinelaboratory_zh make html  # build the onlinelaboratory Chinese project
    $ PROJECT=flagcicd_zh make html  # build the flagcicd Chinese project
+   $ PROJECT=flagdnn_zh make html  # build the flagdnn Chinese project
+   $ PROJECT=flagblas_zh make html  # build the flagblas Chinese project
+   $ PROJECT=flagfft_zh make html  # build the flagfft Chinese project
+   $ PROJECT=flagsparse_zh make html  # build the flagsparse Chinese project
+   $ PROJECT=flagtensor_zh make html  # build the flagtensor Chinese project
+   $ PROJECT=flagaudio_zh make html  # build the flagaudio Chinese project
+   $ PROJECT=pytorch_plugin_fl_zh make html  # build the pytorch_plugin_fl Chinese project
+   $ PROJECT=sglang_plugin_fl_zh make html  # build the sglang_plugin_fl Chinese project
+   $ PROJECT=flagquantum_zh make html  # build the flagquantum Chinese project
+   $ PROJECT=kernelgenbench_zh make html  # build the kernelgenbench Chinese project
 
 For more information read https://sphinx-multiproject.readthedocs.io/.
 """
@@ -126,6 +146,7 @@ multiproject_projects = {
             "project": "FlagGems-vLLM Documentation",
             "html_title": "FlagGems-vLLM Documentation",
         },
+    },
     "flaggems_sglang_en": {
         "use_config_file": False,
         "config": {
@@ -133,6 +154,145 @@ multiproject_projects = {
             "html_title": "FlagGems-sglang Documentation",
         },
     },
+    "flagdnn_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagDNN Documentation",
+            "html_title": "FlagDNN Documentation",
+        },
+    },
+    "flagdnn_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagDNN 文档中心",
+            "html_title": "FlagDNN 文档中心",
+        },
+    },
+    "flagblas_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagBLAS Documentation",
+            "html_title": "FlagBLAS Documentation",
+        },
+    },
+    "flagblas_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagBLAS 文档中心",
+            "html_title": "FlagBLAS 文档中心",
+        },
+    },
+    "flagfft_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagFFT Documentation",
+            "html_title": "FlagFFT Documentation",
+        },
+    },
+    "flagfft_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagFFT 文档中心",
+            "html_title": "FlagFFT 文档中心",
+        },
+    },
+    "flagsparse_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagSparse Documentation",
+            "html_title": "FlagSparse Documentation",
+        },
+    },
+    "flagsparse_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagSparse 文档中心",
+            "html_title": "FlagSparse 文档中心",
+        },
+    },
+    "flagtensor_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagTensor Documentation",
+            "html_title": "FlagTensor Documentation",
+        },
+    },
+    "flagtensor_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagTensor 文档中心",
+            "html_title": "FlagTensor 文档中心",
+        },
+    },
+    "flagaudio_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagAudio Documentation",
+            "html_title": "FlagAudio Documentation",
+        },
+    },
+    "flagaudio_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagAudio 文档中心",
+            "html_title": "FlagAudio 文档中心",
+        },
+    },
+    "pytorch_plugin_fl_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "PyTorch-Plugin-FL Documentation",
+            "html_title": "PyTorch-Plugin-FL Documentation",
+        },
+    },
+    "pytorch_plugin_fl_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "PyTorch-Plugin-FL 文档中心",
+            "html_title": "PyTorch-Plugin-FL 文档中心",
+        },
+    },
+    "sglang_plugin_fl_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "sglang-Plugin-FL Documentation",
+            "html_title": "sglang-Plugin-FL Documentation",
+        },
+    },
+    "sglang_plugin_fl_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "sglang-Plugin-FL 文档中心",
+            "html_title": "sglang-Plugin-FL 文档中心",
+        },
+    },
+    "flagquantum_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagQuantum Documentation",
+            "html_title": "FlagQuantum Documentation",
+        },
+    },
+    "flagquantum_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagQuantum 文档中心",
+            "html_title": "FlagQuantum 文档中心",
+        },
+    },
+    "kernelgenbench_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "KernelGenBench Documentation",
+            "html_title": "KernelGenBench Documentation",
+        },
+    },
+    "kernelgenbench_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "KernelGenBench 文档中心",
+            "html_title": "KernelGenBench 文档中心",
+        },
     },
     "flagtree_en": {
         "use_config_file": False,
@@ -419,15 +579,28 @@ html_css_files = ["custom.css", "homepage.css"]
 html_js_files = []
 
 html_logo = "img/logo.png"
-html_favicon = "img/logo.png"
+html_favicon = "_static/favicon.svg"
 
 # Theme-specific configurations
 if html_theme == "pydata_sphinx_theme":
     # PyData Sphinx Theme configuration for flagos_en and flagos_zh
-    html_theme_options = {
-        "logo": {
+
+    # Set logo based on language
+    if docset == "flagos_en":
+        logo_config = {
             "text": "Documentation",
-        },
+            "image_light": "_static/logo-en-light.svg",
+            "image_dark": "_static/logo-en-dark.svg",
+        }
+    else:  # flagos_zh
+        logo_config = {
+            "text": "文档中心",
+            "image_light": "_static/logo-zh-light.svg",
+            "image_dark": "_static/logo-zh-dark.svg",
+        }
+
+    html_theme_options = {
+        "logo": logo_config,
         "home_page_in_toc": True,
         "use_download_button": False,
         "repository_url": "https://github.com/flagos-ai/KernelGen",
@@ -450,11 +623,11 @@ if html_theme == "pydata_sphinx_theme":
     
     # html_context is only applied to PyData Sphinx Theme
     html_context = {
-        "default_mode": "dark"
+        "default_mode": "light"
     }
 
     # Load scroll animations JS for the portal homepage
-    html_js_files = ["scroll-animations.js"]
+    html_js_files = ["scroll-animations.js", "force-light-mode.js"]
 
 else:
     # Sphinx Book Theme configuration for all other projects
