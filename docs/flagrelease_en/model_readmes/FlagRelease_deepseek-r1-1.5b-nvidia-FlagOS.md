@@ -1,12 +1,5 @@
----
-license: apache-2.0
-language:
-- zh
-- en
----
-
 # Introduction
-MiniMax M3, released on June 1st, is the first Chinese model to simultaneously deliver frontier coding/agentic capabilities, 1M ultra-long context, and native multimodality — and the only open-source model in the world with all three. The core innovation is a proprietary MSA sparse attention architecture: at 1M context, compute per token is just 1/20th of the previous generation, with 9× prefilling speedup and 15× decoding speedup. On SWE-Bench Pro, M3 scores 59.0%, surpassing GPT-5.5 and Gemini 3.1 Pro, and approaching Opus 4.7; on the multimodal benchmark OmniDocBench, it also outperforms Gemini 3.1 Pro. In real-world tests, M3 autonomously ran for nearly 12 hours to successfully reproduce an ICLR award-winning paper, and within ~24 hours pushed FP8 GEMM kernel utilization from 7.6% to 71.3% — a 9.4× speedup.
+DeepSeek-R1-Distill-Qwen-1.5B 是 DeepSeek 团队推出的轻量级强推理模型，核心是将超大推理模型 DeepSeek-R1 的思维能力，通过知识蒸馏 “浓缩” 到 Qwen2.5-Math-1.5B 基座中，实现1.5B 参数、本地可部署、数学 / 代码推理突出的综合优势。
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
@@ -17,10 +10,11 @@ MiniMax M3, released on June 1st, is the first Chinese model to simultaneously d
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Nvidia-FlagOS |
-|--------------|-------------------------------|--------------------------|
-| GPQA_Diamond | 86.36                             | 84.77                    |
-| ERQA         | 52.25                            | 52.75                    |
+| Metrics      | DeepSeek-R1-Distill-Qwen-1.5B-Nvidia-Origin | DeepSeek-R1-Distill-Qwen-1.5B-Nvidia-FlagOS |
+|--------------|--------------------------------|--------------------------------------|
+| GPQA_Diamond | -                              | -                                    |
+| ERQA         | -                              | -                                    |
+| Aime24       | -                              | -                                    |
 
 # User Guide
 Environment Setup
@@ -34,58 +28,32 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536
+
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/MiniMax-M3-nvidia-FlagOS --local_dir /data/MiniMax-M3
+modelscope download --model FlagRelease/DeepSeek-R1-Distill-Qwen-1.5B --local_dir /data/DeepSeek-R1-Distill-Qwen-1.5B
 ```
 
 ### Start the Container
 ```bash
-docker run -d --name flagos-m3 \
-    --gpus all \
-    --network host \
-    --ipc host \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
-    -v /dev/shm:/dev/shm \
-    -v /root/.cache:/root/.cache \
-    -v /data:/data \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536 \
-    sleep infinity
+
 ```
 ### Start the Server
 ```bash
-export FLASHINFER_DISABLE_VERSION_CHECK=1
-export USE_FLAGGEMS=1
-export SGLANG_FL_OOT_ENABLED=1
-export SGLANG_FL_PREFER=flagos
 
-python3 -m sglang.launch_server \
-  --model-path /data/MiniMax-M3 \
-  --tp 8 --trust-remote-code --port 30000 --host 0.0.0.0 \
-  --dtype bfloat16 --quantization mxfp8 \
-  --attention-backend flashinfer \
-  --mem-fraction-static 0.80 \
-  --max-total-tokens 414018 \
-  --chunked-prefill-size 4096 \
-  --max-prefill-tokens 16384 \
-  --disable-custom-all-reduce
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:30000/v1/completions \
+curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "Minimax",
-    "prompt": "中国的首都是？",
-    "max_tokens": 32,
-    "temperature": 0
+    "model": "flagOS",
+    "messages": [{"role": "user", "content": "你好"}]
   }'
 ```
 
@@ -137,5 +105,4 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from MiniMaxAI/MiniMax-M3 and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
-
+The model weights are derived from deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt

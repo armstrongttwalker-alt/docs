@@ -79,8 +79,13 @@ FlagRelease/MiniMax-M2.7-iluvatar-FlagOS
 FlagRelease/MiniMax-M2.7-metax-FlagOS
 FlagRelease/MiniMax-M2.7-nvidia-FlagOS
 FlagRelease/MiniMax-M2.7-zhenwu-FlagOS
+FlagRelease/MiniMax-M3-ascend-FlagOS
+FlagRelease/MiniMax-M3-hygon-FlagOS
+FlagRelease/MiniMax-M3-kunlunxin-FlagOS
+FlagRelease/MiniMax-M3-metax-FlagOS
 FlagRelease/MiniMax-M3-mthreads-FlagOS
 FlagRelease/MiniMax-M3-nvidia-FlagOS
+FlagRelease/MiniMax-M3-zhenwu-FlagOS
 FlagRelease/QwQ-32B-FlagOS-Cambricon
 FlagRelease/QwQ-32B-FlagOS-Iluvatar
 FlagRelease/QwQ-32B-FlagOS-Nvidia
@@ -139,6 +144,7 @@ FlagRelease/RoboBrain2.5-8B-FlagOS
 FlagRelease/RoboBrain2.5-8B-ascend-FlagOS
 FlagRelease/Seed-OSS-36B-Instruct-FlagOS
 FlagRelease/TeleChat3-36B-Thinking-mthreads-FlagOS
+FlagRelease/deepseek-r1-1.5b-nvidia-FlagOS
 FlagRelease/farm_molecular_representation-hygon-FlagOS
 FlagRelease/farm_molecular_representation-nvidia-FlagOS
 FlagRelease/gpt-oss-120b-FlagOS
