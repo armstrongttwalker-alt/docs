@@ -10,7 +10,7 @@ Implements a priority-based dispatch system that selects between FlagGems, vendo
 
 - **Platform auto-detection**
 
-Automatically detects hardware and loads platform-specific configuration. Supports NVIDIA GPU, Ascend NPU, T-head-Zhenwu, Iluvatar, MetaX, Moore Threads, Tsingmicro, and Hygon chips.
+Automatically detects hardware and loads platform-specific configuration. Supports NVIDIA GPU, Ascend NPU, T-Head, Iluvatar, MetaX, Moore Threads, Tsingmicro, Hygon DCU, and Sunrise chips.
 
 - **Extensible vendor backend**
 

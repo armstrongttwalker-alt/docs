@@ -2,25 +2,29 @@
 
 This section includes the vllm-plugin-FL release information.
 
-## v0.1.1
+## v0.2.0
 
-vllm-plugin-FL v0.1.1 requires [vllm v0.13.0](https://github.com/vllm-project/vllm/tree/v0.13.0).
+```{note}
+This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
+```
+
+vllm-plugin-FL v0.2.0 requires [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2). Supported platforms: NVIDIA, Hygon DCU.
 
 - **Added Features**
 
-  - Mixed length benchmark script for accuracy and performance evaluation across variable sequence lengths
-  - Hardware support for Mthreads
+  - Qwen3.6-35B-A3B model support with text and image inference/serving
+  - Qwen3.6-27B model support with text and image inference/serving
+  - Hygon DCU platform support with DTK container-based deployment
+  - Serving-based test workflow (vllm serve + OpenAI client) for multimodal models
 
 - **Improved Features**
 
-  - Decoupled vendor backend registration with platform-aware dynamic discovery, avoiding eager imports of vendor backends
-  - Fixed operator dispatch unit test cases for improved reliability
-  - CI/CD improvements: privileged container mode for nvidia-smi command availability in CI environment
-
+  - Extended NVIDIA platform test matrix with Qwen3.6 model coverage
+  - Updated vLLM compatibility to v0.20.x
 
 ## v0.1.0
 
-vllm-plugin-FL v0.1.0 requires [vllm v0.13.0](https://github.com/vllm-project/vllm/tree/v0.13.0).
+vllm-plugin-FL v0.1.0 requires [vllm v0.13.0](https://github.com/vllm-project/vllm/tree/v0.13.0). Supported platforms: NVIDIA, Ascend, T-Head, MetaX, Iluvatar.
 
 - **Added Features**
 
@@ -28,7 +32,7 @@ vllm-plugin-FL v0.1.0 requires [vllm v0.13.0](https://github.com/vllm-project/vl
   - Unified multi-chip backend support via FlagGems and FlagCX integration
   - Flexible operator dispatch system with FlagGems, vendor-specific, and PyTorch reference backends
   - End-to-end verified support for Qwen3.5-397B-A17B, Qwen3-Next-80B-A3B, Qwen3-4B, MiniCPM-o 4.5, GLM-5, Qwen3.5-35B-A3B, and BAAI/bge-m3 models
-  - Hardware support for NVIDIA, Ascend, T-head-Zhenwu, MetaX, and Iluvatar chips
+  - Hardware support for NVIDIA, Ascend, T-Head, MetaX, and Iluvatar chips
   - Platform-specific configuration files (ascend.yaml, cuda.yaml) for auto-detected defaults
   - Environment variable-based configuration for backend selection, vendor filtering, and operator control
   - YAML configuration file support for complete dispatch policy override
