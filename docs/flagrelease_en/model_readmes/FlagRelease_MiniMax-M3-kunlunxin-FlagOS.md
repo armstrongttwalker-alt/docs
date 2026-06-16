@@ -1,8 +1,10 @@
 ---
-license: apache-2.0
+base_model:
+- ""
 language:
 - zh
 - en
+license: apache-2.0
 ---
 
 # Introduction
@@ -10,83 +12,58 @@ MiniMax M3, released on June 1st, is the first Chinese model to simultaneously d
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Nvidia** container image supporting deployment within minutes
+- Released **FlagOS-Kunlunxin** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Nvidia-FlagOS |
-|--------------|-------------------------------|--------------------------|
-| GPQA_Diamond | 86.36                             | 84.77                    |
-| ERQA         | 52.25                            | 52.75                    |
+| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Kunlunxin-FlagOS |
+|--------------|--------------------------|-----------------------------|
+| GPQA_Diamond | 86.36                  | 22.3                        |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 24.0.0, build 98fdcd7 |
+| Docker Version   | Docker version 28.2.2, build e6534b4 |
 | Operating System | 22.04.4 LTS (Jammy Jellyfish) |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-kunlunxin-tree_0.5.1_xpu3.0-gems_5.0.2-vllm_none-plugin_none-cx_none-python_3.10.15-torch_2.5.1_cu118-pcp_xpu-rtnone-gpu_kunlunxin001-arc_amd64-driver_515.58:202606051936
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/MiniMax-M3-nvidia-FlagOS --local_dir /data/MiniMax-M3
+modelscope download --model FlagRelease/MiniMax-M3-kunlunxin-FlagOS --local_dir /data/MiniMax-M3
 ```
 
 ### Start the Container
 ```bash
-docker run -d --name flagos-m3 \
-    --gpus all \
-    --network host \
-    --ipc host \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
-    -v /dev/shm:/dev/shm \
-    -v /root/.cache:/root/.cache \
+docker run -itd \
+    --security-opt=seccomp=unconfined \
+    --cap-add=SYS_PTRACE \
+    --ulimit=memlock=-1 --ulimit=nofile=120000 --ulimit=stack=67108864 \
+    --shm-size=128G \
+    --privileged \
+    --net=host \
+    --name zylm3 \
     -v /data:/data \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536 \
-    sleep infinity
-```
-### Start the Server
-```bash
-export FLASHINFER_DISABLE_VERSION_CHECK=1
-export USE_FLAGGEMS=1
-export SGLANG_FL_OOT_ENABLED=1
-export SGLANG_FL_PREFER=flagos
-
-python3 -m sglang.launch_server \
-  --model-path /data/MiniMax-M3 \
-  --tp 8 --trust-remote-code --port 30000 --host 0.0.0.0 \
-  --dtype bfloat16 --quantization mxfp8 \
-  --attention-backend flashinfer \
-  --mem-fraction-static 0.80 \
-  --max-total-tokens 414018 \
-  --chunked-prefill-size 4096 \
-  --max-prefill-tokens 16384 \
-  --disable-custom-all-reduce
+    -w /workspace \
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-kunlunxin-tree_0.5.1_xpu3.0-gems_5.0.2-vllm_none-plugin_none-cx_none-python_3.10.15-torch_2.5.1_cu118-pcp_xpu-rtnone-gpu_kunlunxin001-arc_amd64-driver_515.58:202606051936
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:30000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "Minimax",
-    "prompt": "中国的首都是？",
-    "max_tokens": 32,
-    "temperature": 0
-  }'
+cd /root/M3pytorch_code
+bash run_inference.sh
 ```
 
 

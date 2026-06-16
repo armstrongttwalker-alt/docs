@@ -1,8 +1,10 @@
 ---
-license: apache-2.0
+base_model:
+- ""
 language:
 - zh
 - en
+license: apache-2.0
 ---
 
 # Introduction
@@ -10,83 +12,45 @@ MiniMax M3, released on June 1st, is the first Chinese model to simultaneously d
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Nvidia** container image supporting deployment within minutes
+- Released **FlagOS-Zhenwu** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Nvidia-FlagOS |
-|--------------|-------------------------------|--------------------------|
-| GPQA_Diamond | 86.36                             | 84.77                    |
-| ERQA         | 52.25                            | 52.75                    |
+| Metrics      | MiniMax-M3-Nvidia-Origin | MiniMax-M3-Zhenwu-FlagOS |
+|--------------|--------------------------|--------------------------|
+| GPQA_Diamond | 86.36                    | 73.08                  |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 24.0.0, build 98fdcd7 |
-| Operating System | 22.04.4 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 28.1.0, build 4d8c241 |
+| Operating System | Ubuntu 24.04.2 LTS |
 
 ## Operation Steps
+The image for this task is exported from Alibaba Cloud PAI and can be used on Alibaba Cloud EAS and DSW, both of which are container‑based resource services. For detailed instructions on how to use this image, please contact the PAI platform support team. The task released by BAAI is developed based on the container environment launched via the PAI platform.
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-zhenwu-tree_none-gems_5.0.1rc0-vllm_0.13.1.dev0_g72506c983.d20260218-plugin_0.0.0-cx_none-python_3.12.3-torch_2.9.0-pcp_hggc13.0-gpu_pp001-arc_amd64-driver_1.3.2-d7f5a2:202606052018
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/MiniMax-M3-nvidia-FlagOS --local_dir /data/MiniMax-M3
-```
-
-### Start the Container
-```bash
-docker run -d --name flagos-m3 \
-    --gpus all \
-    --network host \
-    --ipc host \
-    --ulimit memlock=-1 \
-    --ulimit stack=67108864 \
-    -v /dev/shm:/dev/shm \
-    -v /root/.cache:/root/.cache \
-    -v /data:/data \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-minimax-m3-nvidia-tree_none-gems_5.0.2-sglang_plugin_0.1.0-cx_none-python_3.12.3-torch_2.11.0-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:202606051536 \
-    sleep infinity
-```
-### Start the Server
-```bash
-export FLASHINFER_DISABLE_VERSION_CHECK=1
-export USE_FLAGGEMS=1
-export SGLANG_FL_OOT_ENABLED=1
-export SGLANG_FL_PREFER=flagos
-
-python3 -m sglang.launch_server \
-  --model-path /data/MiniMax-M3 \
-  --tp 8 --trust-remote-code --port 30000 --host 0.0.0.0 \
-  --dtype bfloat16 --quantization mxfp8 \
-  --attention-backend flashinfer \
-  --mem-fraction-static 0.80 \
-  --max-total-tokens 414018 \
-  --chunked-prefill-size 4096 \
-  --max-prefill-tokens 16384 \
-  --disable-custom-all-reduce
+modelscope download --model FlagRelease/MiniMax-M3-zhenwu-FlagOS --local_dir /data/MiniMax-M3
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:30000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "Minimax",
-    "prompt": "中国的首都是？",
-    "max_tokens": 32,
-    "temperature": 0
-  }'
+cd /root
+USE_FLAGGEMS=1 python inference_bf16.py --num_gpus 16 --prompt "你好"
+
 ```
 
 
