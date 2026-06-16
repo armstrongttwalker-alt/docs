@@ -658,12 +658,21 @@ else:
 
     templates_path = ["_templates"]
 
-    # Sphinx Book Theme configuration for all other projects
-    html_theme_options = {
-        "logo": {
+    # Logo configuration per project
+    if docset in ["flagcicd_en", "flagcicd_zh"]:
+        logo_config = {
+            "image_light": "_static/flagcicd-logo-light.svg",
+            "image_dark": "_static/flagcicd-logo-dark.svg",
+        }
+    else:
+        logo_config = {
             "image_light": "_static/logo-en-light.svg",
             "image_dark": "_static/logo-en-dark.svg",
-        },
+        }
+
+    # Sphinx Book Theme configuration for all other projects
+    html_theme_options = {
+        "logo": logo_config,
         "home_page_in_toc": True,
         "use_download_button": False,
         "repository_url": "https://github.com/flagos-ai/docs",
