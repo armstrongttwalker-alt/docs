@@ -28,4 +28,4 @@ result = fn(query, key, cos, sin, position_ids)
 result = manager.call("silu_and_mul", x)
 ```
 
-有关 API 说明，请参阅 [调度 API 参考](<../reference/Dispatch API reference>)。
+API 说明请参见 [调度 API 参考](<../reference/Dispatch API reference>)。
