@@ -71,40 +71,22 @@ img.image-border {
   display: none;
 }
 
-/* CSS for our custom footer */
+/* CSS for our custom footer - white background, black text */
 .bd-footer {
   padding: 0 !important;
+  background-color: #ffffff !important;
 }
-.bd-footer h6 {
-  color: #fff;
-  font-weight: bold;
-  margin: 8px 0px;
-}
-.bd-footer .links {
-  background-color: #542437;
-  font-size: 0.9rem;
-}
-.bd-footer .links a {padding: 3px 0px;}
-.bd-footer .links-item {
-  margin: 0px;
-  padding: 20px 15px;
-}
-.bd-footer .links h6 {
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-}
-.bd-footer .links ul.nav li a {
-  padding: 3px 0;
-  font-size: 13px;
-  color: #fff;
+.bd-footer__inner {
+  background-color: #ffffff !important;
 }
 .bd-footer .copyright {
-  background-color: #242729;
+  background-color: #ffffff !important;
   font-size: 0.85rem;
   padding: 10px !important;
 }
-.bd-footer .copyright p {color: #eee;}
+.bd-footer .copyright p {
+  color: #000000 !important;
+}
 .bd-footer .btn-primary { filter: brightness(90%); background-color: #C02942; border-color: #C02942; }
 .bd-footer .btn-primary:hover { filter: brightness(100%); background-color: #C02942; border-color: #C02942; }
 

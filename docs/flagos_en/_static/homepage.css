@@ -381,6 +381,12 @@ html[data-theme="dark"] .navbar-brand .title {
   color: var(--flagos-text) !important;
 }
 
+/* Adjust navbar logo size */
+.navbar-brand img {
+  max-height: 32px;
+  width: auto;
+}
+
 html[data-theme="dark"] .pst-navbar-icon svg,
 html[data-theme="dark"] .search-button-field svg {
   color: var(--flagos-text);
@@ -642,35 +648,86 @@ html[data-theme="dark"] .flagos-section:nth-of-type(even) {
   margin-bottom: 1rem;
 }
 
-/* ========== Scroll animations ========== */
-.scroll-hidden {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* ========== Dropdown section styling ========== */
+/* Styles for sphinx-design dropdown directive */
+details.sd-dropdown {
+  margin-bottom: 2rem;
+  border: 1px solid var(--flagos-border);
+  border-radius: 12px;
+  background: transparent;
+  overflow: hidden;
 }
 
-.scroll-visible {
-  opacity: 1;
-  transform: translateY(0);
+summary.sd-summary-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--flagos-text);
+  padding: 1.25rem 1.5rem;
+  border-bottom: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-/* Stagger cards within a revealed section - only animate if parent is visible */
-.scroll-visible .flagos-card {
-  animation: cardFadeIn 0.5s ease-out forwards;
+summary.sd-summary-title:hover {
+  background: var(--flagos-gray-50);
 }
 
-.scroll-visible .flagos-card:nth-child(1) { animation-delay: 0.05s; }
-.scroll-visible .flagos-card:nth-child(2) { animation-delay: 0.1s; }
-.scroll-visible .flagos-card:nth-child(3) { animation-delay: 0.15s; }
-.scroll-visible .flagos-card:nth-child(4) { animation-delay: 0.2s; }
+/* Remove default arrow marker and add custom one */
+summary.sd-summary-title.sd-summary-control::before {
+  content: '▸';
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+  transition: transform 0.2s ease;
+}
 
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+details.sd-dropdown[open] > summary.sd-summary-title.sd-summary-control::before {
+  transform: rotate(90deg);
+}
+
+/* Dropdown content wrapper */
+.sd-dropdown-content {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--flagos-border);
+}
+
+/* Grid inside dropdown uses full width */
+details.sd-dropdown .flagos-grid {
+  max-width: none;
+  padding: 0;
+  width: 100%;
+}
+
+/* Dark mode support for dropdown */
+html[data-theme="dark"] details.sd-dropdown {
+  border-color: var(--flagos-border);
+  background: transparent;
+}
+
+html[data-theme="dark"] summary.sd-summary-title {
+  color: var(--flagos-text);
+  background: transparent;
+}
+
+html[data-theme="dark"] summary.sd-summary-title:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="dark"] .sd-dropdown-content {
+  border-top-color: var(--flagos-border);
+}
+
+/* Even section visual differentiation (now for dropdowns) */
+details.sd-dropdown:nth-of-type(even) {
+  background: var(--flagos-gray-50);
+}
+
+html[data-theme="dark"] details.sd-dropdown:nth-of-type(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Remove section title underline since dropdown has border */
+details.sd-dropdown .section-title {
+  border-bottom: none;
 }
