@@ -273,7 +273,7 @@ sd_hide_title: true
       A CI/CD toolchain that streamlines large-model development across diverse AI chips, eliminating fragmentation and cutting adaptation costs.
     </div>
     <div class="card-footer">
-      <a href="https://docs.flagos.io/projects/FlagPerf/en/latest/" class="card-link">View Documentation</a>
+      <a href="https://docs.flagos.io/projects/FlagCICD/zh-cn/latest/" class="card-link">View Documentation</a>
     </div>
   </div>
   <div class="flagos-card">
@@ -282,7 +282,7 @@ sd_hide_title: true
       A benchmark framework for evaluating LLM and agent-based Triton kernel generation across multiple hardware platforms.
     </div>
     <div class="card-footer">
-      <a href="https://docs.flagos.io/projects/KernelGenBench/en/latest/" class="card-link">View Documentation</a>
+      <a href="https://docs.flagos.io/projects/kernelgenbench/en/latest/" class="card-link">View Documentation</a>
     </div>
   </div>
 </div>
