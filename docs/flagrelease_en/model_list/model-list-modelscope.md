@@ -90,8 +90,13 @@
 | MiniMax-M2.7-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M2.7-metax-FlagOS> |
 | MiniMax-M2.7-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M2.7-nvidia-FlagOS> |
 | MiniMax-M2.7-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M2.7-zhenwu-FlagOS> |
+| MiniMax-M3-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-ascend-FlagOS> |
+| MiniMax-M3-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-hygon-FlagOS> |
+| MiniMax-M3-kunlunxin-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-kunlunxin-FlagOS> |
+| MiniMax-M3-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-metax-FlagOS> |
 | MiniMax-M3-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-mthreads-FlagOS> |
 | MiniMax-M3-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-nvidia-FlagOS> |
+| MiniMax-M3-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-zhenwu-FlagOS> |
 | phi-4-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-FlagOS> |
 | phi-4-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-hygon-FlagOS> |
 | phi-4-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-metax-FlagOS> |
