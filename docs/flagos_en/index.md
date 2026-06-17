@@ -294,15 +294,6 @@ sd_hide_title: true
       <a href="https://docs.flagos.io/projects/FlagCICD/zh-cn/latest/" class="card-link">View Documentation</a>
     </div>
   </div>
-  <div class="flagos-card">
-    <h3 class="card-title">KernelGenBench</h3>
-    <div class="card-description">
-      A benchmark framework for evaluating LLM and agent-based Triton kernel generation across multiple hardware platforms.
-    </div>
-    <div class="card-footer">
-      <a href="https://docs.flagos.io/projects/kernelgenbench/en/latest/" class="card-link">View Documentation</a>
-    </div>
-  </div>
 </div>
 
 :::
