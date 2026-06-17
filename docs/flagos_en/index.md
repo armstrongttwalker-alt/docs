@@ -136,7 +136,7 @@ sd_hide_title: true
 
 :::
 
-<!-- Section 2: FlagOS Operators -->
+<!-- Section 2: FlagOS Operators
 :::{dropdown} FlagOS Operator Libraries
 
 <div class="flagos-grid">
@@ -205,7 +205,7 @@ sd_hide_title: true
   </div>
 </div>
 
-:::
+::: -->
 
 <!-- Section 3: Plugin Systems -->
 :::{dropdown} FlagOS Ecosystem Enablement Projects
