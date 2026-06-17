@@ -1,17 +1,17 @@
 
-# Requirements 
+# 要求
 
-This section includes information about the hardware platforms and models.
+本节包含硬件平台和模型的相关信息。
 
-## Hardware platforms
+## 硬件平台
 
-FlagScale is designed to work collaboratively with FlagOS plugins. While FlagScale itself has no hardware platform requirements, you should review the hardware requirements of the specific FlagOS plugins you intend to use. For more information, see [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL), [TransformerEngine-FL](https://github.com/flagos-ai/TransformerEngine-FL), [VeRL-FL](https://github.com/flagos-ai/verl-FL), and [vllm-plugin-FL](https://github.com/flagos-ai/vllm-plugin-FL).
+FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL)、[TransformerEngine-FL](https://github.com/flagos-ai/TransformerEngine-FL)、[VeRL-FL](https://github.com/flagos-ai/verl-FL) 和 [vllm-plugin-FL](https://github.com/flagos-ai/vllm-plugin-FL)。
 
-## Supported models
+## 支持的模型
 
-### Training
+### 训练
 
-| Model                                                    | Example config File                        |
+| 模型                                                     | 示例配置文件                        |
 | -------------------------------------------------------- | ------------------------------------------------------------- |
 | [DeepSeek-V3](https://huggingface.co/deepseek-ai)        | [16b_a3b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/deepseek_v3/conf/train/16b_a3b.yaml)  |
 | [Qwen2/2.5/3](https://huggingface.co/Qwen)               | [235b_a22b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/qwen3/conf/train/235b_a22b.yaml)    |
@@ -25,9 +25,9 @@ FlagScale is designed to work collaboratively with FlagOS plugins. While FlagSca
 | [RWKV](https://huggingface.co/RWKV)                      | [7b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/rwkv/conf/train/7b.yaml)                   |
 | [Aquila](https://huggingface.co/BAAI)                    | [7b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/aquila/conf/train/7b.yaml)                 |
 
-### Serve / Inference
+### 服务 / 推理
 
-| Model                                                    | Example config File                                                   |
+| 模型                                                     | 示例配置文件                                                           |
 | -------------------------------------------------------- | --------------------------------------------------------------------- |
 | [DeepSeek-V3](https://huggingface.co/deepseek-ai)        | [671b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/deepseek_v3/conf/serve/671b.yaml)                |
 | [DeepSeek-R1](https://huggingface.co/deepseek-ai)        | [671b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/deepseek_r1/conf/serve/671b.yaml)                |
@@ -39,4 +39,4 @@ FlagScale is designed to work collaboratively with FlagOS plugins. While FlagSca
 | [Grok2](https://huggingface.co/xai-org)                  | [270b.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/grok2/conf/serve/270b.yaml)                      |
 | [Kimi-K2](https://huggingface.co/MoonshotAI)             | [1t.yaml](https://github.com/flagos-ai/FlagScale/tree/main/examples/kimi_k2/conf/serve/1t.yaml)                        |
 
-For the full list, see https://github.com/flagos-ai/FlagScale/tree/main/examples
+完整列表请参见 https://github.com/flagos-ai/FlagScale/tree/main/examples
