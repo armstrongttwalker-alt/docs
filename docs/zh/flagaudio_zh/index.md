@@ -1,34 +1,34 @@
-# FlagAudio Documentation
+# FlagAudio 文档
 
 ```{button-ref} getting_started/getting-started
 :ref-type: myst
 :color: primary
 :class: sd-btn-lg sd-px-4 sd-py-2 sd-fw-bold
 
-Getting Started
+快速入门
 ```
 
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
 
-:::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` Overview
+:::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` 概览
 :link: overview/overview
 :link-type: doc
 
-Have a quick view of FlagAudio, and also some basic concepts.
+快速了解 FlagAudio 及其基本概念。
 
 +++
-[Learn more »](overview/overview.md)
+[了解更多 »](overview/overview.md)
 :::
 
-:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
+:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 快速入门
 :link: getting_started/getting-started
 :link-type: doc
 
-Check requirements and install FlagAudio step by step.
+查看环境要求并逐步安装 FlagAudio。
 
 +++
-[Learn more »](getting_started/getting-started.md)
+[了解更多 »](getting_started/getting-started.md)
 :::
 
 ::::
@@ -36,7 +36,7 @@ Check requirements and install FlagAudio step by step.
 ---
 
 ```{toctree}
-:caption: 📑 Release Notes
+:caption: 📑 发布说明
 :maxdepth: 5
 :hidden:
 
@@ -44,7 +44,7 @@ release_notes/release-notes.md
 ```
 
 ```{toctree}
-:caption: 📚 Guides
+:caption: 📚 指南
 :maxdepth: 5
 :hidden:
 
