@@ -28,7 +28,7 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-
+harbor.baai.ac.cn/external-cooperation/deepseek-t1-distill-qwen-1.5b-nvidia-tree_0.5.0-gems_0.5.1rc0_vllm_0.13.0-plugin_v0.1.0_vllm0.13.0-cx_none-python_3.12.3-torch_2.9.0.dev20250804_cu128-pcp_cuda12.9-gpu_nvidia003-arc_amd64-driver_570.124.06:2606171415 bash
 ```
 
 ### Download Open-source Model Weights
@@ -39,11 +39,11 @@ modelscope download --model FlagRelease/DeepSeek-R1-Distill-Qwen-1.5B --local_di
 
 ### Start the Container
 ```bash
-
+docker run -it --name ds_check --gpus all -v /mnt/data:/data --network host    harbor.baai.ac.cn/external-cooperation/deepseek-t1-distill-qwen-1.5b-nvidia-tree_0.5.0-gems_0.5.1rc0_vllm_0.13.0-plugin_v0.1.0_vllm0.13.0-cx_none-python_3.12.3-torch_2.9.0.dev20250804_cu128-pcp_cuda12.9-gpu_nvidia003-arc_amd64-driver_570.124.06:2606171415 bash
 ```
 ### Start the Server
 ```bash
-
+CUDA_VISIBLE_DEVICES=6 VLLM_PLUGINS=fl USE_FLAGGEMS=1 VLLM_FL_ALLOW_VENDORS=cuda VLLM_FL_FLAGOS_WHITELIST=embedding,rms_norm,addmm,rotary_embedding,silu_and_mul,gather,cos vllm serve --model /data/vllm-plugin-fl/deepseek-r1-1.5b --served-model-name deepseek-r1-1.5b --port 46840 --enforce-eager --max-model-len 8192
 ```
 
 ## Service Invocation
