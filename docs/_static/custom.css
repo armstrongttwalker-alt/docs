@@ -77,7 +77,7 @@ pre {
 }
 
 /* Adjust sphinx-book-theme navbar logo size */ 
-#site-logo {
-   max-height: 32px;
-   width: auto;
+.sidebar-primary-item .logo__image {
+    max-height: 45px !important;
+    width: auto !important;
 }
