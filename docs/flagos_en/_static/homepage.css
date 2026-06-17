@@ -618,6 +618,111 @@ html[data-theme="dark"] .footer-item .copyright {
 
 /* Note: Right sidebar width adjustments are in custom.css */
 
+/* ========== Column Span Classes ========== */
+.flagos-card-span-1 {
+  grid-column: span 1;
+}
+
+.flagos-card-span-3 {
+  grid-column: span 3;
+}
+
+/* Responsive: on medium/small screens, full width */
+@media (max-width: 1200px) {
+  .flagos-card-span-1,
+  .flagos-card-span-3 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .flagos-card-span-1,
+  .flagos-card-span-3 {
+    grid-column: span 1;
+  }
+}
+
+/* Nested grid inside parent card - shared styles */
+.flagos-grid-nested {
+  display: grid;
+  gap: 0.75rem;
+  max-width: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+/* For span-1 card: stack children vertically */
+.flagos-card-span-1 .flagos-grid-nested {
+  grid-template-columns: 1fr;
+}
+
+/* For span-3 card: 3 columns for 6 children */
+.flagos-card-span-3 .flagos-grid-nested {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Responsive for nested grids */
+@media (max-width: 1200px) {
+  .flagos-card-span-3 .flagos-grid-nested {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .flagos-card-span-3 .flagos-grid-nested {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Nested child cards - compact style */
+.flagos-grid-nested .flagos-card {
+  min-height: 140px;
+  padding: 1rem;
+}
+
+.flagos-grid-nested .flagos-card .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.flagos-grid-nested .flagos-card .card-description {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.flagos-grid-nested .flagos-card .card-footer {
+  padding-top: 0.75rem;
+}
+
+.flagos-grid-nested .card-link {
+  font-size: 0.9rem;
+}
+
+/* Empty card placeholder styling */
+.flagos-card-empty {
+  background: var(--flagos-gray-100);
+  border-style: dashed;
+  border-color: var(--flagos-gray-300);
+  opacity: 0.7;
+}
+
+.flagos-card-empty:hover {
+  border-color: var(--flagos-gray-400);
+  transform: none;
+  box-shadow: var(--flagos-shadow);
+}
+
+.flagos-card-empty:hover::before {
+  opacity: 0;
+}
+
+.card-link-placeholder {
+  display: inline-flex;
+  height: 2rem;
+}
+
+
 /* ========== Back to top button fix ========== */
 /* Hide back-to-top on landing page since it's a single scrollable page */
 .bd-page-width:has(#documentation) #pst-back-to-top {
@@ -649,40 +754,55 @@ html[data-theme="dark"] .flagos-section:nth-of-type(even) {
 }
 
 /* ========== Dropdown section styling ========== */
-/* Styles for sphinx-design dropdown directive */
+/* Styles for sphinx-design dropdown directive - Card-like appearance */
 details.sd-dropdown {
   margin-bottom: 2rem;
   border: 1px solid var(--flagos-border);
   border-radius: 12px;
-  background: transparent;
+  background: var(--flagos-card-bg);
   overflow: hidden;
+  box-shadow: var(--flagos-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-summary.sd-summary-title {
+details.sd-dropdown:hover {
+  box-shadow: var(--flagos-shadow-hover);
+  border-color: var(--flagos-blue);
+}
+
+summary.sd-summary-title.sd-card-header {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--flagos-text);
-  padding: 1.25rem 1.5rem;
-  border-bottom: none;
-  background: transparent;
+  color: var(--flagos-text) !important;
+  padding: 1.25rem 1.5rem 1.25rem 1.25rem !important;
+  border-left: 4px solid var(--flagos-blue) !important;
+  background: transparent !important;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-summary.sd-summary-title:hover {
-  background: var(--flagos-gray-50);
+summary.sd-summary-title.sd-card-header:hover {
+  background: var(--flagos-blue-light) !important;
+  border-left-width: 6px !important;
 }
 
-/* Remove default arrow marker and add custom one */
+/* Remove default arrow marker */
 summary.sd-summary-title.sd-summary-control::before {
-  content: '▸';
+  content: none !important;
+}
+
+/* Add custom icon prefix for first-level */
+summary.sd-summary-title.sd-card-header::before {
+  content: '▸' !important;
   font-size: 1.25rem;
   margin-right: 0.75rem;
+  color: var(--flagos-blue) !important;
   transition: transform 0.2s ease;
+  display: inline-block;
 }
 
-details.sd-dropdown[open] > summary.sd-summary-title.sd-summary-control::before {
+details.sd-dropdown[open] > summary.sd-summary-title.sd-card-header::before {
   transform: rotate(90deg);
 }
 
@@ -702,16 +822,24 @@ details.sd-dropdown .flagos-grid {
 /* Dark mode support for dropdown */
 html[data-theme="dark"] details.sd-dropdown {
   border-color: var(--flagos-border);
-  background: transparent;
+  background: var(--flagos-card-bg);
+  box-shadow: var(--flagos-shadow);
 }
 
-html[data-theme="dark"] summary.sd-summary-title {
-  color: var(--flagos-text);
-  background: transparent;
+html[data-theme="dark"] details.sd-dropdown:hover {
+  box-shadow: var(--flagos-shadow-hover);
+  border-color: var(--flagos-blue);
 }
 
-html[data-theme="dark"] summary.sd-summary-title:hover {
-  background: rgba(255, 255, 255, 0.05);
+html[data-theme="dark"] summary.sd-summary-title.sd-card-header {
+  color: var(--flagos-text) !important;
+  background: var(--flagos-gray-100) !important;
+  border-bottom-color: var(--flagos-border) !important;
+}
+
+html[data-theme="dark"] summary.sd-summary-title.sd-card-header:hover {
+  background: rgba(30, 107, 255, 0.1) !important;
+  color: var(--flagos-blue) !important;
 }
 
 html[data-theme="dark"] .sd-dropdown-content {
@@ -720,11 +848,11 @@ html[data-theme="dark"] .sd-dropdown-content {
 
 /* Even section visual differentiation (now for dropdowns) */
 details.sd-dropdown:nth-of-type(even) {
-  background: var(--flagos-gray-50);
+  background: var(--flagos-card-bg);
 }
 
 html[data-theme="dark"] details.sd-dropdown:nth-of-type(even) {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--flagos-card-bg);
 }
 
 /* Remove section title underline since dropdown has border */

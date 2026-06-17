@@ -56,7 +56,83 @@ sd_hide_title: true
       <a href="https://docs.flagos.io/projects/FlagCX/en/latest/" class="card-link">View Documentation</a>
     </div>
   </div>
-</div>
+
+  <!-- Fused Operators Group (Nested Cards) -->
+  <div class="flagos-card flagos-card-span-1">
+    <h3 class="card-title">Fused Operators</h3>
+    <div class="flagos-grid flagos-grid-nested">
+      <div class="flagos-card">
+        <h3 class="card-title">FlagGems-vllm</h3>
+        <div class="card-description">
+          A high-performance deep learning operator library.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagGems-vllm/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-domain operator Group (Nested Cards) -->
+  <div class="flagos-card flagos-card-span-3">
+    <h3 class="card-title">Multi-domain operator</h3>
+    <div class="flagos-grid flagos-grid-nested">
+      <div class="flagos-card">
+        <h3 class="card-title">FlagDNN</h3>
+        <div class="card-description">
+          A deep neural network computing library oriented towards multiple chip backends.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagDNN/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+      <div class="flagos-card">
+        <h3 class="card-title">FlagBLAS</h3>
+        <div class="card-description">
+          A computing library that follows the BLAS standard interface.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagBLAS/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+      <div class="flagos-card">
+        <h3 class="card-title">FlagFFT</h3>
+        <div class="card-description">
+          A JIT-compiled GPU FFT library via Triton/TLE.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagFFT/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+      <div class="flagos-card">
+        <h3 class="card-title">FlagSparse</h3>
+        <div class="card-description">
+          A domain-specific operator library for sparse computation scenarios.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagSparse/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+      <div class="flagos-card">
+        <h3 class="card-title">FlagTensor</h3>
+        <div class="card-description">
+          A high-performance tensor-primitive library implemented in Triton.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagTensor/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+      <div class="flagos-card">
+        <h3 class="card-title">FlagAudio</h3>
+        <div class="card-description">
+          A multi-backend computing library for audio signal processing.
+        </div>
+        <div class="card-footer">
+          <a href="https://docs.flagos.io/projects/FlagAudio/en/latest/" class="card-link">View Documentation</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 :::
 
