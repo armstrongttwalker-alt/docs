@@ -233,6 +233,15 @@ sd_hide_title: true
     </div>
   </div>
   <div class="flagos-card">
+    <h3 class="card-title">KernelGenBench</h3>
+    <div class="card-description">
+      A benchmark framework for evaluating LLM and agent-based Triton kernel generation across multiple hardware platforms.
+    </div>
+    <div class="card-footer">
+      <a href="https://docs.flagos.io/projects/kernelgenbench/en/latest/" class="card-link">View Documentation</a>
+    </div>
+  </div>
+  <div class="flagos-card">
     <h3 class="card-title">FlagOS Skills</h3>
     <div class="card-description">
       Compatible with Claude Code, Cursor, Codex, and any agent supporting the Agent Skills standard.
@@ -258,6 +267,15 @@ sd_hide_title: true
 :::{dropdown} FlagOS Platform Services
 
 <div class="flagos-grid">
+  <div class="flagos-card">
+    <h3 class="card-title">FlagRelease</h3>
+    <div class="card-description">
+      An automated platform for the cross-chip migration and release of open-source large models
+    </div>
+    <div class="card-footer">
+      <a href="https://docs.flagos.io/projects/FlagRelease/en/latest/" class="card-link">View Documentation</a>
+    </div>
+  </div>
   <div class="flagos-card">
     <h3 class="card-title">FlagPerf</h3>
     <div class="card-description">
