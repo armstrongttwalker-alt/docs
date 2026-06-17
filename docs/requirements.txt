@@ -1,4 +1,4 @@
-sphinx==8.1.3
+sphinx==8.2.3
 myst-parser
 sphinx-multiproject==1.0.0
 pydata-sphinx-theme
