@@ -59,7 +59,7 @@ sd_hide_title: true
 
   <!-- Fused Operators Group (Nested Cards) -->
   <div class="flagos-card flagos-card-span-1">
-    <h3 class="card-title">Fused Operators</h3>
+    <h3 class="card-title">Fused Operator Libraries</h3>
     <div class="flagos-grid flagos-grid-nested">
       <div class="flagos-card">
         <h3 class="card-title">FlagGems-vllm</h3>
@@ -75,7 +75,7 @@ sd_hide_title: true
 
   <!-- Multi-domain operator Group (Nested Cards) -->
   <div class="flagos-card flagos-card-span-3">
-    <h3 class="card-title">Multi-domain operator</h3>
+    <h3 class="card-title">Multi-Domain Operator Libraries</h3>
     <div class="flagos-grid flagos-grid-nested">
       <div class="flagos-card">
         <h3 class="card-title">FlagDNN</h3>
