@@ -30,6 +30,10 @@ FlagRelease/Emu3.5-FlagOS
 FlagRelease/GLM-4.5-FlagOS
 FlagRelease/GLM-5-FP8-FlagOS
 FlagRelease/GLM-5-ascend-FlagOS
+FlagRelease/GLM-5.2-hygon-FlagOS
+FlagRelease/GLM-5.2-metax-FlagOS
+FlagRelease/GLM-5.2-mthreads-FlagOS
+FlagRelease/GLM-5.2-zhenwu-FlagOS
 FlagRelease/HY-MT2-1.8B-ascend-FlagOS
 FlagRelease/HY-MT2-1.8B-hygon-FlagOS
 FlagRelease/HY-MT2-1.8B-metax-FlagOS
