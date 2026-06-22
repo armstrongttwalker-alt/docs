@@ -6,7 +6,7 @@ To build each project, the ``PROJECT`` environment variable is used.
 .. code:: console
 
    $ make html  # build default project
-   $ PROJECT=flagos_en make html  # build the flagos English project
+   $ PROJECT=flagos_homepage make html  # build the FlagOS homepage
    $ PROJECT=flagcx_en make html  # build the flagcx English project
    $ PROJECT=flaggems_en make html  # build the flaggems English project
    $ PROJECT=flaggems_vllm_en make html  # build the flaggems-vllm English project
@@ -78,7 +78,7 @@ except ImportError:
         # If both fail, create a simple get_project function
         print("WARNING: sphinx-multiproject not found. Using simple project selection.")
         def get_project(projects):
-            return os.environ.get("PROJECT", "flagos_en")
+            return os.environ.get("PROJECT", "flagos_homepage")
 
 sys.path.append(os.path.abspath("_ext"))
 
@@ -120,10 +120,10 @@ except ImportError:
 
 # Define all projects with their configurations
 multiproject_projects = {
-    "flagos_en": {
+    "flagos_homepage": {
         "use_config_file": False,
         "config": {
-            "project": "Documentation",
+            "project": "FlagOS Documentation",
             "html_title": "FlagOS Documentation",
         },
     },
@@ -372,13 +372,13 @@ multiproject_projects = {
             "html_title": "FlagCICD Documentation",
         },
     },
-    "flagos_zh": {
-        "use_config_file": False,
-        "config": {
-            "project": "FlagOS 文档中心",
-            "html_title": "FlagOS 文档中心",
-        },
-    },
+    # "flagos_zh": {
+    #     "use_config_file": False,
+    #     "config": {
+    #         "project": "FlagOS 文档中心",
+    #         "html_title": "FlagOS 文档中心",
+    #     },
+    # },
     "flagcx_zh": {
         "use_config_file": False,
         "config": {
@@ -554,8 +554,8 @@ man_pages = [
     )
 ]
 
-# Set language based on project suffix
-language = "en" if docset.endswith("_en") else "zh_CN"
+# Set language based on project suffix or environment variable (sphinx-intl support)
+language = os.environ.get("READTHEDOCS_LANGUAGE", "en") if docset == "flagos_homepage" else ("en" if docset.endswith("_en") else "zh_CN")
 
 locale_dirs = [
     f"{docset}/locale/",
@@ -568,8 +568,8 @@ html_short_title = ""
 # HTML THEME CONFIGURATION - DIFFERENT THEMES FOR DIFFERENT PROJECTS
 # ============================================================================
 
-# Only flagos_en and flagos_zh use pydata_sphinx_theme, all others use sphinx_book_theme
-if docset in ["flagos_en", "flagos_zh"]:
+# Only flagos_homepage uses pydata_sphinx_theme, all others use sphinx_book_theme
+if docset == "flagos_homepage":
     html_theme = "pydata_sphinx_theme"
 else:
     html_theme = "sphinx_book_theme"
@@ -584,20 +584,20 @@ html_favicon = "_static/favicon.svg"
 
 # Theme-specific configurations
 if html_theme == "pydata_sphinx_theme":
-    # PyData Sphinx Theme configuration for flagos_en and flagos_zh
+    # PyData Sphinx Theme configuration for flagos_homepage
 
-    # Set logo based on language
-    if docset == "flagos_en":
-        logo_config = {
-            "text": "Documentation",
-            "image_light": "_static/logo-en-light.svg",
-            "image_dark": "_static/logo-en-dark.svg",
-        }
-    else:  # flagos_zh
+    # Set logo based on language (sphinx-intl support)
+    if language == "zh_CN":
         logo_config = {
             "text": "文档中心",
             "image_light": "_static/logo-zh-light.svg",
             "image_dark": "_static/logo-zh-dark.svg",
+        }
+    else:
+        logo_config = {
+            "text": "Documentation",
+            "image_light": "_static/logo-en-light.svg",
+            "image_dark": "_static/logo-en-dark.svg",
         }
 
     html_theme_options = {
@@ -613,9 +613,8 @@ if html_theme == "pydata_sphinx_theme":
         "navbar_end": ["navbar-icon-links"]
     }
     
-    # Update secondary sidebar items for flagos projects
-    for project in ["flagos_en", "flagos_zh"]:
-        html_theme_options["secondary_sidebar_items"][f"{project}/index"] = []
+    # Update secondary sidebar items for flagos_homepage
+    html_theme_options["secondary_sidebar_items"]["flagos_homepage/index"] = []
     
     # html_sidebars is only for PyData Sphinx Theme
     html_sidebars = {}
