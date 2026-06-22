@@ -125,6 +125,7 @@ multiproject_projects = {
         "config": {
             "project": "FlagOS Documentation",
             "html_title": "FlagOS Documentation",
+            "locale_dirs": ["locale/"],
         },
     },
     "flagcx_en": {
@@ -555,7 +556,12 @@ man_pages = [
 ]
 
 # Set language based on project suffix or environment variable (sphinx-intl support)
-language = os.environ.get("READTHEDOCS_LANGUAGE", "en") if docset == "flagos_homepage" else ("en" if docset.endswith("_en") else "zh_CN")
+# language = os.environ.get("READTHEDOCS_LANGUAGE", "en") if docset == "flagos_homepage" else ("en" if docset.endswith("_en") else "zh_CN")
+language = "en"
+
+# Detect the actual build language from Read the Docs environment variable
+# Falls back to the language config variable for local builds
+CURRENT_LANGUAGE = os.getenv("READTHEDOCS_LANGUAGE", language)
 
 locale_dirs = [
     f"{docset}/locale/",
@@ -579,7 +585,7 @@ html_static_path = ["_static", f"{docset}/_static"]
 html_css_files = ["custom.css", "homepage.css"]
 html_js_files = []
 
-html_logo = "img/logo.png"
+# html_logo = "img/logo.png"
 html_favicon = "_static/favicon.svg"
 
 # Theme-specific configurations
@@ -587,18 +593,30 @@ if html_theme == "pydata_sphinx_theme":
     # PyData Sphinx Theme configuration for flagos_homepage
 
     # Set logo based on language (sphinx-intl support)
-    if language == "zh_CN":
+    # Read the Docs sets READTHEDOCS_LANGUAGE environment variable during builds
+    # ReadTheDocs uses lowercase codes (zh, zh-cn), while Sphinx uses zh_CN
+
+    # Debug output
+    print(f"DEBUG: CURRENT_LANGUAGE = '{CURRENT_LANGUAGE}'")
+    print(f"DEBUG: language = '{language}'")
+    print(f"DEBUG: READTHEDOCS_LANGUAGE env = '{os.getenv('READTHEDOCS_LANGUAGE', 'NOT SET')}'")
+    print(f"DEBUG: Is Chinese? {CURRENT_LANGUAGE in ['zh_CN', 'zh', 'zh-cn']}")
+
+    if CURRENT_LANGUAGE in ["zh_CN", "zh", "zh-cn"]:
         logo_config = {
             "text": "文档中心",
             "image_light": "_static/logo-zh-light.svg",
             "image_dark": "_static/logo-zh-dark.svg",
         }
+        print("DEBUG: Using CHINESE logo config")
     else:
+        # Default to English configuration for all other languages
         logo_config = {
             "text": "Documentation",
             "image_light": "_static/logo-en-light.svg",
             "image_dark": "_static/logo-en-dark.svg",
         }
+        print("DEBUG: Using ENGLISH logo config")
 
     html_theme_options = {
         "logo": logo_config,
