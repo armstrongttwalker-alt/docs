@@ -18,56 +18,100 @@ A unified, open-source system software stack designed for a variety of AI chips
 
 ## FlagOS Core Libraries
 
-````{grid} 1 2 4 4
+````{grid} 1 1 1 1
 :gutter: 3
 :class: flagos-grid-sd
 
-```{grid-item-card} FlagGems
+```{grid-item-card} Operator Libraries
 :class: flagos-card-sd
-:link: https://docs.flagos.io/projects/FlagGems/en/latest/
 
-A high-performance general-purpose operator library implemented with the Triton programming language and its extended languages.
+High-performance operator libraries optimized for diverse hardware backends, supporting general-purpose, fused, and domain-specific computation scenarios.
 
 +++
-[View Documentation →](https://docs.flagos.io/projects/FlagGems/en/latest/){ .card-link-sd }
+::::{tab-set}
+
+:::{tab-item} General-Purpose Operator Library
+:sync: general
+
+**FlagGems**
+
+Triton-based general-purpose operator library.
+
+[View Documentation →](https://docs.flagos.io/projects/FlagGems/en/latest/)
+:::
+
+:::{tab-item} Fused Operator Libraries
+:sync: fused
+
+**FlagGems-vllm**
+
+Optimized vLLM operators for multiple backends.
+
+[View Documentation →](https://docs.flagos.io/projects/FlagGems-vllm/en/latest/)
+:::
+
+:::{tab-item} Multi-Domain Operator Libraries
+:sync: multidomain
+
+**FlagDNN** - Deep learning operators. [View Documentation →](https://docs.flagos.io/projects/FlagDNN/en/latest/)
+
+**FlagBLAS** - BLAS numerical library. [View Documentation →](https://docs.flagos.io/projects/FlagBLAS/en/latest/)
+
+**FlagFFT** - GPU FFT library. [View Documentation →](https://docs.flagos.io/projects/FlagFFT/en/latest/)
+
+**FlagSparse** - Sparse computation. [View Documentation →](https://docs.flagos.io/projects/FlagSparse/en/latest/)
+
+**FlagTensor** - Tensor primitives. [View Documentation →](https://docs.flagos.io/projects/FlagTensor/en/latest/)
+
+**FlagAudio** - Audio processing. [View Documentation →](https://docs.flagos.io/projects/FlagAudio/en/latest/)
+:::
+::::
 ```
+````
 
-```{grid-item-card} FlagTree
+````{grid} 1 1 3 3
+:gutter: 3
+:class: flagos-grid-sd
+
+```{grid-item-card} Compiler
 :class: flagos-card-sd
-:link: https://docs.flagos.io/projects/FlagTree/en/latest/
-
-An open-source, unified compiler for multiple AI chips.
 
 +++
+**FlagTree**
+
+An open-source, unified compiler for multiple AI chips, advancing and expanding the Triton ecosystem across diverse hardware platforms.
+
 [View Documentation →](https://docs.flagos.io/projects/FlagTree/en/latest/){ .card-link-sd }
 ```
 
-```{grid-item-card} FlagScale
+```{grid-item-card} Training & Inference Framework
 :class: flagos-card-sd
-:link: https://docs.flagos.io/projects/FlagScale/en/latest/
-
-A comprehensive toolkit designed to support the entire lifecycle of large models.
 
 +++
+**FlagScale**
+
+A comprehensive toolkit designed to support the entire lifecycle of large models, from training to inference and deployment.
+
 [View Documentation →](https://docs.flagos.io/projects/FlagScale/en/latest/){ .card-link-sd }
 ```
 
-```{grid-item-card} FlagCX
+```{grid-item-card} Communication Library
 :class: flagos-card-sd
-:link: https://docs.flagos.io/projects/FlagCX/en/latest/
-
-A scalable and adaptive unified communication library for cross-chip environments.
 
 +++
+**FlagCX**
+
+A scalable and adaptive unified communication library for cross-chip environments, delivering high-performance collective communication capabilities.
+
 [View Documentation →](https://docs.flagos.io/projects/FlagCX/en/latest/){ .card-link-sd }
 ```
 ````
 
 ---
 
-## FlagOS Ecosystem Enablement Projects
+## FlagOS Plugins for Diverse Chips
 
-````{grid} 1 2 3 3
+````{grid} 1 1 3 3
 :gutter: 3
 :class: flagos-grid-sd
 
@@ -136,7 +180,7 @@ An out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-chip bac
 
 ## FlagOS Domain-Specific Projects
 
-````{grid} 1 2 2 2
+````{grid} 1 1 3 3
 :gutter: 3
 :class: flagos-grid-sd
 
@@ -165,7 +209,7 @@ A high-performance distributed quantum statevector simulator built on PyTorch, e
 
 ## FlagOS Developer Tools
 
-````{grid} 1 2 2 4
+````{grid} 1 1 3 3
 :gutter: 3
 :class: flagos-grid-sd
 
@@ -214,7 +258,7 @@ An online laboratory providing cloud-based development environments.
 
 ## FlagOS Platform Services
 
-````{grid} 1 2 3 3
+````{grid} 1 1 3 3
 :gutter: 3
 :class: flagos-grid-sd
 
