@@ -1032,3 +1032,86 @@ html[data-theme="dark"] .flagos-card-sd hr {
 .flagos-card-sd a.sd-stretched-link {
   display: none !important;
 }
+
+/* ========== Sphinx-Design Tab Styles ========== */
+/* Remove all borders from tab-set */
+.flagos-card-sd .sd-tab-set {
+  border: none !important;
+  margin-top: 0.5rem;
+}
+
+/* Tab label styling - compact and clean, no borders */
+.flagos-card-sd .sd-tab-label,
+.sd-tab-label {
+  padding: 0.5rem 1rem !important;
+  margin-right: 0.25rem !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 6px !important;
+  background: var(--flagos-gray-100) !important;
+  color: var(--flagos-text-light) !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+}
+
+/* Active tab label styling - no border, just background color */
+.flagos-card-sd input:checked + .sd-tab-label,
+input:checked + .sd-tab-label {
+  background: var(--flagos-blue-light) !important;
+  color: var(--flagos-blue) !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Tab content panel - no border, remove all default styling */
+.flagos-card-sd .sd-tab-content,
+.sd-tab-content {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 1rem 0.5rem !important;
+  background: transparent !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Hover effect for tabs */
+.flagos-card-sd .sd-tab-label:hover {
+  background: var(--flagos-gray-200) !important;
+  color: var(--flagos-text) !important;
+}
+
+/* Dark mode for tabs */
+html[data-theme="dark"] .flagos-card-sd .sd-tab-label {
+  background: var(--flagos-gray-200) !important;
+  color: var(--flagos-text-light) !important;
+}
+
+html[data-theme="dark"] .flagos-card-sd input:checked + .sd-tab-label {
+  background: rgba(30, 107, 255, 0.15) !important;
+  color: var(--flagos-blue) !important;
+  border: none !important;
+}
+
+html[data-theme="dark"] .flagos-card-sd .sd-tab-content {
+  border: none !important;
+}
+
+html[data-theme="dark"] .flagos-card-sd .sd-tab-label:hover {
+  background: var(--flagos-gray-300) !important;
+}
