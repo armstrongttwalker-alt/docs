@@ -1115,3 +1115,166 @@ html[data-theme="dark"] .flagos-card-sd .sd-tab-content {
 html[data-theme="dark"] .flagos-card-sd .sd-tab-label:hover {
   background: var(--flagos-gray-300) !important;
 }
+
+/* ========== Operator Libraries Internal Layout ========== */
+/* Custom grid layout: 1st & 2nd items stacked on left, 3rd item spans right */
+.sd-card-footer:has(.operator-item) {
+  display: grid !important;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Fallback for browsers without :has() support */
+.flagos-card-sd .sd-card-footer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+/* First item: top-left */
+.operator-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Second item: bottom-left */
+.operator-item:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* Third item: spans both rows on right */
+.operator-item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+/* Sub-card visual styling - simulates card appearance */
+.operator-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--flagos-border);
+  border-radius: 8px;
+  background: var(--flagos-gray-50);
+  transition: all 0.2s ease;
+}
+
+.operator-item:hover {
+  border-color: var(--flagos-blue);
+  background: var(--flagos-blue-light);
+}
+
+.operator-item > strong:first-child,
+.operator-item p > strong:first-child {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--flagos-text);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.operator-item p {
+  margin: 0;
+  color: var(--flagos-text-light);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.operator-item ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+  color: var(--flagos-text-light);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.operator-item li {
+  margin-bottom: 0.3rem;
+}
+
+.operator-item a {
+  color: var(--flagos-blue);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.operator-item a:hover {
+  color: var(--flagos-blue-dark);
+  text-decoration: underline;
+}
+
+/* Responsive: 2 columns on tablet, 1 column on mobile */
+@media (max-width: 992px) {
+  .sd-card-footer:has(.operator-item),
+  .flagos-card-sd .sd-card-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .operator-item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .operator-item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .operator-item:nth-child(3) {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .sd-card-footer:has(.operator-item),
+  .flagos-card-sd .sd-card-footer {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .operator-item:nth-child(1),
+  .operator-item:nth-child(2),
+  .operator-item:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+/* Dark mode */
+html[data-theme="dark"] .operator-item {
+  border-color: var(--flagos-border);
+  background: var(--flagos-gray-100);
+}
+
+html[data-theme="dark"] .operator-item:hover {
+  border-color: var(--flagos-blue);
+  background: rgba(30, 107, 255, 0.1);
+}
+
+html[data-theme="dark"] .operator-item > strong:first-child,
+html[data-theme="dark"] .operator-item p > strong:first-child {
+  color: var(--flagos-text);
+}
+
+html[data-theme="dark"] .operator-item p,
+html[data-theme="dark"] .operator-item ul {
+  color: var(--flagos-text-light);
+}
+
+html[data-theme="dark"] .operator-item a {
+  color: var(--flagos-blue);
+}
