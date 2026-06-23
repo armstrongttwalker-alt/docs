@@ -1,4 +1,4 @@
-# FlagRelease 使用指南
+# FlagRelease 发布指南
 
 ## 什么是 FlagRelease
 
