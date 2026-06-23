@@ -1,8 +1,8 @@
-# Install Megatron-LM-FL
+# 安装 Megatron-LM-FL
 
-You can install Megatron-LM-FL through one of the following methods:
+您可以通过以下方法之一安装 Megatron-LM-FL：
 
-## Docker (Recommended)
+## Docker（推荐）
 
 ### CUDA
 
@@ -14,7 +14,7 @@ conda activate flagscale-train
 pip install flash-attn==2.8.3 --no-build-isolation
 ```
 
-## Install from source
+## 从源码安装
 
 ```bash
 git clone https://github.com/flagos-ai/Megatron-LM-FL.git
@@ -23,4 +23,4 @@ git checkout <tag number>
 pip install . --no-build-isolation --root-user-action=ignore
 ```
 
-For an end-to-end training workflow using Megatron-LM-FL, TransformerEngine-FL, and FlagScale, see [End-to-End Use Case](../user_guide/e2e-use-case.md).
+有关使用 Megatron-LM-FL、TransformerEngine-FL 和 FlagScale 的端到端训练工作流，请参见[端到端用例](../user_guide/e2e-use-case.md)。

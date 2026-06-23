@@ -26,12 +26,6 @@ docker exec -it <name> /bin/bash
 conda activate base
 ```
 
-```{note}
-The same process applies to both CUDA and MetaX environments.
-```
-
----
-
 ## 2. Prepare FlagScale
 
 ```bash

@@ -15,6 +15,11 @@ git clone https://github.com/flagos-ai/TransformerEngine-FL.git
 cd TransformerEngine-FL
 git checkout <tag number>
 git submodule update --init --recursive
+MAX_JOBS=xxx pip install .
+```
+
+```{note}
+This requires the image from the vendors. 
 ```
 
 For an end-to-end training workflow using TransformerEngine-FL, Megatron-LM-FL, and FlagScale, see [End-to-End Use Case: TransformerEngine-FL + Megatron-LM-FL + FlagScale](/e2e-use-case.md).

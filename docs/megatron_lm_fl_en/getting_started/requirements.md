@@ -10,13 +10,6 @@
 | **TXDA** | Tsingmicro GPUs | Tsingmicro TXDA platform |
 | **NPU** | Ascend NPU | Ascend 910B / CANN 8.0+ |
 
-## Supported Backends
-
-| Type | Values |
-|------|--------|
-| Distributed Backend | `nccl` |
-| Attention Backend | `flash`, `unfused` |
-
 ## Operating system
 
 Linux (official), WSL2 (limited support)

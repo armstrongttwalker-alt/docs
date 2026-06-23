@@ -1,49 +1,80 @@
-# End-to-End Use Case: Megatron-LM-FL + TransformerEngine-FL + FlagScale
+# 端到端用例：TransformerEngine-FL + Megatron-LM-FL + FlagScale
 
-This guide walks through a complete end-to-end training workflow using Megatron-LM-FL, TransformerEngine-FL, and FlagScale.
+本指南介绍使用 TransformerEngine-FL、Megatron-LM-FL 和 FlagScale 的端到端训练工作流，在 CUDA（NVIDIA）和 MetaX 平台上执行。
 
-```{note}
-The same process applies to both CUDA and MetaX environments.
+---
+
+## 1. Docker 环境
+
+### CUDA（NVIDIA）
+
+```bash
+docker pull harbor.baai.ac.cn/flagscale/flagscale-train:dev-cu128-py3.12-20260319182856
+docker run -itd --gpus all --shm-size=500g --name <name> harbor.baai.ac.cn/flagscale/flagscale-train:dev-cu128-py3.12-20260319182856 /bin/bash
+docker exec -it <name> /bin/bash
+conda activate flagscale-train
+pip install flash-attn==2.8.3 --no-build-isolation
+pip install upgrade wandb tensorboard
 ```
 
-## 1. Prepare FlagScale
+### MetaX
+
+```bash
+docker pull harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839
+docker run -itd --gpus all --shm-size=500g --name <name> --ulimit nofile=65535:65535 --device=/dev/dri --device=/dev/mxcd harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839
+docker exec -it <name> /bin/bash
+conda activate base
+```
+
+## 2. 准备 FlagScale
 
 ```bash
 git clone https://github.com/flagos-ai/FlagScale.git
 cd FlagScale
-# CUDA only
+# 仅 CUDA
 pip install -r requirements/cuda/train.txt
-git checkout <version>
+git checkout <release-tag>
 ```
 
-## 2. Prepare Megatron-LM-FL
+---
+
+## 3. 准备 Megatron-LM-FL
 
 ```bash
 git clone https://github.com/flagos-ai/Megatron-LM-FL.git
 cd Megatron-LM-FL
-git checkout <version>
+git checkout <release-tag>
 pip install . --no-build-isolation --root-user-action=ignore
 ```
 
-## 3. Prepare TransformerEngine-FL
+---
+
+## 4. 准备 TransformerEngine-FL
 
 ```bash
 git clone https://github.com/flagos-ai/TransformerEngine-FL.git
 cd TransformerEngine-FL
-git checkout <version>
+git checkout <release-tag>
 git submodule update --init --recursive
 MAX_JOBS=64 pip install -v . --no-build-isolation --root-user-action=ignore
-# MetaX environment:
+
+# MetaX 环境（镜像：harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839）：
 TE_FL_SKIP_CUDA=1 MAX_JOBS=64 pip install -v . --no-build-isolation --root-user-action=ignore
 ```
 
-## 4. Prepare Dataset and Tokenizer
+---
+
+## 5. 准备数据集和分词器
+
+### 数据集
 
 ```bash
 mkdir -p ./data && cd ./data
 wget https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/datasets/enron_emails_demo_text_document_qwen/enron_emails_demo_text_document_qwen.idx
 wget https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/datasets/enron_emails_demo_text_document_qwen/enron_emails_demo_text_document_qwen.bin
 ```
+
+### 分词器
 
 ```bash
 mkdir -p ./qwentokenizer && cd ./qwentokenizer
@@ -53,7 +84,11 @@ wget "https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/tokenizers/qwentokenizer
 wget "https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/tokenizers/qwentokenizer/tokenization_qwen.py" -O tokenization_qwen.py
 ```
 
-## 5. Qwen3 Training Test
+---
+
+## 6. Qwen3 训练测试
+
+需要 4 个 GPU。`te_fl_prefer` 参数控制后端选择 — 使用 `vendor` 选择供应商特定实现，或使用 `reference` 选择纯 PyTorch 回退。
 
 ```bash
 cd FlagScale
@@ -81,7 +116,19 @@ python run.py \
     '~train.model.flag_gems_unused'
 ```
 
-## 6. DeepSeek-V3 Training Test
+关键配置选项：
+
+| 参数 | 描述 | 值 |
+|------|------|-----|
+| `te_fl_prefer` | 首选后端 | `vendor`、`reference`、`flagos` |
+| `attention_backend` | 注意力实现 | `flash`、`unfused` |
+| `enable_flag_gems` | 启用 FlagGems 算子调度 | `True`、`False` |
+
+---
+
+## 7. DeepSeek-V3 训练测试
+
+需要 4 个 GPU。使用专家并行和逐算子后端配置进行分组 GEMM。
 
 ```bash
 cd FlagScale
@@ -100,13 +147,16 @@ python run.py \
     train.data.tokenizer.tokenizer_path=./qwentokenizer \
     +train.model.enable_flag_gems=False \
     +train.model.attention_backend=unfused \
-    +train.model.distributed_backend=nccl \
     +train.model.te_fl_prefer=vendor \
     '+train.model.te_fl_per_op="te_general_grouped_gemm=vendor"'
 ```
 
-## Notes
+---
 
-- Requires 4 GPUs
-- Log path: `./logs/host_0_localhost.output`
-- `te_fl_prefer` options: `vendor` or `reference`
+## 8. 注意事项
+
+- 根据您的平台更改 conda 环境
+- 所有训练测试需要 4 个 GPU
+- 标记为**可选**的参数可根据您的设置进行调整
+- 训练日志写入：`./logs/host_0_localhost.output`
+- 对于 MetaX，安装 TransformerEngine-FL 前设置 `TE_FL_SKIP_CUDA=1`

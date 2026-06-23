@@ -11,14 +11,6 @@
 | MUSA | Moore Threads S-series GPU support |
 | ENFLAME | ENFLAME chip vendor support with flash attention and operator registration |
 
-## Supported architectures
-
-Blackwell, Hopper, Grace Hopper/Blackwell, Ada, Ampere
-
-```{note}
-FP8 features require Compute Capability 8.9+ (Ada/Hopper/Blackwell).
-```
-
 ## Operating system
 
 Linux (official), WSL2 (limited support)

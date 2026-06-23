@@ -20,14 +20,7 @@ Hardware abstraction via `PlatformBase` with implementations for multiple platfo
 
 ## DeepSeek V4 Support
 
-Full training support for DeepSeek V4 architecture:
-
-- **CSA (Compressed Sparse Attention)** and **HCA** attention variants
-- **Hash Router** for MoE token routing
-- **Multi-Head Hyper-Connection (mHC)** for residual connections
-- **Engram** auxiliary memory module
-- **Multi-Token Prediction (MTP)** enhancements
-- New fused kernels: `fused_mhc_kernels`, extended `fused_mla_yarn_rope_apply`
+Full training support for DeepSeek V4 architecture (CSA/HCA, Hash Router, mHC, Engram, MTP).
 
 ## Upstream Compatibility
 
