@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FlagOS Documentation \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-23 16:16+0800\n"
+"POT-Creation-Date: 2026-06-23 17:08+0800\n"
 "PO-Revision-Date: 2026-06-23 15:10+0800\n"
 "Last-Translator: FlagOS Community <flagos@baai.ac.cn>\n"
 "Language: zh_CN\n"
@@ -64,11 +64,11 @@ msgstr "**FlagGems**"
 msgid "Triton-based general-purpose operator library."
 msgstr "基于 Triton 的通用算子库。"
 
-#: ../../flagos_homepage/index.md:38
+#: ../../flagos_homepage/index.md:37
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagGems/en/latest/)"
-msgstr "[查看文档 →](https://docs.flagos.io/projects/FlagGems/en/latest/)"
+msgstr "[查看文档 →](https://docs.flagos.io/projects/FlagGems/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:41
 msgid "**Fused Operator Libraries**"
@@ -82,81 +82,63 @@ msgstr "**FlagGems-vllm**"
 msgid "Optimized vLLM operators for multiple backends."
 msgstr "面向多种后端优化的 vLLM 算子。"
 
-#: ../../flagos_homepage/index.md:48
+#: ../../flagos_homepage/index.md:47
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/FlagGems-"
 "vllm/en/latest/)"
-msgstr "[查看文档 →](https://docs.flagos.io/projects/FlagGems-vllm/en/latest/)"
+msgstr "[查看文档 →](https://docs.flagos.io/projects/FlagGems-vllm/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:51
 msgid "**Multi-Domain Operator Libraries**"
 msgstr "**多领域算子库**"
 
 #: ../../flagos_homepage/index.md:53
-#, python-brace-format
 msgid ""
-"**FlagDNN** — Deep learning operators. {{ '[View Documentation "
-"→](https://docs.flagos.io/projects/FlagDNN/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagDNN** — Deep learning operators. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagDNN/en/latest/)"
 msgstr ""
-"**FlagDNN** — 深度学习算子。{{ '[查看文档 "
-"→](https://docs.flagos.io/projects/FlagDNN/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagDNN** — 深度学习算子。[查看文档 "
+"→](https://docs.flagos.io/projects/FlagDNN/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:54
-#, python-brace-format
 msgid ""
-"**FlagBLAS** — BLAS numerical library. {{ '[View Documentation "
-"→](https://docs.flagos.io/projects/FlagBLAS/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagBLAS** — BLAS numerical library. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagBLAS/en/latest/)"
 msgstr ""
-"**FlagBLAS** — BLAS 数值库。{{ '[查看文档 "
-"→](https://docs.flagos.io/projects/FlagBLAS/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagBLAS** — BLAS 数值库。[查看文档 "
+"→](https://docs.flagos.io/projects/FlagBLAS/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:55
-#, python-brace-format
 msgid ""
-"**FlagFFT** — GPU FFT library. {{ '[View Documentation "
-"→](https://docs.flagos.io/projects/FlagFFT/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagFFT** — GPU FFT library. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagFFT/en/latest/)"
 msgstr ""
-"**FlagFFT** — GPU FFT 库。{{ '[查看文档 "
-"→](https://docs.flagos.io/projects/FlagFFT/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagFFT** — GPU FFT 库。[查看文档 "
+"→](https://docs.flagos.io/projects/FlagFFT/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:56
-#, python-brace-format
 msgid ""
-"**FlagSparse** — Sparse computation. {{ '[View Documentation "
-"→](https://docs.flagos.io/projects/FlagSparse/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagSparse** — Sparse computation. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagSparse/en/latest/)"
 msgstr ""
-"**FlagSparse** — 稀疏计算。{{ '[查看文档 "
-"→](https://docs.flagos.io/projects/FlagSparse/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagSparse** — 稀疏计算。[查看文档 "
+"→](https://docs.flagos.io/projects/FlagSparse/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:57
-#, python-brace-format
 msgid ""
-"**FlagTensor** — Tensor primitives. {{ '[View Documentation "
-"→](https://docs.flagos.io/projects/FlagTensor/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagTensor** — Tensor primitives. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagTensor/en/latest/)"
 msgstr ""
-"**FlagTensor** — 张量原语。{{ '[查看文档 "
-"→](https://docs.flagos.io/projects/FlagTensor/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagTensor** — 张量原语。[查看文档 "
+"→](https://docs.flagos.io/projects/FlagTensor/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:58
-#, python-brace-format
 msgid ""
-"**FlagAudio** — Audio processing. {{ '[View Documentation "
-"→](https://docs.flagos.io/projects/FlagAudio/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagAudio** — Audio processing. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagAudio/en/latest/)"
 msgstr ""
-"**FlagAudio** — 音频处理。{{ '[查看文档 "
-"→](https://docs.flagos.io/projects/FlagAudio/en/latest/)'.replace('en', "
-"lang_prefix) }}"
+"**FlagAudio** — 音频处理。[查看文档 "
+"→](https://docs.flagos.io/projects/FlagAudio/zh-cn/latest/)"
 
 #: ../../flagos_homepage/index.md:67
 msgid "Compiler"
@@ -172,13 +154,13 @@ msgid ""
 "expanding the Triton ecosystem across diverse hardware platforms."
 msgstr "面向多种 AI 芯片的开源统一编译器，在多种硬件平台上推进和扩展 Triton 生态系统。"
 
-#: ../../flagos_homepage/index.md:75
+#: ../../flagos_homepage/index.md:74
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagTree/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagTree/en/latest/){ .card-"
+"[查看文档 →](https://docs.flagos.io/projects/FlagTree/zh-cn/latest/){ .card-"
 "link-sd }"
 
 #: ../../flagos_homepage/index.md:77
@@ -195,13 +177,13 @@ msgid ""
 " models, from training to inference and deployment."
 msgstr "全面支持大模型全生命周期的工具集，涵盖从训练到推理和部署。"
 
-#: ../../flagos_homepage/index.md:85
+#: ../../flagos_homepage/index.md:84
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagScale/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagScale/en/latest/){ .card-"
+"[查看文档 →](https://docs.flagos.io/projects/FlagScale/zh-cn/latest/){ .card-"
 "link-sd }"
 
 #: ../../flagos_homepage/index.md:87
@@ -219,14 +201,14 @@ msgid ""
 "capabilities."
 msgstr "面向跨芯片环境的可扩展自适应统一通信库，提供高性能集合通信能力。"
 
-#: ../../flagos_homepage/index.md:95
+#: ../../flagos_homepage/index.md:94
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagCX/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagCX/en/latest/){ .card-link-"
-"sd }"
+"[查看文档 →](https://docs.flagos.io/projects/FlagCX/zh-cn/latest/){ .card-"
+"link-sd }"
 
 #: ../../flagos_homepage/index.md:100
 msgid "FlagOS Plugins for Diverse Chips"
@@ -243,13 +225,13 @@ msgid ""
 "FlagGems and the unified communication library FlagCX."
 msgstr "vLLM 推理/服务框架插件，基于 FlagOS 统一多芯片后端构建——包括统一算子库 FlagGems 和统一通信库 FlagCX。"
 
-#: ../../flagos_homepage/index.md:113
+#: ../../flagos_homepage/index.md:112
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/vllm-plugin-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/vllm-plugin-FL/en/latest/){ "
+"[查看文档 →](https://docs.flagos.io/projects/vllm-plugin-FL/zh-cn/latest/){ "
 ".card-link-sd }"
 
 #: ../../flagos_homepage/index.md:115
@@ -262,13 +244,13 @@ msgid ""
 "supporting diverse AI chips, built on top of FlagOS."
 msgstr "Megatron-LM 的分支，引入插件化架构以支持多种 AI 芯片，基于 FlagOS 构建。"
 
-#: ../../flagos_homepage/index.md:122
+#: ../../flagos_homepage/index.md:121
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/Megatron-LM-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/Megatron-LM-FL/en/latest/){ "
+"[查看文档 →](https://docs.flagos.io/projects/Megatron-LM-FL/zh-cn/latest/){ "
 ".card-link-sd }"
 
 #: ../../flagos_homepage/index.md:124
@@ -281,14 +263,14 @@ msgid ""
 "for supporting diverse AI chips, built on top of FlagOS."
 msgstr "TransformerEngine 的分支，引入插件化架构以支持多种 AI 芯片，基于 FlagOS 构建。"
 
-#: ../../flagos_homepage/index.md:131
+#: ../../flagos_homepage/index.md:130
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/TransformerEngine-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/TransformerEngine-"
-"FL/en/latest/){ .card-link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/TransformerEngine-FL/zh-"
+"cn/latest/){ .card-link-sd }"
 
 #: ../../flagos_homepage/index.md:133
 msgid "verl-FL"
@@ -301,14 +283,14 @@ msgid ""
 "the FlagOS ecosystem."
 msgstr "veRL（火山引擎大模型强化学习）的分支，通过 FlagOS 生态系统扩展上游库的多芯片/多硬件支持。"
 
-#: ../../flagos_homepage/index.md:140
+#: ../../flagos_homepage/index.md:139
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/verl-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/verl-FL/en/latest/){ .card-link-"
-"sd }"
+"[查看文档 →](https://docs.flagos.io/projects/verl-FL/zh-cn/latest/){ .card-"
+"link-sd }"
 
 #: ../../flagos_homepage/index.md:142
 msgid "PyTorch-Plugin-FL"
@@ -323,14 +305,14 @@ msgstr ""
 "基于 PrivateUse1 扩展机制的自定义 PyTorch 设备插件，将 FlagGems 高性能 Triton 算子注册为 flagos "
 "设备后端。"
 
-#: ../../flagos_homepage/index.md:149
+#: ../../flagos_homepage/index.md:148
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/PyTorch-Plugin-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/PyTorch-Plugin-FL/en/latest/){ "
-".card-link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/PyTorch-Plugin-FL/zh-"
+"cn/latest/){ .card-link-sd }"
 
 #: ../../flagos_homepage/index.md:151
 msgid "sglang-plugin-FL"
@@ -343,14 +325,14 @@ msgid ""
 "hardware platforms."
 msgstr "SGLang 的树外 (OOT) 插件，基于 FlagOS 统一多芯片后端构建，将 SGLang 的推理能力扩展到多种硬件平台。"
 
-#: ../../flagos_homepage/index.md:158
+#: ../../flagos_homepage/index.md:157
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/sglang-plugin-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/sglang-plugin-FL/en/latest/){ "
-".card-link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/sglang-plugin-FL/zh-cn/latest/){"
+" .card-link-sd }"
 
 #: ../../flagos_homepage/index.md:163
 msgid "FlagOS Domain-Specific Projects"
@@ -366,14 +348,14 @@ msgid ""
 "robots, so-called Embodied Intelligence."
 msgstr "面向机器人 AI 模型的集成训练与推理框架，即具身智能。"
 
-#: ../../flagos_homepage/index.md:176
+#: ../../flagos_homepage/index.md:175
 #, python-brace-format
 msgid ""
 "[View Documentation →](https://docs.flagos.io/projects/FlagOS-"
 "Robo/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagOS-Robo/en/latest/){ .card-"
-"link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/FlagOS-Robo/zh-cn/latest/){ "
+".card-link-sd }"
 
 #: ../../flagos_homepage/index.md:178
 msgid "FlagQuantum"
@@ -385,15 +367,15 @@ msgid ""
 "PyTorch, enabling quantum circuit simulation across multiple GPUs."
 msgstr "基于 PyTorch 构建的高性能分布式量子态矢量模拟器，支持跨多 GPU 的量子电路模拟。"
 
-#: ../../flagos_homepage/index.md:185
+#: ../../flagos_homepage/index.md:184
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagQuantum/en/latest/){ .card-link-sd"
 " }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagQuantum/en/latest/){ .card-"
-"link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/FlagQuantum/zh-cn/latest/){ "
+".card-link-sd }"
 
 #: ../../flagos_homepage/index.md:190
 msgid "FlagOS Developer Tools"
@@ -407,13 +389,13 @@ msgstr "KernelGen"
 msgid "An operator auto-generation tool."
 msgstr "算子自动生成工具。"
 
-#: ../../flagos_homepage/index.md:203
+#: ../../flagos_homepage/index.md:202
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/kernelgen/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/kernelgen/en/latest/){ .card-"
+"[查看文档 →](https://docs.flagos.io/projects/kernelgen/zh-cn/latest/){ .card-"
 "link-sd }"
 
 #: ../../flagos_homepage/index.md:205
@@ -426,14 +408,14 @@ msgid ""
 "generation across multiple hardware platforms."
 msgstr "用于评估跨多硬件平台 LLM 和 Agent 驱动的 Triton kernel 生成的基准测试框架。"
 
-#: ../../flagos_homepage/index.md:212
+#: ../../flagos_homepage/index.md:211
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/kernelgenbench/en/latest/){ .card-"
 "link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/kernelgenbench/en/latest/){ "
+"[查看文档 →](https://docs.flagos.io/projects/kernelgenbench/zh-cn/latest/){ "
 ".card-link-sd }"
 
 #: ../../flagos_homepage/index.md:214
@@ -461,15 +443,15 @@ msgstr "线上实验室"
 msgid "An online laboratory providing cloud-based development environments."
 msgstr "提供云端开发环境的线上实验室。"
 
-#: ../../flagos_homepage/index.md:231
+#: ../../flagos_homepage/index.md:230
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/onlinelaboratory/en/latest/){ .card-"
 "link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/onlinelaboratory/en/latest/){ "
-".card-link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/onlinelaboratory/zh-cn/latest/){"
+" .card-link-sd }"
 
 #: ../../flagos_homepage/index.md:236
 msgid "FlagOS Platform Services"
@@ -485,15 +467,15 @@ msgid ""
 "source large models."
 msgstr "开源大模型跨芯片迁移与发布的自动化平台。"
 
-#: ../../flagos_homepage/index.md:249
+#: ../../flagos_homepage/index.md:248
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagRelease/en/latest/){ .card-link-sd"
 " }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagRelease/en/latest/){ .card-"
-"link-sd }"
+"[查看文档 →](https://docs.flagos.io/projects/FlagRelease/zh-cn/latest/){ "
+".card-link-sd }"
 
 #: ../../flagos_homepage/index.md:251
 msgid "FlagPerf"
@@ -503,13 +485,13 @@ msgstr "FlagPerf"
 msgid "An integrated AI hardware evaluation engine."
 msgstr "集成式 AI 硬件评测引擎。"
 
-#: ../../flagos_homepage/index.md:258
+#: ../../flagos_homepage/index.md:257
 #, python-brace-format
 msgid ""
 "[View Documentation "
 "→](https://docs.flagos.io/projects/FlagPerf/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/FlagPerf/en/latest/){ .card-"
+"[查看文档 →](https://docs.flagos.io/projects/FlagPerf/zh-cn/latest/){ .card-"
 "link-sd }"
 
 #: ../../flagos_homepage/index.md:260
