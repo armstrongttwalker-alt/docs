@@ -162,5 +162,6 @@
 | RoboBrain2.5-8B-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/RoboBrain2.5-8B-ascend-FlagOS> |
 | RoboBrain2.5-8B-FlagOS | <https://modelscope.cn/models/FlagRelease/RoboBrain2.5-8B-FlagOS> |
 | Seed-OSS-36B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Seed-OSS-36B-Instruct-FlagOS> |
+| Seed-OSS-36B-Instruct-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Seed-OSS-36B-Instruct-iluvatar-FlagOS> |
 | step3-FlagOS | <https://modelscope.cn/models/FlagRelease/step3-FlagOS> |
 | TeleChat3-36B-Thinking-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/TeleChat3-36B-Thinking-mthreads-FlagOS> |
