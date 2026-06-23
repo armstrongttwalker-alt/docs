@@ -2,11 +2,16 @@
 
 ## Performance Test
 
-Performance tests are maintained in `test/perf`.
+Performance tests are maintained in `test/perf/`, organized by API level:
+
+- **Host API tests** (`test/perf/host_api/`) — high-level collective operations via FlagCX host API
+- **Device API tests** (`test/perf/device_api/`) — low-level device kernel benchmarks via FlagCX Device API
+
+### Host API Performance Test
 
 ```shell
-cd test/perf
-make [USE_NVIDIA | USE_ILUVATAR_COREX | USE_CAMBRICON | USE_METAX | USE_MUSA | USE_KUNLUNXIN | USE_DU | USE_ASCEND | USE_AMD | USE_TSM | USE_ENFLAME]=1
+cd test/perf/host_api
+make [USE_NVIDIA | USE_ILUVATAR_COREX | USE_CAMBRICON | USE_METAX | USE_MUSA | USE_KUNLUNXIN | USE_DU | USE_ASCEND | USE_AMD | USE_TSM | USE_ENFLAME | USE_SUNRISE]=1
 mpirun --allow-run-as-root -np 8 ./test_allreduce -b 128K -e 4G -f 2
 ```
 
@@ -41,20 +46,31 @@ All tests support the same set of arguments:
 
 ## Device API Test
 
-Device API tests are maintained in `test/kernel/`. There are four test binaries:
+Device API tests are organized in two directories:
+
+### Performance Tests (`test/perf/device_api/`)
 
 | Binary | What it tests |
 |---|---|
-| `test_intranode` | Intra-node AllReduce via Device API. Correctness + bandwidth benchmarking. |
-| `test_internode_twosided` | Inter-node two-sided AlltoAll (FIFO-based; Window-based with `-R 2`). Correctness + bandwidth. |
-| `test_internode_onesided` | Inter-node one-sided AlltoAll (put+signal+wait pattern). Requires `-R 1` or `-R 2`. |
-| `test_device_api` | Correctness suite for 10 one-sided Device API kernels. Requires `-R 1` or `-R 2`. |
+| `perf_allreduce_intranode` | Intra-node AllReduce via Device API |
+| `perf_internode_twosided` | Inter-node two-sided AlltoAll (FIFO-based) |
+| `perf_internode_onesided` | Inter-node one-sided AlltoAll (put+signal+wait) |
+
+### Correctness Tests (`test/unittest/device_api/`)
+
+| Binary | What it tests |
+|---|---|
+| `test_device_api` | Correctness suite for 10 one-sided Device API kernels |
+| `test_device_ir` | IR wrapper layer correctness |
 
 Build:
 
 ```shell
-cd test/kernel
-make USE_NVIDIA=1    # or other backend flag
+# FlagCX must be built with COMPILE_KERNEL=1 (from project root)
+make USE_NVIDIA=1 COMPILE_KERNEL=1 -j$(nproc)
+
+cd test/perf/device_api
+make USE_NVIDIA=1
 ```
 
 Supports `MPI_HOME=<path>`.
@@ -63,16 +79,16 @@ Run examples:
 
 ```shell
 # Intra-node AllReduce (single node, 8 GPUs)
-mpirun --allow-run-as-root -np 8 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./test_intranode -b 1M -e 64M -f 2
+mpirun --allow-run-as-root -np 8 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./perf_allreduce_intranode -b 1M -e 64M -f 2
 
 # Inter-node two-sided AlltoAll (multi-node)
-mpirun --allow-run-as-root -np 16 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./test_internode_twosided -b 1M -e 64M -f 2 -R 1
+mpirun --allow-run-as-root -np 16 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./perf_internode_twosided -b 1M -e 64M -f 2 -R 1
 
 # Inter-node one-sided AlltoAll (requires -R 1 or -R 2)
-mpirun --allow-run-as-root -np 16 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./test_internode_onesided -b 1M -e 64M -f 2 -R 2
+mpirun --allow-run-as-root -np 16 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./perf_internode_onesided -b 1M -e 64M -f 2 -R 2
 
 # Device API correctness test (requires -R 1 or -R 2)
-mpirun --allow-run-as-root -np 16 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./test_device_api -b 1M -e 64M -f 2 -R 2
+mpirun --allow-run-as-root -np 8 -x FLAGCX_USE_HETERO_COMM=1 -x FLAGCX_MEM_ENABLE=1 ./test_device_api -b 1M -e 4M -f 2 -R 2
 ```
 
 Arguments are the same as Performance Test (`-b`, `-e`, `-f`, `-w`, `-n`, `-R`, `-p`, `-s`).

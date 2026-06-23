@@ -8,6 +8,63 @@ Refer to the environment setup section in the [](getting-started.md) page.
 
 Refer to [](getting-started.md) for FlagCX compilation and installation.
 
+## API Reference
+
+### Device Handle Management
+
+FlagCX introduces a device handle API that separates device/CCL adaptor lifecycle from communicator management. The previous `flagcxHandlerGroup` approach is now deprecated.
+
+#### New APIs (Recommended)
+
+```c
+// Initialize device handle — loads device/CCL adaptor plugins
+flagcxResult_t flagcxDeviceHandleInit(flagcxDeviceHandle_t *devHandle);
+
+// Free device handle — finalizes device/CCL adaptor plugins
+flagcxResult_t flagcxDeviceHandleFree(flagcxDeviceHandle_t devHandle);
+```
+
+**Usage pattern:**
+```c
+flagcxDeviceHandle_t devHandle;
+flagcxDeviceHandleInit(&devHandle);
+// ... use device operations (setDevice, getDeviceCount, etc.) ...
+flagcxCommInitRank(&comm, nranks, uniqueId, rank);
+// ... communication operations ...
+flagcxCommDestroy(comm);
+flagcxDeviceHandleFree(devHandle);
+```
+
+#### Deprecated APIs
+
+The following APIs are deprecated and will be removed in a future release:
+
+```c
+// Deprecated - use flagcxDeviceHandleInit/Free instead
+struct flagcxHandlerGroup {
+  flagcxUniqueId_t uniqueId;
+  flagcxComm_t comm;
+  flagcxDeviceHandle_t devHandle;
+};
+flagcxResult_t flagcxHandleInit(flagcxHandlerGroup_t *handler);
+flagcxResult_t flagcxHandleFree(flagcxHandlerGroup_t handler);
+```
+
+#### Changed APIs
+
+```c
+// Parameter is now passed by value, not pointer
+// Old: flagcxGetUniqueId(flagcxUniqueId_t *uniqueId);
+// New:
+flagcxResult_t flagcxGetUniqueId(flagcxUniqueId_t uniqueId);
+```
+Note: The caller must provide a valid pointer to a flagcxUniqueId struct.
+
+#### Removed APIs
+
+The following API has been removed from the public interface:
+- `flagcxCommFifoBuffer()` — No longer part of public API
+
 ## Homogeneous tests using FlagCX
 
 ### Communication API test
@@ -330,9 +387,27 @@ Refer to [](environment-variables.md) for the full list of UniRunner-specific co
 
 ### One-sided RDMA operations
 
-Starting from v0.11, FlagCX supports one-sided RDMA operations for heterogeneous communicators backed by RDMA-capable network adaptors. These operations require prior buffer registration via window registration.
+FlagCX supports one-sided RDMA operations for heterogeneous communicators backed by RDMA-capable network adaptors. These operations require prior buffer registration.
 
-**Registration:**
+#### Buffer Registration
+
+```c
+// Register a buffer for one-sided RDMA operations (Get/Put/PutValue)
+// Collective: ALL ranks in the communicator must call
+flagcxResult_t flagcxOneSideRegister(flagcxComm_t comm, void *buff, size_t size);
+
+// Register a signal buffer for one-sided RDMA operations
+// ptrType: FLAGCX_PTR_CUDA for device memory, FLAGCX_PTR_HOST for host-pinned memory
+flagcxResult_t flagcxOneSideSignalRegister(flagcxComm_t comm, void *buff,
+                                           size_t size, int ptrType);
+
+// Register a host-pinned staging buffer for PutValue operations
+// Must be called after flagcxOneSideSignalRegister
+flagcxResult_t flagcxOneSideStagingRegister(flagcxComm_t comm, void *buff,
+                                            size_t size);
+```
+
+**Alternative registration via window:**
 
 ```c
 // Allocate memory
@@ -342,14 +417,27 @@ flagcxMemAlloc(&ptr, size);
 flagcxCommWindowRegister(comm, ptr, size, &win, FLAGCX_WIN_DEFAULT);
 ```
 
-**One-sided API:**
+#### One-Sided API
 
 | API | Description |
 |-----|-------------|
 | `flagcxGet` | RDMA READ: pull data from a remote peer's buffer into local buffer |
-| `flagcxPutSignal` | RDMA WRITE + ATOMIC: write data to remote buffer, then atomically increment a remote signal |
-| `flagcxSignal` | Signal only: atomically increment a remote signal (equivalent to `flagcxPutSignal` with size=0) |
-| `flagcxWaitSignal` | Wait until a local signal reaches the expected value (device-side `streamWaitValue64`) |
+| `flagcxPut` | RDMA WRITE: push data from local buffer to remote peer's buffer |
+| `flagcxBatchPut` | Batch RDMA WRITE: optimized for multiple small transfers |
+| `flagcxPutSignal` | RDMA WRITE + ATOMIC: write data, then atomically increment a remote signal |
+| `flagcxPutValue` | Write immediate value to remote buffer |
+| `flagcxSignal` | Signal only: atomically increment a remote signal |
+| `flagcxWaitSignal` | Wait until a local signal reaches the expected value |
+| `flagcxReadCounter` | Read the current global RMA completion counter |
+| `flagcxWaitCounter` | Block until the RMA completion counter reaches target |
+
+**Example - Async RDMA with completion counter:**
+```c
+uint64_t before;
+flagcxReadCounter(comm, &before);
+flagcxPut(comm, peer, srcOffset, dstOffset, size, srcMrIdx, dstMrIdx);
+flagcxWaitCounter(comm, before + 1); // Wait for the Put to complete
+```
 
 **Cleanup:**
 
@@ -359,6 +447,83 @@ flagcxMemFree(ptr);
 ```
 
 See `flagcx/include/flagcx.h` for the full API signatures and parameter documentation.
+
+### P2P Engine
+
+The FlagCX P2P Engine provides a point-to-point engine interface for one-sided RDMA operations, designed for integration with transfer frameworks such as NIXL.
+
+#### Key Features
+
+- Connection management (connect/accept to remote peers)
+- Memory registration for RDMA operations
+- One-sided READ/WRITE (RDMA Get/Put)
+- Vectored and batched operations
+- Two-sided send/recv
+- Notification system for out-of-band signaling
+- IPC helpers for intra-node GPU memory sharing
+
+#### Engine Lifecycle
+
+```c
+// Create and initialize a P2P engine instance
+FlagcxP2pEngine *flagcxP2pEngineCreate();
+
+// Destroy the engine instance
+void flagcxP2pEngineDestroy(FlagcxP2pEngine *engine);
+
+// Stop the accept thread
+void flagcxP2pEngineStopAccept(FlagcxP2pEngine *engine);
+```
+
+#### Connection Management
+
+```c
+// Connect to a remote peer
+FlagcxP2pConn *flagcxP2pEngineConnect(FlagcxP2pEngine *engine,
+                                      const char *ipAddr, int remoteGpuIdx,
+                                      int remotePort, bool sameProcess);
+
+// Accept an incoming connection (blocking)
+FlagcxP2pConn *flagcxP2pEngineAccept(FlagcxP2pEngine *engine, char *ipAddrBuf,
+                                     size_t ipAddrBufLen, int *remoteGpuIdx);
+
+// Check if connection is intra-node (IPC-eligible)
+bool flagcxP2pEngineConnIsLocal(FlagcxP2pConn *conn);
+```
+
+#### Memory Registration
+
+```c
+// Register a memory region for RDMA
+int flagcxP2pEngineReg(FlagcxP2pEngine *engine, uintptr_t data, size_t size,
+                       FlagcxP2pMr &mrId);
+
+// Deregister a memory region
+void flagcxP2pEngineMrDestroy(FlagcxP2pEngine *engine, FlagcxP2pMr mr);
+
+// Prepare RDMA descriptor for a registered region
+int flagcxP2pEnginePrepareDesc(FlagcxP2pEngine *engine, FlagcxP2pMr mr,
+                               const void *data, size_t size, char *descBuf);
+```
+
+#### One-Sided Operations
+
+```c
+// One-sided read (non-blocking)
+int flagcxP2pEngineRead(FlagcxP2pConn *conn, FlagcxP2pMr mr, const void *data,
+                        size_t size, FlagcxP2pRdmaDesc desc,
+                        uint64_t *transferId);
+
+// One-sided write (non-blocking)
+int flagcxP2pEngineWrite(FlagcxP2pConn *conn, FlagcxP2pMr mr, const void *data,
+                         size_t size, FlagcxP2pRdmaDesc desc,
+                         uint64_t *transferId);
+
+// Check transfer completion
+bool flagcxP2pEngineXferStatus(FlagcxP2pConn *conn, uint64_t transferId);
+```
+
+See [environment-variables.md](environment-variables.md) for P2P Engine configuration variables (`FLAGCX_P2P_*`).
 
 ### NCCL wrapper plugin
 
