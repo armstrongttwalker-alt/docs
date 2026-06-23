@@ -20,6 +20,10 @@
 | ERNIE-4.5-300B-A47B-PT-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8942> |
 | GLM-4.5-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8877> |
 | GLM-5-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/11696> |
+| GLM-5.2-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/26298> |
+| GLM-5.2-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/26307> |
+| GLM-5.2-mthreads-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/26301> |
+| GLM-5.2-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/26300> |
 | gpt-oss-120b-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8933> |
 | grok-2-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8864> |
 | Hunyuan-A13B-Instruct-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8883> |
