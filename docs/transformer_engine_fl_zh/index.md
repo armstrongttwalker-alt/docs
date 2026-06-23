@@ -1,44 +1,44 @@
-# TransformerEngine-FL Documentation
+# TransformerEngine-FL 文档
 
 ```{button-ref} getting_started/getting-started
 :ref-type: myst
 :color: primary
 :class: sd-btn-lg sd-px-4 sd-py-2 sd-fw-bold
 
-Getting Started
+快速入门
 ```
 
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
 
-:::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` Overview
+:::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` 概览
 :link: overview/overview
 :link-type: doc
 
-Have a quick view of TransformerEngine-FL, and also some basic concepts.
+快速了解 TransformerEngine-FL 及其基本概念。
 
 +++
-[Learn more »](overview/overview.md)
+[了解更多 »](overview/overview.md)
 :::
 
-:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
+:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 快速入门
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for TransformerEngine-FL and provides step-by-step instructions.
+介绍 TransformerEngine-FL 的安装要求，并提供逐步安装说明。
 
 +++
-[Learn more »](getting_started/getting-started.md)
+[了解更多 »](getting_started/getting-started.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
+:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` 用户指南
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through the plugin system, custom backend registration, environment variables, FP8 training, and integrations.
+指导您使用插件系统、自定义后端注册、环境变量、FP8 训练和集成。
 
 +++
-[Learn more »](user_guide/user-guide.md)
+[了解更多 »](user_guide/user-guide.md)
 :::
 
 ::::
@@ -46,7 +46,7 @@ Guides you through the plugin system, custom backend registration, environment v
 ---
 
 ```{toctree}
-:caption: 📑 Release Notes
+:caption: 📑 发布说明
 :maxdepth: 5
 :hidden:
 
@@ -54,7 +54,7 @@ release_notes/release-notes.md
 ```
 
 ```{toctree}
-:caption: 📚 Guides
+:caption: 📚 指南
 :maxdepth: 5
 :hidden:
 
@@ -73,7 +73,7 @@ user_guide/e2e-use-case.md
 ```
 
 ```{toctree}
-:caption: 📖 References
+:caption: 📖 参考
 :maxdepth: 5
 :hidden:
 
