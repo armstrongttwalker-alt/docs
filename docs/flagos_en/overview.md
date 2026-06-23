@@ -74,15 +74,15 @@ The FlagOS ecosystem enablement layer adopts a plugin architecture composed of t
 
   PyTorch-Plugin-FL is a custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend for unified multi-chip support.
 
-- **Megatron-LM-FL** (v0.1.0)
+- **Megatron-LM-FL** (v0.2.0)
 
   Megatron-LM-FL extends the distributed training capabilities of Megatron-LM to diverse AI chips, supporting scalable large-model training across heterogeneous hardware.
 
-- **TransformerEngine-FL** (v0.1.0)
+- **TransformerEngine-FL** (v0.2.0)
 
   TransformerEngine-FL extends the transformer acceleration capabilities of Transformer Engine to diverse AI chips, enabling hardware-agnostic training acceleration.
 
-- **verl-FL** (v0.1.0)
+- **verl-FL** (v0.2.0)
 
   verl-FL extends the reinforcement learning capabilities of veRL to diverse AI chips, broadening the hardware coverage for RL-based training workflows.
 

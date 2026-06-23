@@ -74,15 +74,15 @@ FlagOS 生态适配层采用插件架构，由以下模块组成。每个模块�
 
   PyTorch-Plugin-FL 是基于 PrivateUse1 扩展机制的自定义 PyTorch 设备插件，将 FlagGems 高性能 Triton 算子注册为 flagos 设备后端，实现统一的多芯片支持。
 
-- **Megatron-LM-FL**（v0.1.0）
+- **Megatron-LM-FL**（v0.2.0）
 
   Megatron-LM-FL 将 Megatron-LM 的分布式训练能力扩展到多种 AI 芯片，支持跨异构硬件的大规模模型训练。
 
-- **TransformerEngine-FL**（v0.1.0）
+- **TransformerEngine-FL**（v0.2.0）
 
   TransformerEngine-FL 将 Transformer Engine 的 Transformer 加速能力扩展到多种 AI 芯片，实现硬件无关的训练加速。
 
-- **verl-FL**（v0.1.0）
+- **verl-FL**（v0.2.0）
 
   verl-FL 将 veRL 的强化学习能力扩展到多种 AI 芯片，拓宽 RL 训练工作流的硬件覆盖范围。
 
