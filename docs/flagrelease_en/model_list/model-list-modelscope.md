@@ -37,6 +37,10 @@
 | GLM-4.5-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-4.5-FlagOS> |
 | GLM-5-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5-ascend-FlagOS> |
 | GLM-5-FP8-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5-FP8-FlagOS> |
+| GLM-5.2-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5.2-hygon-FlagOS> |
+| GLM-5.2-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5.2-metax-FlagOS> |
+| GLM-5.2-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5.2-mthreads-FlagOS> |
+| GLM-5.2-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5.2-zhenwu-FlagOS> |
 | gpt-oss-120b-FlagOS | <https://modelscope.cn/models/FlagRelease/gpt-oss-120b-FlagOS> |
 | grok-2-FlagOS | <https://modelscope.cn/models/FlagRelease/grok-2-FlagOS> |
 | Hunyuan-A13B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Hunyuan-A13B-Instruct-FlagOS> |
