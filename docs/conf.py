@@ -534,7 +534,9 @@ myst_enable_extensions = [
     "tasklist",
     "attrs_inline",
     "attrs_block",
+    "substitution",
 ]
+
 htmlhelp_basename = "KernelGendoc"
 latex_documents = [
     (
@@ -562,6 +564,17 @@ language = "en"
 # Detect the actual build language from Read the Docs environment variable
 # Falls back to the language config variable for local builds
 CURRENT_LANGUAGE = os.getenv("READTHEDOCS_LANGUAGE", language)
+
+if docset == "flagos_homepage":
+    is_zh = CURRENT_LANGUAGE in ["zh_CN", "zh", "zh-cn"]
+else:
+    is_zh = docset.endswith("_zh")
+lang_prefix = "zh-cn" if is_zh else "en"
+
+# 定义 myst_substitutions
+myst_substitutions = {
+    "lang_prefix": lang_prefix,
+}
 
 locale_dirs = [
     f"{docset}/locale/",
@@ -734,3 +747,4 @@ extlinks = {
 }
 
 suppress_warnings = ["epub.unknown_project_files"]
+

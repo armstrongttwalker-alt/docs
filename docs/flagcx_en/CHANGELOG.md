@@ -1,5 +1,28 @@
 # Release Notes
 
+- **[2026/06]** Released [v0.13](https://github.com/flagos-ai/FlagCX/releases/tag/v0.13.0-rc2.post1):
+
+  - Introduces FlagCX P2P Engine for one-sided RDMA operations, designed for integration with transfer frameworks like NIXL.
+  - Adds IBRC P2P adaptor for InfiniBand-based P2P communication.
+  - Refactors Device API with symmetric memory (symmem) and multicast support.
+  - Adds multi-FIFO support for Device API operations.
+  - Introduces Device Pointer API for Triton integration.
+  - Deprecates `flagcxHandlerGroup` in favor of separate `flagcxDeviceHandle` lifecycle management.
+  - Adds new one-sided RDMA operations: `flagcxPut`, `flagcxBatchPut`, `flagcxReadCounter`, `flagcxWaitCounter`.
+  - Optimizes RMA proxy with batched one-sided PUT operations for improved RDMA throughput.
+
+- **[2026/05]** Released [v0.12](https://github.com/flagos-ai/FlagCX/releases/tag/v0.12.0):
+
+  - Adds support for Sunrise AI accelerators, including device adaptor `ptpuAdaptor` and CCL adaptor `pcclAdaptor`.
+  - Extends PyTorch plugin support to PCCL backend.
+  - Refactors one-sided memory registration with global handle indexing and HeteroComm isolation.
+  - Adds P2P topology manager for optimized peer-to-peer communication.
+  - Refactors P2P zerocopy implementation.
+  - Adds device-side transport support for Device API.
+  - Adds traits abstraction and DeviceAPI for unified vendor/fallback support.
+  - Adds bootstrap extension for enhanced rendezvous capabilities.
+  - Replaces C++17 features with C++11 equivalents for improved compatibility.
+
 - **[2026/03]** Released [v0.11](https://github.com/flagos-ai/FlagCX/releases/tag/v0.11.0):
 
   - Enables kernel-based communication on heterogeneous platforms, including NVIDIA and Hygon.

@@ -33,6 +33,7 @@ where `<backend>` is one of:
 - `USE_AMD`: AMD support
 - `USE_TSM`: TsingMicro support
 - `USE_ENFLAME`: Enflame support
+- `USE_SUNRISE`: Sunrise AI support
 - `USE_GLOO`: GLOO support
 - `USE_MPI`: MPI support
 
