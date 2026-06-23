@@ -1,4 +1,4 @@
-# FlagRelease User Guide
+# FlagRelease Release Guide
 
 ## What is FlagRelease
 
