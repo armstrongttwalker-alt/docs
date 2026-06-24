@@ -33,7 +33,7 @@ r = flagtensor.contraction(m, n)
 |---|---|---|
 | **一元** | abs、acos、acosh、asin、asinh、atan、atanh、ceil、conj、cos、cosh、exp、floor、identity、log、mish、neg、rcp、relu、sigmoid、sin、sinh、soft_plus、soft_sign、sqrt、swish、tan、tanh | stable |
 | **二元** | add、max、min、mul | stable |
-| **收缩** | contraction、contraction_trinary、elementwise_trinary | stable |
+| **收缩** | contraction、contraction_trinary、elementwise_trinary | stable（contraction_trinary：active） |
 | **稀疏** | block_sparse_contraction | experimental |
 
 ## 运行测试

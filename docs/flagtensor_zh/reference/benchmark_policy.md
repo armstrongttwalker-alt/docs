@@ -71,7 +71,7 @@
 
 - `benchmark/test_unary_perf.py` —— 28 个一元算子
 - `benchmark/test_binary_perf.py` —— 4 个二元算子
-- `benchmark/test_contraction_perf.py` —— 5 个收缩算子
+- `benchmark/test_contraction_perf.py` —— 3 个收缩算子
 - `benchmark/test_sparse_perf.py` —— 1 个稀疏算子
 
 旧版每个算子的基准测试文件（`benchmark/test_CUTENSOR_OP_*_perf.py`）保留为

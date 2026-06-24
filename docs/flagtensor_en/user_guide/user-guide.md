@@ -33,7 +33,7 @@ The complete operator registry is maintained at [FlagTensor conf/operators.yaml]
 |---|---|---|
 | **Unary** | abs, acos, acosh, asin, asinh, atan, atanh, ceil, conj, cos, cosh, exp, floor, identity, log, mish, neg, rcp, relu, sigmoid, sin, sinh, soft_plus, soft_sign, sqrt, swish, tan, tanh | stable |
 | **Binary** | add, max, min, mul | stable |
-| **Contraction** | contraction, contraction_trinary, elementwise_trinary | stable |
+| **Contraction** | contraction, contraction_trinary, elementwise_trinary | stable (contraction_trinary: active) |
 | **Sparse** | block_sparse_contraction | experimental |
 
 ## Run Tests

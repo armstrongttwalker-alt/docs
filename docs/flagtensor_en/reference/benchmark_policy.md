@@ -71,7 +71,7 @@ Current category entry points (all four complete):
 
 - `benchmark/test_unary_perf.py` — 28 unary operators
 - `benchmark/test_binary_perf.py` — 4 binary operators
-- `benchmark/test_contraction_perf.py` — 5 contraction operators
+- `benchmark/test_contraction_perf.py` — 3 contraction operators
 - `benchmark/test_sparse_perf.py` — 1 sparse operator
 
 Legacy per-operator benchmark files (`benchmark/test_CUTENSOR_OP_*_perf.py`) are retained as
