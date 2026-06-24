@@ -8,57 +8,57 @@
 
 | 算子 | 实现 | 正确性 | 基准测试 | 模式 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| abs | 已完成 | 已完成 | 已完成 | operator | stable |
-| acos | 已完成 | 已完成 | 已完成 | kernel, operator, wrapper | stable |
-| acosh | 已完成 | 已完成 | 已完成 | operator | stable |
-| asin | 已完成 | 已完成 | 已完成 | operator | stable |
-| asinh | 已完成 | 已完成 | 已完成 | operator | stable |
-| atan | 已完成 | 已完成 | 已完成 | operator | stable |
-| atanh | 已完成 | 已完成 | 已完成 | operator | stable |
-| ceil | 已完成 | 已完成 | 已完成 | operator | stable |
-| conj | 已完成 | 已完成 | 已完成 | operator | stable |
-| cos | 已完成 | 已完成 | 已完成 | operator | stable |
-| cosh | 已完成 | 已完成 | 已完成 | operator | stable |
-| exp | 已完成 | 已完成 | 已完成 | operator | stable |
-| floor | 已完成 | 已完成 | 已完成 | operator | stable |
-| identity | 已完成 | 已完成 | 已完成 | operator | stable |
-| log | 已完成 | 已完成 | 已完成 | operator | stable |
-| mish | 已完成 | 已完成 | 已完成 | operator | stable |
-| neg | 已完成 | 已完成 | 已完成 | operator | stable |
-| rcp | 已完成 | 已完成 | 已完成 | operator | stable |
-| relu | 已完成 | 已完成 | 已完成 | operator | stable |
-| sigmoid | 已完成 | 已完成 | 已完成 | operator | stable |
-| sin | 已完成 | 已完成 | 已完成 | operator | stable |
-| sinh | 已完成 | 已完成 | 已完成 | operator | stable |
-| soft_plus | 已完成 | 已完成 | 已完成 | operator | stable |
-| soft_sign | 已完成 | 已完成 | 已完成 | operator | stable |
-| sqrt | 已完成 | 已完成 | 已完成 | operator | stable |
-| swish | 已完成 | 已完成 | 已完成 | operator | stable |
-| tan | 已完成 | 已完成 | 已完成 | operator | stable |
-| tanh | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ABS | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ACOS | 已完成 | 已完成 | 已完成 | kernel, operator, wrapper | stable |
+| CUTENSOR_OP_ACOSH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ASIN | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ASINH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ATAN | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ATANH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_CEIL | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_CONJ | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_COS | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_COSH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_EXP | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_FLOOR | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_IDENTITY | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_LOG | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_MISH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_NEG | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_RCP | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_RELU | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SIGMOID | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SIN | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SINH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SOFT_PLUS | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SOFT_SIGN | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SQRT | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_SWISH | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_TAN | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_TANH | 已完成 | 已完成 | 已完成 | operator | stable |
 
 ### 二元算子（4）
 
 | 算子 | 实现 | 正确性 | 基准测试 | 模式 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| add | 已完成 | 已完成 | 已完成 | operator | stable |
-| mul | 已完成 | 已完成 | 已完成 | operator | stable |
-| max | 已完成 | 已完成 | 已完成 | operator | stable |
-| min | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_ADD | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_MUL | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_MAX | 已完成 | 已完成 | 已完成 | operator | stable |
+| CUTENSOR_OP_MIN | 已完成 | 已完成 | 已完成 | operator | stable |
 
 ### 收缩算子（3）
 
 | 算子 | 实现 | 正确性 | 基准测试 | 模式 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| contraction | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
-| contraction_trinary | 已完成 | 已完成 | 已完成 | kernel, operator | active |
-| elementwise_trinary | 已完成 | 已完成 | 已完成 | operator | stable |
+| Contraction | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
+| ContractionTrinary | 已完成 | 已完成 | 已完成 | kernel, operator | active |
+| ElementwiseTrinary | 已完成 | 已完成 | 已完成 | operator | stable |
 
 ### 稀疏算子（1）
 
 | 算子 | 实现 | 正确性 | 基准测试 | 模式 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| block_sparse_contraction | 已完成 | 已完成 | 已完成 | operator | experimental |
+| BlockSparseContraction | 已完成 | 已完成 | 已完成 | operator | experimental |
 
 ## 摘要
 
