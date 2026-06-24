@@ -7,8 +7,6 @@
 
 test-matrix
 runner-scale-set
-user-management
 repository-management
 artifact-management
-model-management
 ```

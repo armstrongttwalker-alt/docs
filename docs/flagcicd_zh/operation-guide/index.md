@@ -12,6 +12,4 @@ resource-specs
 artifacts
 test-cases
 model-center
-user-management
-model-management
 ```

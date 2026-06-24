@@ -18,6 +18,15 @@
 未注册手机号将自动创建账号。
 ```
 
+```{warning}
+注册完成后，账户需经管理员授权后方可正常使用平台功能。请发送邮件至管理员邮箱 <xmhu@baai.ac.cn> 申请授权，邮件内容需包含：
+- 注册时使用的手机号或邮箱
+- 所属单位/团队
+- 使用目的说明
+
+未经授权的账户仅能访问公开页面，无法使用仓库注册、Runner 创建等功能。
+```
+
 ## 前置依赖
 
 平台通过 Action Runner Controller 动态拉起 GitHub Action Runner，用户可在拉起的 runner 中使用 docker image 拉起环境，不支持直接在裸机上运行测试，因此需用户自备可 docker pull 的镜像。
@@ -53,11 +62,11 @@
 
 完成后可在 GitHub 的 Action Runner 处看到创建好的 runner set。
 
-## 步骤 3：修改 GitHub Workflow Runner 配置
+## 步骤 3：配置 GitHub Workflow Runner
 
 修改 GitHub Action workflow 中 `runs-on` 标签配置，`runs-on` 中的标签为步骤 2 创建的 Runner Scale Sets 的 name。
 
-## 步骤 4：报告上传和展示
+## 步骤 4：上传测试报告
 
 ### Coverage 报告
 

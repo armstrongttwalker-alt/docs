@@ -508,6 +508,16 @@ for project in all_projects:
         exclude_patterns.append(project)
 if docset in ["flagrelease_en", "flagrelease_zh"]:
     exclude_patterns.append("model_readmes")
+
+# flagcicd 项目：排除管理员专用页面（用户管理、模型管理）
+if docset in ["flagcicd_en", "flagcicd_zh"]:
+    exclude_patterns.extend([
+        "function-description/user-management.md",
+        "function-description/model-management.md",
+        "operation-guide/user-management.md",
+        "operation-guide/model-management.md",
+    ])
+
 default_role = "obj"
 intersphinx_cache_limit = 14
 intersphinx_timeout = 3
