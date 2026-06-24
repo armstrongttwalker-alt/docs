@@ -2,6 +2,11 @@
 
 FlagOS is a fully open-source AI system software stack for heterogeneous AI chips, allowing AI models to be developed once and seamlessly ported to a wide range of AI hardware with minimal effort.
 
+```{note}
+This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
+```
+
+
 ## FlagOS architecture
 
 The figure below shows the position of FlagOS in the AI ecosystem and its composition modules.
@@ -74,15 +79,15 @@ The FlagOS ecosystem enablement layer adopts a plugin architecture composed of t
 
   PyTorch-Plugin-FL is a custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend for unified multi-chip support.
 
-- **Megatron-LM-FL** (v0.1.0)
+- **Megatron-LM-FL** (v0.2.0)
 
   Megatron-LM-FL extends the distributed training capabilities of Megatron-LM to diverse AI chips, supporting scalable large-model training across heterogeneous hardware.
 
-- **TransformerEngine-FL** (v0.1.0)
+- **TransformerEngine-FL** (v0.2.0)
 
   TransformerEngine-FL extends the transformer acceleration capabilities of Transformer Engine to diverse AI chips, enabling hardware-agnostic training acceleration.
 
-- **verl-FL** (v0.1.0)
+- **verl-FL** (v0.2.0)
 
   verl-FL extends the reinforcement learning capabilities of veRL to diverse AI chips, broadening the hardware coverage for RL-based training workflows.
 
