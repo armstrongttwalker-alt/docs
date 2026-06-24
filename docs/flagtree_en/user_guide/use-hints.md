@@ -37,7 +37,7 @@ The following tables list the optimization hints applicable to Triton operations
 
 | Hint Name | Triton Operation | Description | Branch |
 | :--- | :--- | :--- | :--- |
-| shared_memory | tl.load | Converts a global memory load operation to an asynchronous copy to shared memory, then loads from shared memory. The load must be at least 4 bytes and convertible to an async load. | triton_v3.5.x |
+| shared_memory | tl.load | Converts a global memory load operation to an asynchronous copy to shared memory, then loads from shared memory. The load must be at least 4 bytes and convertible to an async load. | triton_v3.5.x and triton_v3.6.x |
 
 ### Huawei Ascend
 
