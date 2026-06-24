@@ -8,57 +8,57 @@ Generated from registry: `conf/operators.yaml`
 
 | Operator | Impl | Correctness | Benchmark | Modes | Status |
 | --- | --- | --- | --- | --- | --- |
-| abs | Done | Done | Done | operator | stable |
-| acos | Done | Done | Done | kernel, operator, wrapper | stable |
-| acosh | Done | Done | Done | operator | stable |
-| asin | Done | Done | Done | operator | stable |
-| asinh | Done | Done | Done | operator | stable |
-| atan | Done | Done | Done | operator | stable |
-| atanh | Done | Done | Done | operator | stable |
-| ceil | Done | Done | Done | operator | stable |
-| conj | Done | Done | Done | operator | stable |
-| cos | Done | Done | Done | operator | stable |
-| cosh | Done | Done | Done | operator | stable |
-| exp | Done | Done | Done | operator | stable |
-| floor | Done | Done | Done | operator | stable |
-| identity | Done | Done | Done | operator | stable |
-| log | Done | Done | Done | operator | stable |
-| mish | Done | Done | Done | operator | stable |
-| neg | Done | Done | Done | operator | stable |
-| rcp | Done | Done | Done | operator | stable |
-| relu | Done | Done | Done | operator | stable |
-| sigmoid | Done | Done | Done | operator | stable |
-| sin | Done | Done | Done | operator | stable |
-| sinh | Done | Done | Done | operator | stable |
-| soft_plus | Done | Done | Done | operator | stable |
-| soft_sign | Done | Done | Done | operator | stable |
-| sqrt | Done | Done | Done | operator | stable |
-| swish | Done | Done | Done | operator | stable |
-| tan | Done | Done | Done | operator | stable |
-| tanh | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ABS | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ACOS | Done | Done | Done | kernel, operator, wrapper | stable |
+| CUTENSOR_OP_ACOSH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ASIN | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ASINH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ATAN | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ATANH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_CEIL | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_CONJ | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_COS | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_COSH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_EXP | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_FLOOR | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_IDENTITY | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_LOG | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_MISH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_NEG | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_RCP | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_RELU | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SIGMOID | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SIN | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SINH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SOFT_PLUS | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SOFT_SIGN | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SQRT | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_SWISH | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_TAN | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_TANH | Done | Done | Done | operator | stable |
 
 ### Binary Operators (4)
 
 | Operator | Impl | Correctness | Benchmark | Modes | Status |
 | --- | --- | --- | --- | --- | --- |
-| add | Done | Done | Done | operator | stable |
-| mul | Done | Done | Done | operator | stable |
-| max | Done | Done | Done | operator | stable |
-| min | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_ADD | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_MUL | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_MAX | Done | Done | Done | operator | stable |
+| CUTENSOR_OP_MIN | Done | Done | Done | operator | stable |
 
 ### Contraction Operators (3)
 
 | Operator | Impl | Correctness | Benchmark | Modes | Status |
 | --- | --- | --- | --- | --- | --- |
-| contraction | Done | Done | Done | kernel, operator | stable |
-| contraction_trinary | Done | Done | Done | kernel, operator | active |
-| elementwise_trinary | Done | Done | Done | operator | stable |
+| Contraction | Done | Done | Done | kernel, operator | stable |
+| ContractionTrinary | Done | Done | Done | kernel, operator | active |
+| ElementwiseTrinary | Done | Done | Done | operator | stable |
 
 ### Sparse Operators (1)
 
 | Operator | Impl | Correctness | Benchmark | Modes | Status |
 | --- | --- | --- | --- | --- | --- |
-| block_sparse_contraction | Done | Done | Done | operator | experimental |
+| BlockSparseContraction | Done | Done | Done | operator | experimental |
 
 ## Summary
 
