@@ -9,7 +9,7 @@ This section contains the FlagTensor acceptance documentation, covering policies
 | [Benchmark Policy](benchmark_policy.md) | Defines benchmark goals, execution modes (smoke/acceptance/weekly), shape/dtype policy, timing policy, and reporting policy for performance validation. |
 | [CI Matrix](ci_matrix.md) | Describes all CI/CD workflows (quality-gate, ci, weekly, acceptance) with job details, parameters, artifact storage, and cluster GPU validation. |
 | [Known Issues](known_issues.md) | Tracks experimental operators, CI limitations, dtype/shape coverage gaps, performance notes, migration status, and future work. |
-| [Operator Coverage](operator_coverage.md) | Per-operator implementation, correctness, and benchmark coverage matrix across all 38 operators (28 unary, 4 binary, 5 contraction, 1 sparse). |
+| [Operator Coverage](operator_coverage.md) | Per-operator implementation, correctness, and benchmark coverage matrix across all 36 operators (28 unary, 4 binary, 3 contraction, 1 sparse). |
 | [Standard Commands](standard_commands.md) | Standard commands for running acceptance checks: static quality, correctness testing, performance testing, weekly regression, registry operations, and GPU cluster validation. |
 
 ```{toctree}
