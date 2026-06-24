@@ -4,9 +4,6 @@
 
 ## v0.2.0
 
-```{note}
-此为预览版本。所示版本号为预发布标识符，最终发布时可能会变更。本预览中的内容仅供参考，不构成对最终产品的承诺或保证。
-```
 
 vllm-plugin-FL v0.2.0 需要 [vllm v0.20.2](https://github.com/vllm-project/vllm/tree/v0.20.2)。支持的平台：NVIDIA、Hygon DCU。
 
