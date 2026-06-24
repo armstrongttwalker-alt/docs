@@ -30,6 +30,6 @@ create_csr_matrix, create_coo_matrix, create_csc_matrix, create_bsr_matrix, crea
 
 ## Architecture
 
-- `src/flagsparse/` -- Core package. `sparse_operations/` is emitted as several `.py` modules from string literals in `flagsparse.py`.
+- `src/flagsparse/` -- Core package.
 - `tests/` -- Pytest accuracy tests and benchmarks.
 - `benchmark/` -- Performance benchmarks.

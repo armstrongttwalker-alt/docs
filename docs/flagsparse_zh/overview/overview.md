@@ -30,6 +30,6 @@ create_csr_matrix、create_coo_matrix、create_csc_matrix、create_bsr_matrix、
 
 ## 架构
 
-- `src/flagsparse/` —— 核心包。`sparse_operations/` 由 `flagsparse.py` 中的字符串字面量生成为多个 `.py` 模块。
+- `src/flagsparse/` —— 核心包。
 - `tests/` —— Pytest 精度测试和基准测试。
 - `benchmark/` —— 性能基准测试。
