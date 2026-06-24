@@ -6,7 +6,6 @@ FlagOS is a fully open-source AI system software stack for heterogeneous AI chip
 This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
 ```
 
-
 ## FlagOS architecture
 
 The figure below shows the position of FlagOS in the AI ecosystem and its composition modules.
@@ -17,7 +16,7 @@ FlagOS 2.1 comprises four core libraries, six operator libraries, six ecosystem 
 
 ### Open-source core libraries
 
-- **FlagGems** (v5.0.2)
+- **FlagGems** (v5.3.0)
 
   FlagGems is a high-performance general-purpose operator library implemented with the Triton programming language and its extended languages. FlagGems is designed to provide a suite of general-purpose operators for large models, accelerating the inference and training of models across multiple backend platforms.
 
@@ -29,7 +28,7 @@ FlagOS 2.1 comprises four core libraries, six operator libraries, six ecosystem 
 
   FlagScale is a comprehensive toolkit designed to support the entire lifecycle of large models. FlagScale builds on the strengths of several prominent open-source projects, including Megatron-LM and vLLM, to provide a robust, end-to-end solution for managing and scaling large models.
 
-- **FlagCX**
+- **FlagCX** (v0.13.0)
 
   FlagCX is a scalable and adaptive unified communication library for cross-chip environments. FlagCX delivers high-performance point-to-point and collective communication capabilities tailored for multi-chip, multi-platform scenarios. By leveraging the native collective communication capabilities of each platform, FlagCX incorporates technologies such as device-buffer IPC and RDMA to enable highly efficient collective communication in both cross-chip and single-chip scenarios, while also providing adaptive tuning capabilities for communication optimization.
 
@@ -127,7 +126,7 @@ All six plugins support standalone use. vllm-plugin-FL, Megatron-LM-FL, Transfor
 
   FlagPerf is an integrated AI hardware evaluation engine. FlagPerf aims to establish an industry practice-oriented indicator system and evaluate the actual performance of AI hardware under combinations of software stacks (model + framework + compiler).
 
-- **FlagCICD**
+- **FlagCICD** (v0.1.0)
 
   FlagCICD is a CI/CD toolchain that streamlines large-model development across diverse AI chips, eliminating fragmentation and cutting adaptation costs.
 
