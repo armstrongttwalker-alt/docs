@@ -107,7 +107,7 @@ vllm-plugin-FL, Megatron-LM-FL, TransformerEngine-FL, and verl-FL can be used to
 
 ### Developer tools
 
-- **KernelGen** (v2.1)
+- **KernelGen** (v2.1.0)
 
   KernelGen is an operator auto-generation tool. KernelGen is designed to construct operator definitions through natural language prompts, retrieve existing similar operator definitions, automatically execute operator accuracy and performance testing, generate accuracy and performance test results, and produce Triton Kernels.
 
@@ -121,11 +121,11 @@ vllm-plugin-FL, Megatron-LM-FL, TransformerEngine-FL, and verl-FL can be used to
 
 ### Platform services
 
-- **FlagRelease** (v0.2.0)
+- **FlagRelease** (v0.1.0)
 
   FlagRelease is a platform dedicated to the automatic migration, adaptation and release of large models for multi-architecture AI chips. FlagRelease aims to enable mainstream large models to be migrated, validated, and released on diverse domestic AI hardware with lower cost and higher efficiency through automated, standardized, and intelligent adaptation workflows.
 
-- **FlagPerf** (v1.2)
+- **FlagPerf** (v1.2.0)
 
   FlagPerf is an integrated AI hardware evaluation engine. FlagPerf aims to establish an industry practice-oriented indicator system and evaluate the actual performance of AI hardware under combinations of software stacks (model + framework + compiler).
 
