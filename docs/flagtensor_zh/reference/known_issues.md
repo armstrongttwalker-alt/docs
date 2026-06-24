@@ -4,7 +4,7 @@
 
 ## 实验性算子
 
-### block_sparse_tensor_contraction
+### block_sparse_contraction
 
 - **状态**：实验性
 - **问题**：稀疏张量收缩支持仍在积极开发中
@@ -55,7 +55,7 @@
 
 ### 目录结构过渡
 
-- **ctests/**：旧版正确性测试目录；已迁移到 tests/
+- **ctests/**：已移除；正确性测试现位于 tests/
 - **benchmark/**：单个算子性能文件保留为实现细节；类别级入口点是正式验收接口
 - **tests/**：统一的正确性入口，带旧版测试代理层
 - **src/flagtensor/testing/**：集中式容差/断言辅助函数
@@ -71,10 +71,10 @@
 - [x] 将所有正确性测试从 ctests/ 迁移到 tests/，按类别组织
   - [x] 类别目录已创建（unary/、binary/、contraction/、sparse/）
   - [x] 加载器支持跳过已迁移的算子
-  - [x] 一元算子：27 个已迁移
+  - [x] 一元算子：28 个已迁移
   - [x] 二元算子：4 个已迁移（add、mul、max、min —— 全部完成）
-  - [x] 收缩算子：4 个已迁移（gett、tgett、ttgt、tensor_contraction_trinary）
-  - [x] 稀疏算子：1 个已迁移（block_sparse_tensor_contraction，float16 现已激活）
+  - [x] 收缩算子：3 个已迁移（contraction、contraction_trinary、elementwise_trinary）
+  - [x] 稀疏算子：1 个已迁移（block_sparse_contraction，float16 现已激活）
 - [x] 添加类别级基准测试入口点（正式验收接口）
   - [x] test_unary_perf.py
   - [x] test_binary_perf.py

@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | 统一算子注册表存在 | **已完成** | `conf/operators.yaml` |
 | 注册表是 CI/每周/入口点 | **已完成** | `tools/run_flagtensor_ci.py` 和 `run_flagtensor_weekly.py` 使用它 |
-| `tests/` 目录存在作为正确性入口 | **已完成** | 基于类别的组织：`tests/{unary,binary,contraction,sparse}/`。所有类别已迁移（28 个一元、4 个二元、5 个收缩、1 个稀疏）。旧版每个算子的 `ctests/` 文件保留为兼容性填充。 |
+| `tests/` 目录存在作为正确性入口 | **已完成** | 基于类别的组织：`tests/{unary,binary,contraction,sparse}/`。所有类别已迁移（28 个一元、4 个二元、3 个收缩、1 个稀疏）。 |
 | 基准测试 dtype 覆盖率 | **已完成** | float16、float32，按 `DEFAULT_BENCHMARK_DTYPES` |
 | 正确性 dtype 覆盖率 | **已完成** | float16、float32、bfloat16，按 `DEFAULT_CORRECTNESS_DTYPES` |
 | 基准测试形状覆盖率 | **已完成** | 一元/二元：22 个形状（14 个一维 pow2 + 8 个多维）；收缩：4 个形状对；稀疏：3 个形状对 |
@@ -20,7 +20,7 @@
 
 | 项目 | 状态 | 说明 |
 | --- | --- | --- |
-| 基于 Pytest 的正确性测试 | **已完成** | `ctests/` 和 `tests/` |
+| 基于 Pytest 的正确性测试 | **已完成** | `tests/` |
 | 共享容差/断言辅助函数 | **已完成** | 集中在 `src/flagtensor/testing/` 包中，包含 `assertions.py`、`shapes.py`、`dtypes.py` 模块 |
 | `tests/accuracy_utils.py` 兼容层 | **已完成** | 从 `flagtensor.testing` 重新导出 |
 | Dtype 感知容差策略 | **已完成** | float16、float32、bfloat16 |
@@ -73,5 +73,5 @@
 所有先前记录的问题已解决：
 
 - `exp` 和 `log`：移除了 float64 回退 —— float64 不再是支持的 dtype。
-- `tensor_contraction_trinary`：移除了 float64 路径；算子仅支持 float16/float32。
-- `block_sparse_tensor_contraction` float16：通过稠密回退路由修复；float16 测试现已激活。
+- `contraction_trinary`：移除了 float64 路径；算子仅支持 float16/float32。
+- `block_sparse_contraction` float16：通过稠密回退路由修复；float16 测试现已激活。

@@ -68,14 +68,6 @@ python -m pytest -vs tests -m acos
 python -m pytest -vs tests/unary/
 ```
 
-### 通过 Pytest 进行正确性测试 —— 旧版/调试
-
-`ctests/` 中的旧版每个算子文件保留用于调试，但不属于验收接口：
-
-```bash
-python -m pytest -vs ctests/test_CUTENSOR_OP_ACOS.py
-```
-
 ## 性能测试
 
 ### 冒烟性能（CI 级）
@@ -113,10 +105,10 @@ python -m pytest -vs benchmark/test_unary_perf.py -m identity
 python -m pytest -vs benchmark/test_binary_perf.py -m add
 
 # 运行收缩类别基准测试
-python -m pytest -vs benchmark/test_contraction_perf.py -m gett
+python -m pytest -vs benchmark/test_contraction_perf.py -m Contraction
 
 # 运行稀疏类别基准测试
-python -m pytest -vs benchmark/test_sparse_perf.py -m block_sparse_tensor_contraction
+python -m pytest -vs benchmark/test_sparse_perf.py -m BlockSparseContraction
 ```
 
 ### 通过单个算子进行性能测试 —— 旧版/调试
@@ -245,6 +237,6 @@ srun -N 1 --job-name flagtensor-weekly --nodelist <node_name> --gres=gpu:1 --cpu
    ```bash
    python -m pytest -vs benchmark/test_unary_perf.py -m identity
    python -m pytest -vs benchmark/test_binary_perf.py -m add
-   python -m pytest -vs benchmark/test_contraction_perf.py -m gett
-   python -m pytest -vs benchmark/test_sparse_perf.py -m block_sparse_tensor_contraction
+   python -m pytest -vs benchmark/test_contraction_perf.py -m Contraction
+   python -m pytest -vs benchmark/test_sparse_perf.py -m BlockSparseContraction
    ```

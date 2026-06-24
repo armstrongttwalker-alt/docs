@@ -8,7 +8,7 @@ FlagTensor 构建在 [FlagTree](https://github.com/flagos-ai/FlagTree)（FlagOS 
 
 ## 特性
 
-- 全面的张量原语集合：一元（28 个算子）、二元（4 个算子）、收缩（5 个算子）、稀疏（1 个算子）
+- 全面的张量原语集合：一元（28 个算子）、二元（4 个算子）、收缩（3 个算子）、稀疏（1 个算子）
 - 手工优化的 Triton 内核，支持按架构自动调优（Ampere、Hopper）
 - 基于 CPU-FP64 金标准参考验证正确性
 - 以 cuTensor 基线为基准进行性能基准测试
@@ -32,8 +32,8 @@ FlagTensor
 │   ├── fused/                 # 融合算子
 │   └── modules/               # 模块实现
 ├── tests/                     # 每个算子的正确性测试
-│   ├── unary/test_<op>.py     # 28 个一元算子测试
-│   ├── binary/test_<op>.py    # 4 个二元算子测试
+│   ├── unary/test_CUTENSOR_OP_*.py  # 28 个一元算子测试
+│   ├── binary/test_CUTENSOR_OP_*.py  # 4 个二元算子测试
 │   ├── contraction/           # 收缩算子测试
 │   └── sparse/                # 稀疏算子测试
 ├── benchmark/                 # 性能测试

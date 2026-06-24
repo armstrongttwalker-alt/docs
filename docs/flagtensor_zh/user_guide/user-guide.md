@@ -22,7 +22,7 @@ c = flagtensor.add(a, b)
 # 张量收缩
 m = torch.randn(64, 32, device="cuda")
 n = torch.randn(32, 48, device="cuda")
-r = flagtensor.gett(m, n)
+r = flagtensor.contraction(m, n)
 ```
 
 ## 算子列表
@@ -33,17 +33,17 @@ r = flagtensor.gett(m, n)
 |---|---|---|
 | **一元** | abs、acos、acosh、asin、asinh、atan、atanh、ceil、conj、cos、cosh、exp、floor、identity、log、mish、neg、rcp、relu、sigmoid、sin、sinh、soft_plus、soft_sign、sqrt、swish、tan、tanh | stable |
 | **二元** | add、max、min、mul | stable |
-| **收缩** | gett、tgett、ttgt、tensor_contraction_trinary、trinary_generic | stable |
-| **稀疏** | block_sparse_tensor_contraction | experimental |
+| **收缩** | contraction、contraction_trinary、elementwise_trinary | stable |
+| **稀疏** | block_sparse_contraction | experimental |
 
 ## 运行测试
 
 ```bash
 # 单个算子正确性测试
-pytest tests/unary/test_abs.py -v
+pytest tests/unary/test_CUTENSOR_OP_ABS.py -v
 
 # 记录测试结果为 JSON（使用 CPU-FP64 参考）
-pytest tests/unary/test_abs.py --ref cpu --record json --output results.json
+pytest tests/unary/test_CUTENSOR_OP_ABS.py --ref cpu --record json --output results.json
 
 # 多 GPU 测试运行器（从 YAML 注册表）
 python tools/run_tests.py --stages stable --gpus 0,1
@@ -52,7 +52,7 @@ python tools/run_tests.py --stages stable --gpus 0,1
 python tools/get_marks.py --stage stable --output ops.txt
 
 # 带记录的基准测试
-pytest benchmark/test_unary_perf.py -m abs \
+pytest benchmark/test_unary_perf.py -m CUTENSOR_OP_ABS \
   --mode kernel --level core --record log
 
 # 解析基准测试摘要

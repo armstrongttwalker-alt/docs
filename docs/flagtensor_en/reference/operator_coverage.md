@@ -46,26 +46,25 @@ Generated from registry: `conf/operators.yaml`
 | max | Done | Done | Done | operator | stable |
 | min | Done | Done | Done | operator | stable |
 
-### Contraction Operators (5)
+### Contraction Operators (3)
 
 | Operator | Impl | Correctness | Benchmark | Modes | Status |
 | --- | --- | --- | --- | --- | --- |
-| gett | Done | Done | Done | kernel, operator | stable |
-| tgett | Done | Done | Done | kernel, operator | stable |
-| ttgt | Done | Done | Done | kernel, operator | stable |
-| tensor_contraction_trinary | Done | Done | Done | kernel, operator | stable |
-| trinary_generic | Done | Done | Done | operator | stable |
+| contraction | Done | Done | Done | kernel, operator | stable |
+| contraction_trinary | Done | Done | Done | kernel, operator | active |
+| elementwise_trinary | Done | Done | Done | operator | stable |
 
 ### Sparse Operators (1)
 
 | Operator | Impl | Correctness | Benchmark | Modes | Status |
 | --- | --- | --- | --- | --- | --- |
-| block_sparse_tensor_contraction | Done | Done | Done | operator | experimental |
+| block_sparse_contraction | Done | Done | Done | operator | experimental |
 
 ## Summary
 
-- **Total Operators**: 38
-- **Stable**: 37
+- **Total Operators**: 36
+- **Stable**: 34
+- **Active**: 1
 - **Experimental**: 1
 - **Blocked**: 0
-- **Categories**: unary (28), binary (4), contraction (5), sparse (1)
+- **Categories**: unary (28), binary (4), contraction (3), sparse (1)

@@ -8,7 +8,7 @@ Built on [FlagTree](https://github.com/flagos-ai/FlagTree) (a FlagOS-maintained 
 
 ## Features
 
-- Comprehensive collection of tensor primitives: unary (28 ops), binary (4 ops), contraction (5 ops), sparse (1 op)
+- Comprehensive collection of tensor primitives: unary (28 ops), binary (4 ops), contraction (3 ops), sparse (1 op)
 - Hand-optimized Triton kernels with per-architecture autotune (Ampere, Hopper)
 - Correctness validated against CPU-FP64 golden reference
 - Performance benchmarked against cuTensor baselines
@@ -32,8 +32,8 @@ FlagTensor
 │   ├── fused/                 # Fused operators
 │   └── modules/               # Module implementations
 ├── tests/                     # Per-operator correctness tests
-│   ├── unary/test_<op>.py     # 28 unary operator tests
-│   ├── binary/test_<op>.py    # 4 binary operator tests
+│   ├── unary/test_CUTENSOR_OP_*.py  # 28 unary operator tests
+│   ├── binary/test_CUTENSOR_OP_*.py  # 4 binary operator tests
 │   ├── contraction/           # Contraction operator tests
 │   └── sparse/                # Sparse operator tests
 ├── benchmark/                 # Performance tests

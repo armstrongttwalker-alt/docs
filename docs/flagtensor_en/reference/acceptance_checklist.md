@@ -8,7 +8,7 @@ This checklist tracks the current compliance status against the operator library
 | --- | --- | --- |
 | Unified operator registry exists | **Done** | `conf/operators.yaml` |
 | Registry is CI/weekly/entry point | **Done** | `tools/run_flagtensor_ci.py` and `run_flagtensor_weekly.py` use it |
-| `tests/` directory exists as correctness entry | **Done** | Category-based organization: `tests/{unary,binary,contraction,sparse}/`. All categories migrated (28 unary, 4 binary, 5 contraction, 1 sparse). Legacy per-op `ctests/` files retained as compatibility shims. |
+| `tests/` directory exists as correctness entry | **Done** | Category-based organization: `tests/{unary,binary,contraction,sparse}/`. All categories migrated (28 unary, 4 binary, 3 contraction, 1 sparse). |
 | Benchmark dtype coverage | **Done** | float16, float32 per `DEFAULT_BENCHMARK_DTYPES` |
 | Correctness dtype coverage | **Done** | float16, float32, bfloat16 per `DEFAULT_CORRECTNESS_DTYPES` |
 | Benchmark shape coverage | **Done** | unary/binary: 22 shapes (14 1D pow2 + 8 multi-dimensional); contraction: 4 shape pairs; sparse: 3 shape pairs |
@@ -20,7 +20,7 @@ This checklist tracks the current compliance status against the operator library
 
 | Item | Status | Notes |
 | --- | --- | --- |
-| Pytest-based correctness tests | **Done** | `ctests/` and `tests/` |
+| Pytest-based correctness tests | **Done** | `tests/` |
 | Shared tolerance/assertion helpers | **Done** | centralized in `src/flagtensor/testing/` package with `assertions.py`, `shapes.py`, `dtypes.py` modules |
 | `tests/accuracy_utils.py` compatibility layer | **Done** | Re-exports from `flagtensor.testing` |
 | Dtype-aware tolerance policy | **Done** | float16, float32, bfloat16 |
@@ -73,5 +73,5 @@ This checklist tracks the current compliance status against the operator library
 All previously documented issues have been resolved:
 
 - `exp` and `log`: float64 fallback removed — float64 is no longer a supported dtype.
-- `tensor_contraction_trinary`: float64 path removed; operator supports float16/float32 only.
-- `block_sparse_tensor_contraction` float16: Fixed via dense fallback routing; float16 tests now active.
+- `contraction_trinary`: float64 path removed; operator supports float16/float32 only.
+- `block_sparse_contraction` float16: Fixed via dense fallback routing; float16 tests now active.
