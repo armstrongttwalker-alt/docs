@@ -10,8 +10,8 @@ This is a preview release. The version number shown is a pre-release identifier 
 
   - **Unary Operators** — abs, acos, acosh, asin, asinh, atan, atanh, ceil, conj, cos, cosh, exp, floor, identity, log, mish, neg, rcp, relu, sigmoid, sin, sinh, soft_plus, soft_sign, sqrt, swish, tan, tanh (28 operators).
   - **Binary Operators** — add, max, min, mul.
-  - **Contraction Operators** — gett, tgett, ttgt, tensor_contraction_trinary, trinary_generic.
-  - **Sparse Operators** — block_sparse_tensor_contraction.
+  - **Contraction Operators** — contraction, contraction_trinary, elementwise_trinary.
+  - **Sparse Operators** — block_sparse_contraction.
   - **Operator Registry** — Added `conf/operators.yaml` with full operator metadata.
   - **Multi-GPU Test Runner** — `tools/run_tests.py` with live progress display and YAML-driven operator selection.
   - **CI/CD Pipeline** — Quality gates (lint/format), correctness and performance pipelines.

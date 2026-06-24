@@ -68,14 +68,6 @@ python -m pytest -vs tests -m acos
 python -m pytest -vs tests/unary/
 ```
 
-### Correctness via Pytest — Legacy/Debug
-
-Legacy per-operator files in `ctests/` are retained for debugging but are not part of the acceptance interface:
-
-```bash
-python -m pytest -vs ctests/test_CUTENSOR_OP_ACOS.py
-```
-
 ## Performance Testing
 
 ### Smoke Performance (CI-level)
@@ -113,10 +105,10 @@ python -m pytest -vs benchmark/test_unary_perf.py -m identity
 python -m pytest -vs benchmark/test_binary_perf.py -m add
 
 # Run contraction category benchmark
-python -m pytest -vs benchmark/test_contraction_perf.py -m gett
+python -m pytest -vs benchmark/test_contraction_perf.py -m Contraction
 
 # Run sparse category benchmark
-python -m pytest -vs benchmark/test_sparse_perf.py -m block_sparse_tensor_contraction
+python -m pytest -vs benchmark/test_sparse_perf.py -m BlockSparseContraction
 ```
 
 ### Performance via Single Operator — Legacy/Debug
@@ -245,6 +237,6 @@ To verify acceptance readiness, run the following commands in order:
    ```bash
    python -m pytest -vs benchmark/test_unary_perf.py -m identity
    python -m pytest -vs benchmark/test_binary_perf.py -m add
-   python -m pytest -vs benchmark/test_contraction_perf.py -m gett
-   python -m pytest -vs benchmark/test_sparse_perf.py -m block_sparse_tensor_contraction
+   python -m pytest -vs benchmark/test_contraction_perf.py -m Contraction
+   python -m pytest -vs benchmark/test_sparse_perf.py -m BlockSparseContraction
    ```

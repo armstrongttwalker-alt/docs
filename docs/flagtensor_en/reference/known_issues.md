@@ -4,7 +4,7 @@ This document tracks known issues and limitations in the current FlagTensor impl
 
 ## Experimental Operators
 
-### block_sparse_tensor_contraction
+### block_sparse_contraction
 
 - **Status**: Experimental
 - **Issue**: Sparse tensor contraction support is still under active development
@@ -55,7 +55,7 @@ This document tracks known issues and limitations in the current FlagTensor impl
 
 ### Directory Structure Transition
 
-- **ctests/**: Legacy correctness test directory; migrated to tests/
+- **ctests/**: Removed; correctness tests now in tests/
 - **benchmark/**: Single-operator perf files retained as implementation details; category-level entry points are the formal acceptance interface
 - **tests/**: Unified correctness entry with proxy layer for legacy tests
 - **src/flagtensor/testing/**: Centralized tolerance/assertion helpers
@@ -71,10 +71,10 @@ This document tracks known issues and limitations in the current FlagTensor impl
 - [x] Migrate all correctness tests from ctests/ to tests/ with category organization
   - [x] Category directories created (unary/, binary/, contraction/, sparse/)
   - [x] Loader supports skipping migrated operators
-  - [x] Unary operators: 27 migrated
+  - [x] Unary operators: 28 migrated
   - [x] Binary operators: 4 migrated (add, mul, max, min - all complete)
-  - [x] Contraction operators: 4 migrated (gett, tgett, ttgt, tensor_contraction_trinary)
-  - [x] Sparse operators: 1 migrated (block_sparse_tensor_contraction, float16 now active)
+  - [x] Contraction operators: 3 migrated (contraction, contraction_trinary, elementwise_trinary)
+  - [x] Sparse operators: 1 migrated (block_sparse_contraction, float16 now active)
 - [x] Add category-level benchmark entry points (formal acceptance interface)
   - [x] test_unary_perf.py
   - [x] test_binary_perf.py

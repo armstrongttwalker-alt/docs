@@ -10,8 +10,8 @@
 
   - **一元算子** —— abs、acos、acosh、asin、asinh、atan、atanh、ceil、conj、cos、cosh、exp、floor、identity、log、mish、neg、rcp、relu、sigmoid、sin、sinh、soft_plus、soft_sign、sqrt、swish、tan、tanh（28 个算子）。
   - **二元算子** —— add、max、min、mul。
-  - **收缩算子** —— gett、tgett、ttgt、tensor_contraction_trinary、trinary_generic。
-  - **稀疏算子** —— block_sparse_tensor_contraction。
+  - **收缩算子** —— contraction、contraction_trinary、elementwise_trinary。
+  - **稀疏算子** —— block_sparse_contraction。
   - **算子注册表** —— 添加了 `conf/operators.yaml`，包含完整的算子元数据。
   - **多 GPU 测试运行器** —— `tools/run_tests.py`，带实时进度显示和 YAML 驱动的算子选择。
   - **CI/CD 流水线** —— 质量门（lint/format）、正确性和性能流水线。

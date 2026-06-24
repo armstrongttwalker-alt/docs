@@ -46,26 +46,25 @@
 | max | 已完成 | 已完成 | 已完成 | operator | stable |
 | min | 已完成 | 已完成 | 已完成 | operator | stable |
 
-### 收缩算子（5）
+### 收缩算子（3）
 
 | 算子 | 实现 | 正确性 | 基准测试 | 模式 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| gett | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
-| tgett | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
-| ttgt | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
-| tensor_contraction_trinary | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
-| trinary_generic | 已完成 | 已完成 | 已完成 | operator | stable |
+| contraction | 已完成 | 已完成 | 已完成 | kernel, operator | stable |
+| contraction_trinary | 已完成 | 已完成 | 已完成 | kernel, operator | active |
+| elementwise_trinary | 已完成 | 已完成 | 已完成 | operator | stable |
 
 ### 稀疏算子（1）
 
 | 算子 | 实现 | 正确性 | 基准测试 | 模式 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| block_sparse_tensor_contraction | 已完成 | 已完成 | 已完成 | operator | experimental |
+| block_sparse_contraction | 已完成 | 已完成 | 已完成 | operator | experimental |
 
 ## 摘要
 
-- **算子总数**：38
-- **稳定**：37
+- **算子总数**：36
+- **稳定**：34
+- **活跃**：1
 - **实验性**：1
 - **已阻止**：0
-- **类别**：一元（28）、二元（4）、收缩（5）、稀疏（1）
+- **类别**：一元（28）、二元（4）、收缩（3）、稀疏（1）
