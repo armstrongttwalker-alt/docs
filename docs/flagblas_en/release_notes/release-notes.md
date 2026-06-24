@@ -2,9 +2,6 @@
 
 ## v0.2.0
 
-```{note}
-This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
-```
 
 - **Added Features**
   - **Operator Registry** — Added `conf/operators.yaml` with full operator metadata.
