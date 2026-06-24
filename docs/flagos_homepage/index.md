@@ -14,8 +14,6 @@ A unified, open-source system software stack designed for a variety of AI chips
 [FlagOS Overview](overview.md){ .flagos-outline-btn }
 :::
 
----
-
 ## FlagOS Core Libraries
 
 ````{grid} 1 1 1 1
@@ -23,6 +21,7 @@ A unified, open-source system software stack designed for a variety of AI chips
 :class: flagos-grid-sd
 
 ```{grid-item-card} Operator Libraries
+:class-card: flagos-card-sd
 
 High-performance operator libraries optimized for diverse hardware backends.
 
@@ -71,6 +70,7 @@ Optimized vLLM operators for multiple backends.
 
 An open-source, unified compiler for multiple AI chips, advancing and expanding the Triton ecosystem across diverse hardware platforms.
 
++++
 [View Documentation →](https://docs.flagos.io/projects/FlagTree/en/latest/){ .card-link-sd }
 ```
 
@@ -81,6 +81,7 @@ An open-source, unified compiler for multiple AI chips, advancing and expanding 
 
 A comprehensive toolkit designed to support the entire lifecycle of large models, from training to inference and deployment.
 
++++
 [View Documentation →](https://docs.flagos.io/projects/FlagScale/en/latest/){ .card-link-sd }
 ```
 
@@ -91,6 +92,7 @@ A comprehensive toolkit designed to support the entire lifecycle of large models
 
 A scalable and adaptive unified communication library for cross-chip environments, delivering high-performance collective communication capabilities.
 
++++
 [View Documentation →](https://docs.flagos.io/projects/FlagCX/en/latest/){ .card-link-sd }
 ```
 ````
@@ -104,7 +106,7 @@ A scalable and adaptive unified communication library for cross-chip environment
 :class: flagos-grid-sd
 
 ```{grid-item-card} vllm-plugin-FL
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A plugin for the vLLM inference/serving framework, built on FlagOS's unified multi-chip backend — including the unified operator library FlagGems and the unified communication library FlagCX.
 
@@ -113,7 +115,7 @@ A plugin for the vLLM inference/serving framework, built on FlagOS's unified mul
 ```
 
 ```{grid-item-card} Megatron-LM-FL
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A fork of Megatron-LM that introduces a plugin-based architecture for supporting diverse AI chips, built on top of FlagOS.
 
@@ -122,7 +124,7 @@ A fork of Megatron-LM that introduces a plugin-based architecture for supporting
 ```
 
 ```{grid-item-card} TransformerEngine-FL
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A fork of TransformerEngine that introduces a plugin-based architecture for supporting diverse AI chips, built on top of FlagOS.
 
@@ -131,7 +133,7 @@ A fork of TransformerEngine that introduces a plugin-based architecture for supp
 ```
 
 ```{grid-item-card} verl-FL
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A fork of veRL (Volcano Engine Reinforcement Learning for LLMs) that extends the upstream library with multi-chip/multi-hardware support via the FlagOS ecosystem.
 
@@ -140,7 +142,7 @@ A fork of veRL (Volcano Engine Reinforcement Learning for LLMs) that extends the
 ```
 
 ```{grid-item-card} PyTorch-Plugin-FL
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend.
 
@@ -149,7 +151,7 @@ A custom PyTorch device plugin based on the PrivateUse1 extension mechanism, reg
 ```
 
 ```{grid-item-card} sglang-plugin-FL
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 An out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-chip backend, extending SGLang's inference capabilities across diverse hardware platforms.
 
@@ -167,7 +169,7 @@ An out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-chip bac
 :class: flagos-grid-sd
 
 ```{grid-item-card} FlagOS-Robo
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 An integrated training and inference framework for AI models used in robots, so-called Embodied Intelligence.
 
@@ -176,7 +178,7 @@ An integrated training and inference framework for AI models used in robots, so-
 ```
 
 ```{grid-item-card} FlagQuantum
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A high-performance distributed quantum statevector simulator built on PyTorch, enabling quantum circuit simulation across multiple GPUs.
 
@@ -194,7 +196,7 @@ A high-performance distributed quantum statevector simulator built on PyTorch, e
 :class: flagos-grid-sd
 
 ```{grid-item-card} KernelGen
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 An operator auto-generation tool.
 
@@ -203,7 +205,7 @@ An operator auto-generation tool.
 ```
 
 ```{grid-item-card} KernelGenBench
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 A benchmark framework for evaluating LLM and agent-based Triton kernel generation across multiple hardware platforms.
 
@@ -212,7 +214,7 @@ A benchmark framework for evaluating LLM and agent-based Triton kernel generatio
 ```
 
 ```{grid-item-card} FlagOS Skills
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 :link: https://github.com/flagos-ai/skills
 
 Compatible with Claude Code, Cursor, Codex, and any agent supporting the Agent Skills standard.
@@ -222,7 +224,7 @@ Compatible with Claude Code, Cursor, Codex, and any agent supporting the Agent S
 ```
 
 ```{grid-item-card} Online Laboratory
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 An online laboratory providing cloud-based development environments.
 
@@ -240,7 +242,7 @@ An online laboratory providing cloud-based development environments.
 :class: flagos-grid-sd
 
 ```{grid-item-card} FlagRelease
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 An automated platform for the cross-chip migration and release of open-source large models.
 
@@ -249,7 +251,7 @@ An automated platform for the cross-chip migration and release of open-source la
 ```
 
 ```{grid-item-card} FlagPerf
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 
 An integrated AI hardware evaluation engine.
 
@@ -258,7 +260,7 @@ An integrated AI hardware evaluation engine.
 ```
 
 ```{grid-item-card} FlagCICD
-:class: flagos-card-sd
+:class-card: flagos-card-sd
 :link: https://docs.flagos.io/projects/FlagCICD/zh-cn/latest/
 
 A CI/CD toolchain that streamlines large-model development across diverse AI chips.
