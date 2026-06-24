@@ -6,7 +6,7 @@
 
 ### 软件
 
-- Python 3.8 或更高版本
+- Python 3.10 或更高版本
 - PyTorch（支持 CUDA）
 - Triton
 - CuPy（`cupy-cuda12x`）

@@ -1,175 +1,98 @@
 # Running Tests and Benchmarks
 
-Run from project root, or `cd tests` then run scripts (paths like `../matrix` for .mtx dir).
-
 ## Operator Test Runners
-
-YAML-driven accuracy/performance runs by operator:
 
 ```bash
 python run_flagsparse_accuracy.py --list-ops
 python run_flagsparse_accuracy.py --mode quick --gpus 0
 python run_flagsparse_performance.py --ops spmv_csr,spmm_csr --benchmark-input matrix --benchmark-warmup 5 --benchmark-iters 20
-python run_flagsparse_pytest.py --phase both --mode quick --gpus 0,1 --benchmark-input matrix --results-dir pytest_results
+python run_flagsparse_pytest.py --phase both --mode quick --gpus 0 --benchmark-input matrix --results-dir pytest_results
 ```
 
-By default, `run_flagsparse_accuracy.py` and `run_flagsparse_performance.py` read operator ids from `conf/operators.yaml`, filter by `--stages`, and distribute operators across `--gpus`. `run_flagsparse_pytest.py --phase both` remains available when one command should run both phases. `--ops` and `--op-list` override the YAML selection. The default sweep excludes manual-test entries `alpha_spmm_alg1` and `spmv_coo_tocsr`; include them explicitly with `--ops` or `--op-list` when needed. Helper APIs such as `spsv_descriptor_api` and `sparse_format_constructors` are not operator test entries.
-
-The accuracy phase launches `pytest tests/pytest -m <operator marker> --mode quick|normal --record json --output <op>/accuracy_result.json` and uses synthetic CUDA data. The performance phase launches the configured `tests/test_*.py` benchmark command for each operator; MatrixMarket-backed commands receive `--benchmark-input` (default `tests/data`, or pass `matrix` for the local matrix directory), and the CSV output is also normalized into a FlagGems-style `<op>/performance_result.json`. Results are written under `pytest_results_<timestamp>/` unless `--results-dir` is provided. Each operator directory contains `accuracy_stdout.log`, `accuracy_stderr.log`, `accuracy_result.json`, `accuracy_detail.json`, `performance_stdout.log`, `performance_stderr.log`, `performance.csv`, `performance_result.json`, and `performance_detail.json` when those phases run. The root `summary.json` uses the FlagGems `timestamp` / `env` / `result` structure. FlagSparse-only fields such as GPU id, commands, logs, totals, parsed pytest cases, and normalized benchmark records are kept in `summary_flat.json` and the per-operator `*_detail.json` files. `summary.csv` and optional `summary.xlsx` provide table-friendly views, and `result.html` is generated automatically for browser inspection. The generated `result.html` is rendered from `summary_flat.json`; `summary.json` remains the compact FlagGems-compatible summary for external tools.
-
 ## Direct pytest Accuracy Suite
-
-Development-oriented accuracy checks, selectable by marker:
 
 ```bash
 pytest tests/pytest --mode quick
 pytest tests/pytest --mode normal -m "spmv_csr or spmm_csr"
-pytest tests/pytest --mode quick -m "spmv_coo_tocsr"
 ```
 
-When adding or changing an operator test entry, keep the implementation/API registration, `conf/operators.yaml` entry, pytest marker in `pytest.ini`, accuracy test, performance command, and public replacement/export registration in sync.
+## Individual Test Scripts
 
-## test_spmv.py
-
-CSR SpMV (SuiteSparse `.mtx`, synthetic, or CSR CSV export):
+### test_gather.py / test_scatter.py -- gather/scatter benchmarks
 
 ```bash
-python tests/test_spmv.py <dir_or_file.mtx>              # batch run, default float32
-python tests/test_spmv.py <dir/> --dtype float64         # optional: --index-dtype int32|int64, --warmup, --iters, --no-cusparse
-python tests/test_spmv.py --synthetic                    # synthetic benchmark
-python tests/test_spmv.py <dir/> --csv-csr results.csv   # all value×index dtypes -> one CSV (per-matrix lines while running)
+python tests/test_gather.py --csv-summary gather_summary.csv
+python tests/test_scatter.py --csv-summary scatter_summary.csv
 ```
 
-## test_spmv_coo.py
-
-COO SpMV (requires `--synthetic` or `--csv-coo`; no standalone `.mtx` batch):
+### test_spmv.py -- CSR SpMV
 
 ```bash
+python tests/test_spmv.py <dir_or_file.mtx>
+python tests/test_spmv.py --synthetic
+python tests/test_spmv.py <dir/> --csv-csr results.csv
+```
+
+### test_spmv_coo.py -- COO SpMV
+
+```bash
+python tests/test_spmv_coo.py <dir_or_file.mtx>
 python tests/test_spmv_coo.py --synthetic
-python tests/test_spmv_coo.py <dir/> --csv-coo out.csv
+python tests/test_spmv_coo.py <dir/> --csv-csr results.csv
 ```
 
-## test_spmv_opt.py
-
-SpMV baseline vs optimised A/B (`float32` / `float64` only):
-
-```bash
-python tests/test_spmv_opt.py <dir_or_file.mtx> [...]
-python tests/test_spmv_opt.py <dir/> --csv out.csv
-```
-
-## test_spmm.py
-
-CSR SpMM (`.mtx` batch, synthetic, or `--csv`):
+### test_spmm.py -- CSR SpMM
 
 ```bash
 python tests/test_spmm.py <dir_or_file.mtx>
-python tests/test_spmm.py --synthetic                    # optional: --ops non,trans,conj
-python tests/test_spmm.py <dir/> --csv results.csv      # float32/float64/complex64/complex128 + int32/int64 + ops grid
-# common options: --dtype, --index-dtype, --ops, --dense-cols, --block-n, --block-nnz, --max-segments, --warmup, --iters, --no-cusparse
-# CSR SpMM supports op="non" (A @ B), op="trans" (A.T @ B), and op="conj" (A.conj().T @ B).
+python tests/test_spmm.py --synthetic
+python tests/test_spmm.py <dir/> --csv results.csv
 ```
 
-## test_spmm_opt.py
-
-CSR SpMM baseline vs optimised A/B:
-
-```bash
-python tests/test_spmm_opt.py <dir_or_file.mtx> --dense-cols 32
-python tests/test_spmm_opt.py <dir/> --csv spmm_opt.csv  # optional: --dtype float32|float64, --dense-cols
-# common options: --dtype, --dense-cols, --warmup, --iters
-```
-
-## test_spmm_coo.py
-
-Native COO SpMM:
+### test_spmm_coo.py -- COO SpMM
 
 ```bash
 python tests/test_spmm_coo.py <dir_or_file.mtx>
-python tests/test_spmm_coo.py --synthetic                # optional: --route rowrun|atomic|compare, --skip-api-checks, --skip-coo-coverage
-python tests/test_spmm_coo.py <dir/> --csv out.csv      # only --route rowrun or atomic (not compare)
-# same tuning flags as CSR SpMM where applicable: --dense-cols, --block-n, --block-nnz, --warmup, --iters, --no-cusparse
+python tests/test_spmm_coo.py --synthetic
+python tests/test_spmm_coo.py <dir/> --csv results.csv
 ```
 
-## test_sddmm.py
-
-CSR SDDMM (`.mtx` batch or `--csv`):
+### test_sddmm.py -- CSR SDDMM
 
 ```bash
 python tests/test_sddmm.py <dir_or_file.mtx> --k 64
-python tests/test_sddmm.py <dir/> --csv out.csv          # optional: --dtype float32|float64, --acc_mode f32|f64, --k 64
-# common options: --dtype, --index-dtype, --acc_mode, --k, --alpha, --beta, --warmup, --iters, --no-cupy-ref, --skip-api-checks
+python tests/test_sddmm.py <dir/> --csv out.csv
 ```
 
-## test_spgemm.py
-
-CSR SpGEMM (`.mtx` batch or `--csv`):
+### test_spgemm.py -- CSR SpGEMM
 
 ```bash
 python tests/test_spgemm.py <dir_or_file.mtx> --input-mode auto
-python tests/test_spgemm.py <dir/> --csv results.csv     # optional: --dtype float32|float64, --input-mode auto|a_equals_b|a_at, --compare-device cpu|gpu
-# common options: --dtype, --index-dtype, --warmup, --iters, --input-mode, --adaptive-loops, --no-cusparse, --ref-blocked-retry, --ref-isolated-retry, --ref-block-rows, --compare-device, --run-api-checks
+python tests/test_spgemm.py <dir/> --csv results.csv
 ```
 
-## test_spsv.py
-
-SpSV (triangular solve; **square** matrices only). CSR and COO share this script; there is **no** `test_spsv_coo.py`.
+### test_spsv.py -- SpSV (triangular solve)
 
 ```bash
 python tests/test_spsv.py --synthetic
 python tests/test_spsv.py <dir/> --csv-csr spsv.csv
-python tests/test_spsv.py <dir/> --csv-coo out.csv      # same CSV columns as CSR
 ```
 
-## test_spsm.py
-
-SpSM (triangular matrix-matrix solve; **square** matrices only):
+### test_spsm.py -- SpSM (triangular matrix-matrix solve)
 
 ```bash
 python tests/test_spsm.py --synthetic --n 512 --rhs 1024
 python tests/test_spsm.py <dir/> --csv-csr spsm_csr.csv --rhs 1024
-python tests/test_spsm.py <dir/> --csv-coo spsm_coo.csv --rhs 1024
 ```
-
-## test_gather.py / test_scatter.py
-
-Gather/scatter benchmarks (pytest or `python tests/test_gather.py`).
-
-Accuracy suites should use `tests/pytest/accuracy_utils.py` for FlagGems-style golden reference and tolerance policy. Numeric compute operators compare against CPU-FP64 golden references cast back to the dtype under test, while exact/logical outputs compare against CPU int32 references.
 
 ## CI/CD
 
-- `.github/workflows/ci.yml` is CPU-only and runs compile, format checks, lint, source-critical static checks, build, install, and smoke tests on GitHub-hosted runners.
-- The smoke set now covers installed-wheel validation, packaging metadata, public API surface, operator registry consistency, shared runtime policy helpers, CLI `--help`, and README command snippets.
-- `conf/operators.yaml` is the FlagGems-style operator interface registry for public FlagSparse sparse operators used by the unified test runner.
-- `.github/workflows/nightly-cpu.yml` is a `main`-branch-only nightly CPU check that repeats the package, lint, and shared-runtime smoke tests.
-- `.github/workflows/release.yml` builds source and wheel artifacts, then attaches them to GitHub Releases on `v*` tags.
-- `.github/workflows/triton-smoke.yml` is a manual opt-in job for triton-dependent smoke checks.
-- `.github/workflows/gpu-ci.yml` is a manual GPU accuracy smoke workflow for a self-hosted runner labeled `self-hosted`, `linux`, and `gpu`.
-- `.github/workflows/gpu-benchmark.yml` adds an Actions button for synthetic GPU benchmark runs on a self-hosted runner labeled `self-hosted`, `linux`, and `gpu`.
-- `.github/workflows/release-drafter.yml` keeps draft release notes current from merged PRs.
-- `make help` lists the local entry points.
-- `make ci` / `make check` run the same CPU-only pipeline used by CI.
-- `make format-check`, `make lint`, and `make lint-src` are the non-GPU quality gates for CI formatting, CI helper lint, and critical package-source static checks.
-- `make smoke` is the CPU smoke stage alias.
-- `make release-check` / `make release` build, validate, and checksum release artifacts.
-- `make triton-smoke` and `make triton-deps` are opt-in local targets for the triton-dependent runtime checks.
-- `make gpu-env-check` validates CUDA visibility through `tools/ci/check_gpu_environment.py` on a GPU runner.
-- `make gpu-benchmark` runs the quick synthetic benchmark suite on a CUDA machine.
-- `python tools/ci/run_gpu_benchmark.py --suite quick` mirrors the manual GPU benchmark workflow locally on a CUDA machine.
-- `python tools/ci/run_gpu_benchmark.py --suite full --matrix-dir tests/data` runs the full benchmark matrix, including `.mtx`-backed SpGEMM and SDDMM suites against the repository test matrices.
-- `tools/ci/requirements-ci.lock.txt` and `tools/ci/requirements-triton-smoke.lock.txt` are the pinned local dependency bundles behind those make targets.
-- `.github/dependabot.yml` keeps GitHub Actions and Python dependency updates visible.
-- `.github/ISSUE_TEMPLATE/` keeps issue entry points structured for bugs and feature requests.
-- The CI dependency bundle now stays on packaging and test tooling only; triton-dependent smoke is opt-in through `FLAGSPARSE_TRITON_SMOKE=1`.
-- Release artifacts now ship with a generated `SHA256SUMS` manifest and a matching checksum verification step in CI.
-- PR quality gates are implemented through the default CPU CI workflow; configure branch protection in GitHub to require the `CI / Build and smoke test` check before merge.
-- GPU accuracy and benchmark scripts still require CUDA hardware; the GPU workflows are manual and only run on a self-hosted GPU runner.
-
-## Performance
-
-- `benchmark/performance_utils.py` defines the pytest-style performance base class, default metrics (`latency_base`, `latency`, `speedup`), median timing, warmup/iteration controls, CUDA synchronization, CSV record helpers, and the two-level average speedup rule.
-- `benchmark/attri_util.py` and `benchmark/core_shapes.yaml` keep default and special shape grids centralized.
-- `benchmark/summary_for_plot.py` reads recorded benchmark CSV files and reports the two-level speedup summary.
-- `benchmark/test_sparse_perf.py` is an opt-in pytest entry point; real GPU runs remain manual or self-hosted because GitHub-hosted runners do not provide CUDA GPUs.
-- `tests/data/*.mtx` can be used as the default MatrixMarket smoke dataset for mtx-backed GPU benchmark suites.
+- `.github/workflows/ci.yml` -- CPU-only: compile, format, lint, build, install, smoke tests.
+- `.github/workflows/gpu-ci.yml` -- Manual GPU accuracy smoke on self-hosted runner.
+- `.github/workflows/gpu-benchmark.yml` -- Manual GPU benchmark on self-hosted runner.
+- `.github/workflows/release.yml` -- Build source and wheel artifacts on `v*` tags.
+- `.github/workflows/nightly-cpu.yml` -- Main-branch-only nightly CPU check repeating package, lint, and shared-runtime smoke tests.
+- `.github/workflows/triton-smoke.yml` -- Manual opt-in job for triton-dependent smoke checks.
+- `.github/workflows/release-drafter.yml` -- Keeps draft release notes current from merged PRs.
+- `.github/workflows/build-deb.yml` -- Builds Debian packages on `v*` tags or packaging-path PR changes.
+- `.github/workflows/build-rpm.yml` -- Builds RPM packages on `v*` tags or packaging-path PR changes.
