@@ -12,13 +12,46 @@ The figure below shows the position of FlagOS in the AI ecosystem and its compos
 
 ![FlagOS architecture](images/flagos-architecture-en.png)
 
-FlagOS 2.1 comprises four core libraries, six operator libraries, six ecosystem enablement plugins, two domain-specific projects, three developer tools, and three platform services.
+FlagOS 2.1 comprises the following core libraries, plugins, domain-specific projects, developer tools, and platform services.
 
 ### Open-source core libraries
 
-- **FlagGems** (v5.3.0)
+- Operator libraries
+  - **General-purpose operator library**
+    - **FlagGems** (v5.3.0)
 
-  FlagGems is a high-performance general-purpose operator library implemented with the Triton programming language and its extended languages. FlagGems is designed to provide a suite of general-purpose operators for large models, accelerating the inference and training of models across multiple backend platforms.
+      FlagGems is a high-performance general-purpose operator library implemented with the Triton programming language and its extended languages. FlagGems is designed to provide a suite of general-purpose operators for large models, accelerating the inference and training of models across multiple backend platforms.
+
+  - **Fused operator libraries**
+    - **FlagGems-vllm** (v0.1.0)
+
+      A high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common vLLM operators and supports high-performance inference and deployment for a variety of widely used models.
+
+  - **Multi-domain operator libraries**
+
+    - **FlagDNN** (v0.2.0)
+
+      A deep neural network computing library oriented towards multiple chip backends. It provides high-performance implementations of common deep learning operators.
+
+    - **FlagBLAS** (v0.2.0)
+
+      A computing library that follows the BLAS standard interface and is oriented towards multiple chip backends. It defines core operations for numerical calculations.
+
+    - **FlagFFT** (v0.1.0)
+
+      A JIT-compiled GPU FFT library. It generates CUDA kernels at runtime via Triton/TLE and libtriton_jit, targeting arbitrary-length transforms that cuFFT does not optimally support.
+
+    - **FlagSparse** (v0.2.0)
+
+      A domain-specific operator library that contains operators dedicated to sparse computation scenarios.
+
+    - **FlagTensor** (v0.2.0)
+
+      A high-performance tensor-primitive library implemented in Triton language. It provides optimized implementations of common tensor primitives (unary, binary, and tensor contraction operations) benchmarked against cuTensor baselines.
+
+    - **FlagAudio** (v0.2.0)
+
+      A multi-backend computing library that adheres to Audio standard interfaces. It delivers a high-performance computing solution designed for audio signal processing and speech AI applications.
 
 - **FlagTree** (v0.6.0)
 
@@ -32,37 +65,7 @@ FlagOS 2.1 comprises four core libraries, six operator libraries, six ecosystem 
 
   FlagCX is a scalable and adaptive unified communication library for cross-chip environments. FlagCX delivers high-performance point-to-point and collective communication capabilities tailored for multi-chip, multi-platform scenarios. By leveraging the native collective communication capabilities of each platform, FlagCX incorporates technologies such as device-buffer IPC and RDMA to enable highly efficient collective communication in both cross-chip and single-chip scenarios, while also providing adaptive tuning capabilities for communication optimization.
 
-### Operator libraries
-
-- **FlagGems-vllm** (v0.1.0)
-
-  A high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common vLLM operators and supports high-performance inference and deployment for a variety of widely used models.
-
-- **FlagDNN** (v0.2.0)
-
-  A deep neural network computing library oriented towards multiple chip backends. It provides high-performance implementations of common deep learning operators.
-
-- **FlagBLAS** (v0.2.0)
-
-  A computing library that follows the BLAS standard interface and is oriented towards multiple chip backends. It defines core operations for numerical calculations.
-
-- **FlagFFT** (v0.1.0)
-
-  A JIT-compiled GPU FFT library. It generates CUDA kernels at runtime via Triton/TLE and libtriton_jit, targeting arbitrary-length transforms that cuFFT does not optimally support.
-
-- **FlagSparse** (v0.2.0)
-
-  A domain-specific operator library that contains operators dedicated to sparse computation scenarios.
-
-- **FlagTensor** (v0.2.0)
-
-  A high-performance tensor-primitive library implemented in Triton language. It provides optimized implementations of common tensor primitives (unary, binary, and tensor contraction operations) benchmarked against cuTensor baselines.
-
-- **FlagAudio** (v0.2.0)
-
-  A multi-backend computing library that adheres to Audio standard interfaces. It delivers a high-performance computing solution designed for audio signal processing and speech AI applications.
-
-### Ecosystem enablement plugins
+### Plugins
 
 The FlagOS ecosystem enablement layer adopts a plugin architecture composed of the following modules. Each module bridges an upstream library and its backend engine with the FlagOS core libraries.
 
@@ -90,7 +93,7 @@ The FlagOS ecosystem enablement layer adopts a plugin architecture composed of t
 
   verl-FL extends the reinforcement learning capabilities of veRL to diverse AI chips, broadening the hardware coverage for RL-based training workflows.
 
-All six plugins support standalone use. vllm-plugin-FL, Megatron-LM-FL, TransformerEngine-FL, and verl-FL can also be used together with FlagScale. When only one or two capabilities are required — such as training, inference, or reinforcement learning — the corresponding module can independently bridge its upstream library and backend engine with the relevant FlagOS core library modules, offering the flexibility to meet diverse user deployment scenarios.
+vllm-plugin-FL, Megatron-LM-FL, TransformerEngine-FL, and verl-FL can be used together with FlagScale. When only one or two capabilities are required — such as training, inference, or reinforcement learning — the corresponding module can independently bridge its upstream library and backend engine with the relevant FlagOS core library modules, offering the flexibility to meet diverse user deployment scenarios.
 
 ### Domain-specific projects
 
