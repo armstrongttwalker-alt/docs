@@ -1,7 +1,7 @@
 # 测试报告
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 1
 
 coverage/index
 unit/index
