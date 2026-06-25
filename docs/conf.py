@@ -147,7 +147,8 @@ multiproject_projects = {
             # Static files - include shared _static (for logo) and coverage
             "html_static_path": ["_static", "flaggems_en/_static", "shared/coverage"],
             "html_css_files": [
-                "css/custom.css",
+                "custom.css",  # 全局的，包含 logo 设置
+                "css/custom.css",  # 项目特有的
                 "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
             ],
             # # Theme options
@@ -438,7 +439,8 @@ multiproject_projects = {
             # Static files - include shared _static (for logo) and coverage
             "html_static_path": ["_static", "flaggems_zh/_static", "shared/coverage"],
             "html_css_files": [
-                "css/custom.css",
+                "custom.css",  # 全局的，包含 logo 设置
+                "css/custom.css",  # 项目特有的
                 "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
             ],
             # # Theme options
