@@ -53,9 +53,12 @@ class CoverageDataDirective(SphinxDirective):
             list_item = nodes.list_item()
             para = nodes.paragraph()
 
-            # Create reference link to coverage report (relative to docs root)
+            # Create reference link to coverage report
+            # The coverage page is at references/test/coverage/index.html
+            # Static files are at _static/ at the docs root
+            # So we need ../../../_static/ to get from coverage page to docs root
             ref = nodes.reference()
-            ref['refuri'] = f'_static/{cov_dir.name}/index.html'
+            ref['refuri'] = f'../../../_static/{cov_dir.name}/index.html'
             ref += nodes.Text(cov_dir.name)
 
             para += ref
