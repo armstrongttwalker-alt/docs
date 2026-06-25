@@ -108,7 +108,7 @@ A scalable and adaptive unified communication library for cross-chip environment
 ```{grid-item-card} vllm-plugin-FL
 :class-card: flagos-card-sd
 
-A plugin for the vLLM inference/serving framework, built on FlagOS's unified multi-chip backend — including the unified operator library FlagGems and the unified communication library FlagCX.
+A plugin for the vLLM inference/serving framework, built on FlagOS's unified multi-chip backend.
 
 +++
 [View Documentation →](https://docs.flagos.io/projects/vllm-plugin-FL/en/latest/){ .card-link-sd }
@@ -135,7 +135,7 @@ A fork of TransformerEngine that introduces a plugin-based architecture for supp
 ```{grid-item-card} verl-FL
 :class-card: flagos-card-sd
 
-A fork of veRL (Volcano Engine Reinforcement Learning for LLMs) that extends the upstream library with multi-chip/multi-hardware support via the FlagOS ecosystem.
+A fork of veRL that extends the upstream library with multi-chip/multi-hardware support via the FlagOS ecosystem.
 
 +++
 [View Documentation →](https://docs.flagos.io/projects/verl-FL/en/latest/){ .card-link-sd }
