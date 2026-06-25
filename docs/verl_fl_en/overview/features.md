@@ -23,7 +23,3 @@ verl-FL supports NVIDIA, Huawei Ascend, MetaX, Moore Threads, and CPU platforms.
 ## Heterogeneous Distributed Training
 
 Cross-vendor collective communication via FlagCX enables heterogeneous training across NVIDIA GPU and Moore Threads MUSA nodes. One node runs actor/critic (NVIDIA, FSDP), the other runs rollout (Moore Threads MUSA, vLLM), with weight synchronization and device isolation managed through Ray runtime context.
-
-## Megatron-LM-FL Version Compatibility
-
-Correct parsing of `xxx+megatronxxx` version format used by Megatron-LM-FL (e.g., `0.1.0+megatron0.15.rc7`), fixing mcore version checking errors.
