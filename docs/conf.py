@@ -144,8 +144,8 @@ multiproject_projects = {
             "operator_yaml_path": "shared/conf/operators.yaml",
             "benchmark_data_path": "shared/benchmark",
             "coverage_data_path": "shared/coverage",
-            # Static files - include shared coverage
-            "html_static_path": ["flaggems_en/_static", "shared/coverage"],
+            # Static files - include shared _static (for logo) and coverage
+            "html_static_path": ["_static", "flaggems_en/_static", "shared/coverage"],
             "html_css_files": [
                 "css/custom.css",
                 "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
@@ -435,8 +435,8 @@ multiproject_projects = {
             "operator_yaml_path": "shared/conf/operators.yaml",
             "benchmark_data_path": "shared/benchmark",
             "coverage_data_path": "shared/coverage",
-            # Static files - include shared coverage
-            "html_static_path": ["flaggems_zh/_static", "shared/coverage"],
+            # Static files - include shared _static (for logo) and coverage
+            "html_static_path": ["_static", "flaggems_zh/_static", "shared/coverage"],
             "html_css_files": [
                 "css/custom.css",
                 "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
