@@ -140,6 +140,45 @@ multiproject_projects = {
         "config": {
             "project": "FlagGems Documentation",
             "html_title": "FlagGems Documentation",
+            # Custom config values for extensions (paths relative to docs root)
+            "operator_yaml_path": "shared/conf/operators.yaml",
+            "benchmark_data_path": "shared/benchmark",
+            "coverage_data_path": "shared/coverage",
+            # Static files - include shared coverage
+            "html_static_path": ["flaggems_en/_static", "shared/coverage"],
+            "html_css_files": [
+                "css/custom.css",
+                "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
+            ],
+            # Theme options
+            "html_theme": "sphinx_book_theme",
+            "html_theme_options": {
+                "github_url": "https://github.com/flagos-ai/FlagGems",
+                "use_edit_page_button": True,
+                "show_nav_level": 2,
+                "navigation_with_keys": True,
+                "show_toc_level": 2,
+            },
+            "html_context": {
+                "github_user": "flagos-ai",
+                "github_repo": "FlagGems",
+                "github_version": "master",
+                "doc_path": "docs/flaggems_en",
+            },
+            # MyST config
+            "myst_enable_extensions": [
+                "colon_fence",
+                "deflist",
+                "html_admonition",
+                "html_image",
+                "replacements",
+                "smartquotes",
+                "substitution",
+                "tasklist",
+            ],
+            "myst_heading_anchors": 3,
+            # Language
+            "language": "en",
         },
     },
     "flaggems_vllm_en": {
@@ -392,6 +431,45 @@ multiproject_projects = {
         "config": {
             "project": "FlagGems 文档中心",
             "html_title": "FlagGems 文档中心",
+            # Custom config values for extensions (paths relative to docs root)
+            "operator_yaml_path": "shared/conf/operators.yaml",
+            "benchmark_data_path": "shared/benchmark",
+            "coverage_data_path": "shared/coverage",
+            # Static files - include shared coverage
+            "html_static_path": ["flaggems_zh/_static", "shared/coverage"],
+            "html_css_files": [
+                "css/custom.css",
+                "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
+            ],
+            # Theme options
+            "html_theme": "sphinx_book_theme",
+            "html_theme_options": {
+                "github_url": "https://github.com/flagos-ai/FlagGems",
+                "use_edit_page_button": True,
+                "show_nav_level": 2,
+                "navigation_with_keys": True,
+                "show_toc_level": 2,
+            },
+            "html_context": {
+                "github_user": "flagos-ai",
+                "github_repo": "FlagGems",
+                "github_version": "master",
+                "doc_path": "docs/flaggems_zh",
+            },
+            # MyST config
+            "myst_enable_extensions": [
+                "colon_fence",
+                "deflist",
+                "html_admonition",
+                "html_image",
+                "replacements",
+                "smartquotes",
+                "substitution",
+                "tasklist",
+            ],
+            "myst_heading_anchors": 3,
+            # Language
+            "language": "zh",
         },
     },
     "flaggems_vllm_zh": {
@@ -481,6 +559,22 @@ multiproject_projects = {
 }
 
 docset = get_project(multiproject_projects)
+
+# Add project-specific _ext directory for custom extensions (FlagGems)
+if docset in ["flaggems_en", "flaggems_zh"]:
+    project_ext_path = os.path.abspath(os.path.join(docset, "_ext"))
+    sys.path.insert(0, project_ext_path)
+    print(f"INFO: Added {project_ext_path} to sys.path for {docset}")
+
+    # Add custom extensions for FlagGems (must be in global extensions list)
+    try:
+        import operator_list
+        import benchmark_table
+        import coverage_data
+        extensions.extend(["operator_list", "benchmark_table", "coverage_data"])
+        print(f"INFO: Added FlagGems custom extensions for {docset}")
+    except ImportError as e:
+        print(f"WARNING: Could not import FlagGems extensions: {e}")
 
 ogp_site_name = "KernelGen Documentation"
 ogp_use_first_image = True
