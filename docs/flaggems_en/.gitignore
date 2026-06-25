@@ -1,0 +1,10 @@
+# Build output
+build/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sphinx auto-generated
+source/locales/
