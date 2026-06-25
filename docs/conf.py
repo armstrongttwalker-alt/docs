@@ -150,21 +150,21 @@ multiproject_projects = {
                 "css/custom.css",
                 "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
             ],
-            # Theme options
-            "html_theme": "sphinx_book_theme",
-            "html_theme_options": {
-                "github_url": "https://github.com/flagos-ai/FlagGems",
-                "use_edit_page_button": True,
-                "show_nav_level": 2,
-                "navigation_with_keys": True,
-                "show_toc_level": 2,
-            },
-            "html_context": {
-                "github_user": "flagos-ai",
-                "github_repo": "FlagGems",
-                "github_version": "master",
-                "doc_path": "docs/flaggems_en",
-            },
+            # # Theme options
+            # "html_theme": "sphinx_book_theme",
+            # "html_theme_options": {
+            #     "github_url": "https://github.com/flagos-ai/FlagGems",
+            #     "use_edit_page_button": True,
+            #     "show_nav_level": 2,
+            #     "navigation_with_keys": True,
+            #     "show_toc_level": 2,
+            # },
+            # "html_context": {
+            #     "github_user": "flagos-ai",
+            #     "github_repo": "FlagGems",
+            #     "github_version": "master",
+            #     "doc_path": "docs/flaggems_en",
+            # },
             # MyST config
             "myst_enable_extensions": [
                 "colon_fence",
@@ -441,21 +441,21 @@ multiproject_projects = {
                 "css/custom.css",
                 "https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css",
             ],
-            # Theme options
-            "html_theme": "sphinx_book_theme",
-            "html_theme_options": {
-                "github_url": "https://github.com/flagos-ai/FlagGems",
-                "use_edit_page_button": True,
-                "show_nav_level": 2,
-                "navigation_with_keys": True,
-                "show_toc_level": 2,
-            },
-            "html_context": {
-                "github_user": "flagos-ai",
-                "github_repo": "FlagGems",
-                "github_version": "master",
-                "doc_path": "docs/flaggems_zh",
-            },
+            # # Theme options
+            # "html_theme": "sphinx_book_theme",
+            # "html_theme_options": {
+            #     "github_url": "https://github.com/flagos-ai/FlagGems",
+            #     "use_edit_page_button": True,
+            #     "show_nav_level": 2,
+            #     "navigation_with_keys": True,
+            #     "show_toc_level": 2,
+            # },
+            # "html_context": {
+            #     "github_user": "flagos-ai",
+            #     "github_repo": "FlagGems",
+            #     "github_version": "master",
+            #     "doc_path": "docs/flaggems_zh",
+            # },
             # MyST config
             "myst_enable_extensions": [
                 "colon_fence",

@@ -1,4 +1,3 @@
-# 逐点动态（Pointwise Dynamic）算子
 
 # 关于逐点动态算子
 

@@ -1,7 +1,5 @@
 # 添加 C++ 封装的算子
 
-# 添加 C++ 封装的算子
-
 要添加一个 C++ 封装的算子，你需要首先在安装 FlagGems 时启用 C++ 扩展能力特性。
 请参阅[FlagGems 安装](../getting-started/installation)文档，
 了解如何在安装 `flag_gems` 时启用 C++ 扩展的详细步骤。
