@@ -6,35 +6,11 @@ This guide provides step-by-step instructions for running end-to-end GRPO traini
 
 ## NVIDIA E2E GRPO Training
 
-This example runs GRPO training on NVIDIA GPUs using the pre-built Docker image.
+End-to-end GRPO training test on NVIDIA GPU environment. Model: Qwen3-0.6B, Dataset: GSM8K.
 
 ### Step 1: Pull Image and Create Container
 
-```bash
-docker pull harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-nvidia
-
-docker_image=harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-nvidia
-docker_name=verl_test
-sudo docker run -itd \
-    --name ${docker_name} \
-    --privileged \
-    --network=host \
-    --ipc=host \
-    --device=/dev/infiniband \
-    --pid=host \
-    --cap-add=ALL \
-    --shm-size 512G \
-    --ulimit memlock=-1 \
-    --gpus all \
-    -v /dev/:/dev/ \
-    -v /usr/src/:/usr/src/ \
-    -v /lib/modules/:/lib/modules/ \
-    -w /workspace \
-    ${docker_image} \
-    /bin/bash
-
-docker exec -it verl_test bash
-```
+Follow the [NVIDIA Docker setup](../getting_started/install.md#nvidia) in Quick Setup.
 
 ### Step 2: Prepare Data and Model
 
@@ -50,34 +26,130 @@ wget "https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/train.
 wget "https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/test.parquet"
 ```
 
-### Step 3: Run Training
+### Step 3: Install FlagOS Software Stack
 
-Create a run script based on `examples/grpo_trainer/run_qwen3-0.6b_fl.sh`:
+> **Note:** FlagCX is required. All other FlagOS components (FlagGems, vllm-plugin-FL, TransformerEngine-FL, Megatron-LM-FL) are optional.
+
+**3.1 Install FlagCX (Required)**
+
+```bash
+cd /workspace
+git clone https://github.com/flagos-ai/FlagCX.git
+cd FlagCX
+git submodule update --init --recursive
+pip install . -v --no-build-isolation
+
+# Post-install configuration
+# export FLAGCX_PATH=/workspace/FlagCX/
+```
+
+**3.2 Install FlagGems (Optional)**
+
+```bash
+cd /workspace
+pip install -U scikit-build-core>=0.11 pybind11 ninja cmake
+git clone https://github.com/flagos-ai/FlagGems.git
+cd FlagGems
+pip install --no-build-isolation -v .
+```
+
+**3.3 Install vllm-plugin-FL (Optional)**
+
+```bash
+cd /workspace
+## Option A: Install from PyPI
+pip install vllm-plugin-fl==0.1.0+vllm0.13.0 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+## Option B: Install from source
+git clone --branch v0.1.0+vllm0.13.0 https://github.com/flagos-ai/vllm-plugin-FL.git
+cd vllm-plugin-fl
+pip install --no-build-isolation -v .
+```
+
+**3.4 Install Megatron-LM-FL / TransformerEngine-FL (Optional)**
+
+```bash
+cd /workspace
+## Option A: Install from PyPI
+pip install transformer_engine==0.1.0+te2.9.0 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+## Option B: Install from source
+git clone --branch v0.1.0+te2.9.0 https://github.com/flagos-ai/TransformerEngine-FL.git
+cd TransformerEngine-FL
+pip install --no-build-isolation -v .
+
+cd /workspace
+## Option A: Install from PyPI
+pip install megatron_core==0.1.0+megatron0.15.0rc7 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+## Option B: Install from source
+git clone --branch v0.1.0+megatron0.15.0rc7 https://github.com/flagos-ai/Megatron-LM-FL.git
+cd Megatron-LM-FL
+pip install --no-build-isolation -v .
+```
+
+### Step 4: Install verl-FL
+
+```bash
+cd /workspace
+git clone --branch v0.2.0-rc2.post1 https://github.com/flagos-ai/verl-FL.git
+cd verl-FL
+pip install --no-build-isolation -v -e .
+```
+
+### Step 5: Modify Script and Run
+
+Based on `examples/grpo_trainer/run_qwen3-0.6b_fl.sh`, modify model/data/FlagCX paths according to your actual setup (all paths below assume `/workspace` from the steps above):
 
 ```bash
 #!/bin/bash
+# FL Multi-Chip Support Version of run_qwen3-0.6b.sh
+# This script demonstrates training with FL (FlagOS) multi-chip support
+# including FlagGems operators, Transformer-Engine-FL, and FlagCX communication.
+#
+# Reference: docs/design/fl_multi_chip_support.md
+
 set -x
 
-# Device Configuration
+# ============ Device Configuration ============
 export CUDA_VISIBLE_DEVICES=4,5,6,7
 export HYDRA_FULL_ERROR=1
 
-# FlagCX
-export FLAGCX_PATH=/workspace/FlagCX/
-export FLAGCX_LOG_LEVEL=DEBUG
+# ============ FlagCX Communication Library ============
+# export FLAGCX_PATH=/share/project/lizhiyu/FlagCX
+# export PYTHONPATH=/share/project/gzy/FlagCX/plugin/torch:${PYTHONPATH}
 
-# FL Configuration
+# ============ FL Configuration via verl fl_config ============
+# Note: Environment variables below are for reference only.
+# In verl FL architecture, these are set dynamically by FLEnvManager
+# based on fl_config YAML configuration.
 export RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
 export VERL_ENGINE_DEVICE=flagos
-export TE_FL_PREFER=flagos
-export TE_FL_PREFER_VENDOR=0
-export TE_FL_STRICT=0
+# Training phase environment variables:
+export TE_FL_PREFER=flagos  #flagos / vendor / reference    flagos
+export TE_FL_PREFER_VENDOR=0    # Prefer vendor (legacy)    1 / 0   0
+export TE_FL_STRICT=0   # Strict mode (no fallback) 1 / 0   0
+# TE_FL_ALLOW_VENDORS=nvidia,amd    # Allowed vendors (whitelist)   nvidia,amd
+# TE_FL_DENY_VENDORS=vendor_a   # Denied vendors (blacklist)    vendor_a
+# TE_FL_PER_OP=rmsnorm_fwd=vendor:cuda|default
 export VLLM_FL_FLAGOS_BLACKLIST="where_scalar_other,where_scalar_self,where_self,where_self_out,pad"
-export TEFL_LOG_LEVEL=DEBUG
+# Logging
+export TEFL_LOG_LEVEL=DEBUG # / INFO / WARNING / ERROR  INF
+
+# Rollout phase environment variables:
+# export VLLM_PLUGINS=""
+# export VLLM_FL_PREFER_ENABLED=true
+# export VLLM_FL_PLATFORM=cuda # will cause error
+# export VLLM_FL_PREFER=flagos
 export USE_FLAGGEMS=true
 export VLLM_FL_OOT_ENABLED=1
 export USE_FLAGCX=1
+# unset FLAGCX_PATH
 
+export FLAGCX_PATH=/workspace/FlagCX/
+export FLAGCX_LOG_LEVEL=DEBUG
+
+## Key modifications below
 DATA_DIR=/workspace/gsm8k/
 MODEL_DIR=/workspace/Qwen3-0.6B
 
@@ -125,51 +197,133 @@ python3 -m verl.trainer.main_ppo \
     $@
 ```
 
+Once the script is modified, run:
+
 ```bash
 bash examples/grpo_trainer/run_qwen3-0.6b_fl.sh
 ```
 
-**Expected result:** Training outputs step information normally, no errors, and the reward metric shows a convergence trend.
+**Validation criteria:** Training outputs step information normally, no errors during the training process, and the reward metric shows a convergence trend.
 
 ---
 
 ## MetaX E2E GRPO Training
 
-This example runs GRPO training on MetaX C500/C550 hardware using the pre-built Docker image.
+End-to-end GRPO training test on MetaX C500 environment. Model: Qwen3-0.6B, Dataset: GSM8K.
 
 ### Step 1: Pull Image and Create Container
 
-```bash
-docker pull harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-metax
-
-docker_image=harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-metax
-docker run -d -t --net=host --uts=host --ipc=host --privileged=true \
-  --group-add video --shm-size 100gb --ulimit memlock=-1 \
-  --security-opt seccomp=unconfined --security-opt apparmor=unconfined \
-  --device=/dev/dri --device=/dev/mxcd --device=/dev/infiniband \
-  -v /nfs/dh:/nfs/dh --name verl_fl_test \
-  ${docker_image} bash
-
-docker exec -it verl_fl_test bash
-```
+Follow the [MetaX Docker setup](../getting_started/install.md#metax) in Quick Setup.
 
 ### Step 2: Prepare Data and Model
 
 ```bash
 cd /workspace
+
+# Download model
 modelscope download --model Qwen/Qwen3-0.6B --local_dir ./Qwen3-0.6B
+
+# Download dataset
 mkdir gsm8k && cd gsm8k
 wget "https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/train.parquet"
 wget "https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/datasets/gsm8k/test.parquet"
 ```
 
-### Step 3: Run Training
+### Step 3: Install FlagOS Software Stack
+
+> **Note:** FlagCX is required. All other FlagOS components (FlagGems, vllm-plugin-FL, TransformerEngine-FL, Megatron-LM-FL) are optional.
+
+**3.1 Install FlagCX (Required)**
+
+```bash
+cd /workspace
+git clone https://github.com/flagos-ai/FlagCX.git
+cd FlagCX
+git checkout v0.9.0
+git submodule update --init --recursive
+make USE_METAX=1
+export FLAGCX_PATH="$PWD"
+cd plugin/torch/
+FLAGCX_ADAPTOR=metax pip install . --no-build-isolation
+
+# Post-install configuration
+# export FLAGCX_PATH=/workspace/FlagCX/
+```
+
+**3.2 Install FlagGems (Optional)**
+
+```bash
+cd /workspace
+pip install -U scikit-build-core>=0.11 pybind11 ninja cmake
+git clone https://github.com/flagos-ai/FlagGems.git
+cd FlagGems
+git checkout v4.2.0
+pip install --no-build-isolation -v .
+```
+
+**3.3 Install vllm-plugin-FL (Optional)**
+
+```bash
+cd /workspace
+## Option A: Install from PyPI
+pip install vllm-plugin-fl==0.1.0+vllm0.13.0 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+## Option B: Install from source
+git clone --branch v0.1.0+vllm0.13.0 https://github.com/flagos-ai/vllm-plugin-FL.git
+cd vllm-plugin-fl
+pip install --no-build-isolation -v .
+
+# Uninstall metax plugin to avoid conflicts
+pip uninstall vllm-metax
+```
+
+**3.4 Install Megatron-LM-FL / TransformerEngine-FL (Optional)**
+
+```bash
+cd /workspace
+## Install TransformerEngine-FL from source
+pip install onnxscript  # Install dependency
+wget https://baai-flagscale.ks3-cn-beijing.ksyuncs.com/rl/pkg/metax/transformer_engine_metax-2.9.0%2Bmaca3.3.0-cp310-cp310-linux_x86_64.whl
+pip install transformer_engine_metax-2.9.0+maca3.3.0-cp310-cp310-linux_x86_64.whl
+git clone --branch v0.1.0+te2.9.0 https://github.com/flagos-ai/TransformerEngine-FL.git
+cd TransformerEngine-FL
+TE_FL_SKIP_CUDA=1 pip install --no-build-isolation -v .
+
+cd /workspace
+## Option A: Install from PyPI
+pip install megatron_core==0.1.0+megatron0.15.0rc7 --extra-index-url https://resource.flagos.net/repository/flagos-pypi-hosted/simple
+
+## Option B: Install from source
+git clone --branch v0.1.0+megatron0.15.0rc7 https://github.com/flagos-ai/Megatron-LM-FL.git
+cd Megatron-LM-FL
+pip install --no-build-isolation -v .
+```
+
+### Step 4: Install verl-FL
+
+```bash
+cd /workspace
+git clone --branch v0.2.0-rc2.post1 https://github.com/flagos-ai/verl-FL.git
+cd verl-FL
+pip3 install nvtx
+pip3 install --no-deps -e .
+```
+
+### Step 5: Modify Script and Run
+
+Based on `examples/grpo_trainer/run_qwen3-0.6b_fl.sh`, modify model/data/FlagCX paths according to your actual setup (all paths below assume `/workspace` from the steps above):
 
 ```bash
 #!/bin/bash
+# FL Multi-Chip Support Version of run_qwen3-0.6b.sh
+# This script demonstrates training with FL (FlagOS) multi-chip support
+# including FlagGems operators, Transformer-Engine-FL, and FlagCX communication.
+#
+# Reference: docs/design/fl_multi_chip_support.md
+
 set -x
 
-# MetaX Platform Environment
+# ============ MetaX Platform Environment ============
 export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 export RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
 export VLLM_FL_FLAGOS_BLACKLIST="where_scalar_other,where_scalar_self,where_self,where_self_out,pad"
@@ -212,17 +366,25 @@ export FLAGCX_SOCKET_IFNAME=bond0
 export FLAGCX_IB_HCA=mlx5_101,mlx5_102,mlx5_103,mlx5_104,mlx5_105,mlx5_106,mlx5_107,mlx5_108
 export FLAGCX_MAX_NCHANNELS=18
 export FLAGCX_ENABLE_TOPO_DETECT=TRUE
+# ============ End MetaX Platform Environment ============
 
 export HYDRA_FULL_ERROR=1
+
+# ============ FlagCX Communication Library ============
 export FLAGCX_PATH=/workspace/FlagCX/
 export FLAGCX_LOG_LEVEL=DEBUG
+
+# ============ FL Configuration ============
 export TE_FL_PREFER=flagos
 export TE_FL_PREFER_VENDOR=0
 export TE_FL_STRICT=0
 export TEFL_LOG_LEVEL=DEBUG
+
+# Rollout phase environment variables:
 export USE_FLAGGEMS=true
 export VLLM_FL_OOT_ENABLED=1
 
+## Key modifications below
 DATA_DIR=/workspace/gsm8k/
 MODEL_DIR=/workspace/Qwen3-0.6B
 
@@ -271,23 +433,65 @@ python3 -m verl.trainer.main_ppo \
     $@
 ```
 
-**Expected result:** Training outputs step information normally, no errors, and the reward metric shows a convergence trend.
+Once the script is modified, run:
+
+```bash
+bash examples/grpo_trainer/run_qwen3-0.6b_fl.sh
+```
+
+**Validation criteria:** Training outputs step information normally, no errors during the training process, and the reward metric shows a convergence trend.
 
 ---
 
 ## MUSA Heterogeneous Training (NVIDIA + Moore Threads)
 
-This setup runs heterogeneous distributed GRPO training across NVIDIA GPU and Moore Threads MUSA nodes via FlagCX. One node runs actor/critic (NVIDIA, FSDP), the other runs rollout (Moore Threads MUSA, vLLM).
+This test validates CUDA+MUSA heterogeneous distributed training via FlagCX. One node runs actor/critic (NVIDIA, FSDP), the other runs rollout (Moore Threads MUSA, vLLM).
+
+### (Optional) FlagCX Heterogeneous Communication Test
+
+Before running full E2E training, you can verify cross-node FlagCX communication independently using `torchrun`. This step does not require Ray or verl-FL — it only tests whether NVIDIA and MUSA nodes can communicate via FlagCX.
+
+On the MUSA node (rank 0, master):
+
+```bash
+export FLAGCX_DEBUG=INFO
+export FLAGCX_DEBUG_SUBSYS=ALL
+export FLAGCX_SOCKET_IFNAME=<MUSA_IB_IFNAME>   # e.g. bond0; check with `ip a`
+export MUSA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export FLAGCX_IB_HCA=mlx5
+export FLAGCX_ENABLE_TOPO_DETECT=TRUE
+
+torchrun --nproc_per_node 8 --nnodes=2 --node_rank=0 \
+    --master_addr=<MUSA_NODE_IP> --master_port=8122 \
+    example.py
+```
+
+On the NVIDIA node (rank 1):
+
+```bash
+export FLAGCX_DEBUG=INFO
+export FLAGCX_DEBUG_SUBSYS=ALL
+export FLAGCX_SOCKET_IFNAME=<NVIDIA_IB_IFNAME>   # e.g. ens22f0; check with `ip a`
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export FLAGCX_IB_HCA=mlx5
+export FLAGCX_ENABLE_TOPO_DETECT=TRUE
+
+torchrun --nproc_per_node 8 --nnodes=2 --node_rank=1 \
+    --master_addr=<MUSA_NODE_IP> --master_port=8122 \
+    example.py
+```
+
+Expected: `example.py` (from the [FlagCX](https://github.com/FlagOpen/FlagCX) repo) completes without error; allreduce results match on both sides.
 
 ### Environment Requirements
 
-- **NVIDIA node:** base image `nvidia/cuda:12.9.1-devel-ubuntu22.04`; Python 3.10; manually install: torch 2.9.0+cu129, vllm 0.12.0, vllm-plugin-FL, TransformerEngine-FL, Megatron-LM-FL, FlagCX, Ray, verl-FL
-- **MUSA node:** base image `registry.mthreads.com/presale/devtech/vllm_plugin_fix:20260327hg` (includes torch_musa, MUSA toolkit, vllm-plugin-FL); Python 3.10; manually install: FlagCX, Ray, verl-FL
+- **NVIDIA node:** base image `nvidia/cuda:12.9.1-devel-ubuntu22.04`; **Python 3.10**; manually install: torch 2.9.0+cu129, vllm 0.12.0, `vllm-plugin-FL`, `TransformerEngine-FL`, `Megatron-LM-FL`, `FlagCX`, `Ray`, `verl-FL`
+- **MUSA node:** base image `registry.mthreads.com/presale/devtech/vllm_plugin_fix:20260327hg` (includes `torch_musa`, MUSA toolkit, `vllm-plugin-FL`); **Python 3.10**; manually install: `FlagCX`, `Ray`, `verl-FL`
 - **Both nodes:** Python 3.10; InfiniBand for cross-node communication
 - **Model:** Qwen3-0.6B
 - **Dataset:** GSM8K (`train.parquet` / `test.parquet`)
 
-### Step 1: Start Ray Cluster
+### Step 1 — Start Ray cluster
 
 On the MUSA node (head, handles rollout):
 
@@ -300,6 +504,7 @@ export FLAGCX_PATH=/workspace/FlagCX
 export USE_FLAGCX=1
 export FLAGCX_IB_HCA=mlx5
 
+# Install RDMA dependencies if not present
 apt install -y rdma-core libibverbs1 libibverbs-dev ibverbs-utils
 
 ray start --head --port=6379 --node-ip-address=<MUSA_NODE_IP> --num-gpus=8
@@ -315,7 +520,7 @@ export FLAGCX_LOG_LEVEL=DEBUG
 ray start --address='<MUSA_NODE_IP>:6379' --node-ip-address=<NVIDIA_NODE_IP> --num-gpus=8
 ```
 
-### Step 2: Launch Heterogeneous GRPO Training
+### Step 2 — Launch heterogeneous GRPO training
 
 Edit `config/one_step_off_ppo_trainer.yaml` to set data and model paths:
 
@@ -329,7 +534,7 @@ actor_rollout_ref:
     path: <path/to/Qwen3-0.6B>
 ```
 
-Run on the NVIDIA (worker) node:
+Then run on the NVIDIA (worker) node:
 
 ```bash
 TORCH_COMPILE_DISABLE=1 RAY_DEDUP_LOGS=0 HYDRA_FULL_ERROR=1 \
@@ -357,41 +562,3 @@ python3 -m recipe.one_step_off_policy.main_ppo \
     rollout.n_gpus_per_node=8 \
     2>&1 | tee onestep_hetero.log
 ```
-
-### (Optional) FlagCX Heterogeneous Communication Test
-
-Before running full E2E training, verify cross-node FlagCX communication independently. This does not require Ray or verl-FL.
-
-On the MUSA node (rank 0, master):
-
-```bash
-export FLAGCX_DEBUG=INFO
-export FLAGCX_DEBUG_SUBSYS=ALL
-export FLAGCX_SOCKET_IFNAME=<MUSA_IB_IFNAME>
-export MUSA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-export FLAGCX_IB_HCA=mlx5
-export FLAGCX_ENABLE_TOPO_DETECT=TRUE
-
-torchrun --nproc_per_node 8 --nnodes=2 --node_rank=0 \
-    --master_addr=<MUSA_NODE_IP> --master_port=8122 \
-    example.py
-```
-
-On the NVIDIA node (rank 1):
-
-```bash
-export FLAGCX_DEBUG=INFO
-export FLAGCX_DEBUG_SUBSYS=ALL
-export FLAGCX_SOCKET_IFNAME=<NVIDIA_IB_IFNAME>
-export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-export FLAGCX_IB_HCA=mlx5
-export FLAGCX_ENABLE_TOPO_DETECT=TRUE
-
-torchrun --nproc_per_node 8 --nnodes=2 --node_rank=1 \
-    --master_addr=<MUSA_NODE_IP> --master_port=8122 \
-    example.py
-```
-
-Expected: `example.py` (from the [FlagCX](https://github.com/FlagOpen/FlagCX) repo) completes without error; allreduce results match on both sides.
-
-**Expected result for full training:** FlagCX cross-node communication established; training runs without crash; `critic/score/mean` > 0 throughout; `rollout_corr/log_ppl_diff` < 0.005 (training vs rollout PPL consistent).

@@ -1,4 +1,4 @@
-# Install verl-FL
+# Quick Setup
 
 ## Docker Images (Recommended)
 
@@ -9,12 +9,48 @@ Pre-built Docker images are available for each platform:
 | NVIDIA (international GPU) | `harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-nvidia` | verl 0.7.0, torch 2.9.0+cu128, triton 3.5.0 |
 | MetaX (C500/C550) | `harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-metax` | verl 0.7.0, torch 2.8.0+metax3.3.0.2, triton 3.0.0 |
 
+### NVIDIA
+
 ```bash
-# NVIDIA
 docker pull harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-nvidia
 
-# MetaX
+docker_image=harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-nvidia
+docker_name=verl_test
+sudo docker run -itd \
+    --name ${docker_name} \
+    --privileged \
+    --network=host \
+    --ipc=host \
+    --device=/dev/infiniband \
+    --pid=host \
+    --cap-add=ALL \
+    --shm-size 512G \
+    --ulimit memlock=-1 \
+    --gpus all \
+    -v /dev/:/dev/ \
+    -v /usr/src/:/usr/src/ \
+    -v /lib/modules/:/lib/modules/ \
+    -w /workspace \
+    ${docker_image} \
+    /bin/bash
+
+docker exec -it verl_test bash
+```
+
+### MetaX
+
+```bash
 docker pull harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-metax
+
+docker_image=harbor.baai.ac.cn/flagos21-release/verl-fl:v0.2.0-rc2-metax
+docker run -d -t --net=host --uts=host --ipc=host --privileged=true \
+  --group-add video --shm-size 100gb --ulimit memlock=-1 \
+  --security-opt seccomp=unconfined --security-opt apparmor=unconfined \
+  --device=/dev/dri --device=/dev/mxcd --device=/dev/infiniband \
+  -v /nfs/dh:/nfs/dh --name verl_fl_test \
+  ${docker_image} bash
+
+docker exec -it verl_fl_test bash
 ```
 
 ## Install from Source
@@ -26,7 +62,6 @@ Ensure you have the required software dependencies installed. See [Requirements]
 ### 1. Install FlagCX (Required)
 
 ```bash
-cd /workspace
 git clone https://github.com/flagos-ai/FlagCX.git
 cd FlagCX
 git submodule update --init --recursive
@@ -42,7 +77,6 @@ export FLAGCX_PATH=/workspace/FlagCX/
 ### 2. Install FlagGems (Optional)
 
 ```bash
-cd /workspace
 pip install -U scikit-build-core>=0.11 pybind11 ninja cmake
 git clone https://github.com/flagos-ai/FlagGems.git
 cd FlagGems
@@ -85,8 +119,9 @@ pip install --no-build-isolation -v .
 ### 5. Install verl-FL
 
 ```bash
-cd /workspace
 git clone --branch v0.2.0-rc2.post1 https://github.com/flagos-ai/verl-FL.git
 cd verl-FL
 pip install --no-build-isolation -v -e .
 ```
+
+For an end-to-end GRPO training workflow, see [End-to-End Use Case](../user_guide/e2e-use-case.md).
