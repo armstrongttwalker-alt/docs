@@ -1,5 +1,3 @@
-# 开始使用
-
 # 开始使用 FlagGems
 
 ## 1. 安装 FlagGems {#install-flaggems}

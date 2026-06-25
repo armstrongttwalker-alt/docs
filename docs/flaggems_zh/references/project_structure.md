@@ -1,7 +1,5 @@
 # 项目源码结构
 
-# 项目源码结构
-
 ```none
 FlagGems
 ├── src                  // python 源代码

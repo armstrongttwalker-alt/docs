@@ -1,7 +1,5 @@
 # 使用实验性质的算子
 
-# 使用实验性质的算子
-
 *FlagGems* 的 `experimental_ops` 模块提供了一个名字空间，
 用来存放尚未为生产环境使用准备就绪的算子。
 在这个包中的算子可以通过 `flag_gems.experimental_ops.*` 的形式来访问。

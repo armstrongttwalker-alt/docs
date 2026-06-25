@@ -1,7 +1,5 @@
 # 测试 Python 算子
 
-# 测试 Python 算子
-
 *FlagGems* 使用 `pytest` 来驱动算子精度测试和性能基准测试。
 项目使用 Triton 的 `triton.testing.do_bench` 来执行内核层级的性能评估。
 
