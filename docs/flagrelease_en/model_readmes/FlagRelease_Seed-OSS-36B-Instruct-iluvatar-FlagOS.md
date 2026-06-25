@@ -49,18 +49,17 @@ modelscope download --model FlagRelease/Seed-OSS-36B-Instruct --local_dir /data/
 
 ### Start the Container
 ```bash
-sudo docker run -itd \
-        --name flagos \
-        --network=host \
-        --ipc=host \
-        --pid=host \
-        --device=/dev/infiniband \
-        --shm-size 512G \
-        --ulimit memlock=-1 \
-        --gpus all \
-        -w /workspace \
-        -v /xxx/Seed-OSS-36B-Instruct:/xxx/Seed-OSS-36B-Instruct
-        harbor.baai.ac.cn/external-cooperation/seed-oss-36b-instruct-iluvatar-tree_0.5.1-gems_0.5.2-vllm_0.13.0-plugin_0.1.1-python_3.12.3-torch_2.7.1-pcp_cor    ex-4.4.0-gpu_biv150-driver_4.4.0:2606231643 sleep infinity
+docker run --name flagos -itd \
+  --shm-size="32g" \
+  -v /usr/src:/usr/src \
+  -v /xxxxxx/Seed-OSS-36B-Instruct:/data/models/Seed-OSS-36B-Instruct \
+  -v /dev:/dev \
+  --privileged \
+  --cap-add=ALL \
+  --pid=host \
+  --net=host \
+  -w /workspace \
+  harbor.baai.ac.cn/external-cooperation/seed-oss-36b-instruct-iluvatar-tree_0.5.1-gems_0.5.2-vllm_0.13.0-plugin_0.1.1-python_3.12.3-torch_2.7.1-pcp_corex-4.4.0-gpu_biv150-driver_4.4.0:2606231643 sleep infinity
 docker exec -it flagos /bin/bash
 ```
 ### Start the Server
