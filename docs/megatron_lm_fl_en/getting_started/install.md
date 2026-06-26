@@ -4,6 +4,14 @@ You can install Megatron-LM-FL through one of the following methods:
 
 ## Docker (Recommended)
 
+### FlagOS Release Image (v0.2.0-rc2)
+
+```bash
+docker pull harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia
+```
+
+Includes: torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0. Suitable for 100B+ parameter model pre-training.
+
 ### CUDA
 
 ```bash

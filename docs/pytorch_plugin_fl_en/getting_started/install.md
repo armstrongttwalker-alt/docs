@@ -1,5 +1,19 @@
 # Installation
 
+## Docker Images (Recommended)
+
+| Platform | Image | Contents |
+|----------|-------|----------|
+| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-nvidia` | torch 2.11.0+cu128, torch_fl 0.1.0, flag_gems 5.0.2, triton 3.6.0 |
+| Huawei Ascend | `harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-ascend` | torch 2.11.0+CPU, torch_npu, torch_fl |
+
+```bash
+# NVIDIA
+docker pull harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-nvidia
+# Huawei Ascend
+docker pull harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-ascend
+```
+
 ## Build from Source
 
 ### CUDA platform

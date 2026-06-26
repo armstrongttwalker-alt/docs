@@ -130,6 +130,23 @@ export USE_FLAGGEMS=0
 
 This section covers running vllm-plugin-FL using pre-built Docker images.
 
+### SVT Full-Stack Test Images (v0.2.0-rc2)
+
+Pre-built SVT images with full FlagOS stack:
+
+| Platform | Image | Contents |
+|----------|-------|----------|
+| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt` | vllm 0.20.2, FlagGems 5.3.0-rc2.post1, FlagTree 3.6.0, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.11.0+cu130 |
+| Hygon DCU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt` | vllm 0.20.0, FlagGems 5.3.0-rc2.post1, FlagTree 0.5.0-rc2.post1+hcu, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.10.0+das |
+
+```bash
+# NVIDIA SVT
+docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt
+
+# Hygon DCU SVT
+docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt
+```
+
 ### Hygon DCU
 
 Available for vllm-plugin-FL v0.2.0 (vLLM 0.20.0).

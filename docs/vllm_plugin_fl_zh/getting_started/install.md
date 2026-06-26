@@ -130,6 +130,23 @@ export USE_FLAGGEMS=0
 
 本节介绍使用预构建的 Docker 镜像运行 vllm-plugin-FL。
 
+### SVT 全栈测试镜像（v0.2.0-rc2）
+
+预构建的 SVT 全栈测试镜像：
+
+| 平台 | 镜像 | 内容 |
+|----------|-------|----------|
+| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt` | vllm 0.20.2, FlagGems 5.3.0-rc2.post1, FlagTree 3.6.0, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.11.0+cu130 |
+| 海光 DCU | `harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt` | vllm 0.20.0, FlagGems 5.3.0-rc2.post1, FlagTree 0.5.0-rc2.post1+hcu, vllm-plugin-FL 0.2.0-rc2.post1, torch 2.10.0+das |
+
+```bash
+# NVIDIA SVT
+docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-nvidia-svt
+
+# 海光 DCU SVT
+docker pull harbor.baai.ac.cn/flagos21-release/vllm-plugin-fl:v0.2.0-rc2-hygon-svt
+```
+
 ### Hygon DCU
 
 适用于 vllm-plugin-FL v0.2.0（vLLM 0.20.0）。

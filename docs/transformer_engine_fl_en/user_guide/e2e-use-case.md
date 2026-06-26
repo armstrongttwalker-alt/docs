@@ -6,6 +6,14 @@ This guide walks through an end-to-end training workflow using TransformerEngine
 
 ## 1. Docker Environment
 
+### FlagOS Release Image (v0.2.0-rc2, Recommended)
+
+```bash
+docker pull harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia
+```
+
+Includes torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0. Suitable for 100B+ parameter model pre-training.
+
 ### CUDA (NVIDIA)
 
 ```bash
