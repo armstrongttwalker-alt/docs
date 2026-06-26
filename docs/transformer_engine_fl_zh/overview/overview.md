@@ -36,3 +36,9 @@ TransformerEngine-FL 在 `transformer_engine/plugin/` 中添加了基于插件�
 | REFERENCE | 50 | PyTorch 原生实现 |
 
 支持的供应商请参见[支持的硬件](/getting_started/requirements.md#supported-hardwares)。
+
+```{toctree}
+:maxdepth: 2
+
+features.md
+```

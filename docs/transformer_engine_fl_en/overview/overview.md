@@ -37,3 +37,9 @@ The plugin system consists of:
 | REFERENCE | 50 | PyTorch native implementations |
 
 For supported vendors, see [Supported hardwares](/getting_started/requirements.md#supported-hardwares).
+
+```{toctree}
+:maxdepth: 2
+
+features.md
+```

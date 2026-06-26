@@ -64,11 +64,7 @@ getting_started/getting-started.md
 getting_started/requirements.md
 getting_started/install.md
 user_guide/user-guide.md
-user_guide/plugin-system.md
 user_guide/custom-backend-registration.md
-user_guide/fp8-training.md
-user_guide/integrations.md
-user_guide/troubleshooting.md
 user_guide/e2e-use-case.md
 ```
 
@@ -78,5 +74,4 @@ user_guide/e2e-use-case.md
 :hidden:
 
 references/reference.md
-references/nvidia-reference.md
 ```
