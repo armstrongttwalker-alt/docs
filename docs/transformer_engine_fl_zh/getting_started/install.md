@@ -1,5 +1,19 @@
 # 安装 TransformerEngine-FL
 
+## Docker 镜像（推荐）
+
+TransformerEngine-FL 与 Megatron-LM-FL 共用同一 Docker 镜像：
+
+| 平台 | 镜像 | 内容 |
+|----------|-------|----------|
+| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia` | torch 2.4.0a0, triton 3.0.0, trans-engine 2.14.0 |
+
+```bash
+docker pull harbor.baai.ac.cn/flagos21-release/megatron-lm-fl:v0.2.0-rc2-nvidia
+```
+
+适用于千亿参数模型预训练。
+
 您可以通过以下方法之一安装 TransformerEngine-FL：
 
 ## 从 FlagOS 仓库直接安装

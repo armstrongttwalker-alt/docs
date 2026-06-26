@@ -68,7 +68,7 @@ The FlagOS ecosystem enablement layer adopts a plugin architecture composed of t
 
 - **vllm-plugin-FL** (v0.2.0)
 
-  vllm-plugin-FL extends the inference capabilities of vLLM to diverse AI chips, enabling efficient model serving beyond the original supported hardware. Built on FlagOS's unified multi-chip backend — including the unified operator library FlagGems and the unified communication library FlagCX.
+  vllm-plugin-FL extends the inference capabilities of vLLM to diverse AI chips, enabling efficient model serving beyond the original supported hardware. Built on FlagOS's unified multi-chip backend.
 
 - **sglang-plugin-FL** (v0.1.0)
 
