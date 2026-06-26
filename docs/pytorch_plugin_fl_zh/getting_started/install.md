@@ -1,5 +1,19 @@
 # 安装
 
+## Docker 镜像（推荐）
+
+| 平台 | 镜像 | 内容 |
+|----------|-------|----------|
+| NVIDIA GPU | `harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-nvidia` | torch 2.11.0+cu128, torch_fl 0.1.0, flag_gems 5.0.2, triton 3.6.0 |
+| 华为昇腾 | `harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-ascend` | torch 2.11.0+CPU, torch_npu, torch_fl |
+
+```bash
+# NVIDIA
+docker pull harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-nvidia
+# 华为昇腾
+docker pull harbor.baai.ac.cn/flagos21-release/pytorch-plugin-fl:v0.1.0-rc2-ascend
+```
+
 ## 从源码构建
 
 ### CUDA 平台
