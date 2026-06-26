@@ -6,6 +6,7 @@
 :maxdepth: 2
 
 requirements.md
+install.md
 run-inference-task.md
 
 ```
