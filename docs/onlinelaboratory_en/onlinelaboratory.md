@@ -2,9 +2,9 @@
 
 ## Getting Started
 
-1. Open <https://flagos.net/login?redirect_url=https%3A%2F%2Fflagos.net%2FHome> in your browser.
+1. Open <https://flagos.net/Home> in your browser.
 
-2. Click the **Online Laboratory** tab in the top-right corner. Select **Phone Login** or **Email Login**. Enter your phone number or email address, and click **Get Verification Code**. Enter the verification code, check the box to accept the community usage agreement and privacy policy, and click **Login/Register**.
+2. Click the **Online Laboratory** above. Select **Phone Login** or **Email Login**. Enter your phone number or email address, and click **Get Verification Code**. Enter the verification code, check the box to accept the community usage agreement and privacy policy, and click **Login/Register**.
 
 3. View all unreleased environment containers, computing resource details, access endpoints, and other related information associated with your account.
 
@@ -24,10 +24,9 @@
      2. Click **Enter IDE**. When the Welcome dialog opens, paste the key and click **Submit**.
      ![alt text](asset/welcome.jpg)
    - **Option 2: Access via Public Network**
-     To access the development environment from a public network, follow these steps:
-     1. You can map the service for the development environment to port 30000.
-     2. Navigate to **Operation**, and click Settings ![alt text](asset/settings.png).
-     3. In the pop-up window, click **Action**. In the **More Access** section, click the **Service URL** link to open the development environment.
+     To access the development environment from a public network, follow these steps. You can map the service for the development environment to port 30000.
+     1. Navigate to **Operation**, and click Settings ![alt text](asset/settings.png).
+     2. In the pop-up window, click **Action**. In the **More Access** section, click the **Service URL** link to open the development environment.
      ![alt text](asset/public-access.jpg)
 
 7. Query the computing power configuration through terminal commands according to the card type.
@@ -62,7 +61,7 @@ For detailed usage instructions of Visual Studio Code, please refer to:<https://
 
 To reset development environment to its initial state, perform the following steps:
 
-1. Navigate to the **Operation** column, and click the **Settings** icon.
+1. Navigate to the **Operation** column, and click the Settings ![alt text](asset/settings.png).
 2. In the pop-up window, click **Action**. In the **Reset Environment** section, click **Reset Environment**. In the **Reset Environment** pop-up window, click **Confirm**.
   ![alt text](asset/public-access.jpg)
 
