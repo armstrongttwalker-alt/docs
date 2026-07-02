@@ -1,6 +1,8 @@
 modelscope>=1.11.0
 sphinx
 sphinx-rtd-theme
+pydata-sphinx-theme
+sphinx-book-theme
 sphinx-multiproject
 sphinx-tabs
 sphinx-prompt
