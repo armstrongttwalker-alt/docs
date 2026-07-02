@@ -1,3 +1,8 @@
 modelscope>=1.11.0
+sphinx
+sphinx-rtd-theme
 sphinx-multiproject
+sphinx-tabs
+sphinx-prompt
 myst-parser
+sphinx-copybutton
