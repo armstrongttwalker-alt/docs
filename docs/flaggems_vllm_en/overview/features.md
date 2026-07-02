@@ -1,5 +1,8 @@
 # Features
 
+<!-- preview-build test: GitHub Pages 预览流水线验证标记 -->
+> **Preview build test** — 本行用于验证 fork 上的 GitHub Pages 预览构建（可在测试后删除）。
+
 FlagGems-vLLM provides the following key features:
 
 - **Operators have undergone deep performance tuning** — Each operator is carefully optimized for throughput and latency across multiple hardware backends.
