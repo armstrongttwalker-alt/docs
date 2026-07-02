@@ -6,7 +6,8 @@ FlagGems-vLLM is a high-performance deep learning operator library implemented u
 
 By integrating with vLLM, FlagGems-vLLM accelerates inference workloads through optimized Triton kernels that replace default operator implementations, delivering significant performance gains across diverse hardware platforms.
 
-```{toctre
+```{toctree}
+
 features.md
 
 ```
