@@ -4,5 +4,6 @@ sphinx-rtd-theme
 sphinx-multiproject
 sphinx-tabs
 sphinx-prompt
+sphinx-design
 myst-parser
 sphinx-copybutton
