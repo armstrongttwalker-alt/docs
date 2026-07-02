@@ -5,5 +5,7 @@ sphinx-multiproject
 sphinx-tabs
 sphinx-prompt
 sphinx-design
+sphinxext-opengraph
+sphinx-tippy
 myst-parser
 sphinx-copybutton
