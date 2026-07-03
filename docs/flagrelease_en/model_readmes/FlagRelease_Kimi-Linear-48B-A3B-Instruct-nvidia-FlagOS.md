@@ -3,66 +3,73 @@ Kimi-Linear-48B-A3B-Instruct is a high-efficiency large language model developed
 
 Adopting a 3:1 structural ratio of Kimi Delta Attention and global MLA, this model greatly cuts down KV cache occupancy and improves inference throughput while maintaining strong comprehensive capability. It achieves outstanding results on multiple authoritative benchmarks, natively compatible with Transformers and vLLM frameworks, and can be quickly deployed for long document parsing, knowledge question answering and industrial intelligent conversation services.
 
-
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Nvidia** container image supporting deployment within minutes
+- Released **FlagOS-Metax** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics             | Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS-Nvidia-Origin | Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS-Nvidia-FlagOS |
-|---------------------|----------------------------------------------------------|--------------------------------------|
-| aime                | 0.4667                                                   | 0.4667                               |
-| musr_generative     | 0.5926                                                   | 0.5635                               |
-| mmlu_pro            | 0.515                                                    | 0.5315                               |
-| gpqa_generative_cot | 0.4295                                                   | 0.4295                               |
-| livebench_new       | 0.5438                                                   | 0.5178                               |
+| Metrics             | Kimi-Linear-48B-A3B-Instruct-metax-FlagOS-Nvidia-Origin | Kimi-Linear-48B-A3B-Instruct-metax-FlagOS-Metax-FlagOS |
+| ------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| aime                | 0.4667                                                   | 0.4620                                                   |
+| musr_generative     | 0.5926                                                   | 0.5542                                                   |
+| mmlu_pro            | 0.515                                                    | 0.4784                                                   |
+| gpqa_generative_cot | 0.4295                                                   | 0.3985                                                   |
+| livebench_new       | 0.5438                                                   | 0.5231                                                   |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 24.0.0, build 98fdcd7 |
-| Operating System | 22.04.4 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 27.5.1, build 27.5.1-0ubuntu3~22.04.2 |
+| Operating System | Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/external-cooperation/kimi-linear-48b-a3b-instruct-nvidia-tree_0.5.0_3.5-gems_5.0.2-vllm_0.13.0-plugin_0.1-cx_none-python_3.12.3-torch_2.9.0_cu128-pcp_cuda12.8-gpu_nvidia003-arc_amd64-driver_570.158.01:2605110300
+docker pull harbor.baai.ac.cn/external-cooperation/kimi-linear-48b-a3b-instruct-metax-tree_0.5.1_metax3.0-gems_5.0.2-vllm_0.13.0-plugin_0.1.1-cx_none-python_3.12.11-torch_2.8.0_metax3.3.0.2_cu128-pcp_cuda12.8-gpu_metax_c550-arc_amd64-driver_3.3.12:2606081508
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS --local_dir /data/Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS
+modelscope download --model FlagRelease/Kimi-Linear-48B-A3B-Instruct-metax-FlagOS --local_dir /data/Kimi-Linear-48B-A3B-Instruct-metax-FlagOS
 ```
 
 ### Start the Container
 ```bash
-docker run -itd --name=xxx --gpus=all --network=host -v /data:/data harbor.baai.ac.cn/external-cooperation/kimi-linear-48b-a3b-instruct-nvidia-tree_0.5.0_3.5-gems_5.0.2-vllm_0.13.0-plugin_0.1-cx_none-python_3.12.3-torch_2.9.0_cu128-pcp_cuda12.8-gpu_nvidia003-arc_amd64-driver_570.158.01:2605110300 sleep infinity
-
-docker exec -it xxx  bash
+docker run -itd \
+  --name=flagos \
+  --privileged \
+  --network=host \
+  -v /data/vllm-plugin-fl:/data/models \
+  harbor.baai.ac.cn/external-cooperation/kimi-linear-48b-a3b-instruct-metax-tree_0.5.1_metax3.0-gems_5.0.2-vllm_0.13.0-plugin_0.1.1-cx_none-python_3.12.11-torch_2.8.0_metax3.3.0.2_cu128-pcp_cuda12.8-gpu_metax_c550-arc_amd64-driver_3.3.12:2606081436 \
+  sleep infinity
+docker exec -it flagos  bash
 ```
 ### Start the Server
 ```bash
 export VLLM_PLUGINS=fl
 export TRITON_ALL_BLOCKS_PARALLEL=1
-nohup vllm serve \
---model /data/Kimi-Linear-48B-A3B-Instruct/ \
+export USE_FLAGGEMS=1
+export CUDA_VISIBLE_DEVICES=0,1
+
+export VLLM_FL_FLAGOS_BLACKLIST="sort,mm,mul,masked_fill_"
+
+ulimit -n 2048 && nohup vllm serve \
+--model /data/Kimi-Linear-48B-A3B-Instruct-metax-FlagOS \
 --served-model-name kimi-linear \
 --host 0.0.0.0 \
---port 6677 \
+--port 8000 \
 --trust-remote-code \
 --tensor-parallel-size 2 \
 --enforce-eager \
-> kimi-flagos.log 2>&1 &
-
-tail -f imi-flagos.log
+> kimi_flagos.log 2>&1 &
 ```
 
 ## Service Invocation
@@ -124,4 +131,4 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from /data/vllm-plugin-fl/Kimi-Linear-48B-A3B-Instruct and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+The model weights are derived from moonshotai/Kimi-Linear-48B-A3B-Instruct and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
