@@ -64,7 +64,6 @@
 | HY-MT2-7B-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/HY-MT2-7B-zhenwu-FlagOS> |
 | Kimi-K2-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Kimi-K2-Instruct-FlagOS> |
 | Kimi-K2-Thinking-FlagOS | <https://modelscope.cn/models/FlagRelease/Kimi-K2-Thinking-FlagOS> |
-| Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS> |
 | materials.smi-ted-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/materials.smi-ted-hygon-FlagOS> |
 | materials.smi-ted-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/materials.smi-ted-nvidia-FlagOS> |
 | MiniCPM-o-4.5-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM-o-4.5-ascend-FlagOS> |
@@ -101,6 +100,7 @@
 | MiniMax-M3-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-mthreads-FlagOS> |
 | MiniMax-M3-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-nvidia-FlagOS> |
 | MiniMax-M3-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-zhenwu-FlagOS> |
+| Moonlight-16B-A3B-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/Moonlight-16B-A3B-nvidia-FlagOS> |
 | phi-4-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-FlagOS> |
 | phi-4-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-hygon-FlagOS> |
 | phi-4-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-metax-FlagOS> |
@@ -162,6 +162,5 @@
 | RoboBrain2.5-8B-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/RoboBrain2.5-8B-ascend-FlagOS> |
 | RoboBrain2.5-8B-FlagOS | <https://modelscope.cn/models/FlagRelease/RoboBrain2.5-8B-FlagOS> |
 | Seed-OSS-36B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Seed-OSS-36B-Instruct-FlagOS> |
-| Seed-OSS-36B-Instruct-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Seed-OSS-36B-Instruct-iluvatar-FlagOS> |
 | step3-FlagOS | <https://modelscope.cn/models/FlagRelease/step3-FlagOS> |
 | TeleChat3-36B-Thinking-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/TeleChat3-36B-Thinking-mthreads-FlagOS> |
