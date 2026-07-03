@@ -1,3 +1,21 @@
-modelscope>=1.11.0
-sphinx-multiproject
+# GitHub Pages 预览构建用依赖，与 docs/requirements.txt 对齐（RTD 用后者）。
+# 额外加 matplotlib 以生成 opengraph social cards（消除构建警告）。
+sphinx==8.2.3
 myst-parser
+sphinx-multiproject==1.0.0
+pydata-sphinx-theme
+sphinx-rtd-theme
+sphinx-book-theme~=1.1
+sunpy-sphinx-theme
+sphinx-autodoc2~=0.5.0
+sphinx-design
+sphinx-copybutton
+sphinxext.rediraffe~=0.3.0
+sphinxcontrib.mermaid~=0.7.1
+sphinxext.opengraph~=0.13.0
+sphinx-pyscript
+sphinx-tippy>=0.4.3
+sphinx-togglebutton
+sphinx-tabs==3.4.7
+sphinx-prompt==1.10.2
+matplotlib
