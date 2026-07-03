@@ -59,13 +59,8 @@ release_notes/release-notes.md
 :hidden:
 
 overview/overview.md
-overview/features.md
 getting_started/getting-started.md
-getting_started/requirements.md
-getting_started/install.md
 user_guide/user-guide.md
-user_guide/e2e-use-case.md
-user_guide/platform-abstraction.md
 ```
 
 ```{toctree}
