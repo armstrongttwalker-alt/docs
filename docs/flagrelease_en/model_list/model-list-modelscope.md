@@ -3,8 +3,10 @@
 | Model Name | Website |
 |------------|---------|
 | BAAI-Cardiac-Agent-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/BAAI-Cardiac-Agent-hygon-FlagOS> |
+| Baguettotron-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Baguettotron-metax-FlagOS> |
 | C2S-Scale-Gemma-2-27B-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/C2S-Scale-Gemma-2-27B-hygon-FlagOS> |
 | C2S-Scale-Gemma-2-27B-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/C2S-Scale-Gemma-2-27B-nvidia-FlagOS> |
+| DASD-4B-Thinking-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/DASD-4B-Thinking-metax-FlagOS> |
 | deepseek-r1-1.5b-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/deepseek-r1-1.5b-nvidia-FlagOS> |
 | DeepSeek-R1-Distill-Qwen-32B-FlagOS-Cambricon | <https://modelscope.cn/models/FlagRelease/DeepSeek-R1-Distill-Qwen-32B-FlagOS-Cambricon> |
 | DeepSeek-R1-Distill-Qwen-32B-FlagOS-NVIDIA | <https://modelscope.cn/models/FlagRelease/DeepSeek-R1-Distill-Qwen-32B-FlagOS-NVIDIA> |
@@ -42,6 +44,7 @@
 | GLM-5.2-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5.2-mthreads-FlagOS> |
 | GLM-5.2-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/GLM-5.2-zhenwu-FlagOS> |
 | gpt-oss-120b-FlagOS | <https://modelscope.cn/models/FlagRelease/gpt-oss-120b-FlagOS> |
+| granite-4.0-micro-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/granite-4.0-micro-metax-FlagOS> |
 | grok-2-FlagOS | <https://modelscope.cn/models/FlagRelease/grok-2-FlagOS> |
 | Hunyuan-A13B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Hunyuan-A13B-Instruct-FlagOS> |
 | HY-MT2-1.8B-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/HY-MT2-1.8B-ascend-FlagOS> |
@@ -62,8 +65,18 @@
 | HY-MT2-7B-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/HY-MT2-7B-mthreads-FlagOS> |
 | HY-MT2-7B-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/HY-MT2-7B-nvidia-FlagOS> |
 | HY-MT2-7B-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/HY-MT2-7B-zhenwu-FlagOS> |
+| Hy3-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/Hy3-hygon-FlagOS> |
+| Hy3-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Hy3-iluvatar-FlagOS> |
+| Hy3-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Hy3-metax-FlagOS> |
+| Hy3-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/Hy3-mthreads-FlagOS> |
+| Hy3-nvidia-FlagOS-Express | <https://modelscope.cn/models/FlagRelease/Hy3-nvidia-FlagOS-Express> |
+| Hy3-tsingmicro-FlagOS | <https://modelscope.cn/models/FlagRelease/Hy3-tsingmicro-FlagOS> |
+| Hy3-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/Hy3-zhenwu-FlagOS> |
+| Jan-v1-4B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Jan-v1-4B-metax-FlagOS> |
 | Kimi-K2-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Kimi-K2-Instruct-FlagOS> |
 | Kimi-K2-Thinking-FlagOS | <https://modelscope.cn/models/FlagRelease/Kimi-K2-Thinking-FlagOS> |
+| LFM2-2.6B-Exp-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/LFM2-2.6B-Exp-metax-FlagOS> |
+| LocoOperator-4B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/LocoOperator-4B-metax-FlagOS> |
 | materials.smi-ted-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/materials.smi-ted-hygon-FlagOS> |
 | materials.smi-ted-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/materials.smi-ted-nvidia-FlagOS> |
 | MiniCPM-o-4.5-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM-o-4.5-ascend-FlagOS> |
@@ -74,6 +87,7 @@
 | MiniCPM-o-4.5-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM-o-4.5-zhenwu-FlagOS> |
 | MiniCPM-V-4-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM-V-4-FlagOS> |
 | MiniCPM-V-4-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM-V-4-metax-FlagOS> |
+| MiniCPM3-4B-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM3-4B-iluvatar-FlagOS> |
 | MiniCPM5-1B-Armv9-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM5-1B-Armv9-FlagOS> |
 | MiniCPM5-1B-ascend-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM5-1B-ascend-FlagOS> |
 | MiniCPM5-1B-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniCPM5-1B-hygon-FlagOS> |
@@ -100,10 +114,12 @@
 | MiniMax-M3-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-mthreads-FlagOS> |
 | MiniMax-M3-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-nvidia-FlagOS> |
 | MiniMax-M3-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/MiniMax-M3-zhenwu-FlagOS> |
-| Moonlight-16B-A3B-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/Moonlight-16B-A3B-nvidia-FlagOS> |
+| Phi-3.5-mini-instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Phi-3.5-mini-instruct-FlagOS> |
+| Phi-3.5-mini-instruct-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Phi-3.5-mini-instruct-metax-FlagOS> |
 | phi-4-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-FlagOS> |
 | phi-4-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-hygon-FlagOS> |
 | phi-4-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/phi-4-metax-FlagOS> |
+| Phi-4-mini-instruct-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Phi-4-mini-instruct-metax-FlagOS> |
 | pi0-FlagOS | <https://modelscope.cn/models/FlagRelease/pi0-FlagOS> |
 | Qwen2-7B-FlagOS-Arm | <https://modelscope.cn/models/FlagRelease/Qwen2-7B-FlagOS-Arm> |
 | Qwen2-7B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen2-7B-Instruct-FlagOS> |
@@ -123,6 +139,7 @@
 | Qwen3-4B-FlagOS-Metax | <https://modelscope.cn/models/FlagRelease/Qwen3-4B-FlagOS-Metax> |
 | Qwen3-4B-FlagOS-Nvidia | <https://modelscope.cn/models/FlagRelease/Qwen3-4B-FlagOS-Nvidia> |
 | Qwen3-4B-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-4B-hygon-FlagOS> |
+| Qwen3-4B-Instruct-2507-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-4B-Instruct-2507-iluvatar-FlagOS> |
 | Qwen3-8B-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-8B-FlagOS> |
 | Qwen3-8B-iluvatar-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-8B-iluvatar-FlagOS> |
 | Qwen3-8B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen3-8B-metax-FlagOS> |
@@ -164,3 +181,5 @@
 | Seed-OSS-36B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Seed-OSS-36B-Instruct-FlagOS> |
 | step3-FlagOS | <https://modelscope.cn/models/FlagRelease/step3-FlagOS> |
 | TeleChat3-36B-Thinking-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/TeleChat3-36B-Thinking-mthreads-FlagOS> |
+| ZCK-Qwen3-8B-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/ZCK-Qwen3-8B-metax-FlagOS> |
+| ZCK-Qwen3-8B-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/ZCK-Qwen3-8B-nvidia-FlagOS> |
