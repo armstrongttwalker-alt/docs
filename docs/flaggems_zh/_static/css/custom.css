@@ -192,6 +192,48 @@ a.reference:hover {
     background-color: #1a1a2e;
 }
 
+/* Operator category list table */
+.operator-category-table {
+    width: 100%;
+    font-size: 0.85em;
+    margin-bottom: 2em;
+}
+
+.operator-category-table th {
+    background-color: var(--pst-color-surface);
+    font-weight: bold;
+    text-align: left;
+    padding: 0.5em;
+    position: sticky;
+    top: 0;
+}
+
+.operator-category-table td {
+    padding: 0.4em 0.5em;
+    border-bottom: 1px solid var(--pst-color-border);
+    vertical-align: top;
+}
+
+.operator-category-table td code {
+    background: transparent;
+    padding: 0;
+    color: var(--pst-color-primary);
+    font-family: monospace;
+}
+
+.operator-category-table td:first-child {
+    white-space: nowrap;
+    width: 15%;
+}
+
+.operator-category-table td:last-child {
+    color: var(--pst-color-text-muted);
+}
+
+[data-theme="dark"] .operator-category-table th {
+    background-color: #1a1a2e;
+}
+
 [data-theme="dark"] .benchmark-table th {
     background-color: #1a1a2e;
 }
