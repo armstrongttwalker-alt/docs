@@ -92,6 +92,7 @@ testing/coverage
 :maxdepth: 2
 
 references/operators
+references/operators-search
 references/changelog
 references/experimental
 references/project_structure

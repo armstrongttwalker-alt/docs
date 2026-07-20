@@ -22,6 +22,7 @@ from sphinx.util import logging as sphinx_logging
 import yaml
 import json
 import re
+import html
 import os
 from pathlib import Path
 from typing import List, Dict, Any
@@ -250,6 +251,18 @@ class OperatorListDirective(SphinxDirective):
 # ---------------------------------------------------------------------------
 
 FLAGGEMS_REPO_BASE = "https://github.com/flagos-ai/FlagGems/blob/main"
+
+
+def _format_desc_html(raw: str) -> str:
+    """HTML-escape text and convert backtick-quoted phrases to <code> elements."""
+    parts = raw.split('`')
+    result_parts = []
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            result_parts.append(html.escape(part))
+        else:
+            result_parts.append(f'<code>{html.escape(part)}</code>')
+    return ''.join(result_parts)
 
 
 def _get_base_name(op_id: str) -> str:
@@ -506,12 +519,13 @@ class OperatorCategoryListDirective(SphinxDirective):
                 desc_brief = desc.split('\n')[0] if desc else '-'
                 if len(desc_brief) > 120:
                     desc_brief = desc_brief[:117] + '...'
+                desc_html = _format_desc_html(desc_brief)
 
                 html.append('<tr>'
-                            f'<td><a href="../generated/{op_id}.html"><code>{op_id}</code></a></td>'
+                            f'<td><a href="generated/{op_id}.html"><code>{op_id}</code></a></td>'
                             f'<td>{stage}</td>'
                             f'<td>{since}</td>'
-                            f'<td>{desc_brief}</td>'
+                            f'<td>{desc_html}</td>'
                             '</tr>')
 
             html.append('</tbody></table></div>')
