@@ -250,7 +250,7 @@ class OperatorListDirective(SphinxDirective):
 # Helpers — source / test URL resolution
 # ---------------------------------------------------------------------------
 
-FLAGGEMS_REPO_BASE = "https://github.com/flagos-ai/FlagGems/blob/main"
+FLAGGEMS_REPO_BASE = "https://github.com/flagos-ai/FlagGems/blob/master"
 
 
 def _format_desc_html(raw: str) -> str:
@@ -496,7 +496,7 @@ class OperatorCategoryListDirective(SphinxDirective):
             kind_ops.sort(key=lambda o: o.get('id', ''))
 
             heading_id = f'category-{kind.lower().replace(" ", "-")}'
-            html.append(f'<h3 id="{heading_id}">{kind} '
+            html.append(f'<h2 id="{heading_id}">{kind} '
                         f'<span style="font-weight:normal;font-size:0.85em;color:var(--pst-color-text-muted)">'
                         f'({len(kind_ops)} operators)</span></h3>')
             html.append('<div class="pst-scrollable-table-container">')

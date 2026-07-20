@@ -215,8 +215,9 @@ a.reference:hover {
 }
 
 .operator-category-table td code {
-    background: transparent;
-    padding: 0;
+    background: var(--pst-color-surface);
+    padding: 1px 4px;
+    border-radius: 3px;
     color: var(--pst-color-primary);
     font-family: monospace;
 }
@@ -232,6 +233,10 @@ a.reference:hover {
 
 [data-theme="dark"] .operator-category-table th {
     background-color: #1a1a2e;
+}
+
+[data-theme="dark"] .operator-category-table td code {
+    background: #2a2a3e;
 }
 
 [data-theme="dark"] .benchmark-table th {
