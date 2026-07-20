@@ -10,15 +10,15 @@
 }
 
 /* Hide right sidebar and expand width on operators, benchmark, and summary pages */
-#operator-list ~ .bd-sidebar-secondary,
-body:has(#operator-list) .bd-sidebar-secondary,
+#operator-table ~ .bd-sidebar-secondary,
+body:has(#operator-table) .bd-sidebar-secondary,
 body:has(#benchmark-results) .bd-sidebar-secondary,
 body:has(#ut-summary) .bd-sidebar-secondary,
 body:has([id^="test-results-"]) .bd-sidebar-secondary {
     display: none !important;
 }
 
-body:has(#operator-list) .bd-article-container,
+body:has(#operator-table) .bd-article-container,
 body:has(#benchmark-results) .bd-article-container,
 body:has(#ut-summary) .bd-article-container,
 body:has([id^="test-results-"]) .bd-article-container {
@@ -26,14 +26,14 @@ body:has([id^="test-results-"]) .bd-article-container {
     max-width: none !important;
 }
 
-body:has(#operator-list) .bd-content .bd-article,
+body:has(#operator-table) .bd-content .bd-article,
 body:has(#benchmark-results) .bd-content .bd-article,
 body:has(#ut-summary) .bd-content .bd-article,
 body:has([id^="test-results-"]) .bd-content .bd-article {
     max-width: none !important;
 }
 
-body:has(#operator-list) .pst-scrollable-table-container {
+body:has(#operator-table) .pst-scrollable-table-container {
     overflow-x: auto;
 }
 
