@@ -2,6 +2,33 @@
 
 /* FlagGems Documentation Custom Styles */
 
+/* ---------- Sidebar spacing (symmetric, desktop only) ---------- */
+
+@media (min-width: 992px) {
+    /* Left sidebar (navigation tree) */
+    .bd-sidebar-primary {
+        padding-left: 0.75rem;   /* left edge to nav tree */
+        padding-right: 0.5rem;   /* nav tree to main content */
+    }
+
+    /* Right sidebar (TOC) */
+    .bd-sidebar-secondary {
+        padding-right: 0.75rem;  /* right edge to TOC */
+        padding-left: 0.5rem;    /* TOC to main content */
+    }
+
+    /* Main content area */
+    .bd-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Global container */
+    .container-fluid {
+        max-width: 1400px;
+    }
+}
+
 /* Operator List Table */
 .operator-list {
     width: 100%;
