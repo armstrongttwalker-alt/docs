@@ -218,7 +218,7 @@ a.reference:hover {
     background: var(--pst-color-surface);
     padding: 1px 4px;
     border-radius: 3px;
-    color: var(--pst-color-primary);
+    color: inherit;
     font-family: monospace;
 }
 

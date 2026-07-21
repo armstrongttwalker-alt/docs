@@ -488,26 +488,29 @@ class OperatorCategoryListDirective(SphinxDirective):
         # Sort groups
         sorted_kinds = sorted(groups.keys(), key=_kind_sort_key)
 
-        container = nodes.container()
-        html: List[str] = []
+        result: List[nodes.Node] = []
 
         for kind in sorted_kinds:
             kind_ops = groups[kind]
             kind_ops.sort(key=lambda o: o.get('id', ''))
 
-            heading_id = f'category-{kind.lower().replace(" ", "-")}'
-            html.append(f'<h2 id="{heading_id}">{kind} '
-                        f'<span style="font-weight:normal;font-size:0.85em;color:var(--pst-color-text-muted)">'
-                        f'({len(kind_ops)} operators)</span></h3>')
-            html.append('<div class="pst-scrollable-table-container">')
-            html.append('<table class="operator-category-table docutils">')
-            html.append('<thead><tr>'
-                        '<th>Operator</th>'
-                        '<th>Stage</th>'
-                        '<th>Since</th>'
-                        '<th>Description</th>'
-                        '</tr></thead>')
-            html.append('<tbody>')
+            heading_id = nodes.make_id(f'category-{kind}')
+
+            # Build a proper docutils section so Sphinx includes it in the TOC
+            section = nodes.section(ids=[heading_id])
+            section += nodes.title('', f'{kind} ({len(kind_ops)} operators)')
+
+            # Build table as raw HTML inside the section
+            html_parts: List[str] = []
+            html_parts.append('<div class="pst-scrollable-table-container">')
+            html_parts.append('<table class="operator-category-table docutils">')
+            html_parts.append('<thead><tr>'
+                              '<th>Operator</th>'
+                              '<th>Stage</th>'
+                              '<th>Since</th>'
+                              '<th>Description</th>'
+                              '</tr></thead>')
+            html_parts.append('<tbody>')
 
             for op in kind_ops:
                 op_id = op.get('id', '')
@@ -515,23 +518,24 @@ class OperatorCategoryListDirective(SphinxDirective):
                 since = _get_since_version(op)
                 desc = op.get('description', '').strip()
 
-                # Truncate description for table view
                 desc_brief = desc.split('\n')[0] if desc else '-'
                 if len(desc_brief) > 120:
                     desc_brief = desc_brief[:117] + '...'
                 desc_html = _format_desc_html(desc_brief)
 
-                html.append('<tr>'
-                            f'<td><a href="generated/{op_id}.html"><code>{op_id}</code></a></td>'
-                            f'<td>{stage}</td>'
-                            f'<td>{since}</td>'
-                            f'<td>{desc_html}</td>'
-                            '</tr>')
+                html_parts.append('<tr>'
+                                  f'<td><a href="generated/{op_id}.html"><code>{op_id}</code></a></td>'
+                                  f'<td>{stage}</td>'
+                                  f'<td>{since}</td>'
+                                  f'<td>{desc_html}</td>'
+                                  '</tr>')
 
-            html.append('</tbody></table></div>')
+            html_parts.append('</tbody></table></div>')
 
-        container += nodes.raw('', '\n'.join(html), format='html')
-        return [container]
+            section += nodes.raw('', '\n'.join(html_parts), format='html')
+            result.append(section)
+
+        return result
 
 
 # ---------------------------------------------------------------------------
