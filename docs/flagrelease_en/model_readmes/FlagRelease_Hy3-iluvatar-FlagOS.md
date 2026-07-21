@@ -8,91 +8,65 @@ license: apache-2.0
 ---
 
 # Introduction
-The first open-weight release of Qwen3.6 is now available. Building on the Qwen3.5 series released in February and shaped by direct community feedback, Qwen3.6 prioritizes stability and real-world utility to deliver a more intuitive, responsive, and productive coding experience. Key improvements include enhanced agentic coding capabilities for frontend workflows and repository-level reasoning, along with a new thinking preservation option that retains reasoning context from historical messages to streamline iterative development.
+Hy3 is Tencent Hunyuan team's next-generation MoE large model with integrated fast and slow thinking: 295B total parameters, 21B active parameters (plus 3.8B MTP layer parameters), 192 experts with top-8 activation, supporting 256K context. Compared to the Preview version released in late April, Hy3 has achieved a comprehensive leap in intelligence through incorporating real-world business feedback, scaling up RL compute, and improving post-training data quality, significantly outperforming open-source models of similar size.
 
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Metax** container image supporting deployment within minutes
+- Released **FlagOS-Iluvatar** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | Qwen3.6-27B-Nvidia-Origin | Qwen3.6-27B-Metax-FlagOS |
-|--------------|---------------------------|--------------------------|
-| GPQA_Diamond | 85.86                     | 84.26                   |
-| ERQA         | 59.25                        | 60                     |
+| Metrics      | Hy3-Nvidia-Origin | Hy3-Iluvatar-FlagOS |
+|--------------|--------------------------------|--------------------------------------|
+| GPQA_Diamond | 83.33                              | 81.82                                    |
+| arc_challenge_chat        | 96.33                              | 95.82                                    |
+| math_500 | 94.6                              | 90.6                                    |
 
-## Performance Benchmark Result
-|Metric|	1k&1k 64 Concurrency|	4k&1k 64 Concurrency|	16k&1k 64 Concurrency|
-|--------------|---------------------------|--------------------------|---|
-|Equal Computing Power Ratio (flagos/H100)|	96.89%	|97.43%|	83.48%|
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 27.5.1, build 27.5.1-0ubuntu3~22.04.2 |
-| Operating System | Ubuntu 22.04.5 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 20.10.25, build 20.10.25-0ubuntu1~20.04.1 |
+| Operating System | Ubuntu 20.04.6 LTS |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/qwen3.6-27b-metax001-gems5.4.0-tree0.5.1-cxnone-plugin0.2.0-vllm0.20.2-cp312-pt28-maca37-x64-3.8.1:202607160136
+docker pull harbor.baai.ac.cn/flagrelease-public/hy3-iluvatar001-gems5.0.2-treenone-cxnone-pluginnone-vllm0.17.0-cp312-pt27-ixml44-x64-4.4.0
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen3.6-27B-metax-FlagOS --local_dir /data/Qwen3.6-27B
+modelscope download --model FlagRelease/Hy3-iluvatar-FlagOS --local_dir /data/Hy3
 ```
 
 ### Start the Container
 ```bash
-docker run -itd \
-    --name flagos \
-    --privileged \
-    --network=host \
-    --security-opt seccomp=unconfined \
-    --security-opt apparmor=unconfined \
-    --shm-size '100gb' \
-    --ulimit memlock=-1 \
-    --group-add video \
-    --device=/dev/dri \
-    --device=/dev/mxcd \
-    --device=/dev/mem \
-    --device=/dev/infiniband \
-    -v /usr/local/:/usr/local/ \
-    -v /data/:/data/ \
-    harbor.baai.ac.cn/flagrelease-public/qwen3.6-27b-metax001-gems5.4.0-tree0.5.1-cxnone-plugin0.2.0-vllm0.20.2-cp312-pt28-maca37-x64-3.8.1:202607160136 \
-    /bin/bash
- docker exec -it flagos /bin/bash
- 
+docker run -dit -v /mnt:/mnt -v /usr/src:/usr/src -v /lib/modules:/lib/modules -v /dev:/dev -v /data:/data -v /home:/home --network=host --name=flagos --ipc=host --privileged --cap-add=ALL --pid=host harbor.baai.ac.cn/flagrelease-public/hy3-iluvatar001-gems5.0.2-treenone-cxnone-pluginnone-vllm0.17.0-cp312-pt27-ixml44-x64-4.4.0 /bin/bash
+docker exec -it flagos /bin/bash
 ```
 ### Start the Server
 ```bash
-FLAGGEMS_VENDOR=metax \
-CUDA_VISIBLE_DEVICES=2,3 \
-VLLM_FL_FLAGOS_WHITELIST=cat,cos,cumsum,fill,full,gather,gt,le,lt,max,mul,sin,softmax,to,where,zeros,zeros_like \
-vllm serve /data/Qwen3.6-27B/ \
-    --tensor-parallel-size 2 --port 8000 --trust-remote-code --dtype bfloat16 \
-    --served-model-name qwen36-27b \
-    --max-num-batched-tokens 16384 
+VLLM_W8A8_MOE_USE_W4A8=1 vllm serve /data/Hy3 -tp 16 -dp 1 --port 9010 --enforce-eager --reasoning-parser hy_v3 --served-model-name hyv3iluvatarw4a8
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
-curl http://localhost:8000/v1/chat/completions \
-    -H "Content-Type: application/json" \
-    -d '{
-        "model": "qwen36-27b",
-        "messages": [{"role": "user", "content": "你好"}]
-    }'
+curl http://localhost:9010/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "hyv3iluvatarw4a8",
+    "messages": [{"role": "user", "content": "你好"}]
+  }'
 ```
 
 
@@ -143,5 +117,5 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from Qwen/Qwen3.6-27B and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
+The model weights are derived from Tencent-Hunyuan/Hy3 and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
 

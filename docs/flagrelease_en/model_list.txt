@@ -1,4 +1,5 @@
 FlagRelease/BAAI-Cardiac-Agent-hygon-FlagOS
+FlagRelease/Baguettotron-metax-FlagOS
 FlagRelease/C2S-Scale-Gemma-2-27B-hygon-FlagOS
 FlagRelease/C2S-Scale-Gemma-2-27B-nvidia-FlagOS
 FlagRelease/DeepSeek-R1-Distill-Qwen-32B-FlagOS-Cambricon
@@ -25,6 +26,7 @@ FlagRelease/DeepSeek-V4-Pro-hygon-FlagOS
 FlagRelease/DeepSeek-V4-Pro-metax-FlagOS
 FlagRelease/DeepSeek-V4-Pro-mthreads-FlagOS
 FlagRelease/DeepSeek-V4-Pro-nvidia-FlagOS
+FlagRelease/ERNIE-4.5-0.3B-PT
 FlagRelease/ERNIE-4.5-300B-A47B-PT-FlagOS
 FlagRelease/Emu3.5-FlagOS
 FlagRelease/GLM-4.5-FlagOS
@@ -53,9 +55,16 @@ FlagRelease/HY-MT2-7B-mthreads-FlagOS
 FlagRelease/HY-MT2-7B-nvidia-FlagOS
 FlagRelease/HY-MT2-7B-zhenwu-FlagOS
 FlagRelease/Hunyuan-A13B-Instruct-FlagOS
+FlagRelease/Hy3-hygon-FlagOS
+FlagRelease/Hy3-iluvatar-FlagOS
+FlagRelease/Hy3-metax-FlagOS
+FlagRelease/Hy3-mthreads-FlagOS
+FlagRelease/Hy3-nvidia-FlagOS-Express
+FlagRelease/Hy3-tsingmicro-FlagOS
+FlagRelease/Hy3-zhenwu-FlagOS
 FlagRelease/Kimi-K2-Instruct-FlagOS
 FlagRelease/Kimi-K2-Thinking-FlagOS
-FlagRelease/Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS
+FlagRelease/LFM2-2.6B-Exp-metax-FlagOS
 FlagRelease/MiniCPM-V-4-FlagOS
 FlagRelease/MiniCPM-V-4-metax-FlagOS
 FlagRelease/MiniCPM-o-4.5-ascend-FlagOS
@@ -90,6 +99,8 @@ FlagRelease/MiniMax-M3-metax-FlagOS
 FlagRelease/MiniMax-M3-mthreads-FlagOS
 FlagRelease/MiniMax-M3-nvidia-FlagOS
 FlagRelease/MiniMax-M3-zhenwu-FlagOS
+FlagRelease/Phi-3.5-mini-instruct-FlagOS
+FlagRelease/Phi-3.5-mini-instruct-metax-FlagOS
 FlagRelease/QwQ-32B-FlagOS-Cambricon
 FlagRelease/QwQ-32B-FlagOS-Iluvatar
 FlagRelease/QwQ-32B-FlagOS-Nvidia
@@ -147,8 +158,9 @@ FlagRelease/RoboBrain2.0-7B-metax-FlagOS
 FlagRelease/RoboBrain2.5-8B-FlagOS
 FlagRelease/RoboBrain2.5-8B-ascend-FlagOS
 FlagRelease/Seed-OSS-36B-Instruct-FlagOS
-FlagRelease/Seed-OSS-36B-Instruct-iluvatar-FlagOS
 FlagRelease/TeleChat3-36B-Thinking-mthreads-FlagOS
+FlagRelease/ZCK-Qwen3-8B-metax-FlagOS
+FlagRelease/ZCK-Qwen3-8B-nvidia-FlagOS
 FlagRelease/deepseek-r1-1.5b-nvidia-FlagOS
 FlagRelease/farm_molecular_representation-hygon-FlagOS
 FlagRelease/farm_molecular_representation-nvidia-FlagOS
