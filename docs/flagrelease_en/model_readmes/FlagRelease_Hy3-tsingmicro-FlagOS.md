@@ -1,94 +1,63 @@
 ---
-base_model:
-- ""
+license: apache-2.0
 language:
 - zh
 - en
-license: apache-2.0
 ---
 
 # Introduction
-Hy-MT2 is a multilingual translation model series open-sourced by Tencent Hunyuan. It includes three sizes — Hy-MT2-1.8B, Hy-MT2-7B, and Hy-MT2-30B-A3B — all supporting translation across 33 languages and 5 Chinese ethnic minority / dialect translation pairs. The 30B-A3B uses a MoE architecture (30B total parameters / 3B activated), while the 1.8B and 7B are dense models. Compared to the previous generation Hy-MT1.5, MT2 brings improvements in domain-specific translation, instruction following, and on-device deployment:
-
-The 7B and 30B-A3B achieve 96.9% and 98.1% of Gemini 2.5 Pro's performance respectively on the FLORES-200 general translation benchmark, surpassing open-source models such as DeepSeek-V4-Pro and Kimi K2.6; the 1.8B outperforms leading commercial translation APIs overall.
-The 30B-A3B achieves a GEMBA score of 99.0% of Gemini 2.5 Pro's on the DomainMTBench benchmark across vertical domains including finance, politics, and education.
-Supports translation instructions such as glossary/terminology control, style transformation, and structured output (HTML/JSON), with instruction-following capability exceeding open-source models of the same size.
-The 1.8B offers a 1.25-bit quantized version based on the Sherry framework, requiring only ~440 MB of storage, enabling local inference on mobile chips from Apple, Qualcomm, MediaTek, and others.
+Hy3 is Tencent Hunyuan team's next-generation MoE large model with integrated fast and slow thinking: 295B total parameters, 21B active parameters (plus 3.8B MTP layer parameters), 192 experts with top-8 activation, supporting 256K context. Compared to the Preview version released in late April, Hy3 has achieved a comprehensive leap in intelligence through incorporating real-world business feedback, scaling up RL compute, and improving post-training data quality, significantly outperforming open-source models of similar size.
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters	
-- Released **FlagOS-Mthreads** container image supporting deployment within minutes
+- Released **FlagOS-Tsingmicro** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.	
 
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | HY-MT2-7B-Nvidia-Origin | HY-MT2-7B-Mthreads-FlagOS |
-|--------------|--------------------------------|---------------------------|
-| flores_ca     | 52.46                   | 52.4461                   |
-| wmt16         | 60.21                   | 60.2036                 |
+| Metrics      | Hy3-Nvidia-Origin | Hy3-Tsingmicro-FlagOS |
+|--------------|-------------------|-----------------------|
+| GPQA_Diamond | 66.16             | Evaluating            |
+| arc_challenge_chat        | 96.33             | Evaluating            |
+| math_500 | 94.6              | 92                    |
+
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 27.5.1, build 9f9e405 |
-| Operating System | 22.04.4 LTS (Jammy Jellyfish) |
+| Docker Version   | Docker version 29.1.3, build 29.1.3-0ubuntu3~22.04.2 |
+| Operating System | Ubuntu 22.04.4 LTS |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-hy-mt2-7b-mthreads-tree_0.5.1_mthreads3.6-gems_5.0.2-vllm_0.13.1.dev44_g3d4cc4bc7.d20260310.musa-plugin_0.1.0-cx_0.8.0-python_3.10.12-torch_2.7.1-pcp_musa4.3.5-driver_3.3.6:202605281243
+docker pull harbor.baai.ac.cn/flagrelease-public/hy3-tsingmicro001-gems4.2.1-treenone-cx0.1.0-plugin0.1.1-vllm0.20.2-cp310-pt24-raisa260629-x64-v260629145101:202607071144
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/HY-MT2-7B-mthreads-FlagOS --local_dir /data/HY-MT2-7B
+modelscope download --model FlagRelease/Hy3-tsingmicro-FlagOS --local_dir /data/Hy3
 ```
 
 ### Start the Container
 ```bash
-docker run -d \
-    --name flagos \
-    --runtime mthreads \
-    --privileged \
-    --network host \
-    --shm-size 16g \
-    -e MTHREADS_VISIBLE_DEVICES=all \
-    -e MTHREADS_DRIVER_CAPABILITIES=all \
-    -e TORCH_MUSA_ARCH_LIST=31 \
-    -v /data:/data \
-    -v /home:/home \
-    -v /tmp:/tmp \
-    -v /usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu \
-    -v /lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu \
-    -v /etc/alternatives:/etc/alternatives \
-    -v /etc/localtime:/etc/localtime \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-hy-mt2-7b-mthreads-tree_0.5.1_mthreads3.6-gems_5.0.2-vllm_0.13.1.dev44_g3d4cc4bc7.d20260310.musa-plugin_0.1.0-cx_0.8.0-python_3.10.12-torch_2.7.1-pcp_musa4.3.5-driver_3.3.6:202605281243 \
-    bash
-    
-docker exec -it flagos bash
+docker run -d -name flagos --network host --shm-size=128g --privileged --ipc=host -v /dev:/dev -v /tmp:/tmp -v /lib/modules:/lib/modules -v /sys:/sys -v /data:/data  -it harbor.baai.ac.cn/flagrelease-public/hy3-tsingmicro001-gems4.2.1-treenone-cx0.1.0-plugin0.1.1-vllm0.20.2-cp310-pt24-raisa260629-x64-v260629145101:202607071144 bash
+docker exec -it flagos /bin/bash
 ```
 ### Start the Server
 ```bash
-export VLLM_PLUGINS=fl
-export TORCHDYNAMO_DISABLE=1 
-vllm serve /data/HY-MT2-7B \
-    --tensor-parallel-size 1 \
-    --trust-remote-code \
-    --enforce-eager \
-    --max-model-len 33792 \
-    --gpu-memory-utilization 0.95 \
-    --no-enable-chunked-prefill \
-    --max-num-batched-tokens 33792 \
-    --max-num-seqs 64 \
-    --served-model-name hy-mt2-7b \
-    --host 0.0.0.0 \
-    --port 8000
+# Enter the inference-related directory
+cd /workspace/hy3_env
+# Set environment variables, need to execute every time entering the container
+source test_env.sh
+# Run the inference serve script on 8 machines
+bash ./hy3_server.sh
 ```
 
 ## Service Invocation
@@ -97,7 +66,7 @@ vllm serve /data/HY-MT2-7B \
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "hy-mt2-7b",
+    "model": "flagOS",
     "messages": [{"role": "user", "content": "你好"}]
   }'
 ```
@@ -150,5 +119,4 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-The model weights are derived from Tencent-Hunyuan/HY-MT2-7B and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt
-
+The model weights are derived from Tencent-Hunyuan/Hy3 and are open‑sourced under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0.txt

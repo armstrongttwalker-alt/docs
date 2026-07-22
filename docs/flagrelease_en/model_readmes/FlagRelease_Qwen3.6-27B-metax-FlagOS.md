@@ -25,6 +25,11 @@ The first open-weight release of Qwen3.6 is now available. Building on the Qwen3
 | GPQA_Diamond | 85.86                     | 84.26                   |
 | ERQA         | 59.25                        | 60                     |
 
+## Performance Benchmark Result
+|Metric|	1k&1k 64 Concurrency|	4k&1k 64 Concurrency|	16k&1k 64 Concurrency|
+|--------------|---------------------------|--------------------------|---|
+|Equal Computing Power Ratio (flagos/H100)|	96.89%	|97.43%|	83.48%|
+
 # User Guide
 Environment Setup
 
@@ -37,7 +42,7 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-27b-metax-tree_0.5.1_metax3.0-gems_5.0.2-vllm_0.13.0_empty-plugin_0.1.0_vllm0.13.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_3.8.1:202606090203
+docker pull harbor.baai.ac.cn/flagrelease-public/qwen3.6-27b-metax001-gems5.4.0-tree0.5.1-cxnone-plugin0.2.0-vllm0.20.2-cp312-pt28-maca37-x64-3.8.1:202607160136
 ```
 
 ### Download Open-source Model Weights
@@ -55,39 +60,39 @@ docker run -itd \
     --security-opt seccomp=unconfined \
     --security-opt apparmor=unconfined \
     --shm-size '100gb' \
-     --ulimit memlock=-1 \
-     --group-add video \
-     --device=/dev/dri \
-     --device=/dev/mxcd \
-     --device=/dev/mem \
-     --device=/dev/infiniband \
-     -v /usr/local/:/usr/local/ \
-     -v /data/:/data/ \
-     harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-27b-metax-tree_0.5.1_metax3.0-gems_5.0.2-vllm_0.13.0_empty-plugin_0.1.0_vllm0.13.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_3.8.1:202606090203 \
-     /bin/bash
+    --ulimit memlock=-1 \
+    --group-add video \
+    --device=/dev/dri \
+    --device=/dev/mxcd \
+    --device=/dev/mem \
+    --device=/dev/infiniband \
+    -v /usr/local/:/usr/local/ \
+    -v /data/:/data/ \
+    harbor.baai.ac.cn/flagrelease-public/qwen3.6-27b-metax001-gems5.4.0-tree0.5.1-cxnone-plugin0.2.0-vllm0.20.2-cp312-pt28-maca37-x64-3.8.1:202607160136 \
+    /bin/bash
  docker exec -it flagos /bin/bash
  
 ```
 ### Start the Server
 ```bash
 FLAGGEMS_VENDOR=metax \
-CUDA_VISIBLE_DEVICES=0,1 \
+CUDA_VISIBLE_DEVICES=2,3 \
 VLLM_FL_FLAGOS_WHITELIST=cat,cos,cumsum,fill,full,gather,gt,le,lt,max,mul,sin,softmax,to,where,zeros,zeros_like \
-vllm serve /data/Qwen3.6-27B \
-  --tensor-parallel-size 2 --port 8000 --trust-remote-code --dtype bfloat16 \
-  --served-model-name flagOS \
-  --max-num-batched-tokens 65536 --max-num-seqs 256 --async-scheduling
+vllm serve /data/Qwen3.6-27B/ \
+    --tensor-parallel-size 2 --port 8000 --trust-remote-code --dtype bfloat16 \
+    --served-model-name qwen36-27b \
+    --max-num-batched-tokens 16384 
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
 curl http://localhost:8000/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "flagOS",
-    "messages": [{"role": "user", "content": "你好"}]
-  }'
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "qwen36-27b",
+        "messages": [{"role": "user", "content": "你好"}]
+    }'
 ```
 
 
