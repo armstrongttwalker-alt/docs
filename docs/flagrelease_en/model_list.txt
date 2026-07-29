@@ -164,6 +164,7 @@ FlagRelease/ZCK-Qwen3-8B-nvidia-FlagOS
 FlagRelease/deepseek-r1-1.5b-nvidia-FlagOS
 FlagRelease/farm_molecular_representation-hygon-FlagOS
 FlagRelease/farm_molecular_representation-nvidia-FlagOS
+FlagRelease/gemma-1.1-7b-it-metax-FlagOS
 FlagRelease/gpt-oss-120b-FlagOS
 FlagRelease/grok-2-FlagOS
 FlagRelease/materials.smi-ted-hygon-FlagOS
