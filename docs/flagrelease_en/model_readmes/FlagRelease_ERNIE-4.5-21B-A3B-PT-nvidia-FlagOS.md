@@ -51,7 +51,7 @@ docker pull harbor.baai.ac.cn/external-cooperation/ernie-4.5-21b-a3b-pt-nvidia-t
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/ERNIE-4.5-21B-A3B-PT-nvidia-FlagOS --local_dir /data/ERNIE-4.5-21B-A3B-PT-nvidia-FlagOS
+modelscope download --model FlagRelease/ERNIE-4.5-21B-A3B-PT-nvidia-FlagOS --local_dir /data/models/ERNIE-4.5-21B-A3B-PT-nvidia-FlagOS
 ```
 
 ### Start the Container
@@ -62,7 +62,7 @@ docker run \
   --privileged \
   --shm-size=32G \
   --gpus all \
-  -v /data:/data/models \
+  -v /data/models:/data/models \
   -itd \
   harbor.baai.ac.cn/external-cooperation/ernie-4.5-21b-a3b-pt-nvidia-tree_0.5.0_3.5-gems_5.0.1rc0-vllm_0.13.0-plugin_0.1.1-cx_none-python_3.12.3-torch_2.9.0_cu128-pcp_cuda13.2-gpu_nvidia003-arc_amd64-driver_570.158.01:2605111355 \
   sleep infinity

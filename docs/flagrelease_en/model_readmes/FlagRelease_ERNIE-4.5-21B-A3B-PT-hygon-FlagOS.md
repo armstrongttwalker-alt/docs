@@ -1,6 +1,10 @@
 ---
 frameworks:
 - ""
+language:
+- zh
+- en
+license: apache-2.0
 tasks: []
 ---
 # Introduction
@@ -47,7 +51,7 @@ docker pull harbor.baai.ac.cn/external-cooperation/ernie-4.5-21b-a3b-pt-hygon-tr
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/ERNIE-4.5-21B-A3B-PT-hygon-FlagOS --local_dir /data/ERNIE-4.5-21B-A3B-PT-hygon-FlagOS
+modelscope download --model FlagRelease/ERNIE-4.5-21B-A3B-PT-hygon-FlagOS --local_dir /data/models/ERNIE-4.5-21B-A3B-PT-hygon-FlagOS
 ```
 
 ### Start the Container
@@ -60,7 +64,7 @@ docker run \
   --device=/dev/mkfd \
   --device=/dev/dri \
   -v /opt/hyhal:/opt/hyhal \
-  -v /data:/data/models \
+  -v /data/models:/data/models \
   --group-add video \
   --cap-add=SYS_PTRACE \
   --security-opt seccomp=unconfined \
