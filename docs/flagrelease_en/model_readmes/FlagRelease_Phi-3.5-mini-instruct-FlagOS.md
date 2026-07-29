@@ -28,7 +28,7 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-project/phi-3.5-mini-instruct-nvidia003-gems5.0.2-tree0.6.0-cxnone-plugin0.0.0-vllm0.20.2-cp312-pt211-cu130-x64-570.158.01:202607161715-v5
+docker pull harbor.baai.ac.cn/flagrelease-public/phi-3.5-mini-instruct-nvidia003-gems5.0.2-tree0.6.0-cxnone-plugin0.2.0-vllm0.20.2-cp312-pt211-cu130-x64-570.158.01:202607160833-v2
 ```
 
 ### Download Open-source Model Weights
@@ -39,7 +39,7 @@ modelscope download --model FlagRelease/Phi-3.5-mini-instruct-FlagOS --local_dir
 
 ### Start the Container
 ```bash
-docker run -itd --name flagos --gpus=all --network=host -v /data:/data harbor.baai.ac.cn/flagrelease-project/phi-3.5-mini-instruct-nvidia003-gems5.0.2-tree0.6.0-cxnone-plugin0.0.0-vllm0.20.2-cp312-pt211-cu130-x64-570.158.01:202607161715-v5
+docker run -itd --name flagos --gpus=all --network=host -v /data:/data harbor.baai.ac.cn/flagrelease-public/phi-3.5-mini-instruct-nvidia003-gems5.0.2-tree0.6.0-cxnone-plugin0.2.0-vllm0.20.2-cp312-pt211-cu130-x64-570.158.01:202607160833-v2
 ```
 ### Start the Server
 ```bash

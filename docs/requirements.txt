@@ -1,4 +1,4 @@
-sphinx==8.2.3
+sphinx
 myst-parser
 sphinx-multiproject==1.0.0
 pydata-sphinx-theme
@@ -18,3 +18,4 @@ sphinx-tabs==3.4.7
 sphinx-prompt==1.10.2
 sphinx-tippy
 sphinx-togglebutton
+sphinxcontrib-lightbox2==0.4.0

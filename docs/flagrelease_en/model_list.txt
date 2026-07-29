@@ -32,10 +32,6 @@ FlagRelease/DeepSeek-V4-Pro-metax-FlagOS
 FlagRelease/DeepSeek-V4-Pro-mthreads-FlagOS
 FlagRelease/DeepSeek-V4-Pro-nvidia-FlagOS
 FlagRelease/ERNIE-4.5-0.3B-PT
-FlagRelease/ERNIE-4.5-0.3B-PT-hygon-FlagOS
-FlagRelease/ERNIE-4.5-0.3B-PT-nvidia-FlagOS
-FlagRelease/ERNIE-4.5-21B-A3B-PT-hygon-FlagOS
-FlagRelease/ERNIE-4.5-21B-A3B-PT-nvidia-FlagOS
 FlagRelease/ERNIE-4.5-300B-A47B-PT-FlagOS
 FlagRelease/Emu3.5-FlagOS
 FlagRelease/GLM-4-32B-Base-0414-hygon-FlagOS
@@ -75,11 +71,7 @@ FlagRelease/Hy3-tsingmicro-FlagOS
 FlagRelease/Hy3-zhenwu-FlagOS
 FlagRelease/Kimi-K2-Instruct-FlagOS
 FlagRelease/Kimi-K2-Thinking-FlagOS
-FlagRelease/Kimi-Linear-48B-A3B-Instruct-hygon-FlagOS
-FlagRelease/Kimi-Linear-48B-A3B-Instruct-nvidia-FlagOS
 FlagRelease/LFM2-2.6B-Exp-metax-FlagOS
-FlagRelease/Meta-Llama-3-8B-Instruct-hygon-FlagOS
-FlagRelease/Meta-Llama-3-8B-Instruct-nvidia-FlagOS
 FlagRelease/MiniCPM-V-4-FlagOS
 FlagRelease/MiniCPM-V-4-metax-FlagOS
 FlagRelease/MiniCPM-o-4.5-ascend-FlagOS
@@ -114,10 +106,6 @@ FlagRelease/MiniMax-M3-metax-FlagOS
 FlagRelease/MiniMax-M3-mthreads-FlagOS
 FlagRelease/MiniMax-M3-nvidia-FlagOS
 FlagRelease/MiniMax-M3-zhenwu-FlagOS
-FlagRelease/Moonlight-16B-A3B-hygon-FlagOS
-FlagRelease/Moonlight-16B-A3B-nvidia-FlagOS
-FlagRelease/Phi-3.5-MoE-instruct-hygon-FlagOS
-FlagRelease/Phi-3.5-MoE-instruct-nvidia-FlagOS
 FlagRelease/Phi-3.5-mini-instruct-FlagOS
 FlagRelease/Phi-3.5-mini-instruct-metax-FlagOS
 FlagRelease/QwQ-32B-FlagOS-Cambricon
@@ -179,12 +167,9 @@ FlagRelease/RoboBrain2.0-7B-metax-FlagOS
 FlagRelease/RoboBrain2.5-8B-FlagOS
 FlagRelease/RoboBrain2.5-8B-ascend-FlagOS
 FlagRelease/Seed-OSS-36B-Instruct-FlagOS
-FlagRelease/Seed-OSS-36B-Instruct-hygon-FlagOS
-FlagRelease/Seed-OSS-36B-Instruct-nvidia-FlagOS
 FlagRelease/TeleChat3-36B-Thinking-mthreads-FlagOS
 FlagRelease/ZCK-Qwen3-8B-metax-FlagOS
 FlagRelease/ZCK-Qwen3-8B-nvidia-FlagOS
-FlagRelease/aya-23-8B-metax-FlagOS
 FlagRelease/deepseek-r1-1.5b-nvidia-FlagOS
 FlagRelease/farm_molecular_representation-hygon-FlagOS
 FlagRelease/farm_molecular_representation-nvidia-FlagOS
