@@ -101,6 +101,7 @@ extensions = [
     # "sphinxemoji.sphinxemoji",
     "sphinxext.opengraph",
     "sphinx_tippy",
+    "sphinxcontrib.lightbox2",  # click-to-enlarge / lightbox for images
 ]
 
 # Check and add actually installed extensions
