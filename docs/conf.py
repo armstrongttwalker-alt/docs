@@ -102,6 +102,8 @@ extensions = [
     "sphinxext.opengraph",
     "sphinx_tippy",
     "sphinxcontrib.lightbox2",  # click-to-enlarge / lightbox for images
+    "sphinx_tippy",
+    "sphinx_togglebutton"
 ]
 
 # Check and add actually installed extensions
@@ -592,7 +594,7 @@ ogp_description_length = 300
 html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "/")
 
 master_doc = "index"
-copyright = '2025-2026, FlagOS Community'
+copyright = '2026, FlagOS Community'
 author = 'FlagOS Community'
 release = '1.0.0'
 # release = version
