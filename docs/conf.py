@@ -592,7 +592,7 @@ ogp_description_length = 300
 html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "/")
 
 master_doc = "index"
-copyright = '2025-2026, FlagOS Community'
+copyright = '2026, FlagOS Community'
 author = 'FlagOS Community'
 release = '1.0.0'
 # release = version
@@ -764,8 +764,8 @@ if html_theme == "pydata_sphinx_theme":
         "default_mode": "light"
     }
 
-    # Load scroll animations JS for the portal homepage
-    html_js_files = ["scroll-animations.js", "force-light-mode.js"]
+    # No additional JS files needed for portal homepage
+    html_js_files = []
 
 else:
     # Sphinx Book Theme configuration for all other projects
