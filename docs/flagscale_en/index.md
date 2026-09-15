@@ -12,13 +12,13 @@ Getting Started
 :gutter: 1 1 1 2
 
 :::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` Overview
-:link: FlagTree_overview/FlagTree-overview
+:link: FlagScale_overview/FlagScale-overview
 :link-type: doc
 
 Have a quick view of FlagScale, and also some basic concepts.
 
 +++
-[Learn more »](FlagTree_overview/FlagTree-overview.md)
+[Learn more »](FlagScale_overview/FlagScale-overview.md)
 :::
 
 :::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
@@ -50,7 +50,10 @@ Guides you how to run training, inference, serving, and reinforcement learning t
 :maxdepth: 5
 :hidden:
 
-release_notes/release-notes_v010.md
+release_notes/release_notes_v010.md
+release_notes/release_notes_v100.md
+release_notes/megatron_lm_fl_v020_rc0.md
+release_notes/te_fl_v020_rc0.md
 ```
 
 ```{toctree}

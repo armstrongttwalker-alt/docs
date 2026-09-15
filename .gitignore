@@ -10,6 +10,8 @@ background/
 *-backup/
 to-do/
 .playwright-mcp/
+dockerfile
+dockerfile.bak
 
 # Playwright related files
 docs/flagcicd_zh/.playwright-mcp/

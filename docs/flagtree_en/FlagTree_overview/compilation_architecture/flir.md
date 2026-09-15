@@ -16,6 +16,6 @@ position of the FLIR in the compilation pipeline.
 | Capability | Description |
 |----------|-------------|
 | **Language Coverage** | Supports 76 Triton language primitives and 103 operators. |
-| **Memory Access** | - Structured Memory Access: Provides a unified lowering path and implementation. <br> - Unstructured Memory Access: Provides a finite number of lowering paths. |
+| **Memory Access** | - Structured Memory Access: Provides a unified lowering path and implementation.<br>- Unstructured Memory Access: Provides a finite number of lowering paths. |
 | **Tensor Calculation** | NPU and DSA backend classified specializations, such as different algorithmic implementations of multivariate reductions. |
-| **Hardware Ecosystem Support** | - Fully backend-specialized, such as expanding buffer-assisted synchronization and transmitting hardware-specific information. <br> - Officially supports AIPU, Huawei Ascend, and Tsingmicro, with standardized backend registration via `third_party/[backend]/backend/compiler.py`. |
+| **Hardware Ecosystem Support** | - Fully backend-specialized, such as expanding buffer-assisted synchronization and transmitting hardware-specific information.<br>- Officially supports AIPU, Huawei Ascend, and Tsingmicro, with standardized backend registration via `third_party/[backend]/backend/compiler.py`. |

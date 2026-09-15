@@ -18,7 +18,7 @@ Getting Started
 Have a quick view of FlagRelease, and also some basic concepts.
 
 +++
-[Learn more »](model-list.md)
+[Learn more »](FlagRelease_overview/FlagRelease-overview.md)
 :::
 
 :::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Model List
@@ -29,6 +29,16 @@ Lists the FlagOS hardware-specific versions of open-source large models.
 
 +++
 [Learn more »](model-list.md)
+:::
+
+:::{grid-item-card} {octicon}`rocket;1.5em;sd-mr-1` Release Guide
+:link: release_guide/release-guide
+:link-type: doc
+
+Complete workflow for evaluating and releasing large models using FlagRelease.
+
++++
+[Learn more »](release_guide/release-guide.md)
 :::
 
 ::::
@@ -42,6 +52,7 @@ Lists the FlagOS hardware-specific versions of open-source large models.
 
 FlagRelease_overview/FlagRelease-overview.md
 getting_started/getting-started.md
+release_guide/release-guide.md
 ```
 
 ```{toctree}

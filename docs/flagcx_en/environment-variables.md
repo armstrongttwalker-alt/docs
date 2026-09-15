@@ -75,6 +75,35 @@ This document provides a comprehensive reference for all environment variables u
 | `FLAGCX_P2P_DISABLE` | 0 | When set to 1, disables P2P transport |
 | `FLAGCX_P2P_SCHEDULE_DISABLE` | 0 | When set to 1, disables P2P scheduling optimization |
 | `FLAGCX_DEVICE_FUNC_PATH` | None | Path to device function library for async kernel loading |
+| `FLAGCX_RMA_QUEUE_SIZE` | 256 | Per-peer circular buffer depth for the RMA proxy thread. Must be a power of two |
+| `FLAGCX_RMA_BATCH_MAX` | 256 | Maximum number of RDMA PUT descriptors batched into a single `iputBatch` call |
+
+---
+
+## P2P Engine Configuration
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FLAGCX_P2P_QPS_PER_CONN` | 4 | QP connections per P2P connection |
+| `FLAGCX_P2P_WORKERS_PER_POOL` | 4 | Worker threads per pool |
+| `FLAGCX_P2P_SHARD_COUNT` | 8 | Shard count for load distribution |
+| `FLAGCX_P2P_CQ_DEPTH` | 4096 | Completion queue depth |
+| `FLAGCX_P2P_MAX_WR_PER_POST` | 256 | Maximum work requests per post |
+| `FLAGCX_P2P_MAX_REQUESTS` | 256 | Maximum outstanding requests |
+| `FLAGCX_P2P_BATCH_POLL_SIZE` | 64 | Batch poll size for completions |
+| `FLAGCX_P2P_SLICE_SIZE` | 1073741824 (1GB) | Slice size for large transfers |
+| `FLAGCX_P2P_FRAGMENT_LIMIT` | 4096 (4KB) | Fragment limit for slicing |
+| `FLAGCX_P2P_MAX_SGE` | 4 | Maximum scatter-gather elements |
+| `FLAGCX_P2P_MAX_INLINE` | 64 | Maximum inline data size |
+| `FLAGCX_P2P_IB_PORT` | 1 | InfiniBand port number |
+| `FLAGCX_P2P_GID_INDEX` | -1 | GID index for RoCE (-1 = auto-detect) |
+| `FLAGCX_P2P_MTU` | 4096 | MTU size for IB transfers |
+| `FLAGCX_P2P_IB_TC` | -1 | IB traffic class (-1 = off) |
+| `FLAGCX_P2P_RETRY_CNT` | 7 | Retry count for failed operations |
+| `FLAGCX_P2P_NOTIF_MAX_PEERS` | 64 | Maximum notification peers |
+| `FLAGCX_P2P_DEST_DEV_AFFINITY` | 0 | When set to 1, enables destination device affinity |
+
+**Note**: These variables configure the FlagCX P2P Engine for one-sided RDMA operations, primarily used when integrating with transfer frameworks like NIXL.
 
 ---
 

@@ -61,5 +61,4 @@ release_notes/release-notes.md
 FlagTree_overview/FlagTree-overview.md
 getting_started/getting-started.md
 user_guide/user-guide.md
-user_guide/examples.md
 ```

@@ -70,6 +70,7 @@ sudo docker run -itd \
    make USE_NVIDIA=1 -j$(nproc) # NVIDIA GPU Platform
    make USE_CAMBRICON=1 -j$(nproc)  # Cambricon Platform
    make USE_KUNLUNXIN=1 -j$(nproc) # KLX Platform
+   make USE_SUNRISE=1 -j$(nproc) # Sunrise AI Platform
    ```
 
    See [](build.md) for the full list of supported backend flags.
@@ -122,7 +123,7 @@ sudo docker run -itd \
 2. Select Build Options
 
    ```Plain
-   cd FlagCX/test/perf # Enter the test directory
+   cd FlagCX/test/perf/host_api # Enter the Host API test directory
    make USE_NVIDIA=1 # Compile with options based on the hardware platform
    ```
 

@@ -30,7 +30,7 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-hygon-minimax:202604201005
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-hygon-minimax:202604120035
 ```
 
 ### Download Open-source Model Weights
@@ -55,18 +55,48 @@ docker run \
     --cap-add=SYS_PTRACE \
     --security-opt seccomp=unconfined \
     -itd \
-    harbor.baai.ac.cn/flagrelease-public/flagrelease-hygon-minimax:202604201005
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-hygon-minimax:202604120035
 
 docker exec -it flagos /bin/bash
 ```
 ### Start the Server
 ```bash
-USE_FLAGGEMS=1 vllm serve /data/MiniMax-M2.7 --tensor-parallel-size 8 --served-model-name minimax-m2.7 --trust-remote-code
+# You need to prepare two machines named node0 and node1, and run the following commands on each respectively to start the services.
+# in node0 (master node)
+export GLOO_SOCKET_IFNAME=eno1
+export NCCL_SOCKET_IFNAME=eno1
+export GEMS_VENDOR=hygon 
+
+USE_FLAGGEMS=1 vllm serve /data/MiniMax-M2.7 \
+  --tensor-parallel-size 8 \
+  --pipeline-parallel-size 2 \
+  --served-model-name minimax-m2.7 \
+  --nnodes 2 \
+  --node-rank 0 \
+  --port 8000 \
+  --master-addr <node0_ip> \
+  --trust-remote-code 
+
+# in node1
+export GLOO_SOCKET_IFNAME=eno1
+export NCCL_SOCKET_IFNAME=eno1
+export GEMS_VENDOR=hygon 
+USE_FLAGGEMS=1 vllm serve /data/MiniMax-M2.7 \
+  --tensor-parallel-size 8 \
+  --pipeline-parallel-size 2 \
+  --served-model-name minimax-m2.7 \
+  --nnodes 2 \
+  --node-rank 1 \
+  --port 8000 \
+  --master-addr <node0_ip> \
+  --headless \
+  --trust-remote-code 
 ```
 
 ## Service Invocation
 ### Invocation Script
 ```bash
+# in master node (node0)
 curl http://localhost:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
@@ -123,4 +153,4 @@ We warmly welcome global developers to join us:
 3. Improve technical documentation
 4. Expand hardware adaptation support
 # License
-本模型的权重来源于MiniMaxAI/MiniMax-M2.7，以apache2.0协议开源: https://www.apache.org/licenses/LICENSE-2.0.txt。
+The weights of this model are derived from MiniMaxAI/MiniMax‑M2.7, open‑sourced under the Apache License 2.0. License link: https://www.apache.org/licenses/LICENSE-2.0.txt

@@ -1,7 +1,10 @@
 ---
-base_model:
-- ""
+license: apache-2.0
+language:
+- zh
+- en
 ---
+
 # Introduction
 
 **Qwen3.6-35B-A3B** is a fully open-source sparse MoE model (35B total parameters / 3B active parameters) that excels at agentic coding, significantly outperforming its predecessor Qwen3.5-35B-A3B and holding its own against dense models such as Qwen3.5-27B and Gemma4-31B. Key features include:
@@ -19,8 +22,8 @@ base_model:
 ## Benchmark Result
 |Metrics|Qwen3.6-35B-A3B-nomtp-Nvidia-Origin|Qwen3.6-35B-A3B-nomtp-Metax-FlagOS|
 |-------|---------------|---------------|
-|GPQA_Diamond |0.8283 |0.8384|
-|ERQA  | 0.5875  | 0.55|
+|GPQA_Diamond |0.8283 |0.8081|
+|ERQA  | 0.5875  | 0.555|
 
 # User Guide
 Environment Setup
@@ -34,7 +37,7 @@ Environment Setup
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-metax-release-model_qwen3.6-35b-a3b-nomtp-tree_none-gems_4.2.0-vllm_0.13.0-cx_none-python_3.12.11-torch_musa-2.8.0-pcp_maca3.3.0.15-gpu_metax-arc_amd64-driver_2.2.9:202604152134
+docker pull harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608
 ```
 
 ### Download Open-source Model Weights
@@ -46,30 +49,43 @@ modelscope download --model FlagRelease/Qwen3.6-35B-A3B-nomtp-metax-FlagOS --loc
 ### Start the Container
 ```bash
 #Container Startup
-docker run -itd \
-    --name flagos \
-    --privileged \
-     --network=host \
-     --security-opt seccomp=unconfined \
-     --security-opt apparmor=unconfined \
-     --shm-size '100gb' \
-     --ulimit memlock=-1 \
-     --group-add video \
-     --device=/dev/dri \
-     --device=/dev/mxcd \
-     --device=/dev/mem \
-     --device=/dev/infiniband \
-     -v /usr/local/:/usr/local/ \
-     -v /data/:/data/ \
-     harbor.baai.ac.cn/flagrelease-public/flagrelease-metax-release-model_qwen3.6-35b-a3b-nomtp-tree_none-gems_4.2.0-vllm_0.13.0-cx_none-python_3.12.11-torch_musa-2.8.0-pcp_maca3.3.0.15-gpu_metax-arc_amd64-driver_2.2.9:202604152134 \
-     /bin/bash
+docker run -itd
+    --name flagos
+    --privileged
+    --network=host
+    --security-opt seccomp=unconfined
+    --security-opt apparmor=unconfined
+    --shm-size '100gb'
+    --ulimit memlock=-1
+    --group-add video
+    --device=/dev/dri
+    --device=/dev/mxcd
+    --p 8000:8000
+    --env CUDA_VISIBLE_DEVICES=0,1
+    --device=/dev/mem
+    --device=/dev/infiniband
+    -v /usr/local/:/usr/local/
+    -v /data/:/data/
+    harbor.baai.ac.cn/flagrelease-public/flagrelease-qwen3.6-35b-a3b-nomtp-metax-tree_none-gems_4.2.0-vllm_0.13.0_empty-plugin_0.0.0-cx_0.8.0-python_3.12.11-torch_2.8.0_metax3.3.0.2-pcp_maca3.3.0.15-gpu_metax001-arc_amd64-driver_2.15.9:202606100608 bin/bash
 
 docker exec -it flagos /bin/bash
   
 ```
 ### Start the Server
 ```bash
-USE_FLAGGEMS=1 vllm serve /data/Qwen3.6-35B-A3B-nomtp --tensor-parallel-size 2 --port 8000 --served-model-name qwen36
+export USE_FLAGGEMS=1
+export VLLM_PLUGINS=fl
+export VLLM_FL_PLATFORM=maca
+export CUDA_VISIBLE_DEVICES=0,1
+export VLLM_FL_PREFER=flagos
+export VLLM_FL_SKIP_ATEN_OVERRIDE=1
+export VLLM_FL_NO_MCOP_MOESUM=1
+export VLLM_FL_MCOP_MOEALIGN=1
+export VLLM_FL_MOE_TUNED_CFG=1
+export MACA_PATH=/opt/maca
+export LD_LIBRARY_PATH=/opt/maca/lib:/opt/maca/mxgpu_llvm/lib:/opt/maca/ompi/lib
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+vllm serve /data/Qwen3.6-35B-A3B-nomtp --served-model-name qwen36 --host 0.0.0.0 --port 8000 --trust-remote-code --max-model-len 73728 --gpu-memory-utilization 0.90 --tensor-parallel-size 2 --no-enable-prefix-caching --compilation-config '{"cudagraph_mode":"FULL"}' --max-num-batched-tokens 16384 --block-size 32 
 ```
 
 ## Service Invocation
