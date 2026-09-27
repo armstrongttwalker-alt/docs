@@ -1,8 +1,8 @@
 # FlagPrism
 
-![FlagPrism 架构](assets/flagprism-architecture.png)
-
 FlagPrism 是面向 [Triton](https://github.com/triton-lang/triton) 程序的多后端调试与性能分析工具，服务于 [FlagTree](https://github.com/flagos-ai/FlagTree) 生态。它集中维护 `flagtree.debugger` 与 `flagtree.profiler` 两个组件，为 NVIDIA GPU 及多种 AI 加速设备提供一致的观测工作流。
+
+![FlagPrism 架构](assets/flagprism-architecture.png)
 
 ::::{grid} 1 1 2 2
 :gutter: 2

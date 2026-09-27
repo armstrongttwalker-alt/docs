@@ -1,8 +1,8 @@
 # FlagPrism
 
-![FlagPrism architecture](assets/flagprism-architecture.png)
-
 FlagPrism is a multi-backend debugging and performance-analysis toolkit for [Triton](https://github.com/triton-lang/triton) programs, built for the [FlagTree](https://github.com/flagos-ai/FlagTree) ecosystem. It centrally maintains the `flagtree.debugger` and `flagtree.profiler` components and provides a consistent observability workflow across NVIDIA GPUs and diverse AI accelerators.
+
+![FlagPrism architecture](assets/flagprism-architecture.png)
 
 ::::{grid} 1 1 2 2
 :gutter: 2
