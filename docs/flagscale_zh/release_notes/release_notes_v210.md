@@ -18,4 +18,4 @@
 | 昇腾 Ascend | `ascend` | `ASCEND_RT_VISIBLE_DEVICES` | Qwen3 训练，单卡与多卡 |
 | 平头哥 PPU | `ppu` | `CUDA_VISIBLE_DEVICES` | Qwen3 训练，八卡，已启用 FlagOS 算子栈 |
 
-分步操作请参见[多平台训练与测试](../user_guide/multi-platform-training.md)。
+分步操作请参见[多平台训练与测试](../getting_started/multi-platform-training.md)。

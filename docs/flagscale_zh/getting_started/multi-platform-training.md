@@ -264,4 +264,4 @@ def get_device_arch_version():
 - FlagScale 本身无需按平台安装，平台支持完全来自插件。
 - 所有配置中都要保留 `CUDA_DEVICE_MAX_CONNECTIONS: 1`，非 CUDA 平台也不例外。
 - 训练日志写入实验目录下；`--stop` 可终止任务。
-- 模型级配置项请参见[要求](../getting_started/requirements.md)与 [examples](https://github.com/flagos-ai/FlagScale/tree/main/examples) 目录。
+- 模型级配置项请参见[要求](requirements.md)与 [examples](https://github.com/flagos-ai/FlagScale/tree/main/examples) 目录。

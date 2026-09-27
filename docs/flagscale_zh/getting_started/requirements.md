@@ -17,7 +17,7 @@ FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有
 | 昇腾 Ascend | `npu-smi info` | `ASCEND_RT_VISIBLE_DEVICES` | `ascend` |
 | 平头哥 PPU | `ppu-smi` | `CUDA_VISIBLE_DEVICES` | `ppu` |
 
-分步操作请参见[多平台训练与测试](../user_guide/multi-platform-training.md)。
+分步操作请参见[多平台训练与测试](multi-platform-training.md)。
 
 ## 支持的模型
 

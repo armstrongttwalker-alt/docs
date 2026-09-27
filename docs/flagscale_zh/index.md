@@ -31,15 +31,6 @@
 [了解更多 »](getting_started/getting-started.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` 用户指南
-:link: user_guide/user-guide
-:link-type: doc
-
-指导如何运行训练、推理、服务和强化学习任务。
-
-+++
-[了解更多 »](user_guide/user-guide.md)
-:::
 
 ::::
 
@@ -62,5 +53,4 @@ release_notes/release_notes_v100.md
 
 FlagScale_overview/FlagScale-overview.md
 getting_started/getting-started.md
-user_guide/user-guide.md
 ```
