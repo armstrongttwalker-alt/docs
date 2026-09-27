@@ -7,6 +7,18 @@
 
 FlagScale 设计为与 FlagOS 插件协同工作。虽然 FlagScale 本身没有硬件平台要求，但您应查看计划使用的具体 FlagOS 插件的硬件要求。有关更多信息，请参见 [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL)、[TransformerEngine-FL](https://github.com/flagos-ai/TransformerEngine-FL)、[VeRL-FL](https://github.com/flagos-ai/verl-FL) 和 [vllm-plugin-FL](https://github.com/flagos-ai/vllm-plugin-FL)。
 
+训练已在以下平台上与 Megatron-LM-FL、TransformerEngine-FL 一起完成端到端验证：
+
+| 平台 | 设备检查命令 | 可见设备环境变量 | FlagTree 后端 |
+|------|--------------|------------------|---------------|
+| NVIDIA | `nvidia-smi` | `CUDA_VISIBLE_DEVICES` | `cuda` |
+| 沐曦 MetaX | `mx-smi` | `MACA_VISIBLE_DEVICES` | `metax` |
+| 海光 Hygon | `hy-smi` | `HIP_VISIBLE_DEVICES` | `hcu` |
+| 昇腾 Ascend | `npu-smi info` | `ASCEND_RT_VISIBLE_DEVICES` | `ascend` |
+| 平头哥 PPU | `ppu-smi` | `CUDA_VISIBLE_DEVICES` | `ppu` |
+
+分步操作请参见[多平台训练与测试](../user_guide/multi-platform-training.md)。
+
 ## 支持的模型
 
 ### 训练

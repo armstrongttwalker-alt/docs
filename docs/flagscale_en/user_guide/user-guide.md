@@ -2,6 +2,12 @@
 
 This guide covers how to configure FlagScale and run training, inference, serving, and reinforcement learning tasks.
 
+```{toctree}
+:maxdepth: 2
+
+multi-platform-training.md
+```
+
 ## Step 1: Configure YAML files
 
 FlagScale uses [Hydra](https://hydra.cc/) for configuration management. Every task is driven by two YAML files that work together: an experiment-level file and a task-level file, both in the `examples/` directory. Before running the task, you need to configure these files first.

@@ -103,3 +103,27 @@ git clone https://github.com/flagos-ai/FlagScale.git
 cd FlagScale
 pip install .
 ```
+
+### 3. 非 NVIDIA 平台
+
+在沐曦、海光、昇腾与平头哥 PPU 上，请使用对应平台的容器镜像，并从源码安装与之匹配的正式版本 Megatron-LM-FL 与 TransformerEngine-FL。
+
+| 平台 | 容器镜像 | FlagTree 后端 | 可见设备环境变量 |
+|------|----------|---------------|------------------|
+| 沐曦 MetaX | `harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839` | `metax` | `MACA_VISIBLE_DEVICES` |
+| 海光 Hygon | `harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6` | `hcu` | `HIP_VISIBLE_DEVICES` |
+| 昇腾 Ascend | `harbor.baai.ac.cn/flagos-dev/flagscale:manual-20260812-ascend-dev-inference` | `ascend` | `ASCEND_RT_VISIBLE_DEVICES` |
+| 平头哥 PPU | `harbor.baai.ac.cn/flagtree/flagtree-ppu-py312-torch2.10.0-sdk2.1.0-cu130-ubuntu24.04:202607-3.6-vllm0.24.0` | `ppu` | `CUDA_VISIBLE_DEVICES` |
+
+```{code-block} shell
+cd /workspace/Megatron-LM-FL && git checkout v0.3.0 && pip install . --no-build-isolation --root-user-action=ignore
+cd /workspace/TransformerEngine-FL && git checkout v0.3.0
+TE_FL_SKIP_CUDA=1 MAX_JOBS=64 pip install -v . --no-build-isolation --root-user-action=ignore
+cd /workspace/FlagScale && git checkout v2.1.0 && pip install . --no-build-isolation
+```
+
+```{note}
+非 NVIDIA 平台必须加 `TE_FL_SKIP_CUDA=1`——不加会尝试编译 CUDA kernel 并失败。
+```
+
+完整流程（含 FlagTree 与 FlagGems 算子栈、各平台问题排查）请参见[多平台训练与测试](../user_guide/multi-platform-training.md)。

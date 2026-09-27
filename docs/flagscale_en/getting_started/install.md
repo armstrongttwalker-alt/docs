@@ -104,3 +104,27 @@ cd FlagScale
 pip install .
 ```
 
+### 3. Non-NVIDIA platforms
+
+On MetaX, Hygon, Ascend, and T-Head PPU, use the platform container image and install Megatron-LM-FL and TransformerEngine-FL from source at the matching released version.
+
+| Platform | Container image | FlagTree backend | Visible-devices env |
+|----------|-----------------|------------------|---------------------|
+| MetaX | `harbor.baai.ac.cn/flagscale/megatron-lm-with-te:202603231839` | `metax` | `MACA_VISIBLE_DEVICES` |
+| Hygon | `harbor.sourcefind.cn:5443/dcu/admin/base/custom:vllm0.20.0-ubuntu22.04-dtk26.04-py3.10-MiniCPM-V-4.6` | `hcu` | `HIP_VISIBLE_DEVICES` |
+| Ascend | `harbor.baai.ac.cn/flagos-dev/flagscale:manual-20260812-ascend-dev-inference` | `ascend` | `ASCEND_RT_VISIBLE_DEVICES` |
+| T-Head PPU | `harbor.baai.ac.cn/flagtree/flagtree-ppu-py312-torch2.10.0-sdk2.1.0-cu130-ubuntu24.04:202607-3.6-vllm0.24.0` | `ppu` | `CUDA_VISIBLE_DEVICES` |
+
+```{code-block} shell
+cd /workspace/Megatron-LM-FL && git checkout v0.3.0 && pip install . --no-build-isolation --root-user-action=ignore
+cd /workspace/TransformerEngine-FL && git checkout v0.3.0
+TE_FL_SKIP_CUDA=1 MAX_JOBS=64 pip install -v . --no-build-isolation --root-user-action=ignore
+cd /workspace/FlagScale && git checkout v2.1.0 && pip install . --no-build-isolation
+```
+
+```{note}
+`TE_FL_SKIP_CUDA=1` is mandatory on non-NVIDIA platforms — without it the build tries to compile the CUDA kernels and fails.
+```
+
+For the full procedure, including the FlagTree and FlagGems operator stack and the platform-specific issues, see [Multi-Platform Training and Testing](../user_guide/multi-platform-training.md).
+

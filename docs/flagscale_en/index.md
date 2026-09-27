@@ -50,10 +50,9 @@ Guides you how to run training, inference, serving, and reinforcement learning t
 :maxdepth: 5
 :hidden:
 
-release_notes/release_notes_v010.md
+release_notes/release_notes_v210.md
+release_notes/release_notes_v200.md
 release_notes/release_notes_v100.md
-release_notes/megatron_lm_fl_v020_rc0.md
-release_notes/te_fl_v020_rc0.md
 ```
 
 ```{toctree}
