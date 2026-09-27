@@ -18,4 +18,4 @@ Validated end-to-end together with Megatron-LM-FL v0.3.0 and TransformerEngine-F
 | Ascend | `ascend` | `ASCEND_RT_VISIBLE_DEVICES` | Qwen3 training, single card and multi-card |
 | T-Head PPU | `ppu` | `CUDA_VISIBLE_DEVICES` | Qwen3 training, 8 cards, FlagOS operator stack enabled |
 
-For the step-by-step procedure, see [Multi-Platform Training and Testing](../user_guide/multi-platform-training.md).
+For the step-by-step procedure, see [Multi-Platform Training and Testing](../getting_started/multi-platform-training.md).

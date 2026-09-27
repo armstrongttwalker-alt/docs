@@ -17,7 +17,7 @@ Training has been validated end to end on the following platforms together with 
 | Ascend | `npu-smi info` | `ASCEND_RT_VISIBLE_DEVICES` | `ascend` |
 | T-Head PPU | `ppu-smi` | `CUDA_VISIBLE_DEVICES` | `ppu` |
 
-For the step-by-step procedure, see [Multi-Platform Training and Testing](../user_guide/multi-platform-training.md).
+For the step-by-step procedure, see [Multi-Platform Training and Testing](multi-platform-training.md).
 
 ## Supported models
 

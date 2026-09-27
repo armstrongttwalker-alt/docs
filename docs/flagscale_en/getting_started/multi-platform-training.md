@@ -264,4 +264,4 @@ def get_device_arch_version():
 - FlagScale itself needs no hardware-specific install; the platform support comes entirely from the plugins.
 - Keep `CUDA_DEVICE_MAX_CONNECTIONS: 1` in every config, including non-CUDA platforms.
 - Training logs are written under the experiment directory; `--stop` terminates the job.
-- For model-level configuration options, see [Requirements](../getting_started/requirements.md) and the [examples](https://github.com/flagos-ai/FlagScale/tree/main/examples) directory.
+- For model-level configuration options, see [Requirements](requirements.md) and the [examples](https://github.com/flagos-ai/FlagScale/tree/main/examples) directory.
