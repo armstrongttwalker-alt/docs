@@ -1,9 +1,11 @@
 # FlagPrism
 
+![FlagPrism architecture](assets/flagprism-architecture.png)
+
 FlagPrism is a multi-backend debugging and performance-analysis toolkit for [Triton](https://github.com/triton-lang/triton) programs, built for the [FlagTree](https://github.com/flagos-ai/FlagTree) ecosystem. It centrally maintains the `flagtree.debugger` and `flagtree.profiler` components and provides a consistent observability workflow across NVIDIA GPUs and diverse AI accelerators.
 
-```{grid} 1 1 2 2
-|:gutter: 2
+::::{grid} 1 1 2 2
+:gutter: 2
 
 :::{grid-item-card} Overview
 :link: overview/overview
@@ -32,7 +34,7 @@ Observe in-kernel values, memory access, and op execution.
 
 Profile Triton kernels with context, metadata, and hardware metrics.
 :::
-```
+::::
 
 ## Project links
 
@@ -40,15 +42,25 @@ Profile Triton kernels with context, metadata, and hardware metrics.
 - **FlagTree**: [flagos-ai/FlagTree](https://github.com/flagos-ai/FlagTree)
 - **License**: MIT License
 
+---
+
 ```{toctree}
-:maxdepth: 2
+:caption: 📑 Release Notes
+:maxdepth: 5
 :hidden:
 
-overview/overview
-getting_started/install
-user_guide/debugger
-user_guide/profiler
-user_guide/vendor-adaptation
-references/reference
-release_notes/release-notes
+release_notes/release-notes.md
+```
+
+```{toctree}
+:caption: 📚 Guides
+:maxdepth: 5
+:hidden:
+
+overview/overview.md
+getting_started/install.md
+user_guide/debugger.md
+user_guide/profiler.md
+user_guide/vendor-adaptation.md
+references/reference.md
 ```

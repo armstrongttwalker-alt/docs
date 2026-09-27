@@ -49,4 +49,4 @@ Python wheel 仅支持两种构建模式：
 
 ## 状态
 
-FlagPrism 正处于活跃开发中，目前尚无 tag release，由 FlagTree 子模块直接消费。
+FlagPrism 通过 FlagTree 子模块交付，随 FlagTree wheel 一起安装。
