@@ -1,9 +1,11 @@
 # FlagPrism
 
+![FlagPrism 架构](assets/flagprism-architecture.png)
+
 FlagPrism 是面向 [Triton](https://github.com/triton-lang/triton) 程序的多后端调试与性能分析工具，服务于 [FlagTree](https://github.com/flagos-ai/FlagTree) 生态。它集中维护 `flagtree.debugger` 与 `flagtree.profiler` 两个组件，为 NVIDIA GPU 及多种 AI 加速设备提供一致的观测工作流。
 
-```{grid} 1 1 2 2
-|:gutter: 2
+::::{grid} 1 1 2 2
+:gutter: 2
 
 :::{grid-item-card} 概览
 :link: overview/overview
@@ -32,7 +34,7 @@ FlagPrism 是什么、后端支持情况、与 FlagTree 的关系。
 
 对 Triton kernel 进行上下文、元数据和硬件指标分析。
 :::
-```
+::::
 
 ## 项目链接
 
@@ -40,15 +42,25 @@ FlagPrism 是什么、后端支持情况、与 FlagTree 的关系。
 - **FlagTree**：[flagos-ai/FlagTree](https://github.com/flagos-ai/FlagTree)
 - **许可证**：MIT License
 
+---
+
 ```{toctree}
-:maxdepth: 2
+:caption: 📑 发布说明
+:maxdepth: 5
 :hidden:
 
-overview/overview
-getting_started/install
-user_guide/debugger
-user_guide/profiler
-user_guide/vendor-adaptation
-references/reference
-release_notes/release-notes
+release_notes/release-notes.md
+```
+
+```{toctree}
+:caption: 📚 使用指南
+:maxdepth: 5
+:hidden:
+
+overview/overview.md
+getting_started/install.md
+user_guide/debugger.md
+user_guide/profiler.md
+user_guide/vendor-adaptation.md
+references/reference.md
 ```

@@ -49,4 +49,4 @@ The two components cannot be enabled or disabled independently. `TRITON_BUILD_FL
 
 ## Status
 
-FlagPrism is under active development. There is no tagged release yet; it is consumed directly from the FlagTree submodule.
+FlagPrism is delivered through the FlagTree submodule and installed as part of the FlagTree wheel.
