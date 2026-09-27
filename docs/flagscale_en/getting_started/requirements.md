@@ -7,6 +7,18 @@ This section includes information about the hardware platforms and models.
 
 FlagScale is designed to work collaboratively with FlagOS plugins. While FlagScale itself has no hardware platform requirements, you should review the hardware requirements of the specific FlagOS plugins you intend to use. For more information, see [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL), [TransformerEngine-FL](https://github.com/flagos-ai/TransformerEngine-FL), [VeRL-FL](https://github.com/flagos-ai/verl-FL), and [vllm-plugin-FL](https://github.com/flagos-ai/vllm-plugin-FL).
 
+Training has been validated end to end on the following platforms together with Megatron-LM-FL and TransformerEngine-FL:
+
+| Platform | Device check | Visible-devices env | FlagTree backend |
+|----------|--------------|---------------------|------------------|
+| NVIDIA | `nvidia-smi` | `CUDA_VISIBLE_DEVICES` | `cuda` |
+| MetaX | `mx-smi` | `MACA_VISIBLE_DEVICES` | `metax` |
+| Hygon | `hy-smi` | `HIP_VISIBLE_DEVICES` | `hcu` |
+| Ascend | `npu-smi info` | `ASCEND_RT_VISIBLE_DEVICES` | `ascend` |
+| T-Head PPU | `ppu-smi` | `CUDA_VISIBLE_DEVICES` | `ppu` |
+
+For the step-by-step procedure, see [Multi-Platform Training and Testing](../user_guide/multi-platform-training.md).
+
 ## Supported models
 
 ### Training

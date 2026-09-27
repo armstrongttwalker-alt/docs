@@ -2,6 +2,12 @@
 
 本指南介绍如何配置 FlagScale 以及如何运行训练、推理、服务和强化学习任务。
 
+```{toctree}
+:maxdepth: 2
+
+multi-platform-training.md
+```
+
 ## 第一步：配置 YAML 文件
 
 FlagScale 使用 [Hydra](https://hydra.cc/) 进行配置管理。每个任务由两个协同工作的 YAML 文件驱动：一个实验级文件和一个任务级文件，均位于 `examples/` 目录下。运行任务前，需要先配置这些文件。
