@@ -1,7 +1,17 @@
 # FlagSparse 发布说明
 
-## v0.2.0
+## v0.3.0
 
+- **新增特性**
+
+  - 新增稀疏算子与格式：SpMM CSR 扩展、col-major 与 COO 优化变体、SpMM CSC/BSR、SpMV CSC/BSR 及 BSR 优化变体、SpSV SELL。
+  - 后端覆盖扩展至海光 DCU、MetaX（MACA）、摩尔线程（MUSA）与昇腾（CANN），可通过环境变量选择后端。
+
+- **增强特性**
+
+  - SpMV CSR、SpGEMM 与 SDDMM 性能优化。
+
+## v0.2.0
 
 - **新增功能**
 

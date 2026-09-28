@@ -1,7 +1,18 @@
 # FlagDNN Release Notes
 
-## v0.2.0
+## v0.3.0
 
+- **Added Features**
+
+  - New hardware backends: Ascend, Hygon DCU, Moore Threads (MUSA) and Iluvatar, plus an updated T-Head backend.
+  - New convolution operators: `conv_dgrad` and `conv_wgrad`.
+
+- **Enhanced Features**
+
+  - Long-context causal SDPA performance, including the causal d128 backward path.
+  - Performance tuning across convolution, matmul, normalization and binary operators.
+
+## v0.2.0
 
 - **Added Features**
 

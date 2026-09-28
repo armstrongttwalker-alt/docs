@@ -1,7 +1,17 @@
 # FlagSparse Release Notes
 
-## v0.2.0
+## v0.3.0
 
+- **Added Features**
+
+  - New sparse operators and formats: SpMM CSR expansion, col-major and COO-optimized variants, SpMM CSC/BSR, SpMV CSC/BSR and BSR-optimized variants, and SpSV SELL.
+  - Backend coverage extended to Hygon DCU, MetaX (MACA), Moore Threads (MUSA) and Ascend (CANN), with backend selection through environment variables.
+
+- **Enhanced Features**
+
+  - SpMV CSR, SpGEMM and SDDMM performance.
+
+## v0.2.0
 
 - **Added Features**
 

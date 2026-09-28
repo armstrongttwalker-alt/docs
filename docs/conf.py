@@ -27,6 +27,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagsparse_en make html  # build the flagsparse English project
    $ PROJECT=flagtensor_en make html  # build the flagtensor English project
    $ PROJECT=flagaudio_en make html  # build the flagaudio English project
+   $ PROJECT=flagattention_en make html  # build the flagattention English project
    $ PROJECT=pytorch_plugin_fl_en make html  # build the pytorch_plugin_fl English project
    $ PROJECT=sglang_plugin_fl_en make html  # build the sglang_plugin_fl English project
    $ PROJECT=flagquantum_en make html  # build the flagquantum English project
@@ -53,6 +54,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagsparse_zh make html  # build the flagsparse Chinese project
    $ PROJECT=flagtensor_zh make html  # build the flagtensor Chinese project
    $ PROJECT=flagaudio_zh make html  # build the flagaudio Chinese project
+   $ PROJECT=flagattention_zh make html  # build the flagattention Chinese project
    $ PROJECT=pytorch_plugin_fl_zh make html  # build the pytorch_plugin_fl Chinese project
    $ PROJECT=sglang_plugin_fl_zh make html  # build the sglang_plugin_fl Chinese project
    $ PROJECT=flagquantum_zh make html  # build the flagquantum Chinese project
@@ -281,6 +283,20 @@ multiproject_projects = {
         "config": {
             "project": "FlagAudio 文档中心",
             "html_title": "FlagAudio 文档中心",
+        },
+    },
+    "flagattention_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagAttention Documentation",
+            "html_title": "FlagAttention Documentation",
+        },
+    },
+    "flagattention_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagAttention 文档中心",
+            "html_title": "FlagAttention 文档中心",
         },
     },
     "pytorch_plugin_fl_en": {
