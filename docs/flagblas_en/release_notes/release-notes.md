@@ -1,7 +1,20 @@
 # FlagBLAS Release Notes
 
-## v0.2.0
+## v0.3.0
 
+- **Added Features**
+
+  - New Level-1 rotation operators: `rotg`, `rotm`, `rotmg`.
+  - Level-2 coverage extended across the packed, banded, triangular, symmetric/Hermitian and rank-1/rank-2 update families, including `hpmv`, `trsv`, `tpsv`, `tbsv`, `ger`, `syr`, `her` and the packed `sspr`/`sspr2`/`dspr`/`dspr2` updates.
+  - New GEMM operators: `dgemm`, `cgemm` and `zgemm`, plus Group GEMM on the NVIDIA backend.
+  - New hardware backends: Ascend and Hygon DCU, alongside NVIDIA and Iluvatar.
+
+- **Enhanced Features**
+
+  - All Level-2 and Level-3 operators are now at the stable stage.
+  - GEMM, triangular-solve and rank-update operators have been further optimized.
+
+## v0.2.0
 
 - **Added Features**
   - **Operator Registry** — Added `conf/operators.yaml` with full operator metadata.
