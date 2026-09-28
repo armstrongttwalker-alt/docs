@@ -4,10 +4,6 @@ This section includes the verl-FL release information.
 
 ## v0.2.0
 
-```{note}
-This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
-```
-
 - **Added Features**
 
   - Unified Platform Abstraction Layer — Strategy Pattern design under `verl/plugin/platform/` with `PlatformBase` ABC (16 device-agnostic methods) and concrete implementations for CUDA, MetaX (MACA), Ascend NPU, Moore Threads (MUSA), and CPU. Runtime platform selection via `VERL_PLATFORM` environment variable.
