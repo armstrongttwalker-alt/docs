@@ -119,9 +119,9 @@ pip install --no-build-isolation -v .
 ### 5. 安装 verl-FL
 
 ```bash
-git clone --branch v0.2.0-rc2.post1 https://github.com/flagos-ai/verl-FL.git
+git clone --branch v0.2.0 https://github.com/flagos-ai/verl-FL.git
 cd verl-FL
 pip install --no-build-isolation -v -e .
 ```
 
-端到端 GRPO 训练流程请参见[端到端用例](../user_guide/e2e-use-case.md)。
+NVIDIA、沐曦 MetaX 与 MUSA 异构平台的端到端 GRPO 训练流程请参见[平台抽象与多芯片训练](../user_guide/platform-abstraction.md)。

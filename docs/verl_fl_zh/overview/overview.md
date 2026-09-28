@@ -1,9 +1,5 @@
 # verl-FL 概述
 
-```{note}
-这是一个预览版本。显示的版本号是预发布标识，最终发布时可能会更改。此预览中的内容仅供参考，不构成对最终产品的承诺或保证。
-```
-
 verl-FL 是 [verl](https://github.com/volcengine/verl) 的一个分支，旨在支持多种 AI 加速器。它基于 [FlagOS](https://github.com/flagos-ai) 构建，FlagOS 是一个统一的开源 AI 系统软件栈，集成了训练引擎 [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL) 和 [Transformer-Engine-FL](https://github.com/flagos-ai/TransformerEngine-FL)，以及推理引擎 [vllm-plugin-FL](https://github.com/flagos-ai/vllm-plugin-FL) 等关键组件。
 
 上游 verl 与 CUDA 紧密耦合，而 verl-FL 引入了平台抽象层并集成了 FlagOS 生态组件，从而在不修改上游业务逻辑的情况下实现异构分布式训练。
