@@ -11,64 +11,67 @@ In this release, Qwen-Image-2.1 leverages the FlagOS software stack to provide d
 
 ### Integrated Deployment
 - Out-of-the-box inference scripts with pre-configured hardware and software parameters
-- Released **FlagOS-Mthreads** container image supporting deployment within minutes
+- Released **FlagOS-T-Head** container image supporting deployment within minutes
 ### Consistency Validation
 - Rigorously evaluated through benchmark testing: Performance and results from the FlagOS software stack are compared against native stacks on multiple public.
 
 # Evaluation Results
 ## Benchmark Result
-| Metrics      | Qwen-Image-2.1-Nvidia-Origin | Qwen-Image-2.1-Mthreads-FlagOS |
+| Metrics      | Qwen-Image-2.1-Nvidia-Origin | Qwen-Image-2.1-T-Head-FlagOS |
 |--------------|--------------------------------|--------------------------------------|
-| T2I-100 (ClipScore) | 33.66                              | 33.56                                  |
-| Coco-Image (ClipScore) | 25.34                              | 25.38                                |
+| T2I-100 (ClipScore) | 33.66                              | 33.80                                  |
+| Coco-Image (ClipScore) | 25.34                              | 25.25                               |
 
 # User Guide
 Environment Setup
 
 | Item             | Version              |
 |------------------|----------------------|
-| Docker Version   | Docker version 29.3.1 |
-| Operating System | 22.04.5 LTS |
+| Docker Version   | Docker version 29.7.2 |
+| Operating System | 24.04.2 LTS |
 
 ## Operation Steps
 
 ### Download FlagOS Image
 ```bash
-docker pull harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gemsnone-treenone-cxnone-pluginnone-vllmnone-sglangnone-sglangflnone-cp310-ptnone-musanone-x64-3.3.5-server:202609240151
+docker pull harbor.baai.ac.cn/flagrelease-public/qwen-image2.1-pp001-gems0.0.0-tree0.6.2-cxnone-pluginnone-vllm0.23.0-cp312-pt210-hggc130-x64-2.1.1-rbd225:202609201422
+
 ```
 
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS --local_dir /data/Qwen-Image-2.1
+modelscope download --model FlagRelease/Qwen-Image-2.1-BF16-zhenwu-FlagOS-Express --local_dir /data/Qwen-Image-2.1
 ```
 
 ### Start the Container
 ```bash
-docker run -d \
-  --name qwen \
-  --runtime=mthreads --network=host --ipc=host --shm-size=32g \
-  -e MUSA_VISIBLE_DEVICES=3 \
-  -e TORCH_DEVICE_BACKEND_AUTOLOAD=0 \
-  -e MODEL_PATH=/public-flash/models/Qwen-Image-2.1 \
-  -e OUT_DIR=/output/bench_1024 \
-  -v /data/models/Qwen-Image-2.1:/public-flash/models/Qwen-Image-2.1:ro \
-  --entrypoint sleep \
-  harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gemsnone-treenone-cxnone-pluginnone-vllmnone-sglangnone-sglangflnone-cp310-ptnone-musanone-x64-3.3.5-server:202609240151 infinity
+docker run --privileged -dit \
+  -e HOST_HOSTNAME=$(hostname) \
+  --network=host \
+  --device=/dev/infiniband \
+  --ipc=host \
+  --device=/dev/alixpu_ctl \
+  --device=/dev/alixpu \
+  --ulimit memlock=-1 \
+  --ulimit stack=67108864 \
+  --init \
+  -v /data:/data \
+  -v /mnt:/mnt \
+  --name qwen-image \
+  harbor.baai.ac.cn/flagrelease-public/qwen-image2.1-pp001-gems0.0.0-tree0.6.2-cxnone-pluginnone-vllm0.23.0-cp312-pt210-hggc130-x64-2.1.1-rbd225:202609201422
+
 ```
 ### Start the Server
 ```bash
-env -u PYTHONPATH \
-  MUSA_VISIBLE_DEVICES=3 \
-  TORCH_DEVICE_BACKEND_AUTOLOAD=0 \
-  /review/delivery/venv/bin/python \
-  /opt/qwen21-under15/qwen21.py generate \
-  --prompt '一只橘猫坐在窗边，窗外是雨后的花园，柔和的自然光，真实摄影风格。' \
-  --seed 42 \
-  --warmup 0 \
-  --out /output/custom.png
+bash /workspace/PyTorch-Plugin-FL/tests/manual/qwen_image_21/run.sh infer \
+  --device flagos \
+  --devices flagos:0 \
+  --model /data/Qwen-Image-2.1 \
+  --run-dir /workspace \
+  --steps 40 \
+  --log /workspace/infer-flagos.log
 ```
-
 
 
 ### AnythingLLM Integration Guide
