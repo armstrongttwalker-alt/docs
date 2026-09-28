@@ -32,6 +32,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagquantum_en make html  # build the flagquantum English project
    $ PROJECT=kernelgenbench_en make html  # build the kernelgenbench English project
    $ PROJECT=flagprism_en make html  # build the flagprism English project
+   $ PROJECT=pytorch_plugin_fl_en make html  # build the pytorch_plugin_fl English project
 
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
@@ -59,6 +60,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagquantum_zh make html  # build the flagquantum Chinese project
    $ PROJECT=kernelgenbench_zh make html  # build the kernelgenbench Chinese project
    $ PROJECT=flagprism_zh make html  # build the flagprism Chinese project
+   $ PROJECT=pytorch_plugin_fl_zh make html  # build the pytorch_plugin_fl Chinese project
 
 For more information read https://sphinx-multiproject.readthedocs.io/.
 """
