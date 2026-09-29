@@ -1,6 +1,16 @@
 # 环境变量参考与示例
 
-本页记录了 sglang-plugin-FL 的环境变量参考和示例。
+本页记录 sglang-plugin-FL 的环境变量参考和示例。
+
+<!-- NEW in v0.2.0 -->
+有效配置优先级如下：
+
+```{code-block} text
+environment variables > explicit YAML (`SGLANG_FL_CONFIG`) > platform auto-detected YAML > code defaults
+```
+
+关于厂商 / 框架 / 镜像选择、平台特定运行时软件包、镜像和验证状态，请参阅[集中式厂商 / 框架 / 镜像选择页面](https://flagos.io/resourcedownload?lang=en)。
+<!-- END NEW -->
 
 ## 环境变量 — 完整参考
 
@@ -17,7 +27,6 @@
 | `SGLANG_FL_DENY_VENDORS` | — | 拒绝特定厂商（逗号分隔，例如 `cuda,ascend`） |
 | `SGLANG_FL_ALLOW_VENDORS` | — | 仅允许列出的厂商（逗号分隔） |
 | `SGLANG_FL_DISPATCH_LOG` | — | 调度日志文件路径（记录哪些算子被拦截） |
-
 
 ### 第一层 — ATen 替换（FlagGems）
 
@@ -36,15 +45,17 @@
 
 | 变量 | 默认值 | 描述 |
 |----------|---------|-------------|
-| `SGLANG_FL_DIST_BACKEND` | `nccl` | 后端：`nccl` / `hccl` / `flagcx` |
-| `FLAGCX_PATH` | — | FlagCX 安装路径（设置后默认使用 `flagcx` 后端） |
+| `SGLANG_FL_DIST_BACKEND` | 通用参考表中为 `nccl` | 分布式后端选择；平台运行时默认值可能映射到其他后端，且未设置显式覆盖时，`FLAGCX_PATH` 可以选择 FlagCX |
+| `FLAGCX_PATH` | — | FlagCX 安装路径；使用 FlagCX collective communication 时必需 |
+
+支持的运行时选项取决于平台和已安装库。对于目标运行时未覆盖的平台特定可接受值，请使用 `[TODO: needs confirmation]`。
 
 ### 系统 / 调试
 
 | 变量 | 默认值 | 描述 |
 |----------|---------|-------------|
 | `SGLANG_FL_CONFIG` | — | YAML 配置文件路径（覆盖平台自动检测） |
-| `SGLANG_FL_PLATFORM` | （自动） | 强制指定平台：`cuda`、`ascend`（覆盖自动检测） |
+| `SGLANG_FL_PLATFORM` | （自动） | 强制指定平台；可接受值为 [TODO: needs confirmation] |
 | `SGLANG_FL_LOG_LEVEL` | `INFO` | 调度系统日志级别：`DEBUG`、`INFO`、`WARNING`、`ERROR` |
 | `SGLANG_PLUGINS` | （全部） | SGLang 内置：筛选要加载的插件（逗号分隔）。无需使用——插件在 `pip install` 后自动发现 |
 

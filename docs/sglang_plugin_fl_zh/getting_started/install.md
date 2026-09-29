@@ -1,28 +1,25 @@
 # 安装 sglang-plugin-FL
 
-## Docker 镜像（推荐）
+<!-- CHANGED: v0.2.0 centralizes vendor/framework/image selection and removes stale private image tags from this page. -->
+## 运行时镜像与平台软件包
 
-v0.1.0-rc2 预构建 Docker 镜像：
+特定厂商的框架选择、运行时镜像、验证状态、安装命令和适配流程统一维护在集中页面：[厂商/框架/镜像选择集中页面](https://flagos.io/resourcedownload?lang=en)。安装或启动 sglang-plugin-FL 前，请使用该页面选择厂商、框架和镜像。
 
-| 平台 | 镜像 | 内容 |
-|----------|-------|----------|
-| NVIDIA GPU（双节点） | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual` | sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0 |
-| NVIDIA GPU（单节点） | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single` | sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0 |
-| 摩尔线程 MUSA | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa` | sglang 0.5.12, torch 2.9.0, flag_gems 5.0.2 |
-| 摩尔线程（SVT） | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt` | sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.9.0, triton 3.1.0 |
-| 华为昇腾 | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend` | sglang 0.5.12, flag_gems 5.0.2, CANN 8.5.0 |
+本页面有意不再维护完整镜像矩阵或平台专属软件包配方。
 
-```bash
-# NVIDIA 双节点（跨节点推理）
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual
-# NVIDIA 单节点
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single
-# 摩尔线程 MUSA
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa
-# 摩尔线程 SVT（全栈测试）
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt
-# 华为昇腾
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend
-```
+<!-- NEW in v0.2.0 -->
+## Empty mode
 
-双节点镜像支持跨节点大模型推理，单节点镜像支持单机推理。SVT 为全栈测试镜像。
+Empty mode 是一种安装/运行时组装机制，适用于以 CUDA 为导向的 SGLang 依赖栈并非目标部署环境的平台。它避免将 CUDA 软件包视为通用依赖集，但它**不是**无设备模式。
+
+目标平台仍需提供：
+
+- 厂商 torch；
+- 驱动和固件；
+- 设备运行时；
+- 通信库；
+- 平台注意力后端；
+- sglang-plugin-FL 未覆盖的算子。
+
+请使用集中厂商/框架/镜像选择页面获取平台专属镜像和依赖集：[厂商/框架/镜像选择集中页面](https://flagos.io/resourcedownload?lang=en)。
+<!-- END NEW -->

@@ -7,15 +7,10 @@ cp -r sglang_fl/dispatch/backends/vendor/template/ \
       sglang_fl/dispatch/backends/vendor/my_chip/
 ```
 
-下表列出了已有的厂商：
+<!-- CHANGED: v0.2.0 keeps this page as a generic integration contract rather than a complete vendor inventory or validation matrix. -->
+厂商特定的框架选择、运行时镜像、验证状态、安装命令和适配流程维护在集中式页面：[集中式厂商 / 框架 / 镜像选择页面](https://flagos.io/resourcedownload?lang=en)。下面的通用契约并不意味着每个后端都支持所有算子或模型。
 
-| 厂商 | 目录 | 硬件检测 |
-| :--- | :--- | :--- |
-| NVIDIA CUDA | `vendor/cuda/` | `sgl_kernel` 可导入 |
-| 华为昇腾 | `vendor/ascend/` | `torch_npu` 可导入 |
-| 模板 | `vendor/template/` | 始终为 False（仅作参考） |
-
-要集成新的厂商，需要实现两个文件：
+要集成新厂商，请实现下面所述的后端契约和注册逻辑。示例中的三个算子只是最小示例，并非 v0.2.0 的完整算子范围。
 
 ## 1. 后端类（my_chip.py）
 
@@ -115,9 +110,18 @@ def register_builtins(registry) -> None:
 | `rms_norm` | `fn(obj, x: Tensor, residual: Optional[Tensor] = None) -> Tensor \| tuple[Tensor, Tensor]` |
 | `rotary_embedding` | `fn(obj, query, key, cos, sin, position_ids, rotary_interleaved=False, inplace=True) -> tuple[Tensor, Tensor]` |
 
-
 `obj` 参数提供对层属性的访问（`obj.weight`、`obj.variance_epsilon` 等）。这些属性名称在 SGLang 和 vLLM 之间完全相同，因此同一实现可同时用于两个框架。
 
 ## 厂商后端自动发现
 
-插件在启动时扫描 `dispatch/backends/vendor/*/register_ops.py`。如果 is_available() 返回 True，该厂商的算子即被注册。无需修改其他文件。
+插件在启动时扫描 `dispatch/backends/vendor/*/register_ops.py`。如果 `is_available()` 返回 True，该厂商的算子即被注册。无需修改其他文件。
+
+<!-- NEW in v0.2.0 -->
+如有需要，可选集成钩子可以添加平台特定行为：
+
+- `patch.py` 可以应用公开后端或传输路径所需的框架补丁。
+- `register_platform.py` 可以注册平台标识和运行时行为。
+- `sglang_fl/dispatch/config/` 下的平台 YAML 可以为检测到的平台提供默认调度策略。
+
+这些文件扩展了通用集成契约；它们不构成普遍的厂商支持或验证声明。详细适配流程仍维护在集中式页面：[集中式厂商 / 框架 / 镜像选择页面](https://flagos.io/resourcedownload?lang=en)。
+<!-- END NEW -->

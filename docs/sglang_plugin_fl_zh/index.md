@@ -42,13 +42,13 @@
 :::
 
 :::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` API 参考
-:link: reference/dispatch-api-reference
+:link: reference/dispatch-reference-and-example
 :link-type: doc
 
 算子调度系统和配置选项的 API 参考。
 
 +++
-[了解更多 »](reference/dispatch-api-reference.md)
+[了解更多 »](reference/dispatch-reference-and-example.md)
 :::
 
 ::::
@@ -78,5 +78,5 @@ dispatch_user_guide/dispatch-user-guide.md
 :maxdepth: 5
 :hidden:
 
-reference/dispatch-api-reference.md
+reference/dispatch-reference-and-example.md
 ```

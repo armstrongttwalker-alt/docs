@@ -2,6 +2,23 @@
 
 本节介绍算子调度的诊断方法。
 
+<!-- NEW in v0.2.0 -->
+## 策略与后端解析
+
+调度采用基于策略的方式，而不是固定的 `flagos > vendor > reference` 链。当算子未使用预期实现时，请检查有效配置和后端可用性：
+
+1. 检查 `SGLANG_FL_PREFER`、`SGLANG_FL_PER_OP`、`SGLANG_FL_ALLOW_VENDORS`、`SGLANG_FL_DENY_VENDORS` 和 `SGLANG_FL_STRICT` 等环境变量覆盖项。
+2. 检查 `SGLANG_FL_CONFIG` 以及 `sglang_fl/dispatch/config/` 下检测到的平台 YAML。
+3. 如果需要额外的策略诊断，请启用 `SGLANG_FL_DISPATCH_DEBUG=[TODO: needs confirmation]`。
+4. 确认所选后端的运行时和设备在目标镜像中可用。
+
+严格模式下，如果首选或显式排序的后端不可用，系统会报错而不是回退。未启用严格模式时，调度会过滤不可用或不允许的候选项，并选择下一个允许的实现。
+
+## 分布式与 FlagCX 诊断
+
+对于分布式通信故障，请检查所选的 `SGLANG_FL_DIST_BACKEND`、预期使用 FlagCX 时的 `FLAGCX_PATH`、设备可见性、网络配置以及张量并行 / 流水线并行设置。平台特定的框架、镜像和网络设备前置条件记录在[集中式厂商 / 框架 / 镜像选择页面](https://flagos.io/resourcedownload?lang=en)中。
+<!-- END NEW -->
+
 ## 调度日志
 
 查看每个融合算子解析到哪个后端（在服务器启动时写入）：
@@ -40,7 +57,7 @@ sort -u /tmp/gems_aten.txt
 
 ## 通过精度二分法排查数值精度问题
 
-当出现数值差异时，隔离出导致问题的层。如果输出在第 N 步发散但第 N-1 步正常，则问题层/算子被定位。
+当出现数值差异时，隔离出导致问题的层。如果输出在第 N 步发散但第 N-1 步正常，则问题层 / 算子被定位。
 
 ```{code-block} python
 # 第 1 步：禁用所有——确认原生 SGLang 正常工作

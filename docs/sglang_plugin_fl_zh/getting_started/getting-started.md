@@ -7,6 +7,7 @@
 
 requirements.md
 install.md
-run-inference-task.md
+<!-- CHANGED: documentation-tree cleanup; actual file is quick-run-inference-task.md. -->
+quick-run-inference-task.md
 
 ```

@@ -32,13 +32,17 @@ cd FlagCX && make USE_NVIDIA=1
 export FLAGCX_PATH="$PWD"
 ```
 
+<!-- NEW in v0.2.0 -->
+厂商专属 Empty mode 安装、运行时镜像、框架软件包和验证前置条件请参阅厂商/框架/镜像选择集中页面：[厂商/框架/镜像选择集中页面](https://flagos.io/resourcedownload?lang=en)。Empty mode 不是无设备模式；目标平台必须提供其厂商 torch、驱动、固件、设备运行时、通信库、注意力后端，以及未覆盖的算子。
+<!-- END NEW -->
+
 ## 下载模型
 
 ```{code-block} shell
 # 用于快速测试的小模型（单 GPU）
 huggingface-cli download Qwen/Qwen2.5-0.5B-Instruct
 
-# 用于多 GPU 的大模型（tp=8）
+# 用于多 GPU 的较大模型（tp=8）
 huggingface-cli download Qwen/Qwen2.5-14B-Instruct
 ```
 
@@ -52,7 +56,7 @@ HF_ENDPOINT=https://hf-mirror.com huggingface-cli download Qwen/Qwen2.5-0.5B-Ins
 
 ## 运行推理任务
 
-### 1. 启动 SGLang 服务器
+### 1. 启动 sglang 服务器
 
 #### 单 GPU
 
@@ -63,7 +67,7 @@ python -m sglang.launch_server \
     --disable-piecewise-cuda-graph
 ```
 
-#### 多 GPU 张量并行
+#### 使用张量并行的多 GPU
 
 ```{code-block} shell
 python -m sglang.launch_server \
@@ -73,8 +77,24 @@ python -m sglang.launch_server \
 ```
 
 ```{note}
-FlagGems Triton 内核包含 `logging.Logger` 调用，与 `torch.compile`（SGLang 的分段 CUDA 图使用）不兼容。启动服务器时请始终使用 `--disable-piecewise-cuda-graph`。常规 CUDA 图捕获可正常工作。
+FlagGems Triton 内核包含 `logging.Logger` 调用，与 `torch.compile`（SGLang 的分段 CUDA 图使用该功能）不兼容。启动服务器时请始终使用 `--disable-piecewise-cuda-graph`。常规 CUDA 图捕获可正常工作。
 ```
+
+<!-- NEW in v0.2.0 -->
+### 多节点与流水线并行
+
+对于多节点推理，请为目标平台配置分布式后端和网络接口，然后使用相应的 SGLang 张量并行和流水线并行参数。仓库中的多节点示例是起点，而不是通用硬件配方；请将地址、设备可见性变量、通信路径和接口名称替换为目标部署环境中的值。
+
+流水线并行工作流可通过 `CommunicatorFL` 使用 FlagCX 或 `torch.distributed`。后端选择请参阅调度环境变量指南。平台专属镜像、框架构建版本和验证状态统一维护在集中页面：[厂商/框架/镜像选择集中页面](https://flagos.io/resourcedownload?lang=en)。
+
+### Qwen3.6 MTP
+
+v0.2.0 示例包含 Qwen3.6 多词元预测（MTP）工作流覆盖。请使用模型支持的 SGLang 启动参数以及目标平台已验证的运行时选择；本页面不宣称提供通用模型或硬件支持。
+
+### 吞吐量基准测试
+
+推理路径工作正常后，可使用仓库中的 serving benchmark 工具。请在不同输入/输出长度和请求速率下比较吞吐量、首词元延迟和解码延迟。不要从通用工作流中推断普适性能特征。
+<!-- END NEW -->
 
 ### 2. 发送请求
 
