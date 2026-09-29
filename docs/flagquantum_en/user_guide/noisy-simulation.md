@@ -1,13 +1,14 @@
 # Noisy Simulation
 
-FlagQuantum uses one backend-neutral `NoiseModel` for exact density-matrix evolution, batched statevector trajectories, and MPS quantum trajectories. The exact path is the small-system correctness oracle; trajectory paths report sampling statistics, and the MPS path additionally reports truncation data.
-
-## Define a noise model
+FlagQuantum uses one backend-neutral `NoiseModel` for exact density-matrix
+evolution, batched statevector trajectories, and MPS quantum trajectories. The
+exact path is the small-system correctness oracle; trajectory paths report
+sampling statistics, and the MPS path additionally reports truncation data.
 
 ```{code-block} python
 import flagquantum as fq
-import flagquantum.runtime as fqr
 import flagquantum.noise as fqn
+import flagquantum.runtime as fqr
 
 circuit = fq.Circuit(2).h(0).cx(0, 1)
 noise = (
@@ -24,13 +25,7 @@ exact = fq.run(
     outputs=fq.expectation(fq.Z(0) + fq.Z(1)),
 )
 print(exact.expectation())
-```
 
-Built-in channels include depolarizing, bit flip, phase flip, amplitude damping, thermal relaxation, and readout error. A device profile can additionally supply gate durations and idle-time noise, which the runtime lowers into channels on the gates and idle windows that actually occur.
-
-## Trajectory simulation
-
-```{code-block} python
 sampled = fqr.run_noisy_mps(
     circuit,
     noise,
@@ -38,29 +33,38 @@ sampled = fqr.run_noisy_mps(
     min_trajectories=128,
     target_standard_error=1e-3,
     seed=42,
-    retain_trajectories=False,
 )
-print(sampled.expectation_z_mean)
-print(sampled.statistics.standard_error)
+print(noise.identity)
+print(sampled.expectation_z_mean, sampled.statistics.standard_error)
 print(sampled.converged, sampled.stopped_early)
 ```
 
-Adaptive stopping is available on a single rank; when the exact density matrix would exceed an explicit memory budget, the stable `fq.run` entry point can select noisy MPS trajectories instead, but only if the caller opts in to approximation — otherwise planning fails rather than changing the semantics of the program silently.
+## Built-in channels
+
+`bit_flip`, `phase_flip`, `depolarizing`, and `amplitude_damping` channels,
+thermal relaxation with gate timing, readout confusion matrices, and
+calibration-conditioned device profiles with gate and idle noise lowering.
+
+## Selection under a memory budget
+
+The stable `fq.run(...)` entry point can select noisy MPS trajectories when the
+exact density matrix would exceed an explicit memory budget. Approximation is
+opt-in: without that budget, planning fails rather than silently changing the
+semantics of the request.
 
 ## Reproducibility
 
-A `NoiseModel` carries a versioned identity, and that identity is part of the plan. A plan round trip re-verifies the model payload and its digest, so a noisy result can be reproduced from the stored plan instead of from a re-typed noise definition.
+A noise model has an identity that participates in plan verification, so a
+versioned model survives a plan JSON round trip and a changed model is detected
+instead of being applied silently. Trajectory runs accept an explicit seed and
+report their sampling statistics.
 
-## Continuous-time evolution
+## Support boundary
 
-Time-independent Markovian systems can be evolved with a dense Hamiltonian and Lindblad collapse operators on a fixed time grid:
-
-```{code-block} shell
-python examples/lindblad_evolution.py
-```
-
-This path is CPU-only for complex64 and complex128, and the grid controls the accuracy of the fixed-step fourth-order Runge-Kutta integrator.
-
-## Boundaries
-
-Pulse overlap, crosstalk, leakage, provider calibration adapters, distributed adaptive stopping, batched statevector trajectories, and noisy gradients are not supported. Multi-wire MPS channels use an explicit dense correctness fallback instead of a silent approximation, and the exact supported scope of each noisy path is recorded in the capability catalog.
+Validated Markovian Kraus channels, timestamped device profiles, ASAP gate and
+idle thermal lowering, classical readout confusion, exact density execution, and
+reproducible MPS trajectories with single-rank adaptive stopping are available.
+Pulse overlap, crosstalk, leakage, provider calibration adapters, distributed
+adaptive stopping, batched statevector trajectories, production multi-GPU
+scheduling, and noisy gradients are unsupported. Multi-wire MPS channels use an
+explicit dense correctness fallback.

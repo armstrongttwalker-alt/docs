@@ -1,46 +1,111 @@
 # API Reference
 
 FlagQuantum exposes one curated Python interface: `import flagquantum as fq`.
+Build a circuit, inspect its runtime plan, execute it through a stable result
+contract, and train parameterized programs with PyTorch.
+
+Exact stable names are defined by the repository's `public_api_v1.json`, verified
+by executable contract tests, and rendered in the stable API inventory below.
 
 ## API map
 
 | Task | Primary interface | Result |
 | --- | --- | --- |
 | Build a program | `fq.Circuit` | Circuit backed by FlagQuantum IR |
-| Optimise a program | `flagquantum.compiler.optimize` | `fq.CircuitIR` |
+| Optimize a program | `flagquantum.compiler.optimize` | `fq.CircuitIR` |
 | Compile for a selected tool and target | `fq.compile` | `fq.CircuitIR` |
 | Inspect execution | `fq.plan`, `Circuit.runtime_plan` | Explainable runtime plan |
 | Execute locally or remotely | `fq.run` | `fq.ExecutionResult` |
-| Submit without blocking | `fq.submit`, `fq.restore_job` | Job handle with status, result, cancel |
+| Submit a detached job | `fq.submit`, `fq.restore_job` | Job handle with credential-free receipt |
 | Define a trainable quantum layer | `fq.Module` | PyTorch module |
 | Train | `fq.train` | `fq.TrainingResult` |
-| Measure | `fq.expectation`, `fq.probabilities`, `fq.samples`, `fq.counts` | Output requests |
 | Package for a target | `flagquantum.deployment.create_deployment_package` | Sealed deployment package |
+
+## Stable API inventory
+
+| API | Stability | Verification |
+| --- | --- | --- |
+| `fq.Circuit` | Stable | executable contract |
+| `fq.CircuitIR` | Stable | executable contract |
+| `fq.ExecutionOptions` | Stable | executable contract |
+| `fq.ExecutionPlan` | Stable | executable contract |
+| `fq.ExecutionResult` | Stable | executable contract |
+| `fq.I` | Stable | executable contract |
+| `fq.IRSerializationError` | Stable | executable contract |
+| `fq.IRValidationError` | Stable | executable contract |
+| `fq.IR_VERSION` | Stable | executable contract |
+| `fq.Instruction` | Stable | executable contract |
+| `fq.MeasurementResult` | Stable | executable contract |
+| `fq.Module` | Stable | executable contract |
+| `fq.Observable` | Stable | executable contract |
+| `fq.OutputRequest` | Stable | executable contract |
+| `fq.Parameter` | Stable | executable contract |
+| `fq.ParameterExpression` | Stable | executable contract |
+| `fq.RuntimePolicy` | Stable | executable contract |
+| `fq.TrainingResult` | Stable | executable contract |
+| `fq.X` | Stable | executable contract |
+| `fq.Y` | Stable | executable contract |
+| `fq.Z` | Stable | executable contract |
+| `fq.__version__` | Stable | executable contract |
+| `fq.compile` | Stable | executable contract |
+| `fq.counts` | Stable | executable contract |
+| `fq.expectation` | Stable | executable contract |
+| `fq.experimental` | Stable | executable contract |
+| `fq.plan` | Stable | executable contract |
+| `fq.probabilities` | Stable | executable contract |
+| `fq.restore_job` | Stable | executable contract |
+| `fq.run` | Stable | executable contract |
+| `fq.samples` | Stable | executable contract |
+| `fq.submit` | Stable | executable contract |
+| `fq.train` | Stable | executable contract |
+| `fq.twin` | Stable | executable contract |
+
+`fq.experimental` is a stable import path, but its contents carry no
+compatibility guarantee. Compatibility imports are migration aids and are not
+implied stable.
 
 ## Errors
 
-Stable lifecycle categories live in `flagquantum.errors`: `ValidationError` for invalid semantic input, `PlanningError` for a stale, tampered, or incompatible plan, `CapabilityError` for an unavailable requested capability, and `ExecutionError` for an execution or training failure. All of them inherit `FlagQuantumError` and their compatible Python built-in exception, so both the narrow and the general `except` clause work.
+Catch stable lifecycle categories from `flagquantum.errors`:
 
-## Runtime configuration
+```python
+import flagquantum.errors as fqe
 
-`RuntimeConfig` records backend, device, real and complex precision, JAX precision, matrix-multiplication policy, and drawing style. A circuit captures a configuration when it is constructed and embeds a versioned manifest in its IR and plans, so distributed workers rebuild the same policy instead of inheriting mutable process state. `runtime_config(...)` provides context-local temporary overrides.
+try:
+    result = fq.run(fq.plan(circuit, options=options))
+except fqe.ValidationError:
+    ...  # invalid semantic input
+except fqe.PlanningError:
+    ...  # stale, tampered, or incompatible plan
+except fqe.CapabilityError:
+    ...  # requested capability is unavailable
+except fqe.ExecutionError:
+    ...  # execution or training failure
+```
 
-## Measurements
+All categories inherit `FlagQuantumError` and the compatible Python built-in
+exception (`ValueError`, `RuntimeError`, or `NotImplementedError`). Wrong Python
+types and unknown keyword arguments raise `TypeError`, and specific errors such
+as `IRValidationError`, `IRSerializationError`, and
+`flagquantum.training.TrainingStateError` remain available inside the
+corresponding category.
 
-`fq.expectation`, `fq.probabilities`, `fq.samples`, and `fq.counts` describe what to measure. Pauli products use `@`, Hamiltonian sums and real coefficients use ordinary arithmetic, and sampling or counts accept computational-basis wires or one unweighted Pauli product. Results expose `expectation()`, `expectations`, `probabilities`, `samples`, `counts`, and `measurement(index_or_name)`.
+## Result contract
 
-## Operators and extension points
-
-- `flagquantum.operators` reports the registered gate set and per-gate information.
-- `flagquantum.ecosystem` holds framework adapters (Qiskit, PennyLane, Cirq, CUDA-Q, Amazon Braket) behind one candidate-stable protocol with an immutable registry.
-- `flagquantum.ecosystem.extensions` holds the pre-freeze extension SDK for backends, compilers, passes, kernels, operators, devices, providers, measurement collectors, and planners.
-- `flagquantum.services` holds reusable multi-step workflows such as execution and deployment preflight.
-- `flagquantum.experimental` carries no compatibility guarantee and is where distributed training and dynamic-circuit execution currently live.
+`ExecutionResult.diagnostics()` returns a versioned envelope with `metrics`,
+`provenance`, `runtime`, and `compatibility` sections whose keys may grow
+compatibly. `TrainingResult.final_loss` and its versioned `summary()` provide
+stable training output access. Result summaries carry schema and version fields,
+and backend-native attributes are not forwarded implicitly: use
+`result.native()` when intentionally depending on one.
 
 ## Stability boundaries
 
-- Only the checked manifest defines the stable surface; experimental and compatibility imports do not silently expand it.
-- Compatibility imports exist for migration and are not implied stable.
-- A planner result describes intent and estimates; it is never runtime or benchmark evidence.
-- Operator and backend support comes from the executable lowering registry, not from prose.
-- Documentation examples are executed by documentation contract tests, and a new public name must first be importable, snapshot-tested, and added to the manifest.
+- A planner result describes intent and estimates; it is never runtime or
+  benchmark evidence.
+- Operator and backend support comes from the executable lowering registry in
+  [Operator Capabilities](operator-capabilities.md).
+- Runtime evidence must satisfy the repository's typed runtime contracts.
+- Examples in stable documentation are executed by documentation contract tests,
+  and new public names must first be importable, snapshot-tested, and added to
+  the stable API manifest.
