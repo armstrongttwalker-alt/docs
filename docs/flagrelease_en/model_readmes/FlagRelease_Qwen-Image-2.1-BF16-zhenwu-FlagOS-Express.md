@@ -22,6 +22,22 @@ In this release, Qwen-Image-2.1 leverages the FlagOS software stack to provide d
 | T2I-100 (ClipScore) | 33.66                              | 33.80                                  |
 | Coco-Image (ClipScore) | 25.34                              | 25.25                               |
 
+## Performance Benchmark
+| Metric | NV-H100 native-BF16 | T-head-BF16 |
+| ---- | ---- | ---- |
+| TFLOPS (per card) | 989 | 123 |
+| Card Count | 1 | 1 |
+| TFLOPS (per card) × Card Count | 989 | 123 |
+| latency(median), s/image | 6.52 | 37.44 |
+| Throughput (TPS)=1/latency, images/s | 0.153374233 | 0.026709402 |
+| text encoder(mean), s | 0.03 | 0.116 |
+| denosing loop(mean), s | 6.32 | 36.86 |
+| vae decoder(mean), s | 0.13 | 0.427 |
+| loop(per step), ms | 158 | 921.5 |
+| torch-fl vs torch-vendor(time) | 1 | 1.033<br>(37.44/36.24) |
+| peak GiB | 36.82 | 36.8 |
+| Throughput / TFLOPS | 0.00015508 | 0.00021715 (140%)|
+
 # User Guide
 Environment Setup
 
