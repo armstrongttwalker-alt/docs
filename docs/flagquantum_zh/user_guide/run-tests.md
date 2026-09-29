@@ -1,35 +1,39 @@
 # 运行测试
 
-FlagQuantum 的测试按层级组织。先运行最小且有意义的层级，再根据影响范围逐步扩大。
+先安装开发依赖，然后从最小的有效分层开始，按影响范围逐步扩展。
 
-## 安装测试依赖
+```{code-block} shell
+python -m pip install -e ".[dev]"
 
-```bash
-python -m pip install "flagquantum[dev]"
+# 日常开发基线
+python tools/ci_tier.py pr-default
+
+# 本地 API、运行时、规划器与编译器改动
+python tools/ci_tier.py pr-runtime
+
+# CPU 上的分布式规划、审计与基准契约
+python tools/ci_tier.py pr-distributed
+
+# 加速器与设备绑定的 Triton 测试
+python tools/ci_tier.py gpu-scheduled
 ```
 
-## 快速开始
+也可以直接使用 pytest：
 
-| 场景 | 命令 |
-| --- | --- |
-| 日常开发或 issue 基线 | `python tools/ci_tier.py pr-default` |
-| 本地 API、运行时、规划器或编译器改动 | `python tools/ci_tier.py pr-runtime` |
-| 分布式规划器、审计或基准契约改动 | `python tools/ci_tier.py pr-distributed` |
-| 真实多卡或加速卡测试 | `python tools/ci_tier.py gpu-scheduled` |
+```{code-block} shell
+python -m pytest tests/unit -q
+python -m pytest tests/qec -q
+python -m pytest -m qiskit
+python -m pytest -m pennylane
+```
 
-空的选择不是验证：没有收集到任何算例的层级什么也没有证明。
+## 各分层证明了什么
 
-## 各层级证明什么
+| 分层 | 能证明 | 不能证明 |
+| --- | --- | --- |
+| 推送门禁 | 导入、最小线路、自动微分、纯规划与审计辅助 | 运行时集成、分布式行为、性能、发布就绪 |
+| 本地运行时 | 本地运行时与 API 行为的固定种子集成覆盖 | 多进程传输、GPU 执行、可扩展性 |
+| 分布式 CPU | CPU 分布式语义、失败即拒绝门禁、基准契约、发布门禁校验 | 真实多卡或多机容量扩展 |
+| GPU 定时任务 | 加速器与设备绑定内核测试 | 多机传输或单独构成发布级可扩展性 |
 
-- 默认层覆盖导入、最小线路、自动求导以及纯规划器／审计辅助。
-- 运行时层覆盖带种子的本地运行时与 API 行为。
-- 分布式 CPU 层覆盖多进程语义、失败即拒门禁、基准 JSON 契约与发布门禁校验；它绝不
-  能替代真实多卡容量扩展。
-- 设备层覆盖加速卡支撑的测试与绑定设备的内核；一张卡覆盖本地一致性，两张卡覆盖必需
-  的跨卡语义，更宽度的定时任务覆盖 rank 数、拓扑、划分与集合通信行为。
-
-## 发布边界
-
-长时间运行的任务会报告阶段、最后操作、已完成工作、内存、集合通信状态与 rank，
-无进展看门狗会对停滞进行分类，而不是任其静默挂起。发布级可扩展性证据需要已提升的
-基准载荷通过发布策略与审计命令；正确性套件、覆盖率数字与设备冒烟运行都不是发布证据。
+空的标记选择不算验证。CPU 分布式测试只证明语义，永远不会被用作可扩展性的发布证据。

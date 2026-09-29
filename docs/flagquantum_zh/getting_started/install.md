@@ -1,60 +1,56 @@
 # 安装 FlagQuantum
 
-开始前请先阅读[环境要求](requirements.md)。
+请先阅读[环境要求](requirements.md)。
 
-## 安装正式发布的包
+## 步骤
 
-```bash
-python -m pip install flagquantum
-```
+1. 安装 FlagQuantum
 
-## 安装开发版本
+   - 安装正式发布的包
 
-```bash
-git clone https://github.com/flagos-ai/FlagQuantum.git
-cd FlagQuantum
-python -m pip install -e ".[dev]"
-```
+     ```{code-block} shell
+     python -m pip install flagquantum
+     ```
 
-## 验证安装
+   - 安装带开发工具的开发版检出
 
-```bash
-python -c "import flagquantum as fq; print(fq.__version__)"
-```
+     ```{code-block} shell
+     git clone https://github.com/flagos-ai/FlagQuantum.git
+     cd FlagQuantum
+     python -m pip install -e ".[dev]"
+     ```
 
-包通过 `import flagquantum as fq` 引入；导入它不会导入可选依赖、不会发现扩展，
-也不会激活厂商适配器。
+2. 按需增加可选依赖
 
-## 运行一个本地示例
+   ```{code-block} shell
+   python -m pip install -e ".[jax,cuda,viz]"
+   ```
 
-受维护的本地路径不需要凭据、不需要远程资源，也不需要可选后端：
+   请使用[环境要求](requirements.md)中的分组名，而不是手工安装外部框架，这样才会沿用已锁定的兼容区间。
 
-```bash
-python -m examples.local.simulate
-python -m examples.local.measure
-python -m examples.local.train
-```
+3. 验证安装
 
-开发版安装还可以直接运行仓库中的示例，例如：
+   ```{code-block} python
+   import flagquantum as fq
+   print(fq.__version__)
+   ```
 
-```bash
-python examples/quick_start.py --mode sv --steps 40
-```
+4. 验证本地执行路径
 
-## 可选依赖组
+   ```{code-block} shell
+   python -m examples.local.simulate
+   python -m examples.local.measure
+   python -m examples.local.train
+   ```
 
-只在需要时安装对应能力：
+   这三个示例覆盖本地态向量模拟、测量与 PyTorch 原生训练，不需要凭据、远程资源或可选后端。
 
-```bash
-python -m pip install "flagquantum[jax]"
-python -m pip install "flagquantum[viz]"
-python -m pip install "flagquantum[qiskit]"
-```
+## 开发容器
 
-互操作桥接把外部框架留在边界的另一侧：导入 FlagQuantum 永远不会导入 Qiskit、
-PennyLane、Cirq、CUDA-Q 或任何厂商 SDK。
+仓库同时提供面向 CPU 与 CUDA 环境的开发容器定义，并区分是否包含 JAX 与 QSteed 编译器。如果你更希望使用准备好的环境，请按仓库中的容器指南操作；镜像从本地检出安装 FlagQuantum 并内置 JupyterLab，且都不包含提供方凭据。
 
 ## 下一步
 
-继续阅读[快速开始](quick-start.md)，或直接查看[模拟模式](../user_guide/simulation-modes.md)
-以选择表示形式，以及[远程执行](../user_guide/remote-execution.md)了解厂商目标。
+- [构建并运行你的第一个程序](../user_guide/basic-usage.md)
+- [使用 PyTorch 训练](../user_guide/training-with-pytorch.md)
+- [选择模拟表示](../user_guide/simulation-representations.md)
