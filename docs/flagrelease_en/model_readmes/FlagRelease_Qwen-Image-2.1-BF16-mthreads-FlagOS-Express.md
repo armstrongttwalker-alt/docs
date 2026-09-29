@@ -40,7 +40,7 @@ docker pull harbor.baai.ac.cn/flagrelease-public/qwen-image-2.1-mthreads001-gems
 ### Download Open-source Model Weights
 ```bash
 pip install modelscope
-modelscope download --model FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS --local_dir /data/Qwen-Image-2.1
+modelscope download --model FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS-Express --local_dir /data/Qwen-Image-2.1
 ```
 
 ### Start the Container

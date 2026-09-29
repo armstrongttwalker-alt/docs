@@ -205,8 +205,10 @@ FlagRelease/Qwen-Image-2.1-BF16-enflame-FlagOS
 FlagRelease/Qwen-Image-2.1-BF16-hygon-FlagOS
 FlagRelease/Qwen-Image-2.1-BF16-metax-FlagOS
 FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS
+FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS-Express
 FlagRelease/Qwen-Image-2.1-BF16-nvidia-FlagOS
 FlagRelease/Qwen-Image-2.1-BF16-zhenwu-FlagOS
+FlagRelease/Qwen-Image-2.1-BF16-zhenwu-FlagOS-Express
 FlagRelease/Qwen-Image-2.1-W8A8-arm-FlagOS
 FlagRelease/Qwen2-7B-FlagOS-Arm
 FlagRelease/Qwen2-7B-Instruct-FlagOS
