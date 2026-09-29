@@ -1,50 +1,52 @@
 # Requirements
 
+This section includes information about the hardware platforms and software
+requirements for FlagQuantum.
+
 ## Software requirements
 
-| Item | Requirement |
+- Python 3.10, 3.11 or 3.12
+- PyTorch 2.5 or higher, below 2.14
+
+The released package depends on PyTorch only. Everything else is optional.
+
+## Supported hardware platforms
+
+| Platform | How it is reached |
 | --- | --- |
-| Python | 3.10, 3.11, or 3.12 |
-| PyTorch | `>=2.5,<2.14` |
+| CPU | Default local statevector, MPS and tensor-network execution |
+| NVIDIA GPU | CUDA device selected through `fq.ExecutionOptions(device="cuda:0")` |
+| FlagOS-supported accelerators | The logical `flagos:0` device, reached through Torch-FL |
 
-Only PyTorch is required for the local PyTorch path. Every integration is an
-optional extra, so the minimal installation stays small and imports lazily.
+FlagQuantum does not detect or dispatch a specific domestic accelerator by
+device name. Torch-FL owns vendor detection, runtime activation and the
+compatibility route, and exposes it through the `flagos` contract.
 
-## Optional extras
+## Optional dependency groups
 
-| Extra | Adds |
+| Group | Adds |
 | --- | --- |
-| `dev` | Test, lint, type-check, packaging, and notebook tooling |
-| `jax` | JAX-backed simulation kernels behind the PyTorch interface |
-| `cuda` | Triton kernels for local GPU execution |
-| `cotengra` | Contraction-path search for tensor-network workloads |
-| `qiskit` | Qiskit Python IR and Qiskit Aer bridges |
-| `pennylane` | PennyLane QuantumScript conversion and Lightning execution |
-| `cirq` | Cirq conversion and Simulator execution |
-| `braket` | Amazon Braket conversion |
-| `cudaq` | CUDA-Q kernel export (Linux only) |
-| `quafu` | Direct Quafu hardware submission without a local compiler |
-| `azure` | Azure Quantum target packaging |
-| `interop-all` | All interoperability adapters in one command |
-| `viz` | Matplotlib-based circuit drawing |
-| `examples` | Dependencies used by the tutorial notebooks and example scripts |
+| `dev` | pytest, coverage, xdist, ruff, black, mypy, build, pre-commit |
+| `jax` | JAX-backed kernels |
+| `cuda` | Triton |
+| `qiskit` | Qiskit and Aer interoperability |
+| `pennylane` | PennyLane interoperability |
+| `cirq` | Cirq interoperability |
+| `braket` | Amazon Braket interoperability |
+| `cudaq` | CUDA-Q kernel export |
+| `quafu` | Quafu submission support |
+| `azure` | Azure Quantum submission support |
+| `viz` | Matplotlib circuit drawing |
+| `examples` | `datasets` and `transformers` for the example workflows |
+| `all` | Every optional dependency above |
 
-On Python 3.10 the `cirq`, `braket`, `cudaq`, `pennylane`, and `quafu` extras
-are unavailable because the upstream packages require a newer interpreter.
+Interoperability adapters are optional control-plane boundaries: importing
+`flagquantum` never imports Qiskit, PennyLane, Cirq or another external
+framework.
 
-## Execution targets
+## Support boundaries to read before choosing a target
 
-| Target | Selection | Support level |
-| --- | --- | --- |
-| Local CPU | Default | Production supported |
-| One CUDA GPU | `fq.ExecutionOptions(device="cuda:0")` | Local correctness evidence |
-| Several ranks | Initialized process group plus `torchrun` | Sharded statevector training is production supported |
-| FlagOS logical device | Explicit provider selection through Torch-FL | Development evidence |
-| Remote compute (Jiuding) | `target="jiuding:gpu"` | Experimental |
-| Quantum hardware (Quafu) | `target="quafu:<backend>"` | Experimental |
-
-CUDA is the only accelerator selected automatically. The FlagOS logical device
-is never chosen implicitly, and no domestic accelerator is certified by
-FlagQuantum alone: the current CUDA-backed reference records the joint
-integration path, not vendor hardware quality. See
-[Capabilities](../reference/capabilities.md) for the exact scope of every path.
+The maturity of every capability, and what each target has actually been
+executed with, is published in the
+[capability reference](../reference/capabilities.md). An implemented API is not
+automatically production support.

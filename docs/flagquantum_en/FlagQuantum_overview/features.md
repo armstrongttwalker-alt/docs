@@ -1,111 +1,76 @@
 # Features
 
-## Program model
+## PyTorch-native quantum training
 
-- **Unified circuit API and FlagQuantum IR** (release certified). `fq.Circuit`,
-  `fq.CircuitIR`, `fq.ExecutionPlan`, and `fq.ExecutionResult` share one
-  versioned representation across construction, compilation, planning,
-  execution, and deployment.
-- **PyTorch-native training** (production supported). `fq.Module` owns trainable
-  parameters and returns an autograd tensor from `forward()`, so ordinary
-  PyTorch optimizers and hybrid classical-quantum models work without adapters.
-  Flat, named, and symbolic parameter groups are supported, along with
-  checkpoint and restore.
-- **Explainable planning.** `fq.plan` records the selected representation,
-  required environment, and blockers. Plans carry a SHA-256 identity, survive
-  JSON round trips, and are executed exactly as supplied, without replanning,
-  recompilation, or silent fallback.
+- **Trainable circuits as PyTorch modules**: `fq.Module` exposes the quantum
+  model to PyTorch, so `loss.backward()` and ordinary optimizers train quantum
+  and classical layers in one loop.
+- **Flat or named parameter groups**: positional parameters and named groups
+  such as `{"encoder": (4,), "readout": ()}` are both supported, with
+  reproducible initialization and a module-local seed.
+- **Stable training results**: `fq.train` returns `fq.TrainingResult` with
+  versioned summaries, and checkpoint and resume stay on `fq.Module`.
 
-## Simulation and training
+## Several simulation representations, one program
 
-- **Local statevector simulation and training** (production supported) — the
-  zero-configuration path, exact by default for probabilities and expectations.
-- **Sharded statevector training** (production supported) — one logical
-  statevector distributed across ranks, with owner-sharded forward execution,
-  reverse-mode gradients, optimizer state, and checkpoint/resume.
-- **Differentiable and sharded MPS training** (development evidence) — rank-owned
-  matrix product states for low-entanglement systems, with variable bond
-  dimension, checkpointing, and matched restart evidence.
-- **Tensor-network execution and training** (experimental) — slicing,
-  contraction, and differentiable reverse contraction for structured circuits.
-- **Constrained local MPS TEBD** (experimental) — second-order imaginary-time
-  evolution for static one-site and adjacent two-site Pauli terms on an open
-  chain.
-- **Continuous-time Lindblad evolution** (production supported) — dense
-  time-independent Hamiltonians on finite grids, CPU complex64/complex128.
-- **Multiple gradient paths.** Autograd for supported representations, a
-  memory-bounded adjoint path for local Z/ZZ Hamiltonian gradients, and an
-  explicit parameter-shift path on the split FP32 experimental line.
+- **Statevector**: the exact local path, on CPU or one GPU, with automatic
+  dense reference reporting for small systems.
+- **Matrix product state (MPS)**: low-entanglement systems at far larger wire
+  counts than a dense statevector allows, including constrained TEBD.
+- **Tensor networks**: slicing and contraction for circuit structures where
+  neither dense statevector nor MPS fits.
+- **Optional JAX kernels** behind the same PyTorch interface, with first-order
+  gradient support across the bridge.
+- **One command to switch**: `python examples/quick_start.py --mode sv|mps|tn`
+  runs the same hybrid model on three representations without editing code.
 
-## Precision and numerical trust
+## Compilation and export
 
-- **One resolved precision per execution.** `complex64` implies float32
-  parameters, `complex128` implies float64, and planning, state allocation, gate
-  matrices, and parameter tensors all follow that decision.
-- **Double-Single FP32 arithmetic** (experimental) — a software-extended
-  precision ladder for devices without native FP64, with explicit acceptance
-  contracts and fail-closed accuracy requirements.
-- **Fail-closed accuracy requirements.** A requested accuracy that exceeds the
-  certified evidence is rejected during planning instead of returning an
-  unverified result.
+- **Target-independent optimization**: `flagquantum.compiler.optimize` applies
+  canonical rewrites to a fixed point and returns new IR.
+- **Target-aware compilation**: `fq.compile(..., coupling_map=..., routing_strategy=...)`
+  emits only topology-valid two-qubit operations and records the routing
+  decision.
+- **Compiler plugins**: independently installed packages may register a
+  compiler through the extension registry, for example the QSteed plugin used
+  for Quafu submission.
+- **OpenQASM and framework export**: circuit export to OpenQASM 3.0 and
+  adapters for Qiskit, PennyLane, Cirq, Braket and CUDA-Q.
 
-## Noise
+## Measurement, noise and error correction
 
-- **Backend-neutral `NoiseModel`** (experimental) — Markovian Kraus channels,
-  readout confusion, thermal relaxation, depolarizing and other built-in
-  channels, plus calibration-conditioned device profiles.
-- **Two execution styles** — exact density-matrix evolution as the small-system
-  correctness oracle, and batched statevector or MPS quantum trajectories with
-  sampling statistics and truncation reporting.
+- **Observables and outputs**: `fq.X`, `fq.Y`, `fq.Z` with `@` products and
+  ordinary arithmetic build Hamiltonians; `fq.expectation`,
+  `fq.probabilities`, `fq.samples` and `fq.counts` request results.
+- **Backend-neutral noise**: one `NoiseModel` drives exact density-matrix
+  evolution, batched statevector trajectories and MPS quantum trajectories,
+  with thermal relaxation, depolarizing, bit/phase flip and readout errors.
+- **Hardware Pauli measurement planning**: qubit-wise-commuting grouping with
+  one sealed deployment package per group.
+- **Dynamic circuits**: mid-circuit measurement and classical feedback, with a
+  read-only backend preflight.
+- **Quantum error correction**: a repetition-code memory experiment connecting
+  syndrome extraction, decoding and correction.
 
-## distributed execution
+## Distributed and accelerator execution
 
-- **Sharded runtime semantics.** Distribution topology comes from the execution
-  environment; results report their `distribution_semantics`, and replicated,
-  sliced, or rank-local execution is never relabelled as capacity expansion.
-- **FlagOS distributed workloads** (development evidence) — complex64/complex128
-  forward, reverse, and bounded training trajectories on one CUDA-backed A800
-  node at 2, 4, and 8 cards, with explicit negative results recorded.
-- **Transport observability** (development evidence) — collective-level
-  correctness and logical residency checks for the tested collective matrix.
+- **Sharded statevector training**: one logical statevector across ranks, with
+  distributed forward, backward and optimizer state.
+- **Rank-owned MPS**: distributed MPS forward, backward and optimizer state for
+  workloads that do not fit one device.
+- **PyTorch-native under a process group**: the same module and result surface
+  uses the sharded runtime once a multi-rank process group is initialized.
+- **FlagOS accelerators through Torch-FL**: the logical `flagos:0` device is
+  reached through Torch-FL, which owns vendor detection and dispatch.
 
-## Compilation and deployment
+## Deployment, interop and ecosystem
 
-- **Compiler optimization and target-aware compilation.** `compiler.optimize`
-  applies target-independent canonicalization to a fixed point;
-  `compiler.compile` legalizes two-qubit operations for a concrete coupling map
-  and records its routing decision.
-- **Sealed deployment packages.** `flagquantum.deployment` binds trained
-  parameters, compiles for a target, and produces an identity-checked package
-  that can be submitted later.
-- **Pauli measurement plans.** `create_pauli_measurement_plan` groups
-  qubit-wise-commuting Hamiltonian terms and emits one sealed package per group.
-- **Remote execution.** `fq.run(..., target=...)`, `fq.submit()`, and
-  `fq.restore_job()` cover synchronous and detached Quafu hardware tasks and
-  Jiuding managed compute jobs, all returning the canonical result contract.
-
-## Hardware integration
-
-- **QPU digital twins** (development evidence) — calibration-conditioned,
-  provider-neutral models with validation series, drift comparison, frozen
-  evidence envelopes, exact-circuit regional composition, and prospective
-  candidate comparison.
-- **Repetition-code memory experiment** (development evidence) — a local
-  reference circuit connecting syndrome extraction, decoding, correction, and
-  logical-result analysis.
-- **FlagOS accelerator route** (development evidence) — a Torch-FL-backed
-  platform runtime with no vendor branches inside FlagQuantum, plus a
-  provisioner-attested single-card certification harness.
-
-## Ecosystems and extensibility
-
-- **Interoperability adapters** (experimental) — Qiskit, PennyLane, Cirq, and
-  CUDA-Q conversion, with local PennyLane Lightning, Cirq Simulator, and Qiskit
-  Aer execution bridges.
-- **Extension SDK** (experimental) — backends, circuit compilers, compiler
-  passes, kernels, operators, devices, providers, measurement collectors, and
-  planners as independently installed packages.
-- **Quantum algorithm units** (experimental, demonstration scale) — QUBO/Ising
-  mapping, state preparation, oracle synthesis, Grover search, amplitude
-  estimation, quantum PCA, quantum k-medians, quantum kernel methods, and
-  feature selection, each with its advantage premise recorded.
+- **Sealed deployment packages**: bind trained parameters, compile for a
+  target and produce an auditable package before submission.
+- **QPU digital twins**: calibration-conditioned models that predict a device's
+  measurement distribution and carry explicit evidence boundaries.
+- **Algorithm units**: Grover search, amplitude estimation, quantum PCA,
+  quantum k-medians, quantum kernel estimation and kernel ridge
+  classification, feature selection as a QUBO, and QUBO-to-Ising mapping.
+- **Circuit visualization**: a text drawer for terminals and a Matplotlib
+  drawer for publication figures.
