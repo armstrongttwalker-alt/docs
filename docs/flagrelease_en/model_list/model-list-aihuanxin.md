@@ -33,6 +33,11 @@
 | HY-MT2-1.8B-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20697> |
 | HY-MT2-1.8B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20694> |
 | HY-MT2-1.8B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20700> |
+| HY-MT2-30B-A3B-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20699> |
+| HY-MT2-30B-A3B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20696> |
+| HY-MT2-30B-A3B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20702> |
+| HY-MT2-7B-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20698> |
+| HY-MT2-7B-nvidia-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20695> |
 | HY-MT2-7B-zhenwu-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/20701> |
 | Hy3-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/29183> |
 | Hy3-iluvatar-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/29182> |
@@ -85,6 +90,7 @@
 | phi-4-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8858> |
 | phi-4-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8859> |
 | phi-4-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8860> |
+| pi0-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8862> |
 | Qwen-Image-2.1-BF16-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/53282> |
 | Qwen-Image-2.1-BF16-enflame-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/53279> |
 | Qwen-Image-2.1-BF16-hygon-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/53283> |
@@ -96,6 +102,7 @@
 | Qwen2-7B-Instruct-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8856> |
 | Qwen2.5-32B-Instruct-FlagOS-Nvidia | <https://aihuanxin.cn/#/model?path=/model/detail/8863> |
 | Qwen2.5-VL-32B-Instruct-FlagOS-Metax-BF16 | <https://aihuanxin.cn/#/model?path=/model/detail/9055> |
+| Qwen2.5-VL-32B-Instruct-FlagOS-Nvidia | <https://aihuanxin.cn/#/model?path=/model/detail/8932> |
 | Qwen3-235B-A22B-FlagOS-nvidia | <https://aihuanxin.cn/#/model?path=/model/detail/8857> |
 | Qwen3-235B-A22B-Instruct-2507-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8939> |
 | Qwen3-30B-A3B-FlagOS-nvidia | <https://aihuanxin.cn/#/model?path=/model/detail/8937> |
@@ -147,8 +154,14 @@
 | QwQ-32B-FlagOS-Cambricon | <https://aihuanxin.cn/#/model?path=/model/detail/8894> |
 | QwQ-32B-FlagOS-Iluvatar | <https://aihuanxin.cn/#/model?path=/model/detail/9059> |
 | QwQ-32B-FlagOS-Nvidia | <https://aihuanxin.cn/#/model?path=/model/detail/8895> |
+| RoboBrain-X0-Preview-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8886> |
+| RoboBrain-X0-Preview-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8885> |
+| RoboBrain2.0-32B-Ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/9058> |
 | RoboBrain2.0-32B-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8938> |
+| RoboBrain2.0-7B-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8879> |
+| RoboBrain2.0-7B-FlagOS-Ascend | <https://aihuanxin.cn/#/model?path=/model/detail/8880> |
 | RoboBrain2.0-7B-metax-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8881> |
+| RoboBrain2.0-7B-W8A16-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8861> |
 | Seed-OSS-36B-Instruct-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8941> |
 | step3-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/8878> |
 | Xing4.0-29B-A4B-BF16-ascend-FlagOS | <https://aihuanxin.cn/#/model?path=/model/detail/52259> |
