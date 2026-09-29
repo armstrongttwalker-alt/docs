@@ -105,6 +105,18 @@ This document provides a comprehensive reference for all environment variables u
 
 **Note**: These variables configure the FlagCX P2P Engine for one-sided RDMA operations, primarily used when integrating with transfer frameworks like NIXL.
 
+### ACCL/Barex transport
+
+Environment variables change runtime behavior without rebuilding the library. The following settings apply only to deployments that build and use the ACCL/Barex transport adaptor:
+
+| Variable | Description |
+|----------|-------------|
+| `FLAGCX_P2P_TRANSPORT` | Set to `accl` to select the ACCL/Barex path when the adaptor is available. |
+| `FLAGCX_ACCL_MAX_MR_MB` | Limits ACCL/Barex registered-memory chunking. `0` disables this limit. |
+| `FLAGCX_VMM_ENABLE` | The current ACCL/Barex integration path requires `0`. |
+
+Build the adaptor with `USE_ACCL_BAREX=1`. These are deployment-specific settings, not universal defaults.
+
 ---
 
 ## Topology Configuration

@@ -2,17 +2,24 @@
 
 ## Environment configuration
 
-Refer to the environment setup section in the [](getting-started.md) page.
+Refer to the environment setup section in the [Getting Started](getting-started.md) page.
 
 ## Installation and compilation
 
-Refer to [](getting-started.md) for FlagCX compilation and installation.
+Refer to [Getting Started](getting-started.md) for FlagCX compilation and installation.
 
 ## API Reference
 
 ### Device Handle Management
 
-FlagCX introduces a device handle API that separates device/CCL adaptor lifecycle from communicator management. The previous `flagcxHandlerGroup` approach is now deprecated.
+The Device API provides communicator and memory-handle lifecycle operations for lower-level, device-side communication. A **kernel** is code that runs on an accelerator device; tests or features that use device-side kernels may require a build with `COMPILE_KERNEL=1`.
+
+Memory registration means preparing a buffer so FlagCX can access it efficiently or remotely. An allocator is the component that creates and frees memory. FlagCX tracks this allocator provenance, so a buffer must be used with the allocator and registration path that created it. Normal registration prepares a buffer for communication, while window registration creates a reusable window for one-sided operations. Pair each create/register call with its matching destroy/deregister and free call after use.
+
+For SHMEM-backed memory, allocate and free through `flagcxMemAlloc`/`flagcxMemFree` with `flagcxMemSHMEM`; see the ownership example in [Getting Started](getting-started.md). For ACCL/Barex runtime settings, see [Environment Variables](environment-variables.md).
+
+Device IR is a helper representation layer for device-side operations. Current releases include Scalar IR and Unified IR bindings. The lane-mask ABI (Application Binary Interface) is 64 bits; ABI compatibility means that compiled code and the library agree on binary-level types and layouts. Use headers and libraries from the same FlagCX release, and do not assume cross-release compatibility unless it has been verified.
+
 
 #### New APIs (Recommended)
 
@@ -71,7 +78,7 @@ The following API has been removed from the public interface:
 
 1. Build and Installation
 
-   Refer to the Communication API test build and installation section in [](getting-started.md).
+   Refer to the [Getting Started](getting-started.md) page for the Communication API test build and installation instructions.
 
 2. Communication API Test
 
@@ -142,7 +149,7 @@ The following API has been removed from the public interface:
 
 1. Build and installation
 
-   Refer to [](getting-started.md) for instructions on building and installing the Torch API test.
+   Refer to the [Getting Started](getting-started.md) page for instructions on building and installing the Torch API test.
 
 2. Torch API test execution
 
@@ -198,7 +205,7 @@ The following API has been removed from the public interface:
    - `master_port`: Port used by the master node to establish the process group.
      All nodes must use the same port, and the port has to be available on all nodes.
    - `example.py`: Torch API test script.
-   - Refer to [](environment-variables.md) for the usage of the various `FLAGCX_XXX` environment variables.
+   - Refer to [Environment Variables](environment-variables.md) for the usage of the various `FLAGCX_XXX` environment variables.
 
 3. Sample screenshot from a correct performance test
 
@@ -210,7 +217,7 @@ The following steps shows an example in which we run the LLaMA3-8B model on Nvid
 
 1. Build and installation
 
-   Refer to the Environment Setup and Build & Installation section in the [](getting-started.md) page.
+   Refer to the Environment Setup and Build & Installation sections in the [Getting Started](getting-started.md) page.
 
 2. Data preparation
 
@@ -383,7 +390,7 @@ For kernel-based communication with Device API (available on NVIDIA and Hygon), 
 export FLAGCX_MEM_ENABLE=1
 ```
 
-Refer to [](environment-variables.md) for the full list of UniRunner-specific configuration variables (prefixed with `FLAGCX_UNIRUNNER_*`).
+Refer to [Environment Variables](environment-variables.md) for the full list of UniRunner-specific configuration variables (prefixed with `FLAGCX_UNIRUNNER_*`).
 
 ### One-sided RDMA operations
 
@@ -450,7 +457,7 @@ See `flagcx/include/flagcx.h` for the full API signatures and parameter document
 
 ### P2P Engine
 
-The FlagCX P2P Engine provides a point-to-point engine interface for one-sided RDMA operations, designed for integration with transfer frameworks such as NIXL.
+The FlagCX P2P Engine provides a point-to-point engine interface for one-sided RDMA operations, designed for integration with transfer frameworks such as NIXL. P2P means peer-to-peer data movement between devices or ranks. See [Environment Variables](environment-variables.md) for the P2P Engine and ACCL/Barex runtime settings.
 
 #### Key Features
 
@@ -523,7 +530,13 @@ int flagcxP2pEngineWrite(FlagcxP2pConn *conn, FlagcxP2pMr mr, const void *data,
 bool flagcxP2pEngineXferStatus(FlagcxP2pConn *conn, uint64_t transferId);
 ```
 
-See [environment-variables.md](environment-variables.md) for P2P Engine configuration variables (`FLAGCX_P2P_*`).
+See [Environment Variables](environment-variables.md) for P2P Engine configuration variables (`FLAGCX_P2P_*`).
+
+### PD and PTD concepts
+
+In inference systems, **PD** means **Prefill/Decode disaggregation**. Prefill processes the input prompt, while Decode generates output tokens; disaggregation runs these stages as separate services or workers so they can be managed independently.
+
+**PTD** means **Prefill-Transfer-Decode**. It is a profiling and observability workflow, not a FlagCX communication API: it measures or visualizes prompt processing, transfer of intermediate data between stages, and token generation. The workflow uses Prometheus/OpenMetrics metrics and Grafana dashboards and includes high-level support for SGLang and vLLM.
 
 ### NCCL wrapper plugin
 
@@ -540,13 +553,13 @@ LD_PRELOAD=./build/lib/libnccl.so python your_training_script.py
 
 The wrapper intercepts NCCL API calls and routes them through FlagCX. A thread-local recursive guard prevents infinite recursion when FlagCX's internal NCCL adaptor calls back into NCCL.
 
-Prerequisites: FlagCX built and installed, CUDA toolkit, real NCCL >= 2.21.0 (versions 2.21 through 2.27 supported). See `plugin/nccl/README.md` for full details.
+Prerequisites: FlagCX built and installed, CUDA toolkit, and NCCL `>= 2.27`. See `plugin/nccl/README.md` for full details.
 
 ### Communication API test
 
 1. Build and Installation
 
-   Refer to the [](getting-started.md) documentation for instructions on
+   Refer to the [Getting Started](getting-started.md) documentation for instructions on
    environment setup, creating symbolic links, and how to build and install the software.
 
 2. Verify MPICH Installation
@@ -607,7 +620,7 @@ Prerequisites: FlagCX built and installed, CUDA toolkit, real NCCL >= 2.21.0 (ve
        /root/FlagCX/test/perf/test_allreduce -b 128K -e 4G -f 2 -w 5 -n 100 -p 1`
      ```
 
-     - Refer to [](environment-variables.md) for the meaning and usage of `FLAGCX_XXX` environment variables.
+     - Refer to [Environment Variables](environment-variables.md) for the meaning and usage of `FLAGCX_XXX` environment variables.
 
    - **Note:** When using two GPUs per node in the heterogeneous Communication API test, some warnings may indicate that each node only has 1 GPU active. In this case, FlagCX will skip GPU-to-GPU AllReduce and fall back to host-based communication.
 
