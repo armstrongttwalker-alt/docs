@@ -1,26 +1,7 @@
-# Basic Usage
+# Basic usage
 
-## Build a circuit
-
-```{code-block} python
-import flagquantum as fq
-
-circuit = fq.Circuit(n_qubits=2).h(0).cx(0, 1)
-```
-
-`n_qubits` is the preferred public name for circuit size. Positional
-`Circuit(2)`, `n_wires=2`, and the legacy `nqubits=2` remain compatible, and
-conflicting aliases fail during construction. Internal IR, compiler, and runtime
-mappings continue to use *wire* for logical mappings.
-
-Generated gate methods keep their concise positional form and also accept
-semantic qubit keywords: `h(0)` and `h(qubit=0)` are equivalent, `cx(0, 1)` and
-`cx(control=0, target=1)` are equivalent, symmetric two-qubit gates use
-`qubit1=` and `qubit2=`, and the generic `Circuit.gate(...)` keeps `wires=`.
-Duplicate, conflicting, or missing qubit arguments fail before an instruction is
-added.
-
-## Plan, then run
+Create a circuit, inspect its plan, execute it and read the result. This is the
+shortest complete journey through the stable API.
 
 ```{code-block} python
 import flagquantum as fq
@@ -36,20 +17,13 @@ print(result.plan.identity)
 print(result.state)
 ```
 
-`fq.run(...) -> fq.ExecutionResult` is the single recommended execution entry
-point, and `Circuit.run(...)` is equivalent to `fq.run(circuit, ...)`.
-`ExecutionOptions` owns backend-neutral configuration; measurement requests and
-an optional `flagquantum.noise.NoiseModel` are semantic program inputs. Unknown
-keyword arguments fail before planning.
+## Plan, then execute the same plan
 
-## Reproducible plans
-
-Pass a plan straight to `fq.run` for an inspectable, reproducible execution: the
-supplied plan is validated and executed without replanning or recompiling, and
-`result.plan is plan` holds in the same process. Plan identity covers the
-canonical IR, resolved execution semantics, compiler pipeline, required
-environment, and the selected decision, and a JSON round trip verifies every
-fingerprint before execution:
+Planning explains what will run and why. Passing the plan to `fq.run` executes
+that exact plan without replanning or recompiling, and `result.plan is plan`
+holds in the same process. Plan identity covers the canonical IR, resolved
+execution semantics, compiler pipeline, required environment and the selected
+decision, and it survives a JSON round trip:
 
 ```{code-block} python
 text = plan.to_json()
@@ -59,47 +33,31 @@ assert result.plan.identity == plan.identity
 ```
 
 An existing plan is closed to semantic overrides: passing `options`,
-`measurements`, or `noise_model` alongside it raises `TypeError`, and an
-environment or world-size incompatibility fails before kernel launch rather than
+`measurements` or `noise_model` alongside it raises `TypeError`. Environment or
+world-size incompatibility fails before kernel launch rather than silently
 replanning or falling back.
 
-## Read the result
+## Inspect without executing
+
+When you only need the decision, use the circuit-level planner:
 
 ```{code-block} python
-state = result.statevector()
-energy = fq.run(circuit, outputs=fq.expectation(fq.Z(0))).expectation()
-diagnostics = result.diagnostics()   # versioned metrics, provenance, runtime, compatibility
-```
-
-Use `result.measurement(index_or_name)` for a specific request and
-`result.native()` only when intentionally depending on an unstable
-backend-native object; backend attributes are not forwarded implicitly.
-
-## Select a device or target
-
-`ExecutionOptions.device` describes a device controlled by the current process,
-while `target` names an external execution destination:
-
-```{code-block} python
-local = fq.run(circuit, options=fq.ExecutionOptions(device="cuda:0"))
-
-remote = fq.run(
-    circuit,
-    compiler="qsteed",
-    target="quafu:Baihua",
-    shots=1024,
-    name="bell calibration",
+circuit = (
+    fq.Circuit(n_qubits=4)
+    .h(0)
+    .cx(0, 1)
+    .rzz(1, 2, theta=0.2)
 )
-counts = remote.measurement("counts").value[0]
+
+plan = circuit.runtime_plan(prefer_jax=True, require_gradients=True)
+print(plan.summary())
 ```
 
-The remote journey compiles, packages, submits, and waits for the result without
-changing the `fq.ExecutionResult` return type, and it never selects a compiler,
-provider, or fallback implicitly.
+A plan is an explanation of intended execution, not benchmark evidence.
 
-## Advanced interfaces
+## Local options and remote targets
 
-`flagquantum.runtime.run_native`, `flagquantum.simulation.mps.run_mps`, and
-`flagquantum.simulation.tensor_network.run_tensor_network` exist for callers that
-explicitly need native backend result objects or backend-specific controls.
-Prefer `fq.run` unless one of those is required.
+`fq.ExecutionOptions` describes resources controlled by the current process,
+such as `device="cuda:0"` or a simulation `mode`. The `target` argument is
+reserved for external execution destinations such as a Jiuding workspace or a
+Quafu backend. See [Hardware and remote targets](hardware-and-remote.md).

@@ -1,52 +1,99 @@
-# Algorithms
+# Algorithms, error correction and digital twins
 
-`flagquantum.algorithms` composes the runtime into runnable algorithm units.
-They are demonstration-scale teaching and reference implementations: each unit
-records the premise its advantage statement depends on, and none of them
-certifies performance, convergence, or hardware behaviour.
+## Algorithm units
 
-## Units
+`flagquantum.algorithms` composes user-facing algorithm units on top of the
+stable circuit and runtime API. They are exported from the subpackage surface
+rather than the `fq` alias.
 
-| Unit | Entry point | Advantage premise recorded |
-| --- | --- | --- |
-| QUBO to Ising mapping | `flagquantum.algorithms.qubo` | Polynomial classical transformation; any advantage belongs to the consuming solver |
-| Quantum state preparation | `state_preparation` | Input is already exponential, so efficiency is shown given the amplitudes |
-| Oracle building blocks and truth-table synthesis | `primitives.oracle` | Reversible classical logic; a truth table is enumerated classically |
-| Grover search | `grover` | Query-complexity improvement against a synthesized oracle |
-| Quantum amplitude estimation | `amplitude_estimation` | Quadratic speed-up only when state preparation is free |
-| Quantum PCA | `pca` | Low effective rank only; the density matrix is materialized classically |
-| Quantum k-medians | `kmedians` | Requires a free oracle; distances are computed classically |
-| Quantum kernel estimation and kernel ridge classification | `quantum_kernel` | Assumes the feature states are available; sampling cost is the paper's own |
-| Feature selection as a QUBO | `feature_selection` | Builds an objective; the solver owns any advantage |
-| Frequent-item fractions by amplitude estimation | `qarm` | Requires coherent database access, which is not exercised |
-| Singular values by phase estimation | `svd` | Assumes an input model; the decomposition is computed classically here |
+| Unit | What it does |
+| --- | --- |
+| Grover search | Synthesizes an oracle from a truth table and runs the search |
+| Amplitude estimation | Estimates an amplitude on the register's own grid |
+| Quantum PCA | Builds the density matrix of a data set and reads out its dominant eigenvalues |
+| Quantum k-medians | Samples centroid assignments through Grover search |
+| Quantum kernel estimation | Estimates kernel entries and trains a kernel ridge classifier |
+| Feature selection as a QUBO | Builds the objective of a feature-selection instance |
+| QUBO to Ising mapping | Converts a QUBO into an Ising Hamiltonian and back |
+| Hamiltonian helpers | Pauli terms, exact ground-state references and VQE helpers |
 
-## Variational training
+These units are demonstration scale. Each one records its advantage premise
+explicitly: several require a qRAM or a free oracle that the unit does not
+supply, and the classical cost of building the problem is paid rather than
+assumed away. Read the advantage premise before quoting a unit's speedup.
+Optimizer selection for the VQE and ADAPT-VQE units uses the
+`optimizer_factory` protocol, with Adam as the default.
 
-The optimization helpers drive local VQE and ADAPT-VQE workflows with staged
-hybrid parameter groups: combinations of Adam/AdamW/SGD/L-BFGS, exact full or
-block quantum natural gradient, and Rotosolve, with per-step gradient, update,
-and evaluation diagnostics. Heisenberg helpers provide phase-augmented,
-bond-resolved HVA ansatze, dimer-singlet initialization, and exact small-system
-energy references, so a run can report an explicit exact-energy convergence
-decision instead of treating a decreasing loss as convergence.
+## Local Hamiltonian gradients
+
+For batch-size-one statevector circuits with real, constant-coefficient Z and
+ZZ terms, `Hamiltonian.expectation` exposes a memory-bounded adjoint path:
 
 ```{code-block} python
+import torch
+import flagquantum as fq
 from flagquantum import algorithms as fqa
 
+theta = torch.tensor(0.2, dtype=torch.float64, requires_grad=True)
+circuit = fq.Circuit(3, dtype=torch.complex128).ry(0, theta).cx(0, 1)
 hamiltonian = fqa.Hamiltonian((
     fqa.pauli_term(0.7, "ZZ", (0, 1)),
     fqa.pauli_term(0.2, "Z", (2,)),
 ))
-print(hamiltonian.expectation(circuit))
+
+energy = hamiltonian.expectation(circuit, differentiation="adjoint")
+energy.backward()
 ```
 
-## Read the boundary
+The default remains `differentiation="autograd"`. Adjoint mode rejects X/Y
+terms, trainable or complex coefficients and batched circuits instead of
+silently switching algorithm.
 
-Every unit documents what its speed-up or capability statement assumes, and
-several of them require oracles, qRAM, or input models that the unit does not
-supply, so no end-to-end advantage follows at demonstration scale. Where a unit
-publishes a narrower limit, respect it: phase oracles above three evaluation
-wires need caller-supplied ancillas that must enter in |0>, and a dirty ancilla
-produces a silently wrong answer. Treat the recorded premises as part of the
-interface, not as fine print.
+## Quantum error correction
+
+`flagquantum.qec` connects syndrome extraction, decoding, correction and
+logical-result analysis. The reference experiment is a three-data-qubit
+repetition-code memory experiment with an injected error:
+
+```{code-block} python
+from flagquantum.qec import ErrorEvent, ErrorSchedule, run_repetition_memory_experiment
+
+result = run_repetition_memory_experiment(
+    error_schedule=ErrorSchedule((ErrorEvent(round_index=0, wire=1),)),
+    rounds=3,
+    shots=16,
+    seed=0,
+)
+print(result.logical_error_rate)
+```
+
+Sweeps report finite-shot observations only, not logical suppression or
+thresholds, and the temporal rule is not maximum-likelihood decoding. General
+codes, correlated noise and hard-real-time hardware feedback remain research
+goals.
+
+## QPU digital twins
+
+A digital twin is a calibration-conditioned model of one device, built from a
+`NoiseModel` carrying a device profile. The execution target and ordered
+physical mapping become part of the immutable twin identity:
+
+```{code-block} python
+import flagquantum as fq
+
+twin = fq.twin.from_noise_model(
+    device_noise_model,
+    target="your-provider:your-qpu",
+    qubits=(12, 13),
+)
+prediction = twin.predict(fq.Circuit(2).h(0).cx(0, 1))
+```
+
+Twin predictions are total-variation agreement over classical measurement
+distributions, not quantum-state fidelity. Evidence stays specific to declared
+circuits, operations, mappings, physical couplers, depth, calibration snapshots
+and confidence bounds: `TwinCircuitSupport` narrows an envelope to the directed
+couplers and depth actually validated, and composition never infers cross-cell
+correlated noise or combines local bounds into a regional accuracy claim.
+Models, validation histories and submissions can be persisted and restored
+without credentials, and loading never submits or polls a task.

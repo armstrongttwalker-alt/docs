@@ -1,82 +1,61 @@
-# Distributed Execution
+# Distributed execution
 
-FlagQuantum distributes one logical workload, not copies of it. Distribution
-topology comes from the execution environment, and every result reports its
-`distribution_semantics` so replicated, rank-local, sliced, and sharded
-execution stay distinguishable.
+Distributed execution extends the same programming model to genuinely sharded
+workloads. One logical workload is split across ranks; replicated execution is
+never presented as capacity scaling.
 
 ## Sharded statevector
 
-Under an initialized multi-rank process group, the same circuit, module, and
-result surface use the native sharded statevector runtime:
+Under an initialized multi-rank process group, the same statevector module and
+result surface automatically use the native sharded statevector runtime.
+Distribution topology comes from the execution environment, not from a second
+mode vocabulary.
 
 ```{code-block} shell
 torchrun --nproc_per_node=4 your_script.py
 ```
 
 ```{code-block} python
-import torch
 import flagquantum as fq
 
-def circuit(parameters, inputs=None):
-    return fq.Circuit(n_qubits=20, bsz=32).ry(0, parameters[0]).cx(0, 1)
+def circuit(parameters):
+    return fq.Circuit(20).ry(0, parameters[0]).cx(0, 1)
 
-module = fq.Module(circuit, n_parameters=1, policy=fq.RuntimePolicy(observable="z"))
-training = fq.train(module, optimizer=torch.optim.Adam(module.parameters()), steps=10)
+module = fq.Module(circuit, n_parameters=1)
+result = module.execute()
 ```
 
-The sharded runtime owns amplitude ownership, cross-rank reduction for
-gradients, rank-local rematerialization for shared-parameter circuits, and
-checkpoint/resume. Full-state materialization is forbidden on this path, and
-forward-only training or release blockers are reported explicitly.
+Sharded statevector training keeps optimizer state and checkpoints owned by the
+declared distribution, so forward execution, gradients, optimizer updates and
+restart all preserve the same semantics.
 
-## Rank-owned MPS training
+## Rank-owned MPS
 
-Long, low-entanglement circuits are the MPS case: one state is sharded across
-ranks with owner-local boundaries, backward execution, optimizer state, and
-matched checkpoint/restart equivalence.
+Distributed MPS training keeps forward, backward and optimizer state
+rank-owned. It is the path for large low-entanglement systems that do not fit
+on one device, and it supports checkpoint and resume with matched restart
+semantics. An experimental `adam_lbfgs` schedule with owner-local
+limited-memory histories is available for bonded systems.
 
 ```{code-block} shell
-bash examples/distributed_statevector_topologies/run.sh
 python examples/distributed_mps/variable_bond_capacity_8gpu.py
+python examples/distributed_statevector_topologies/run.sh
 ```
 
-## Distributed training entry points
+## What distributed evidence means here
 
-Owner-sharded statevector and MPS training have their own entry points and are
-not implied by `fq.train`:
+- A distributed scalability claim requires one logical workload sharded across
+  ranks.
+- CPU distributed tiers prove semantics and fail-closed behaviour only; they are
+  not capacity evidence.
+- Runtime records report their `distribution_semantics`, so sharded capacity
+  can be distinguished from replicated throughput.
+- Distributed training remains explicitly experimental outside the supported
+  sharded statevector and MPS profiles.
 
-```{code-block} python
-from flagquantum.experimental.distributed import train_distributed_statevector
+## FlagOS accelerators
 
-result = train_distributed_statevector(
-    module,
-    optimizer=torch.optim.SGD(module.parameters(), lr=0.05),
-    steps=200,
-    checkpoint_dir="./checkpoints",
-)
-```
-
-These paths add multi-step native PyTorch training with owner-sharded optimizer
-state, structured lifecycle progress, memory preflight, and cancellation.
-Distributed training counts as complete only when forward execution, gradients,
-optimizer updates, and checkpoint ownership all preserve the declared
-distribution semantics.
-
-## Evidence and claim boundary
-
-- The recorded distributed workloads are development evidence: complex64 and
-  complex128 forward, reverse, and bounded training trajectories on one
-  CUDA-backed A800 node at 2, 4, and 8 cards, plus single-node MPS scale,
-  boundary transport, and checkpoint/restart checks. Multi-node execution was
-  probed with two nodes and one A800 per node over NCCL/TCP.
-- Communication attribution is incomplete in the recorded evidence: the inner
-  transport route and host staging remain unattributed, and FlagCX use is not
-  established.
-- CPU distributed tests prove semantics and fail-closed behaviour only. They are
-  never scalability evidence.
-- Release-grade scalability evidence requires a promoted benchmark payload that
-  passes the distributed release-policy audit.
-- Capacity expansion means one logical workload that does not fit on one device.
-  Replicated data parallelism and manual slicing are reported under their own
-  semantics.
+On a FlagOS-supported accelerator, the same program runs on the logical
+`flagos:0` device through Torch-FL, so distributed transports and collectives
+follow the FlagOS route. See
+[Hardware and remote targets](hardware-and-remote.md).

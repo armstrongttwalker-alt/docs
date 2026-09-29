@@ -1,12 +1,12 @@
-# Train with PyTorch
+# Training with PyTorch
 
-Execution and training are deliberately separate. `fq.Module` owns trainable quantum parameters and behaves like an ordinary PyTorch module, and `fq.train` provides a minimal optimizer loop when you do not need a custom one.
-
-## A trainable module
+Execution and training are intentionally separate. A trainable program is an
+`fq.Module` inside an ordinary PyTorch training loop.
 
 ```{code-block} python
-import flagquantum as fq
 import torch
+import flagquantum as fq
+
 
 def build_circuit(parameters, inputs=None):
     return (
@@ -15,6 +15,7 @@ def build_circuit(parameters, inputs=None):
         .cx(0, 1)
         .ry(1, theta=parameters[1])
     )
+
 
 module = fq.Module(
     build_circuit,
@@ -29,12 +30,36 @@ training = fq.train(
     objective=lambda value: value.mean(),
     steps=100,
 )
-print(training.final_loss)
+
+print(training.losses[-1])
 ```
 
-`module(inputs)` and `module.forward(inputs)` always return an autograd-compatible tensor. `module.execute(inputs)` returns `fq.ExecutionResult` when the caller needs provenance, runtime diagnostics, or explicit backend information. `fq.run` accepts a circuit, IR, or plan — not a module — and never updates parameters.
+## Module behaviour
+
+- `module(inputs)` and `module.forward(inputs)` return an autograd-compatible
+  tensor, so gradients flow into quantum and classical parameters from the same
+  backward call.
+- `module.execute(inputs)` returns `fq.ExecutionResult` when the caller needs
+  provenance, runtime diagnostics or explicit backend information.
+- `fq.run` accepts a circuit, IR or execution plan — not a module — and never
+  updates parameters.
+
+`fq.train` is deliberately a minimal, caller-owned optimizer loop: it performs
+`zero_grad`, `backward` and `step`, then returns `fq.TrainingResult`. Use an
+ordinary PyTorch loop when the quantum module is part of a larger classical
+model.
+
+## Precision
+
+`fq.Module` owns one end-to-end precision choice through `PrecisionPolicy`,
+which determines the real parameter dtype and the complex circuit/execution
+dtype. Circuit builders that omit `dtype` inherit that choice, and an explicit
+`ExecutionOptions.precision` or circuit dtype must agree with it. The module
+fails before execution instead of silently casting.
 
 ## Named parameter groups
+
+Named groups remove positional-index bookkeeping for larger circuits:
 
 ```{code-block} python
 def named_circuit(parameters):
@@ -50,26 +75,21 @@ model = fq.Module(
 )
 ```
 
-`init="uniform"` samples angles from [0, 2π), `init="normal"` samples from a zero-mean normal distribution with standard deviation 0.01, and `seed` uses a module-local generator so PyTorch's global random state is untouched.
+`init="uniform"` samples angles from `[0, 2π)`, while `init="normal"` samples
+from a zero-mean normal distribution with standard deviation `0.01`. `seed`
+uses a module-local generator and does not reset PyTorch's global random state.
 
-## Observables
+## Checkpoints
 
-`RuntimePolicy(observable="z", observable_wires=(0, 1))` keeps one value per requested wire instead of reducing the observable axis; `observable="z_sum"` sums that axis. Vector-valued Z execution is supported by the local PyTorch statevector, MPS, and tensor-network paths. JAX and distributed statevector execution are single-observable and fail closed when fallback is disabled.
-
-## Checkpoints and precision
-
-Module parameters and policy participate in `state_dict()` save and load; the circuit builder stays application code and must be supplied when the module is reconstructed. `Module.save_checkpoint()` and `Module.load_checkpoint()` own resume semantics, and the precision policy travels with them. Checkpointing is not a hidden option of `fq.train`.
-
-## Hybrid models
-
-The repository's quick-start example trains a `torch.nn.Linear` encoder together with an `fq.Module` quantum layer in one optimizer loop and reports correctness against an analytically known target:
-
-```{code-block} shell
-python examples/quick_start.py --mode sv --steps 40
-```
-
-Training with an optional JAX kernel behind the PyTorch interface is shown in `examples/single_machine_quantum_ai/04_jax_kernel_torch_layer.py`. First-order gradients are supported across that bridge; double backward is not, and raises instead of returning an approximate value.
+Module parameters and policy participate in `state_dict()` save and load, and
+checkpoint and resume stay on `Module.save_checkpoint()` and
+`Module.load_checkpoint()` rather than becoming hidden options of `fq.train`.
+The circuit builder remains application code and must be supplied when
+reconstructing the module, matching normal PyTorch module construction.
 
 ## Distributed training
 
-Owner-sharded statevector and MPS training are separate experimental entry points under `flagquantum.experimental.distributed`. They are not implied by calling `fq.train`, and they are complete only when forward execution, gradients, optimizer updates, and checkpoint ownership all preserve the declared distribution. See [Distributed Execution](distributed-execution.md).
+Under an initialized multi-rank process group, the same module and result
+surface automatically use the native sharded statevector runtime. Owner-sharded
+statevector and MPS training also expose separate distributed entry points,
+which remain experimental. See [Distributed execution](distributed-execution.md).

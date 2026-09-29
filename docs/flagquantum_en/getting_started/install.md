@@ -2,64 +2,62 @@
 
 Read [Requirements](requirements.md) before proceeding.
 
-## 1. Install FlagQuantum
+## Steps
 
-The released version from PyPI:
+1. Install FlagQuantum
 
-```{code-block} shell
-python -m pip install flagquantum
-```
+   - Install the released package
 
-The development version from source, with development tooling:
+     ```{code-block} shell
+     python -m pip install flagquantum
+     ```
 
-```{code-block} shell
-git clone https://github.com/flagos-ai/FlagQuantum.git
-cd FlagQuantum
-python -m pip install -e ".[dev]"
-```
+   - Install a development checkout with the development tools
 
-Add the optional groups you need in the same command, for example
-`python -m pip install -e ".[dev,viz]"` or, on a released install,
-`python -m pip install "flagquantum[qiskit,pennylane]"`.
+     ```{code-block} shell
+     git clone https://github.com/flagos-ai/FlagQuantum.git
+     cd FlagQuantum
+     python -m pip install -e ".[dev]"
+     ```
 
-## 2. Verify the installation
+2. Add the optional dependencies you need
 
-```{code-block} python
-import flagquantum as fq
+   ```{code-block} shell
+   python -m pip install -e ".[jax,cuda,viz]"
+   ```
 
-print(fq.__version__)
-```
+   Use the group names in [Requirements](requirements.md) instead of installing
+   external frameworks by hand, so that pinned compatibility windows are kept.
 
-## 3. Run a first execution
+3. Verify the installation
 
-```{code-block} shell
-python -m examples.cpu_statevector
-```
+   ```{code-block} python
+   import flagquantum as fq
+   print(fq.__version__)
+   ```
 
-The example runs one complete local journey: build a circuit, create an
-inspectable plan, execute that plan on the CPU statevector engine, and compare
-the result with an analytical reference. The three smallest maintained programs
-are:
+4. Verify a local execution path
 
-```{code-block} shell
-python -m examples.local.simulate
-python -m examples.local.measure
-python -m examples.local.train
-```
+   ```{code-block} shell
+   python -m examples.local.simulate
+   python -m examples.local.measure
+   python -m examples.local.train
+   ```
 
-## 4. Optional development containers
+   These three examples cover local statevector simulation, measurements, and
+   PyTorch-native training without credentials, remote resources or optional
+   backends.
 
-The repository ships development container definitions for a CPU image, a
-CUDA image, and variants without JAX that carry QSteed and the compiler plugin
-in one environment. They are the recommended way to reproduce the tutorial and
-interoperability dependency sets. See the container guide in the repository for
-the image list and launch commands.
+## Development containers
 
-## Migrating from the pre-release v0.1 API
+The repository also ships development container definitions for CPU and CUDA
+environments, with and without JAX and the QSteed compiler. Follow the
+container guide in the repository when you prefer a prepared environment; the
+images install FlagQuantum from the checkout and include JupyterLab, and none
+of them contain provider credentials.
 
-The v0.1 `DistributedQuantumDevice`, `GeneralEncoder`, `InvertibleUnitary`,
-DTensor interchange helpers, device-oriented gates, and the device-oriented
-measurement path are not part of the v0.2 product and have no compatibility
-layer. Port those programs to `fq.Circuit`, `fq.Module`, `fq.plan`, and
-`fq.run`; see [Basic Usage](../user_guide/basic-usage.md) and
-[Training](../user_guide/training.md).
+## Next steps
+
+- [Build and run your first program](../user_guide/basic-usage.md)
+- [Train with PyTorch](../user_guide/training-with-pytorch.md)
+- [Choose a simulation representation](../user_guide/simulation-representations.md)

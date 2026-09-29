@@ -1,55 +1,41 @@
-# Run Tests
+# Run tests
 
-## Install the test dependencies
-
-```{code-block} shell
-python -m pip install ".[dev]"
-```
-
-## Run the suite
+Install the development dependencies, then run the smallest meaningful tier
+first and expand by blast radius.
 
 ```{code-block} shell
-python run_tests.py
+python -m pip install -e ".[dev]"
+
+# Daily development baseline
+python tools/ci_tier.py pr-default
+
+# Local API, runtime, planner and compiler changes
+python tools/ci_tier.py pr-runtime
+
+# Distributed planner, audit and benchmark contracts on CPU
+python tools/ci_tier.py pr-distributed
+
+# Accelerator-backed and device-bound Triton tests
+python tools/ci_tier.py gpu-scheduled
 ```
 
-## Tiered commands
-
-The repository's tier runner selects a meaningful subset for the change at hand:
-
-| Situation | Command | What it proves | What it does not prove |
-| --- | --- | --- | --- |
-| Daily development or any issue baseline | `python tools/ci_tier.py pr-default` | Fast smoke and unit health for imports, minimal circuits, autograd, and planner helpers | Runtime integration, distributed behaviour, performance, or release readiness |
-| Local API, runtime, planner, or compiler changes | `python tools/ci_tier.py pr-runtime` | Seeded integration coverage for local runtime and API behaviour | Multi-process transport, GPU execution, or scalability |
-| Distributed planner, audit, or benchmark contract changes | `python tools/ci_tier.py pr-distributed` | CPU distributed semantics, fail-closed gates, benchmark JSON contracts, release-gate validation | Real multi-GPU or multi-node capacity expansion |
-| Real multi-GPU or accelerator work | `python tools/ci_tier.py gpu-scheduled` | Accelerator-backed tests plus device-bound Triton kernels | Multi-node transport or release scalability by itself |
-
-The core rule is to run the smallest meaningful tier first and expand by blast
-radius. CPU distributed tests prove semantics and fail-closed behaviour only;
-they are never scalability evidence, and an empty marker selection is not
-verification.
-
-## Optional integration suites
+Plain pytest entry points work as well:
 
 ```{code-block} shell
-pytest -m qiskit
-pytest -m pennylane
-pytest -m braket
+python -m pytest tests/unit -q
+python -m pytest tests/qec -q
+python -m pytest -m qiskit
+python -m pytest -m pennylane
 ```
 
-## Correctness certification and the no-progress policy
+## What each tier proves
 
-`docs/correctness_certification.json` is generated from the operator and
-lowering registry: every supported operator/backend pair must have a versioned
-generated case, and distributed implementation changes must run the required
-local GPU lane because CPU simulation cannot replace it.
+| Tier | Proves | Does not prove |
+| --- | --- | --- |
+| Push gate | Imports, minimal circuits, autograd, pure planner and audit helpers | Runtime integration, distributed behaviour, performance, release readiness |
+| Local runtime | Seeded integration coverage for local runtime and API behaviour | Multi-process transport, GPU execution, scalability |
+| Distributed CPU | CPU distributed semantics, fail-closed gates, benchmark contracts, release-gate validation | Real multi-GPU or multi-node capacity expansion |
+| GPU scheduled | Accelerator-backed and device-bound kernel tests | Multi-node transport or release scalability by itself |
 
-Long-running jobs report phase, last operation, completed work, memory,
-collective state, and rank. A no-progress watchdog classifies stalled input,
-collective and participant stalls, rank desynchronization, and memory growth,
-preserves diagnostics, terminates the stale job, and verifies process-group
-cleanup. Explicit compile and checkpoint budgets keep bounded legitimate work
-from being mistaken for a hang.
-
-Release-grade scalability evidence requires a promoted benchmark payload that
-passes the distributed release-policy audit, which is a separate gate from the
-tiers above.
+An empty marker selection is not verification. CPU distributed tests prove
+semantics only and are never used as scalability release evidence.

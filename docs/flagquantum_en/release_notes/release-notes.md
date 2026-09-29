@@ -6,78 +6,74 @@
 
 - **Added features**
 
-  - Established FlagQuantum IR, `fq.Circuit`, `fq.Module`, `fq.run`, runtime
-    planning, explicit sharded statevector and MPS execution, distributed
-    training, deployment packaging, and versioned result contracts as the
-    maintained product architecture.
+  - Unified circuit API: `fq.Circuit` with the `n_qubits` spelling, semantic
+    qubit keywords and compatible legacy aliases.
 
-  - PyTorch-native training with flat, named, and symbolic parameter groups,
-    per-module precision policy, and module checkpoint and restore.
+  - FlagQuantum IR: one versioned, serializable and validated representation
+    shared by compilation, execution and deployment.
 
-  - Choice of statevector, matrix product state, and tensor-network execution
-    from one program, with an explainable runtime plan and no silent fallback.
+  - Runtime planning: `fq.plan` and `Circuit.runtime_plan` explain the selected
+    representation, execution policy and blockers before anything runs.
 
-  - Explicitly selectable compiler journeys: target-independent optimization,
-    target-aware compilation with a coupling map, and compiler-plugin selection
-    for a named provider target.
+  - A single execution entry point: `fq.run` returns `fq.ExecutionResult` with a
+    stable value, state, samples, plan, accuracy, metrics, provenance, runtime
+    and compatibility surface, plus fail-closed handling of unknown keywords.
 
-  - Sealed deployment packages, Pauli measurement plans for shot-based hardware,
-    and remote execution against Quafu hardware and Jiuding managed compute.
+  - PyTorch-native training: `fq.Module` returns autograd tensors, `fq.train`
+    runs a caller-owned optimizer loop and returns `fq.TrainingResult`, and
+    module checkpoints support save and restore.
 
-  - Backend-neutral noise models with exact density-matrix evolution and
-    reproducible trajectory execution, plus a memory-bounded selection path.
+  - Three simulation representations behind one program: statevector, matrix
+    product state and tensor network, with optional JAX kernels behind the same
+    PyTorch interface.
 
-  - Stable error categories for validation, planning, capability, and execution
-    failures.
+  - Compilation: target-independent optimization with `compiler.optimize`,
+    target-aware compilation with explicit coupling maps and recorded routing,
+    and compiler plugins discovered through the extension registry.
 
-- **Removed**
+  - Measurement and noise: Pauli observables with `expectation`,
+    `probabilities`, `samples` and `counts` outputs; one backend-neutral
+    `NoiseModel` driving exact density-matrix evolution, batched statevector
+    trajectories and MPS quantum trajectories.
 
-  - The pre-release v0.1 `DistributedQuantumDevice`, `GeneralEncoder`,
-    `InvertibleUnitary`, DTensor interchange helpers, device-oriented gates, and
-    the device-oriented measurement path, without a compatibility layer. They
-    are not part of the v0.2 product or its capability evidence.
+  - Distributed execution: sharded statevector forward, backward, training and
+    optimizer state, and rank-owned distributed MPS training.
 
-- **Enhanced features**
+  - Hardware execution paths: explicit `compiler` and `target` selection for
+    remote submission, ordered logical-to-physical mapping, qubit-wise-commuting
+    grouping for Hamiltonian measurement, and sealed deployment packages.
 
-  - Distributed statevector training with owner-sharded optimizer state,
-    checkpoint/resume, cancellation, and structured lifecycle progress.
+  - Ecosystem and research surfaces: interoperability adapters for Qiskit,
+    PennyLane, Cirq, Braket and CUDA-Q; QPU digital twins; a repetition-code
+    memory experiment; circuit drawers; and an algorithms package.
 
-  - Rank-owned MPS training with variable bond dimension, boundary transport,
-    and matched checkpoint/restart equivalence.
+  - Stable error categories in `flagquantum.errors` with compatibility to the
+    corresponding Python built-in exceptions.
 
-  - Compiler plugins discovered as independently installed packages with
-    entry-point identity, capability negotiation, and fail-closed errors.
+- **Removed / replaced**
 
-  - FlagOS platform runtime behind an explicit provider selection, with the
-    CUDA path unchanged and no vendor branches inside FlagQuantum.
+  - The pre-release device-oriented API — `DistributedQuantumDevice`,
+    `GeneralEncoder`, the invertible unitary mode, DTensor interchange helpers,
+    and device-oriented gates and measurement — is not part of the v0.2.0
+    product and is removed without a compatibility layer.
 
-## Unreleased
+## v0.1.0
 
-- QPU digital twins: calibration-conditioned, provider-neutral models with
-  validation series, drift comparison, frozen evidence envelopes, exact-circuit
-  regional composition, and prospective incumbent-versus-candidate comparison.
+**Release date**: 2026-06-24
 
-- Detached remote jobs: `fq.submit()` and `fq.restore_job()` for Quafu counts and
-  Jiuding managed programs, with credential-free receipts and unchanged
-  synchronous `fq.run()` behaviour.
+- Initial release of FlagQuantum as a distributed quantum statevector simulator
+  built on PyTorch.
+- Distributed statevector simulation using `DTensor` for multi-GPU execution,
+  with automatic resharding during gate operations.
+- Pauli, Clifford, rotation and controlled gates with parameterized support, and
+  custom gate registration.
+- Angle, amplitude and basis encoding, plus a general user-defined encoder.
+- Invertible backpropagation for memory-efficient gradient computation, and
+  measurement post-selection with a depolarizing noise model.
+- Text and Matplotlib circuit drawing, and an OpenQASM 2.0/3.0 exporter.
 
-- Direct Quafu hardware execution without a local compiler dependency, with
-  service compilation by default and explicit local precompilation on request.
+---
 
-- Interoperability adapters for Qiskit, PennyLane, Cirq, and CUDA-Q, plus
-  explicit local execution bridges for PennyLane Lightning, Cirq Simulator, and
-  Qiskit Aer.
-
-- Extension SDK for backends, compilers, compiler passes, kernels, operators,
-  devices, providers, measurement collectors, and planners.
-
-- Quantum algorithm units at demonstration scale, each recording the premise its
-  advantage statement depends on, together with staged hybrid VQE and ADAPT-VQE
-  optimization helpers.
-
-- Noisy simulation beyond the exact density path: batched and MPS quantum
-  trajectories, readout confusion, and calibration-derived timing and idle
-  noise.
-
-- Continuous-time Lindblad evolution and a repetition-code memory experiment
-  connecting syndrome extraction, decoding, and correction.
+The repository development version additionally provides QPU digital-twin
+studies, detached remote job submission with receipts, dynamic circuits and
+further simulation representations. Install from source to use them.
