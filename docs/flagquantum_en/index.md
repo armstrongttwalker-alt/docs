@@ -11,37 +11,49 @@ Getting Started
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
 
-:::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` Overview
-:link: FlagQuantum_overview/FlagQuantum-overview
+::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` Overview
+:link: overview/overview
 :link-type: doc
 
-Have a quick view of FlagQuantum, and also some basic concepts.
+What FlagQuantum is, how it is organized, and how its capabilities are graded.
 
-+++\n[Learn more »](FlagQuantum_overview/FlagQuantum-overview.md)
++++
+[Learn more »](overview/overview.md)
 :::
 
-:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
+::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for FlagQuantum and provides step-by-step instructions for setting it up.
+Requirements, installation, and a first trainable quantum model.
 
-+++\n[Learn more »](getting_started/getting-started.md)
++++
+[Learn more »](getting_started/getting-started.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
+::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through basic usage, distributed simulation, parameterized gates, and custom gate registration.
+Circuits, planning, training, simulation representations, noise, hardware targets, twins, and error correction.
 
-+++\n[Learn more »](user_guide/user-guide.md)
++++
+[Learn more »](user_guide/user-guide.md)
+:::
+
+::{grid-item-card} {octicon}`bookmark;1.5em;sd-mr-1` Reference
+:link: reference/reference
+:link-type: doc
+
+The stable API surface, capability catalog, extension SDK, and current support boundaries.
+
++++
+[Learn more »](reference/reference.md)
 :::
 
 ::::
 
 ---
-
 
 ```{toctree}
 :caption: 📑 Release Notes
@@ -56,9 +68,9 @@ release_notes/release-notes.md
 :maxdepth: 2
 :hidden:
 
-FlagQuantum_overview/FlagQuantum-overview.md
-FlagQuantum_overview/features.md
-FlagQuantum_overview/architecture.md
+overview/overview.md
+overview/features.md
+overview/architecture.md
 ```
 
 ```{toctree}
@@ -69,6 +81,7 @@ FlagQuantum_overview/architecture.md
 getting_started/getting-started.md
 getting_started/requirements.md
 getting_started/install.md
+getting_started/quick-start.md
 ```
 
 ```{toctree}
@@ -77,13 +90,24 @@ getting_started/install.md
 :hidden:
 
 user_guide/user-guide.md
-user_guide/basic-usage.md
-user_guide/parameterized-gates.md
-user_guide/quantum-encoding.md
-user_guide/custom-gates.md
+user_guide/first-quantum-model.md
+user_guide/build-and-run.md
+user_guide/runtime-planning.md
+user_guide/local-workflows.md
+user_guide/choose-a-simulator.md
+user_guide/training-with-pytorch.md
+user_guide/custom-operations.md
+user_guide/compile-and-target.md
+user_guide/compiler-and-remote.md
+user_guide/noisy-simulation.md
+user_guide/digital-twin-and-qec.md
+user_guide/qpu-digital-twin.md
+user_guide/qec.md
+user_guide/run-on-hardware.md
 user_guide/distributed-execution.md
-user_guide/invertible-mode.md
-user_guide/tutorials.md
+user_guide/dynamic-circuits.md
+user_guide/algorithms.md
+user_guide/examples-and-tutorials.md
 user_guide/run-tests.md
 ```
 
@@ -92,5 +116,8 @@ user_guide/run-tests.md
 :maxdepth: 2
 :hidden:
 
-reference.md
+reference/reference.md
+reference/api.md
+reference/capabilities.md
+reference/extensions.md
 ```

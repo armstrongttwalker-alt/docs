@@ -11,34 +11,44 @@
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
 
-:::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` 概览
-:link: FlagQuantum_overview/FlagQuantum-overview
+::{grid-item-card} {octicon}`browser;1.5em;sd-mr-1` 概览
+:link: overview/overview
 :link-type: doc
 
-快速了解 FlagQuantum 以及一些基本概念。
+FlagQuantum 是什么、如何组织，以及能力等级如何划分。
 
 +++
-[了解更多 »](FlagQuantum_overview/FlagQuantum-overview.md)
+[了解更多 »](overview/overview.md)
 :::
 
-:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 快速入门
+::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 快速入门
 :link: getting_started/getting-started
 :link-type: doc
 
-概述 FlagQuantum 的安装要求，并提供逐步设置说明。
+环境要求、安装步骤，以及第一个可训练的量子模型。
 
 +++
 [了解更多 »](getting_started/getting-started.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` 用户指南
+::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` 用户指南
 :link: user_guide/user-guide
 :link-type: doc
 
-指导您完成基本使用、分布式模拟、参数化门和自定义门注册。
+线路、规划、训练、模拟表示、噪声、硬件目标、数字孪生与纠错。
 
 +++
 [了解更多 »](user_guide/user-guide.md)
+:::
+
+::{grid-item-card} {octicon}`bookmark;1.5em;sd-mr-1` 参考资料
+:link: reference/reference
+:link-type: doc
+
+稳定 API 清单、能力目录、扩展 SDK 与当前支持边界。
+
++++
+[了解更多 »](reference/reference.md)
 :::
 
 ::::
@@ -58,9 +68,9 @@ release_notes/release-notes.md
 :maxdepth: 2
 :hidden:
 
-FlagQuantum_overview/FlagQuantum-overview.md
-FlagQuantum_overview/features.md
-FlagQuantum_overview/architecture.md
+overview/overview.md
+overview/features.md
+overview/architecture.md
 ```
 
 ```{toctree}
@@ -71,6 +81,7 @@ FlagQuantum_overview/architecture.md
 getting_started/getting-started.md
 getting_started/requirements.md
 getting_started/install.md
+getting_started/quick-start.md
 ```
 
 ```{toctree}
@@ -79,13 +90,24 @@ getting_started/install.md
 :hidden:
 
 user_guide/user-guide.md
-user_guide/basic-usage.md
-user_guide/parameterized-gates.md
-user_guide/quantum-encoding.md
-user_guide/custom-gates.md
+user_guide/first-quantum-model.md
+user_guide/build-and-run.md
+user_guide/runtime-planning.md
+user_guide/local-workflows.md
+user_guide/choose-a-simulator.md
+user_guide/training-with-pytorch.md
+user_guide/custom-operations.md
+user_guide/compile-and-target.md
+user_guide/compiler-and-remote.md
+user_guide/noisy-simulation.md
+user_guide/digital-twin-and-qec.md
+user_guide/qpu-digital-twin.md
+user_guide/qec.md
+user_guide/run-on-hardware.md
 user_guide/distributed-execution.md
-user_guide/invertible-mode.md
-user_guide/tutorials.md
+user_guide/dynamic-circuits.md
+user_guide/algorithms.md
+user_guide/examples-and-tutorials.md
 user_guide/run-tests.md
 ```
 
@@ -94,5 +116,8 @@ user_guide/run-tests.md
 :maxdepth: 2
 :hidden:
 
-reference.md
+reference/reference.md
+reference/api.md
+reference/capabilities.md
+reference/extensions.md
 ```
