@@ -2,6 +2,23 @@
 
 This section introduces diagnostics on ops dispatch.
 
+<!-- NEW in v0.2.0 -->
+## Policy and backend resolution
+
+Dispatch is policy-based rather than a fixed `flagos > vendor > reference` chain. When an operation does not use the expected implementation, check the effective configuration and backend availability:
+
+1. Check environment-variable overrides such as `SGLANG_FL_PREFER`, `SGLANG_FL_PER_OP`, `SGLANG_FL_ALLOW_VENDORS`, `SGLANG_FL_DENY_VENDORS`, and `SGLANG_FL_STRICT`.
+2. Check `SGLANG_FL_CONFIG` and the detected platform YAML under `sglang_fl/dispatch/config/`.
+3. Enable `SGLANG_FL_DISPATCH_DEBUG=[TODO: needs confirmation]` if additional policy diagnostics are required.
+4. Confirm that the selected backend's runtime and device are available in the target image.
+
+Strict mode reports an error instead of falling back when the preferred or explicitly ordered backend is unavailable. Without strict mode, dispatch filters unavailable or disallowed candidates and selects the next allowed implementation.
+
+## Distributed and FlagCX diagnostics
+
+For distributed communication failures, verify the selected `SGLANG_FL_DIST_BACKEND`, `FLAGCX_PATH` when FlagCX is expected, device visibility, network configuration, and tensor/pipeline parallel settings. Platform-specific framework, image, and network-device prerequisites are documented on the [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en).
+<!-- END NEW -->
+
 ## Dispatch log
 
 See which backend each fused op resolved to (written at server startup):

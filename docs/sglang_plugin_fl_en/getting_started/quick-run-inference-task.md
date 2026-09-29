@@ -1,6 +1,6 @@
 # Quick run an inference task
 
-This section covers how to quick start a inference task through sglang-plugin-FL. 
+This section covers how to quick start a inference task through sglang-plugin-FL.
 
 ## Installation
 
@@ -31,6 +31,10 @@ git clone https://github.com/flagos-ai/FlagCX.git
 cd FlagCX && make USE_NVIDIA=1
 export FLAGCX_PATH="$PWD"
 ```
+
+<!-- NEW in v0.2.0 -->
+For vendor-specific Empty-mode installation, runtime images, framework packages, and validation prerequisites, use the centralized vendor/framework/image-selection page: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en). Empty mode is not a no-device mode; the target platform must provide its vendor torch, drivers, firmware, device runtime, communication libraries, attention backend, and uncovered operators.
+<!-- END NEW -->
 
 ## Download models
 
@@ -75,6 +79,22 @@ python -m sglang.launch_server \
 ```{note}
 FlagGems Triton kernels contain `logging.Logger` calls that are incompatible with `torch.compile` (used by SGLang's piecewise CUDA graph). Always use `--disable-piecewise-cuda-graph` when launching the server. Regular CUDA graph capture works normally.
 ```
+
+<!-- NEW in v0.2.0 -->
+### Multinode and pipeline parallelism
+
+For multinode inference, configure the distributed backend and network interfaces for the target platform, then use the corresponding SGLang tensor-parallel and pipeline-parallel arguments. The repository's multinode examples are starting points rather than universal hardware recipes; replace addresses, device visibility variables, communication paths, and interface names with values for the target deployment.
+
+Pipeline-parallel workflows may use FlagCX or `torch.distributed` through `CommunicatorFL`. See the dispatch environment-variable guide for backend selection. Platform-specific images, framework builds, and validation status are maintained on the centralized page: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en).
+
+### Qwen3.6 MTP
+
+The v0.2.0 examples include Qwen3.6 multi-token prediction (MTP) workflow coverage. Use the model's supported SGLang launch arguments and the target platform's validated runtime selection; this page does not assert universal model or hardware support.
+
+### Throughput benchmarking
+
+Use the repository's serving benchmark tooling after the inference path is working. Compare throughput, time to first token, and decode latency across input/output lengths and request rates. Do not infer universal performance characteristics from the generic workflow.
+<!-- END NEW -->
 
 ### 2. Send a Request
 

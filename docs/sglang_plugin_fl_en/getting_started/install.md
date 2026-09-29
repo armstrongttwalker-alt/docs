@@ -1,28 +1,25 @@
 # Install sglang-plugin-FL
 
-## Docker Images (Recommended)
+<!-- CHANGED: v0.2.0 centralizes vendor/framework/image selection and removes stale private image tags from this page. -->
+## Runtime images and platform packages
 
-Pre-built Docker images for v0.1.0-rc2:
+Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en). Use that page to choose the vendor, framework, and image before installing or launching sglang-plugin-FL.
 
-| Platform | Image | Contents |
-|----------|-------|----------|
-| NVIDIA GPU (dual-node) | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual` | sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0 |
-| NVIDIA GPU (single-node) | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single` | sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.11.0, triton 3.6.0 |
-| Moore Threads MUSA | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa` | sglang 0.5.12, torch 2.9.0, flag_gems 5.0.2 |
-| Moore Threads (SVT) | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt` | sglang 0.5.11, flag_gems 5.3.0rc2, torch 2.9.0, triton 3.1.0 |
-| Huawei Ascend | `harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend` | sglang 0.5.12, flag_gems 5.0.2, CANN 8.5.0 |
+This page intentionally does not maintain a full image matrix or platform-specific package recipe.
 
-```bash
-# NVIDIA dual-node (cross-node inference)
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-dual
-# NVIDIA single-node
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-nvidia-single
-# Moore Threads MUSA
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-musa
-# Moore Threads SVT (full-stack test)
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-mthreads-svt
-# Huawei Ascend
-docker pull harbor.baai.ac.cn/flagos21-release/sglang-plugin-fl:v0.1.0-rc2-ascend
-```
+<!-- NEW in v0.2.0 -->
+## Empty mode
 
-Dual-node images support cross-node LLM inference. Single-node images support single-machine inference. SVT images are full-stack test images.
+Empty mode is an installation/runtime assembly mechanism for platforms where the CUDA-oriented SGLang dependency stack is not the target deployment environment. It avoids treating CUDA packages as the universal dependency set, but it is **not** a no-device mode.
+
+The target platform still provides:
+
+- vendor torch;
+- drivers and firmware;
+- device runtime;
+- communication libraries;
+- platform attention backends;
+- operators not covered by sglang-plugin-FL.
+
+Use the centralized vendor/framework/image-selection page for the platform-specific image and dependency set: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en).
+<!-- END NEW -->

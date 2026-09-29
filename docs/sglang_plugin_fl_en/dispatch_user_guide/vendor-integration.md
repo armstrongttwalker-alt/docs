@@ -7,15 +7,10 @@ cp -r sglang_fl/dispatch/backends/vendor/template/ \
       sglang_fl/dispatch/backends/vendor/my_chip/
 ```
 
-The following table lists the existing vendors:
+<!-- CHANGED: v0.2.0 keeps this page as a generic integration contract rather than a complete vendor inventory or validation matrix. -->
+Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en). The generic contract below does not imply that every backend supports every operation or model.
 
-| Vendor | Directory | Hardware Detection |
-| :--- | :--- | :--- |
-| NVIDIA CUDA | `vendor/cuda/` | `sgl_kernel` importable |
-| Huawei Ascend | `vendor/ascend/` | `torch_npu` importable |
-| Template | `vendor/template/` | Always False (reference only) |
-
-To integrate with a new vendor, you need to implement two files:
+To integrate with a new vendor, implement the backend contract and registration described below. The three operations in the example are a minimal illustration, not the complete v0.2.0 operation surface.
 
 ## 1. Backend class (my_chip.py)
 
@@ -115,9 +110,18 @@ Each op function receives standardized arguments (same as vllm-plugin-FL):
 | `rms_norm` | `fn(obj, x: Tensor, residual: Optional[Tensor] = None) -> Tensor \| tuple[Tensor, Tensor]` |
 | `rotary_embedding` | `fn(obj, query, key, cos, sin, position_ids, rotary_interleaved=False, inplace=True) -> tuple[Tensor, Tensor]` |
 
-
 The `obj` parameter provides access to layer attributes (`obj.weight`, `obj.variance_epsilon`, etc.). These attribute names are identical between SGLang and vLLM, so the same impl works for both frameworks.
 
-## Vendor's backend auto-discovery
+## Vendor backend auto-discovery
 
-The plugin scans `dispatch/backends/vendor/*/register_ops.py` at startup. If is_available() returns True, the vendor's ops are registered. No other files need modification.
+The plugin scans `dispatch/backends/vendor/*/register_ops.py` at startup. If `is_available()` returns True, the vendor's ops are registered. No other files need modification.
+
+<!-- NEW in v0.2.0 -->
+Optional integration hooks can add platform-specific behavior when needed:
+
+- `patch.py` can apply framework patches required to expose a backend or transfer path.
+- `register_platform.py` can register platform identity and runtime behavior.
+- A platform YAML under `sglang_fl/dispatch/config/` can provide default dispatch policy for the detected platform.
+
+These files extend the generic integration contract; they do not establish a universal vendor support or validation claim. Detailed adaptation procedures remain on the centralized page: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en).
+<!-- END NEW -->

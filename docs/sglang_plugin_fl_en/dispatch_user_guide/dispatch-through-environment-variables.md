@@ -1,7 +1,16 @@
 # Dispatch through environment variables
 
-All plugin behavior is controlled by environment variables with the  `SGLANG_FL_*` prefix.
+All plugin behavior is controlled by environment variables with the `SGLANG_FL_*` prefix.
 
+<!-- NEW in v0.2.0 -->
+The effective configuration precedence is:
+
+```{code-block} text
+environment variables > explicit YAML (`SGLANG_FL_CONFIG`) > platform auto-detected YAML > code defaults
+```
+
+Environment variables can override explicit and platform YAML values. Platform-specific backend names and runtime defaults depend on the target platform; use `[TODO: needs confirmation]` where a deployment requires an accepted-value list that is not defined by this generic guide.
+<!-- END NEW -->
 
 ## Layer 2 — Fused Op Dispatch
 
@@ -12,10 +21,11 @@ All plugin behavior is controlled by environment variables with the  `SGLANG_FL_
 | `SGLANG_FL_PER_OP` | — | Per-op backend priority, e.g. `rms_norm=vendor\|flagos;silu_and_mul=reference` |
 | `SGLANG_FL_OOT_BLACKLIST` | — | Skip listed ops from OOT dispatch (comma-separated class names) |
 | `SGLANG_FL_OOT_WHITELIST` | — | Only dispatch listed ops (mutually exclusive with BLACKLIST) |
-| `SGLANG_FL_STRICT` | `0` | `1` = disable fallback (error if preferred backend unavailable) |
-| `SGLANG_FL_DENY_VENDORS` | — | Deny specific vendors (comma-separated, e.g. `cuda,ascend`) |
+| `SGLANG_FL_STRICT` | `0` | `1` disables fallback; an unavailable preferred/ordered backend becomes an error |
+| `SGLANG_FL_DENY_VENDORS` | — | Deny specific vendors (comma-separated) |
 | `SGLANG_FL_ALLOW_VENDORS` | — | Allow only listed vendors (comma-separated) |
 | `SGLANG_FL_DISPATCH_LOG` | — | Path to dispatch log file (records which ops are intercepted) |
+| `SGLANG_FL_DISPATCH_DEBUG` | [TODO: needs confirmation] | Enables additional dispatch diagnostics; accepted values are [TODO: needs confirmation] |
 
 ## Layer 1 — ATen Replacement (FlagGems)
 
@@ -34,15 +44,17 @@ All plugin behavior is controlled by environment variables with the  `SGLANG_FL_
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `SGLANG_FL_DIST_BACKEND` | `nccl` | Backend: `nccl` / `hccl` / `flagcx` |
-| `FLAGCX_PATH` | — | FlagCX installation path (if set, defaults to `flagcx` backend) |
+| `SGLANG_FL_DIST_BACKEND` | `nccl` in the generic reference table | Distributed backend selection; platform runtime defaults may map to another backend, and `FLAGCX_PATH` can select FlagCX when no explicit override is set |
+| `FLAGCX_PATH` | — | FlagCX installation path; required for FlagCX collectives |
+
+Supported runtime choices depend on the platform and installed libraries. Use `[TODO: needs confirmation]` for platform-specific accepted values not covered by the target runtime.
 
 ## System / Debug
 
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `SGLANG_FL_CONFIG` | — | Path to YAML config file (overrides platform auto-detection) |
-| `SGLANG_FL_PLATFORM` | (auto) | Force platform: `cuda`, `ascend` (overrides auto-detection) |
+| `SGLANG_FL_PLATFORM` | (auto) | Force platform; accepted values are [TODO: needs confirmation] |
 | `SGLANG_FL_LOG_LEVEL` | `INFO` | Dispatch system log level: `DEBUG`, `INFO`, `WARNING`, `ERROR` |
 | `SGLANG_PLUGINS` | (all) | SGLang built-in: filter which plugins to load (comma-separated) |
 

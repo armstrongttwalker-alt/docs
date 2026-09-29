@@ -1,5 +1,6 @@
 # Project structure
 
+<!-- CHANGED: v0.2.0 moves platform YAML defaults under dispatch/config and expands vendor backends without maintaining a full support matrix here. -->
 ```{code-block} python
 sglang_fl/
 ├── pyproject.toml                    # Package config + entry_points registration
@@ -11,11 +12,6 @@ sglang_fl/
     │   ├── communicator.py           # CommunicatorFL (FlagCX / torch.distributed wrapper)
     │   └── device_communicators/
     │       └── flagcx.py             # FlagCX-specific communicator
-    ├── config/
-    │   ├── __init__.py               # YAML config loader with platform auto-detection
-    │   ├── sample.yaml               # Full example config with all options documented
-    │   ├── nvidia.yaml               # NVIDIA CUDA platform defaults
-    │   └── ascend.yaml               # Ascend platform defaults (with blacklists)
     └── dispatch/                     # Op dispatch system (aligned with vllm-plugin-FL)
         ├── __init__.py               # Public API: call_op(), resolve_op()
         ├── types.py                  # OpImpl, BackendImplKind, BackendPriority
@@ -25,6 +21,15 @@ sglang_fl/
         ├── builtin_ops.py            # Registration orchestrator
         ├── ops.py                    # FLBackendBase ABC (op signature definitions)
         ├── logger_manager.py         # Logging with SGLANG_FL_LOG_LEVEL
+        ├── config/                   # Platform YAML defaults and dispatch configuration
+        │   ├── ascend.yaml
+        │   ├── gcu.yaml
+        │   ├── hygon.yaml
+        │   ├── iluvatar.yaml
+        │   ├── kunlunxin.yaml
+        │   ├── musa.yaml
+        │   ├── nvidia.yaml
+        │   └── tsingmicro.yaml
         ├── bridge/                   # SGLang ↔ dispatch parameter translation
         │   ├── __init__.py
         │   ├── silu_and_mul.py       # forward_cuda(self, x) → call_op("silu_and_mul", obj, x)
@@ -41,8 +46,10 @@ sglang_fl/
             │   ├── register_ops.py
             │   └── impl/             # activation.py, normalization.py, rotary.py
             └── vendor/               # VENDOR backends (auto-discovered)
-                ├── ascend/           # Huawei Ascend NPU (torch_npu)
-                ├── cuda/             # NVIDIA CUDA (sgl_kernel)
+                ├── <vendor>/         # Vendor-specific backend package
                 └── template/         # Template for new vendors
 ```
 
+<!-- NEW in v0.2.0 -->
+Platform YAML files provide default dispatch policy for a detected platform. They are not a vendor validation matrix. Vendor-specific framework selection, runtime images, validation status, installation commands, and adaptation procedures are maintained on the centralized page: [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en).
+<!-- END NEW -->

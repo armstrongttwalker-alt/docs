@@ -42,13 +42,13 @@ Guides you how to dispatch operators between FlagGems, vendor-specific, and PyTo
 :::
 
 :::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` API Reference
-:link: reference/dispatch-api-reference
+:link: reference/dispatch-reference-and-example
 :link-type: doc
 
 API reference for the operator dispatch system and configuration options.
 
 +++
-[Learn more »](reference/dispatch-api-reference.md)
+[Learn more »](reference/dispatch-reference-and-example.md)
 :::
 
 ::::
@@ -78,5 +78,5 @@ dispatch_user_guide/dispatch-user-guide.md
 :maxdepth: 5
 :hidden:
 
-reference/dispatch-api-reference.md
+reference/dispatch-reference-and-example.md
 ```

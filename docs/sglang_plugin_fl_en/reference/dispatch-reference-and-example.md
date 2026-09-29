@@ -2,6 +2,16 @@
 
 This page documents the references and examples of environment variables for sglang-plugin-FL.
 
+<!-- NEW in v0.2.0 -->
+The effective configuration precedence is:
+
+```{code-block} text
+environment variables > explicit YAML (`SGLANG_FL_CONFIG`) > platform auto-detected YAML > code defaults
+```
+
+For vendor/framework/image selection, platform-specific runtime packages, images, and validation status, use the [centralized vendor/framework/image-selection page](https://flagos.io/resourcedownload?lang=en).
+<!-- END NEW -->
+
 ## Environment Variables — Complete Reference
 
 ### Layer 2 — Fused Op Dispatch
