@@ -54,7 +54,7 @@ evidence. A stable public API does not promote an experimental backend.
 | --- | --- | --- |
 | Circuit packaging and cloud deployment | Development evidence | Provider support and credential behaviour vary; no provider is release-certified |
 | Evidence-qualified QPU digital twins | Development evidence | Agreement is total-variation agreement of measurement distributions, for declared circuits only |
-| Interoperability adapter contract | Experimental | Candidate-stable protocol pending API-owner approval |
+| Interoperability adapter contract | Experimental | Candidate-stable protocol, not yet approved by the API owners |
 | Qiskit, PennyLane, Cirq and CUDA-Q interoperability | Experimental | Static conversion at versioned boundaries; external objects never enter runtime or accelerator layers |
 | PennyLane Lightning, Cirq Simulator and Qiskit Aer bridges | Experimental | One fully bound single-batch circuit, no gradients, noise, dynamic circuits, routing or fallback |
 | Evidence-based simulator advisor | Experimental | Advice is bound to a checked-in circuit and environment; it never infers performance from size |
