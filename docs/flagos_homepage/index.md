@@ -241,6 +241,15 @@ An online laboratory providing cloud-based development environments.
 +++
 [View Documentation →](https://docs.flagos.io/projects/onlinelaboratory/en/latest/){ .card-link-sd }
 ```
+
+```{grid-item-card} FlagPrism
+:class-card: flagos-card-sd
+
+A multi-backend debugging and performance-analysis toolkit for Triton programs.
+
++++
+[View Documentation →](https://docs.flagos.io/projects/FlagPrism/en/latest/){ .card-link-sd }
+```
 ````
 
 ---

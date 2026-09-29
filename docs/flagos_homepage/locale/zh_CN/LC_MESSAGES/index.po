@@ -459,7 +459,23 @@ msgstr ""
 "[查看文档 →](https://docs.flagos.io/projects/onlinelaboratory/zh-cn/latest/){"
 " .card-link-sd }"
 
-#: ../../index.md:248
+msgid "FlagPrism"
+msgstr "FlagPrism"
+
+msgid ""
+"A multi-backend debugging and performance-analysis toolkit for Triton "
+"programs."
+msgstr "面向 Triton 程序的多后端调试与性能分析工具。"
+
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagPrism/en/latest/){ .card-link-sd }"
+msgstr ""
+"[查看文档 →](https://docs.flagos.io/projects/FlagPrism/zh-cn/latest/){ "
+".card-link-sd }"
+
+#: ../../flagos_homepage/index.md:238
 msgid "FlagOS Platform Services"
 msgstr "FlagOS 平台服务"
 

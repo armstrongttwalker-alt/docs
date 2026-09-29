@@ -31,6 +31,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=sglang_plugin_fl_en make html  # build the sglang_plugin_fl English project
    $ PROJECT=flagquantum_en make html  # build the flagquantum English project
    $ PROJECT=kernelgenbench_en make html  # build the kernelgenbench English project
+   $ PROJECT=flagprism_en make html  # build the flagprism English project
 
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
@@ -57,6 +58,7 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=sglang_plugin_fl_zh make html  # build the sglang_plugin_fl Chinese project
    $ PROJECT=flagquantum_zh make html  # build the flagquantum Chinese project
    $ PROJECT=kernelgenbench_zh make html  # build the kernelgenbench Chinese project
+   $ PROJECT=flagprism_zh make html  # build the flagprism Chinese project
 
 For more information read https://sphinx-multiproject.readthedocs.io/.
 """
@@ -338,6 +340,20 @@ multiproject_projects = {
         "config": {
             "project": "KernelGenBench 文档中心",
             "html_title": "KernelGenBench 文档中心",
+        },
+    },
+    "flagprism_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagPrism Documentation",
+            "html_title": "FlagPrism Documentation",
+        },
+    },
+    "flagprism_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagPrism 文档中心",
+            "html_title": "FlagPrism 文档中心",
         },
     },
     "flagtree_en": {
