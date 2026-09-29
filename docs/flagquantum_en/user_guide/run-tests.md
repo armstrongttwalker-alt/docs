@@ -1,42 +1,55 @@
-# Run tests
+# Run Tests
 
-FlagQuantum tests are organised in tiers. Run the smallest meaningful tier
-first, then expand by blast radius.
+## Install the test dependencies
 
-## Install test dependencies
-
-```bash
-python -m pip install "flagquantum[dev]"
+```{code-block} shell
+python -m pip install ".[dev]"
 ```
 
-## Quick start
+## Run the suite
 
-| Situation | Command |
-| --- | --- |
-| Daily development or an issue baseline | `python tools/ci_tier.py pr-default` |
-| Local API, runtime, planner, or compiler changes | `python tools/ci_tier.py pr-runtime` |
-| Distributed planner, audit, or benchmark contract changes | `python tools/ci_tier.py pr-distributed` |
-| Real multi-GPU or accelerator testing | `python tools/ci_tier.py gpu-scheduled` |
+```{code-block} shell
+python run_tests.py
+```
 
-An empty marker selection is not verification: a tier that collects nothing has
-proved nothing.
+## Tiered commands
 
-## What each tier proves
+The repository's tier runner selects a meaningful subset for the change at hand:
 
-- The default tier covers imports, minimal circuits, autograd, and pure
-  planner/audit helpers.
-- The runtime tier covers seeded local runtime and API behaviour.
-- The distributed CPU tier covers multi-process semantics, fail-closed gates,
-  benchmark JSON contracts, and release-gate validation. It never stands in for
-  real multi-card capacity expansion.
-- Device tiers cover accelerator-backed tests and device-bound kernels; one GPU
-  covers local parity, two cover mandatory sharded semantics, and scheduled
-  wider runs cover rank count, topology, partition, and collective behaviour.
+| Situation | Command | What it proves | What it does not prove |
+| --- | --- | --- | --- |
+| Daily development or any issue baseline | `python tools/ci_tier.py pr-default` | Fast smoke and unit health for imports, minimal circuits, autograd, and planner helpers | Runtime integration, distributed behaviour, performance, or release readiness |
+| Local API, runtime, planner, or compiler changes | `python tools/ci_tier.py pr-runtime` | Seeded integration coverage for local runtime and API behaviour | Multi-process transport, GPU execution, or scalability |
+| Distributed planner, audit, or benchmark contract changes | `python tools/ci_tier.py pr-distributed` | CPU distributed semantics, fail-closed gates, benchmark JSON contracts, release-gate validation | Real multi-GPU or multi-node capacity expansion |
+| Real multi-GPU or accelerator work | `python tools/ci_tier.py gpu-scheduled` | Accelerator-backed tests plus device-bound Triton kernels | Multi-node transport or release scalability by itself |
 
-## Release boundary
+The core rule is to run the smallest meaningful tier first and expand by blast
+radius. CPU distributed tests prove semantics and fail-closed behaviour only;
+they are never scalability evidence, and an empty marker selection is not
+verification.
+
+## Optional integration suites
+
+```{code-block} shell
+pytest -m qiskit
+pytest -m pennylane
+pytest -m braket
+```
+
+## Correctness certification and the no-progress policy
+
+`docs/correctness_certification.json` is generated from the operator and
+lowering registry: every supported operator/backend pair must have a versioned
+generated case, and distributed implementation changes must run the required
+local GPU lane because CPU simulation cannot replace it.
 
 Long-running jobs report phase, last operation, completed work, memory,
-collective state, and rank, and a no-progress watchdog classifies stalls instead
-of leaving a silent hang. Release-grade scalability evidence requires a promoted
-benchmark payload that passes the release policy and audit commands; correctness
-suites, coverage numbers, and device smoke runs are not release evidence.
+collective state, and rank. A no-progress watchdog classifies stalled input,
+collective and participant stalls, rank desynchronization, and memory growth,
+preserves diagnostics, terminates the stale job, and verifies process-group
+cleanup. Explicit compile and checkpoint budgets keep bounded legitimate work
+from being mistaken for a hang.
+
+Release-grade scalability evidence requires a promoted benchmark payload that
+passes the distributed release-policy audit, which is a separate gate from the
+tiers above.

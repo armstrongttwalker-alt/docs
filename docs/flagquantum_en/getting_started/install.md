@@ -2,62 +2,64 @@
 
 Read [Requirements](requirements.md) before proceeding.
 
-## Install the released package
+## 1. Install FlagQuantum
 
-```bash
+The released version from PyPI:
+
+```{code-block} shell
 python -m pip install flagquantum
 ```
 
-## Install the development version
+The development version from source, with development tooling:
 
-```bash
+```{code-block} shell
 git clone https://github.com/flagos-ai/FlagQuantum.git
 cd FlagQuantum
 python -m pip install -e ".[dev]"
 ```
 
-## Verify the installation
+Add the optional groups you need in the same command, for example
+`python -m pip install -e ".[dev,viz]"` or, on a released install,
+`python -m pip install "flagquantum[qiskit,pennylane]"`.
 
-```bash
-python -c "import flagquantum as fq; print(fq.__version__)"
+## 2. Verify the installation
+
+```{code-block} python
+import flagquantum as fq
+
+print(fq.__version__)
 ```
 
-The package is imported with `import flagquantum as fq`, and importing it does
-not import optional dependencies, discover extensions, or activate a provider.
+## 3. Run a first execution
 
-## Run a local example
+```{code-block} shell
+python -m examples.cpu_statevector
+```
 
-The maintained local path needs no credentials, no remote resources, and no
-optional backend:
+The example runs one complete local journey: build a circuit, create an
+inspectable plan, execute that plan on the CPU statevector engine, and compare
+the result with an analytical reference. The three smallest maintained programs
+are:
 
-```bash
+```{code-block} shell
 python -m examples.local.simulate
 python -m examples.local.measure
 python -m examples.local.train
 ```
 
-A development installation also runs the shipped examples directly, for example:
+## 4. Optional development containers
 
-```bash
-python examples/quick_start.py --mode sv --steps 40
-```
+The repository ships development container definitions for a CPU image, a
+CUDA image, and variants without JAX that carry QSteed and the compiler plugin
+in one environment. They are the recommended way to reproduce the tutorial and
+interoperability dependency sets. See the container guide in the repository for
+the image list and launch commands.
 
-## Optional dependency groups
+## Migrating from the pre-release v0.1 API
 
-Install an optional capability only when you need it:
-
-```bash
-python -m pip install "flagquantum[jax]"
-python -m pip install "flagquantum[viz]"
-python -m pip install "flagquantum[qiskit]"
-```
-
-Interoperability bridges keep their external framework on their own side of the
-boundary: importing FlagQuantum never imports Qiskit, PennyLane, Cirq, CUDA-Q,
-or a provider SDK.
-
-## Next steps
-
-Continue with the [quick start](quick-start.md), or go straight to
-[Simulation modes](../user_guide/simulation-modes.md) to choose a representation
-and [Remote execution](../user_guide/remote-execution.md) for provider targets.
+The v0.1 `DistributedQuantumDevice`, `GeneralEncoder`, `InvertibleUnitary`,
+DTensor interchange helpers, device-oriented gates, and the device-oriented
+measurement path are not part of the v0.2 product and have no compatibility
+layer. Port those programs to `fq.Circuit`, `fq.Module`, `fq.plan`, and
+`fq.run`; see [Basic Usage](../user_guide/basic-usage.md) and
+[Training](../user_guide/training.md).

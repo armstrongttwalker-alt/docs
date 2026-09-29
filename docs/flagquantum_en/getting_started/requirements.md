@@ -1,48 +1,50 @@
 # Requirements
 
-FlagQuantum runs on Python 3.10 to 3.12 and requires PyTorch 2.5 or newer. The
-released package depends on PyTorch only; everything else is an optional extra.
-
 ## Software requirements
 
 | Item | Requirement |
 | --- | --- |
-| Python | 3.10, 3.11, or 3.12 (`>=3.10,<3.13`) |
+| Python | 3.10, 3.11, or 3.12 |
 | PyTorch | `>=2.5,<2.14` |
-| Operating system | Linux, macOS, or Windows, CPU or one accelerator |
 
-Optional extras are declared in `pyproject.toml` and installed with
-`pip install "flagquantum[<extra>]"`:
+Only PyTorch is required for the local PyTorch path. Every integration is an
+optional extra, so the minimal installation stays small and imports lazily.
+
+## Optional extras
 
 | Extra | Adds |
 | --- | --- |
-| `dev` | pytest, coverage, xdist, ruff, black, mypy, pre-commit |
-| `jax` | JAX kernels behind the PyTorch interface |
-| `cotengra` | Tensor-network contraction path search |
-| `cuda` | Triton kernels for supported local gate paths |
-| `viz` | Matplotlib for circuit drawing |
-| `qiskit` | Qiskit and Aer conversion and execution bridge |
-| `pennylane` | PennyLane conversion and Lightning execution bridge |
-| `cirq` | Cirq conversion and Simulator execution bridge |
+| `dev` | Test, lint, type-check, packaging, and notebook tooling |
+| `jax` | JAX-backed simulation kernels behind the PyTorch interface |
+| `cuda` | Triton kernels for local GPU execution |
+| `cotengra` | Contraction-path search for tensor-network workloads |
+| `qiskit` | Qiskit Python IR and Qiskit Aer bridges |
+| `pennylane` | PennyLane QuantumScript conversion and Lightning execution |
+| `cirq` | Cirq conversion and Simulator execution |
+| `braket` | Amazon Braket conversion |
 | `cudaq` | CUDA-Q kernel export (Linux only) |
-| `braket`, `azure`, `quafu` | Additional provider adapters |
-| `examples` | Dataset and transformer helpers used by larger examples |
-| `all` | Development, plotting, JAX, Triton, and example dependencies |
+| `quafu` | Direct Quafu hardware submission without a local compiler |
+| `azure` | Azure Quantum target packaging |
+| `interop-all` | All interoperability adapters in one command |
+| `viz` | Matplotlib-based circuit drawing |
+| `examples` | Dependencies used by the tutorial notebooks and example scripts |
 
-## Hardware platforms
+On Python 3.10 the `cirq`, `braket`, `cudaq`, `pennylane`, and `quafu` extras
+are unavailable because the upstream packages require a newer interpreter.
 
-| Platform | Status |
-| --- | --- |
-| CPU | Default local path; exact statevector simulation and training |
-| One CUDA GPU | Single-device execution selected explicitly in `ExecutionOptions` |
-| Multiple ranks | Sharded statevector and rank-owned MPS execution over Gloo or NCCL |
-| FlagOS accelerators | Reached through the FlagOS unified multi-chip layer and its logical `flagos:0` device |
+## Execution targets
 
-FlagQuantum performs no vendor detection and contains no vendor branches. Physical-device detection, the vendor runtime, and the mapping from `flagos:0` to a physical card belong to the FlagOS provider integration; FlagQuantum records the runtime identity and route evidence it is given. A domestic accelerator is therefore not certified merely because an integration path exists.
+| Target | Selection | Support level |
+| --- | --- | --- |
+| Local CPU | Default | Production supported |
+| One CUDA GPU | `fq.ExecutionOptions(device="cuda:0")` | Local correctness evidence |
+| Several ranks | Initialized process group plus `torchrun` | Sharded statevector training is production supported |
+| FlagOS logical device | Explicit provider selection through Torch-FL | Development evidence |
+| Remote compute (Jiuding) | `target="jiuding:gpu"` | Experimental |
+| Quantum hardware (Quafu) | `target="quafu:<backend>"` | Experimental |
 
-## Multi-node expectations
-
-Distributed support is environment-specific. In the reviewed setup, a two-node
-A800 deployment with one device per node runs forward, gradient, and
-training/resume workloads over NCCL and TCP; multi-node release certification is
-a separate, evidence-gated step.
+CUDA is the only accelerator selected automatically. The FlagOS logical device
+is never chosen implicitly, and no domestic accelerator is certified by
+FlagQuantum alone: the current CUDA-backed reference records the joint
+integration path, not vendor hardware quality. See
+[Capabilities](../reference/capabilities.md) for the exact scope of every path.
