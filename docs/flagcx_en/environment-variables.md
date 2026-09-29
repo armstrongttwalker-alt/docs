@@ -20,6 +20,7 @@ This document provides a comprehensive reference for all environment variables u
     - [Socket Network](#socket-network)
     - [UCX Network](#ucx-network)
     - [Gloo Network](#gloo-network)
+    - [ACCL/Barex and PPU Integration](#acclbarex-and-ppu-integration)
   - [Plugin Configuration](#plugin-configuration)
   - [Miscellaneous](#miscellaneous)
   - [Notes](#notes)
@@ -236,7 +237,11 @@ Build the adaptor with `USE_ACCL_BAREX=1`. These are deployment-specific setting
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `FLAGCX_GLOO_IB_DISABLE` | 0 | When set to 1, disables IB for Gloo transport |
+| `FLAGCX_GLOO_IB_DISABLE` | 0 | When set to 1, disables IB support for Gloo transport |
+
+### ACCL/Barex and PPU Integration
+
+Build the ACCL/Barex network adaptor with `USE_ACCL_BAREX=1`. The PPU integration commonly uses `USE_PPU=1 USE_ACCL_BAREX=1`; integration environments may also select `FLAGCX_P2P_TRANSPORT=accl`, enable `FLAGCX_MEM_ENABLE=1`, and disable virtual memory with `FLAGCX_VMM_ENABLE=0`. These settings are integration prerequisites, not universal defaults.
 
 ---
 

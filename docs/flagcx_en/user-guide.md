@@ -12,14 +12,7 @@ Refer to [Getting Started](getting-started.md) for FlagCX compilation and instal
 
 ### Device Handle Management
 
-The Device API provides communicator and memory-handle lifecycle operations for lower-level, device-side communication. A **kernel** is code that runs on an accelerator device; tests or features that use device-side kernels may require a build with `COMPILE_KERNEL=1`.
-
-Memory registration means preparing a buffer so FlagCX can access it efficiently or remotely. An allocator is the component that creates and frees memory. FlagCX tracks this allocator provenance, so a buffer must be used with the allocator and registration path that created it. Normal registration prepares a buffer for communication, while window registration creates a reusable window for one-sided operations. Pair each create/register call with its matching destroy/deregister and free call after use.
-
-For SHMEM-backed memory, allocate and free through `flagcxMemAlloc`/`flagcxMemFree` with `flagcxMemSHMEM`; see the ownership example in [Getting Started](getting-started.md). For ACCL/Barex runtime settings, see [Environment Variables](environment-variables.md).
-
-Device IR is a helper representation layer for device-side operations. Current releases include Scalar IR and Unified IR bindings. The lane-mask ABI (Application Binary Interface) is 64 bits; ABI compatibility means that compiled code and the library agree on binary-level types and layouts. Use headers and libraries from the same FlagCX release, and do not assume cross-release compatibility unless it has been verified.
-
+FlagCX introduces a device handle API that separates device/CCL adaptor lifecycle from communicator management. The previous `flagcxHandlerGroup` approach is now deprecated.
 
 #### New APIs (Recommended)
 
@@ -78,7 +71,7 @@ The following API has been removed from the public interface:
 
 1. Build and Installation
 
-   Refer to the [Getting Started](getting-started.md) page for the Communication API test build and installation instructions.
+   Refer to the Communication API test build and installation section in [Getting Started](getting-started.md).
 
 2. Communication API Test
 
@@ -149,7 +142,7 @@ The following API has been removed from the public interface:
 
 1. Build and installation
 
-   Refer to the [Getting Started](getting-started.md) page for instructions on building and installing the Torch API test.
+   Refer to [Getting Started](getting-started.md) for instructions on building and installing the Torch API test.
 
 2. Torch API test execution
 
@@ -217,7 +210,7 @@ The following steps shows an example in which we run the LLaMA3-8B model on Nvid
 
 1. Build and installation
 
-   Refer to the Environment Setup and Build & Installation sections in the [Getting Started](getting-started.md) page.
+   Refer to the Environment Setup and Build & Installation section in the [Getting Started](getting-started.md) page.
 
 2. Data preparation
 
@@ -457,7 +450,7 @@ See `flagcx/include/flagcx.h` for the full API signatures and parameter document
 
 ### P2P Engine
 
-The FlagCX P2P Engine provides a point-to-point engine interface for one-sided RDMA operations, designed for integration with transfer frameworks such as NIXL. P2P means peer-to-peer data movement between devices or ranks. See [Environment Variables](environment-variables.md) for the P2P Engine and ACCL/Barex runtime settings.
+The FlagCX P2P Engine provides a point-to-point engine interface for one-sided RDMA operations, designed for integration with transfer frameworks such as NIXL.
 
 #### Key Features
 
@@ -530,13 +523,7 @@ int flagcxP2pEngineWrite(FlagcxP2pConn *conn, FlagcxP2pMr mr, const void *data,
 bool flagcxP2pEngineXferStatus(FlagcxP2pConn *conn, uint64_t transferId);
 ```
 
-See [Environment Variables](environment-variables.md) for P2P Engine configuration variables (`FLAGCX_P2P_*`).
-
-### PD and PTD concepts
-
-In inference systems, **PD** means **Prefill/Decode disaggregation**. Prefill processes the input prompt, while Decode generates output tokens; disaggregation runs these stages as separate services or workers so they can be managed independently.
-
-**PTD** means **Prefill-Transfer-Decode**. It is a profiling and observability workflow, not a FlagCX communication API: it measures or visualizes prompt processing, transfer of intermediate data between stages, and token generation. The workflow uses Prometheus/OpenMetrics metrics and Grafana dashboards and includes high-level support for SGLang and vLLM.
+See [environment-variables.md](environment-variables.md) for P2P Engine configuration variables (`FLAGCX_P2P_*`).
 
 ### NCCL wrapper plugin
 
@@ -553,7 +540,7 @@ LD_PRELOAD=./build/lib/libnccl.so python your_training_script.py
 
 The wrapper intercepts NCCL API calls and routes them through FlagCX. A thread-local recursive guard prevents infinite recursion when FlagCX's internal NCCL adaptor calls back into NCCL.
 
-Prerequisites: FlagCX built and installed, CUDA toolkit, and NCCL `>= 2.27`. See `plugin/nccl/README.md` for full details.
+Prerequisites: FlagCX built and installed, CUDA toolkit, and real NCCL >= 2.27. See `plugin/nccl/README.md` for full details.
 
 ### Communication API test
 

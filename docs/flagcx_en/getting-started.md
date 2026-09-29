@@ -74,14 +74,6 @@ sudo docker run -itd \
    ```
 
    See [Build and Installation](build.md) for the full list of supported backend flags.
-
-   Optional build features:
-
-   - `USE_SHMEM=1` enables SHMEM support. Set `SHMEM_HOME` when SHMEM is installed outside `/usr/local/nvshmem`.
-   - `USE_ACCL_BAREX=1` enables the ACCL/Barex network adaptor.
-   - `COMPILE_KERNEL=1` builds device-side kernel components needed by Device API tests and benchmarks. A kernel is code that runs on an accelerator device; ordinary host-side builds do not need this option.
-
-   Most builds select one hardware backend. The optional features above are needed only for the corresponding runtime, deployment, or tests.
    
 2. Successful Build Result
 
@@ -141,37 +133,8 @@ sudo docker run -itd \
 
 ### Device API test
 
-Device API tests verify intra-node and inter-node communication via the Device API. Device API tests use lower-level operations that may run closer to the accelerator device, so the FlagCX library must be built with `COMPILE_KERNEL=1` when the selected test requires device-side kernels.
+Device API tests verify intra-node and inter-node communication via the Device API.
 See [Tests](testing.md) for the full list of test binaries, build instructions, and run examples.
-
-#### Registration modes used by Device API tests
-
-The `-R` option selects how a test prepares memory for communication:
-
-- `-R 0`: use raw device memory without explicit registration.
-- `-R 1`: register memory with `flagcxMemAlloc` and `flagcxCommRegister`.
-- `-R 2`: use window registration with `flagcxMemAlloc` and `flagcxCommWindowRegister`. This requires the backend's window API support; the current NVIDIA RPM packaging declares NCCL `>= 2.27` for the window API path.
-
-One-sided tests generally require `-R 1` or `-R 2`. Registration prepares a buffer so the communication library can access it efficiently or remotely; use the matching deregistration and free operations during cleanup.
-
-#### SHMEM Device API memory ownership
-
-SHMEM is a shared-memory programming/runtime model for accelerator processes. When FlagCX uses the `flagcxMemSHMEM` allocator, FlagCX must allocate and free the buffer so it can track the buffer's allocator and valid bounds. Do not pass a native `nvshmem_malloc` or `xshmem_malloc` pointer to this FlagCX Device API path as though it were a FlagCX-managed SHMEM allocation.
-
-```cpp
-void *buffer = nullptr;
-flagcxMemAlloc(&buffer, bytes, flagcxMemSHMEM);
-
-flagcxDevMem_t devMem = nullptr;
-flagcxDevMemCreate(comm, buffer, bytes, nullptr, &devMem);
-
-flagcxDevMemDestroy(comm, devMem);
-flagcxMemFree(buffer, flagcxMemSHMEM);
-```
-
-#### ACCL/Barex and PPU builds
-
-For deployments using the ACCL/Barex transport, build with `USE_ACCL_BAREX=1`, select it with `FLAGCX_P2P_TRANSPORT=accl`, and use `FLAGCX_VMM_ENABLE=0` for the current integration path. PPU is a supported platform integration; these settings are deployment-specific rather than universal defaults.
 
 ### Torch API test
 
@@ -318,4 +281,4 @@ For deployments using the ACCL/Barex transport, build with `USE_ACCL_BAREX=1`, s
 
    - On each host, compile and install the FlagCX communication API separately.
 
-   - Refer to [Homogeneous Testing with FlagCX](getting-started.md) for detailed steps.
+   - Refer to the section [Homogeneous testing with FlagCX](#homogeneous-testing-with-flagcx) for detailed steps.

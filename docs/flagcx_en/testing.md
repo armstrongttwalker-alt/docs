@@ -4,8 +4,8 @@
 
 Performance tests are maintained in `test/perf/`, organized by API level:
 
-- **Host API tests** (`test/perf/host_api/`) — high-level collective operations via FlagCX host API. These are higher-level tests called by CPU-side application code.
-- **Device API tests** (`test/perf/device_api/`) — lower-level device kernel benchmarks via FlagCX Device API. A kernel is code that runs on an accelerator device, so these tests require an additional kernel-enabled build.
+- **Host API tests** (`test/perf/host_api/`) — high-level collective operations via FlagCX host API
+- **Device API tests** (`test/perf/device_api/`) — low-level device kernel benchmarks via FlagCX Device API
 
 ### Host API Performance Test
 
@@ -60,9 +60,13 @@ Device API tests are organized in two directories:
 
 | Binary | What it tests |
 |---|---|
-| `test_device_api` | Correctness suite for 10 one-sided Device API kernels |
-| `test_device_ir_intra`, `test_device_ir_inter` | Scalar IR wrapper correctness for intra-node and inter-node tests |
-| `test_device_ir_unified_intra`, `test_device_ir_unified_inter` | Unified IR wrapper correctness for intra-node and inter-node tests |
+| `test_device_api` | Correctness suite for one-sided Device API kernels |
+| `test_device_api_intra` | Intra-node Device API correctness |
+| `test_device_api_inter` | Inter-node Device API correctness |
+| `test_device_ir_intra` | Intra-node Scalar IR correctness |
+| `test_device_ir_inter` | Inter-node Scalar IR correctness |
+| `test_device_ir_unified_intra` | Intra-node Unified IR correctness |
+| `test_device_ir_unified_inter` | Inter-node Unified IR correctness |
 
 Build:
 

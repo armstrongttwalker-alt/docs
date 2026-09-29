@@ -21,6 +21,7 @@
     - [Socket 网络](#socket-网络)
     - [UCX 网络](#ucx-网络)
     - [Gloo 网络](#gloo-网络)
+    - [ACCL/Barex 和 PPU 集成](#acclbarex-和-ppu-集成)
   - [插件配置](#插件配置)
   - [其他](#其他)
   - [注意事项](#注意事项)
@@ -226,6 +227,10 @@
 | 变量 | 默认值 | 描述 |
 |----------|---------|-------------|
 | `FLAGCX_GLOO_IB_DISABLE` | 0 | 设置为 1 时，为 Gloo 传输禁用 IB |
+
+### ACCL/Barex 和 PPU 集成
+
+使用 `USE_ACCL_BAREX=1` 构建 ACCL/Barex 网络适配器。PPU 集成通常使用 `USE_PPU=1 USE_ACCL_BAREX=1`；具体集成环境还可能选择 `FLAGCX_P2P_TRANSPORT=accl`、启用 `FLAGCX_MEM_ENABLE=1`，并通过 `FLAGCX_VMM_ENABLE=0` 禁用虚拟内存。这些设置是特定集成环境的前置条件，并非通用默认值。
 
 ---
 

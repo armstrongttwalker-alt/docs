@@ -2,13 +2,13 @@
 
 - **[2026/09]** Released [v.0.14.0](https://github.com/flagos-ai/FlagCX/releases/tag/v0.14.0):
 
-  - This release summarizes the changes from v0.13.0 to v0.14.0.
-  - **Build and platforms:** Uses `USE_ILUVATAR` as the canonical Iluvatar build flag, while retaining `USE_ILUVATAR_COREX` as a deprecated compatibility alias. Adds SHMEM, ACCL/Barex, and PPU build options.
-  - **Device API and memory:** Adds allocator-aware SHMEM memory handling and clarifies ownership requirements for Device API registration and window registration. Adds Scalar IR and Unified IR bindings.
-  - **Compatibility:** Widens the Device API lane-mask ABI to 64 bits. Applications should use headers and libraries from the same FlagCX release unless cross-release compatibility has been verified.
-  - **Communication:** Extends P2P and one-sided communication support, including ACCL/Barex transport integration for selected deployments.
-  - **Tests and profiling:** Expands Device API and Device IR test coverage. Adds the PTD (Prefill-Transfer-Decode) profiling workflow, which helps observe prompt processing, intermediate-data transfer, and token generation using metrics and dashboards.
-  - **Packaging:** Updates RPM dependency handling, including the NVIDIA runtime requirement of NCCL `>= 2.27` for the window API path and filtering CANN runtime requirements that are supplied by the host installation.
+  - Adds SHMEM Device API support with `USE_SHMEM` and `SHMEM_HOME` build controls.
+  - Adds Scalar IR and Unified IR Device API test coverage, including split intra-node and inter-node test targets.
+  - Adds ACCL/Barex network adaptor support and PPU backend integration controls.
+  - Extends PyTorch plugin build detection for PPU and the canonical `USE_ILUVATAR` backend flag.
+  - Updates Iluvatar build flag documentation: use `USE_ILUVATAR`; `USE_ILUVATAR_COREX` remains only as a deprecated compatibility alias.
+  - Widens the lane-mask ABI to 64 bits for Device IR paths.
+  - Updates packaging and dependency handling, including the NCCL 2.27 documentation floor for NVIDIA/NCCL wrapper usage.
 
 - **[2026/06]** Released [v.0.13.0](https://github.com/flagos-ai/FlagCX/releases/tag/v0.13.0):
 
@@ -114,5 +114,3 @@
   - Provided a full-stack open-source solution, FlagScale + FlagCX, for efficient heterogeneous training.
   - Natively integrated into PaddlePaddle [v3.0.0](https://github.com/PaddlePaddle/Paddle/tree/v3.0.0),
     with support for both dynamic and static graphs.
-
-
