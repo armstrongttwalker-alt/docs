@@ -51,6 +51,16 @@ Run tests and benchmarks to validate and measure operator performance.
 [Learn more »](user_guide/run-tests-and-benchmark.md)
 :::
 
+:::{grid-item-card} {octicon}`list-unordered;1.5em;sd-mr-1` Operator List
+:link: reference/operator_list
+:link-type: doc
+
+The 40 operators exported by FlagGems-sglang, grouped by operator family.
+
++++
+[Learn more »](reference/operator_list.md)
+:::
+
 ::::
 
 ---

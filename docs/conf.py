@@ -202,6 +202,13 @@ multiproject_projects = {
             "html_title": "FlagGems-sglang Documentation",
         },
     },
+    "flaggems_sglang_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagGems-sglang 文档中心",
+            "html_title": "FlagGems-sglang 文档中心",
+        },
+    },
     "flagdnn_en": {
         "use_config_file": False,
         "config": {
