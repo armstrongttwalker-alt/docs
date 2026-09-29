@@ -1,198 +1,124 @@
 # 用户指南
 
-本指南介绍如何用 FlagQuantum 构建、规划、训练并运行量子程序。
+本指南介绍如何用 FlagQuantum 做量子线路的模拟与训练：构建程序、规划与运行、使用 PyTorch 训练、选择模拟表示、加入噪声与测量、跨 rank 扩展，并把同一份程序迁移到硬件上。
 
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
 
-:::{grid-item-card} {octicon}`play;1.5em;sd-mr-1` 第一个量子模型
-:link: first-quantum-model
+:::{grid-item-card} {octicon}`play;1.5em;sd-mr-1` 基本用法
+:link: basic-usage
 :link-type: doc
 
-只依赖基础安装，端到端训练一个小模型。
+构建线路、规划、执行并读取结果。
 
 +++
-[了解更多 »](first-quantum-model.md)
+[了解更多 »](basic-usage.md)
 :::
 
-:::{grid-item-card} {octicon}`tools;1.5em;sd-mr-1` 构建与运行
-:link: build-and-run
+:::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` 线路与 IR
+:link: circuits-and-ir
 :link-type: doc
 
-构建线路、规划、请求测量、处理错误与回放。
+线路构建、FlagQuantum IR、编译与路由。
 
 +++
-[了解更多 »](build-and-run.md)
-:::
-
-:::{grid-item-card} {octicon}`graph;1.5em;sd-mr-1` 运行时规划
-:link: runtime-planning
-:link-type: doc
-
-执行前查看表示、策略、阻塞项与回退。
-
-+++
-[了解更多 »](runtime-planning.md)
-:::
-
-:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` 本地工作流
-:link: local-workflows
-:link-type: doc
-
-零配置的本地模拟、测量、绘制与精度配置。
-
-+++
-[了解更多 »](local-workflows.md)
-:::
-
-:::{grid-item-card} {octicon}`server;1.5em;sd-mr-1` 选择模拟器
-:link: choose-a-simulator
-:link-type: doc
-
-态向量、密度矩阵、MPS 与张量网络的取舍与边界。
-
-+++
-[了解更多 »](choose-a-simulator.md)
+[了解更多 »](circuits-and-ir.md)
 :::
 
 :::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` 使用 PyTorch 训练
 :link: training-with-pytorch
 :link-type: doc
 
-模块、命名参数分组、可观测量、检查点与混合模型。
+可训练线路、优化器、命名参数与检查点。
 
 +++
 [了解更多 »](training-with-pytorch.md)
 :::
 
-:::{grid-item-card} {octicon}`pencil;1.5em;sd-mr-1` 自定义操作
-:link: custom-operations
+:::{grid-item-card} {octicon}`graph;1.5em;sd-mr-1` 测量与噪声
+:link: measurement-and-noise
 :link-type: doc
 
-自定义酉矩阵、算子注册表与扩展。
+可观测量、结果访问、噪声模型与动态线路。
 
 +++
-[了解更多 »](custom-operations.md)
+[了解更多 »](measurement-and-noise.md)
 :::
 
-:::{grid-item-card} {octicon}`tools;1.5em;sd-mr-1` 编译与目标
-:link: compile-and-target
+:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` 模拟表示
+:link: simulation-representations
 :link-type: doc
 
-与目标无关的优化、面向拓扑的编译与导出格式。
+态向量、MPS、张量网络与 JAX 内核。
 
 +++
-[了解更多 »](compile-and-target.md)
+[了解更多 »](simulation-representations.md)
 :::
 
-:::{grid-item-card} {octicon}`globe;1.5em;sd-mr-1` 编译器与远程目标
-:link: compiler-and-remote
-:link-type: doc
-
-面向提供方编译、硬件上测量哈密顿量、非阻塞投递与打包。
-
-+++
-[了解更多 »](compiler-and-remote.md)
-:::
-
-:::{grid-item-card} {octicon}`zap;1.5em;sd-mr-1` 含噪模拟
-:link: noisy-simulation
-:link-type: doc
-
-一个后端中立的噪声模型，覆盖精确与轨迹执行。
-
-+++
-[了解更多 »](noisy-simulation.md)
-:::
-
-:::{grid-item-card} {octicon}`telescope;1.5em;sd-mr-1` 数字孪生与纠错
-:link: digital-twin-and-qec
-:link-type: doc
-
-标定条件下的 QPU 模型，以及重复码存储实验。
-
-+++
-[了解更多 »](digital-twin-and-qec.md)
-:::
-
-:::{grid-item-card} {octicon}`telescope;1.5em;sd-mr-1` QPU 数字孪生
-:link: qpu-digital-twin
-:link-type: doc
-
-预测、证据包络、硬件验证与漂移跟踪。
-
-+++
-[了解更多 »](qpu-digital-twin.md)
-:::
-
-:::{grid-item-card} {octicon}`shield;1.5em;sd-mr-1` 量子纠错
-:link: qec
-:link-type: doc
-
-症状提取、译码、纠正与逻辑结果分析。
-
-+++
-[了解更多 »](qec.md)
-:::
-
-:::{grid-item-card} {octicon}`cloud;1.5em;sd-mr-1` 在硬件上运行
-:link: run-on-hardware
-:link-type: doc
-
-编译、提交、恢复任务，以及面向提供方的打包。
-
-+++
-[了解更多 »](run-on-hardware.md)
-:::
-
-:::{grid-item-card} {octicon}`stack;1.5em;sd-mr-1` 分布式执行
+:::{grid-item-card} {octicon}`server;1.5em;sd-mr-1` 分布式执行
 :link: distributed-execution
 :link-type: doc
 
-跨卡切分的态向量与按 rank 拥有的 MPS 负载。
+分片态向量与按 rank 拥有的 MPS 训练。
 
 +++
 [了解更多 »](distributed-execution.md)
 :::
 
-:::{grid-item-card} {octicon}`git-branch;1.5em;sd-mr-1` 动态线路
-:link: dynamic-circuits
+:::{grid-item-card} {octicon}`plug;1.5em;sd-mr-1` 硬件与远程目标
+:link: hardware-and-remote
 :link-type: doc
 
-线路中测量、条件操作与后端评估。
+FlagOS 加速器、远程任务与部署包。
 
 +++
-[了解更多 »](dynamic-circuits.md)
+[了解更多 »](hardware-and-remote.md)
 :::
 
-:::{grid-item-card} {octicon}`stack;1.5em;sd-mr-1` 算法
+:::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` 算法与纠错
 :link: algorithms
 :link-type: doc
 
-演示规模的算法单元及其优势前提。
+算法单元、纠错实验与数字孪生。
 
 +++
 [了解更多 »](algorithms.md)
 :::
 
-:::{grid-item-card} {octicon}`file-code;1.5em;sd-mr-1` 示例与教程
-:link: examples-and-tutorials
+:::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 教程
+:link: tutorials
 :link-type: doc
 
-教程笔记本、脚本示例与冒烟运行。
+教程系列与示例目录。
 
 +++
-[了解更多 »](examples-and-tutorials.md)
+[了解更多 »](tutorials.md)
 :::
 
-:::{grid-item-card} {octicon}`checklist;1.5em;sd-mr-1` 运行测试
+:::{grid-item-card} {octicon}`flame;1.5em;sd-mr-1` 运行测试
 :link: run-tests
 :link-type: doc
 
-正确性分层、设备通道与发布边界。
+测试分层与标记命令。
 
 +++
 [了解更多 »](run-tests.md)
 :::
 
 ::::
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+
+basic-usage.md
+circuits-and-ir.md
+training-with-pytorch.md
+measurement-and-noise.md
+simulation-representations.md
+distributed-execution.md
+hardware-and-remote.md
+algorithms.md
+tutorials.md
+run-tests.md
+```
