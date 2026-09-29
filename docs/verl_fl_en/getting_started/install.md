@@ -119,9 +119,9 @@ pip install --no-build-isolation -v .
 ### 5. Install verl-FL
 
 ```bash
-git clone --branch v0.2.0-rc2.post1 https://github.com/flagos-ai/verl-FL.git
+git clone --branch v0.2.0 https://github.com/flagos-ai/verl-FL.git
 cd verl-FL
 pip install --no-build-isolation -v -e .
 ```
 
-For an end-to-end GRPO training workflow, see [End-to-End Use Case](../user_guide/e2e-use-case.md).
+For end-to-end GRPO training workflows across NVIDIA, MetaX, and heterogeneous MUSA platforms, see [Platform Abstraction and Multi-Chip Training](../user_guide/platform-abstraction.md).

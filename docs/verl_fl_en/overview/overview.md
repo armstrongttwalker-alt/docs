@@ -1,9 +1,5 @@
 # verl-FL Overview
 
-```{note}
-This is a preview release. The version number shown is a pre-release identifier and may change upon final release. Content in this preview is for reference only and does not constitute a commitment or warranty for the final product.
-```
-
 verl-FL is a fork of verl designed to support diverse AI accelerators. It is built on top of [FlagOS](https://github.com/flagos-ai), a unified open-source AI system software stack, and integrates key components including the training engines [Megatron-LM-FL](https://github.com/flagos-ai/Megatron-LM-FL) and [Transformer-Engine-FL](https://github.com/flagos-ai/TransformerEngine-FL), as well as the inference engine [vllm-plugin-FL](https://github.com/flagos-ai/vllm-plugin-FL).
 
 While upstream verl is tightly coupled to CUDA, verl-FL introduces a platform abstraction layer and integrates FlagOS ecosystem components to enable heterogeneous distributed training without modifying upstream business logic.

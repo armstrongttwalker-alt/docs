@@ -1,7 +1,20 @@
 # FlagBLAS 发布说明
 
-## v0.2.0
+## v0.3.0
 
+- **新增特性**
+
+  - 新增 Level-1 旋转算子：`rotg`、`rotm`、`rotmg`。
+  - Level-2 覆盖范围扩展至 packed、带状、三角、对称/厄米及 rank-1/rank-2 更新等算子族，包含 `hpmv`、`trsv`、`tpsv`、`tbsv`、`ger`、`syr`、`her` 以及 packed 形式的 `sspr`/`sspr2`/`dspr`/`dspr2` 更新。
+  - 新增 GEMM 算子：`dgemm`、`cgemm`、`zgemm`，以及 NVIDIA 后端的 Group GEMM。
+  - 新增硬件后端：昇腾与海光 DCU，与 NVIDIA、Iluvatar 并列支持。
+
+- **增强特性**
+
+  - 全部 Level-2、Level-3 算子均已达 stable 阶段。
+  - GEMM、三角求解与秩更新类算子进一步优化。
+
+## v0.2.0
 
 - **新增功能**
   - **算子注册表** —— 新增 `conf/operators.yaml`，包含完整的算子元数据。

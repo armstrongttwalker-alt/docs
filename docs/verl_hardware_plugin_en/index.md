@@ -61,7 +61,6 @@ release_notes/release-notes.md
 :hidden:
 
 overview/overview.md
-overview/features.md
 getting_started/getting-started.md
 user_guide/user-guide.md
 ```

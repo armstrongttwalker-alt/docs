@@ -1,12 +1,8 @@
-# PyTorch-Plugin-FL Documentation
+# PyTorch-Plugin-FL
 
-```{button-ref} getting_started/getting-started
-:ref-type: myst
-:color: primary
-:class: sd-btn-lg sd-px-4 sd-py-2 sd-fw-bold
+PyTorch-Plugin-FL (`torch_fl`) is a PyTorch device plugin for the FlagOS software stack. It exposes a single `flagos` device that routes operators among reusable native kernels, portable compiler kernels, vendor-native implementations, and explicit CPU fallback, so the same PyTorch program runs across accelerators without workload changes.
 
-Getting Started
-```
+![PyTorch-Plugin-FL architecture](assets/images/pytorch-plugin-fl.png)
 
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
@@ -15,43 +11,71 @@ Getting Started
 :link: overview/overview
 :link-type: doc
 
-Have a quick view of PyTorch-Plugin-FL, and also some basic concepts.
+What PyTorch-Plugin-FL is, its design principles, capabilities, and component architecture.
 
 +++
 [Learn more »](overview/overview.md)
 :::
 
 :::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
-:link: getting_started/getting-started
+:link: getting_started/installation
 :link-type: doc
 
-Outlines the installation requirements for PyTorch-Plugin-FL and provides step-by-step instructions for building and using the plugin.
+Platform selection, build requirements, environment setup, verification, and test markers.
 
 +++
-[Learn more »](getting_started/getting-started.md)
+[Learn more »](getting_started/installation.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
-:link: user_guide/user-guide
+:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` Distributed
+:link: architecture/distributed
 :link-type: doc
 
-Guides you through usage, device management, backend configuration, and debugging.
+`ProcessGroupFlagOS`, FlagCX, vendor fallbacks, DDP and DataParallel support.
 
 +++
-[Learn more »](user_guide/user-guide.md)
+[Learn more »](architecture/distributed.md)
 :::
 
-:::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` Testing
-:link: user_guide/testing
+:::{grid-item-card} {octicon}`pulse;1.5em;sd-mr-1` Profiler
+:link: architecture/profiler
 :link-type: doc
 
-Run integration tests to validate operator correctness and dispatch routing.
+`torch.profiler` integration, vendor tracers, correlation ids, and parity with `torch.cuda`.
 
 +++
-[Learn more »](user_guide/testing.md)
+[Learn more »](architecture/profiler.md)
+:::
+
+:::{grid-item-card} {octicon}`zap;1.5em;sd-mr-1` torch.compile
+:link: architecture/torch-compile
+:link-type: doc
+
+Inductor integration for the `flagos` device, FlagTree compilation, and platform notes.
+
++++
+[Learn more »](architecture/torch-compile.md)
+:::
+
+:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` Reference
+:link: reference/compatibility
+:link-type: doc
+
+Per-platform capability validation, environment variables, and operation-routing configuration.
+
++++
+[Learn more »](reference/compatibility.md)
 :::
 
 ::::
+
+## Project links
+
+- **Repository**: [flagos-ai/Torch-FL](https://github.com/flagos-ai/Torch-FL)
+- **FlagGems**: [flagos-ai/FlagGems](https://github.com/flagos-ai/FlagGems)
+- **FlagTree**: [flagos-ai/FlagTree](https://github.com/flagos-ai/FlagTree)
+- **FlagCX**: [flagos-ai/FlagCX](https://github.com/flagos-ai/FlagCX)
+- **License**: Apache License 2.0
 
 ---
 
@@ -69,14 +93,12 @@ release_notes/release-notes.md
 :hidden:
 
 overview/overview.md
-getting_started/getting-started.md
-user_guide/user-guide.md
-```
-
-```{toctree}
-:caption: 📖 References
-:maxdepth: 5
-:hidden:
-
-reference/api-reference.md
+overview/features.md
+overview/architecture.md
+getting_started/installation.md
+architecture/distributed.md
+architecture/profiler.md
+architecture/torch-compile.md
+reference/compatibility.md
+reference/environment-variables.md
 ```
