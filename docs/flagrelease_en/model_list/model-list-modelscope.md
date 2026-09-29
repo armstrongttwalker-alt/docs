@@ -217,8 +217,10 @@
 | Qwen-Image-2.1-BF16-hygon-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-hygon-FlagOS> |
 | Qwen-Image-2.1-BF16-metax-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-metax-FlagOS> |
 | Qwen-Image-2.1-BF16-mthreads-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS> |
+| Qwen-Image-2.1-BF16-mthreads-FlagOS-Express | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-mthreads-FlagOS-Express> |
 | Qwen-Image-2.1-BF16-nvidia-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-nvidia-FlagOS> |
 | Qwen-Image-2.1-BF16-zhenwu-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-zhenwu-FlagOS> |
+| Qwen-Image-2.1-BF16-zhenwu-FlagOS-Express | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-BF16-zhenwu-FlagOS-Express> |
 | Qwen-Image-2.1-W8A8-arm-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen-Image-2.1-W8A8-arm-FlagOS> |
 | Qwen2-7B-FlagOS-Arm | <https://modelscope.cn/models/FlagRelease/Qwen2-7B-FlagOS-Arm> |
 | Qwen2-7B-Instruct-FlagOS | <https://modelscope.cn/models/FlagRelease/Qwen2-7B-Instruct-FlagOS> |
