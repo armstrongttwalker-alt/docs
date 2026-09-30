@@ -2,11 +2,11 @@
 
 ## Environment configuration
 
-Refer to the environment setup section in the [](getting-started.md) page.
+Refer to the environment setup section in the [Getting Started](getting-started.md) page.
 
 ## Installation and compilation
 
-Refer to [](getting-started.md) for FlagCX compilation and installation.
+Refer to [Getting Started](getting-started.md) for FlagCX compilation and installation.
 
 ## API Reference
 
@@ -71,7 +71,7 @@ The following API has been removed from the public interface:
 
 1. Build and Installation
 
-   Refer to the Communication API test build and installation section in [](getting-started.md).
+   Refer to the Communication API test build and installation section in [Getting Started](getting-started.md).
 
 2. Communication API Test
 
@@ -142,7 +142,7 @@ The following API has been removed from the public interface:
 
 1. Build and installation
 
-   Refer to [](getting-started.md) for instructions on building and installing the Torch API test.
+   Refer to [Getting Started](getting-started.md) for instructions on building and installing the Torch API test.
 
 2. Torch API test execution
 
@@ -198,7 +198,7 @@ The following API has been removed from the public interface:
    - `master_port`: Port used by the master node to establish the process group.
      All nodes must use the same port, and the port has to be available on all nodes.
    - `example.py`: Torch API test script.
-   - Refer to [](environment-variables.md) for the usage of the various `FLAGCX_XXX` environment variables.
+   - Refer to [Environment Variables](environment-variables.md) for the usage of the various `FLAGCX_XXX` environment variables.
 
 3. Sample screenshot from a correct performance test
 
@@ -210,7 +210,7 @@ The following steps shows an example in which we run the LLaMA3-8B model on Nvid
 
 1. Build and installation
 
-   Refer to the Environment Setup and Build & Installation section in the [](getting-started.md) page.
+   Refer to the Environment Setup and Build & Installation section in the [Getting Started](getting-started.md) page.
 
 2. Data preparation
 
@@ -383,7 +383,7 @@ For kernel-based communication with Device API (available on NVIDIA and Hygon), 
 export FLAGCX_MEM_ENABLE=1
 ```
 
-Refer to [](environment-variables.md) for the full list of UniRunner-specific configuration variables (prefixed with `FLAGCX_UNIRUNNER_*`).
+Refer to [Environment Variables](environment-variables.md) for the full list of UniRunner-specific configuration variables (prefixed with `FLAGCX_UNIRUNNER_*`).
 
 ### One-sided RDMA operations
 
@@ -540,13 +540,13 @@ LD_PRELOAD=./build/lib/libnccl.so python your_training_script.py
 
 The wrapper intercepts NCCL API calls and routes them through FlagCX. A thread-local recursive guard prevents infinite recursion when FlagCX's internal NCCL adaptor calls back into NCCL.
 
-Prerequisites: FlagCX built and installed, CUDA toolkit, real NCCL >= 2.21.0 (versions 2.21 through 2.27 supported). See `plugin/nccl/README.md` for full details.
+Prerequisites: FlagCX built and installed, CUDA toolkit, and real NCCL >= 2.27. See `plugin/nccl/README.md` for full details.
 
 ### Communication API test
 
 1. Build and Installation
 
-   Refer to the [](getting-started.md) documentation for instructions on
+   Refer to the [Getting Started](getting-started.md) documentation for instructions on
    environment setup, creating symbolic links, and how to build and install the software.
 
 2. Verify MPICH Installation
@@ -607,7 +607,7 @@ Prerequisites: FlagCX built and installed, CUDA toolkit, real NCCL >= 2.21.0 (ve
        /root/FlagCX/test/perf/test_allreduce -b 128K -e 4G -f 2 -w 5 -n 100 -p 1`
      ```
 
-     - Refer to [](environment-variables.md) for the meaning and usage of `FLAGCX_XXX` environment variables.
+     - Refer to [Environment Variables](environment-variables.md) for the meaning and usage of `FLAGCX_XXX` environment variables.
 
    - **Note:** When using two GPUs per node in the heterogeneous Communication API test, some warnings may indicate that each node only has 1 GPU active. In this case, FlagCX will skip GPU-to-GPU AllReduce and fall back to host-based communication.
 

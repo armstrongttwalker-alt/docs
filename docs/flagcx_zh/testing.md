@@ -11,7 +11,7 @@
 
 ```shell
 cd test/perf/host_api
-make [USE_NVIDIA | USE_ILUVATAR_COREX | USE_CAMBRICON | USE_METAX | USE_MUSA | USE_KUNLUNXIN | USE_DU | USE_ASCEND | USE_AMD | USE_TSM | USE_ENFLAME | USE_SUNRISE]=1
+make [USE_NVIDIA | USE_ILUVATAR | USE_CAMBRICON | USE_METAX | USE_MUSA | USE_KUNLUNXIN | USE_DU | USE_ASCEND | USE_AMD | USE_TSM | USE_ENFLAME | USE_SUNRISE]=1
 mpirun --allow-run-as-root -np 8 ./test_allreduce -b 128K -e 4G -f 2
 ```
 
@@ -60,8 +60,13 @@ Device API 测试组织在两个目录中：
 
 | 二进制文件 | 测试内容 |
 |---|---|
-| `test_device_api` | 10 个单边 Device API 内核的正确性测试套件 |
-| `test_device_ir` | IR 包装层正确性测试 |
+| `test_device_api` | 单边 Device API 内核的正确性测试套件 |
+| `test_device_api_intra` | 节点内 Device API 正确性测试 |
+| `test_device_api_inter` | 节点间 Device API 正确性测试 |
+| `test_device_ir_intra` | 节点内 Scalar IR 正确性测试 |
+| `test_device_ir_inter` | 节点间 Scalar IR 正确性测试 |
+| `test_device_ir_unified_intra` | 节点内 Unified IR 正确性测试 |
+| `test_device_ir_unified_inter` | 节点间 Unified IR 正确性测试 |
 
 构建：
 

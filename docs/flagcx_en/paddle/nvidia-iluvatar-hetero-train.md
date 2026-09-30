@@ -2,7 +2,7 @@
 
 ## Environment setup
 
-Please refer to [](nvidia.md) and [](iluvatar.md) for environment setup and compiling Paddle with FlagCX on Nvidia and Iluvatar machines.
+Please refer to [NVIDIA](nvidia.md) and [Iluvatar](iluvatar.md) for environment setup and compiling Paddle with FlagCX on Nvidia and Iluvatar machines.
 
 ## Training on heterogeneous ai accelerators (nvidia GPU + iluvatar GPU)
 

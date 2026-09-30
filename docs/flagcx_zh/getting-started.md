@@ -73,7 +73,7 @@ sudo docker run -itd \
    make USE_SUNRISE=1 -j$(nproc) # Sunrise AI 平台
    ```
 
-   参见 [](build.md) 获取支持的后端标志完整列表。
+   参见[构建与安装](build.md)获取支持的后端标志完整列表。
    
 2. 构建成功结果
 
@@ -134,7 +134,7 @@ sudo docker run -itd \
 ### Device API 测试
 
 Device API 测试验证通过 Device API 进行的节点内和节点间通信。
-参见 [](testing.md) 获取测试二进制文件的完整列表、构建说明和运行示例。
+参见[测试](testing.md)获取测试二进制文件的完整列表、构建说明和运行示例。
 
 ### Torch API 测试
 
@@ -281,4 +281,4 @@ Device API 测试验证通过 Device API 进行的节点内和节点间通信。
 
    - 在每台主机上分别编译安装 FlagCX 通信 API。
 
-   - 参见 [](#使用-flagcx-进行同构测试) 部分的详细步骤。
+   - 参见[使用 FlagCX 进行同构测试](getting-started.md)部分的详细步骤。

@@ -2,13 +2,21 @@
 
 ## 环境配置
 
-参见 [](getting-started.md) 页面中的环境配置部分。
+参见[快速开始](getting-started.md)页面中的环境配置部分。
 
 ## 安装与编译
 
-参见 [](getting-started.md) 了解 FlagCX 编译和安装。
+参见[快速开始](getting-started.md)了解 FlagCX 编译和安装。
 
-## API 参考
+## 面向初学者的关键概念
+
+- **Device API（设备端 API）**：用于从设备端内核发起或配合通信的较低层接口。与主要由 CPU 侧程序调用的 Host API 相比，Device API 更接近设备内存、设备内核和底层通信路径。相关测试通常需要使用 `COMPILE_KERNEL=1` 构建 FlagCX。
+- **内存注册**：在通信前向 FlagCX 声明一个缓冲区，使通信运行时能够检查并使用该缓冲区。注册完成后，应按照对应 API 的生命周期调用注销或释放操作。
+- **窗口注册**：把一段已分配的内存注册为可重复使用的通信窗口，常用于单边通信和 Device API 路径。使用窗口时，应配对调用 `flagcxCommWindowRegister` 与 `flagcxCommWindowDeregister`，并通过匹配的内存分配/释放 API 管理缓冲区。
+- **P2P（点对点通信）引擎**：负责建立对等连接、注册内存并执行 RDMA 读写；它可以向传输框架提供单边数据传输能力，但不是集合通信 API。
+- **RMA / 单边通信**：允许一方读取或写入远端已注册内存，远端不必像传统双边通信那样同时调用对应的数据传输函数。FlagCX 的单边操作包括 `Get`、`Put` 和信号/计数器同步。
+- **PD（Prefill/Decode 分离）**：在大模型推理中，将处理输入提示词的 Prefill 阶段与生成输出 token 的 Decode 阶段拆分到不同服务或工作进程。FlagCX 可作为这类异构部署中的通信组件；PD 本身不是 FlagCX 的一个 API。
+- **PTD（Prefill-Transfer-Decode）**：用于观察或分析 Prefill、其中间数据传输以及 Decode 三个阶段的性能流程。PTD 是 profiling/可观测性工作流，不是 FlagCX 通信 API；具体指标和可视化由相应的部署工具链提供。
 
 ### 设备句柄管理
 
@@ -71,7 +79,7 @@ flagcxResult_t flagcxGetUniqueId(flagcxUniqueId_t uniqueId);
 
 1. 构建与安装
 
-   参见 [](getting-started.md) 中的通信 API 测试构建与安装部分。
+   参见[快速开始](getting-started.md)中的通信 API 测试构建与安装部分。
 
 2. 通信 API 测试
 
@@ -138,7 +146,7 @@ flagcxResult_t flagcxGetUniqueId(flagcxUniqueId_t uniqueId);
 
 1. 构建与安装
 
-   参见 [](getting-started.md) 了解 Torch API 测试的构建与安装说明。
+   参见[快速开始](getting-started.md)了解 Torch API 测试的构建与安装说明。
 
 2. Torch API 测试执行
 
@@ -194,7 +202,7 @@ flagcxResult_t flagcxGetUniqueId(flagcxUniqueId_t uniqueId);
    - `master_port`：主节点用于建立进程组的端口。
      所有节点必须使用相同的端口，且该端口在所有节点上必须可用。
    - `example.py`：Torch API 测试脚本。
-   - 参见 [](environment-variables.md) 了解各种 `FLAGCX_XXX` 环境变量的用法。
+   - 参见[环境变量](environment-variables.md)了解各种 `FLAGCX_XXX` 环境变量的用法。
 
 3. 正确性能测试的示例截图
 
@@ -206,7 +214,7 @@ flagcxResult_t flagcxGetUniqueId(flagcxUniqueId_t uniqueId);
 
 1. 构建与安装
 
-   参见 [](getting-started.md) 页面中的环境配置和构建安装部分。
+   参见[快速开始](getting-started.md)页面中的环境配置和构建安装部分。
 
 2. 数据准备
 
@@ -377,7 +385,7 @@ UniRunner 支持异构硬件上的所有标准集合操作（AllReduce、AllGath
 export FLAGCX_MEM_ENABLE=1
 ```
 
-参见 [](environment-variables.md) 获取 UniRunner 特定配置变量的完整列表（前缀为 `FLAGCX_UNIRUNNER_*`）。
+参见[环境变量](environment-variables.md)获取 UniRunner 特定配置变量的完整列表（前缀为 `FLAGCX_UNIRUNNER_*`）。
 
 ### 单边 RDMA 操作
 
@@ -534,13 +542,13 @@ LD_PRELOAD=./build/lib/libnccl.so python your_training_script.py
 
 该包装器拦截 NCCL API 调用并通过 FlagCX 路由它们。线程本地递归保护可防止 FlagCX 内部 NCCL 适配器回调 NCCL 时出现无限递归。
 
-前置条件：FlagCX 已构建并安装、CUDA 工具包、真实 NCCL >= 2.21.0（支持 2.21 到 2.27 版本）。详见 `plugin/nccl/README.md`。
+前置条件：FlagCX 已构建并安装、CUDA 工具包以及真实 NCCL >= 2.27。详见 `plugin/nccl/README.md`。
 
 ### 通信 API 测试
 
 1. 构建与安装
 
-   参见 [](getting-started.md) 文档，了解环境配置、创建符号链接以及如何构建和安装软件的说明。
+   参见[快速开始](getting-started.md)文档，了解环境配置、创建符号链接以及如何构建和安装软件的说明。
 
 2. 验证 MPICH 安装
 
@@ -598,7 +606,7 @@ LD_PRELOAD=./build/lib/libnccl.so python your_training_script.py
        /root/FlagCX/test/perf/test_allreduce -b 128K -e 4G -f 2 -w 5 -n 100 -p 1`
      ```
 
-     - 参见 [](environment-variables.md) 了解 `FLAGCX_XXX` 环境变量的含义和用法。
+     - 参见[环境变量](environment-variables.md)了解 `FLAGCX_XXX` 环境变量的含义和用法。
 
    - **注意：** 在异构通信 API 测试中，当每个节点使用 2 个 GPU 时，某些警告可能指示每个节点只有 1 个 GPU 处于活动状态。在这种情况下，FlagCX 将跳过 GPU 到 GPU 的 AllReduce，回退到基于主机的通信。
 

@@ -10,9 +10,9 @@ FlagCX 现已作为**可选的高性能通信后端**完全集成到 Paddle 中�
 
 | 硬件        | 用户指南 |
 |:---------------:|:----------|
-| NVIDIA GPU      | [](nvidia.md) |
-| 昆仑芯 XPU   | [](kunlun.md) |
-| Iluvatar GPU    | [](iluvatar.md) |
+| NVIDIA GPU      | [NVIDIA](nvidia.md) |
+| 昆仑芯 XPU   | [昆仑芯](kunlun.md) |
+| Iluvatar GPU    | [Iluvatar](iluvatar.md) |
 
 ## 异构训练
 
@@ -20,7 +20,7 @@ FlagCX 现已作为**可选的高性能通信后端**完全集成到 Paddle 中�
 
 | 硬件组合         | 用户指南 |
 |:----------------------------:|:----------|
-| NVIDIA GPU + Iluvatar GPU    | [](nvidia-iluvatar-hetero-train.md) |
+| NVIDIA GPU + Iluvatar GPU    | [NVIDIA + Iluvatar](nvidia-iluvatar-hetero-train.md) |
 
 ```{toctree}
 :maxdepth: 3

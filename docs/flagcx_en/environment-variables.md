@@ -20,6 +20,7 @@ This document provides a comprehensive reference for all environment variables u
     - [Socket Network](#socket-network)
     - [UCX Network](#ucx-network)
     - [Gloo Network](#gloo-network)
+    - [ACCL/Barex and PPU Integration](#acclbarex-and-ppu-integration)
   - [Plugin Configuration](#plugin-configuration)
   - [Miscellaneous](#miscellaneous)
   - [Notes](#notes)
@@ -104,6 +105,18 @@ This document provides a comprehensive reference for all environment variables u
 | `FLAGCX_P2P_DEST_DEV_AFFINITY` | 0 | When set to 1, enables destination device affinity |
 
 **Note**: These variables configure the FlagCX P2P Engine for one-sided RDMA operations, primarily used when integrating with transfer frameworks like NIXL.
+
+### ACCL/Barex transport
+
+Environment variables change runtime behavior without rebuilding the library. The following settings apply only to deployments that build and use the ACCL/Barex transport adaptor:
+
+| Variable | Description |
+|----------|-------------|
+| `FLAGCX_P2P_TRANSPORT` | Set to `accl` to select the ACCL/Barex path when the adaptor is available. |
+| `FLAGCX_ACCL_MAX_MR_MB` | Limits ACCL/Barex registered-memory chunking. `0` disables this limit. |
+| `FLAGCX_VMM_ENABLE` | The current ACCL/Barex integration path requires `0`. |
+
+Build the adaptor with `USE_ACCL_BAREX=1`. These are deployment-specific settings, not universal defaults.
 
 ---
 
@@ -224,7 +237,11 @@ This document provides a comprehensive reference for all environment variables u
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `FLAGCX_GLOO_IB_DISABLE` | 0 | When set to 1, disables IB for Gloo transport |
+| `FLAGCX_GLOO_IB_DISABLE` | 0 | When set to 1, disables IB support for Gloo transport |
+
+### ACCL/Barex and PPU Integration
+
+Build the ACCL/Barex network adaptor with `USE_ACCL_BAREX=1`. The PPU integration commonly uses `USE_PPU=1 USE_ACCL_BAREX=1`; integration environments may also select `FLAGCX_P2P_TRANSPORT=accl`, enable `FLAGCX_MEM_ENABLE=1`, and disable virtual memory with `FLAGCX_VMM_ENABLE=0`. These settings are integration prerequisites, not universal defaults.
 
 ---
 

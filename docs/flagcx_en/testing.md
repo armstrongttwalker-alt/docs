@@ -11,7 +11,7 @@ Performance tests are maintained in `test/perf/`, organized by API level:
 
 ```shell
 cd test/perf/host_api
-make [USE_NVIDIA | USE_ILUVATAR_COREX | USE_CAMBRICON | USE_METAX | USE_MUSA | USE_KUNLUNXIN | USE_DU | USE_ASCEND | USE_AMD | USE_TSM | USE_ENFLAME | USE_SUNRISE]=1
+make [USE_NVIDIA | USE_ILUVATAR | USE_CAMBRICON | USE_METAX | USE_MUSA | USE_KUNLUNXIN | USE_DU | USE_ASCEND | USE_AMD | USE_TSM | USE_ENFLAME | USE_SUNRISE]=1
 mpirun --allow-run-as-root -np 8 ./test_allreduce -b 128K -e 4G -f 2
 ```
 
@@ -60,8 +60,13 @@ Device API tests are organized in two directories:
 
 | Binary | What it tests |
 |---|---|
-| `test_device_api` | Correctness suite for 10 one-sided Device API kernels |
-| `test_device_ir` | IR wrapper layer correctness |
+| `test_device_api` | Correctness suite for one-sided Device API kernels |
+| `test_device_api_intra` | Intra-node Device API correctness |
+| `test_device_api_inter` | Inter-node Device API correctness |
+| `test_device_ir_intra` | Intra-node Scalar IR correctness |
+| `test_device_ir_inter` | Inter-node Scalar IR correctness |
+| `test_device_ir_unified_intra` | Intra-node Unified IR correctness |
+| `test_device_ir_unified_inter` | Inter-node Unified IR correctness |
 
 Build:
 

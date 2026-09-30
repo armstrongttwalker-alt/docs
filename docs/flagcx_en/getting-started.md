@@ -73,7 +73,7 @@ sudo docker run -itd \
    make USE_SUNRISE=1 -j$(nproc) # Sunrise AI Platform
    ```
 
-   See [](build.md) for the full list of supported backend flags.
+   See [Build and Installation](build.md) for the full list of supported backend flags.
    
 2. Successful Build Result
 
@@ -134,7 +134,7 @@ sudo docker run -itd \
 ### Device API test
 
 Device API tests verify intra-node and inter-node communication via the Device API.
-See [](testing.md) for the full list of test binaries, build instructions, and run examples.
+See [Tests](testing.md) for the full list of test binaries, build instructions, and run examples.
 
 ### Torch API test
 
@@ -281,4 +281,4 @@ See [](testing.md) for the full list of test binaries, build instructions, and r
 
    - On each host, compile and install the FlagCX communication API separately.
 
-   - Refer to the section [](#homogeneous-testing-with-flagcx) for detailed steps.
+   - Refer to the section [Homogeneous testing with FlagCX](#homogeneous-testing-with-flagcx) for detailed steps.

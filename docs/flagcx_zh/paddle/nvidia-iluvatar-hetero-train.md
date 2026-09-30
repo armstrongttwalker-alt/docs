@@ -2,7 +2,7 @@
 
 ## 环境配置
 
-请参考 [](nvidia.md) 和 [](iluvatar.md) 了解在 NVIDIA 和天数智芯机器上的环境配置以及使用 FlagCX 编译 Paddle 的方法。
+请参考 [NVIDIA](nvidia.md) 和 [Iluvatar](iluvatar.md)，了解在 NVIDIA 和天数智芯机器上的环境配置以及使用 FlagCX 编译 Paddle 的方法。
 
 ## 在异构 AI 加速器上训练（NVIDIA GPU + 天数智芯 GPU）
 
