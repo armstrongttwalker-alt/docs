@@ -1,7 +1,19 @@
 # FlagFFT Release Notes
 
-## v0.1.0
+## v0.2.0
 
+- **Added Features**
+
+  - Rank-2 and rank-3 transforms for all six transform types (C2C, Z2Z, R2C, D2Z, C2R, Z2D).
+  - Prime-length and large rank-1 transform acceleration.
+  - MUSA and PPU backends, selected in the build with `-DBACKEND=MUSA|PPU`.
+  - `flagfft-cli` benchmark and plan-inspection tool.
+
+- **Enhanced Features**
+
+  - Plan selection and mixed-radix/four-step routes for large rank-1 transforms.
+
+## v0.1.0
 
 Initial release of FlagFFT.
 

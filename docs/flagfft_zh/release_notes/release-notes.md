@@ -1,7 +1,19 @@
 # FlagFFT 发布说明
 
-## v0.1.0
+## v0.2.0
 
+- **新增特性**
+
+  - 支持全部六种变换类型的 rank-2 与 rank-3 变换（C2C、Z2Z、R2C、D2Z、C2R、Z2D）。
+  - 素数长度与大尺寸 rank-1 变换加速。
+  - 新增 MUSA 与 PPU 后端，构建时通过 `-DBACKEND=MUSA|PPU` 选择。
+  - 新增 `flagfft-cli` 基准测试与 plan 检查工具。
+
+- **增强特性**
+
+  - 大尺寸 rank-1 变换的 plan 选择与 mixed-radix/四步算法路径优化。
+
+## v0.1.0
 
 FlagFFT 首次发布。
 

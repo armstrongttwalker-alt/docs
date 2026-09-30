@@ -1,7 +1,18 @@
 # FlagDNN 发布说明
 
-## v0.2.0
+## v0.3.0
 
+- **新增特性**
+
+  - 新增硬件后端：昇腾、海光 DCU、摩尔线程（MUSA）与 Iluvatar，并更新平头哥后端。
+  - 新增卷积算子：`conv_dgrad`、`conv_wgrad`。
+
+- **增强特性**
+
+  - 长序列 causal SDPA 性能优化，包含 causal d128 反向路径。
+  - 卷积、matmul、归一化与 binary 类算子的性能调优。
+
+## v0.2.0
 
 - **新增功能**
 

@@ -1,69 +1,87 @@
 # Architecture
 
-FlagQuantum is organized into the following modules:
+FlagQuantum gives quantum AI programs one public model across local
+development, accelerated kernels, distributed simulation and deployment. It is
+organized so that a backend change never changes the meaning of a program.
 
-```
+## Core layers
+
+| Layer | Responsibility | Entry point |
+| --- | --- | --- |
+| User API | Circuit construction, PyTorch modules, planning, execution, training and deployment | `import flagquantum as fq` |
+| Compilation | Transform circuits and legalize target output without executing them | `fq.compile`, `flagquantum.compiler` |
+| FlagQuantum IR | Versioned operators, measurements, metadata, serialization and validation | `fq.CircuitIR` |
+| Planning | Select a representation and execution policy; explain blockers and fallbacks | `fq.plan`, `Circuit.runtime_plan` |
+| Runtime | Execute locally or across ranks and return typed evidence | `fq.run`, `fq.ExecutionResult` |
+| Training | Preserve PyTorch autograd and optimizer semantics across supported runtimes | `fq.Module`, `fq.train` |
+| Deployment | Bind trained parameters, compile for a target and seal an auditable package | `flagquantum.deployment.create_deployment_package` |
+
+## Source map
+
+```text
 flagquantum/
-├── devices/          # Quantum device implementations
-├── drawer/           # Quantum circuit visualization
-├── ops/              # Quantum operations (gates, matrices, operators)
-├── encoding/         # Data encoding methods
-├── measure/          # Measurement utilities
-└── utils/            # Helper functions (DTensor, interchange)
+├── _api.py                 # root compile, plan and run composition
+├── circuit.py              # circuit construction
+├── core/                   # backend-neutral IR and shared semantics
+├── compiler/               # validation, optimization, lowering, code generation
+├── runtime/                # planning, execution lifecycle, results, coordination
+├── simulation/             # numerical methods and kernels
+├── noise/                  # backend-neutral noise models and channels
+├── observables/            # user-facing measurement construction
+├── qec/                    # error-correction workflows and domain models
+├── twin/                   # hardware digital-twin models
+├── compute/                # resources controlled by the current process
+├── remote/                 # external task systems and result retrieval
+├── ecosystem/              # framework and format adapters
+├── deployment/             # sealed target-neutral execution packages
+├── services/               # reusable multi-step application workflows
+├── algorithms/             # user-facing algorithm composition
+├── benchmarking/           # reproducible measurement and evidence generation
+├── drawer/                 # circuit visualization
+└── experimental/           # explicitly unstable APIs
 ```
 
-## Core Components
+## Dependency direction
 
-### Devices
+Dependencies point inward, so optional integrations stay outside the mandatory
+local PyTorch path:
 
-The `devices` module provides quantum device implementations, including the `DistributedQuantumDevice` class that manages quantum states across multiple GPUs using PyTorch's distributed tensor (`DTensor`).
+```text
+User facade → Compiler / Runtime / application workflows → Core
+                         │
+                         ├── Simulation numerical methods
+                         ├── Compute adapters for local resources
+                         └── Remote adapters for external task systems
+```
 
-### Drawer
+Core imports neither orchestration, nor numerical engines, nor vendor
+integrations. The compiler transforms programs but does not execute them.
+Runtime organizes execution but does not implement numerical kernels.
+Simulation consumes core semantics but does not select resources. Compute and
+Remote isolate hardware and external-system details from the other domains.
 
-The drawer module enables circuit visualization with two modes:
+## Execution and training contracts
 
-- Text Mode:  Unicode-based diagrams supporting multi-qubit gate symbols (╭╰├│), auto line-wrapping (max_length), and configurable parameter precision.
-- MPL Mode: Publication-quality Matplotlib figures with layer-based layout (same-column gates share x-coordinate), initial states (|0⟩), measurement symbols, and a professional color scheme:
-  - Fixed gates (H, X, Y, Z): soft blue #7B9EC2
-  - Rotation gates (RX, RY, RZ): red #E15759
-  - Phase gates (P): plum purple #DDA0DD
-  - CPhase / SWAP: teal #76B7B2
-  - CRX/CRY/CRZ: orange #F28E2B
-  - RXX/RYY/RZZ: light pink #FFB6C1 (box layout, no control points)
-  - Supports Toffoli (CCX), Fredkin (CSWAP), multi-qubit gates
+`fq.run` is the canonical execution entry point and returns
+`fq.ExecutionResult` for supported local and distributed modes. Specialized
+native functions are advanced interfaces and may expose backend-specific
+objects.
 
-### Operations
+`fq.train` owns the ordinary PyTorch optimization loop. Owner-sharded
+statevector and MPS training have separate experimental distributed entry
+points; they are not implied by calling `fq.train`. Distributed training is
+complete only when forward execution, gradients, optimizer updates and
+checkpoint ownership preserve the declared distribution semantics.
 
-The `ops` module contains all quantum gate implementations:
+For a claim of distributed scalability, one logical workload must be sharded
+across ranks. Replicated data parallelism, rank-local kernels and manual tensor
+slicing are reported under their own semantics and are never relabeled as
+capacity expansion.
 
-- **Pauli gates**: X, Y, Z
-- **Clifford gates**: H, S, SDG, CX, CZ, SWAP
-- **Rotation gates**: RX, RY, RZ with parameterized support
-- **Controlled gates**: Controlled versions of any single-qubit gate
-- **Custom gates**: User-registered gates via the gate registry
+## Public versus internal interfaces
 
-### Encoding
-
-The `encoding` module provides methods for embedding classical data into quantum states:
-
-- **Angle encoding**: Maps classical features to rotation angles
-- **Amplitude encoding**: Encodes data directly into statevector amplitudes
-- **Basis encoding**: Maps binary data to computational basis states
-- **General encoder**: Custom encoding circuits defined by the user
-
-### Measurement
-
-The `measure` module provides measurement utilities including:
-
-- **Z-basis measurement**: Standard computational basis measurement
-- **Expectation values**: Compute expectation values of observables
-- **Post-selection**: Filter measurement outcomes based on conditions
-
-### Utilities
-
-The `utils` module contains helper functions for:
-
-- DTensor operations and sharding
-- State interchange between devices
-- Device management and configuration
-- OpenQASM 2.0/3.0 exporter
+- Public examples use `import flagquantum as fq`.
+- Stable names are bounded by a checked manifest that tests verify.
+- `fq.experimental` carries no compatibility guarantee.
+- Compatibility modules support migration; they do not define new stable API.
+- Benchmark and research utilities never become runtime dependencies.

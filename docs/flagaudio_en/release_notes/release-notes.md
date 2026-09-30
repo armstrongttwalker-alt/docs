@@ -1,7 +1,13 @@
 # FlagAudio Release Notes
 
-## v0.2.0
+## v0.3.0
 
+- **Enhanced Features**
+
+  - The `gain` operator treats `0 dB` as identity gain.
+  - `flag_audio` can be imported without installing torchaudio; torchaudio is only required by the test helpers.
+
+## v0.2.0
 
 - **Added Features**
 

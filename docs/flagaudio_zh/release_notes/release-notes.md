@@ -1,7 +1,13 @@
 # FlagAudio 发布说明
 
-## v0.2.0
+## v0.3.0
 
+- **增强特性**
+
+  - `gain` 算子将 `0 dB` 视为恒等增益。
+  - 导入 `flag_audio` 不再需要安装 torchaudio，torchaudio 仅供测试辅助代码使用。
+
+## v0.2.0
 
 - **新增功能**
 

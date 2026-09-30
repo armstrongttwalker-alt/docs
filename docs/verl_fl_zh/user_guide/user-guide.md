@@ -5,6 +5,5 @@
 ```{toctree}
 :maxdepth: 2
 
-e2e-use-case.md
 platform-abstraction.md
 ```

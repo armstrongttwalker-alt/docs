@@ -1,6 +1,9 @@
 # User Guide
 
-This guide covers how to use FlagQuantum for quantum circuit simulation, including basic usage, parameterized gates with trainable parameters, quantum encoding, register custom gates, distributed multi-GPU execution, and memory invertible mode.
+This guide covers how to use FlagQuantum for quantum circuit simulation and
+training: building programs, planning and running them, training with PyTorch,
+choosing a simulation representation, adding noise and measurement, scaling
+across ranks, and moving the same program to hardware.
 
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
@@ -9,81 +12,116 @@ This guide covers how to use FlagQuantum for quantum circuit simulation, includi
 :link: basic-usage
 :link-type: doc
 
-Create a distributed quantum device and apply gates using the functional API.
+Build a circuit, plan it, run it and read the result.
 
-+++\n[Learn more »](basic-usage.md)
++++
+[Learn more »](basic-usage.md)
 :::
 
-:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` Parameterized Gates
-:link: parameterized-gates
+:::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` Circuits and IR
+:link: circuits-and-ir
 :link-type: doc
 
-Trainable quantum circuits with gradient computation.
+Circuit construction, FlagQuantum IR, compilation and routing.
 
-+++\n[Learn more »](parameterized-gates.md)
++++
+[Learn more »](circuits-and-ir.md)
 :::
 
-:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` Quantum Encoding
-:link: quantum-encoding
+:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` Training with PyTorch
+:link: training-with-pytorch
 :link-type: doc
 
-Encoding schemes for embedding classical data into quantum states.
+Trainable circuits, optimizers, named parameters and checkpoints.
 
-+++\n[Learn more »](quantum-encoding.md)
++++
+[Learn more »](training-with-pytorch.md)
 :::
 
-:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` Export to Real Quantum Hardware
-:link: export-to-real-quantum-hardware
+:::{grid-item-card} {octicon}`graph;1.5em;sd-mr-1` Measurement and Noise
+:link: measurement-and-noise
 :link-type: doc
 
-Encoding schemes for embedding classical data into quantum states.
+Observables, result accessors, noise models and dynamic circuits.
 
-+++\n[Learn more »](export-to-real-quantum-hardware.md)
++++
+[Learn more »](measurement-and-noise.md)
 :::
 
-:::{grid-item-card} {octicon}`pencil;1.5em;sd-mr-1` Custom Gates
-:link: custom-gates
+:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` Simulation Representations
+:link: simulation-representations
 :link-type: doc
 
-Extend FlagQuantum with your own gate definitions.
+Statevector, MPS, tensor network and JAX kernels.
 
-+++\n[Learn more »](custom-gates.md)
++++
+[Learn more »](simulation-representations.md)
 :::
 
-:::{grid-item-card} {octicon}`device-desktop;1.5em;sd-mr-1` Distributed Execution
+:::{grid-item-card} {octicon}`server;1.5em;sd-mr-1` Distributed Execution
 :link: distributed-execution
 :link-type: doc
 
-Run quantum simulations across multiple GPUs.
+Sharded statevector and rank-owned MPS training.
 
-+++\n[Learn more »](distributed-execution.md)
++++
+[Learn more »](distributed-execution.md)
 :::
 
-:::{grid-item-card} {octicon}`memory;1.5em;sd-mr-1` Invertible Mode
-:link: invertible-mode
+:::{grid-item-card} {octicon}`plug;1.5em;sd-mr-1` Hardware and Remote Targets
+:link: hardware-and-remote
 :link-type: doc
 
-Memory-efficient mode for large circuits with gradient computation.
+FlagOS accelerators, remote jobs, deployment packages.
 
-+++\n[Learn more »](invertible-mode.md)
++++
+[Learn more »](hardware-and-remote.md)
+:::
+
+:::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` Algorithms and QEC
+:link: algorithms
+:link-type: doc
+
+Algorithm units, error-correction experiments and digital twins.
+
++++
+[Learn more »](algorithms.md)
 :::
 
 :::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Tutorials
 :link: tutorials
 :link-type: doc
 
-Explore our tutorial series to learn FlagQuantum effectively.
+The tutorial series and the example catalog.
 
-+++\n[Learn more »](tutorials.md)
++++
+[Learn more »](tutorials.md)
 :::
 
 :::{grid-item-card} {octicon}`flame;1.5em;sd-mr-1` Run Tests
 :link: run-tests
 :link-type: doc
 
-Install dependencies and run all tests.
+Test tiers and marker commands.
 
-+++\n[Learn more »](run-tests.md)
++++
+[Learn more »](run-tests.md)
 :::
 
 ::::
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+
+basic-usage.md
+circuits-and-ir.md
+training-with-pytorch.md
+measurement-and-noise.md
+simulation-representations.md
+distributed-execution.md
+hardware-and-remote.md
+algorithms.md
+tutorials.md
+run-tests.md
+```

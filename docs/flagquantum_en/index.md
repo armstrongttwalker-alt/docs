@@ -15,33 +15,45 @@ Getting Started
 :link: FlagQuantum_overview/FlagQuantum-overview
 :link-type: doc
 
-Have a quick view of FlagQuantum, and also some basic concepts.
+What FlagQuantum is, and the concepts behind its PyTorch-first quantum workflow.
 
-+++\n[Learn more »](FlagQuantum_overview/FlagQuantum-overview.md)
++++
+[Learn more »](FlagQuantum_overview/FlagQuantum-overview.md)
 :::
 
 :::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` Getting Started
 :link: getting_started/getting-started
 :link-type: doc
 
-Outlines the installation requirements for FlagQuantum and provides step-by-step instructions for setting it up.
+Check the requirements and install FlagQuantum step by step.
 
-+++\n[Learn more »](getting_started/getting-started.md)
++++
+[Learn more »](getting_started/getting-started.md)
 :::
 
 :::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
 :link: user_guide/user-guide
 :link-type: doc
 
-Guides you through basic usage, distributed simulation, parameterized gates, and custom gate registration.
+Build, train, simulate, distribute and deploy quantum programs.
 
-+++\n[Learn more »](user_guide/user-guide.md)
++++
+[Learn more »](user_guide/user-guide.md)
+:::
+
+:::{grid-item-card} {octicon}`list-unordered;1.5em;sd-mr-1` Reference
+:link: reference/reference
+:link-type: doc
+
+Stable API names, capability maturity and support boundaries.
+
++++
+[Learn more »](reference/reference.md)
 :::
 
 ::::
 
 ---
-
 
 ```{toctree}
 :caption: 📑 Release Notes
@@ -78,11 +90,13 @@ getting_started/install.md
 
 user_guide/user-guide.md
 user_guide/basic-usage.md
-user_guide/parameterized-gates.md
-user_guide/quantum-encoding.md
-user_guide/custom-gates.md
+user_guide/circuits-and-ir.md
+user_guide/training-with-pytorch.md
+user_guide/measurement-and-noise.md
+user_guide/simulation-representations.md
 user_guide/distributed-execution.md
-user_guide/invertible-mode.md
+user_guide/hardware-and-remote.md
+user_guide/algorithms.md
 user_guide/tutorials.md
 user_guide/run-tests.md
 ```
@@ -92,5 +106,6 @@ user_guide/run-tests.md
 :maxdepth: 2
 :hidden:
 
-reference.md
+reference/reference.md
+reference/capabilities.md
 ```

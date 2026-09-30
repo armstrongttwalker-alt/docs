@@ -5,6 +5,5 @@ This section provides detailed guidance on using verl-FL for end-to-end GRPO tra
 ```{toctree}
 :maxdepth: 2
 
-e2e-use-case.md
 platform-abstraction.md
 ```

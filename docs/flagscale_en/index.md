@@ -31,15 +31,6 @@ Outlines the installation requirements for FlagScale and provides step-by-step i
 [Learn more »](getting_started/getting-started.md)
 :::
 
-:::{grid-item-card} {octicon}`broadcast;1.5em;sd-mr-1` User Guide
-:link: user_guide/user-guide
-:link-type: doc
-
-Guides you how to run training, inference, serving, and reinforcement learning tasks.
-
-+++
-[Learn more »](user_guide/user-guide.md)
-:::
 
 ::::
 
@@ -50,10 +41,9 @@ Guides you how to run training, inference, serving, and reinforcement learning t
 :maxdepth: 5
 :hidden:
 
-release_notes/release_notes_v010.md
+release_notes/release_notes_v210.md
+release_notes/release_notes_v200.md
 release_notes/release_notes_v100.md
-release_notes/megatron_lm_fl_v020_rc0.md
-release_notes/te_fl_v020_rc0.md
 ```
 
 ```{toctree}
@@ -63,5 +53,4 @@ release_notes/te_fl_v020_rc0.md
 
 FlagScale_overview/FlagScale-overview.md
 getting_started/getting-started.md
-user_guide/user-guide.md
 ```

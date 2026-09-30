@@ -1,35 +1,76 @@
 # Features
 
-FlagQuantum provides a comprehensive set of features for quantum circuit simulation:
+## PyTorch-native quantum training
 
-## Distributed Simulation
+- **Trainable circuits as PyTorch modules**: `fq.Module` exposes the quantum
+  model to PyTorch, so `loss.backward()` and ordinary optimizers train quantum
+  and classical layers in one loop.
+- **Flat or named parameter groups**: positional parameters and named groups
+  such as `{"encoder": (4,), "readout": ()}` are both supported, with
+  reproducible initialization and a module-local seed.
+- **Stable training results**: `fq.train` returns `fq.TrainingResult` with
+  versioned summaries, and checkpoint and resume stay on `fq.Module`.
 
-- Multi-GPU Statevector Simulation: Leverage PyTorch's DTensor to distribute quantum states across multiple GPUs, scaling to larger qubit counts than single-GPU simulators.
-- Automatic Resharding: Intelligently redistribute statevectors during gate operations to minimize communication overhead and maximize performance.
+## Several simulation representations, one program
 
-## Gate Set & Extensibility
+- **Statevector**: the exact local path, on CPU or one GPU, with automatic
+  dense reference reporting for small systems.
+- **Matrix product state (MPS)**: low-entanglement systems at far larger wire
+  counts than a dense statevector allows, including constrained TEBD.
+- **Tensor networks**: slicing and contraction for circuit structures where
+  neither dense statevector nor MPS fits.
+- **Optional JAX kernels** behind the same PyTorch interface, with first-order
+  gradient support across the bridge.
+- **One command to switch**: `python examples/quick_start.py --mode sv|mps|tn`
+  runs the same hybrid model on three representations without editing code.
 
-- Comprehensive Gate Set: Includes Pauli (X, Y, Z), Clifford (H, S, SDG, CX, CZ, SWAP), rotation gates (RX, RY, RZ), and parameterized controlled gates.
-- Custom Gate Registration: Extend the library with user-defined gates through the gate registry without modifying core code.
+## Compilation and export
 
-## Advanced Capabilities
+- **Target-independent optimization**: `flagquantum.compiler.optimize` applies
+  canonical rewrites to a fixed point and returns new IR.
+- **Target-aware compilation**: `fq.compile(..., coupling_map=..., routing_strategy=...)`
+  emits only topology-valid two-qubit operations and records the routing
+  decision.
+- **Compiler plugins**: independently installed packages may register a
+  compiler through the extension registry, for example the QSteed plugin used
+  for Quafu submission.
+- **OpenQASM and framework export**: circuit export to OpenQASM 3.0 and
+  adapters for Qiskit, PennyLane, Cirq, Braket and CUDA-Q.
 
-- Invertible Backpropagation: Memory-efficient gradient computation for trainable quantum circuits, enabling quantum machine learning workflows.
-- Post-Selection & Noise Models: Built-in support for measurement post-selection and depolarizing noise models for realistic simulation.
-Data Encoding
+## Measurement, noise and error correction
 
-## Data Encoding
+- **Observables and outputs**: `fq.X`, `fq.Y`, `fq.Z` with `@` products and
+  ordinary arithmetic build Hamiltonians; `fq.expectation`,
+  `fq.probabilities`, `fq.samples` and `fq.counts` request results.
+- **Backend-neutral noise**: one `NoiseModel` drives exact density-matrix
+  evolution, batched statevector trajectories and MPS quantum trajectories,
+  with thermal relaxation, depolarizing, bit/phase flip and readout errors.
+- **Hardware Pauli measurement planning**: qubit-wise-commuting grouping with
+  one sealed deployment package per group.
+- **Dynamic circuits**: mid-circuit measurement and classical feedback, with a
+  read-only backend preflight.
+- **Quantum error correction**: a repetition-code memory experiment connecting
+  syndrome extraction, decoding and correction.
 
-- Flexible Encoding Schemes: Multiple methods for embedding classical data into quantum states — angle encoding, amplitude encoding, and basis encoding — plus a general user-defined encoder.
-Visualization & Interoperability
+## Distributed and accelerator execution
 
-## Visualization & Interoperability
+- **Sharded statevector training**: one logical statevector across ranks, with
+  distributed forward, backward and optimizer state.
+- **Rank-owned MPS**: distributed MPS forward, backward and optimizer state for
+  workloads that do not fit one device.
+- **PyTorch-native under a process group**: the same module and result surface
+  uses the sharded runtime once a multi-rank process group is initialized.
+- **FlagOS accelerators through Torch-FL**: the logical `flagos:0` device is
+  reached through Torch-FL, which owns vendor detection and dispatch.
 
-- Circuit Visualization: Two-mode visualizer — Unicode text mode for terminal use and Matplotlib publication-quality mode with professional color schemes, layer-based layout, initial state display (|0⟩), and measurement symbols.
-- OpenQASM 2.0/3.0 Export: Export circuits to run on real quantum hardware platforms including IBM Quantum, AWS Braket, Azure Quantum, IonQ, and Rigetti.
-Ecosystem Integration
-FlagQuantum is a core component of FlagOS, an open-source AI system software stack designed to foster an open technology ecosystem through seamless integration of diverse models, systems, and chips. Within FlagOS, FlagQuantum works alongside other components to enable end-to-end quantum-classical workflows.
+## Deployment, interop and ecosystem
 
-## Ecosystem Integration
-
-FlagQuantum is a core component of FlagOS, an open-source AI system software stack designed to foster an open technology ecosystem through seamless integration of diverse models, systems, and chips. Within FlagOS, FlagQuantum works alongside other components to enable end-to-end quantum-classical workflows.
+- **Sealed deployment packages**: bind trained parameters, compile for a
+  target and produce an auditable package before submission.
+- **QPU digital twins**: calibration-conditioned models that predict a device's
+  measurement distribution and carry explicit evidence boundaries.
+- **Algorithm units**: Grover search, amplitude estimation, quantum PCA,
+  quantum k-medians, quantum kernel estimation and kernel ridge
+  classification, feature selection as a QUBO, and QUBO-to-Ising mapping.
+- **Circuit visualization**: a text drawer for terminals and a Matplotlib
+  drawer for publication figures.

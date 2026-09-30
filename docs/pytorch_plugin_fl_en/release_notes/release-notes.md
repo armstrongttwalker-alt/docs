@@ -4,17 +4,11 @@ This section includes the release information for PyTorch-Plugin-FL.
 
 ## v0.1.0
 
+Initial release of PyTorch-Plugin-FL as part of FlagOS.
 
-- **Added features**:
-  - Initial release of PyTorch-Plugin-FL as part of FlagOS.
-  - PrivateUse1-based custom device plugin registering `flagos` as a first-class PyTorch device.
-  - Automatic FlagGems Triton operator registration for the `flagos` backend.
-  - Per-operator configurable backend routing via `backends.conf` with environment variable overrides.
-  - Multi-platform support: NVIDIA CUDA, MetaX MACA, Huawei Ascend.
-  - Complete device management API: stream, event, RNG, AMP, memory allocator, DeviceGuard.
-  - Lightweight C++ dispatch stub replacing PyTorch's heavier DispatchStub.
-  - C++ stub-only mode (`FLAGOS_DISABLE_FLAGGEMS_PY=1`) for minimal overhead.
-  - Distributed training support via `torch_fl.distributed` (DDP/FSDP patch).
-  - MACA cu-bridge ABI shim for symbol version compatibility.
-  - Ascend NPU support with ACL NN API kernels.
-  - Integration test suite with factory ops, dispatch routing, CPU fallback tracing, and Qwen3 inference/training tests.
+- **One `flagos` device** — a `PrivateUse1`-based PyTorch device plugin; standard PyTorch APIs, tensor methods and storage work unchanged.
+- **Per-operator backend routing** — FlagGems Triton kernels, vendor-native operator libraries, CUDA compatibility boxing and explicit CPU fallback behind one device name, with a per-platform routing table and per-operator overrides.
+- **Multi-platform support** — NVIDIA CUDA, MetaX, Huawei Ascend, PPU, Hygon DCU, Enflame GCU, Moore Threads MUSA and D-Robotics BPU, each with its own build selector.
+- **Training stack** — eager execution and autograd, `torch.autocast("flagos")` and `torch.amp.GradScaler("flagos")`, `torch.compile` integration, and DDP/FSDP support through `ProcessGroupFlagOS`.
+- **Observability** — `torch.profiler` integration with a device timeline and flow arrows, per-operator dispatch and fallback logging, and a wheel compatibility manifest with the `torch-fl-preflight` inspector.
+- **Platform compatibility** — CUDA boxing, native ACLNN and topsaten backends, and the FlagGems Python and C++ dispatch paths, with status levels recorded per platform.

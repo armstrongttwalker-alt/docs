@@ -1,85 +1,95 @@
 # 用户指南
 
-本指南涵盖如何使用 FlagQuantum 进行量子电路模拟，包括基本使用、带可训练参数的参数化门、量子编码、注册自定义门、分布式多 GPU 执行以及内存可逆模式。
+本指南介绍如何用 FlagQuantum 做量子线路的模拟与训练：构建程序、规划与运行、使用 PyTorch 训练、选择模拟表示、加入噪声与测量、跨 rank 扩展，并把同一份程序迁移到硬件上。
 
 ::::{grid} 1 2 2 3
 :gutter: 1 1 1 2
 
-:::{grid-item-card} {octicon}`play;1.5em;sd-mr-1` 基本使用
+:::{grid-item-card} {octicon}`play;1.5em;sd-mr-1` 基本用法
 :link: basic-usage
 :link-type: doc
 
-创建分布式量子设备并使用函数式 API 应用门。
+构建线路、规划、执行并读取结果。
 
 +++
 [了解更多 »](basic-usage.md)
 :::
 
-:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` 参数化门
-:link: parameterized-gates
+:::{grid-item-card} {octicon}`code;1.5em;sd-mr-1` 线路与 IR
+:link: circuits-and-ir
 :link-type: doc
 
-带梯度计算的可训练量子电路。
+线路构建、FlagQuantum IR、编译与路由。
 
 +++
-[了解更多 »](parameterized-gates.md)
+[了解更多 »](circuits-and-ir.md)
 :::
 
-:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` 量子编码
-:link: quantum-encoding
+:::{grid-item-card} {octicon}`gear;1.5em;sd-mr-1` 使用 PyTorch 训练
+:link: training-with-pytorch
 :link-type: doc
 
-将经典数据嵌入量子态的编码方案。
+可训练线路、优化器、命名参数与检查点。
 
 +++
-[了解更多 »](quantum-encoding.md)
+[了解更多 »](training-with-pytorch.md)
 :::
 
-:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` 导出到真实量子硬件
-:link: export-to-real-quantum-hardware
+:::{grid-item-card} {octicon}`graph;1.5em;sd-mr-1` 测量与噪声
+:link: measurement-and-noise
 :link-type: doc
 
-将经典数据嵌入量子态的编码方案。
+可观测量、结果访问、噪声模型与动态线路。
 
 +++
-[了解更多 »](export-to-real-quantum-hardware.md)
+[了解更多 »](measurement-and-noise.md)
 :::
 
-:::{grid-item-card} {octicon}`pencil;1.5em;sd-mr-1` 自定义门
-:link: custom-gates
+:::{grid-item-card} {octicon}`cpu;1.5em;sd-mr-1` 模拟表示
+:link: simulation-representations
 :link-type: doc
 
-使用您自己的门定义扩展 FlagQuantum。
+态向量、MPS、张量网络与 JAX 内核。
 
 +++
-[了解更多 »](custom-gates.md)
+[了解更多 »](simulation-representations.md)
 :::
 
-:::{grid-item-card} {octicon}`device-desktop;1.5em;sd-mr-1` 分布式执行
+:::{grid-item-card} {octicon}`server;1.5em;sd-mr-1` 分布式执行
 :link: distributed-execution
 :link-type: doc
 
-跨多个 GPU 运行量子模拟。
+分片态向量与按 rank 拥有的 MPS 训练。
 
 +++
 [了解更多 »](distributed-execution.md)
 :::
 
-:::{grid-item-card} {octicon}`memory;1.5em;sd-mr-1` 可逆模式
-:link: invertible-mode
+:::{grid-item-card} {octicon}`plug;1.5em;sd-mr-1` 硬件与远程目标
+:link: hardware-and-remote
 :link-type: doc
 
-用于带梯度计算的大型电路的内存高效模式。
+FlagOS 加速器、远程任务与部署包。
 
 +++
-[了解更多 »](invertible-mode.md)
+[了解更多 »](hardware-and-remote.md)
+:::
+
+:::{grid-item-card} {octicon}`beaker;1.5em;sd-mr-1` 算法与纠错
+:link: algorithms
+:link-type: doc
+
+算法单元、纠错实验与数字孪生。
+
++++
+[了解更多 »](algorithms.md)
 :::
 
 :::{grid-item-card} {octicon}`book;1.5em;sd-mr-1` 教程
 :link: tutorials
 :link-type: doc
 
-探索我们的教程系列，高效学习 FlagQuantum。
+教程系列与示例目录。
 
 +++
 [了解更多 »](tutorials.md)
@@ -89,10 +99,26 @@
 :link: run-tests
 :link-type: doc
 
-安装依赖并运行所有测试。
+测试分层与标记命令。
 
 +++
 [了解更多 »](run-tests.md)
 :::
 
 ::::
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+
+basic-usage.md
+circuits-and-ir.md
+training-with-pytorch.md
+measurement-and-noise.md
+simulation-representations.md
+distributed-execution.md
+hardware-and-remote.md
+algorithms.md
+tutorials.md
+run-tests.md
+```

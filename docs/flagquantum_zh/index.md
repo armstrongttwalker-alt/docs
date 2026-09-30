@@ -15,7 +15,7 @@
 :link: FlagQuantum_overview/FlagQuantum-overview
 :link-type: doc
 
-快速了解 FlagQuantum 以及一些基本概念。
+FlagQuantum 是什么，以及 PyTorch 优先的量子工作流背后的基本概念。
 
 +++
 [了解更多 »](FlagQuantum_overview/FlagQuantum-overview.md)
@@ -25,7 +25,7 @@
 :link: getting_started/getting-started
 :link-type: doc
 
-概述 FlagQuantum 的安装要求，并提供逐步设置说明。
+查看环境要求，逐步安装 FlagQuantum。
 
 +++
 [了解更多 »](getting_started/getting-started.md)
@@ -35,10 +35,20 @@
 :link: user_guide/user-guide
 :link-type: doc
 
-指导您完成基本使用、分布式模拟、参数化门和自定义门注册。
+构建、训练、模拟、分布式运行并部署量子程序。
 
 +++
 [了解更多 »](user_guide/user-guide.md)
+:::
+
+:::{grid-item-card} {octicon}`list-unordered;1.5em;sd-mr-1` 参考资料
+:link: reference/reference
+:link-type: doc
+
+稳定 API 清单、能力等级与支持边界。
+
++++
+[了解更多 »](reference/reference.md)
 :::
 
 ::::
@@ -80,11 +90,13 @@ getting_started/install.md
 
 user_guide/user-guide.md
 user_guide/basic-usage.md
-user_guide/parameterized-gates.md
-user_guide/quantum-encoding.md
-user_guide/custom-gates.md
+user_guide/circuits-and-ir.md
+user_guide/training-with-pytorch.md
+user_guide/measurement-and-noise.md
+user_guide/simulation-representations.md
 user_guide/distributed-execution.md
-user_guide/invertible-mode.md
+user_guide/hardware-and-remote.md
+user_guide/algorithms.md
 user_guide/tutorials.md
 user_guide/run-tests.md
 ```
@@ -94,5 +106,6 @@ user_guide/run-tests.md
 :maxdepth: 2
 :hidden:
 
-reference.md
+reference/reference.md
+reference/capabilities.md
 ```
