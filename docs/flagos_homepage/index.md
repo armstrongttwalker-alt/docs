@@ -247,7 +247,7 @@ A benchmark framework for evaluating LLM and agent-based Triton kernel generatio
 A checkpoint conversion and quantization tool for local Hugging Face model directories.
 
 +++
-[View Documentation →](https://github.com/flagos-ai/FlagOS-Compressor){ .card-link-sd }
+[View Documentation →](https://docs.flagos.io/projects/FlagOS-Compressor/en/latest/){ .card-link-sd }
 ```
 
 ```{grid-item-card} FlagOS Skills
