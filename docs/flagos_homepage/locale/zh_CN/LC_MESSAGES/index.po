@@ -338,10 +338,10 @@ msgstr "为多种 AI 芯片提供统一 `flagos` 设备的自定义 PyTorch 设�
 #: ../../flagos_homepage/index.md:169
 #, python-brace-format
 msgid ""
-"[View Documentation →](https://docs.flagos.io/projects/PyTorch-Plugin-"
+"[View Documentation →](https://docs.flagos.io/projects/torch-"
 "FL/en/latest/){ .card-link-sd }"
 msgstr ""
-"[查看文档 →](https://docs.flagos.io/projects/PyTorch-Plugin-FL/zh-"
+"[查看文档 →](https://docs.flagos.io/projects/torch-FL/zh-"
 "cn/latest/){ .card-link-sd }"
 
 #: ../../flagos_homepage/index.md:172
