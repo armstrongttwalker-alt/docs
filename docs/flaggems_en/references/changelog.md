@@ -1,8 +1,80 @@
 # Change History
 
+## v5.4
+
+**Release date**: 2026-09-28
+
+- Part of FlagOS 2.2.
+- Added tooling feature:
+  `Op Diff`
+- Added KernelGen operators:
+  `argsort`,
+  `isneginf`,
+  `special_bessel_j1`,
+  `igammac_`,
+  `special_logsumexp`,
+  `special_bessel_y1`,
+  `bernoulli`,
+  `not_equal`,
+  `pdist`,
+  `norm`,
+  `randint_like`,
+  `reflection_pad3d`,
+  `reflection_pad3d_backward`,
+  `_batch_norm_no_update`,
+  `_cdist_backward`,
+  `renorm`,
+  `remainder`,
+  `add_rms_norm`,
+  `clamp_max`,
+  `fractional_max_pool2d`,
+  `special_airy_ai`,
+  `digamma`
+- Added SiliconFlow operators:
+  `upsample_linear1d_backward`,
+  `geometric`,
+  `geometric_`,
+  `_scaled_mm`,
+  `_scaled_grouped_mm`,
+  `segment_reduce`,
+  `_segment_reduce_backward`,
+  `nanmedian`,
+  `unique_dim`,
+  `searchsorted`,
+  `index_reduce_`
+- Added large-model and fused operators:
+  `flash_mla_with_kvcache`,
+  `BeamSearchScore`,
+  `MatmulBiasActivation`
+
+## v5.3
+
+**Release date**: 2026-06-24
+
+- Part of FlagOS 2.1.
+- Added FlagTune features for selected matmul operators:
+  simple extensible FlagTune API,
+  `mm` tuning with `GROUP_M`
+- Added and optimized FP8 and MoE kernels:
+  FP8 block-wise `bmm`,
+  `fp8_einsum`,
+  optimized fused MoE kernel,
+  `router_gemm`,
+  fused Marlin MoE
+- Added large-model fused operators:
+  `fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert`
+- Added neural network operator:
+  `affine_grid_generator`
+- Improved NVIDIA backend:
+  migrated SQMMA descriptor usage to the Triton 3.6 TensorDescriptor API,
+  bumped Triton to 3.6,
+  bumped PyTorch for the NVIDIA backend
+- Improved backend and setup support for Spacemit and Enflame.
+- Added QUICK_MODE support to reduce test suite runtime.
+
 ## v5.0
 
-**Release date**: TBD
+**Release date**: 2026-03-26
 
 - Added math operators:
   `absolute` (_generated_),

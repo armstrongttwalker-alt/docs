@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:2
+msgid ""
+"Stage 5: End-to-End Validation and Legal Compliance (Intermediate Closing"
+" Gate)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:4
+msgid ""
+"For cloud chip adaptation, this page corresponds to Stage 5. This stage "
+"follows Stage 4a/4b communication and training/inference framework "
+"adaptation. It focuses on validating CI/CD, system validation testing, "
+"CTS compatibility certification, and legal compliance."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:6
+msgid "**Stage ID**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:8
+msgid "Stage 5"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:10
+msgid "**Prerequisites**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:12
+msgid ""
+"Technical adaptation is complete for Stages 2-4, and the CI/CD resource "
+"pool is ready."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:14
+msgid "**Hardware investment**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:16
+msgid ""
+"1 CI machine and 2 SVT (system validation testing) machines. SVT machines"
+" must be physically isolated from CI machines."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:18
+msgid "**Activities**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:20
+msgid "Validate SIG repository functionality."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:21
+msgid "Run DevSecOps automated build, deployment, and validation."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:22
+msgid "Validate SBOM scanning."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:23
+msgid "Run FlagOS CTS compatibility certification tests."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:24
+msgid "Perform legal compliance review."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:26
+msgid "**Deliverables**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:28
+msgid ""
+"Functional validation report, SBOM report, CTS test report, and legal "
+"compliance review opinion."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:30
+msgid "**Acceptance criteria**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:32
+msgid "SIG repository test cases pass at 100%."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:33
+msgid "All CTS test items pass or have an explicit waiver list."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:34
+msgid "SBOM scanning reports no critical vulnerabilities."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:35
+msgid "Legal review has no unresolved items."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:36
+msgid ""
+"CI/CD and SVT end-to-end automation runs for at least seven days without "
+"interruption."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:38
+msgid "**Estimated duration**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:40
+msgid "3-4 weeks"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:42
+msgid "**Related documents**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_05_validation_cloud.md:44
+msgid ""
+"SIG repository test specification, CTS specification, SBOM standard, "
+"compliance review checklist, and DevSecOps practice guide."
+msgstr ""
+

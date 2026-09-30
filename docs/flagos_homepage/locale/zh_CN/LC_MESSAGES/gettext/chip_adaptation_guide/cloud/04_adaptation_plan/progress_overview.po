@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:2
+msgid "Overall Progress Overview"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:5
+msgid ""
+"**Overall progress overview:** The figure below shows the complete path "
+"from contract kickoff, environment readiness, compiler integration, "
+"operator coverage, communication, training and inference, validation, "
+"compliance, release, and promotion. It is organized around key "
+"deliverables, cooperation-level evolution, and hardware investment."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:7
+msgid ""
+"**Performance metric requirements:** Starting from Stage 3, operator "
+"performance, communication throughput, model accuracy, and end-to-end "
+"efficiency gradually become acceptance metrics. For advanced cooperation,"
+" performance metrics are a key baseline. Under equivalent compute, the "
+"chip must reach a defined percentage of the NVIDIA baseline; the specific"
+" percentage will be confirmed later through the KT2 milestone."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:11
+msgid ""
+"**Overall progress overview:** The figure below shows the complete path "
+"from contract kickoff, environment readiness, compiler integration, "
+"operator coverage, validation, compliance, release, and promotion. It is "
+"organized around key deliverables, cooperation-level evolution, and "
+"hardware investment."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:13
+msgid ""
+"**Performance metric requirements:** Starting from Stage 3, operator "
+"performance, model accuracy, and end-to-end efficiency gradually become "
+"acceptance metrics. For advanced cooperation, performance metrics are a "
+"key baseline."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:16
+msgid ""
+"**Quality and continuous maintenance requirements:** Vendors must commit "
+"to maintaining the mainline adaptation code. FlagOS upgrades and vendor "
+"Driver/SDK upgrades must both be covered by CI/CD validation so that "
+"performance results remain sustainable, reproducible, and releasable."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:19
+msgid "![image.png](/chip_adaptation_guide/assets/cloud/progress_overview-en.png)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:19
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:23
+msgid "image.png"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:23
+msgid "![image.png](/chip_adaptation_guide/assets/edge/progress_overview-en.png)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:26
+msgid "Figure 3. Overall progress overview"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:29
+msgid ""
+"Estimated total duration: about 5-7 months from signing to release. Total"
+" hardware investment increases with the cooperation target. The basic "
+"path requires about 1 development board, 1 CI machine, 2 SVT machines, "
+"and 1 dedicated FR machine. Additional machines should be added for Day "
+"0, distribution, cloud-native, or showroom plans."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/progress_overview.md:33
+msgid ""
+"Estimated total duration: about 3-5 months from signing to release. Total"
+" hardware investment increases with the cooperation target. The basic "
+"path requires about 1 development board, 1 CI machine, 2 SVT machines, "
+"and 1 dedicated FlagRelease (FR) machine. Additional machines should be "
+"added for Day 0, distribution, cloud-native, or showroom plans."
+msgstr ""
+

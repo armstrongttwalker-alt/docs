@@ -1,31 +1,179 @@
 # 变更历史
 
-## v4.3
+## v5.4
 
-**发布日期**：待定
+**发布日期**：2026-09-28
+
+- FlagOS 2.2 的组成部分。
+- 新增工具功能：
+  `Op Diff`
+- 新增 KernelGen 算子：
+  `argsort`、
+  `isneginf`、
+  `special_bessel_j1`、
+  `igammac_`、
+  `special_logsumexp`、
+  `special_bessel_y1`、
+  `bernoulli`、
+  `not_equal`、
+  `pdist`、
+  `norm`、
+  `randint_like`、
+  `reflection_pad3d`、
+  `reflection_pad3d_backward`、
+  `_batch_norm_no_update`、
+  `_cdist_backward`、
+  `renorm`、
+  `remainder`、
+  `add_rms_norm`、
+  `clamp_max`、
+  `fractional_max_pool2d`、
+  `special_airy_ai`、
+  `digamma`
+- 新增 SiliconFlow 算子：
+  `upsample_linear1d_backward`、
+  `geometric`、
+  `geometric_`、
+  `_scaled_mm`、
+  `_scaled_grouped_mm`、
+  `segment_reduce`、
+  `_segment_reduce_backward`、
+  `nanmedian`、
+  `unique_dim`、
+  `searchsorted`、
+  `index_reduce_`
+- 新增大模型及融合算子：
+  `flash_mla_with_kvcache`、
+  `BeamSearchScore`、
+  `MatmulBiasActivation`
+
+## v5.3
+
+**发布日期**：2026-06-24
+
+- FlagOS 2.1 的组成部分。
+- 为部分矩阵乘算子新增 FlagTune 功能：
+  简单且可扩展的 FlagTune API、
+  使用 `GROUP_M` 对 `mm` 进行调优
+- 新增并优化 FP8 与 MoE 内核：
+  FP8 分块 `bmm`、
+  `fp8_einsum`、
+  优化的融合 MoE 内核、
+  `router_gemm`、
+  融合 Marlin MoE
+- 新增大模型融合算子：
+  `fused_deepseek_v4_qnorm_rope_kv_rope_quant_insert`
+- 新增神经网络算子：
+  `affine_grid_generator`
+- 改进 NVIDIA 后端：
+  将 SQMMA 描述符迁移至 Triton 3.6 TensorDescriptor API、
+  升级至 Triton 3.6、
+  升级 NVIDIA 后端使用的 PyTorch
+- 改进 Spacemit 和 Enflame 的后端及安装支持。
+- 新增 QUICK_MODE，以缩短测试套件运行时间。
+
+## v5.0
+
+**发布日期**：2026-03-26
 
 - 新增数学算子：
-  `acos`,
-  `ceil`,
-  `ceil_`,
-  `ceil_out`,
-  `equal`,
-  `logical_and_`,
-  `logical_or_`
+  `absolute` (_generated_)、
+  `acos`、
+  `arcsinh` (_generated_)、
+  `arcsinh_` (_generated_)、
+  `arcsinh.out` (_generated_)、
+  `arctanh_` (_generated_)、
+  `asinh_` (_generated_)、
+  `ceil`、
+  `ceil_`、
+  `ceil.out` (_generated_)、
+  `diagmma_` (_generated_)、
+  `equal`、
+  `floor_` (_generated_)、
+  `fmin` (_generated_)、
+  `fmin.out` (_generated_)、
+  `hardswish_` (_generated_)、
+  `hypot` (_generated_)、
+  `i0` (_generated_)、
+  `i0_` (_generated_)、
+  `i0.out` (_generated_)、
+  `log1p_` (_generated_)、
+  `logaddexp` (_generated_)、
+  `logaddexp.out` (_generated_)、
+  `logical_and_`、
+  `logical_or_`、
+  `logit` (_generated_)、
+  `logit_` (_generated_)、
+  `logit.out` (_generated_)、
+  `sgn_` (_generated_)、
+  `sinh_` (_generated_)、
+  `special_i1` (_generated_)、
+  `special_i1.out` (_generated_)
 - 新增 BLAS 算子：
-  `bmm.out`
-- 新增 Distribution 算子：
+  `bmm.out`、
+  `cutlass_scaled_mm_sm_90`、
+  `tril` (_generated_)
+- 新增 MoE 算子：
+  `dispatch_fused_moe_kernel`、
+  `grouped_topk`、
+  `inplace_fused_experts`、
+  `outplace_fused_experts`
+- 新增分布算子：
   `normal_`
 - 新增神经网络算子：
-  `one_hot`,
-  `triu_`,
-  `upsample_linear1d`,
-  `upsample_nearest1d`,
+  `_upsample_nearest_exact1d`、
+  `apply_repetition_penalties` (_generated_)、
+  `chunk_gated_delta_rule_fwd`、
+  `dswiglu`、
+  `embedding_dense_backward`、
+  `fused_recurrent_gated_delta_rule_fwd`、
+  `hardsigmoid` (_generated_)、
+  `hardsigmoid.out` (_generated_)、
+  `nll_loss_nd_backward`、
+  `nll_loss_nd_forward`、
+  `one_hot`、
+  `pixel_unshuffle` (_generated_)、
+  `pixel_unshuffle.out` (_generated_)、
+  `prelu` (_generated_)、
+  `reflection_pad1d` (_generated_)、
+  `reflection_pad1d.out` (_generated_)、
+  `reflection_pad2d` (_generated_)、
+  `reflection_pad2d.out` (_generated_)、
+  `relu6` (_generated_)、
+  `swiglu`、
+  `triu_`、
+  `unfold_backward`、
+  `upsample_bicubic2d`、
+  `upsample_linear1d`、
+  `upsample_nearest1d`、
+  `upsample_nearest3d`
 - 新增张量算子：
-  `unfold_backward`,
-  `zero_`
-- 移除 Reduction 算子：
-  `moe_sum`
+  `_functional_sym_constrain_range_for_size` (_generated_)、
+  `alias_copy` (_generated_)、
+  `alias_copy.out` (_generated_)、
+  `fill.Scalar_out`、
+  `fill.Tensor_out`、
+  `lift_fresh_copy` (_generated_)、
+  `replication_pad1d` (_generated_)、
+  `replication_pad1d.out` (_generated_)、
+  `replication_pad3d`、
+  `rrelu_with_noise_backward` (_generated_)、
+  `selu` (_generated_)、
+  `selu_` (_generated_)、
+  `slice_backward` (_generated_)、
+  `softshrink` (_generated_)、
+  `softshrink.out` (_generated_)、
+  `t_copy` (_generated_)、
+  `t_copy.out` (_generated_)、
+  `unfold_backward`、
+  `zero` (_generated_)、
+  `zero_`、
+  `zero.out` (_generated_)
+- 移除 Reduction 算子 `moe_sum`。
+- 新增 Reduction 算子：
+  `bincount`
+- 新增 DSA 算子：
+  `spare_mla_fwd`
 
 ## v4.2
 

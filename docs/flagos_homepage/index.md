@@ -12,6 +12,7 @@ sd_hide_title: true
 A unified, open-source system software stack designed for a variety of AI chips
 
 [FlagOS Overview](overview.md){ .flagos-outline-btn }
+[What's New in FlagOS 2.2](whats_new.md){ .flagos-outline-btn }
 [Cloud Chip Adaptation Guide](chip_adaptation_guide/cloud_adaptation_guide_index.md){ .flagos-outline-btn }
 [Edge Chip Adaptation Guide](chip_adaptation_guide/edge_adaptation_guide_index.md){ .flagos-outline-btn }
 :::
@@ -20,6 +21,7 @@ A unified, open-source system software stack designed for a variety of AI chips
 :maxdepth: 1
 :class: flagos-guide-root-toctree
 
+whats_new.md
 chip_adaptation_guide/cloud_adaptation_guide_index.md
 chip_adaptation_guide/edge_adaptation_guide_index.md
 ```
@@ -54,6 +56,12 @@ Triton-based general-purpose operator library.
 Optimized vLLM operators for multiple backends.
 
 [View Documentation →](https://docs.flagos.io/projects/FlagGems-vllm/en/latest/)
+
+**FlagGems-sglang**
+
+Optimized SGLang operators for multiple backends.
+
+[View Documentation →](https://docs.flagos.io/projects/FlagGems-sglang/en/latest/)
 :::
 
 :::{div} operator-item
@@ -64,6 +72,7 @@ Optimized vLLM operators for multiple backends.
 - **FlagFFT** — GPU FFT library. [View Documentation →](https://docs.flagos.io/projects/FlagFFT/en/latest/)
 - **FlagSparse** — Sparse computation. [View Documentation →](https://docs.flagos.io/projects/FlagSparse/en/latest/)
 - **FlagTensor** — Tensor primitives. [View Documentation →](https://docs.flagos.io/projects/FlagTensor/en/latest/)
+- **FlagAttention** — Memory-efficient attention operators. [View Documentation →](https://docs.flagos.io/projects/FlagAttention/en/latest/)
 - **FlagAudio** — Audio processing. [View Documentation →](https://docs.flagos.io/projects/FlagAudio/en/latest/)
 :::
 ```
@@ -151,10 +160,10 @@ A fork of veRL that extends the upstream library with multi-chip/multi-hardware 
 [View Documentation →](https://docs.flagos.io/projects/verl-FL/en/latest/){ .card-link-sd }
 ```
 
-```{grid-item-card} PyTorch-Plugin-FL
+```{grid-item-card} Torch-FL
 :class-card: flagos-card-sd
 
-A custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend.
+A custom PyTorch device plugin that provides a unified `flagos` device across diverse AI chips.
 
 +++
 [View Documentation →](https://docs.flagos.io/projects/PyTorch-Plugin-FL/en/latest/){ .card-link-sd }
@@ -167,6 +176,15 @@ An out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-chip bac
 
 +++
 [View Documentation →](https://docs.flagos.io/projects/sglang-plugin-FL/en/latest/){ .card-link-sd }
+```
+
+```{grid-item-card} verl-hardware-plugin
+:class-card: flagos-card-sd
+
+Multi-chip hardware platform and engine plugins for upstream verl RL post-training workloads across NVIDIA, MetaX, Iluvatar, Cambricon MLU, Enflame, and Intel XPU hardware.
+
++++
+[View Documentation →](https://docs.flagos.io/projects/verl-hardware-plugin/en/latest/){ .card-link-sd }
 ```
 ````
 
@@ -221,6 +239,15 @@ A benchmark framework for evaluating LLM and agent-based Triton kernel generatio
 
 +++
 [View Documentation →](https://docs.flagos.io/projects/kernelgenbench/en/latest/){ .card-link-sd }
+```
+
+```{grid-item-card} FlagOS-Compressor
+:class-card: flagos-card-sd
+
+A checkpoint conversion and quantization tool for local Hugging Face model directories.
+
++++
+[View Documentation →](https://github.com/flagos-ai/FlagOS-Compressor){ .card-link-sd }
 ```
 
 ```{grid-item-card} FlagOS Skills

@@ -1,0 +1,269 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/05_compatibility_certification/test_suites_cloud.md:2
+msgid "Test Suites"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/05_compatibility_certification/test_suites_cloud.md:4
+msgid "CTS (Compatibility Test Suite) - Compatibility Test Suite"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "**Test domain**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "**Coverage**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "**Pass standard**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Compiler compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "FlagTree compilation and FLIR IR mapping correctness"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "100%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Operator compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "FlagGems core operator correctness"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid ">=95%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Communication compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "FlagCX collective communication correctness"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Framework compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Basic FlagScale training and inference workflow"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "PyTorch API compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Correctness of common aten API return values"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid ">=90%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Triton API compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Triton language feature support"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Accuracy consistency"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Comparison with the NVIDIA baseline"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:5
+msgid "Deviation <2%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/05_compatibility_certification/test_suites_common.md:2
+msgid "VTS (Verification Test Suite) - Verification Test Suite"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Stress test"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Continuous operator execution for 72 hours"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "No crashes"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Stability test"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "1,000 repeated training and inference runs"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Consistent results"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Long-duration stability"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Continuous 24/7 operation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "No memory leaks"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Resource monitoring"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "GPU utilization, memory bandwidth, and temperature"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Within vendor specifications"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/05_compatibility_certification/test_suites_cloud.md:19
+msgid "STS (Security Test Suite) - Security Test Suite"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "SBOM scanning"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Dependency vulnerability scanning"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "No high-risk vulnerabilities or CVEs"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Driver security"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Driver file permission and signature validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Passed"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Container security"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Container image scanning"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "No high-risk vulnerabilities"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Communication encryption"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "FlagCX communication-link encryption validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/05_compatibility_certification/test_suites_cloud.md:28
+msgid "ITS (Interoperability Test Suite) - Interoperability Test Suite"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Heterogeneous mixed training"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Chip and NVIDIA mixed training"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Efficiency >=81%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Heterogeneous mixed inference"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Chip and NVIDIA mixed inference"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Accuracy deviation <2%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Cross-vendor communication"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "FlagCX cross-vendor testing"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Correctness 100%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "Multi-framework compatibility"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "FlagScale, vLLM, and SGLang"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/05_compatibility_certification/test_suites.md:16
+msgid "All passed"
+msgstr ""
+

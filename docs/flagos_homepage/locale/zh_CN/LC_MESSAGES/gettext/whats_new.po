@@ -1,0 +1,658 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/whats_new.md:1
+msgid "What's New in FlagOS 2.2"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:3
+msgid ""
+"FlagOS 2.2 extends the shared software stack for multi-chip model "
+"training and inference. This release adds new framework integrations and "
+"developer tools, expands operator and compiler capabilities, introduces "
+"an Arm CPU compilation path, and publishes additional quantization and "
+"model deployment resources."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:5
+msgid ""
+"The results in this page are release examples rather than universal "
+"performance or compatibility guarantees. Support and benchmark results "
+"depend on the model, backend, hardware, software version, and test "
+"configuration described in each section."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:7
+msgid "Highlights"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:9
+msgid ""
+"**Framework integrations:** Updates to vLLM-Plugin-FL and SGLang-Plugin-"
+"FL, and the first FlagOS integration for PyTorch through Torch-FL."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:10
+msgid ""
+"**Training stack:** Updates to Megatron-LM-FL, TransformerEngine-FL, and "
+"FlagScale for model training and lifecycle management."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:11
+msgid ""
+"**Operator and compiler tooling:** Expanded operator coverage, new "
+"SGLang-specific operators, compiler and auto-tuning improvements, and "
+"additional routing options."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:12
+msgid ""
+"**Arm CPU inference:** First release of FlagTree-CPU as an independent "
+"compilation component for low-bit Arm64 workloads."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:13
+msgid ""
+"**Model conversion:** First release of FlagOS-Compressor for weight "
+"conversion and W4A16, W8A16, and dynamic W8A8 workflows."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:14
+msgid ""
+"**Kernel development:** First release of FlagPrism for cross-backend "
+"Triton debugging and profiling."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:15
+msgid ""
+"**Model delivery:** Additional Day 0 model adaptations, deployment "
+"configurations, and model images through FlagRelease."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:17
+msgid "Runtime and framework integrations"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:19
+msgid "vLLM-Plugin-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:21
+msgid ""
+"vLLM-Plugin-FL adds the following capabilities for the FlagOS multi-chip "
+"backend:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:23
+msgid "Compatibility lines for vLLM 0.20.2 and 0.24.0."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:24
+msgid ""
+"An expanded **Empty** deployment mode that separates framework "
+"construction from device-specific implementation."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:25
+msgid "INT8 and W8A8 execution paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:26
+msgid "Graph execution support for selected non-NVIDIA backends."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:27
+msgid "Monitoring for key-value (KV) cache transfers."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:29
+msgid ""
+"These features are intended to let the plugin provide device integration,"
+" operators, and communication implementations without requiring each "
+"model application to change its standard vLLM interface."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:31
+msgid "SGLang-Plugin-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:33
+msgid ""
+"SGLang-Plugin-FL expands backend integration for the SGLang runtime. The "
+"release includes work for Hygon, Iluvatar CoreX, BANG, Kunlunxin, and "
+"Enflame backends, subject to the support and validation status of each "
+"backend."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:35
+msgid "The update also adds or improves:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:37
+msgid "The Empty deployment path."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:38
+msgid "Pipeline-parallel communication."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:39
+msgid "Separate prefill and decode KV transfer paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:40
+msgid "Multi-token prediction (MTP) integration."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:41
+msgid "Integration with the new FlagGems-SGLang operator library."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:43
+msgid "Torch-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:45
+msgid ""
+"Torch-FL is introduced as the FlagOS PyTorch adaptation path. It provides"
+" a unified virtual device named `FlagOS` and routes operators to FlagOS, "
+"vendor implementations, or compatible fallback paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:47
+msgid "The initial release focuses on:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:49
+msgid "Multi-chip PyTorch execution."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:50
+msgid "Mixed-precision and distributed execution paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:51
+msgid "Compiler integration."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:52
+msgid ""
+"Backend additions for Hygon, Moore Threads, BANG, and Enflame "
+"environments."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:53
+msgid "Integration with FlagGems and vendor operator implementations."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:55
+msgid ""
+"Torch-FL also provides a path for running Qwen-Image-2.1 with a standard "
+"Diffusers interface while moving text encoding, denoising, and image "
+"decoding to the CPU in the tested configuration."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:57
+msgid "Training stack and FlagScale"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:59
+msgid "The training-side updates include:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:61
+msgid "Megatron-LM-FL updated to MCore 0.18.2."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:62
+msgid "TransformerEngine-FL updated to Transformer Engine 2.17."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:63
+msgid ""
+"Adaptation work for GLM5 DSA, fused RoPE, block-wise cross-entropy, and "
+"backend-specific execution paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:64
+msgid ""
+"FlagScale improvements for slow-node detection, training performance "
+"monitoring, progress heartbeats, and weight conversion."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:66
+msgid ""
+"These updates are intended to improve the observability and portability "
+"of training jobs; the supported combination still depends on the model, "
+"framework version, and backend."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:68
+msgid "Operators and compilation"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:70
+msgid "Operator library updates"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:72
+msgid ""
+"FlagOS 2.2 expands operator coverage for general-purpose, fused, and "
+"domain-specific libraries. The release includes operators and execution "
+"paths for attention, Mamba state updates, mixture-of-experts (MoE) "
+"workloads, LoRA, sampling, quantization, MLA, KDA/GLA/GDN2, TopK, and "
+"low-precision computation."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:74
+msgid ""
+"The release also introduces **FlagGems-SGLang** as an SGLang-oriented "
+"operator library and updates **FlagGems-vLLM** with additional vLLM "
+"operator entry points. Operator totals in the source release material use"
+" different scopes and tables; this page therefore does not publish one "
+"aggregate total without a matching version, backend matrix, and counting "
+"method."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:76
+msgid "Compiler and auto-tuning improvements"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:78
+msgid ""
+"The compiler and runtime changes target data movement, kernel launch "
+"overhead, synchronization, and shape-dependent execution. The release "
+"includes:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:80
+msgid "Optional NVIDIA TileIR compilation paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:81
+msgid "TLE-based layout, shared-memory, and asynchronous-pipeline control."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:82
+msgid "FlagTune search for execution configurations."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:83
+msgid "Operator fusion and mixed-precision paths."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:84
+msgid "Shape-aware routing to select an execution path for a given input."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:85
+msgid "Additional compiler and backend integration work in FlagTree."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:87
+msgid "Scoped performance examples"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:89
+msgid ""
+"The source release material reports the following examples. They should "
+"be reproduced with the same model, backend, software versions, and "
+"benchmark configuration before being used for capacity planning."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:91
+msgid ""
+"**TopK on NVIDIA A100:** For an input shape of `[64, 129280]` and "
+"`k=1024`, the reported runtime decreased from `0.353280 ms` for the non-"
+"TLE FlagGems implementation to `0.130048 ms`, or approximately `2.717x` "
+"faster in that test."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:92
+msgid ""
+"**KDA on NVIDIA H800:** For BF16 with `K=V=128`, `BT=16`, and the stated "
+"two-stage configuration, the reported geometric-mean result was "
+"approximately `1.380x` relative to the FlashKDA comparison."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:93
+#, python-format
+msgid ""
+"**Hy3 on NVIDIA H20:** With eight NVIDIA H20 141 GB GPUs and concurrency "
+"64, selected FlagGems operators produced reported throughput improvements"
+" of 7.2%, 4.6%, and 3.2% for 4K/1K, 16K/1K, and 32K/1K input/output "
+"lengths, respectively. The test retained four selected operators and used"
+" native vLLM implementations for the remaining operators."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:95
+msgid "Arm CPU inference"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:97
+msgid "FlagTree-CPU v0.1.0"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:99
+msgid ""
+"FlagTree-CPU is introduced as an independent compilation component for "
+"CPU targets. The release is based on `triton-cpu 3.7.2` and adds Arm64 "
+"compilation paths for:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:101
+msgid "SME2."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:102
+msgid "SVE2."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:103
+msgid "NEON I8MM."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:105
+msgid ""
+"The component can generate low-bit operator instructions for W4A8 and "
+"W8A8 workloads. In the FlagOS deployment path, FlagTree-CPU is used with "
+"FlagGems ARM operators and vLLM-Plugin-FL. The supported instruction path"
+" depends on the target processor and the compiled operator set; the "
+"release does not imply support for every Arm CPU."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:107
+msgid ""
+"The inference work described for this release includes weight pre-"
+"packing, operator fusion, reuse of compiled kernels, prefill matrix "
+"multiplication, decode-time weight access, and single-stream scheduling. "
+"These optimizations are workload-specific."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:109
+msgid "Tested model examples"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:111
+msgid ""
+"The following results were reported on an Apple M5 Pro with 64 GiB "
+"memory, using CPU-only, single-stream inference with 512 input tokens and"
+" 128 output tokens. They are test results for the stated environment, not"
+" general performance guarantees."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Model"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Configuration"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Reported result"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "MiniCPM5-2B"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "vLLM-Plugin-FL, W4A8"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Prefill: 1,017.78 tok/s; decode: 91.66 tok/s"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Qwen3.8-27B"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Prefill: 74.93 tok/s; decode: 12.73 tok/s"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Xing4.0-29B-A4B"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "vLLM-Plugin-FL, W4A8; MTP disabled"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "End-to-end throughput: 118.97 tok/s"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "Qwen-Image-2.1"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid "PyTorch CPU and Diffusers; W8A8/BF16"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md
+msgid ""
+"112 Linear layers quantized to W8A8; text encoding, denoising, and "
+"decoding ran on CPU"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:120
+msgid ""
+"For the Xing4.0 comparison, the source material uses a vLLM 0.24.0 out-"
+"of-the-box result of 33.19 tok/s as the baseline. The ratio should be "
+"interpreted only with the configuration and baseline used in that test."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:122
+msgid "Quantization and model compression"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:124
+msgid "FlagOS-Compressor"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:126
+msgid ""
+"FlagOS-Compressor is introduced as a cross-backend weight conversion and "
+"quantization tool. It reads Hugging Face `safetensors` checkpoints and "
+"provides a workflow for selecting modules, converting weights, exporting "
+"deployment artifacts, and validating the resulting tensors and "
+"configuration."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:128
+msgid "The release describes the following quantization schemes:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:130
+msgid "**W4A16:** INT4 weights with 16-bit activations."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:131
+msgid "**W8A16:** INT8 weights with 16-bit activations."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:132
+msgid "**Dynamic W8A8:** INT8 weights with per-token dynamic INT8 activations."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:134
+msgid ""
+"The quantization scope can be selected by module, including attention, "
+"MLP, MoE experts, shared experts, vision encoders, embeddings, "
+"normalization, and routing gates. Exported artifacts include quantized "
+"weights, scale parameters, shard indexes, runtime configuration, and "
+"integrity checks. The output format described in the release material is "
+"`compressed-tensors`."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:136
+msgid "Large-model examples"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:138
+msgid "The source material reports two deployment examples:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:140
+msgid ""
+"**Qwen3.8-2.4T-A95B:** BF16 and FP8 source weights were processed through"
+" INT8 paths for selected modules. The release material describes "
+"deployment artifacts and configurations for selected BANG, Ascend, and "
+"Hygon environments."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:141
+#, python-format
+msgid ""
+"**Qwen3.5-397B-A17B:** Attention and MoE expert networks were quantized "
+"with W8A8 while the vision encoder remained in BF16. The reported model "
+"size changed from 751.41 GB to 382.45 GB, a 49.1% reduction. The reported"
+" GPQA-Diamond result was 84.85% (168/198) for the stated evaluation "
+"configuration, with end-to-end validation on NVIDIA H20 and a PPU "
+"backend."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:143
+msgid ""
+"The model names, backend availability, evaluation scripts, and exact "
+"conversion options should be checked against the corresponding model "
+"cards and deployment configurations before reproducing these examples."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:145
+msgid "Triton debugging and profiling"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:147
+msgid "FlagPrism"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:149
+msgid ""
+"FlagPrism is introduced as a cross-backend Triton debugger and profiler "
+"integrated with FlagTree. It connects Triton source code, compiler IR "
+"operations, and device execution events into one observation workflow."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:151
+msgid "The Debugger can collect:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:153
+msgid "Intermediate values from selected regions of a `@triton.jit` kernel."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:154
+msgid "Numerical summaries."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:155
+msgid "Memory addresses."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:156
+msgid "Complete tensor data."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:157
+msgid "Source- and IR-level locations associated with collected values."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:159
+msgid "The Profiler can collect or derive:"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:161
+msgid "Call context and execution timelines."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:162
+msgid "Operation counts."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:163
+msgid "Estimated memory traffic."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:164
+msgid "Hardware metrics and vendor profiler data where available."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:165
+msgid "Aggregated call-tree and timeline reports."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:167
+msgid ""
+"The source release material lists a unified test set of 121 Triton "
+"operators and identifies NVIDIA, Ascend, Iluvatar CoreX, Moore Threads, "
+"and Enflame backends as current targets. Debugger and profiler "
+"capabilities may differ between backends because collection is "
+"implemented by backend-specific adapters."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:169
+msgid "Kernel generation and evaluation"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:171
+msgid ""
+"FlagOS 2.2 continues the KernelGen workflow for generating and validating"
+" operator implementations. The release material reports 1,509 generated "
+"operators and 1,231 operators that passed accuracy validation for the "
+"stated quarterly period. It separately reports 436 KernelGen-tagged pull "
+"requests in a FlagGems release comparison; these are different measures "
+"and should not be added together."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:173
+msgid ""
+"KernelGenBench v0.2.0 adds multi-chip baselines, chip identification, "
+"token-usage analysis, and anti-cheating checks. It also adds 50 matrix-"
+"multiplication shapes in two precisions, for 100 benchmark cases in that "
+"release."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:175
+msgid "Day 0 models and deployment resources"
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:177
+msgid ""
+"FlagOS 2.2 reports seven Day 0 model adaptation examples, with a single "
+"model covering up to 12 platforms or devices in the stated release "
+"inventory. Examples include Hy3, Qwen3.8-2.4T-A95B, Qwen3.8-Flash-Next, "
+"GLM-5.3-Flash, MiniCPM5-2B, Xing4.0-29B-A4B, and Qwen-Image-2.1."
+msgstr ""
+
+#: ../../../flagos_homepage/whats_new.md:179
+msgid ""
+"FlagRelease provides more than 300 model images through the release "
+"channels described in the source material. The available image, model-"
+"card, and deployment configuration should be checked in the relevant "
+"channel before use because platform coverage varies by model."
+msgstr ""
+

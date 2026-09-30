@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/AGENTS.md:1
+msgid "Repository Guidelines"
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:3
+msgid "Project Structure & Module Organization"
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:5
+msgid ""
+"This directory contains the FlagOS documentation homepage, built as one "
+"project by the shared `docs/conf.py` Sphinx configuration. Edit "
+"`index.md` for the landing page and `overview.md` for the English "
+"overview. The `chip_adaptation_guide/` tree contains cloud, edge, and "
+"shared adaptation guides; keep new pages in the existing numbered "
+"sections and update the relevant `index.md` toctree. Put diagrams and "
+"other page assets in `images/` or the closest guide-level `assets/` "
+"directory. Homepage styles and behavior belong in `_static/`; Chinese "
+"translations are maintained in `locale/zh_CN/LC_MESSAGES/*.po`."
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:7
+msgid "Build, Test, and Development Commands"
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:9
+msgid ""
+"Run commands from the repository root (`E:\\BAAI\\github\\docs`), after "
+"installing `docs/requirements.txt`:"
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:16
+msgid ""
+"The first command validates the English homepage; the second validates "
+"the localized build. For stricter local validation, add `-W --keep-"
+"going`. There is no separate unit-test suite for this subtree; a "
+"successful Sphinx build and manual browser review are the primary checks."
+" Translation catalogs can be regenerated with `sphinx-build -b gettext` "
+"followed by `sphinx-intl update`, and syntax statistics can be checked "
+"with `msgfmt --statistics`."
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:18
+msgid "Coding Style & Naming Conventions"
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:20
+msgid ""
+"Write MyST Markdown using the existing heading hierarchy, directives, and"
+" relative links. Use lowercase `snake_case` for new guide filenames (for "
+"example, `progress_overview.md`), descriptive alt text for images, and "
+"four-space indentation in directive content when needed. Reuse existing "
+"`sphinx-design` classes and `_static` CSS patterns before adding new "
+"styles. Keep English and Chinese page structure aligned where "
+"translations exist."
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:22
+msgid "Commit & Pull Request Guidelines"
+msgstr ""
+
+#: ../../../flagos_homepage/AGENTS.md:24
+msgid ""
+"Use short, imperative commit subjects consistent with history, such as "
+"`docs: update homepage links` or `Corrected overview`. Pull requests "
+"should explain the affected pages and language, link the relevant issue "
+"when applicable, include the exact build command used, and attach "
+"screenshots for layout or styling changes. Keep unrelated generated "
+"files, backups, and build output out of commits."
+msgstr ""
+

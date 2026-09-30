@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:2
+msgid ""
+"Stage 6: FlagRelease Release and Commercial Promotion (Intermediate-to-"
+"Advanced Progression)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:4
+msgid ""
+"For cloud chip adaptation, this page corresponds to Stage 6. This stage "
+"starts after End-to-End Validation and Legal Compliance are complete. It "
+"focuses on FlagOS certification, FlagRelease image release, model "
+"migration, and joint commercial promotion."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:6
+msgid "**Stage ID**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:8
+msgid "Stage 6"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:10
+msgid "**Prerequisites**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:12
+msgid "Mainline merge is complete, and certification tests have passed."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:14
+msgid "**Hardware investment**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:16
+msgid ""
+"1 dedicated FlagRelease machine, configured independently and not shared "
+"with CI or SVT."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:18
+msgid "**Activities**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:20
+msgid "Obtain official FlagOS certification for the device."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:21
+msgid "Run model migration and image builds on the FlagRelease platform."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:22
+msgid "Release Docker images for this chip, expanding the release list over time."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:23
+msgid "Join the FlagOS large-model T+0 release plan."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:24
+msgid "Integrate with partner cloud and MaaS platforms."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:25
+msgid ""
+"Promote the vendor to intermediate or advanced open-source community "
+"membership."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:26
+msgid "Prepare joint branding exposure."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:28
+msgid "**Deliverables**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:30
+msgid ""
+"FlagOS certification certificate, FlagRelease image list, and joint "
+"branding plan."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:32
+msgid "**Acceptance criteria**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:34
+msgid "FlagOS compatibility certification is passed."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:35
+msgid ""
+"At least 10 chip-adapted model images are published on the FlagRelease "
+"platform."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:36
+msgid "At least one joint customer case is delivered."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:37
+msgid "Dedicated FlagRelease machine availability is at least 99%."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:39
+msgid "**Estimated duration**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:41
+msgid "4-6 weeks"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:43
+msgid "**Related documents**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_06_release_cloud.md:45
+msgid ""
+"Certification standard, image release specification, and joint branding "
+"guide<br>[FlagRelease "
+"Wiki](https://docs.flagos.io/projects/FlagRelease/en/latest/)"
+msgstr ""
+

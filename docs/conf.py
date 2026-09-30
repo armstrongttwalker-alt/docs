@@ -353,6 +353,20 @@ multiproject_projects = {
             "html_title": "FlagQuantum 文档中心",
         },
     },
+    "flag_compressor_en": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagOS-Compressor Documentation",
+            "html_title": "FlagOS-Compressor Documentation",
+        },
+    },
+    "flag_compressor_zh": {
+        "use_config_file": False,
+        "config": {
+            "project": "FlagOS-Compressor 文档中心",
+            "html_title": "FlagOS-Compressor 文档中心",
+        },
+    },
     "kernelgenbench_en": {
         "use_config_file": False,
         "config": {
@@ -821,6 +835,8 @@ if html_theme == "pydata_sphinx_theme":
         "footer_start": ["copyright"],
         "footer_end": [],
         "show_sphinx": False,
+        "navbar_align": "content",
+        "navbar_center": [],
         "navbar_end": ["navbar-icon-links"]
     }
     

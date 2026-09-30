@@ -1,0 +1,158 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/07_quality_metrics/index.md:2
+msgid "Key Quality Metrics"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/07_quality_metrics/edge.md:2
+msgid ""
+"**Performance-related metrics must remain key acceptance criteria "
+"throughout Stages 3-6.** Stage 3 focuses on operator performance, and "
+"Stage 4 focuses on inference accuracy and end-to-end performance."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "**Stage**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "**Acceptance criteria**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "**Pass standard**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "**Required hardware**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 0"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "MOU signing"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Effective after both parties sign or seal"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "N/A"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 1"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Environment readiness"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Chip is recognized by the OS and PyTorch can recognize the backend"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "1 development board"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 2"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Triton kernel compilation pass rate"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid ">=95%, CI machine availability >=99%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "1 CI machine"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 3"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "FlagGems operator test pass rate"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid ">=80%, core operators 100%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "2 CI machines and 1 debug machine"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 4"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Model accuracy deviation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+#, python-format
+msgid "<2% relative to the NVIDIA baseline"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 5"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "CTS core tests passed"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "100% passed or waiver approved"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "2 CI machines and 2 SVT machines"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Stage 6"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "Number of models released through FlagRelease"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid ">=10 models"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/07_quality_metrics/index.md:8
+msgid "1 dedicated FR machine"
+msgstr ""
+

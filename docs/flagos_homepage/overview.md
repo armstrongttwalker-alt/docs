@@ -9,56 +9,64 @@ The figure below shows the position of FlagOS in the AI ecosystem and its compos
 
 ![FlagOS architecture](images/flagos-architecture-en.png)
 
-FlagOS 2.1 comprises the following core libraries, plugins, domain-specific projects, developer tools, and platform services.
+FlagOS 2.2 comprises the following core libraries, plugins, domain-specific projects, developer tools, and platform services.
 
 ### Open-source core libraries
 
 - Operator libraries
   - **General-purpose operator library**
-    - **FlagGems** (v5.3.0)
+    - **FlagGems** (v5.4.0)
 
       FlagGems is a high-performance general-purpose operator library implemented with the Triton programming language and its extended languages. FlagGems is designed to provide a suite of general-purpose operators for large models, accelerating the inference and training of models across multiple backend platforms.
 
   - **Fused operator libraries**
-    - **FlagGems-vllm** (v0.1.0)
+    - **FlagGems-vllm** (v0.2.0)
 
       A high-performance operator library designed for multiple hardware backends. It provides optimized implementations of common vLLM operators and supports high-performance inference and deployment for a variety of widely used models.
 
+    - **FlagGems-sglang** (v0.1.0)
+
+      A high-performance multi-backend operator library for SGLang inference workflows. Implemented with Triton, it provides optimized implementations of common SGLang operators for efficient model deployment.
+
   - **Multi-domain operator libraries**
 
-    - **FlagDNN** (v0.2.0)
+    - **FlagDNN** (v0.3.0)
 
       A deep neural network computing library oriented towards multiple chip backends. It provides high-performance implementations of common deep learning operators.
 
-    - **FlagBLAS** (v0.2.0)
+    - **FlagBLAS** (v0.3.0)
 
       A computing library that follows the BLAS standard interface and is oriented towards multiple chip backends. It defines core operations for numerical calculations.
 
-    - **FlagFFT** (v0.1.0)
+    - **FlagFFT** (v0.2.0)
 
       A JIT-compiled GPU FFT library. It generates CUDA kernels at runtime via Triton/TLE and libtriton_jit, targeting arbitrary-length transforms that cuFFT does not optimally support.
 
-    - **FlagSparse** (v0.2.0)
+    - **FlagSparse** (v0.3.0)
 
       A domain-specific operator library that contains operators dedicated to sparse computation scenarios.
 
-    - **FlagTensor** (v0.2.0)
+    - **FlagTensor** (v0.3.0)
 
       A high-performance tensor-primitive library implemented in Triton language. It provides optimized implementations of common tensor primitives (unary, binary, and tensor contraction operations) benchmarked against cuTensor baselines.
+
+    - **FlagAttention** (v0.4.0)
+
+      FlagAttention is a collection of memory-efficient attention operators implemented in Triton for training and inference workloads. It supports dense attention, paged or sparse KV-cache layouts, recurrent linear attention, and multiple hardware backends.
 
     - **FlagAudio** (v0.2.0)
 
       A multi-backend computing library that adheres to Audio standard interfaces. It delivers a high-performance computing solution designed for audio signal processing and speech AI applications.
 
-- **FlagTree** (v0.6.0)
+- **FlagTree** (GPU: `0.7.0+triton3.6` / `0.7.0+triton3.5` / `0.7.0+triton3.3`; CPU: `v0.1.0`)
 
   FlagTree is an open-source, unified compiler for multiple AI chips. FlagTree is dedicated to building a compiler and associated tooling platform for diverse AI chips, advancing and expanding the upstream and downstream Triton ecosystem, with the goals of supporting existing adaptation solutions, unifying code repositories, and enabling rapid multi-backend support from a single repository. For upstream model users, FlagTree provides unified compilation support across multiple backends; for downstream chip vendors, FlagTree offers reference implementations for integration into the Triton ecosystem.
 
-- **FlagScale** (v2.0.0)
+- **FlagScale** (v2.1.0)
 
   FlagScale is a comprehensive toolkit designed to support the entire lifecycle of large models. FlagScale builds on the strengths of several prominent open-source projects, including Megatron-LM and vLLM, to provide a robust, end-to-end solution for managing and scaling large models.
 
-- **FlagCX** (v0.13.0)
+- **FlagCX** (v0.14.0)
 
   FlagCX is a scalable and adaptive unified communication library for cross-chip environments. FlagCX delivers high-performance point-to-point and collective communication capabilities tailored for multi-chip, multi-platform scenarios. By leveraging the native collective communication capabilities of each platform, FlagCX incorporates technologies such as device-buffer IPC and RDMA to enable highly efficient collective communication in both cross-chip and single-chip scenarios, while also providing adaptive tuning capabilities for communication optimization.
 
@@ -66,23 +74,23 @@ FlagOS 2.1 comprises the following core libraries, plugins, domain-specific proj
 
 The FlagOS ecosystem enablement layer adopts a plugin architecture composed of the following modules. Each module bridges an upstream library and its backend engine with the FlagOS core libraries.
 
-- **vllm-plugin-FL** (v0.2.0)
+- **vllm-plugin-FL**
 
-  vllm-plugin-FL extends the inference capabilities of vLLM to diverse AI chips, enabling efficient model serving beyond the original supported hardware. Built on FlagOS's unified multi-chip backend.
+  vllm-plugin-FL extends the inference capabilities of vLLM to diverse AI chips, enabling efficient model serving beyond the original supported hardware. Built on FlagOS's unified multi-chip backend. The FlagOS 2.2 release provides `v0.3.0` for the vLLM 0.24.0 line and `v0.2.2` for the vLLM 0.20.2 line.
 
-- **sglang-plugin-FL** (v0.1.0)
+- **sglang-plugin-FL** (v0.2.0)
 
   sglang-plugin-FL is an out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-chip backend. It extends SGLang's inference capabilities across diverse hardware platforms.
 
-- **PyTorch-Plugin-FL** (v0.1.0)
+- **Torch-FL** (v2.10.0)
 
-  PyTorch-Plugin-FL is a custom PyTorch device plugin based on the PrivateUse1 extension mechanism, registering FlagGems high-performance Triton operators as the flagos device backend for unified multi-chip support.
+  Torch-FL is a custom PyTorch device plugin based on the PrivateUse1 extension mechanism. It registers FlagGems high-performance Triton operators, vendor-native operator libraries, and CUDA compatibility kernels behind one `flagos` device name, providing a unified runtime and operator-routing layer across diverse AI chips.
 
-- **Megatron-LM-FL** (v0.2.0)
+- **Megatron-LM-FL** (v0.3.0)
 
   Megatron-LM-FL extends the distributed training capabilities of Megatron-LM to diverse AI chips, supporting scalable large-model training across heterogeneous hardware.
 
-- **TransformerEngine-FL** (v0.2.0)
+- **TransformerEngine-FL** (v0.3.0)
 
   TransformerEngine-FL extends the transformer acceleration capabilities of Transformer Engine to diverse AI chips, enabling hardware-agnostic training acceleration.
 
@@ -104,9 +112,13 @@ vllm-plugin-FL, Megatron-LM-FL, TransformerEngine-FL, and verl-FL can be used to
 
 ### Developer tools
 
-- **KernelGen** (v2.1.0)
+- **KernelGen** (v2.2.0)
 
   KernelGen is an operator auto-generation tool. KernelGen is designed to construct operator definitions through natural language prompts, retrieve existing similar operator definitions, automatically execute operator accuracy and performance testing, generate accuracy and performance test results, and produce Triton Kernels.
+
+- **FlagOS-Compressor** (v0.1.0)
+
+  FlagOS-Compressor is a checkpoint conversion and quantization tool for local Hugging Face `safetensors` model directories. It supports quantizing model weights, converting checkpoints, calibrating outputs, and validating generated artifacts.
 
 - **FlagOS Skills** (v1.1.0)
 
@@ -130,6 +142,6 @@ vllm-plugin-FL, Megatron-LM-FL, TransformerEngine-FL, and verl-FL can be used to
 
   FlagCICD is a CI/CD toolchain that streamlines large-model development across diverse AI chips, eliminating fragmentation and cutting adaptation costs.
 
-- **KernelGenBench** (v0.1.0)
+- **KernelGenBench** (v0.2.0)
 
   KernelGenBench is a benchmark framework for evaluating LLM and agent-based Triton kernel generation across multiple hardware platforms.

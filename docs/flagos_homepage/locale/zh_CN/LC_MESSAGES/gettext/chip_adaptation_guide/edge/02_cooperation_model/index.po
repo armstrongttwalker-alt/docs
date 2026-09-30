@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/02_cooperation_model/index.md:2
+msgid "Cooperation Level Model"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/02_cooperation_model/edge.md:2
+msgid ""
+"Cooperation is divided into three levels: basic, intermediate, and "
+"advanced. Chip companies progress through the levels step by step. Given "
+"the characteristics of edge chips, no adaptation is required for the "
+"FlagCX communication library or the large-model training and inference "
+"framework."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "**Dimension**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "**Basic (integration validation)**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "**Intermediate (deep adaptation)**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "**Advanced (ecosystem co-building)**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Positioning"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Integration validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Deep adaptation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Ecosystem co-building"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Operators"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Adopt selected high-performance FlagGems operators"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid ""
+"Fully support the FlagGems Stable operator set and commit to using "
+"FlagGems by default"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Co-build FlagGems and generate specialized operators with KernelGen<br>"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Compiler"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Use the FlagTree compiler and C++ Wrapper"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Optimize with Hints and TLE; use FlagTree as the default compiler"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Co-build all three Triton TLE implementation layers"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "CI/CD"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Use the FlagOS CI resource pool for unit tests<br>"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid ""
+"Co-build test cases, upstream code, and provide machine resources. "
+"Jointly solve technical issues and complete model adaptation and "
+"optimization"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Bring in operating-system and cloud partner communities"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Compatibility and security"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid ""
+"Provide base container image materials and download channels for "
+"customized third-party dependencies"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid ""
+"Obtain FlagOS certification, promptly update customized packages, and "
+"respond immediately to package adaptation issues"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid ""
+"Share security working-group results and bring them into downstream "
+"distributions<br>"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Open-source community"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Basic member"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Intermediate member, eligible to run for PMC"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Advanced member, with course and case-study coverage"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Business expansion"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "—"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Bring in partner clouds and MaaS platforms"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/edge/02_cooperation_model/index.md:8
+msgid "Bring in upstream and downstream ecosystem communities"
+msgstr ""
+

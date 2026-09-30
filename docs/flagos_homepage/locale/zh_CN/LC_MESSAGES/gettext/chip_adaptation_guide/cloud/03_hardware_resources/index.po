@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/03_hardware_resources/index.md:2
+msgid "Hardware Resource Investment Plan"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/03_hardware_resources/cloud.md:2
+msgid ""
+"Throughout chip adaptation, the chip company must provide physical "
+"devices at each stage to support CI/CD, validation, and release. For the "
+"first two batches, two machines are recommended for each batch. KernelGen"
+" is expected to use two machines so that operators can be specialized, "
+"tested in batches, and used for operator competitions. Single-card, four-"
+"card, or eight-card configurations should be confirmed according to the "
+"scenario. Additional machines are usually required for Day 0, "
+"distribution, cloud-native, or showroom plans. Virtualization can "
+"supplement multi-OS validation, but critical validation still requires "
+"physical devices."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "**Stage ID**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "**Stage**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "**Required devices**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "**Purpose**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "**Configuration requirements**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "**Availability timing**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 1"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Environment readiness"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "1 chip development board or server with remote access for the FlagOS team"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Single-card operation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Ubuntu OS, 64 GB or more memory"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Prepare immediately after the Stage 0 MOU is signed"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 2"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "FlagTree compiler integration"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "1 device added to the CI resource pool"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Compiler build validation and CI pipeline triggers"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid ""
+"Single card, 200 GB or more disk space, network access to the FlagOS CI "
+"cluster"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Connect to CI when Stage 2 starts"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 3"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "FlagGems operator adaptation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "1 CI machine and 1 debug machine"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Automated CI tests and operator development/debugging"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid ""
+"The CI machine must stay reliably online; the vendor may keep the debug "
+"machine locally"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Confirm the CI machine SLA when Stage 3 starts"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 4a"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "FlagCX communication adaptation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "At least 2 machines, each with at least 4 cards"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Collective communication tests and multi-node communication validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "High-speed interconnect such as IB or RoCE; homogeneous cluster"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Available when Stage 4a starts"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 4b"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "FlagScale training and inference"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "At least 2 machines, reused from Stage 4a"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Distributed training and inference service validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Same as Stage 4a, with persistent storage mounted"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Reuse Stage 4a devices"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 5"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "End-to-end validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "1 CI machine and 2 SVT machines"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Continuous CI regression and system validation testing"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "SVT machines must be isolated from CI machines to avoid interference"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Available when Stage 5 starts"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 6"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "FlagRelease release"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "1 dedicated FR machine"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Model migration, image builds, and release validation"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Single card or above, 200 GB or more disk space, high-speed network"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Available when Stage 6 starts"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Stage 7"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "KernelGen"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "2 machines"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "Automatic operator generation, tuning, and operator competitions"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid ""
+"Single-card operation with FlagTree compiler and operator "
+"development/tuning environments installed"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/03_hardware_resources/index.md:8
+msgid "After Stage 2 is complete"
+msgstr ""
+

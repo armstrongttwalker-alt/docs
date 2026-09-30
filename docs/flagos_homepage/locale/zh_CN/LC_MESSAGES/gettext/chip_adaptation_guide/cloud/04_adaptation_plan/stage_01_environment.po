@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:2
+msgid ""
+"Stage 1: Development Board Readiness and Base Environment Adaptation "
+"(Chip-Level)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:4
+msgid "**Prerequisites**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:6
+msgid "The MOU has been signed."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:8
+msgid "**Hardware investment**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:10
+msgid ""
+"1 development board or server, with remote access provided by the vendor "
+"to the FlagOS team."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:12
+msgid "**Activities**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:14
+msgid ""
+"Provide the chip development board and select at least one operating "
+"system, preferably Ubuntu."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:15
+msgid ""
+"Provide the driver and SDK access method. Open downloads are preferred. "
+"If authorization-only downloads are used, programmatic authentication "
+"must support CI/CD automation."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:16
+msgid ""
+"Confirm base image compatibility. A neutral image is preferred, followed "
+"by a vendor-provided image."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:17
+msgid ""
+"Confirm software compatibility, including kernel, Python, and PyTorch "
+"community version coverage."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:18
+msgid ""
+"Validate the base environment: PyTorch can recognize the target device "
+"backend, and the equivalent device discovery API returns an available "
+"device."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:20
+msgid "**Deliverables**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:22
+msgid "Environment readiness report and driver/SDK access documentation."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:24
+msgid "**FlagOS contacts**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:26
+msgid "Platform engineering team."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:28
+msgid "**Chip company contacts**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:30
+msgid "Driver and firmware engineers."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:32
+msgid "**Acceptance criteria**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:34
+msgid ""
+"The chip can be correctly identified by the OS, for example through lspci"
+" or dmidecode."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:35
+msgid "PyTorch can recognize the chip backend."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:36
+msgid ""
+"Basic operators, such as matrix multiplication and elementwise "
+"operations, execute correctly."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:37
+msgid "The driver can be obtained unattended."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:39
+msgid "**Estimated duration**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:41
+msgid "1-2 weeks"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:43
+msgid "**Related documents**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/04_adaptation_plan/stage_01_environment.md:45
+msgid ""
+"Environment configuration guide, driver installation manual, and "
+"compatibility matrix."
+msgstr ""
+

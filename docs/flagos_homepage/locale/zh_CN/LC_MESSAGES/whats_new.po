@@ -1,0 +1,731 @@
+# FlagOS Documentation Chinese Translation
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FlagOS Community <flagos@baai.ac.cn>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 17:59+0800\n"
+"PO-Revision-Date: 2026-09-30 18:30+0800\n"
+"Last-Translator: FlagOS Community <flagos@baai.ac.cn>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <flagos@baai.ac.cn>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../flagos_homepage/whats_new.md:1
+msgid "What's New in FlagOS 2.2"
+msgstr "FlagOS 2.2 新特性"
+
+#: ../../flagos_homepage/whats_new.md:3
+msgid ""
+"FlagOS 2.2 upgrades the multi-chip software stack across model training, "
+"inference, operator optimization, and deployment. It strengthens "
+"framework and backend integration, expands compiler and operator "
+"capabilities, and adds new toolchains for ARM CPU inference, model "
+"quantization, kernel development, and large-model delivery."
+msgstr ""
+"FlagOS 2.2 升级了覆盖模型训练、推理、算子优化和部署的多芯片软件栈。它强化了框架与后端集成，扩展了编译器和算子能力，并新增面向 ARM CPU "
+"推理、模型量化、内核开发和大模型交付的工具链。"
+
+#: ../../flagos_homepage/whats_new.md:5
+msgid "Highlights"
+msgstr "亮点"
+
+#: ../../flagos_homepage/whats_new.md:7
+msgid ""
+"**Framework integrations:** Updates to vLLM-Plugin-FL and SGLang-Plugin-"
+"FL, and the first FlagOS integration for PyTorch through Torch-FL."
+msgstr ""
+"**框架集成：** 更新 vLLM-Plugin-FL 和 SGLang-Plugin-FL，并通过 Torch-FL 首次提供面向 "
+"PyTorch 的 FlagOS 集成。"
+
+#: ../../flagos_homepage/whats_new.md:8
+msgid ""
+"**Training stack:** Updates to Megatron-LM-FL, TransformerEngine-FL, and "
+"FlagScale for model training and lifecycle management."
+msgstr "**训练栈：** 面向模型训练和生命周期管理，更新 Megatron-LM-FL、TransformerEngine-FL 和 FlagScale。"
+
+#: ../../flagos_homepage/whats_new.md:9
+msgid ""
+"**Operator and compiler tooling:** Expanded operator coverage, new "
+"SGLang-specific operators, compiler and auto-tuning improvements, and "
+"additional routing options."
+msgstr "**算子与编译器工具：** 扩展算子覆盖范围，新增 SGLang 专用算子，改进编译器与自动调优能力，并增加更多路由选项。"
+
+#: ../../flagos_homepage/whats_new.md:10
+msgid ""
+"**ARM CPU inference:** First release of FlagTree-CPU as an independent "
+"compilation component for low-bit ARM64 workloads."
+msgstr "**ARM CPU 推理：** 首次发布 FlagTree-CPU，作为面向低比特 ARM64 工作负载的独立编译组件。"
+
+#: ../../flagos_homepage/whats_new.md:11
+msgid ""
+"**Model conversion:** First release of FlagOS-Compressor for weight "
+"conversion and W4A16, W8A16, and dynamic W8A8 workflows."
+msgstr "**模型转换：** 首次发布 FlagOS-Compressor，用于权重转换以及 W4A16、W8A16 和动态 W8A8 工作流。"
+
+#: ../../flagos_homepage/whats_new.md:12
+msgid ""
+"**Kernel development:** First release of FlagPrism for cross-backend "
+"Triton debugging and profiling."
+msgstr "**内核开发：** 首次发布 FlagPrism，用于跨后端 Triton 调试与性能分析。"
+
+#: ../../flagos_homepage/whats_new.md:13
+msgid ""
+"**Model delivery:** Additional Day 0 model adaptations, deployment "
+"configurations, and model images through FlagRelease."
+msgstr "**模型交付：** 通过 FlagRelease 提供更多 Day 0 模型适配、部署配置和模型镜像。"
+
+#: ../../flagos_homepage/whats_new.md:15
+msgid "Runtime and framework integrations"
+msgstr "运行时与框架集成"
+
+#: ../../flagos_homepage/whats_new.md:17
+msgid "vLLM-Plugin-FL"
+msgstr "vLLM-Plugin-FL"
+
+#: ../../flagos_homepage/whats_new.md:19
+msgid ""
+"vLLM-Plugin-FL adds the following capabilities for the FlagOS multi-chip "
+"backend:"
+msgstr "vLLM-Plugin-FL 为 FlagOS 多芯片后端新增以下能力："
+
+#: ../../flagos_homepage/whats_new.md:21
+msgid "Compatibility lines for vLLM 0.20.2 and 0.24.0."
+msgstr "面向 vLLM 0.20.2 和 0.24.0 的兼容性分支。"
+
+#: ../../flagos_homepage/whats_new.md:22
+msgid ""
+"An expanded **Empty** deployment mode that separates framework "
+"construction from device-specific implementation."
+msgstr "扩展后的 **Empty** 部署模式，将框架构建与设备特定实现解耦。"
+
+#: ../../flagos_homepage/whats_new.md:23
+msgid "INT8 and W8A8 execution paths."
+msgstr "INT8 和 W8A8 执行路径。"
+
+#: ../../flagos_homepage/whats_new.md:24
+msgid "Graph execution support for selected non-NVIDIA backends."
+msgstr "面向部分非 NVIDIA 后端的图执行支持。"
+
+#: ../../flagos_homepage/whats_new.md:25
+msgid "Monitoring for key-value (KV) cache transfers."
+msgstr "键值（KV）缓存传输监控。"
+
+#: ../../flagos_homepage/whats_new.md:27
+msgid ""
+"These features are intended to let the plugin provide device integration,"
+" operators, and communication implementations without requiring each "
+"model application to change its standard vLLM interface."
+msgstr "这些特性旨在让插件提供设备集成、算子和通信实现，而无需每个模型应用修改其标准 vLLM 接口。"
+
+#: ../../flagos_homepage/whats_new.md:29
+msgid "SGLang-Plugin-FL"
+msgstr "SGLang-Plugin-FL"
+
+#: ../../flagos_homepage/whats_new.md:31
+msgid ""
+"SGLang-Plugin-FL expands backend integration for the SGLang runtime "
+"across Hygon, Iluvatar CoreX, BANG, Kunlunxin, and Enflame backends."
+msgstr "SGLang-Plugin-FL 扩展了 SGLang 运行时在海光、天数智芯 CoreX、BANG、昆仑芯和燧原后端上的集成。"
+
+#: ../../flagos_homepage/whats_new.md:33
+msgid "The update also adds or improves:"
+msgstr "本次更新还新增或改进了："
+
+#: ../../flagos_homepage/whats_new.md:35
+msgid "The Empty deployment path."
+msgstr "Empty 部署路径。"
+
+#: ../../flagos_homepage/whats_new.md:36
+msgid "Pipeline-parallel communication."
+msgstr "流水线并行通信。"
+
+#: ../../flagos_homepage/whats_new.md:37
+msgid "Separate prefill and decode KV transfer paths."
+msgstr "独立的 prefill 与 decode KV 传输路径。"
+
+#: ../../flagos_homepage/whats_new.md:38
+msgid "Multi-token prediction (MTP) integration."
+msgstr "多 token 预测（MTP）集成。"
+
+#: ../../flagos_homepage/whats_new.md:39
+msgid "Integration with the new FlagGems-SGLang operator library."
+msgstr "与新的 FlagGems-SGLang 算子库集成。"
+
+#: ../../flagos_homepage/whats_new.md:41
+msgid "Torch-FL"
+msgstr "Torch-FL"
+
+#: ../../flagos_homepage/whats_new.md:43
+msgid ""
+"Torch-FL is introduced as the FlagOS PyTorch adaptation path. It provides"
+" a unified virtual device named `FlagOS` and routes operators to FlagOS, "
+"vendor implementations, or compatible fallback paths."
+msgstr ""
+"Torch-FL 作为 FlagOS 的 PyTorch 适配路径引入。它提供名为 `FlagOS` 的统一虚拟设备，并将算子路由到 "
+"FlagOS、厂商实现或兼容的回退路径。"
+
+#: ../../flagos_homepage/whats_new.md:45
+msgid "The initial release focuses on:"
+msgstr "初始版本重点包括："
+
+#: ../../flagos_homepage/whats_new.md:47
+msgid "Multi-chip PyTorch execution."
+msgstr "多芯片 PyTorch 执行。"
+
+#: ../../flagos_homepage/whats_new.md:48
+msgid "Mixed-precision and distributed execution paths."
+msgstr "混合精度与分布式执行路径。"
+
+#: ../../flagos_homepage/whats_new.md:49
+msgid "Compiler integration."
+msgstr "编译器集成。"
+
+#: ../../flagos_homepage/whats_new.md:50
+msgid ""
+"Backend additions for Hygon, Moore Threads, BANG, and Enflame "
+"environments."
+msgstr "新增面向海光、摩尔线程、BANG 和燧原环境的后端支持。"
+
+#: ../../flagos_homepage/whats_new.md:51
+msgid "Integration with FlagGems and vendor operator implementations."
+msgstr "与 FlagGems 及厂商算子实现集成。"
+
+#: ../../flagos_homepage/whats_new.md:53
+msgid ""
+"Torch-FL also supports running Qwen-Image-2.1 with a standard Diffusers "
+"interface while moving text encoding, denoising, and image decoding to "
+"the CPU."
+msgstr "Torch-FL 还支持通过标准 Diffusers 接口运行 Qwen-Image-2.1，同时将文本编码、去噪和图像解码迁移到 CPU 执行。"
+
+#: ../../flagos_homepage/whats_new.md:55
+msgid "Training stack and FlagScale"
+msgstr "训练栈与 FlagScale"
+
+#: ../../flagos_homepage/whats_new.md:57
+msgid "The training-side updates include:"
+msgstr "训练侧更新包括："
+
+#: ../../flagos_homepage/whats_new.md:59
+msgid "Megatron-LM-FL updated to MCore 0.18.2."
+msgstr "Megatron-LM-FL 更新至 MCore 0.18.2。"
+
+#: ../../flagos_homepage/whats_new.md:60
+msgid "TransformerEngine-FL updated to Transformer Engine 2.17."
+msgstr "TransformerEngine-FL 更新至 Transformer Engine 2.17。"
+
+#: ../../flagos_homepage/whats_new.md:61
+msgid ""
+"Adaptation work for GLM5 DSA, fused RoPE, block-wise cross-entropy, and "
+"backend-specific execution paths."
+msgstr "面向 GLM5 DSA、融合 RoPE、分块交叉熵以及后端特定执行路径的适配工作。"
+
+#: ../../flagos_homepage/whats_new.md:62
+msgid ""
+"FlagScale improvements for slow-node detection, training performance "
+"monitoring, progress heartbeats, and weight conversion."
+msgstr "FlagScale 改进了慢节点检测、训练性能监控、进度心跳和权重转换。"
+
+#: ../../flagos_homepage/whats_new.md:64
+msgid ""
+"These updates improve the observability and portability of multi-chip "
+"training jobs."
+msgstr "这些更新提升了多芯片训练任务的可观测性和可移植性。"
+
+#: ../../flagos_homepage/whats_new.md:66
+msgid "Operators and compilation"
+msgstr "算子与编译"
+
+#: ../../flagos_homepage/whats_new.md:68
+msgid "Operator library updates"
+msgstr "算子库更新"
+
+#: ../../flagos_homepage/whats_new.md:70
+msgid ""
+"FlagOS 2.2 expands operator coverage for general-purpose, fused, and "
+"domain-specific libraries. The release includes operators and execution "
+"paths for attention, Mamba state updates, mixture-of-experts (MoE) "
+"workloads, LoRA, sampling, quantization, MLA, KDA/GLA/GDN2, TopK, and "
+"low-precision computation."
+msgstr ""
+"FlagOS 2.2 扩展了通用、融合和领域专用算子库的覆盖范围。本版本包含面向 attention、Mamba "
+"状态更新、混合专家（MoE）工作负载、LoRA、采样、量化、MLA、KDA/GLA/GDN2、TopK 和低精度计算的算子与执行路径。"
+
+#: ../../flagos_homepage/whats_new.md:72
+msgid ""
+"The release also introduces **FlagGems-SGLang** as an SGLang-oriented "
+"operator library and updates **FlagGems-vLLM** with additional vLLM "
+"operator entry points. Operator totals use component-specific scopes and "
+"counting methods, so this page does not publish one aggregate total "
+"without a matching version, backend matrix, and counting method."
+msgstr ""
+"本版本还引入面向 SGLang 的算子库 **FlagGems-SGLang**，并为 **FlagGems-vLLM** 更新更多 vLLM "
+"算子入口。算子总数采用组件特定的范围和统计方法，因此在没有匹配的版本、后端矩阵和统计方法时，本页不发布单一汇总总数。"
+
+#: ../../flagos_homepage/whats_new.md:74
+msgid "Compiler and auto-tuning improvements"
+msgstr "编译器与自动调优改进"
+
+#: ../../flagos_homepage/whats_new.md:76
+msgid ""
+"The compiler and runtime changes target data movement, kernel launch "
+"overhead, synchronization, and shape-dependent execution. The release "
+"includes:"
+msgstr "编译器和运行时变更聚焦于数据移动、内核启动开销、同步以及依赖形状的执行。本版本包括："
+
+#: ../../flagos_homepage/whats_new.md:78
+msgid "Optional NVIDIA TileIR compilation paths."
+msgstr "可选的 NVIDIA TileIR 编译路径。"
+
+#: ../../flagos_homepage/whats_new.md:79
+msgid "TLE-based layout, shared-memory, and asynchronous-pipeline control."
+msgstr "基于 TLE 的布局、共享内存和异步流水线控制。"
+
+#: ../../flagos_homepage/whats_new.md:80
+msgid "FlagTune search for execution configurations."
+msgstr "用于执行配置搜索的 FlagTune。"
+
+#: ../../flagos_homepage/whats_new.md:81
+msgid "Operator fusion and mixed-precision paths."
+msgstr "算子融合和混合精度路径。"
+
+#: ../../flagos_homepage/whats_new.md:82
+msgid "Shape-aware routing to select an execution path for a given input."
+msgstr "感知形状的路由，用于为给定输入选择执行路径。"
+
+#: ../../flagos_homepage/whats_new.md:83
+msgid "Additional compiler and backend integration work in FlagTree."
+msgstr "FlagTree 中新增的编译器与后端集成工作。"
+
+#: ../../flagos_homepage/whats_new.md:85
+msgid "ARM CPU inference with FlagTree-CPU"
+msgstr "使用 FlagTree-CPU 进行 ARM CPU 推理"
+
+#: ../../flagos_homepage/whats_new.md:87
+msgid ""
+"FlagTree-CPU v0.1.0 is introduced as an independent compilation component"
+" for CPU targets. The release is based on `triton-cpu 3.7.2` and adds "
+"ARM64 compilation paths for:"
+msgstr ""
+"FlagTree-CPU v0.1.0 作为面向 CPU 目标的独立编译组件引入。本版本基于 `triton-cpu 3.7.2`，并新增以下 "
+"ARM64 编译路径："
+
+#: ../../flagos_homepage/whats_new.md:89
+msgid "SME2."
+msgstr "SME2。"
+
+#: ../../flagos_homepage/whats_new.md:90
+msgid "SVE2."
+msgstr "SVE2。"
+
+#: ../../flagos_homepage/whats_new.md:91
+msgid "NEON I8MM."
+msgstr "NEON I8MM。"
+
+#: ../../flagos_homepage/whats_new.md:93
+msgid ""
+"The component generates low-bit operator instructions for W4A8 and W8A8 "
+"workloads. In the FlagOS deployment path, FlagTree-CPU works with "
+"FlagGems ARM operators and vLLM-Plugin-FL to support ARM CPU inference."
+msgstr ""
+"该组件为 W4A8 和 W8A8 工作负载生成低比特算子指令。在 FlagOS 部署路径中，FlagTree-CPU 与 FlagGems ARM "
+"算子和 vLLM-Plugin-FL 配合，以支持 ARM CPU 推理。"
+
+#: ../../flagos_homepage/whats_new.md:95
+msgid ""
+"The inference stack adds weight pre-packing, operator fusion, compiled-"
+"kernel reuse, prefill matrix multiplication, decode-time weight access, "
+"and single-stream scheduling."
+msgstr "推理栈新增权重预打包、算子融合、已编译内核复用、prefill 矩阵乘法、decode 阶段权重访问和单流调度。"
+
+#: ../../flagos_homepage/whats_new.md:97
+msgid "Quantization and model compression"
+msgstr "量化与模型压缩"
+
+#: ../../flagos_homepage/whats_new.md:99
+msgid "FlagOS-Compressor"
+msgstr "FlagOS-Compressor"
+
+#: ../../flagos_homepage/whats_new.md:101
+msgid ""
+"FlagOS-Compressor is introduced as a cross-backend weight conversion and "
+"quantization tool. It reads Hugging Face `safetensors` checkpoints and "
+"provides a workflow for selecting modules, converting weights, exporting "
+"deployment artifacts, and validating the resulting tensors and "
+"configuration."
+msgstr ""
+"FlagOS-Compressor 作为跨后端权重转换与量化工具引入。它读取 Hugging Face `safetensors` "
+"检查点，并提供用于选择模块、转换权重、导出部署产物以及验证输出张量和配置的工作流。"
+
+#: ../../flagos_homepage/whats_new.md:103
+msgid "The release describes the following quantization schemes:"
+msgstr "本版本描述了以下量化方案："
+
+#: ../../flagos_homepage/whats_new.md:105
+msgid "**W4A16:** INT4 weights with 16-bit activations."
+msgstr "**W4A16：** INT4 权重与 16 位激活。"
+
+#: ../../flagos_homepage/whats_new.md:106
+msgid "**W8A16:** INT8 weights with 16-bit activations."
+msgstr "**W8A16：** INT8 权重与 16 位激活。"
+
+#: ../../flagos_homepage/whats_new.md:107
+msgid "**Dynamic W8A8:** INT8 weights with per-token dynamic INT8 activations."
+msgstr "**动态 W8A8：** INT8 权重与按 token 动态计算的 INT8 激活。"
+
+#: ../../flagos_homepage/whats_new.md:109
+msgid ""
+"The quantization scope can be selected by module, including attention, "
+"MLP, MoE experts, shared experts, vision encoders, embeddings, "
+"normalization, and routing gates. Exported artifacts include quantized "
+"weights, scale parameters, shard indexes, runtime configuration, and "
+"integrity checks. The exported weight format is `compressed-tensors`."
+msgstr ""
+"量化范围可按模块选择，包括 attention、MLP、MoE experts、shared experts、vision "
+"encoders、embeddings、normalization 和 routing gates。导出的产物包括量化权重、scale "
+"参数、分片索引、运行时配置和完整性检查。导出的权重格式为 `compressed-tensors`。"
+
+#: ../../flagos_homepage/whats_new.md:111
+msgid "Large-model deployment"
+msgstr "大模型部署"
+
+#: ../../flagos_homepage/whats_new.md:113
+msgid ""
+"FlagOS 2.2 adds large-model deployment support through INT8 and W8A8 "
+"quantization paths, deployment artifacts, and configurations for BANG, "
+"Ascend, Hygon, NVIDIA, and PPU environments."
+msgstr ""
+"FlagOS 2.2 通过 INT8 和 W8A8 量化路径、部署产物以及面向 BANG、昇腾、海光、NVIDIA 和 PPU "
+"环境的配置，新增大模型部署支持。"
+
+#: ../../flagos_homepage/whats_new.md:115
+msgid "Triton debugging and profiling with FlagPrism"
+msgstr "使用 FlagPrism 进行 Triton 调试与性能分析"
+
+#: ../../flagos_homepage/whats_new.md:117
+msgid ""
+"FlagPrism is introduced as a cross-backend Triton debugger and profiler "
+"integrated with FlagTree. It connects Triton source code, compiler IR "
+"operations, and device execution events into one observation workflow."
+msgstr ""
+"FlagPrism 作为与 FlagTree 集成的跨后端 Triton 调试器和性能分析器引入。它将 Triton 源代码、编译器 IR "
+"操作和设备执行事件连接到一个观测工作流中。"
+
+#: ../../flagos_homepage/whats_new.md:119
+msgid "The Debugger can collect:"
+msgstr "Debugger 可以采集："
+
+#: ../../flagos_homepage/whats_new.md:121
+msgid "Intermediate values from selected regions of a `@triton.jit` kernel."
+msgstr "`@triton.jit` 内核所选区域中的中间值。"
+
+#: ../../flagos_homepage/whats_new.md:122
+msgid "Numerical summaries."
+msgstr "数值摘要。"
+
+#: ../../flagos_homepage/whats_new.md:123
+msgid "Memory addresses."
+msgstr "内存地址。"
+
+#: ../../flagos_homepage/whats_new.md:124
+msgid "Complete tensor data."
+msgstr "完整张量数据。"
+
+#: ../../flagos_homepage/whats_new.md:125
+msgid "Source- and IR-level locations associated with collected values."
+msgstr "与所采集值关联的源码级和 IR 级位置。"
+
+#: ../../flagos_homepage/whats_new.md:127
+msgid "The Profiler can collect or derive:"
+msgstr "Profiler 可以采集或推导："
+
+#: ../../flagos_homepage/whats_new.md:129
+msgid "Call context and execution timelines."
+msgstr "调用上下文和执行时间线。"
+
+#: ../../flagos_homepage/whats_new.md:130
+msgid "Operation counts."
+msgstr "操作计数。"
+
+#: ../../flagos_homepage/whats_new.md:131
+msgid "Estimated memory traffic."
+msgstr "估算的内存流量。"
+
+#: ../../flagos_homepage/whats_new.md:132
+msgid "Hardware metrics and vendor profiler data where available."
+msgstr "可用时的硬件指标和厂商 profiler 数据。"
+
+#: ../../flagos_homepage/whats_new.md:133
+msgid "Aggregated call-tree and timeline reports."
+msgstr "聚合的调用树和时间线报告。"
+
+#: ../../flagos_homepage/whats_new.md:135
+msgid ""
+"FlagPrism uses a unified test set of 121 Triton operators and targets "
+"NVIDIA, Ascend, Iluvatar CoreX, Moore Threads, and Enflame backends. "
+"Debugger and profiler capabilities may differ between backends because "
+"collection is implemented by backend-specific adapters."
+msgstr ""
+"FlagPrism 使用包含 121 个 Triton 算子的统一测试集，并面向 NVIDIA、昇腾、天数智芯 "
+"CoreX、摩尔线程和燧原后端。由于采集由后端特定适配器实现，不同后端之间的调试器和性能分析器能力可能存在差异。"
+
+#: ../../flagos_homepage/whats_new.md:137
+msgid "Kernel generation and evaluation"
+msgstr "内核生成与评测"
+
+#: ../../flagos_homepage/whats_new.md:139
+msgid ""
+"FlagOS 2.2 continues the KernelGen workflow for generating and validating"
+" operator implementations. In the stated quarterly period, KernelGen "
+"generated 1,509 operators and 1,231 operators passed accuracy validation."
+" The FlagGems release comparison also includes 436 KernelGen-tagged pull "
+"requests; these are different measures and should not be added together."
+msgstr ""
+"FlagOS 2.2 延续了用于生成和验证算子实现的 KernelGen 工作流。在所述季度周期内，KernelGen 生成 1,509 个算子，其中 "
+"1,231 个通过精度验证。FlagGems 发布对比还包含 436 个带有 KernelGen 标签的 pull "
+"request；这些是不同统计口径，不应相加。"
+
+#: ../../flagos_homepage/whats_new.md:141
+msgid ""
+"KernelGenBench v0.2.0 adds multi-chip baselines, chip identification, "
+"token-usage analysis, and anti-cheating checks. It also adds 50 matrix-"
+"multiplication shapes in two precisions, for 100 benchmark cases in that "
+"release."
+msgstr ""
+"KernelGenBench v0.2.0 新增多芯片 baseline、芯片识别、token 使用分析和防作弊检查。该版本还新增 50 "
+"个矩阵乘形状、两种精度，共 100 个基准用例。"
+
+#: ../../flagos_homepage/whats_new.md:143
+msgid "Day 0 models and deployment resources"
+msgstr "Day 0 模型与部署资源"
+
+#: ../../flagos_homepage/whats_new.md:145
+msgid ""
+"FlagOS 2.2 adds seven Day 0 model adaptations, with a single model "
+"covering up to 12 platforms or devices in the release inventory."
+msgstr "FlagOS 2.2 新增七个 Day 0 模型适配；在发布清单中，单个模型最多覆盖 12 个平台或设备。"
+
+#: ../../flagos_homepage/whats_new.md:147
+msgid ""
+"FlagRelease provides more than 300 model images through public release "
+"channels. The available image, model-card, and deployment configuration "
+"should be checked in the relevant channel before use because platform "
+"coverage varies by model."
+msgstr "FlagRelease 通过公开发布渠道提供 300 多个模型镜像。由于平台覆盖范围因模型而异，使用前应在相关渠道检查可用镜像、模型卡和部署配置。"
+#~ msgid ""
+#~ "FlagOS 2.2 extends the shared software"
+#~ " stack for multi-chip model training"
+#~ " and inference. This release adds new"
+#~ " framework integrations and developer "
+#~ "tools, expands operator and compiler "
+#~ "capabilities, introduces an Arm CPU "
+#~ "compilation path, and publishes additional "
+#~ "quantization and model deployment resources."
+#~ msgstr ""
+#~ "FlagOS 2.2 "
+#~ "扩展了面向多芯片模型训练与推理的共享软件栈。本版本新增框架集成与开发者工具，扩展算子和编译器能力，引入 Arm "
+#~ "CPU 编译路径，并发布更多量化与模型部署资源。"
+
+#~ msgid ""
+#~ "The results in this page are "
+#~ "release examples rather than universal "
+#~ "performance or compatibility guarantees. "
+#~ "Support and benchmark results depend on"
+#~ " the model, backend, hardware, software "
+#~ "version, and test configuration described "
+#~ "in each section."
+#~ msgstr "本页结果为发布示例，不代表通用的性能或兼容性保证。支持情况和基准结果取决于各节中说明的模型、后端、硬件、软件版本和测试配置。"
+
+#~ msgid ""
+#~ "These updates are intended to improve"
+#~ " the observability and portability of "
+#~ "training jobs; the supported combination "
+#~ "still depends on the model, framework"
+#~ " version, and backend."
+#~ msgstr "这些更新旨在提升训练任务的可观测性和可移植性；受支持的组合仍取决于模型、框架版本和后端。"
+
+#~ msgid "Scoped performance examples"
+#~ msgstr "有范围限定的性能示例"
+
+#~ msgid ""
+#~ "The source release material reports the"
+#~ " following examples. They should be "
+#~ "reproduced with the same model, backend,"
+#~ " software versions, and benchmark "
+#~ "configuration before being used for "
+#~ "capacity planning."
+#~ msgstr "源发布材料报告了以下示例。在用于容量规划之前，应使用相同模型、后端、软件版本和基准配置进行复现。"
+
+#~ msgid ""
+#~ "**TopK on NVIDIA A100:** For an "
+#~ "input shape of `[64, 129280]` and "
+#~ "`k=1024`, the reported runtime decreased "
+#~ "from `0.353280 ms` for the non-TLE"
+#~ " FlagGems implementation to `0.130048 ms`,"
+#~ " or approximately `2.717x` faster in "
+#~ "that test."
+#~ msgstr ""
+#~ "**NVIDIA A100 上的 TopK：** 对于输入形状 `[64,"
+#~ " 129280]` 和 `k=1024`，报告运行时间从非 TLE FlagGems"
+#~ " 实现的 `0.353280 ms` 降至 `0.130048 "
+#~ "ms`，在该测试中约快 `2.717x`。"
+
+#~ msgid ""
+#~ "**KDA on NVIDIA H800:** For BF16 "
+#~ "with `K=V=128`, `BT=16`, and the stated"
+#~ " two-stage configuration, the reported "
+#~ "geometric-mean result was approximately "
+#~ "`1.380x` relative to the FlashKDA "
+#~ "comparison."
+#~ msgstr ""
+#~ "**NVIDIA H800 上的 KDA：** 对于 "
+#~ "BF16、`K=V=128`、`BT=16` 以及所述两阶段配置，报告的几何平均结果相对于 FlashKDA "
+#~ "对比约为 `1.380x`。"
+
+#~ msgid ""
+#~ "**Hy3 on NVIDIA H20:** With eight "
+#~ "NVIDIA H20 141 GB GPUs and "
+#~ "concurrency 64, selected FlagGems operators"
+#~ " produced reported throughput improvements "
+#~ "of 7.2%, 4.6%, and 3.2% for 4K/1K,"
+#~ " 16K/1K, and 32K/1K input/output lengths,"
+#~ " respectively. The test retained four "
+#~ "selected operators and used native vLLM"
+#~ " implementations for the remaining "
+#~ "operators."
+#~ msgstr ""
+#~ "**NVIDIA H20 上的 Hy3：** 使用 8 张 "
+#~ "NVIDIA H20 141 GB GPU、并发数为 64 时，所选"
+#~ " FlagGems 算子在 4K/1K、16K/1K 和 32K/1K "
+#~ "输入/输出长度下分别带来 7.2%%、4.6%% 和 3.2%% "
+#~ "的报告吞吐提升。该测试保留了四个所选算子，并对其余算子使用原生 vLLM 实现。"
+
+#~ msgid "FlagTree-CPU v0.1.0"
+#~ msgstr "FlagTree-CPU v0.1.0"
+
+#~ msgid "Tested model examples"
+#~ msgstr "已测试模型示例"
+
+#~ msgid ""
+#~ "The following results were reported on"
+#~ " an Apple M5 Pro with 64 GiB"
+#~ " memory, using CPU-only, single-"
+#~ "stream inference with 512 input tokens"
+#~ " and 128 output tokens. They are "
+#~ "test results for the stated environment,"
+#~ " not general performance guarantees."
+#~ msgstr ""
+#~ "以下结果报告于配备 64 GiB 内存的 Apple M5 "
+#~ "Pro，使用仅 CPU、单流推理，输入为 512 个 token、输出为 128"
+#~ " 个 token。这些是所述环境下的测试结果，不代表通用性能保证。"
+
+#~ msgid "Model"
+#~ msgstr "模型"
+
+#~ msgid "Configuration"
+#~ msgstr "配置"
+
+#~ msgid "Reported result"
+#~ msgstr "报告结果"
+
+#~ msgid "MiniCPM5-2B"
+#~ msgstr "MiniCPM5-2B"
+
+#~ msgid "vLLM-Plugin-FL, W4A8"
+#~ msgstr "vLLM-Plugin-FL，W4A8"
+
+#~ msgid "Prefill: 1,017.78 tok/s; decode: 91.66 tok/s"
+#~ msgstr "Prefill：1,017.78 tok/s；decode：91.66 tok/s"
+
+#~ msgid "Qwen3.8-27B"
+#~ msgstr "Qwen3.8-27B"
+
+#~ msgid "Prefill: 74.93 tok/s; decode: 12.73 tok/s"
+#~ msgstr "Prefill：74.93 tok/s；decode：12.73 tok/s"
+
+#~ msgid "Xing4.0-29B-A4B"
+#~ msgstr "Xing4.0-29B-A4B"
+
+#~ msgid "vLLM-Plugin-FL, W4A8; MTP disabled"
+#~ msgstr "vLLM-Plugin-FL，W4A8；MTP 已禁用"
+
+#~ msgid "End-to-end throughput: 118.97 tok/s"
+#~ msgstr "端到端吞吐：118.97 tok/s"
+
+#~ msgid "Qwen-Image-2.1"
+#~ msgstr "Qwen-Image-2.1"
+
+#~ msgid "PyTorch CPU and Diffusers; W8A8/BF16"
+#~ msgstr "PyTorch CPU 和 Diffusers；W8A8/BF16"
+
+#~ msgid ""
+#~ "112 Linear layers quantized to W8A8; "
+#~ "text encoding, denoising, and decoding "
+#~ "ran on CPU"
+#~ msgstr "112 个 Linear 层量化为 W8A8；文本编码、去噪和解码在 CPU 上运行"
+
+#~ msgid ""
+#~ "For the Xing4.0 comparison, the source"
+#~ " material uses a vLLM 0.24.0 out-"
+#~ "of-the-box result of 33.19 tok/s"
+#~ " as the baseline. The ratio should"
+#~ " be interpreted only with the "
+#~ "configuration and baseline used in that"
+#~ " test."
+#~ msgstr ""
+#~ "对于 Xing4.0 对比，源材料使用 vLLM 0.24.0 开箱即用结果"
+#~ " 33.19 tok/s 作为基线。该比例应仅结合该测试所使用的配置和基线进行解读。"
+
+#~ msgid "The source material reports two deployment examples:"
+#~ msgstr "源材料报告了两个部署示例："
+
+#~ msgid ""
+#~ "**Qwen3.8-2.4T-A95B:** BF16 and FP8 "
+#~ "source weights were processed through "
+#~ "INT8 paths for selected modules. The "
+#~ "release material describes deployment "
+#~ "artifacts and configurations for selected "
+#~ "BANG, Ascend, and Hygon environments."
+#~ msgstr ""
+#~ "**Qwen3.8-2.4T-A95B：** BF16 和 FP8 "
+#~ "源权重通过面向所选模块的 INT8 路径处理。发布材料描述了面向部分 "
+#~ "BANG、昇腾和海光环境的部署产物与配置。"
+
+#~ msgid ""
+#~ "**Qwen3.5-397B-A17B:** Attention and MoE "
+#~ "expert networks were quantized with W8A8"
+#~ " while the vision encoder remained in"
+#~ " BF16. The reported model size "
+#~ "changed from 751.41 GB to 382.45 "
+#~ "GB, a 49.1% reduction. The reported "
+#~ "GPQA-Diamond result was 84.85% (168/198)"
+#~ " for the stated evaluation configuration,"
+#~ " with end-to-end validation on "
+#~ "NVIDIA H20 and a PPU backend."
+#~ msgstr ""
+#~ "**Qwen3.5-397B-A17B：** Attention 和 MoE "
+#~ "expert networks 使用 W8A8 量化，vision "
+#~ "encoder 保持 BF16。报告的模型大小从 751.41 GB 变为"
+#~ " 382.45 GB，减少 49.1%%。在所述评测配置下，报告的 GPQA-"
+#~ "Diamond 结果为 84.85%%（168/198），并在 NVIDIA H20 "
+#~ "和 PPU 后端上完成端到端验证。"
+
+#~ msgid ""
+#~ "The model names, backend availability, "
+#~ "evaluation scripts, and exact conversion "
+#~ "options should be checked against the"
+#~ " corresponding model cards and deployment"
+#~ " configurations before reproducing these "
+#~ "examples."
+#~ msgstr "在复现这些示例之前，应根据相应模型卡和部署配置检查模型名称、后端可用性、评测脚本和准确转换选项。"
+
+#~ msgid "FlagPrism"
+#~ msgstr "FlagPrism"

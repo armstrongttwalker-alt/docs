@@ -1,0 +1,222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:1
+msgid ""
+"Stage 4: Communication and Training/Inference Framework Adaptation "
+"(Intermediate Core)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:3
+msgid "Sub-stage 4a: Communication Adaptation - FlagCX"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:5
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:49
+msgid "**Prerequisites**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:7
+msgid "Operator coverage reaches the intermediate standard."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:9
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:53
+msgid "**Hardware investment**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:11
+msgid ""
+"At least two servers, each with at least four cards, connected through "
+"high-speed interconnect such as IB or RoCE to form a homogeneous cluster."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:13
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:57
+msgid "**Activities**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:15
+msgid "Wrap the vendor native communication library as a unified FlagCX adapter."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:16
+msgid ""
+"Implement core collective communication operations: allreduce, "
+"reducescatter, allgather, send, and recv."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:17
+#, python-format
+msgid ""
+"Validate homogeneous cluster communication performance, targeting at "
+"least 99% of the native library."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:18
+msgid ""
+"Validate heterogeneous cluster mixed communication efficiency, targeting "
+"at least 81%."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:20
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:65
+msgid "**Deliverables**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:22
+msgid "FlagCX communication adapter and communication performance test report."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:24
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:69
+msgid "**FlagOS contacts**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:26
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:71
+msgid "FlagOS framework R&D team."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:28
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:73
+msgid "**Chip company contacts**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:30
+msgid "Communication library and network engineers."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:32
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:77
+msgid "**Acceptance criteria**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:34
+msgid ""
+"Collective communication executes correctly in single-node multi-card "
+"environments."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:35
+#, python-format
+msgid "Linearity reaches at least 90% on clusters with eight or more nodes."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:36
+#, python-format
+msgid "Homogeneous cluster throughput reaches at least 99% of the native library."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:37
+msgid "Heterogeneous mixed communication efficiency reaches at least 81%."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:39
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:83
+msgid "**Estimated duration**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:41
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:85
+msgid "3-5 weeks"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:43
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:87
+msgid "**Related documents**"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:45
+msgid ""
+"[FlagCX vendor adaptation "
+"guide](https://jwolpxeehx.feishu.cn/docx/Vl1NdA8jiohjl6xZV2GcfV6un4d)"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:47
+msgid "Sub-stage 4b: Training and Inference Adaptation - FlagScale"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:51
+msgid "FlagCX communication validation has passed."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:55
+msgid "Reuse the two Stage 4a devices, with persistent storage mounted."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:59
+msgid "Adapt the Megatron-LM plugin for the training backend."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:60
+msgid "Adapt the vLLM/SGLang plugins for the inference backend."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:61
+msgid "Support TP, PP, DP, EP, and other parallel strategies."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:62
+msgid "Support FP16, BF16, and FP8 mixed-precision training."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:63
+msgid "Adapt vllm-plugin-FL and provide multi-chip inference services."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:67
+msgid "FlagScale integration report and training/inference validation results."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:75
+msgid "Framework engineers."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:79
+msgid "A representative model can complete one iteration."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:80
+msgid ""
+"The inference service responds normally end to end, with accuracy "
+"deviation below 2%."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:81
+msgid "The distributed training convergence curve matches the NVIDIA baseline."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/cloud/04_adaptation_plan/stage_04_communication_framework.md:89
+msgid ""
+"[FlagOS reference "
+"material](https://jwolpxeehx.feishu.cn/docx/IiAXdz9ZWouEi0xqMMCcUUU7nJe)<br"
+">[TransformerEngine-FL plugin mechanism user "
+"guide](https://jwolpxeehx.feishu.cn/docx/HC0mdLIOFoGv0sxyo8XcFloinOd)<br"
+">[vLLM-plugin-FL plugin mechanism user "
+"guide](https://jwolpxeehx.feishu.cn/docx/Oxeyd2WpMo3XTCxqRNMcSCKHngd)<br"
+">[sglang-plugin-FL vendor adaptation development "
+"guide](https://jwolpxeehx.feishu.cn/wiki/ReW9w8Kguihzm3kAu8GcSIjsn34)<br"
+">[veRL-FL adaptation "
+"documentation](https://jwolpxeehx.feishu.cn/docx/WF7Kdd8ploywmlxBETfc0CWonne)"
+msgstr ""
+

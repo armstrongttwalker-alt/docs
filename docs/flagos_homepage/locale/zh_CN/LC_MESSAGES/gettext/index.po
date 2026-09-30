@@ -1,0 +1,557 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/index.md:5
+msgid "Documentation"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:10
+msgid "FlagOS"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:12
+msgid ""
+"A unified, open-source system software stack designed for a variety of AI"
+" chips"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:14
+#, python-brace-format
+msgid ""
+"[FlagOS Overview](overview.md){ .flagos-outline-btn } [What's New in "
+"FlagOS 2.2](whats_new.md){ .flagos-outline-btn } [Cloud Chip Adaptation "
+"Guide](chip_adaptation_guide/cloud_adaptation_guide_index.md){ .flagos-"
+"outline-btn } [Edge Chip Adaptation "
+"Guide](chip_adaptation_guide/edge_adaptation_guide_index.md){ .flagos-"
+"outline-btn }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:29
+msgid "FlagOS Core Libraries"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:35
+msgid "Operator Libraries"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:38
+msgid ""
+"High-performance operator libraries optimized for diverse hardware "
+"backends."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:42
+msgid "**General-Purpose Operator Library**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:44
+msgid "**FlagGems**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:46
+msgid "Triton-based general-purpose operator library."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:48
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagGems/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:52
+msgid "**Fused Operator Libraries**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:54
+msgid "**FlagGems-vllm**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:56
+msgid "Optimized vLLM operators for multiple backends."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:58
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/FlagGems-"
+"vllm/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:60
+msgid "**FlagGems-sglang**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:62
+msgid "Optimized SGLang operators for multiple backends."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:64
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/FlagGems-"
+"sglang/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:68
+msgid "**Multi-Domain Operator Libraries**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:70
+msgid ""
+"**FlagDNN** — Deep learning operators. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagDNN/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:71
+msgid ""
+"**FlagBLAS** — BLAS numerical library. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagBLAS/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:72
+msgid ""
+"**FlagFFT** — GPU FFT library. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagFFT/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:73
+msgid ""
+"**FlagSparse** — Sparse computation. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagSparse/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:74
+msgid ""
+"**FlagTensor** — Tensor primitives. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagTensor/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:75
+msgid ""
+"**FlagAttention** — Memory-efficient attention operators. [View "
+"Documentation "
+"→](https://docs.flagos.io/projects/FlagAttention/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:76
+msgid ""
+"**FlagAudio** — Audio processing. [View Documentation "
+"→](https://docs.flagos.io/projects/FlagAudio/en/latest/)"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:85
+msgid "Compiler"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:88
+msgid "**FlagTree**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:90
+msgid ""
+"An open-source, unified compiler for multiple AI chips, advancing and "
+"expanding the Triton ecosystem across diverse hardware platforms."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:93
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagTree/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:96
+msgid "Training & Inference Framework"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:99
+msgid "**FlagScale**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:101
+msgid ""
+"A comprehensive toolkit designed to support the entire lifecycle of large"
+" models, from training to inference and deployment."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:104
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagScale/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:107
+msgid "Communication Library"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:110
+msgid "**FlagCX**"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:112
+msgid ""
+"A scalable and adaptive unified communication library for cross-chip "
+"environments, delivering high-performance collective communication "
+"capabilities."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:115
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagCX/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:121
+msgid "FlagOS Plugins for Diverse Chips"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:127
+msgid "vllm-plugin-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:130
+msgid ""
+"A plugin for the vLLM inference/serving framework, built on FlagOS's "
+"unified multi-chip backend."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:133
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/vllm-plugin-"
+"FL/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:136
+msgid "Megatron-LM-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:139
+msgid ""
+"A fork of Megatron-LM that introduces a plugin-based architecture for "
+"supporting diverse AI chips, built on top of FlagOS."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:142
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/Megatron-LM-"
+"FL/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:145
+msgid "TransformerEngine-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:148
+msgid ""
+"A fork of TransformerEngine that introduces a plugin-based architecture "
+"for supporting diverse AI chips, built on top of FlagOS."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:151
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/TransformerEngine-"
+"FL/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:154
+msgid "verl-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:157
+msgid ""
+"A fork of veRL that extends the upstream library with multi-chip/multi-"
+"hardware support via the FlagOS ecosystem."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:160
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/verl-"
+"FL/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:163
+msgid "Torch-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:166
+msgid ""
+"A custom PyTorch device plugin that provides a unified `flagos` device "
+"across diverse AI chips."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:169
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/PyTorch-Plugin-"
+"FL/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:172
+msgid "sglang-plugin-FL"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:175
+msgid ""
+"An out-of-tree (OOT) plugin for SGLang, built on FlagOS's unified multi-"
+"chip backend, extending SGLang's inference capabilities across diverse "
+"hardware platforms."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:178
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/sglang-plugin-"
+"FL/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:181
+msgid "verl-hardware-plugin"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:184
+msgid ""
+"Multi-chip hardware platform and engine plugins for upstream verl RL "
+"post-training workloads across NVIDIA, MetaX, Iluvatar, Cambricon MLU, "
+"Enflame, and Intel XPU hardware."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:187
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/verl-hardware-"
+"plugin/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:193
+msgid "FlagOS Domain-Specific Projects"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:199
+msgid "FlagOS-Robo"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:202
+msgid ""
+"An integrated training and inference framework for AI models used in "
+"robots, so-called Embodied Intelligence."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:205
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/FlagOS-"
+"Robo/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:208
+msgid "FlagQuantum"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:211
+msgid ""
+"A high-performance distributed quantum statevector simulator built on "
+"PyTorch, enabling quantum circuit simulation across multiple GPUs."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:214
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagQuantum/en/latest/){ .card-link-sd"
+" }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:220
+msgid "FlagOS Developer Tools"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:226
+msgid "KernelGen"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:229
+msgid "An operator auto-generation tool."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:232
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/kernelgen/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:235
+msgid "KernelGenBench"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:238
+msgid ""
+"A benchmark framework for evaluating LLM and agent-based Triton kernel "
+"generation across multiple hardware platforms."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:241
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/kernelgenbench/en/latest/){ .card-"
+"link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:244
+msgid "FlagOS-Compressor"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:247
+msgid ""
+"A checkpoint conversion and quantization tool for local Hugging Face "
+"model directories."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:250
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://github.com/flagos-ai/FlagOS-Compressor){ "
+".card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:253
+msgid "FlagOS Skills"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:257
+msgid ""
+"Compatible with Claude Code, Cursor, Codex, and any agent supporting the "
+"Agent Skills standard."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:260
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://github.com/flagos-ai/skills){ .card-link-"
+"sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:263
+msgid "Online Laboratory"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:266
+msgid "An online laboratory providing cloud-based development environments."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:269
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/onlinelaboratory/en/latest/){ .card-"
+"link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:272
+msgid "FlagPrism"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:275
+msgid ""
+"A multi-backend debugging and performance-analysis toolkit for Triton "
+"programs."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:278
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagPrism/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:284
+msgid "FlagOS Platform Services"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:290
+msgid "FlagRelease"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:293
+msgid ""
+"An automated platform for the cross-chip migration and release of open-"
+"source large models."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:296
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagRelease/en/latest/){ .card-link-sd"
+" }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:299
+msgid "FlagPerf"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:302
+msgid "An integrated AI hardware evaluation engine."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:305
+#, python-brace-format
+msgid ""
+"[View Documentation "
+"→](https://docs.flagos.io/projects/FlagPerf/en/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:308
+msgid "FlagCICD"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:312
+msgid ""
+"A CI/CD toolchain that streamlines large-model development across diverse"
+" AI chips."
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:315
+#, python-brace-format
+msgid ""
+"[View Documentation →](https://docs.flagos.io/projects/FlagCICD/zh-"
+"cn/latest/){ .card-link-sd }"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:324
+msgid "Start to Use FlagOS"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:326
+msgid "Join us to co-build an open AI chip development ecosystem"
+msgstr ""
+
+#: ../../../flagos_homepage/index.md:328
+#, python-brace-format
+msgid "[FlagOS Homepage](https://flagos.io/){ .btn .btn-primary .btn-lg }"
+msgstr ""
+

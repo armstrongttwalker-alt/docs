@@ -498,6 +498,21 @@ html[data-theme="dark"] .navbar-brand .title {
   width: auto;
 }
 
+/* Keep the search control pinned to the right when the top toctree nav is disabled. */
+.bd-header .navbar-header-items__start {
+  margin-right: 0;
+}
+
+.bd-header .navbar-header-items {
+  flex: 1 1 auto;
+  margin-left: auto;
+}
+
+.bd-header .navbar-header-items__end,
+.bd-header .navbar-persistent--mobile {
+  margin-left: auto;
+}
+
 html[data-theme="dark"] .pst-navbar-icon svg,
 html[data-theme="dark"] .search-button-field svg {
   color: var(--flagos-text);

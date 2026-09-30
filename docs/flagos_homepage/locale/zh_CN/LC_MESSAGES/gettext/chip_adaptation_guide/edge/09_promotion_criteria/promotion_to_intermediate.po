@@ -1,0 +1,56 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, FlagOS Community
+# This file is distributed under the same license as the FlagOS
+# Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FlagOS Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 16:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:2
+msgid "Requirements for promotion from basic to intermediate"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:4
+msgid "The FlagTree chip branch runs stably for at least four weeks"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:6
+msgid "FlagGems operator test coverage is at least 80%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:8
+msgid ""
+"The CI single machine is in the FlagOS resource pool with availability of"
+" at least 99%"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:10
+msgid "The chip passes Sig repository functional validation."
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:12
+msgid "Establish an SBOM scanning mechanism"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:14
+msgid "The driver/SDK can be obtained unattended"
+msgstr ""
+
+#: ../../../flagos_homepage/chip_adaptation_guide/_shared/09_promotion_criteria/promotion_to_intermediate.md:16
+msgid "Sign and pass legal compliance review"
+msgstr ""
+
