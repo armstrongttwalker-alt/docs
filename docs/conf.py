@@ -28,12 +28,12 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagtensor_en make html  # build the flagtensor English project
    $ PROJECT=flagaudio_en make html  # build the flagaudio English project
    $ PROJECT=flagattention_en make html  # build the flagattention English project
-   $ PROJECT=pytorch_plugin_fl_en make html  # build the pytorch_plugin_fl English project
+   $ PROJECT=torch_fl_en make html  # build the torch_fl English project
    $ PROJECT=sglang_plugin_fl_en make html  # build the sglang_plugin_fl English project
    $ PROJECT=flagquantum_en make html  # build the flagquantum English project
    $ PROJECT=kernelgenbench_en make html  # build the kernelgenbench English project
    $ PROJECT=flagprism_en make html  # build the flagprism English project
-   $ PROJECT=pytorch_plugin_fl_en make html  # build the pytorch_plugin_fl English project
+   $ PROJECT=torch_fl_en make html  # build the torch_fl English project
 
    $ PROJECT=flagos_zh make html  # build the Chinese project
    $ PROJECT=flagcx_zh make html  # build the flagcx Chinese project
@@ -57,12 +57,12 @@ To build each project, the ``PROJECT`` environment variable is used.
    $ PROJECT=flagtensor_zh make html  # build the flagtensor Chinese project
    $ PROJECT=flagaudio_zh make html  # build the flagaudio Chinese project
    $ PROJECT=flagattention_zh make html  # build the flagattention Chinese project
-   $ PROJECT=pytorch_plugin_fl_zh make html  # build the pytorch_plugin_fl Chinese project
+   $ PROJECT=torch_fl_zh make html  # build the torch_fl Chinese project
    $ PROJECT=sglang_plugin_fl_zh make html  # build the sglang_plugin_fl Chinese project
    $ PROJECT=flagquantum_zh make html  # build the flagquantum Chinese project
    $ PROJECT=kernelgenbench_zh make html  # build the kernelgenbench Chinese project
    $ PROJECT=flagprism_zh make html  # build the flagprism Chinese project
-   $ PROJECT=pytorch_plugin_fl_zh make html  # build the pytorch_plugin_fl Chinese project
+   $ PROJECT=torch_fl_zh make html  # build the torch_fl Chinese project
 
 For more information read https://sphinx-multiproject.readthedocs.io/.
 """
@@ -311,18 +311,18 @@ multiproject_projects = {
             "html_title": "FlagAttention 文档中心",
         },
     },
-    "pytorch_plugin_fl_en": {
+    "torch_fl_en": {
         "use_config_file": False,
         "config": {
-            "project": "PyTorch-Plugin-FL Documentation",
-            "html_title": "PyTorch-Plugin-FL Documentation",
+            "project": "torch-FL Documentation",
+            "html_title": "torch-FL Documentation",
         },
     },
-    "pytorch_plugin_fl_zh": {
+    "torch_fl_zh": {
         "use_config_file": False,
         "config": {
-            "project": "PyTorch-Plugin-FL 文档中心",
-            "html_title": "PyTorch-Plugin-FL 文档中心",
+            "project": "torch-FL 文档中心",
+            "html_title": "torch-FL 文档中心",
         },
     },
     "sglang_plugin_fl_en": {
