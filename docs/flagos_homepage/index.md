@@ -166,7 +166,7 @@ A fork of veRL that extends the upstream library with multi-chip/multi-hardware 
 A custom PyTorch device plugin that provides a unified `flagos` device across diverse AI chips.
 
 +++
-[View Documentation →](https://docs.flagos.io/projects/tyorch-FL/en/latest/){ .card-link-sd }
+[View Documentation →](https://docs.flagos.io/projects/torch-FL/en/latest/){ .card-link-sd }
 ```
 
 ```{grid-item-card} sglang-plugin-FL
